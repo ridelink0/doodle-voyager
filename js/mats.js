@@ -111,7 +111,9 @@ const FRAG_MAIN = /* glsl */ `
     vec2 dx = dFdx(hp), dy = dFdy(hp);
     dvH = mix(dvHatch(hp, dx, dy, sp, dvShade), dvHatch(hp, dx, dy, sp * 2.0, dvShade), lg - lf);
   }
-  outgoingLight = mix(outgoingLight, uHatchInk, dvH * 0.7);
+  // Hatching lives in the mid-tones: deep shadow stays solid dark (a neon
+  // city is black between its lights, not a mesh of pen strokes).
+  outgoingLight = mix(outgoingLight, uHatchInk, dvH * 0.7 * (1.0 - smoothstep(0.82, 0.97, dvShade)));
   float dvFres = pow(1.0 - clamp(dot(normalize(normal), normalize(vViewPosition)), 0.0, 1.0), 4.0);
   outgoingLight += uRimColor * dvFres * uRimStrength;
 }
@@ -157,7 +159,7 @@ function makeInk(color, id, opts) {
 }
 
 // Lit, flat shaded, hatched in the shadows, cyan rim; the post pass outlines it in cyan.
-export function ink(color = PAL.charcoal, { rim = PAL.cyan, rimStrength = 0.55, hatch = null } = {}) {
+export function ink(color = PAL.charcoal, { rim = 0x3a4cff, rimStrength = 0.25, hatch = null } = {}) {
   return makeInk(color, ID.INK, { rim, rimStrength, hatch });
 }
 // The same in red: enemies and their ships.

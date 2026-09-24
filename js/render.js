@@ -33,7 +33,7 @@ uniform sampler2D tDepth;
 uniform vec2 res;
 uniform float time, cnear, cfar, boil, lw, scale;
 uniform float flash, damage, warp, blackout, glowBoost;
-uniform vec3 inkCyan, inkRed, spaceBg, spaceHaze;
+uniform vec3 inkCyan, inkRed, spaceBg, spaceHaze, edgeDim;
 varying vec2 vUv;
 
 float hash12(vec2 p) { vec3 p3 = fract(vec3(p.xyx) * .1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }
@@ -92,7 +92,10 @@ void main() {
   edge *= 0.72 + 0.28 * noise(fc * 0.35 + frame);
 
   bool enemyEdge = isId(id0, 0.8) || isId(cL.a, 0.8) || isId(cR.a, 0.8) || isId(cU.a, 0.8) || isId(cD.a, 0.8);
-  vec3 edgeInk = enemyEdge ? inkRed : inkCyan;
+  // Neon city, not neon everything: ordinary silhouettes are dim violet-steel
+  // lines, and only enemies keep a hot outline. Light comes from the signs.
+  vec3 edgeInk = enemyEdge ? inkRed : edgeDim;
+  float edgeK = enemyEdge ? 1.0 : 0.55;
 
   vec3 col;
   if (b0 > 0.5 && id0 < 0.05) {
@@ -115,7 +118,7 @@ void main() {
     // glowing surfaces are pushed past the bloom threshold
     if (isId(id0, 0.6)) col *= glowBoost;
   }
-  col = mix(col, edgeInk, clamp(edge, 0.0, 1.0));
+  col = mix(col, edgeInk, clamp(edge, 0.0, 1.0) * edgeK);
 
   vec2 q = vUv - 0.5;
   q.x *= res.x / res.y;
@@ -205,6 +208,10 @@ export class Renderer {
     this.canvas = canvas;
     this.gl = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, powerPreference: 'high-performance' });
     this.gl.autoClear = false;
+    // POST_FS gamma-encodes by hand. Bloom copies its input to the screen with a
+    // MeshBasicMaterial, which three.js would sRGB-encode a second time and wash
+    // every dark value out to a pale lavender, so the screen output stays linear.
+    this.gl.outputColorSpace = THREE.LinearSRGBColorSpace;
     this.world = new THREE.Scene();
     this.shipScene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(72, 1, 0.05, FAR);
@@ -222,6 +229,7 @@ export class Renderer {
         inkRed: { value: hex3(0xff3b5c) },
         spaceBg: { value: hex3(0x05070c) },
         spaceHaze: { value: hex3(0x0e1420) },
+        edgeDim: { value: hex3(0x5a5f9e) },
       },
       vertexShader: POST_VS, fragmentShader: POST_FS, depthTest: false, depthWrite: false,
     });
@@ -230,7 +238,7 @@ export class Renderer {
     // disabling bloom on the low preset needs no other bookkeeping.
     this.composer = new EffectComposer(this.gl);
     this.composePass = new ShaderPass(this.post);
-    this.bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.7, 0.4, 0.82);
+    this.bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.85, 0.45, 0.85);
     this.composer.addPass(this.composePass);
     this.composer.addPass(this.bloomPass);
     this.rt = null;

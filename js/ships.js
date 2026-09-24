@@ -7,24 +7,60 @@ import { ink, glow, screen, paint, label, labelTexture, PAL } from './mats.js';
 
 export const SHIPS = {
   scout: {
-    id: 'scout', name: 'Pencil Case', cls: 'small', fuel: 'ION', tank: 80, hull: 100, shield: 60, speed: 260, cruise: 2.5e5, turn: 1.6, guns: 2, dmg: 12, price: 0,
-    desc: 'A zip-top starter hull with a cockpit, a fold-down bunk and a storage bay that just fits the drone hatch between the crates.',
+    id: 'scout', name: 'Pencil Case', cls: 'small', fuel: 'ION', tank: 85, hull: 100, shield: 60, speed: 330, cruise: 2.5e5, turn: 1.7, guns: 2, dmg: 12, price: 0,
+    desc: 'A zip-top starter hull with a cockpit, a fold-down bunk and a storage bay that just fits the drone hatch between the crates. Still somehow loses your eraser.',
+  },
+  eraser: {
+    id: 'eraser', name: 'Eraser', cls: 'small', fuel: 'ION', tank: 60, hull: 70, shield: 40, speed: 480, cruise: 3.2e5, turn: 2.3, guns: 1, dmg: 9, price: 5000,
+    desc: 'A squat pink block in a paper sleeve with one fat nozzle. The only Eraser on our side: fast, light, and a little embarrassed about the name.',
   },
   racer: {
-    id: 'racer', name: 'Highlighter', cls: 'small', fuel: 'ION', tank: 70, hull: 80, shield: 50, speed: 420, cruise: 4e5, turn: 2.0, guns: 2, dmg: 10, price: 7000,
-    desc: 'A chisel-tipped engine with a seat bolted on: the quickest hull in the yard, with one locker nook behind the cockpit.',
+    id: 'racer', name: 'Highlighter', cls: 'small', fuel: 'ION', tank: 75, hull: 80, shield: 50, speed: 460, cruise: 4e5, turn: 2.1, guns: 2, dmg: 10, price: 7000,
+    desc: 'A chisel-tipped engine with a seat bolted on and one locker nook behind the cockpit. Marks the important parts of space in a colour nobody asked for, very quickly.',
+  },
+  tape: {
+    id: 'tape', name: 'Correction Tape', cls: 'small', fuel: 'ION', tank: 55, hull: 65, shield: 45, speed: 500, cruise: 3.4e5, turn: 2.4, guns: 2, dmg: 9, price: 9000,
+    desc: 'The flattest hull in the yard: a tape reel on the back and a wide applicator nose. Leaves a faint white line where you used to be.',
+  },
+  witeout: {
+    id: 'witeout', name: 'Correction Fluid', cls: 'small', fuel: 'ION', tank: 65, hull: 75, shield: 55, speed: 440, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 11000,
+    desc: 'A squat bottle with a narrow neck and a flip cap for a fin. Paints itself out of the picture; enemies lose track of you, and so, occasionally, do you.',
   },
   fighter: {
-    id: 'fighter', name: 'Ballpoint', cls: 'medium', fuel: 'PLASMA', tank: 110, hull: 180, shield: 120, speed: 320, cruise: 3e5, turn: 1.8, guns: 4, dmg: 14, price: 12000,
-    desc: 'Four wing guns fed from a real gun room behind the cockpit, a click-button drive and a cargo hold at the back.',
+    id: 'fighter', name: 'Ballpoint', cls: 'medium', fuel: 'PLASMA', tank: 110, hull: 180, shield: 120, speed: 350, cruise: 3e5, turn: 1.8, guns: 4, dmg: 14, price: 12000,
+    desc: 'Four wing guns fed from a real gun room behind the cockpit, a click-button drive and a cargo hold at the back. The hull Doodle District survivors trust.',
+  },
+  paperclip: {
+    id: 'paperclip', name: 'Paperclip', cls: 'medium', fuel: 'PLASMA', tank: 100, hull: 140, shield: 110, speed: 300, cruise: 2.8e5, turn: 1.6, guns: 2, dmg: 11, price: 14000,
+    desc: 'Two steel tubes bent into a loop at the bow around a small crew body. Bends, holds, drags.',
   },
   hauler: {
-    id: 'hauler', name: 'Ring Binder', cls: 'medium', fuel: 'PLASMA', tank: 160, hull: 260, shield: 100, speed: 200, cruise: 2.5e5, turn: 1.0, guns: 2, dmg: 12, price: 15000,
-    desc: 'Three steel rings hold a 16 m cargo bay of racks and pallets, with a bunk room for the long hauls.',
+    id: 'hauler', name: 'Ring Binder', cls: 'medium', fuel: 'PLASMA', tank: 190, hull: 260, shield: 100, speed: 230, cruise: 2.5e5, turn: 1.0, guns: 2, dmg: 12, price: 15000,
+    desc: 'Three steel rings hold a 16 m cargo bay of racks and pallets, with a bunk room for the long hauls. Zero sympathy for your fuel bill.',
+  },
+  gelpen: {
+    id: 'gelpen', name: 'Gel Pen', cls: 'small', fuel: 'ION', tank: 50, hull: 55, shield: 30, speed: 620, cruise: 4.2e5, turn: 2.6, guns: 2, dmg: 18, price: 16000,
+    desc: 'A long see-through barrel with a needle nose and twin thin engines: the fastest ink in the yard and the thinnest hull. Writes beautifully. Smudges if touched.',
+  },
+  compass: {
+    id: 'compass', name: 'Compass', cls: 'medium', fuel: 'PLASMA', tank: 115, hull: 170, shield: 130, speed: 310, cruise: 2.9e5, turn: 2.2, guns: 3, dmg: 12, price: 18000,
+    desc: 'Two legs splayed from a pivot hub, one a needle point, one a pencil foot. Turns tighter than anything with a hull and draws perfect circles around people who draw lines.',
+  },
+  stickynotes: {
+    id: 'stickynotes', name: 'Sticky Notes', cls: 'small', fuel: 'ION', tank: 90, hull: 110, shield: 90, speed: 380, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 20000,
+    desc: 'A fanned pad of square plates with a bright note stuck on top. The red guys keep attacking reminders.',
+  },
+  stapler: {
+    id: 'stapler', name: 'Stapler', cls: 'medium', fuel: 'PLASMA', tank: 120, hull: 240, shield: 150, speed: 260, cruise: 2.6e5, turn: 1.3, guns: 3, dmg: 16, price: 22000,
+    desc: 'A wedge: a tall spring housing at the stern, a low jaw at the bow and a hinge ridge down the spine. Rams first, asks for the invoice later.',
+  },
+  gluestick: {
+    id: 'gluestick', name: 'Glue Stick', cls: 'medium', fuel: 'PLASMA', tank: 130, hull: 200, shield: 180, speed: 240, cruise: 2.6e5, turn: 1.2, guns: 2, dmg: 11, price: 24000,
+    desc: 'A fat screw-threaded barrel with a domed cap. Smells faintly of primary school.',
   },
   cruiser: {
-    id: 'cruiser', name: 'Lecture Hall', cls: 'large', fuel: 'DEUTERIUM', tank: 240, hull: 450, shield: 220, speed: 170, cruise: 3e5, turn: 0.7, guns: 6, dmg: 14, price: 40000,
-    desc: 'A 60 m liner with four dorm rooms, two bathrooms, a galley, a laundry, a lounge with a big screen and its own drone bay.',
+    id: 'cruiser', name: 'Lecture Hall', cls: 'large', fuel: 'DEUTERIUM', tank: 240, hull: 450, shield: 220, speed: 200, cruise: 3e5, turn: 0.7, guns: 6, dmg: 14, price: 40000,
+    desc: 'A 60 m liner with four dorm rooms, two bathrooms, a galley, a laundry, a lounge with a big screen and its own drone bay. Attendance is mandatory.',
   },
 };
 
@@ -142,7 +178,7 @@ class Kit {
   }
   use(id, lbl, x, y, z, r = 1.3) { this.interact.push({ id, label: lbl, pos: this.at(x, y, z), r }); }
   light(x, y, z, intensity, distance) {
-    const l = new THREE.PointLight(0xfff0d8, intensity, distance, 2);
+    const l = new THREE.PointLight(0xffb27a, intensity * 0.35, distance, 2);
     this.lights.push(this.add(l, x, y, z));
     return l;
   }
@@ -1196,6 +1232,14 @@ const LAYOUT = {
     lights: [[0, 2.7, -25.5, 10, 16], [0, 2.7, -12.5, 12, 18], [-1.5, 2.7, 16.5, 12, 18]],
   },
 };
+// New hulls share an interior with a ship of the same class (the exterior is
+// their own and encloses that interior, so EVA and the hull hole line up).
+Object.assign(LAYOUT, {
+  eraser: LAYOUT.racer, tape: LAYOUT.racer, gelpen: LAYOUT.racer,
+  witeout: LAYOUT.scout, stickynotes: LAYOUT.scout,
+  paperclip: LAYOUT.fighter, compass: LAYOUT.fighter, stapler: LAYOUT.fighter, gluestick: LAYOUT.fighter,
+});
+
 
 export function buildInterior(type, paintName = 'yellow') {
   const s = LAYOUT[type] || LAYOUT.scout;
@@ -1397,7 +1441,129 @@ function extCruiser(k, P) {
   return { hullX: 7.55, belly: -1.93, guns, engines };
 }
 
-const EXTERIOR = { scout: extScout, racer: extRacer, fighter: extFighter, hauler: extHauler, cruiser: extCruiser };
+
+// ---- the new hulls (each encloses its class interior: racer 5x9, scout 6x12, fighter 7x16) ----
+function extEraser(k, P) {
+  const cy = 1.25, a = PI / 8, ap = Math.cos(a);
+  const oct = (mat, z0, z1, rx, ry) => k.put(CYL(8, a), mat, 0, cy, (z0 + z1) / 2, 2 * rx, z1 - z0, 2 * ry, HP, 0, 0);
+  oct(C.pink, -5.4, 5.6, 3.2, 2.0);
+  oct(P, -1.2, 3.4, 3.35, 2.12);            // the paper sleeve
+  oct(C.dark, 5.6, 5.9, 2.6, 1.6);
+  const guns = [barrel(k, 0, cy - 1.2, -7.0, 2.2, 0.16)];
+  const engines = [nozzle(k, 0, cy, 5.9, 1.3, 1.1)];
+  const side = 3.2 * ap;
+  k.sign('ERASER', 3.0, -side - 0.02, cy, 1.1, -HP);
+  k.sign('ERASER', 3.0, side + 0.02, cy, 1.1, HP);
+  return { hullX: side, belly: cy - 2.0 * ap, guns, engines };
+}
+function extTape(k, P) {
+  k.box(-3.2, -0.25, -5.0, 3.2, 2.75, 5.2, P);
+  k.put(CYL(16), C.white, 0, 2.75, 1.0, 4.4, 2.6, 4.4, 0, 0, HP);   // the reel, half buried
+  k.put(TOR(1.9, 0.18, 20), C.steel, 1.35, 2.75, 1.0, 1, 1, 1, 0, HP, 0);
+  k.box(-2.8, 0.2, -7.6, 2.8, 0.7, -5.0, C.steel);                   // flat applicator nose
+  k.box(-2.4, 0.05, -8.1, 2.4, 0.3, -7.6, C.white);
+  k.box(-1.6, 0.9, -5.07, 1.6, 2.2, -5.0, C.glass);
+  const guns = [];
+  for (const x of [-2.4, 2.4]) guns.push(barrel(k, x, 1.0, -6.8, 2.0, 0.12));
+  const engines = [nozzle(k, -1.6, 1.2, 5.2, 0.9, 0.8), nozzle(k, 1.6, 1.2, 5.2, 0.9, 0.8)];
+  k.sign('CORRECTION TAPE', 4.2, -3.22, 1.3, 0, -HP);
+  k.sign('CORRECTION TAPE', 4.2, 3.22, 1.3, 0, HP);
+  return { hullX: 3.2, belly: -0.25, guns, engines };
+}
+function extGelpen(k, P) {
+  const cy = 1.25, r = 2.9;
+  k.put(CYL(12), P, 0, cy, 1.0, 2 * r, 16.0, 2 * r, HP, 0, 0);
+  k.put(CYL(12), C.glass, 0, cy, 0.0, 2 * r * 1.04, 5.0, 2 * r * 1.04, HP, 0, 0);   // the see-through barrel
+  k.put(CONE(12), C.steel, 0, cy, -9.0, 2 * r * 0.9, 4.0, 2 * r * 0.9, -HP, 0, 0);  // needle nose
+  k.put(CYL(12), C.dark, 0, cy, 9.2, 2 * r * 0.8, 0.4, 2 * r * 0.8, HP, 0, 0);
+  const guns = [barrel(k, -1.2, cy - 1.8, -8.0, 2.4, 0.12), barrel(k, 1.2, cy - 1.8, -8.0, 2.4, 0.12)];
+  const engines = [nozzle(k, -1.1, cy, 9.4, 0.7, 1.0), nozzle(k, 1.1, cy, 9.4, 0.7, 1.0)];
+  k.sign('GEL PEN', 3.0, -r - 0.02, cy, 3.5, -HP);
+  k.sign('GEL PEN', 3.0, r + 0.02, cy, 3.5, HP);
+  return { hullX: r, belly: cy - r, guns, engines };
+}
+function extWiteout(k, P) {
+  const cy = 1.3, r = 3.55;
+  k.put(CYL(14), C.white, 0, cy, 0.0, 2 * r, 12.8, 2 * r, HP, 0, 0);          // the bottle
+  k.put(CYL(14), P, 0, cy, 2.5, 2 * r * 1.03, 3.0, 2 * r * 1.03, HP, 0, 0);   // the label
+  k.put(FRU(0.45, 14), C.white, 0, cy, -7.6, 2 * r, 2.4, 2 * r, -HP, 0, 0);   // the neck
+  k.put(CYL(10), C.dark, 0, cy, -9.3, 2.6, 1.0, 2.6, HP, 0, 0);               // the cap
+  k.box(-0.25, cy + r - 0.2, -2.0, 0.25, cy + r + 1.3, 2.0, P);               // flip-cap fin
+  const guns = [barrel(k, -2.2, cy - 1.8, -7.8, 2.2, 0.13), barrel(k, 2.2, cy - 1.8, -7.8, 2.2, 0.13)];
+  const engines = [nozzle(k, 0, cy, 6.4, 1.2, 1.0)];
+  k.sign('CORRECTION FLUID', 4.4, -r - 0.02, cy, 1.0, -HP);
+  k.sign('CORRECTION FLUID', 4.4, r + 0.02, cy, 1.0, HP);
+  return { hullX: r, belly: cy - r, guns, engines };
+}
+function extStickynotes(k, P) {
+  const layers = [[-0.3, 0.55, -6.4, 6.6, 3.4], [0.55, 1.35, -6.9, 6.1, 3.3], [1.35, 2.15, -7.4, 5.6, 3.2], [2.15, 2.95, -7.9, 5.1, 3.1]];
+  layers.forEach(([y0, y1, z0, z1, hx], i) => k.box(-hx, y0, z0, hx, y1, z1, i % 2 ? C.cream : P));
+  k.box(-2.0, 2.95, -6.6, 2.0, 3.05, -2.6, C.yellow);   // the bright note on top
+  k.box(-1.5, 0.9, -6.47, 1.5, 2.0, -6.4, C.glass);
+  const guns = [barrel(k, -2.8, 0.3, -7.6, 2.0, 0.12), barrel(k, 2.8, 0.3, -7.6, 2.0, 0.12)];
+  const engines = [nozzle(k, 0, 1.2, 6.6, 1.1, 0.9)];
+  k.sign('STICKY NOTES', 3.8, -3.42, 1.0, 0, -HP);
+  k.sign('STICKY NOTES', 3.8, 3.42, 1.0, 0, HP);
+  return { hullX: 3.4, belly: -0.3, guns, engines };
+}
+function extPaperclip(k, P) {
+  k.box(-3.7, -0.2, -8.3, 3.7, 2.8, 8.3, C.dark);                  // crew body
+  for (const x of [-4.5, 4.5]) k.put(CYL(10), C.steel, x, 1.3, 0.5, 1.4, 17.5, 1.4, HP, 0, 0);
+  k.put(TOR(4.5, 0.7, 24), C.steel, 0, 1.3, -8.3, 1, 1, 1, HP, 0, 0);   // the bend at the bow
+  k.put(TOR(3.0, 0.6, 20), C.steel, 0, 1.3, 9.2, 1, 1, 1, HP, 0, 0);    // the inner bend at the stern
+  k.box(-1.8, 0.9, -8.37, 1.8, 2.2, -8.3, C.glass);
+  const guns = [barrel(k, -4.5, 1.3, -10.2, 2.4, 0.15), barrel(k, 4.5, 1.3, -10.2, 2.4, 0.15)];
+  const engines = [nozzle(k, -1.8, 1.3, 8.3, 1.0, 1.0), nozzle(k, 1.8, 1.3, 8.3, 1.0, 1.0)];
+  k.sign('PAPERCLIP', 3.6, -3.72, 1.3, 0, -HP);
+  k.sign('PAPERCLIP', 3.6, 3.72, 1.3, 0, HP);
+  return { hullX: 3.7, belly: -0.2, guns, engines };
+}
+function extCompass(k, P) {
+  k.box(-3.7, -0.2, -8.3, 3.7, 2.8, 8.3, P);                      // pivot hub around the crew
+  k.put(CYL(12), C.steel, 0, 3.4, -2.0, 2.6, 1.4, 2.6, 0, 0, 0);  // the pivot knob
+  // the two legs, splayed back and out
+  k.put(CYL(10), C.steel, -6.2, 1.3, 5.0, 1.6, 12.0, 1.6, HP, 0, 0.55);
+  k.put(CYL(10), C.steel, 6.2, 1.3, 5.0, 1.6, 12.0, 1.6, HP, 0, -0.55);
+  k.put(CONE(10), C.dark, -9.2, 1.3, 10.3, 1.6, 2.4, 1.6, HP, 0, 0.55);    // needle point
+  k.box(8.4, 0.6, 9.4, 10.4, 2.0, 11.4, C.wood);                         // pencil foot
+  k.box(-1.8, 0.9, -8.37, 1.8, 2.2, -8.3, C.glass);
+  const guns = [barrel(k, -2.8, 0.2, -9.8, 2.2, 0.14), barrel(k, 0, 0.2, -9.8, 2.2, 0.14), barrel(k, 2.8, 0.2, -9.8, 2.2, 0.14)];
+  const engines = [nozzle(k, 0, 1.3, 8.3, 1.2, 1.0)];
+  k.sign('COMPASS', 3.4, -3.72, 1.3, 0, -HP);
+  k.sign('COMPASS', 3.4, 3.72, 1.3, 0, HP);
+  return { hullX: 3.7, belly: -0.2, guns, engines };
+}
+function extStapler(k, P) {
+  k.box(-3.7, -0.3, 1.5, 3.7, 3.6, 8.4, P);        // the spring housing (tall stern)
+  k.box(-3.7, -0.3, -8.4, 3.7, 2.8, 1.5, P);       // the jaw (low bow)
+  k.box(-0.55, 3.6, -3.0, 0.55, 4.1, 8.4, C.steel);  // hinge ridge down the spine
+  k.box(-0.55, 2.8, -8.4, 0.55, 3.1, -3.0, C.steel);
+  k.box(-3.2, -0.3, -9.8, 3.2, 1.1, -8.4, C.steel);  // the staple jaw tip
+  k.box(-1.8, 0.9, -8.47, 1.8, 2.2, -8.4, C.glass);
+  const guns = [barrel(k, -2.9, 0.4, -10.8, 2.0, 0.16), barrel(k, 0, 0.4, -10.8, 2.0, 0.16), barrel(k, 2.9, 0.4, -10.8, 2.0, 0.16)];
+  const engines = [nozzle(k, -1.8, 1.6, 8.4, 1.1, 1.0), nozzle(k, 1.8, 1.6, 8.4, 1.1, 1.0)];
+  k.sign('STAPLER', 3.4, -3.72, 1.6, 3.5, -HP);
+  k.sign('STAPLER', 3.4, 3.72, 1.6, 3.5, HP);
+  return { hullX: 3.7, belly: -0.3, guns, engines };
+}
+function extGluestick(k, P) {
+  const cy = 1.3, r = 4.3;
+  k.put(CYL(14), P, 0, cy, 0.0, 2 * r, 16.8, 2 * r, HP, 0, 0);
+  for (const z of [-2.2, -1.1, 0.0, 1.1]) k.put(TOR(r, 0.14, 24), C.white, 0, cy, z, 1, 1, 1, 0, 0, 0);   // screw threads
+  k.put(FRU(0.45, 14), C.white, 0, cy, -9.4, 2 * r, 2.0, 2 * r, -HP, 0, 0);   // the domed cap
+  k.put(CYL(14), C.dark, 0, cy, 8.6, 2 * r * 0.85, 0.4, 2 * r * 0.85, HP, 0, 0);
+  const guns = [barrel(k, -2.6, cy - 2.4, -9.6, 2.2, 0.14), barrel(k, 2.6, cy - 2.4, -9.6, 2.2, 0.14)];
+  const engines = [nozzle(k, 0, cy, 8.8, 1.6, 1.1)];
+  k.sign('GLUE STICK', 3.8, -r - 0.02, cy, 3.2, -HP);
+  k.sign('GLUE STICK', 3.8, r + 0.02, cy, 3.2, HP);
+  return { hullX: r, belly: cy - r, guns, engines };
+}
+
+const EXTERIOR = {
+  scout: extScout, racer: extRacer, fighter: extFighter, hauler: extHauler, cruiser: extCruiser,
+  eraser: extEraser, tape: extTape, gelpen: extGelpen, witeout: extWiteout, stickynotes: extStickynotes,
+  paperclip: extPaperclip, compass: extCompass, stapler: extStapler, gluestick: extGluestick,
+};
 
 // Jagged dark tear with a torn bare-metal rim, facing out along normal.
 function holeMesh(pos, normal) {

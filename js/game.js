@@ -118,11 +118,11 @@ export class Game {
 
   initWorld() {
     const w = this.r.world, sh = this.r.shipScene;
-    this.hemi = new THREE.HemisphereLight(0xcfd8ff, 0x1a2030, 0.45);
+    this.hemi = new THREE.HemisphereLight(0x9aa2d8, 0x120f1e, 0.35);
     this.sun = new THREE.DirectionalLight(0xffffff, 2.1);
     this.sun.position.set(1, 0.6, 0.4);
     w.add(this.hemi, this.sun, this.sun.target);
-    this.shipHemi = new THREE.HemisphereLight(0xb8c8e8, 0x1a1f2e, 0.55);
+    this.shipHemi = new THREE.HemisphereLight(0x8a92c8, 0x120f1e, 0.3);
     this.hemiBase = { sky: this.shipHemi.color.clone(), ground: this.shipHemi.groundColor.clone() };
     sh.add(this.shipHemi);
     this.shipRoot = new THREE.Group();
