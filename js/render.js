@@ -1,10 +1,13 @@
 // The renderer: the world and the ship interior are drawn into one target
-// (colour + depth), then a single post pass turns it into ballpoint on lined
-// paper: ink edges from depth and colour, hatching where the light is low,
-// highlighter fills, ruled lines and the red margin. Material IDs arrive in
-// the alpha channel (see mats.js).
+// (colour + depth). The surfaces arrive already lit, hatched and rim-lit by the
+// neon-ink materials (mats.js); one post pass adds the pen edges (from depth,
+// colour and the material ID in the alpha channel), puts dark space behind
+// everything and runs the screen effects, and a bloom pass makes the neon glow.
 import * as THREE from 'three';
-import { ID } from './mats.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { ID, setHatchDirs } from './mats.js';
 
 // Scaled space: anything beyond S0 is pulled in on a log curve and shrunk by
 // the same factor, so it keeps its angular size and stays inside the far plane.
@@ -29,8 +32,8 @@ uniform sampler2D tColor;
 uniform sampler2D tDepth;
 uniform vec2 res;
 uniform float time, cnear, cfar, boil, lw, scale;
-uniform float flash, damage, warp, blackout;
-uniform vec3 inkBlue, inkRed, paper, rules, margin;
+uniform float flash, damage, warp, blackout, glowBoost;
+uniform vec3 inkCyan, inkRed, spaceBg, spaceHaze;
 varying vec2 vUv;
 
 float hash12(vec2 p) { vec3 p3 = fract(vec3(p.xyx) * .1031); p3 += dot(p3, p3.yzx + 33.33); return fract((p3.x + p3.y) * p3.z); }
@@ -43,13 +46,14 @@ float noise(vec2 p) {
 float lin(float d) { return cnear * cfar / (cfar - d * (cfar - cnear)); }
 vec3 toS(vec3 c) { return pow(max(c, 0.0), vec3(1.0 / 2.2)); }
 float isBg(float d) { return step(0.999999, d); }
-float hatch(vec2 p, float ang, float spacing, float width) {
-  vec2 dir = vec2(cos(ang), sin(ang));
-  float v = dot(p, dir) + (noise(p * 0.035) - 0.5) * 3.0;
-  float f = abs(fract(v / spacing) - 0.5) * spacing;
-  return 1.0 - smoothstep(width * 0.5, width * 0.5 + 0.9, f);
-}
 bool isId(float a, float b) { return abs(a - b) < 0.05; }
+// Screen-space scribble for the damage vignette only: screen effects belong to
+// the screen, surface hatching lives in the materials.
+float scribble(vec2 p, float spacing) {
+  float v = dot(p, vec2(0.7071, 0.7071)) + (noise(p * 0.035) - 0.5) * 3.0;
+  float f = abs(fract(v / spacing) - 0.5) * spacing;
+  return 1.0 - smoothstep(0.7, 1.6, f);
+}
 
 void main() {
   vec2 fc = gl_FragCoord.xy;
@@ -82,24 +86,18 @@ void main() {
   float inkish = step(0.7, id0) * (1.0 - b0);
   float dc = length(toS(cL.rgb) - toS(cR.rgb)) + length(toS(cU.rgb) - toS(cD.rgb));
   float eCol = smoothstep(0.12, 0.26, dc) * inkish;
-  float edge = max(max(eDepth, eBg), max(eId, eCol));
+  // Colour edges only count where the material has no hatching of its own
+  // (IDs below INK); on hatched surfaces they would outline every pen stroke.
+  float edge = max(max(eDepth, eBg), max(eId, eCol * (1.0 - inkish)));
   edge *= 0.72 + 0.28 * noise(fc * 0.35 + frame);
 
   bool enemyEdge = isId(id0, 0.8) || isId(cL.a, 0.8) || isId(cR.a, 0.8) || isId(cU.a, 0.8) || isId(cD.a, 0.8);
-  vec3 edgeInk = enemyEdge ? inkRed : inkBlue;
-
-  // paper, grain, ruled lines, margin
-  vec3 pap = paper * (0.972 + 0.028 * noise(fc * 0.9)) * (0.985 + 0.015 * noise(fc * 0.05));
-  float ls = 27.0 * scale;
-  float my = mod(fc.y, ls);
-  float rule = 1.0 - smoothstep(0.45 * scale, 1.3 * scale, min(my, ls - my));
-  float mx = 76.0 * scale;
-  float marg = max(1.0 - smoothstep(0.5, 1.4, abs(fc.x - mx)), 1.0 - smoothstep(0.5, 1.4, abs(fc.x - mx - 4.0 * scale)));
+  vec3 edgeInk = enemyEdge ? inkRed : inkCyan;
 
   vec3 col;
   if (b0 > 0.5 && id0 < 0.05) {
-    col = mix(pap, rules, rule * 0.55);
-    col = mix(col, margin, marg * 0.6);
+    // dark space instead of paper
+    col = mix(spaceBg, spaceHaze, smoothstep(0.0, 1.0, vUv.y));
     // warp: every star and galaxy dot is dragged out into a line from the centre
     if (warp > 0.001) {
       vec2 toC = vec2(0.5) - vUv;
@@ -109,33 +107,13 @@ void main() {
         float hit = 1.0 - isBg(texture2D(tDepth, uv + toC * f * 0.35 * warp).x);
         s = max(s, hit * (1.0 - f * 0.85));
       }
-      col = mix(col, inkBlue, clamp(s * 1.2, 0.0, 1.0));
+      col = mix(col, inkCyan, clamp(s * 1.2, 0.0, 1.0));
     }
   } else {
-    vec3 lc = toS(c0.rgb);
-    float lum = dot(lc, vec3(0.299, 0.587, 0.114));
-    float mxc = max(max(lc.r, lc.g), lc.b), mnc = min(min(lc.r, lc.g), lc.b);
-    float sat = mxc > 0.001 ? (mxc - mnc) / mxc : 0.0;
-    vec3 hue = lc / max(mxc, 0.001);
-    if (id0 > 0.7) {
-      bool en = id0 < 0.9;
-      vec3 inkc = en ? inkRed : inkBlue;
-      vec3 fill = pap * mix(vec3(1.0), hue, clamp(sat * 1.15, 0.0, 1.0) * 0.85);
-      fill *= mix(0.84, 1.0, smoothstep(0.12, 0.72, lum));
-      vec2 hp = fc / scale;
-      float h = 0.0;
-      h = max(h, hatch(hp, 0.785, 7.5, 1.1) * smoothstep(0.60, 0.46, lum));
-      h = max(h, hatch(hp, 2.356, 7.5, 1.1) * smoothstep(0.40, 0.28, lum));
-      h = max(h, hatch(hp, 0.30, 4.2, 1.0) * smoothstep(0.22, 0.12, lum));
-      float solid = smoothstep(0.085, 0.035, lum);
-      col = mix(fill, inkc, max(h * 0.82, solid));
-      col = mix(col, rules, rule * 0.10);
-    } else if (id0 > 0.5) {
-      col = mix(pap, pap * hue, 0.62 + 0.3 * sat);
-      col = mix(col, vec3(1.0), 0.12);
-    } else {
-      col = mix(lc, lc * pap, 0.2);
-    }
+    // already lit, hatched and rim-lit by the neon-ink materials
+    col = toS(c0.rgb);
+    // glowing surfaces are pushed past the bloom threshold
+    if (isId(id0, 0.6)) col *= glowBoost;
   }
   col = mix(col, edgeInk, clamp(edge, 0.0, 1.0));
 
@@ -145,15 +123,15 @@ void main() {
   if (warp > 0.001) {
     float a = atan(q.y, q.x);
     float s = noise(vec2(a * 55.0, r * 3.0 - time * 26.0));
-    col = mix(col, inkBlue, warp * smoothstep(0.70, 0.9, s) * smoothstep(0.06, 0.45, r));
-    col = mix(col, pap, warp * 0.25 * (1.0 - smoothstep(0.0, 0.25, r)));
+    col = mix(col, inkCyan, warp * smoothstep(0.70, 0.9, s) * smoothstep(0.06, 0.45, r));
+    col = mix(col, spaceBg, warp * 0.25 * (1.0 - smoothstep(0.0, 0.25, r)));
   }
   if (damage > 0.001) {
     float vig = smoothstep(0.35, 0.9, r);
-    col = mix(col, inkRed, damage * vig * max(hatch(fc / scale, 0.785, 6.0, 1.4), 0.35));
+    col = mix(col, inkRed, damage * vig * max(scribble(fc / scale, 6.0), 0.35));
   }
   if (flash > 0.001) col = mix(col, vec3(1.0, 0.93, 0.55), flash * 0.6);
-  if (blackout > 0.001) col = mix(col, inkBlue * 0.35, blackout);
+  if (blackout > 0.001) col = mix(col, inkCyan * 0.35, blackout);
   gl_FragColor = vec4(col, 1.0);
 }`;
 
@@ -211,6 +189,17 @@ export class Cloud {
   }
 }
 
+// The resolution setting (0.6 low / 0.8 medium / 1 full) also picks the look's
+// cost: hatch directions, bloom and how hard glowing surfaces are pushed. Every
+// knob is a uniform or a pass flag, so switching never recompiles a shader.
+export function presetFor(q) {
+  if (q < 0.7) return { name: 'low', hatchDirs: 1, bloom: false, glowBoost: 1.0 };
+  if (q < 0.95) return { name: 'medium', hatchDirs: 2, bloom: true, glowBoost: 1.6 };
+  return { name: 'full', hatchDirs: 3, bloom: true, glowBoost: 2.0 };
+}
+
+const hex3 = (h) => { const c = new THREE.Color(h); return new THREE.Vector3(c.r, c.g, c.b); };
+
 export class Renderer {
   constructor(canvas) {
     this.canvas = canvas;
@@ -228,26 +217,37 @@ export class Renderer {
         tColor: { value: null }, tDepth: { value: null }, res: { value: new THREE.Vector2(1, 1) },
         time: { value: 0 }, cnear: { value: 0.05 }, cfar: { value: FAR }, boil: { value: 1 }, lw: { value: 1 },
         scale: { value: 1 }, flash: { value: 0 }, damage: { value: 0 }, warp: { value: 0 }, blackout: { value: 0 },
-        inkBlue: { value: new THREE.Vector3(0.102, 0.188, 0.753) },
-        inkRed: { value: new THREE.Vector3(0.816, 0.125, 0.188) },
-        paper: { value: new THREE.Vector3(0.965, 0.953, 0.902) },
-        rules: { value: new THREE.Vector3(0.62, 0.72, 0.92) },
-        margin: { value: new THREE.Vector3(0.9, 0.42, 0.46) },
+        glowBoost: { value: 2.0 },
+        inkCyan: { value: hex3(0x4deeff) },
+        inkRed: { value: hex3(0xff3b5c) },
+        spaceBg: { value: hex3(0x05070c) },
+        spaceHaze: { value: hex3(0x0e1420) },
       },
       vertexShader: POST_VS, fragmentShader: POST_FS, depthTest: false, depthWrite: false,
     });
-    const quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.post);
-    quad.frustumCulled = false;
-    this.postScene = new THREE.Scene();
-    this.postScene.add(quad);
-    this.postCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    // The composite is the first composer pass; bloom reads what it wrote.
+    // EffectComposer decides which pass draws to the screen every frame, so
+    // disabling bloom on the low preset needs no other bookkeeping.
+    this.composer = new EffectComposer(this.gl);
+    this.composePass = new ShaderPass(this.post);
+    this.bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.7, 0.4, 0.82);
+    this.composer.addPass(this.composePass);
+    this.composer.addPass(this.bloomPass);
     this.rt = null;
     this.snapWanted = null;
+    this.applyPreset();
     this.resize();
     addEventListener('resize', () => this.resize());
   }
   track(mat) { this.pointMats.add(mat); mat.uniforms.pr.value = this.pr || 1; return mat; }
-  setQuality(q) { this.quality = q; this.resize(); }
+  applyPreset() {
+    const p = presetFor(this.quality);
+    this.preset = p.name;
+    setHatchDirs(p.hatchDirs);
+    this.bloomPass.enabled = p.bloom;
+    this.post.uniforms.glowBoost.value = p.glowBoost;
+  }
+  setQuality(q) { this.quality = q; this.applyPreset(); this.resize(); }
   resize() {
     const w = Math.max(1, innerWidth), h = Math.max(1, innerHeight);
     this.pr = Math.min(devicePixelRatio || 1, 1.5) * this.quality;
@@ -268,6 +268,9 @@ export class Renderer {
     const sc = Math.max(0.75, H / 800);
     u.scale.value = sc;
     u.lw.value = Math.max(1, sc * 1.1);
+    // The composer multiplies by its own pixel ratio; bloom halves internally.
+    this.composer.setPixelRatio(this.pr);
+    this.composer.setSize(w, h);
     this.camera.aspect = w / h;
     this.camera.updateProjectionMatrix();
     for (const m of this.pointMats) m.uniforms.pr.value = this.pr;
@@ -289,7 +292,7 @@ export class Renderer {
     g.render(this.world, this.camera);
     g.render(this.shipScene, this.camera);
     g.setRenderTarget(null);
-    g.render(this.postScene, this.postCam);
+    this.composer.render();
     if (this.snapWanted) {
       const cb = this.snapWanted;
       this.snapWanted = null;

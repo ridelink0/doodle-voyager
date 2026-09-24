@@ -35,15 +35,15 @@ const PI = Math.PI;
 
 // Materials: ink() and glow() cache by colour, so these are shared game-wide.
 const C = {
-  wall: ink(PAL.white), ceil: ink(PAL.paper), floor: ink(0xdcd6c6), dark: ink(PAL.dark), black: ink(0x2a2a36),
-  steel: ink(PAL.steel), grey: ink(PAL.grey), wood: ink(PAL.wood), plank: ink(0x9c7446), cream: ink(PAL.cream),
-  white: ink(PAL.white), glass: ink(0xcfe6ee), mirror: ink(0xe4eef2), tile: ink(0xd6ebe5),
+  wall: ink(PAL.charcoal), ceil: ink(PAL.paper), floor: ink(0x1c1e26), dark: ink(PAL.dark), black: ink(0x101118),
+  steel: ink(PAL.steel), grey: ink(PAL.grey), wood: ink(PAL.wood), plank: ink(0x5a3f26), cream: ink(PAL.cream),
+  white: ink(0x8e97a8), glass: ink(0x2a4a58), mirror: ink(0x6d8796), tile: ink(0x24413c),
   teal: ink(PAL.teal), pink: ink(PAL.pink), orange: ink(PAL.orange), green: ink(PAL.green), blue: ink(PAL.blue),
-  yellow: ink(PAL.yellow), brass: ink(0xd8b458), net: ink(0x6f8f4e), terra: ink(0xcf7a4c), board: ink(0x35503f),
+  yellow: ink(PAL.yellow), brass: ink(0x8a6a2a), net: ink(0x6f8f4e), terra: ink(0x7a3a22), board: ink(0x35503f),
   hole: ink(0x121218),
 };
 const G = {
-  lamp: glow(0xfff4c8), yellow: glow(PAL.yellow), teal: glow(0x8ee6de), pink: glow(0xffb3cc), green: glow(0xaef08e),
+  lamp: glow(0xffd27a), yellow: glow(PAL.yellow), teal: glow(0x8ee6de), pink: glow(0xffb3cc), green: glow(0xaef08e),
   orange: glow(PAL.orange), blue: glow(0xa8c2ff), red: glow(0xff6f5e), engine: glow(0xffb347),
   str1: glow(0xffe79a), str2: glow(0xffa8d0),   // string lights only (they twinkle)
 };

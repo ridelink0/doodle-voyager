@@ -118,11 +118,11 @@ export class Game {
 
   initWorld() {
     const w = this.r.world, sh = this.r.shipScene;
-    this.hemi = new THREE.HemisphereLight(0xfff6e0, 0x8090b0, 1.1);
+    this.hemi = new THREE.HemisphereLight(0xcfd8ff, 0x1a2030, 0.45);
     this.sun = new THREE.DirectionalLight(0xffffff, 2.1);
     this.sun.position.set(1, 0.6, 0.4);
     w.add(this.hemi, this.sun, this.sun.target);
-    this.shipHemi = new THREE.HemisphereLight(0xfff1d8, 0x9aa4c0, 1.5);
+    this.shipHemi = new THREE.HemisphereLight(0xb8c8e8, 0x1a1f2e, 0.55);
     this.hemiBase = { sky: this.shipHemi.color.clone(), ground: this.shipHemi.groundColor.clone() };
     sh.add(this.shipHemi);
     this.shipRoot = new THREE.Group();
@@ -133,8 +133,8 @@ export class Game {
     w.add(this.fxRoot);
     // shared projectile look
     this.boltGeo = new THREE.BoxGeometry(0.9, 0.9, 16);
-    this.boltMat = glow(0xffd84a);
-    this.eBoltMat = glow(0xff5a4a);
+    this.boltMat = glow(0xffc23c);
+    this.eBoltMat = glow(0xff3b5c);
     this.beamGeo = new THREE.CylinderGeometry(1, 1, 1, 10, 1, true).rotateX(Math.PI / 2).translate(0, 0, -0.5);
     this.bombGeo = new THREE.IcosahedronGeometry(1.1, 0);
     this.debrisGeo = new THREE.TetrahedronGeometry(1, 0);
@@ -1294,7 +1294,7 @@ export class Game {
     const g = new THREE.Group();
     const ball = new THREE.Mesh(this.bombGeo, glow(big ? 0xff9a3c : 0xffd84a));
     g.add(ball);
-    const ring = new THREE.Mesh(this.ringGeo, glow(0xffd84a));
+    const ring = new THREE.Mesh(this.ringGeo, glow(0xffc23c));
     g.add(ring);
     const bits = [];
     for (let i = 0; i < n; i++) {
@@ -1640,7 +1640,7 @@ export class Game {
     if (this.navT % 15 || !this.navCanvas) return;
     const g = this.navCanvas.getContext('2d'), W = 512, H = 256, sh = this.ship, ctx = this.u.ctx;
     const alert = this.alertOn;
-    g.fillStyle = alert ? '#f8e0dc' : '#f6f3e6'; g.fillRect(0, 0, W, H);
+    g.fillStyle = alert ? '#2a0912' : '#0b0f18'; g.fillRect(0, 0, W, H);
     g.strokeStyle = 'rgba(26,48,192,0.18)'; g.lineWidth = 1;
     for (let y = 30; y < H; y += 26) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
     // radar map on the left: ship at the centre, nose up, log range
@@ -1653,7 +1653,7 @@ export class Game {
       const k = Math.min(r, R) / d;
       return [cx + V1.x * k, cy + V1.z * k, r > R];
     };
-    g.strokeStyle = alert ? '#d02030' : '#1a30c0'; g.lineWidth = 2;
+    g.strokeStyle = alert ? '#ff3b5c' : '#4deeff'; g.lineWidth = 2;
     g.beginPath(); g.arc(cx, cy, R, 0, TAU); g.stroke();
     g.lineWidth = 1; g.setLineDash([3, 5]);
     for (const f of [0.33, 0.66]) { g.beginPath(); g.arc(cx, cy, R * f, 0, TAU); g.stroke(); }
@@ -1661,26 +1661,26 @@ export class Game {
     for (const b of ctx.bodies) {
       if (b.kind === 'sight') continue;
       const [x, y, edge] = plot(b.pos);
-      g.fillStyle = b.kind === 'star' ? '#e0a800' : '#1a30c0';
+      g.fillStyle = b.kind === 'star' ? '#ffc23c' : '#4deeff';
       if (b.kind === 'station' || b.kind === 'module') g.fillRect(x - 3, y - 3, 6, 6);
       else { g.beginPath(); g.arc(x, y, edge ? 2 : b.kind === 'star' ? 5 : 3, 0, TAU); g.fill(); }
     }
     for (const e of this.enemies) {
       if (e.dead) continue;
       const [x, y] = plot(e.pos);
-      g.fillStyle = '#d02030';
+      g.fillStyle = '#ff3b5c';
       g.beginPath(); g.arc(x, y, e.kind === 'capital' ? 5 : 2.5, 0, TAU); g.fill();
     }
     const tgt = sh.warp ? sh.warp.target : sh.auto ? sh.auto.target : this.navTarget;
-    if (tgt) { const [x, y] = plot(tgt.pos(this.t)); g.strokeStyle = '#1a30c0'; g.setLineDash([4, 3]); g.beginPath(); g.moveTo(cx, cy); g.lineTo(x, y); g.stroke(); g.setLineDash([]); g.beginPath(); g.arc(x, y, 6, 0, TAU); g.stroke(); }
-    g.fillStyle = '#ffd84a'; g.strokeStyle = '#1a30c0'; g.lineWidth = 1.5;
+    if (tgt) { const [x, y] = plot(tgt.pos(this.t)); g.strokeStyle = '#4deeff'; g.setLineDash([4, 3]); g.beginPath(); g.moveTo(cx, cy); g.lineTo(x, y); g.stroke(); g.setLineDash([]); g.beginPath(); g.arc(x, y, 6, 0, TAU); g.stroke(); }
+    g.fillStyle = '#ffd84a'; g.strokeStyle = '#4deeff'; g.lineWidth = 1.5;
     g.beginPath(); g.moveTo(cx, cy - 8); g.lineTo(cx + 6, cy + 6); g.lineTo(cx - 6, cy + 6); g.closePath(); g.fill(); g.stroke();
-    g.fillStyle = '#1a30c0'; g.font = '14px "Patrick Hand", cursive';
+    g.fillStyle = '#4deeff'; g.font = '14px "Patrick Hand", cursive';
     g.fillText(`range ${fmtU(range)}`, 8, H - 6);
     // status on the right
     g.strokeStyle = 'rgba(208,32,48,0.5)'; g.beginPath(); g.moveTo(256, 0); g.lineTo(256, H); g.stroke();
     g.font = '28px "Caveat", "Patrick Hand", cursive';
-    g.fillStyle = alert ? '#d02030' : '#1a30c0';
+    g.fillStyle = alert ? '#ff3b5c' : '#4deeff';
     g.fillText(alert ? 'RED ALERT' : 'NAV', 264, 28);
     g.font = '17px "Patrick Hand", cursive';
     const where = `${ctx.system ? ctx.system.name + ', ' : ''}${ctx.galaxy ? ctx.galaxy.name : 'between galaxies'}`;
@@ -1695,7 +1695,7 @@ export class Game {
       `fuel ${sh.fuel.toFixed(0)}/${this.stat('tank')} ${this.def.fuel}`,
       this.zone ? `ENEMY ZONE · ${left} left` : 'sector quiet',
     ];
-    lines.forEach((l, i) => { g.fillStyle = i === 6 && this.zone ? '#d02030' : '#1a30c0'; g.fillText(l.slice(0, 30), 264, 56 + i * 30); });
+    lines.forEach((l, i) => { g.fillStyle = i === 6 && this.zone ? '#ff3b5c' : '#4deeff'; g.fillText(l.slice(0, 30), 264, 56 + i * 30); });
     this.navTex.needsUpdate = true;
   }
   async photo() {

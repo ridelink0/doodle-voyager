@@ -503,10 +503,10 @@ export class UI {
       const [x, y] = P(gx.pos);
       const r = Math.max(gx.R * k, 1.6);
       if (!inView(x, y, r)) continue;
-      c.strokeStyle = gx.real ? '#1a30c0' : 'rgba(26,48,192,0.45)';
+      c.strokeStyle = gx.real ? '#4deeff' : 'rgba(26,48,192,0.45)';
       c.fillStyle = gx.kind === 'elliptical' || gx.kind === 'lenticular' ? 'rgba(255,216,74,0.5)' : 'rgba(26,48,192,0.15)';
       c.beginPath(); c.ellipse(x, y, r, r * 0.55, 0.4, 0, Math.PI * 2); c.fill(); if (r > 3) c.stroke();
-      if (r > 14 || (r > 3 && this.mapZoom > 9)) { c.fillStyle = '#1a30c0'; c.fillText(gx.name, x + Math.min(r, 40) + 3, y); }
+      if (r > 14 || (r > 3 && this.mapZoom > 9)) { c.fillStyle = '#4deeff'; c.fillText(gx.name, x + Math.min(r, 40) + 3, y); }
       this.mapHits.push({ x, y, it: { kind: 'galaxy', ref: gx, name: gx.name } });
     }
     // systems of the current galaxy
@@ -515,10 +515,10 @@ export class UI {
       for (const s of list) {
         const [x, y] = P(s.pos);
         if (!inView(x, y)) continue;
-        c.fillStyle = s.real ? '#1a30c0' : 'rgba(26,48,192,0.5)';
+        c.fillStyle = s.real ? '#4deeff' : 'rgba(26,48,192,0.5)';
         c.fillRect(x - 1.5, y - 1.5, 3, 3);
-        if (s.station) { c.strokeStyle = s.station.fuelTypes.includes(g.def.fuel) ? '#1a30c0' : 'rgba(208,32,48,0.6)'; c.strokeRect(x + 3, y - 6, 5, 5); }
-        if (this.mapZoom < 7.6) { c.fillStyle = '#1a30c0'; c.fillText(s.name, x + 5, y + 12); }
+        if (s.station) { c.strokeStyle = s.station.fuelTypes.includes(g.def.fuel) ? '#4deeff' : 'rgba(208,32,48,0.6)'; c.strokeRect(x + 3, y - 6, 5, 5); }
+        if (this.mapZoom < 7.6) { c.fillStyle = '#4deeff'; c.fillText(s.name, x + 5, y + 12); }
         this.mapHits.push({ x, y, it: { kind: 'system', ref: s, name: s.name } });
       }
     }
@@ -528,7 +528,7 @@ export class UI {
         if (b.kind !== 'planet' && b.kind !== 'dwarf planet') continue;
         const [x, y] = P(b.pos);
         if (!inView(x, y)) continue;
-        c.fillStyle = '#1a30c0';
+        c.fillStyle = '#4deeff';
         c.beginPath(); c.arc(x, y, Math.max(2.5, b.r * k), 0, Math.PI * 2); c.fill();
         c.fillText(b.name, x + 5, y - 4);
         this.mapHits.push({ x, y, it: { kind: 'planet', ref: { sys: v.sys, planet: b.planet, body: b }, name: b.name } });
@@ -539,7 +539,7 @@ export class UI {
       const [x, y] = P(z.pos);
       const r = Math.max(z.radius * k, 6);
       if (!inView(x, y, r)) continue;
-      c.strokeStyle = z.state === 'hostile' ? '#d02030' : 'rgba(26,48,192,0.6)';
+      c.strokeStyle = z.state === 'hostile' ? '#ff3b5c' : 'rgba(26,48,192,0.6)';
       c.setLineDash(z.state === 'hostile' ? [] : [4, 4]);
       c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.stroke();
       c.setLineDash([]);
@@ -557,13 +557,13 @@ export class UI {
     }
     const [bx, by] = P(u.bazaar.pos);
     if (inView(bx, by)) {
-      c.fillStyle = '#e0a800';
+      c.fillStyle = '#ffc23c';
       c.beginPath(); c.arc(bx, by, Math.max(6, u.bazaar.R * k), 0, Math.PI * 2); c.globalAlpha = 0.35; c.fill(); c.globalAlpha = 1;
-      c.fillStyle = '#1a30c0'; c.fillText('The Bazaar', bx + 9, by - 6);
+      c.fillStyle = '#4deeff'; c.fillText('The Bazaar', bx + 9, by - 6);
       this.mapHits.push({ x: bx, y: by, it: { kind: 'bazaar', ref: u.bazaar, name: 'The Bazaar' } });
       if (this.mapZoom < 8) for (const m of u.bazaar.modules) {
         const [x, y] = P(m.pos);
-        c.fillStyle = '#1a30c0'; c.fillRect(x - 3, y - 3, 6, 6);
+        c.fillStyle = '#4deeff'; c.fillRect(x - 3, y - 3, 6, 6);
         c.fillText(m.name, x + 6, y + 4);
         this.mapHits.push({ x, y, it: { kind: 'module', ref: m, name: m.name } });
       }
@@ -572,7 +572,7 @@ export class UI {
     const t = this.selTarget || g.navTarget;
     if (t) {
       const [x, y] = P(t.pos(g.t));
-      c.strokeStyle = '#1a30c0'; c.setLineDash([6, 5]);
+      c.strokeStyle = '#4deeff'; c.setLineDash([6, 5]);
       c.beginPath(); c.moveTo(cx, cy); c.lineTo(x, y); c.stroke(); c.setLineDash([]);
       c.beginPath(); c.arc(x, y, 9, 0, Math.PI * 2); c.stroke();
     }
@@ -580,10 +580,10 @@ export class UI {
     const f = new THREE.Vector3(0, 0, -1).applyQuaternion(sh.q);
     const a = Math.atan2(f.z, f.x);
     c.save(); c.translate(cx, cy); c.rotate(a);
-    c.fillStyle = '#ffd84a'; c.strokeStyle = '#1a30c0'; c.lineWidth = 2;
+    c.fillStyle = '#ffd84a'; c.strokeStyle = '#4deeff'; c.lineWidth = 2;
     c.beginPath(); c.moveTo(11, 0); c.lineTo(-7, -7); c.lineTo(-3, 0); c.lineTo(-7, 7); c.closePath(); c.fill(); c.stroke();
     c.restore();
-    c.fillStyle = '#1a30c0';
+    c.fillStyle = '#4deeff';
     c.fillText(`view ${fmtU(half * 2)} across · top-down, galactic plane`, 10, H - 10);
   }
   mapClick(e) {

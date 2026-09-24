@@ -4,7 +4,7 @@
 // with the Sun at the origin and galactic axes (see util.js). Everything is
 // drawn relative to the player's ship through render.squash.
 import * as THREE from 'three';
-import { ink, glow, lineMat, ID } from './mats.js';
+import { ink, glow, lineMat, ID, neonize, PAL } from './mats.js';
 import { Cloud, squash } from './render.js';
 import { buildStation } from './actors.js';
 import {
@@ -131,10 +131,12 @@ function planetTexture(kind, seed, base) {
 }
 function hexToRgb(h) { const v = parseInt(h.slice(1), 16); return [(v >> 16) & 255, (v >> 8) & 255, v & 255]; }
 function texMat(tex) {
-  return new THREE.MeshLambertMaterial({ map: tex, flatShading: true, blending: THREE.NoBlending, opacity: ID.INK });
+  // Textured planets get the same neon-ink shading as every other surface:
+  // hatched night side, and an atmosphere-coloured rim.
+  return neonize(new THREE.MeshLambertMaterial({ map: tex, flatShading: true, blending: THREE.NoBlending, opacity: ID.INK }), { rim: 0x8fb0ff, rimStrength: 0.8 });
 }
 function ringMat(color) {
-  return new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide, flatShading: true, blending: THREE.NoBlending, opacity: ID.INK });
+  return neonize(new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide, flatShading: true, blending: THREE.NoBlending, opacity: ID.INK }), { rim: PAL.amber, rimStrength: 0.5 });
 }
 
 // A set of points held in float64 offsets around a centre, re-squashed every

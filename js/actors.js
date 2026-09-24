@@ -188,7 +188,7 @@ function once(key, make) {
 
 // ---------- canvas textures ----------
 const HAND = '"Patrick Hand", "Segoe Print", cursive';
-const INK = '#1a30c0';
+const INK = '#4deeff';
 
 // The handwriting font loads async; redraw a canvas once it is there.
 function whenFont(tex, draw) {
@@ -240,7 +240,7 @@ function border(g, w, h) {
   });
 }
 // Big handwritten sign, 4:1, blue ink on a coloured card. One material per text.
-function signMat(text, bg = '#f6f3e6') {
+function signMat(text, bg = '#0b0f18') {
   return once(`sign:${text}:${bg}`, () => {
     const draw = (c) => {
       const n = labelTexture(text, { w: 1024, h: 256, bg, fg: INK, size: fitSize(text, 1024, 190) });
@@ -879,7 +879,7 @@ function tvMat() {
     g.fillRect(0, 0, 512, 358);
     g.fillStyle = 'rgba(246, 243, 230, 0.16)';
     for (let y = 0; y < 358; y += 14) g.fillRect(0, y, 512, 5);
-    g.fillStyle = '#f6f3e6';
+    g.fillStyle = '#0b0f18';
     g.strokeStyle = INK;
     g.lineWidth = 12;
     g.lineJoin = 'round';
