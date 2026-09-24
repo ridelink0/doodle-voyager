@@ -1,0 +1,128 @@
+Google ending Steam for Chromebook support in 2026
+https://9to5google.com/2025/08/07/steam-chromebook-2026/
+
+Skip to main content
+Go to the 9to5Google home page
+Switch site
+Toggle social menu
+Toggle dark mode
+Toggle search form
+Forums
+Exclusives
+Gemini
+Pixel
+Nest
+Android
+Chrome
+TV
+Workspace
+YouTube
+Reviews
+Newsletters
+Videos
+CHROMEOS CHROMEBOOKS
+Google ending Steam for Chromebook support in 2026
+Abner Li
+ | Aug 7 2025 - 4:16 pm PT
+13 Comments
+
+After debuting in 2022, the Steam for Chromebook Beta will stop working in early 2026. At the time, it was a big ChromeOS effort, but there hasn’t been an update in ages.
+
+Entering “Steam” into the ChromeOS Launcher starts the install process like before, but there’s now an intermediary message: “The Steam for Chromebook Beta program will conclude on January 1st, 2026. After this date, games installed as part of the Beta will no longer be available to play on your device. We appreciate your participation in and contribution to learnings from the beta program, which will inform the future of Chromebook gaming.”
+
+Discover more
+Track Tech Trends
+Video Games
+Laptops
+
+At the time, this was part of a sizable gaming push for ChromeOS. Steam joined Android apps and cloud streaming to provide a third way to play games on Chromebooks. Later in 2022, Google announced the first Gaming Chromebooks.
+
+Steam for Chromebooks launched in Alpha that March before reaching Beta in November with lower hardware requirements: Intel Core i3 and AMD Ryzen 3 with 8 GB of RAM. However, Core i5 or Ryzen 5 and 16 GB is recommended. It uses the Linux version of a game, with Google maintaining a list of compatible titles, which is currently at 99.
+
+Advertisement - scroll for more content
+What Is Endpoint Protection? A Comprehensive Guide
+SentinelOne
+
+When support ends at the start of next year, existing games that are already installed will be removed. With hindsight, the fact that Steam for Chromebook never entered stable was a pretty good indicator of the effort’s standing.
+
+Discover more
+Compare Mobile Plans
+Try Private Search
+Gaming
+
+Google alludes to there being a future for Chromebook gaming. This comes as the technical underpinnings of ChromeOS eventually get migrated to Android. In that regard, there will always be Android apps from the Play Store for local games, as well as streaming services. 
+
+More on Chromebook:
+Google specifies how it will be the ‘ChromeOS experience on top of Android’
+Google confirms ChromeOS and Android are being merged into ‘a single platform’
+Chromebooks are better than ever, but is that enough for Google?
+
+Thanks Noah
+
+FTC: We use income earning auto affiliate links. More.
+
+You’re reading 9to5Google — experts who break news about Google and its surrounding ecosystem, day after day. Be sure to check out our homepage for all the latest news, and follow 9to5Google on Twitter, Facebook, and LinkedIn to stay in the loop. Don’t know where to start? Check out our exclusive stories, reviews, how-tos, and subscribe to our YouTube channel
+Featured
+from
+9to5Google
+slide 1 to 2 of 4
+Googlebook OS hands-on: It’s Android, stupid
+Abner Li
+Sep 21 2026
+Googlebook hands-on: What makes a laptop, a laptop? [Video]
+Damien Wilde
+Sep 21 2026
+Google fully details Googlebooks: $899+, October launch, & more
+Abner Li
+Sep 21 2026
+The camera is my favorite part of smart glasses, but it just feels wrong now
+Ben Schoon
+Sep 20 2026
+Discover more
+Track Business News
+Android
+gaming
+Podcast
+Pixelated
+•
+58min
+How Dynamic Is This Duo?
+Play Episode
+The Sideload: A 9to5Google Podcast
+•
+91min
+Duo's and Don'ts with Stephen Radochia
+Pixelated
+•
+46min
+Who Watches the Pixel Watch?
+Pixelated
+•
+48min
+All Wallets are Designed Badly
+The Sideload: A 9to5Google Podcast
+•
+77min
+A Genderless Pixel Experience with Damien Wilde
+Pixelated
+•
+44min
+Googlebook Eve
+Powered by
+
+Check out 9to5Google on YouTube for more news:
+
+Comments
+EXPAND
+COMMENTS
+Guides
+ChromeOS
+Chromebooks
+Author
+Abner Li  technacity
+
+Editor-in-chief. Interested in the minutiae of Google and Alphabet. Tips/talk: abner@9to5g.com
+
+Subscribe to notifications
+
+LINKS

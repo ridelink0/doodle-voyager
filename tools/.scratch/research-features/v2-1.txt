@@ -1,0 +1,191 @@
+Supercruise Assist | Elite Dangerous Wiki | Fandom
+https://elite-dangerous.fandom.com/wiki/Supercruise_Assist
+
+SIGN IN
+CREATE A FREE ACCOUNT
+EXPLORE
+ELITE DANGEROUS
+ELITE SERIES
+GUIDES
+COMMUNITY
+SIGN IN
+CREATE A FREE ACCOUNT
+Home
+Explore
+Saved
+Progress
+History
+Utilities
+Settings
+More
+ADVERTISEMENT
+SKIP TO CONTENT
+Elite Dangerous Wiki
+2,915
+PAGES
+EXPLORE
+ELITE DANGEROUS
+ELITE SERIES
+GUIDES
+COMMUNITY
+in: Optional Internals, Equipment
+English
+Supercruise Assist
+12
+SAVE
+EDIT
+ 
+Supercruise Assist
+Information
+Ship Module Slots
+	Optional Internals
+Classes
+1
+Ratings
+E
+Engineering
+Engineering
+No
+
+Provides additional supercruise guidance to a predetermined destination.
+
+— In-Game Description
+
+The Supercruise Assist is an optional internal module that partially automates Supercruise travel to a specific destination. It is equipped by default in all newly-purchased ships.[1]
+
+Contents
+1	Usage
+2	Specifications
+3	Purchase Locations
+4	Notes
+5	References
+Usage
+
+The Supercruise Assist module allows the ship's computer to regulate the approach towards a set location within the current system. To engage the module, the ship should be in supercruise and aligned with the target destination, with the throttle centred in the blue zone. If the ship's trajectory or speed are manually adjusted, including in the event of interdiction or sudden close proximity to an object, the module will disengage. This module can also be used to enter orbit around a planetary body.
+
+— Additional In-Game Description
+
+Activating the Supercruise Assist requires the following actions, which do not need to be performed strictly in order:
+
+Target a destination (via the Navigation Panel, System Map, or HUD) within a system.
+Align the ship with the target. Ensure that the target is not obscured..
+Open the Navigation Panel, select the target, and toggle the "Supercruise Assist" (if a station or signal source is targeted) or "Supercruise Assist and Orbit" (if a star, planet, or moon is targeted) option.
+
+Supercruise Assist will then take control, automatically maintaining the correct speed and approach to arrive safely at the target. The ship will drop into normal space outside stations and throttle down the thrusters to bring the ship to a halt, or remain in supercruise and take up orbit around planets, moons, and stars. Orbiting stars with Supercruise Assist also allows ships to scoop fuel from them with minimal risk, but this is less efficient than scooping fuel manually because the module does not bring the ship closer to the star.
+
+Supercruise Assist also includes a "Hyperspace Dethrottle" feature that, when activated, will automatically bring the ship to a stop outside a system's main star after a hyperspace jump. This can be toggled on or off in the Flight Assistance subsection of the Systems Panel.[2] Hyperspace Dethrottle can be useful for new pilots who have not yet learned how to steer around a star's exclusion zone after a jump, or for explorers jumping into a system with a black hole or white dwarf who wish to ensure they do not immediately collide with the exclusion zone and experience a damaging emergency drop.
+
+Be aware that Supercruise Assist is not a full autopilot system. It does not move the ship around any bodies that may move into its path as it approaches its target, and will deactivate if its path is obstructed, which can cause a collision with the body's exclusion zone. It provides no assistance whatsoever during Planetary Landings, and only orbits a body when a location on its surface is targeted. Lastly, it does not prevent or evade interdictions, and will deactivate if an interdiction occurs. The ship's pilot must be on hand to steer it around bodies and realign the supercruise course, guide it down to a planetary surface, and evade or submit to interdictions.
+
+Specifications
+Class	Rating	Mass	Integrity	Power Draw (MW)	Value (CR)
+1	E	0	10	0.30	9,121
+Purchase Locations
+System	Station	
+Expand
+Date Seen
+Notes
+The Supercruise Assist was added with the April Update on April 23, 2019.
+Originally, the Supercruise Assist did not automatically throttle down the ship after it dropped into normal space outside a station, occasionally causing fatal collisions with other ships in the vicinity or the station itself if the player was not at the controls. This was changed with the Fleet Carriers Update on June 9, 2020.
+The Supercruise Assist module ignores speed requirements when dropping near stations, as long as players do not travel further than the distance requirement between screen frames. This allows for ships to drop into station orbit at speeds greater than 20 MKm/s with good timing, dropping them at the standard 9 km from the station. Occasionally, this can result in ships passing through starports or other objects during the drop and emerging on the opposite side undamaged.
+References
+↑ Frontier Forums: April Update - Coming 23 April 2019
+↑ YouTube: April Update - Content Reveal
+hide
+v • d • e
+   Ship Equipment   
+
+
+
+Hardpoints
+	   see Ship Weapons
+
+
+Core Internals
+	
+Bulkheads Frame Shift Drive (SCO) Fuel Tank Life Support Power Distributor (Guardian Hybrid) Power Plant (Guardian Hybrid) Sensors Thrusters (Enhanced Performance)
+
+
+
+Optional Internals
+	
+Tools and Accessories	Auto Field-Maintenance Unit Cargo Rack (Corrosion Resistant) Mk II Cargo Rack Detailed Surface Scanner Frame Shift Drive Interdictor Fuel Scoop Fuel Tank Guardian Frame Shift Drive Booster Passenger Cabin Mk II Passenger Cabin Planetary Approach Suite (Advanced) Refinery Standard Docking Computer (Advanced) Supercruise Assist
+Limpet Controllers	Collector Decontamination Fuel Transfer Hatch Breaker Mining (Multi) Operations (Multi) Prospector Recon Repair Rescue (Multi) Research Universal (Multi) Xeno (Multi)
+Defensive Modules	Guardian Shield Reinforcement Package Hull Reinforcement Package (Guardian, Meta Alloy) Module Reinforcement Package (Guardian) Shield Cell Bank Shield Generator (Prismatic, Bi-Weave)
+Hangars	Hangar Planetary Vehicle Hangar Mk II Large Planetary Vehicle Hangar Vessel Hangar
+
+
+
+Utilities
+	
+Base	Chaff Launcher Electronic Countermeasure Frame Shift Wake Scanner Heatsink Launcher Kill Warrant Scanner Manifest Scanner Point Defence Turret Pulse Wave Analyser Shield Booster
+Experimental	AX Xeno Scanner Caustic Sink Launcher Experimental Weapon Stabiliser Enhanced Xeno Scanner Shutdown Field Neutraliser Thargoid Pulse Neutraliser Pulse Wave Xeno Scanner
+
+
+Integrated Scanners
+	Data Link Scanner Discovery Scanner Full Spectrum System Scanner Short Range Composition Scanner Wave Scanner
+Categories
+Languages
+Community content is available under CC-BY-SA unless otherwise noted.
+More Fandoms
+Sci-fi
+
+12 Comments
+
+Join the conversation
+Sign in to read what others are saying and share your thoughts.
+SIGN IN
+
+Don't have account? Register now
+
+ADVERTISEMENT
+New to Fandom? Let's make it official.
+
+Create your free account and dive into the worlds you love with fans who love them too.
+
+Continue with Email
+
+By continuing, you agree to Fandom's Terms of Use and Privacy Policy.
+
+ADVERTISEMENT
+ADVERTISEMENT
+ADVERTISEMENT
+EXPLORE PROPERTIES
+Fandom
+Fanatical
+GameSpot
+Metacritic
+TV Guide
+Honest Entertainment
+FOLLOW US
+OVERVIEW
+What is Fandom?
+Essentials
+About
+Careers
+Press
+Contact
+Terms of Use
+Privacy Policy
+Digital Services Act
+Global Sitemap
+Local Sitemap
+Do Not Sell My Personal Information
+COMMUNITY
+Community Central
+Support
+Help
+Accessibility Statement
+ADVERTISE
+Media Kit
+Contact
+FANDOM APPS
+Take your favorite fandoms with you and never miss a beat.
+Elite Dangerous Wiki is a Fandom Games Community.
+VIEW MOBILE SITE
+Search this wiki
+Search all wikis
+When you visit our website, we may "share" or "sell" information about your use of our site with marketing and analytics partners, as those terms are defined by applicable law. You may opt out of this selling/sharing, and if you do, we will honor that decision and direct our partners to do the same.Privacy Policy
+Manage Options
+
+LINKS

@@ -1,0 +1,1846 @@
+Elite: Dangerous Deletes Promised Offline Mode Just Before Release, Non-Committal On Kickstarter/Beta Refunds | Techdirt
+https://www.techdirt.com/2014/12/10/elite-dangerous-deletes-promised-offline-mode-just-before-release-non-committal-kickstarterbeta-refunds/
+
+ 
+TECHDIRT GREENHOUSE FREE SPEECH ERROR 402 CTRL-ALT-SPEECH DEALS JOBS SUPPORT TECHDIRT
+DailyDirt: It Turns Out People Want Keyboards… Until They Don't
+Normalization Of Mass Surveillance Continues: Ireland And Georgia Join The Snoopers Club
+Elite: Dangerous Deletes Promised Offline Mode Just Before Release, Non-Committal On Kickstarter/Beta Refunds
+
+Failures
+
+from the screwjob dept
+Wed, Dec 10th 2014 09:01pm - Timothy Geigner
+
+If the gaming industry should have learned anything at all from the SimCity and Diablo 3, it’s that if your game isn’t going to have an offline mode for play, being online had damned well better work from launch and it should be necessary for play, rather than as a form of stupid DRM easily circumvented by pissed off fans. Otherwise, fans are going to be really pissed off and your company will end up on the most hated list. Pissed off on levels of, say, angry customers who paid money for Playstation 3 features that were retroactively removed by the manufacturer.
+
+But, wait. What if there was a way to marry an always online requirement that angers fans with the removal of features after significant money has been spent? Well, it turns out that such a scenario isn’t a “what if.” It’s called Elite: Dangerous, and things are about to get really messy.
+
+“Offline was initially not a planned feature when we went to Kickstarter,” [creator David] Braben confessed. “We said we were making an online game. But then there were some people on forums and on the Kickstarter saying it’d be really great to have offline. So then we looked at it and thought, ‘Actually, why can’t we just run [what we have offline]?’ We looked at the design and saw that it’d be quite empty. And I did say that. But I did say we’d be able to do a purely offline mode.”
+
+Braben is underselling the call for an offline mode here. He does, to his credit, admit that he absolutely promised a full offline mode for the game. Which makes sense, since there’s, you know, an entire single player game included. But the company just announced, a week before the game goes out of beta and goes full release, that the offline mode is being killed off completely. And if the breaking of a promise by a game creator sounds like no big deal to you, you haven’t heard how much money has been poured into this by Kickstarter backers and early-beta players. $2 million in funding came in through crowdfunding sources by parties that had been informed the game would have an offline mode and beta access cost gamers $75 a piece with the offline mode promise already in place. You have to imagine that there is going to be a significant number of people that might damned well want their money back with the last-second removal of a feature that had been promised at the time money exchanged hands.
+
+And for those that do indeed want refunds? Meh, the developer will see if it feels like you deserve one.
+
+Back when Braben and co first announced that offline mode wasn’t gonna make the cut, they only offered refunds to people who hadn’t spent a significant amount of time playing Elite’s alpha or beta. They were worried, Braben told me, that people might take advantage of the system if they offered refunds to everybody—get their money back and then buy the final version of the game for a lower price. More community outcry, however, caused them to reconsider that stance, electing instead to offer refunds on a case-by-case basis. Players would take up their beef with Frontier, and if it checked out they’d get their money back.
+
+I don’t know what needs to check out beyond, “Hey, you promised me something I wanted when I gave you my money and now you’re taking it away, so I would like my goddamned money back, please.” After all, the excuse that some beta players have spent a “significant” amount of time in the game doesn’t really matter if purchases were made under the conditions of promises that are now being refused to customers. If I buy a car that promises me four-wheel drive in the summer and only find out in the winter that the “4WD” button on the stick shift isn’t a button at all, but a cleverly-drawn crayon etching of a button, Ford doesn’t get to tell me they did nothing wrong because I drove the car all summer.
+
+But how about we get a nice, tone-deaf quote from Braben to really drive home the face-palm moment?
+
+What about in the future, though? Once Braben and co have a little more time and space (in multiple senses of the word), could they hack something together?
+
+“We may still do something [offline],” Braben said. “We just don’t want to promise it at this point.”
+
+Oh, yeah. Promising an offline mode when you’re not sure you can deliver? That’d just be crazy-pants.
+
+Filed Under: crowdfunding, david braben, elite: dangerous, games, offline gameplay
+
+
+82 CommentsLeave a Comment
+If you liked this post, you may also be interested in...
+Game Jam Winner Spotlight: Diary Of A Provincial Lady
+Game Jam Winner Spotlight: I Could Do That!
+Game Jam Winner Spotlight: Lilac Song
+Game Jam Winner Spotlight: As I Lay Flying
+Game Jam Winner Spotlight: CARAMENTRAN
+Comments on “Elite: Dangerous Deletes Promised Offline Mode Just Before Release, Non-Committal On Kickstarter/Beta Refunds”
+Subscribe: RSS
+Leave a comment
+Filter comments in by
+Time
+Filter comments as
+Threaded
+Filter only comments that are
+Unread
+82 Comments
+Collapse all replies
+
+This comment is new since your last visit.
+
+S. T. Stone
+(profile)
+says:
+December 10, 2014 at 9:29 pm
+
+I know what they can call their next game.
+
+Oh Shit: We Killed Our Careers
+
+You typically only get one chance to establish trust with customers; this was their one chance and they blew it. No one will ever be able to trust any promise they make after this, and the fault lies squarely with themselves.
+
+I wouldn’t be surprised to hear of a lawsuit occuring over this (thought I haven’t a clue if it could even get past an initial hearing). Regardless of what happens, this group of developers destroyed any and all reason for potential future investors and customers to ever offer up their money and faith to these charlatans.
+
+They wanna talk about the future? Well, to steal a line from a Quentin Tarantino film…
+
+Bitch, you don’t have a future.
+
+Collapse replies (3)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 10, 2014 at 11:49 pm
+Re: Re:
+
+they could just dissolve their studio and rename themselves something else.
+
+Scammers and people with little to no integrity always find a way
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+Anonymous Coward
+says:
+December 11, 2014 at 12:50 am
+Re: Re: Re:
+
+Not entirely true, as Braben & Co. mainly got any pull at all by legacy from the original developement of the Elite series. It’s the main thing that made people give them money, I think. They killed any chance to use that pull again, because at least I myself (and probably a lot of others) will firmly associate this fail with these roots. They poisened the well, so to speak.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 11, 2014 at 6:35 pm
+Re: Re:
+
+When I heard this news, the first thing I thought was: Did they learn [I]nothing[/I] from the Piranha Games/Mechwarrior Online/Transverse Crowdfunding debacle? And Double Fine and Spacebase DF-9?
+
+It’s not like someone else hasn’t done the same thing before. Braben has no excuse for saying that he didn’t realise this would happen.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Jeremy
+(profile)
+says:
+December 10, 2014 at 9:38 pm
+Not exactly true
+
+So this isn’t exactly true, there isn’t a single player campaign, and even if you play in SOLO mode (IE no other players in your “instances” you still impact the game of other players via economics etc.
+
+I understand why offline was dumped, they’d have to maintain and update a second client. Not only that it would mean they’d have to make public their entire procedural universe and simulation engine for their game. It has over 400 billion systems, this is a lot of systems.
+
+I dunno what kinda processor overhead it would have for an offline mode but I can’t imagine it would be particularly small at the very least it would be a reduced mode in terms of scope.
+
+Ya it was a feature that was promise in the kickstarter, but I don’t think it was dumped out of malice or even mismanagement. The most shrewd and “vile” reason I can ascribe is that Braben and CO don’t want to let people poke or even examine and potentially copy their procedural galaxy simulation. If you’ve played Elite Dangerous its obvious that a lot of the games funding went towards this system. Its really very impressive.
+
+Collapse replies (12)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 10, 2014 at 10:01 pm
+Re: Not exactly true
+
+The same was said of SimCity’s online components, but it was cracked to run solo without any problems, proving the claims that it couldn’t run in an offline mode were bunk.
+
+I imagine the same is true here.
+
+WoW is a massive world but a solo emulated version can run easily on a single computer if you’re only playing with one or a few players (or even hundreds of bots).
+
+If Elite truly can’t run in offline mode because of how much it would tax a single computer, then they designed it poorly.
+
+I hate multiplayer online games because other people ruin them for you, you can’t easily pick up where you left off, you’re often punished for wanting to solo anything due to party and raid-centric difficulty scaling, and you can never play it again once the servers go down.
+
+Unfortunately, there are a lot of great games out there that are MMOs only.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Goyo
+(profile)
+says:
+December 11, 2014 at 12:09 am
+Re: Not exactly true
+
+“I don’t think it was dumped out of malice or even mismanagement. The most shrewd and “vile” reason I can ascribe is that Braben and CO don’t want to let people poke or even examine and potentially copy their procedural galaxy simulation.”
+
+So they promised a feature they actually did not want to deliver, but not out of malice or mismanagement? Just out of their nuts, then?
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 11, 2014 at 12:10 am
+Re: Not exactly true, actually the OP is being rather nice
+
+ED was on the verge of not having a successful kickstarter, and then BD explicitly promised offline play for a number of people that wanted it. Once they announced that they would add offline play, the pledges kicked into overdrive and they took in over $1 mil in a few days.
+
+Then frontier devs choose until the last week that they were killing off the FEATURE that brought in the majority of their funding. On top of that they weren’t going to refund people because of this. Seems really shady to the point that it falls under a “bait, and switch laws.”
+
+The online requirement is purely a DRM measure. DB has said that the game only uses kbs of data per minute. And was really dismissive of anyone who travels, or lives in places with spotty internet connections. Now that may not be a lot people but there are a large number of areas in the US, and Australia that have crap to no cell, or internet service.
+
+Now if the connection is as DB described, and only needs kbs of data then there is no reason that there can not be a offline mode.
+
+Collapse replies (4)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+Anonymous Coward
+says:
+December 11, 2014 at 1:17 am
+Re: Re: Not exactly true, actually the OP is being rather nice
+
+I agree with your general sentiment on the bait & switch, but your reasoning on ‘low bandwith = no online req’ is flawed.
+
+You could very well have a situation in which you have loads of online data (=huge universe) but only a very small amount is needed at once, for example (=the place where you are). So you only transmit the few bytes for the next system every now and then. Or you could have a scenario where you need to crunch huge amounts of cloud data as input to generate a small result set to send back to the client. We’d have to see if this is the case, but low bandwidth usage does not imply negligible cloud content.
+
+Collapse replies (3)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[4]
+Anonymous Coward
+says:
+December 11, 2014 at 4:06 am
+Re: Re: Re: Not exactly true, actually the OP is being rather nice
+
+How many Gigs does a Blu-ray hold? My non-gaming 3 yr. old laptop has 8 cores, 8 Gigs of RAM, 1 Gig Video card, 1 Gig integrated video RAM that can be used simultaneously with the card…
+
+Just what are the hardware requirements to run this “game?”
+
+The cloud? Just how many processors do they run that it is faster to send data over the net to a server, have data processed and prepared to return to sender, then sent back over the net to the user where it still needs some processing before it is displayed, as opposed to my processors doing it all, offline?
+
+also means all the resource hogs required to run MS online are OFF
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[4]
+Anonymous Coward
+says:
+December 11, 2014 at 4:53 am
+Re: Re: Re: Not exactly true, actually the OP is being rather nice
+
+It really does as the ONLY thing that the “network traffic” “needs” to do is make trades on stations. That being the only transaction that occurs between the client & server it really could be removed, and allowing an offline mode. Which means the only reason to require the online play is DRM. People run servers all the time for similar emulated games. Sure, it may not update every node all over the entire universe but then it is actually impossible to do that anyway.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[4]
+Paradox
+says:
+December 11, 2014 at 10:18 am
+Re: Re: Re: Not exactly true, actually the OP is being rather nice
+
+If you look back at the original article with Mr. Braben, he specifically stats that the approximately 10kbps connection is a market/trade transaction update.
+
+They do not have orbital paths/stellar body motion to track, and if you’re playing in “Solo” mode (assumed for those who don’t want to be in the “active” universe) the system doesn’t even need to track/update play position for “encounter spheres”. The only data transfer for “Solo” mode players is the transaction exchange.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 11, 2014 at 4:15 am
+Re: Not exactly true
+
+Three words: No Man’s Sky.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+Anonymous Coward
+says:
+December 15, 2014 at 3:52 pm
+Re: Re: Not exactly true
+
+Yep.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 11, 2014 at 4:36 am
+Re: Not exactly true
+
+Um… isn’t that the exact same excuse Electronic “Worst Company in America” used with it’s Sim City launch?
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 11, 2014 at 6:53 am
+Re: Not exactly true
+
+You sir are correct.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Franc Kaos
+(profile)
+says:
+December 12, 2014 at 1:56 am
+Re: Not exactly true
+
+Elite: Frontier offered the entire galaxy and landing on planets on 3 720KB floppy disks.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 10, 2014 at 9:55 pm
+
+Aw, I was looking forward to it, too.
+
+Not enough to pay money for a product that didn’t exist, but still.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+JoeCool
+(profile)
+says:
+December 10, 2014 at 10:18 pm
+Figures...
+
+Braben has always been a dick about the series, constantly threatening people that made ports of the old versions. Bell is much better about the whole thing, making old versions free for download and welcoming ports.
+
+Collapse replies (2)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Slinky
+(profile)
+says:
+December 11, 2014 at 3:26 am
+Re: Figures...
+
+“making old versions free for download”
+
+Braben and Co actually offers a free download of their old ELITE game once you are logged in.
+
+That said I find the game to be EXTREMELY expensive. They constantly come up with little “Upgrade Offers” that will cost you extra (as if you haven’t already payed enough for the beta version).
+
+Also a single paintjob for your spaceship costs an additional £10 each. (There are about 8-10 paintjobs available). So how much do you actually end up paying for this game including all the “hidden” additional extras ?
+
+Also at the time of writing this, you can only download a small size Client-installer, not the full game, and they don’t offer any way to backup the game at all.
+
+The ingame simulation though, seems to be stunningly awesome, but it’s impossible to say if it’s worth the £100 (+extras) pricetag.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+Anonymous Coward
+says:
+December 11, 2014 at 8:47 am
+Re: Re: Figures...
+
+That’s all rather disingenuous. There are £10 paint jobs available, but there are plenty at other paint jobs at other price points, and there was a sale on them a little while ago. I wouldn’t pay for them, but they’re there.
+In much the same way, there’s no need to pay £100 in order to play the game. Elite Dangerous costs £35 to preorder. You can buy a boxed version of the game if you want printed manuals and all that jazz. There used to be an option to buy into the beta, but that’s gone because the beta’s finished, and there used to be an option to pre-purchase any and all addons that will be developed for the game in the future but that offer has also been discontinued.
+You can’t back up the game for the exact same reason they haven’t developed an offline mode, the game’s reliant on the central servers for things like commodity prices within star systems, available missions, pirate attacks and so on. That’s not the kind of crap EA were pulling with SimCity’s “online” modes, that’s real data that’s not, and never has been, generated by Elite Dangerous’ client-side software.
+There’s no point in backing up older versions of the game, because older versions of the game can’t log into updated servers, and the servers are an essential part of the game, because there isn’t an offline mode.
+
+Don’t get me wrong, I’m not thrilled about the lack of an offline mode, but you’re pretty much just talking nonsense.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 10, 2014 at 10:19 pm
+
+I don’t and won’t play an on line game. There’s too many idiots out there to spoil your game with BS. So there is nothing here I would consider.
+
+However, this start up has killed it’s future by not delivering what it promised it would followed by an iffy refund for not meeting it’s goals? Gamers don’t and most won’t take that laying down.
+
+All one has to do is take a look at gamergate to see just how it escalates. I for one am happy I never looked at this ‘game’.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+That Anonymous Coward
+(profile)
+says:
+December 10, 2014 at 11:01 pm
+
+You paid us more than we are going to retail it for, because we would get sued sideways if we promised retail buyers features that were not in the game. We MIGHT refund the money we took under false pretenses, but not if you DARE to then buy the retail version of the game for less money.
+
+I would love to say this is how you end a company.
+But its the same stunts pulled by all of the other AAA studios. What will happen is Kickstarter will become a wasteland for any new studios who want to try, because people will remember the last studio that screwed people over and be much more cautious.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Rekrul
+says:
+December 11, 2014 at 12:57 am
+
+I wish I could say I was surprised by this, but I’m not. In today’s gaming world, it seems that developers now only care about online games. When I heard that it was going to multiplayer game, I knew that was the only part of the game that they would truly care about.
+
+And what will happen? Elite: Dangerous will be released, people will play it online for a few years, maybe a decade if they’re lucky, then the servers will be shut down and the game will join all the other discontinued MMORPGs, like Aliens Online, City of Heroes, Star Wars Galaxies, etc.
+
+What a brilliant final chapter for the Elite franchise. E:D actually looked like an impressive game, after the duds of Frontier and Frontier First Encounters. Yes, I know there are fans of those games, but both of them are bug-ridden tech demos with poor gameplay. Try dogfighting while you’re hurtling through space at 1,000,000,000 KM/H, or traveling anywhere without having to use the autopilot, which is likely to crash you into a planet.
+
+Collapse replies (3)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Franc Kaos
+(profile)
+says:
+December 12, 2014 at 2:03 am
+Re: Re:
+
+‘And what will happen? Elite: Dangerous will be released, people will play it online for a few years, maybe a decade if they’re lucky, then the servers will be shut down and the game will join all the other discontinued MMORPGs’
+
+Actually, not so (I’m pissed about the always online DRM and not buying it for that reason), but David Braben has said that if the servers close down a snapshot of the games universe will be taken and released to the public, so the game will continue.
+
+Collapse replies (2)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+Rekrul
+says:
+December 12, 2014 at 6:04 am
+Re: Re: Re:
+
+Actually, not so (I’m pissed about the always online DRM and not buying it for that reason), but David Braben has said that if the servers close down a snapshot of the games universe will be taken and released to the public, so the game will continue.
+
+Is this the same David Braben who said that Elite: Dangerous would have an offline mode?
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+Anonymous Coward
+says:
+January 19, 2015 at 9:30 pm
+Re: Re: Re:
+
+You, sir, have missed the scope of this conversation entirely, apparently. Him saying that if the servers go down they will snapshot the universe and release it to the public is only as useful as his statement at one point that there would be an offline mode. (If I offer you a basket of fruit containing bananas, oranges, and strawberries, but then when you hand me the money, say “j/k, no strawberries” Are you entitled to a refund? And do I have the right to deny you a refund if you simply picked up the basket? And do you believe me when I tell you that I will replace any fruits that go bad before eaten, considering I already lied about the strawberries?)
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 1:09 am
+
+You missed the very best bit, from the last article linked:
+
+“Braben, though, claimed it wasn’t just about locking down the Frontier orbital outer space piggy bank. He said that some players who’d dropped their $150 or $300 fair and square felt slighted at the prospect of other players taking the easier, cheaper way out, and he didn’t want to punish them for their loyalty. “We wanted to be fair to everyone,” Braben explained. “We wanted to be fair to people who’d been really supportive of us as well. Part of it was comments I’d been seeing on social media where people were saying, ‘Hey cool, I can get my money back and then re-buy the game for a little less.’ That’s why we ended up doing the case-by-case. There were some people who were genuinely upset by [others trying to exploit the system].””
+
+Read that again. That’s right, he’s decided not to give people their full refund because someone might just buy the game again cheaper, and that just irritates some of the other players.
+
+I’m sorry, Mr Braben, but *my rights to my money* trump someone being a little bit butthurt over someone getting the game cheaper.
+
+Yes, I’m one of those pissed off backers.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Zonker
+says:
+December 11, 2014 at 10:50 am
+Re: Re:
+
+How is it exploiting the system to pay less for a product that is missing important features you originally paid for? They are upset that people would still buy the defective product but for less money instead of getting a full refund and not buying the product at all?
+
+If the product comes out with missing features, it is worth less than if it had the features promised.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 1:17 am
+
+haha, thats a good one.
+Minor changes like these are the reason why i NEVER EVER pre-order a game.
+
+SC looks a lot more promising. The only reason i even looked at this one was the singleplayer part. MMO’s are usally filled with [loving people of diverse origins]. At least we will have another case of kickstarted failure. Maybe i will pick it up when its on sale for 5$.
+Have they thought about what will they do if their game doesnt sell enough? If their precious MMO doesnt make a profit? Free2play? Maybe a proper single player mode?
+Who cares, dozens of better games where i dont have to put up with the idiotic antics of 12yo cunts.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 1:41 am
+
+I don’t care about online/offline all I want is to play this game on the Oculus Rift…
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 1:50 am
+
+One of the few modern games that I’d considered buying in to. No longer.
+
+Oh, well; just have to stay as a purist Kerbonaut then.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 2:48 am
+
+You can have played alpha/beta for less than 2 hours and they won’t give you a refund.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Matt Williams
+(profile)
+says:
+December 11, 2014 at 2:57 am
+A month not a week
+
+They announced the lack of an offline mode several weeks ago, about a month before release.
+
+Collapse replies (2)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+PaulT
+(profile)
+says:
+December 11, 2014 at 6:51 am
+Re: A month not a week
+
+That doesn’t make a lot of difference to those who backed it from the beginning.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Paul
+says:
+December 13, 2014 at 11:15 am
+Re: A month not a week
+
+The ‘announcement’ you refer to was a one line comment buried in their newsletter, hoping no one would see it. They still haven’t posted a Kickstarter update or sent an email to all backers stating plainly that the offline mode has been axed, so there are probably loads of backers out there still unaware of it. They are hoping they will download and play the game first, so they can point at their EULA and when queries say, you have accepted delivery of the game now by downloading and playing, we’re so sorry we’re unable to offer you a refund anyymore,
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Carl
+(profile)
+says:
+December 11, 2014 at 3:12 am
+I like Elite:Dangerous
+
+Hello
+
+I fully understand that the last minute dropping of pure offline puts people off. I read one comment by someone working offshore where he doesn’t have Internet — at all.
+
+That said, for me, Elite Dangerous doesn’t have enough Multiplayer. I don’t see any support for guilds, I hardly see another player for that matter.
+
+The game offers three modes: Open Play, the default. Group play, where you can play with just your friends, and Solo, where you will never encounter another player.
+
+But even in solo, other player’s actions still have an impact on you. The universe changes depending on their actions (and your actions in Solo have an impact on the online world).
+
+Even your game status fluently goes from one type of game to the other: If you play open, fly to station a and load 10 tonnes of cargo b, then exit the game and re-enter in solo, you will again be at a, with 10 tonnes of cargo b.
+
+Now here’s where I think the rub is: In an MMO, you can’t trust the client at all. Star Citizen won’t be different, though the included Squadron 42 might. I suspect that the game client doesn’t know how to calculate changes to your reputation, it doesn’t know how to evaluate which station has how many resources for which price, or which fractions offer which jobs at which station, because it doesn’t need to.
+
+Technically they could probably ship local servers with a static universe, but I can see why they won’t want to have that additional hassle. Especially as the dynamic universe was so much more important to Braben (and considering how much he talked about that). But if that’s the case, I wouldn’t put it past some entrepreneurial hackers to do that for them.
+
+I also don’t believe in the: It was only the offline mode that got the game over the line. I was waiting for this game, especially multiplayer, for 25 years or so. And I only found out about their kickstarter by accident. David Braben isn’t a very good sales man (especially compared to the likes of Chris Roberts). And once I did find out, I told all my friends. So I am not surprised that it took a while to take off.
+
+One more thing: Frontier got what? 6 Million in total (including after-kickstarter sales)? That is scarily low. If you have 30 developers working for two years, their salaries alone will eat up a huge chunk of that, never mind administration, offices, servers, etc.
+
+The game might very well still fall over for lack of funds in a year or two. But until it does, I will play it. Because it’s a lot of fun.
+
+I just wish that Braben had been more upfront about the offline issue.
+
+Collapse replies (2)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Chronno S. Trigger
+(profile)
+says:
+December 11, 2014 at 8:09 am
+Re: I like Elite:Dangerous
+
+Making a dynamic trading system is relatively simple. Set a basic value on each type of cargo and in each area set variable modifiers for what is needed and what isn’t. Each area is calculated when that chunk of the universe is loaded, update the modifier variables based on time and cargo delivered.
+
+I’d lay odds that is the way the servers do it now. No reason to keep active the thousands or millions (depending on the size of the universe and how many types of cargo) of variables needed if they’re not being used most of the time.
+
+Unless there’s a central stock market and cargo costs the same no matter what trading post the player is at. If that’s the case, then all the variables do have to be loaded at all times, but it limits the variables needed to a few dozen to a few hundred.
+
+Basically I’m saying that any technical limitation would exclusively be in the coding of the client software, not hardware. Limitations that were intentionally put in the client software, probably while it was originally planed as online only. They probably couldn’t put in the code required for offline only in time.
+
+Time is a perfectly acceptable limitation. Too bad they had to pull the one thing that drew in the most money, and will piss off customers the most. Sucks to be them.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+Anonymous Coward
+says:
+December 11, 2014 at 8:58 am
+Re: Re: I like Elite:Dangerous
+
+Which is how other offline games with economies have worked, such as the X series.
+
+I’d be fine if the excuse was not having enough time to perfect an offline mode by the release, but only if that meant they would release it in a patch soon thereafter, knowing that it was important to backers and potential customers.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 3:18 am
+
+Even if they had announced dropping the feature a year ago, they are doing their best to avoid giving proper customer service to those that are genuinely dissatisfied with the outcome and have requested a refund.
+
+They left it this late in order to get as many alpha / beta backers on board before launch, pulling the old ‘bait and switch’ on everyone. They had many opportunities in the development cycle to discuss the difficulties – they certainly managed to discuss everything else in their newsletters and forum before implementation, so why not this?
+
+Sure many people will be online and enjoy it – I am truly happy for those that derive entertainment from E:D. Just do the right thing for those that request a refund and move on to launch.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Jason
+(profile)
+says:
+December 11, 2014 at 3:20 am
+Kickstarter Backer
+
+KS backer here. I was denied a refund although I “played” the game less than an hour & never actually launched a ship. I played long enough to make sure it would fire up on my PC & that all the runtimes were installed & updated; just making sure it would run on my PC. Frontier Developments have decided to count time spent downloading & installing the game as play time. They also made sure they were well out of the window for chargebacks for most banks before they decided to let us know they dropped single player mode & added DRM.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Franc Kaos
+(profile)
+says:
+December 12, 2014 at 2:11 am
+Re: Kickstarter Backer
+
+If you’re in the UK you might consider small claims court. I think it cost £25 – sometimes just the threat of that will make a company suddenly roll over, esp if sent by solicitor – or find a legal looking letter online.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 3:57 am
+
+Initially, they had even worse stance on refunds before the outcry.
+
+From their Newsletter #50
+“”Will you give people refunds?
+We have started responding to requests where there is a clear outcome:
+– Those who have pre-ordered an Elite: Dangerous release version
+from our online store and have therefore not yet played the game are
+eligible for a refund.
+– Those who have already been playing the game online in the Alpha
+and/or Beta phases, regardless of whether they backed the project via
+Kickstarter or purchased access to Alpha and/or Beta through our
+online store, are not eligible for a refund.””
+
+Play alpha/beta for single minute and your refund goes out of the window.
+Even now they are penny pinching and just try to get away with partial refunds.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+DocGerbil100
+(profile)
+says:
+December 11, 2014 at 4:34 am
+Promises
+
+I backed E:D – and its satellite Kickstarters, the books and audio books – with all the money I could afford. Not as much as some (there were some who put thousands in), but a lot for me, just over a week’s wages in total.
+
+For me, the loss of offline play isn’t a deal-breaker, by any means. It’s Elite IV and I would’ve always backed it to some extent. That said, the promises that the final game would be DRM-free and have an offline mode seemed like good things to me and were a part of the reason I backed it as strongly as I did.
+
+That those promises are now ashes is not something I find at all pleasing. But what’s done is done and the offline mode is gone.
+
+I don’t agree with various suggestions of malicious intent. Looking at the responses from Braben and other Frontier staff, I get the impression it’s more a matter of wanting to avoid the inevitable outcome of bad players cheating their way through the offline game and using the knowledge gained to butcher their way through the online multi-player game.
+
+I can understand why they’d want to avoid that kind of hacker’s paradise. While there are possible ways of getting around the issue, all require an investment of time and resources that Frontier says it doesn’t have. I can understand that, as well.
+
+What I don’t understand why Frontier are vacillating over the issue of refunds. They made a promise – and for many backers, it was a key promise that made them back the project – and Frontier couldn’t keep it. From the moment such a promise can’t be kept, the right thing to do is offer refunds to anyone who still feels aggrieved or mislead.
+
+While it’s doubtful that there’ll be any regulatory ramifications (it’s a Kickstarter, which is a gamble, almost by definition), inventing a slew of procedures that serve to deter backers from seeking refunds seems ethically bankrupt.
+
+There’s not much more to be said, really, other than it’s sad to see a great developer engaging in such shameful behaviour.
+
+– – – – –
+
+When it comes to supporting game companies, I’m really not having too much luck, of late.
+
+I backed Molyneux’s Godus Kickstarter, which disappeared up it’s own creators’ backside almost immediately. A good game may one day appear, but I’m not holding my breath.
+
+I bought Double Fine’s Early-Access game Spacebase DF9, which ended in the most spectacular gaming failure since Rise of the Robots, wrecking Double Fine’s reputation and proving beyond any detectable measure of doubt that Tim Schafer’s perception of this world is entirely divorced from reality. I’m no psychiatrist, but I suspect he’s genuinely mentally ill, which is very sad.
+
+Now Frontier’s reputation takes a hit over their most high-profile series and has egg on its face. While E:D is still likely to prove a great game, this entire situation could have and should have been avoided.
+
+I really hope Lord British’s Shroud of the Avatar project reaches final release without any major crises.
+
+– – – – –
+
+It’s time to take stock. What have I learned, lately?
+
+• Kickstarter and Steam Early Access are still good things, but they really, really need to tighten up their rules, especially Steam, who are currently screwing the pooch like a boss.
+
+• Even if they fix things, it’s still always going to be a gamble and a case of caveat emptor, even where the biggest names are concerned.
+
+• If a project offers both mobile and PC versions of the same game, do not back it under any circumstances. One or the other. Never both. With the solitary exception of Chaos Reborn, the results will not be good.
+
+• If a developer has not very clearly articulated which parts of their design plans are guaranteed features and which are merely speculative, do not touch the project with a shitty stick.
+
+• Commitment is everything. If they aren’t keen on an idea, right from the outset, take it as read that you’ll never see it come to fruition. Half-hearted support for an idea should be regarded as outright lies.
+
+I govern myself accordingly.
+
+Collapse replies (2)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Jaysyn
+(profile)
+says:
+December 11, 2014 at 10:24 am
+Re: Promises
+
+• If a project offers both mobile and PC versions of the same game, do not back it under any circumstances. One or the other. Never both. With the solitary exception of Chaos Reborn, the results will not be good.
+
+I think Shadowrun Returns & Shadowgate are pretty good myself.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[3]
+DocGerbil100
+(profile)
+says:
+December 11, 2014 at 12:47 pm
+Re: Re: Promises
+
+Fair enough, there is more than one exception.
+
+I’m unimpressed by Shadowgate. I have Shadowrun Returns, I forgot it was a KS game, but it is enjoyable.
+
+I’m still not backing any more mobile/PC cross-platform developments, though. 
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+ThatFuzzyTiger
+says:
+December 11, 2014 at 5:56 am
+Of course, there is another possible explanation...
+
+https://www.reddit.com/r/IAmA/comments/15od2s/i_am_david_braben_cocreator_of_elite_creator_of/c7qe8c1
+
+In other words, the main reason for keeping the game “Online only” is so Frontier can sell you in game currency.
+
+Food for thought 
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+PaulT
+(profile)
+says:
+December 11, 2014 at 7:07 am
+Re: Of course, there is another possible explanation...
+
+My only thought is “well, there’s another game I was interested in but now won’t touch with a bargepole. I’m just glad I wasn’t enough of a fan of the originals to get this crap produced in the first place”.
+
+Time to get on with other projects to support, and add this to my list of things marked “never give this ass any of my money now or in the future”. That list is getting depressingly long, but then so is the list of worthwhile competitors.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 5:57 am
+Repeat after me: gamers are stupid
+
+There’s a reason why this keeps happening over and over and over and over again, and it’s not the gaming companies.
+
+It’s because gamers are stupid, gullible, naive, ignorant and completely unable to stop rewarding bad behavior. I’ll bet that I could set up a completely fake gaming company with completely bogus games, collect millions, deliver nothing, run off with the money…and then do it again. Not because I want the money — I really don’t care — but just to prove the point.
+
+Oh wait…EA has already done it. Never mind.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+That One Guy
+(profile)
+says:
+December 11, 2014 at 1:06 pm
+Re: Repeat after me: gamers are stupid
+
+Both the major movie, and music industries continue to make record profits, despite the complete and utter contempt they show their customers, so it’s not a stupid gamers problem, it’s a stupid customers problem.
+
+Sadly, there will always be plenty of masochistic idiots who don’t care how a company sees or treats them, as long as they can get the ‘latest’ and ‘greatest’ toy from them.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+DeadBolt
+(profile)
+says:
+December 11, 2014 at 7:11 am
+
+There’s also the part now where they won’t be wiping save games from the Gamma testing at launch.
+This means everyone who has been playing these past few weeks will be way ahead of everyone else that starts on release day. This includes all the players who have raked in millions of credits using exploits and hacks.
+(I for one played during Beta to get my settings and controls sorted, and decided to wait for release to play as they should be doing a wipe).
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 7:11 am
+
+The absolute scummiest thing about all of it is:
+
+“They were worried, Braben told me, that people might take advantage of the system if they offered refunds to everybody—get their money back and then buy the final version of the game for a lower price..”
+
+Yeah, fuck those people from wanting their money back because you can’t deliver on your promises…
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 7:23 am
+
+To those that think that online issues are only unreliable connections, I’ll add some other consequences and missed features having to play online, even in solo mode:
+
+1) save and/or pause the game in any moment
+2) archiving multiple save files and consequently multiple commanders
+3) playing in a world that does not change while I’m not logged in
+4) game modding
+5) continue to play even in case of temporary or permanent server downtime
+6) continue to play while away from an internet connection
+7) not installing game upgrades that would introduce gameplay modification I do not like
+8) the only way, according to Frontier EULA, to avoid online direct advertising!
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Frontier Shareholder
+says:
+December 11, 2014 at 7:45 am
+
+“What I don’t understand why Frontier are vacillating over the issue of refunds.“
+
+http://www.iii.co.uk/stockmarketwire/190309/frontier-developments-red-revenues-fall?context=LSE:FDEV
+Frontier Developments plunged into the red in the year to the end of May posting an operating loss of £1.7m against a profit of £1.1m last time.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+John Fenderson
+(profile)
+says:
+December 11, 2014 at 7:54 am
+Reason #14
+
+Online requirements are reason #14 of why I gave up on AAA games entirely.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 10:28 am
+
+I never invest in a kickstarter project more than I am willing to never see again.
+
+It is hard for me to understand those who invest then cry foul when they get nothing in return. Kickstarter is not a store. You’re not buying anything. You’re investing in a project. Sometimes projects fail. Shit happens.
+
+If you are crying b/c you invested in a kickstarter project and got nothing in return, then you did not have the money to invest in the first place and have no business on kickstarter.
+
+I have backed a few projects. All of them have delivered. There have been a few projects that I wanted to invest in, decided the risk/reward ratio was not of my liking, and those projects went on to succeed. There are, of course, projects that I wanted to invest in, didn’t, watched them fail, and was glad I did not.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anon
+says:
+December 11, 2014 at 10:57 am
+Re: Re:
+
+“Kickstarter is not a store. You’re not buying anything. You’re investing in a project.“
+
+Untrue. From Kickststarter.com Terms of use:
+
+—
+By creating a fundraising campaign on Kickstarter, you as the Project Creator are offering the public the opportunity to enter into a contract with you. By backing a fundraising campaign on Kickstarter, you as the Backer accept that offer and the contract between Backer and Project Creator is formed.
+
+Project Creators are required to fulfill all rewards of their successful fundraising campaigns or refund any Backer whose reward they do not or cannot fulfill.
+—
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 10:50 am
+
+Once Diablo 3 removed any need to be online, and still required it, i stopped playing. I didn’t buy expansion, and have pretty much lost all respect for blizzard. Fuck these company’s.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 11, 2014 at 11:04 am
+
+“What I don’t understand why Frontier are vacillating over the issue of refunds. They made a promise
+
+http://www.iii.co.uk/stockmarketwire/190309/frontier-developments-red-revenues-fall?context=LSE:FDEV
+StockMarketWire | Thu, 4th September 2014 – 07:15
+Frontier Developments plunged into the red in the year to the end of May posting an operating loss of £1.7m against a profit of £1.1m last time.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+DocGerbil100
+(profile)
+says:
+December 11, 2014 at 12:52 pm
+Re: Re:
+
+Ah. That’ll do it. It also helps to explain why they’re selling ship paint-jobs as poorest-value-for-money-ever £10 micro-transactions. :/
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Frontier Ex-Backer
+says:
+December 11, 2014 at 11:13 am
+
+There is a mailing list for defrauded backers coordinating action against David Braben/Frontier Developments.
+
+To join, send a mail to the address here:
+http://www.elitedangerousrefunds.org/
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Frontier Ex-Backer 2
+says:
+December 11, 2014 at 11:17 am
+
+There is a mailing list for defrauded backers coordinating action against David Braben / Frontier Developments.
+
+To join, send a mail to the address here: http://www.elitedangerousrefunds.org/
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Prisoner 201
+says:
+December 11, 2014 at 2:16 pm
+
+Was looking forward to this. Will now spend money elsewhere.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Franc Kaos
+(profile)
+says:
+December 12, 2014 at 2:28 am
+Frontier Developments in the red...
+
+http://www.iii.co.uk/stockmarketwire/190309/frontier-developments-red-revenues-fall?context=LSE:FDEV
+
+So, if true, how are they gonna keep the servers open? there’s no monthly subscription and 70% of those interested in the game will have already paid.
+
+The sudden U turn about offline mode will have those who were considering buying the game extremely wary (I already decided not to – I don’t support duplicity), the above information will only scare off those even slightly interested – who’s going to buy a game that might not be playable in two months?
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 12, 2014 at 6:04 am
+When the Elite Dangerous servers close down
+
+“David Braben has said that if the servers close down a snapshot of the games universe will be taken and released to the public, so the game will continue.“
+
+The same David Braben who said the game would have an offline version and no DRM???
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Dansat
+says:
+December 12, 2014 at 8:39 am
+
+“how are they gonna keep the servers open? there’s no monthly subscription“
+
+I bet they are already planning to add a sub fee. They have a clause to cover it in the EULA. https://forums.frontier.co.uk/showthread.php?t=71508
+
+Also Braben has already reneged on promises such as all in-game items would be purchasable with in-game money, so we can expect to see more in-game monetisation.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Terry Tornado
+says:
+December 12, 2014 at 7:21 pm
+
+Frontier are doing their level-best to stiff people who ploughed money into the game early on.
+
+No offline mode? Go screw yourselves losers ‘cos we’ve got your money!
+
+People have been waiting WEEKS for a reply from their store for refunds. They are not ‘busy’, they are scamming.
+
+Why are they doing this, and why are they releasing the game too early? Because Frontier are in the red.
+
+http://www.iii.co.uk/stockmarketwire/190309/frontier-developments-red-revenues-fall?context=LSE:FDEV
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+MacGamerSupreme
+says:
+December 13, 2014 at 6:50 am
+What will Braben reneg on next? Mac version?
+
+http://youtu.be/vN2BWY872M8?t=5m57s
+
+“Is it really a relief just to be doing a PC game? You don’t have to worry about multiple versions?”
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Max
+(profile)
+says:
+December 13, 2014 at 8:11 am
+"Backers: Expendable"
+
+I’m one of the original backers, who only backed because of the offline promise, and was lucky enough to actually commit only after its announcement – because the latest hoop people who rightly want their money back (some waiting for more than a month now) have to jump through is a check “whether they backed before offline mode was announced”. Which is (beside being grounds for flat-out refusal and an incredibly petty excuse) just the latest in the line of multiple hard slaps Mr. Braben and company chose to reward with the very people they took advantage of when they really needed help only to abandon them once they were no longer indispensable. Maybe they should just rename their game “You Fuckers: Tough Love” so there can be no confusion about their true colours…
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+TonyF
+says:
+December 13, 2014 at 8:15 am
+
+(Reposted from http://www.elitedangerousrefunds.org mailing list.)
+
+> What was the £4m cash (1.6m shares in number) liberated from DB’s
+> own shares that he sold?
+
+Looking back at what else happened at that time, April this year… interesting.
+
+Frontier had just missed the March Elite Dangerous delivery milestone and suffered a £15m loss in company value due to the share price falling off a cliff. The last thing that shareholders in a public company normally do in such circumstances is give the failing CEO a nice £4m in cash.
+
+> “FDEV… to acquire the business and assets of PPA… The
+> assets to be acquired… the “Elite Royalty Rights”, the benefit
+> of which are currently held by PPA. David Braben assigned these
+> rights to the Company in June 2008 in return for a royalty based
+> on Frontier’s profits from the Elite video game franchise”
+
+Hmm. PPA was going to pay to David Braben a royalty based on the profits of the separate company Frontier, the company that didn’t own the rights??
+
+> “Professional Practice Automation LLP is a limited liability partnership
+> set up in 2009 by Andrew Webster & Mark Ryan to offer IT consultancy”
+
+Hmm. David Braben assigned the rights in 2008 to a company, PPA, that didn’t exist at the time?? 2009 confirmed on http://companycheck.co.uk/company/OC344512 .
+
+This whole story is about as believable as David’s excuses for not giving backers their refunds.
+
+I wonder what really happened. I’m going to crosspost this to techdirt to see if anyone there knows more.
+
+Tony
+
+Links
+
+Frontier Developments buys Elite rights http://frontier.co.uk/investor_relations/reports/news/?artid=417&pageNum=2&blk=275
+
+Professional Practice Automation http://ppautomation.com/
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Paul
+says:
+December 13, 2014 at 11:24 am
+No offline for a poor MMO
+
+The sad thing about the lack of offline is that the game is actually a really poor design for an online, MMO style game. That huge universe means that as you move away from the handful of popular starting star systems, the chances of bumping into other players becomes increasingly remote. So that always online requirement shows it’s true colours that this is just the worst type of DRM.
+Braben says the offline mode would have been a hollow experience, my feeling is the online will be hollow unless you stay in a small amount of space…which could very easily be made offline!
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Jim
+says:
+December 14, 2014 at 1:20 pm
+really
+
+Been playing this game for months now. Really it can well do without people like all the above posters. Don’t like it – don’t buy it. Move on.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+PaulT
+(profile)
+says:
+December 16, 2014 at 3:26 am
+Re: really
+
+Try to read articles before whining about the opinions of others. the complaints are about people who have already bought the game, but are now being refused what they paid for – and apparently also being screwed over on any refund. Big difference to what you somehow read.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+abe
+says:
+December 15, 2014 at 4:00 am
+The dangerous abuse of Elite.
+
+To be clear iam a close to day one KS i even did upgrade and bought a fancy insane expensive “dress” for one ship.
+The more i read the more this deal smells rotten to the core.
+David did transform from a close to autistic brilliant person to an average Joe to boost sales but under the window dressing is still someone that does not care about others as long he can get his dream.
+The sad part is that some folks are seeing him as the second coming of Christ so he can do what ever he pleases they will like the ss defend him in what ever he does.
+Its horrible and it shows where blind faith in some one can become a danger to sanity .
+To be honest i wonder what would happen if Star Citizen would pull some off like this ..Not saying it will but what if ?????
+I try to get my money back as i feel this will be COD in space aka no content you are the content , go kill each other all day as story or npc are not included in the price tag …we spend it on eye candy to promote our game…
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Cliff
+says:
+December 15, 2014 at 6:36 am
+The dangerous abuse of Elite - the tragedy
+
+The Elite Dangerous story is a true tragedy. The truth of what has really been happening at Frontier over the last year has emerged through the filings that Frontier is obliged by law to make to its stockmarket investors.
+
+The discovery in April this year that Braben and Frontier did not own the Elite rights was a bombshell. The company’s investors had to pay millions of pounds to buy the game rights. Those investors did not put money in for the love of the game. These new backers want their money back, and they want a profit.
+
+Braben had no choice but to go along, to save his company. He switched Elite Dangerous to always online, betraying the Kickstarter backers to whom he had promised offline play, wrecking the development schedule and making the game nearly a year late. He added DRM and moved all the game story content to his own servers where he can add a paywall. His game EULA requires all players to agree that Frontier may add advertising, charge for in-game items, monetise game play on YouTube, and worse of all charge a monthly fee for server access. He’s already started selling skins and his latest game update added advertising to the launcher.
+
+Now that release is imminent, everyone can see that Braben has left the Kickstarter backers with an empty shell of a game, lacking a lot of the content that he pitched during the funding campaign. These are the Elite fans that gave him the benefit of the doubt when his pitch looked flaky, and supported him when no publisher would touch the game.
+
+There would have been be no Elite Dangerous without the Kickstarter backers. Now there will no more Elite Dangerous if Braben cannot satisfy his new investor backers. If he doesn’t get enough players to pay extra, the company will continue to lose money (£1.7m last year), be unable to repay the investors and be unable to pay the Amazon bill to keep the games servers running. Game over.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Nic
+says:
+December 16, 2014 at 3:58 am
+
+I feel so cheated with the no offline mode thing and even more angry when I am not getting my money back.
+
+Now I tried to play and it says “Can’t connect to server: Your client is too new”
+
+I am WTFed x 1000…
+
+This ended my love for the Elite franchise. mlm you Frontier.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Blurbles the Wee Burd
+says:
+December 29, 2014 at 5:54 pm
+
+Braben went from “Being that guy who made the first Space Sim evar!” to “The guy who couldn’t keep a promise.” This makes me sad. And I was hoping Kickstarter games would revolutionize gaming too.
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+Anonymous Coward
+says:
+December 31, 2014 at 5:56 pm
+Re: Re:
+
+Burbles, for the true story on that, see here.
+
+http://tinyurl.com/orcvt74
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Anonymous Coward
+says:
+December 31, 2014 at 6:02 pm
+
+Fixed link https://tinyurl.com/nwbxyel
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Will
+says:
+January 9, 2015 at 3:47 pm
+Completely wrong
+
+I was playing sp all last night …
+
+so maybe delete this misleading crap ?
+
+Collapse replies (1)
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Threaded
+[2]
+PaulT
+(profile)
+says:
+January 10, 2015 at 1:33 am
+Re: Completely wrong
+
+Only if you care to give further details about how the article is wrong. Giving facts rather than attacking the article with a baseless assertion does tend to have a better outcome.
+
+For example, if something fundamental has changed in the month since the article was written (for example if an offline mode was issued), history shows that the authors here are quite happy to issue an update correcting the original article.
+
+But, the onus is on you to provide a citation for your claim. Do you have one? Your claim that you were playing single player (without mention of whether it was offline – the entire point of the above article, not whether single player was possible) does not count.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+
+This comment is new since your last visit.
+
+Dave
+says:
+February 26, 2015 at 12:35 pm
+Online only? What a joke.
+
+The number of cheaters and hackers has led so many players to go solo. Also those who never wanted an online game at all like myself.
+
+Realtime mission timers that count down while you desperately try to phone your ISP to get your internet connection back up. Servers going tits up every now and then. The chance that one day, the servers will go down for good when players start to lose interest, (which isn’t going to take long given the lack of decent incomes from any profession other than trading). Glitches that result in destruction of your ship for no reason and no previous save to go back to, also slow support to get your ship back. Lack of ability to have more than one character to play.
+
+All these things come with online games and most of us would rather not have it. I personally looked forward to the single player offline game that was promised us when we paid for the backing. I feel I’ve been ripped off and so do many others.
+
+According to the Description of Goods and Services Act, David Braben has no alternative but to refund the money to those he duped into fronting up the money. However, he has once again avoided the bullet just like he did 10 years ago when he made a big announcement about Elite 4 coming out.
+
+As far as I see, he’s had 10 years to work on it and so far, all we got was a half hearted version of the original Elite with better graphics but only half the ships in the game. I should have still been an Alpha build since we still have numerous bugs that have not been fixed and some serious balance issues with professions.
+
+The guy who won the £10K triple Elite competition was playing when they still had infinite pirate spawns at RES sites and “Seeking Luxuries” with mega profits and no trading cap for them or price changes when you bought too much at a station. That gave him two easy Elite badges straight away. The only work he really had to do was Exploration.
+
+I am seriously deciding on whether to log in and do some trading to get my next ship or watch the paint dry on my skirting boards. Both options are equally as exciting.
+
+I loved the originals, Elite, Frontier and First Encounter and even played them when all I had was Dosbox to play them on, right up to 3 years ago. I look at Elite Dangerous and even those VGA originals have more appeal, not to mention that I don’t even need to be online to play them.
+
+Reply
+View in chronology
+Make this comment the first word
+Make this comment the last word
+Add Your Comment
+
+Your email address will not be published. Required fields are marked *
+
+Have a Techdirt Account? Sign in now. Want one? Register here
+
+Name
+
+Email
+
+Subscribe to the Techdirt Daily newsletter
+
+URL
+
+Subject
+
+Comment *
+
+Comment Options:
+Use markdown.
+Use plain text.
+Make this the
+First Word
+or
+Last Word.
+No thanks.
+(get credits or sign in to see balance)
+what's this?
+
+Notify me of follow-up comments by email.
+
+Notify me of new posts by email.
+
+DailyDirt: It Turns Out People Want Keyboards… Until They Don't
+Normalization Of Mass Surveillance Continues: Ireland And Georgia Join The Snoopers Club
+Follow Techdirt
+Subscribe to Our Newsletter
+Get all our posts in your inbox with the Techdirt Daily Newsletter!
+
+We don’t spam. Read our privacy policy for more info.
+
+A weekly news podcast from
+Mike Masnick & Ben Whitelaw
+
+Subscribe now to Ctrl-Alt-Speech »
+Essential Reading
+The Techdirt Greenhouse
+
+Read the latest posts:
+
+Winding Down Our Latest Greenhouse Panel: The Lessons Learned From SOPA/PIPA
+From The Revolt Against SOPA To The EU's Upload Filters
+Did We Miss Our Best Chance At Regulating The Internet?
+
+Read All »
+
+Techdirt Deals
+BUY NOW
+Microsoft Windows 11 Pro
+Techdirt Insider Discord
+The latest chatter on the Techdirt Insider Discord channel...
+candescence: This is genuinely hilarious
+Though sadly the "new Twitter" has a terrible AI-based scanning system and is potentially just vibe-coded in general
+Also lmao what the actual fuck is this https://www.wsj.com/tech/ai/anth...
+This is legit taking the piss
+John Roddy: Well, assuming they're using that InfoWars method of converting piss into gold...
+Mike Masnick: it's a very silly grift from some trademark lawyers who have no clue what they're doing
+John Roddy: That sounds pretty redundant. Surely "trademark lawyers" was enough?
+BentFranklin: Finally got around to watching Breaking Bad, and now I understand why Trump is attacking boats.
+strange_luck: The irony is hot and heavy with the letter to the Catholic bishops, thanks for that article. Nothing like dueling religious freedoms. One small typo, I think: "warning them that they might qualify" should probably say "not qualify".
+BentFranklin: Why do the people who hate big government love mass deportation?
+They should want the government out of our lives.
+strange_luck: A lot of political discourse is about using a key word or phrase to turn off the brain and get a knee jerk response of “bad thing!” (I was going to write “modern”, but it’s an old tactic). So “big government” bad of course, but hands off my SSI, farm subsidies, highway funds, etc
+timothygeigner: "Keep your dirty, government hands off my Medicaid!"
+aabsurdity: [article]
+https://bsky.app/profile/bennjor... This is probably fine, right?
+Mike Masnick: finished my article on that earlier today. it'll go up tomorrow. it's even worse than the initial reporting
+aabsurdity: Oh, good. 
+So, just straight up "hey, you know that thing we were warning you about the whole time?"
+John Roddy: I'm committed to supporting open source software. That's why I gave several thousand dollars to this hardcore racist.
+Mike Masnick: it's so weird
+intelati: Wait what
+John Roddy: Just to be clear, I haven't given any money to racist developers.
+Hence why I have the moral high ground over the 1Password CEO.
+BentFranklin: Wiki for Open Source Documentation of the Release of Velociraptors upon the Public and JurassiCorp's Slow Response
+https://collusion.wiki/
+Leah Abram: @Mike Masnick you mentioned on Ctrl+Alt+Speech in the intro about a website which is a Windows 98 defrag simulator. Care to link me?
+I’m oddly nostalgic for it
+aabsurdity: Google suggests [article]
+Leah Abram: Thank you so much!
+@Mike Masnick your services are no longer needed
+aabsurdity: That is simulating a heck of a knackered old drive... o_O
+Leah Abram: Except tax revenue, but since taxes are imposed against your will, that doesn’t count
+BentFranklin: Tax strike when?
+They say No Taxation Without Representation. If our elected representatives pass a budget and make the appropriations but the executive does whatever they want with the money, do we have representation?
+Mike Masnick: That's the one! @Leah Abram it's also linked in the show notes...
+aabsurdity: Your representatives are representing you by declining to impeach... I guess?
+Leah Abram: I didn’t see it in the show notes. Whatever; the issue is moot now that @aabsurdity linked thereto and you confirmed it.
+Apparently the internet still has * some* quality therein because there’s a random yo mama joke generator: https://yomamaso.net
+BentFranklin: Flock is Everywhere https://i.imgur.com/v1GeErA.jpeg
+I guess they use them for 2FA
+intelati: nooooooo
+benv0727: https://x.com/RepDeSaulnier/stat... mark desaulnier and jimmy patronis wants now to sunset section 230
+BentFranklin: AI models don't kill people – people kill people
+https://www.theregister.com/ai-a...
+*"...the real problem isn't the models themselves, but the companies who carelessly unleash them on the world and don't take any responsibility for what their products do"*
+Mike Masnick: dammit. i was already writing a piece saying something kinda like this. will now have to quote this one as well
+BentFranklin: The point being, I hope, that people are killing people.
+aabsurdity: That's an important comma.
+Mike Masnick: load bearing, as the AIs say
+candescence: Kimmel's interview with James Talarico got 8.7 million views in 72 hours, the Streisand Effect strikes again
+intelati: Worstpersonyouknow.onion https://fixupx.com/sama/status/2...
+aabsurdity: "we are unapologetically on Team Humanity" Sam Altman? Press X to doubt... :P
+strange_luck: He left out the "We could end up setting a lot of money, water, and power on fire, pollute communities with exhaust, and crater the economy in a circular financing scam for a toolset that has promise, but is being wildly overhyped to juice stock prices and wage war on workers."
+BentFranklin: Revolut falls for fake government requests, hands over customer data
+https://www.theregister.com/cybe...
+benv0727: [article]
+strange_luck: Saw this via Slashdot. Darn it, I was just in Vietnam in November. Can't anyone secure their databases? [article]
+aabsurdity: I have been somewhat skeptical of Revolut after that one time its entire cybersecurity staff quit in disgust...
+benv0727: https://x.com/scottwongDC/status...
+aabsurdity: Sure. Nobody knows how they work and the best safety procedures we have for them is to politely request for them not to advise people to kill themselves, but a kill switch is definitely going to work, and have a competently designed legal definition. I've been reading Mike's work for long enough for my eye-roll to that to cause me a physical injury.
+Mike Masnick: i'm wondering who controls the kill switch to my local model?
+imatool13: The power company definitely does
+AIs that "break out" so what did they do, they got access to a system REMOTELY, amazing, here is 1.2 trillion dollars. The day they can upload themselves (but would it be them, would they have a crisis then) and execute that (OMG will this even be possible, remote execution on a box is very very rare) then I will believe they "escaped" otherwise this is just just a bot running a Burp suite
+aabsurdity: If there's any reason to worry *at all* then you already have Skynet. 
+And if you don't have that, then you've just got regular, buggy code that nobody understands anyway. :P
+imatool13: I told Cursor to run a git diff, literally by command on all the repos under it's perview and it messed that up. The robot uprising is hilariously not accurate
+I told my friends "I'm directing a toddler"
+John Roddy: imo, the AI models should just have the CEO's bank info and authorization built into it. If you're not confident you can stop anyone from getting that, then the model isn't ready yet.
+aabsurdity: Sounds like an excellent idea.
+strange_luck: Measles death toll already out of date. I want to say we live in the stupidest timeline, but there's a deliberate effort going on to deconstruct medical and just plain scientific advances. I can't really grasp why, aside from petty con man grifting, but it seems too widespread for just that. [article]
+Leah Abram: Some people just want to watch the world burn, I guess.
+BentFranklin: We Must Create the Shit Machine
+https://www.mcsweeneys.net/artic...
+candescence: [article]
+Denuvo is trying to use the US courts as a means of engaging in a fishing expedition to try and uncover the identity of voices38, a cracker who has been cracking Denuvo DRM in dozens of games very quickly, which is probably why 007 First Light dropped it a month after release.
+voices38 on reddit seems awfully confident that this will go nowhere.
+John Roddy: Well, depending on their own opsec.
+The feds had no problem finding the r/doordash mod who gave material support to ISIS
+BentFranklin: https://bsky.app/profile/okslack...
+John Roddy: The Streisand Fractal
+Leah Abram: I would like some help here. Can anyone please confirm or deny if this is the (now expired) patent for Naproxen Sodium, better known by its brand name Aleve? [link]
+Oops, thats the wrong link. I meant this: [link]
+Dammit
+[link]
+There, that’s it
+Third times a charm!
+aabsurdity: I wonder what odds those "prediction market" things are offering for the Kennedy Center to still be around next week. If the payoff gets big enough, you can bet someone will make him do it, so they can cash out...
+[article] This case has gotten increasingly horrendous over the last year. Nice to see the BBC actually doing some real journalism, and sticking up for their reporter. And for letting him cover his own court case, because Daniel has been getting increasingly *pissed off* about MI5 lying to him, and then lying about the lies in court.
+BentFranklin: Don't Trust Lean4 Alone
+[link]
+A good history refresher...
+https://www.politico.com/magazin...
+John Roddy: California folded.
+Cathy Gellis: Bonta sucks so much.
+John Roddy: Has anyone asked him point blank how many layoffs he anticipates as a result?
+BentFranklin: Let's have JB Pritzker ask him
+Republicans have all the big donors and Citizens United, and still can't stop taking bribes:
+[article]
+imatool13: I mean there is a lot of money in bribes 
+BentFranklin: For the bribers yes, but the politicians take a tiny fraction of the benefit, it's chump change in comparison.
+
+Become an Insider!
+
+Recent Stories
+Tuesday
+
+15:21	How the Meta Settlement Silences Youth Activism (1)
+13:17	Appeals Court Rejects ICE Detention Policy, Comparing It To WWII Japanese Internment (0)
+11:05	Elon Said Fighting CSAM Was "Priority #1." A NY Times Reporter With A Script Found 75 Known Images. (12)
+11:00	Daily Deal: Soundfreaq Sound Spot II Bluetooth Speaker (0)
+09:22	ICE Officer Who Dodged Extradition To Minnesota Arrested By MN Cops One Day Before His *Federal* Criminal Court Appearance (19)
+05:25	America Last: Trump FCC Rubber Stamps Major Saudi, Chinese Investment In Paramount Merger (12)
+
+Monday
+
+19:58	Cold TAKE: Amazon's New Encryption Method Still Doesn't Deliver Real Privacy (3)
+15:45	The Metric Is Not The Mission: History Rarely Announces Itself (1)
+13:38	Trump Says Arch Must Be Built Because We Need Somewhere To Store Our Precious 'Sniper Ammo' (27)
+12:12	California AG Rob Bonta Caves, Paramount Merger To Proceed With Flimsy Conditions (15)
+More 
+Tools & Services
+Twitter
+Facebook
+RSS
+Podcast
+Research & Reports
+Company
+About Us
+Advertising Policies
+Privacy
+Contact
+Help & Feedback
+Media Kit
+Sponsor / Advertise
+More
+Copia Institute
+Insider Shop
+Support Techdirt
+Brought to you by Floor64
+Designed with WordPress. Hosted by Pressable.
+This site, like most other sites on the web, uses cookies. For more information, see our privacy policy
+
+LINKS
+https://www.techdirt.com/2014/12/10/elite-dangerous-deletes-promised-offline-mode-just-before-release-non-committal-kickstarterbeta-refunds/comments/feed/
+https://www.reddit.com/r/IAmA/comments/15od2s/i_am_david_braben_cocreator_of_elite_creator_of/c7qe8c1

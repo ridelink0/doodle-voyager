@@ -1,0 +1,222 @@
+The Nosy Gamer: A Different Look At EVE Online's Monthly Economic Report For January 2026
+https://nosygamer.blogspot.com/2026/02/a-different-look-at-eve-onlines-monthly.html
+
+The Nosy Gamer
+
+Home
+CSM Wire
+Friday, February 13, 2026
+A Different Look At EVE Online's Monthly Economic Report For January 2026
+
+Earlier this week CCP Games released the first monthly economic report for EVE Online for 2026. The developers in Reykjavik have to be on a high following Thursday's Pearl Abyss earnings call in which we learned the game had its highest quarterly revenue total since the pandemic lockdown years some 5 years ago. Overall, CCP Games had its highest revenue quarterly total and yearly revenue total in 2025 since Pearl Abyss acquired the Icelandic game studio back in October 2018.
+
+Before diving into the subject, let's look at what the developers thought was important in January.
+
+Economic Trends:
+
+Mining activity increased following changes introduced in the Catalyst expansion.
+Ice mining volume increased during the Winter Nexus event period.
+The Ship Price Index continues to decline, with an approximate 20% decline over the last year.
+The Mineral Price Index continues to decline, with an approximate 50% decline over the last year.
+
+I look at the monthly economic reports a bit differently than I did back when they were first released some 10 years ago. Now I look at the reports as an indication of the health of the game. I started playing in August 2009 and Hilmar isn't only one who dreams of an EVE Forever. However, in my case I'd settle for another 13 years so I can own an account for 30 years. By that time I'll be 75 and probably ready to retire to playing online chess.
+
+These monthly looks won't just use the MER as the reports don't hold all the stats I want to use. Of course I need to look at the average concurrent user charts provided by Jester.
+
+
+Jester's Daily ACU graph, Feb 2025 - Feb 2026
+
+The 7-day rolling ACU line shows the big decrease in activity following the end of the Winter Nexus event, with the figure dropping down 10-12% to approximately 25,000 accounts logged in at any one time the last week of January. This drop in activity should influence the numbers and analysis. 
+
+But as the developers pointed out in the dev blog for January, New Eden having approximately 15% more accounts logged in didn't result in higher prices. Instead the Ship Price Index fell 20% year-over-year and the Mineral Price Index falling approximately 50%. The Pearl Abyss C-Suite presenters on this week's earnings call did point out to a higher than expected return of players to EVE. Would an industrial and exploration based expansion like Catalyst have brought those types of players disproportionally back? The answer seemed obvious halfway through typing out the question.
+
+Did I mention that EVE Online itself, not just the IP, had its best quarterly revenue performance since 2020?
+
+
+Yearly average concurrent users
+
+As someone rooting for EVE to do even better this year I am adding another of Jester's graphs. While I doubt the game will maintain the ACU recorded in January for the entire year, I am rooting for the numbers to exceed those posted in the pandemic year of 2020. Doing so would return discussions comparing the game to the near peak year of 2014 instead of discussions of 2006.
+
+
+The global PLEX market through 2 February 2026
+
+PLEX is a rather important virtual currency in New Eden. The game describes PLEX as:
+PLEX is an item that can be traded between players on the market. PLEX can also be used in the New Eden Store to upgrade your account to Omega Clone State, purchase virtual goods, and activate other account services.
+But except for a reference on the Velocity of ISK graph, PLEX doesn't show up in the data files or graphs that make up the MER. So I have to come up with my own figures using my rusty Python coding skills. In January, 175.1 trillion ISK was traded for approximately 38.2 million PLEX. While PLEX is now used for more than game time, the usual PLEX to game time conversion of 500:1 reveals players exchanged enough PLEX to fund 76,370 Omega accounts for one month. To put that number into perspective, that's enough game time to fund one account back to the days when the hot new meta was domesticated goats.
+
+
+I did want to check up on a newer feature, player-made SKINs. I knew I wouldn't be able to check on the finished products, but I was hoping to see the component parts. After all, if skill extractors are part of the Secondary Producer Price Index, why not sequencers? Alas, I couldn't find any of the items needed to make SKINs in the data files. So no graphs or charts since apparently all the Paragon items are available for PLEX in the New Eden Store.
+
+
+But while I don't have visibility into Paragon, PLEX-related items such as skill injectors, skill extractors and body resculpt certificates are in the files. Labeled as "Accessories" I can do a couple of fun things. First, four of the items, Daily Alpha Injectors, Large Skill Injectors, Small Skill Injector, and Pilot's Body Resculpt Certificates fall under the Consumer Price Index in the charts. Players spent 493.8 trillion ISK on items that fall within the index basket, with 19.8% of those sales involving the injectors and resculpt certificates. But perhaps the biggest impact is felt in the Secondary Producer Price Index. Skill extractors made up 37.7% of sales in the 94.9 trillion ISK bucket.
+
+
+
+Comparing RMT token and regular game item spending
+
+
+One subject I've always wondered about is how much of the New Eden game economy is spent on actual in game items and how much on items related to the cash shop. Trying to figure that out was usually a pain because I needed to search the markets in 60 regions for PLEX sales. With the global PLEX market I can now figure that out fairly easily. The breakdown goes:
+
+PLEX sales: 175.1 trillion ISK
+Accessories (PLEX-related items): 132.5 trillion ISK
+Regular game play items: 533.2 trillion ISK
+Honestly, players spending 63.4% total market spending on non-cash shop related items is a whole lot better than I expected. I did this exercise a few years ago and the proportion was 51%/49%.
+
+
+Finally I do have one more metric I want to track. Namely, the ratio of ISK spent on purchasing PLEX vs the ISK faucets into the economy. In January that figure was 86%, with ISK faucets of 203.6 trillion outpacing the amount of ISK spent on PLEX by 28.7 trillion ISK.
+Posted by NoizyGamer at 6:05 PM 0 Comments  
+Email This
+BlogThis!
+Share to X
+Share to Facebook
+Share to Pinterest
+Labels: eve, eve_catalyst
+Newer Post
+Older Post
+Home
+Subscribe to: Post Comments (Atom)
+Search This Blog
+	
+Subscribe To
+ Posts
+ Comments
+Contact Email
+bloggingranger -at- gmail.com
+Popular Posts
+Crafting The Courtly Lover's Healing Set In Final Fantasy XIV's Patch 7.4
+Raw Materials Needed To Craft The Crested Crafting & Gathering Gear In Dawntrail Patch 7.3
+Why Square Enix Wanted To Shut Down Mare Synchronos
+Fractured Legacy - EVE Online's New Epic Mining Mission Arc
+Squadron 42 To Release In Q2 2027
+Blog Archive
+▼  2026 (126)
+►  September (10)
+►  August (12)
+►  July (12)
+►  June (17)
+►  May (18)
+►  April (13)
+►  March (14)
+▼  February (14)
+Final Fantasy XIV Patch 7.45 Coming On March 3rd
+Flying Solo In EVE: The Lunar New Year
+Upgrading Aura In EVE Online
+FFXIV Cosmic Exploration - An Oizys Update And Tok...
+Flying Solo In EVE: A New AI
+Discord, Age Verification, And The UK's Online Saf...
+A Different Look At EVE Online's Monthly Economic ...
+Pearl Abyss Q4 2025 Earnings Call
+Flying Solo In EVE: PvP Fest 2026
+A Lazy PvE Ishkur Fit For EVE Online
+FFXIV Cosmic Exploration: A Fishing Hyperrod Delayed
+Flying Solo In EVE: The 2026 Roadmap
+Ashes Of Creations And Intrepid Studios Shuts Down...
+Cloud Imperium January 2026 Sales Revenue Up 8.1% ...
+►  January (16)
+►  2025 (208)
+►  2024 (232)
+►  2023 (214)
+►  2022 (64)
+►  2021 (181)
+►  2020 (75)
+►  2019 (108)
+►  2018 (73)
+►  2017 (89)
+►  2016 (128)
+►  2015 (191)
+►  2014 (261)
+►  2013 (257)
+►  2012 (250)
+►  2011 (235)
+►  2010 (185)
+►  2009 (150)
+EVE Podcasts
+Declarations of War
+328: EVE Nerds
+1 week ago
+Talking in Stations
+A New Dawn for Eve Online
+4 years ago
+Eve Online Blogs
+EVEOGANDA
+The Safe Spot | Mike Azariah
+2 weeks ago
+marketsforISK
+Friday night stale order update
+2 weeks ago
+Evehermit
+Moved Out
+5 weeks ago
+the greybill
+Alliance Tournament XXII Art Contest – 5.000 PLEX in Prizes
+5 weeks ago
+Manufacturing for Wealth: An EVE Online Industrialist's Log
+June 2026 update
+2 months ago
+Show All
+Gaming Blogs
+The Digital Antiquarian
+The Lamentable Later Life of Lemmings
+4 days ago
+The Ancient Gaming Noob
+Friday Bullet Points About So Many Launches, Updates, and Endings
+4 days ago
+Inventory Full
+Some Random Observations On Games I've Been Playing
+2 weeks ago
+Killed in a Smiling Accident.
+Sending It All Forward Away
+2 years ago
+Nomadic Gamers, eh!
+TSM and Dragonflight – Is it Worth It?
+3 years ago
+Show All
+Subjects
+38_studios (2) aar (1) about_blog (38) about_m (1) about_me (18) activision (5) AI (5) aion (5) albion (1) allowed_RMT (1) amazon_games (2) apb (1) Arek'jaalan (4) ashes_of_creation (4) ATitD (1) Avakin_Life (1) Ball_x_Pit (1) bartle (1) bdo (19) bitcraft (1) black_desert_mobile (4) black_desert_online (24) bless_online (3) blizzard (8) blockchain_games (10) bot_porn (17) bulgaria (4) casino_war (11) ccp (70) Celli_Family_Chonicles (6) Chribba (8) cig (113) City_Of_Steam (1) city_simulators (1) comedy_video (2) crimson_desert (22) csgo (5) csm (62) csm10 (16) csm11 (4) csm12 (13) csm13 (11) csm14 (7) csm16 (6) csm17 (2) csm18 (4) csm19 (1) csm8 (10) csm9 (17) csmx (1) darkfall (3) dawntrail (1) daybreak (1) ddo (1) defiance (2) destiny (2) Diablo (1) diablo3 (1) digital_dozen (150) dokev (2) dragomon_hunter (1) dragon_age (3) DUST_514 (17) elite_dangerous (1) eq2 (105) eq2x (16) EQNext (6) ESO (24) eve (1981) eve_catalyst (41) eve_catalyst_patch_notes (2) eve_cradle_of_war (16) eve_echoes (11) eve_equinox (51) eve_equinox_patch_notes (32) eve_fanfest_2025 (9) eve_fanfest_2026 (1) eve_frontier (52) eve_frontier_patch_notes (4) eve_galaxy_conquest (7) eve_gunjack (5) eve_havoc (32) eve_legion (36) eve_legion_patch_notes (16) eve_lore (15) eve_north_2019 (2) eve_revenant (39) eve_revenant_patch_notes (24) eve_valkyrie (12) eve_vanguard (15) eve_vegas_2015 (4) eve_vegas_2016 (5) eve_vegas_2017 (4) eve_vegas_2018 (4) eve_vegas_2019 (6) everquest (1) expert_systems (1) exploration (1) faction_warfare (2) Fallout_76 (1) fallout3 (2) famous_quotes (5) fanfest_2012 (7) fanfest_2013 (5) fanfest_2014 (9) fanfest_2015 (8) fanfest_2016 (3) fanfest_2017 (7) fanfest_2018 (10) fanfest_2020 (2) fanfest_2022 (1) fanfest_2023 (2) fanfest_2025 (4) fenris (12) ffx (1) ffxi (1) ffxiv (257) ffxiv_dawntrail (91) ffxiv_dawntrail_patch_notes (16) ffxiv_evercold (1) ffxiv_housing (5) ffxiv_music (4) ffxvi (1) final_fantasy (3) final_fantasy_i (1) fraud (1) Free_Realms (6) gaia_online (1) gambling (24) game_design (51) game_media (5) game_monetization (2) game_play_video (8) GamerDMA (1) gamergate (2) games (1) games business (2) games_business (214) games_business. (1) gamescom2026 (1) general (54) genshin_impact (1) global_war_on_bots (10) government_regulations (3) gta_6 (1) gunjack (2) gw2 (29) H1Z1 (4) holiday_greetings (1) honey_botter (6) honkai (1) housing (1) hurricane_hilmar (15) I_voted_for_Mike (4) I_Want_ISK (1) iceland (8) illicit_RMT (160) Intrepid_Studio (1) iPad/iPod_apps (2) island_sanctuary (2) khu (1) kickstarter_war (8) KingdomsOfAmalur (1) Landmark (4) law (1) laws_regulations (4) Listening To (11) LoL (2) loot_boxes (3) lore (6) lotro (4) low_sec_carebear (2) machinima (13) macros (2) MER (1) mount_and _blade (1) music (1) music_video (11) my_video (2) ncsoft (1) need_for_speed (1) NetEase (4) neverwinter (6) new_world (3) news (3) Nexon (1) NFT (3) NSA (2) nsdmg (1) null_sec (12) oculus_rift (2) odds_and_ends (9) Operation_Smile (16) pearl_abyss (67) pearl_abyss_earnings_calls (32) perpetuum (3) planetside_2 (1) play_to_earn (2) podcasts (68) project_aurora (2) project_awakening (12) project_foundation (1) Project_M5 (1) project_nova (3) PS2 (1) ps3 (1) ps4 (1) rabbit_hole (5) radio (1) real_life (49) real_life_intelligence (1) Repopulation (1) reviews (28) rifts (31) rl_eve_science (7) runes_of_magic (6) runescape (5) sci-fi (2) screenshots (1) secret_world (5) ships (2) signal_cartel (2) single_player (1) Skyforge (1) soe (4) somer2014 (3) SOMERgate (6) sony (1) SOPA (3) SotA (2) sovereignty (9) sq42 (1) Squadron_42 (69) square_enix (6) st:o (5) star trek online (1) star_citizen (159) stars_reach (3) Steam (1) sumo_digital (1) sw:g (5) sw:tor (33) tencent (1) tera (5) terrorism (1) the_ani_campaign (10) The_Bible_Online (1) The_Briscident (3) the_scope (1) throne_and_liberty (2) TOR (4) Tropico4 (2) TSW (9) twitch (7) twitter (1) Valkyria_Chronicles (2) vanguard (1) viridian (18) virtual_reality (3) void_shards (4) war_on_bots (140) warhammer (1) web3 (7) wibt (22) Wii_U (1) wildstar (21) wildstars_bot_war (4) winter_war_2017 (11) wow (97) wow_forever (2) writing (1)
+Total Pageviews
+	
+0	42
+1	38
+2	43
+3	29
+4	34
+5	32
+6	59
+7	29
+8	31
+9	24
+10	64
+11	24
+12	21
+13	25
+14	44
+15	49
+16	52
+17	67
+18	68
+19	70
+20	67
+21	55
+22	72
+23	74
+24	91
+25	77
+26	84
+27	93
+28	100
+29	10
+ 9
+0
+0
+5
+0
+7
+2
+	
+About Me
+NoizyGamer
+View my complete profile
+Theme images by enot-poloskun. Powered by Blogger.
+
+LINKS
+https://nosygamer.blogspot.com/feeds/41234021958958050/comments/default

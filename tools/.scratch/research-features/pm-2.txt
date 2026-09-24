@@ -1,0 +1,436 @@
+Intel Celeron G4950 Benchmark
+https://www.cpubenchmark.net/cpu.php?cpu=Intel+Celeron+N4500+%40+1.10GHz&id=4210
+
+Software
+Hardware
+Benchmarks
+Services
+Store
+Support
+About Us
+Forums
+0
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+Memory Benchmarks
+PC Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+CPU Benchmarks
+
+Over 1,000,000 CPUs Benchmarked
+
+Intel Celeron G4950 @ 3.30GHz
+
+Benchmarks for the Intel Celeron G4950 can be found below. Release dates, price and performance comparisons are also listed when available. This is made using thousands of PerformanceTest benchmark results and is updated daily.
+
+The first graph shows the relative performance of the CPU compared to the 10 other common (single) CPUs in terms of PassMark CPU Mark.
+The 2nd graph shows the value for money, in terms of the CPUMark per dollar.
+The pricing history data shows the price for a single Processor. For multiple Processors, multiply the price shown by the number of CPUs.
+
+Is the Intel Celeron G4950 @ 3.30GHz Good for Gaming?
+
+This is a fairly old CPU that is no longer competitive with newer CPUs. But this CPU contains 2 Cores and 2 Threads. This CPU may not do well with games especially more recent releases. Best to check with your system requirements from the developer of the games you are interested to see if it is compatible. [More ...]
+
+CPUS
+
+Multithread
+Page: 
+1,
+2,
+3,
+4
+Single Thread
+Page: 
+1,
+2,
+3,
+4
+Best Value (On Market)
+Best Value XY Scatter
+Best Value (All time)
+New Desktop
+New Laptop
+New Server
+New Mobile
+Systems with Multiple CPUs
+Overclocked
+Power Performance
+CPU Mark by Socket Type
+Cross-Platform CPU Performance
+Top Gaming CPUs
+CPU Mega List
+Search Model
+Compare
+0
+Common
+Most Benchmarked
+AMD vs Intel Market Share
+Year on Year Performance
+
+
+Intel Celeron G4950 @ 3.30GHz
+
+Description: Intel UHD Graphics 610
+
+Class: Desktop
+
+Socket: FCLGA1151
+
+Clockspeed: 3.3 GHz
+
+Cores: 2 Threads: 2
+
+Typical TDP: 54 W
+
+Cache per CPU Package:
+L1 Instruction Cache: 4 x 32 KB
+L1 Data Cache: 4 x 32 KB
+L2 Cache: 4 x 256 KB
+L3 Cache: 2 MB
+
+
+Other names: Intel(R) Celeron(R) G4950 CPU @ 3.30GHz
+
+CPU First Seen on Charts: Q1 2021
+
+CPUmark/$Price: 43.00
+
+Overall Rank:
+3342nd fastest in multithreading out of 6006 CPUs
+1947th fastest in single threading out of 6006 CPUs
+911th fastest in out of 1595 Desktop CPUs
+
+
+Last Price Change: $63.12 USD (2024-06-11)
+
+Average CPU Mark
+Multithread Rating
+2714
+Single Thread Rating
+2041
+
+Samples: 1*
+*Margin for error: High
+
++ COMPARE
+CPU Test Suite Average Results for Intel Celeron G4950 @ 3.30GHz
+Integer Math	7,895 MOps/Sec
+Floating Point Math	6,547 MOps/Sec
+Find Prime Numbers	15 Million Primes/Sec
+Random String Sorting	5,260 Thousand Strings/Sec
+Data Encryption	826.0 MBytes/Sec
+Data Compression	39,233 KBytes/Sec
+Physics	261 Frames/Sec
+Extended Instructions	1,437 Million Matrices/Sec
+Single Thread	2,041 MOps/Sec
+From submitted results to PerformanceTest V10 as of 22nd of September 2026.
+CPU Mark Distribution for Intel Celeron G4950 @ 3.30GHz
+Submitted Baseline Distribution Graph as of 21st of September 2026
+
+
+
+
+Not Enough Data from Current Version of PerformanceTest to Create Distribution Graph.
+
+From submitted results since PerformanceTest V10 as of 21st of September 2026.
+
+
+
+Search for Intel Celeron G4950 @ 3.30GHz
+from the Featured Merchants below:
+
+
+
+
+Note: PassMark Software may earn compensation for sales from links on this site through affiliate programs.
+Machines with this CPU (or similar)
+	Intel NUC 11 Essential Atlas Canyon Celeron Processor N5105 NUC11ATKC4 Mini PC 2.0 GHz - 2.9 GHz Burst, 2 core, 2 Thread, 10W,Intel UHD Graphics, 450–750MHz Burst (NUC11ATKC4-4G RAM 128G SSD)	$271.00
+(www.amazon.com)
+Note: PassMark Software may earn compensation for sales from links on this site through affiliate programs.
+CPU Mark Relative to Top 10 Common Desktop CPUs
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+Intel Core i9-14900K	
+	
+58,207
+
+Intel Core i9-13900K	
+	
+58,070
+
+AMD Ryzen 7 7800X3D	
+	
+34,287
+
+Apple M4 10 Core	
+	
+23,584
+
+AMD Ryzen 5 5600X	
+	
+21,824
+
+Intel Core i5-12400F	
+	
+19,542
+
+Intel Core i9-9900K @ 3.60GHz	
+	
+18,030
+
+AMD Ryzen 5 3600	
+	
+17,650
+
+Apple M2 8 Core 3500 MHz	
+	
+15,649
+
+Apple M1 8 Core 3200 MHz	
+	
+14,122
+
+Intel Celeron G4950 @ 3.30GHz	
+	2,714
+CPU Value (CPU Mark / $Price )
+As of 23rd of September 2026 - Higher results represent better value
+
+Processor	CPU Mark / $Price	
+AMD Ryzen 5 5600X	
+	
+171.85
+
+AMD Ryzen 5 3600	
+	
+170.68
+
+Intel Core i5-12400F	
+	
+126.68
+
+Intel Core i9-14900K	
+	
+117.93
+
+AMD Ryzen 7 7800X3D	
+	
+114.29
+
+Intel Core i9-13900K	
+	
+92.18
+
+Intel Core i9-9900K @ 3.60GHz	
+	
+60.47
+
+Intel Celeron G4950 @ 3.30GHz	
+	43.00
+Apple M1 8 Core 3200 MHz	
+	
+NA
+
+Apple M2 8 Core 3500 MHz	
+	
+NA
+
+Apple M4 10 Core	
+	
+NA
+Single Thread Rating
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average Thread Rating	
+Intel Core i9-14900K	
+	
+4,690
+
+Intel Core i9-13900K	
+	
+4,595
+
+Apple M4 10 Core	
+	
+4,494
+
+Apple M2 8 Core 3500 MHz	
+	
+3,882
+
+AMD Ryzen 7 7800X3D	
+	
+3,761
+
+Apple M1 8 Core 3200 MHz	
+	
+3,672
+
+Intel Core i5-12400F	
+	
+3,485
+
+AMD Ryzen 5 5600X	
+	
+3,366
+
+Intel Core i9-9900K @ 3.60GHz	
+	
+2,908
+
+AMD Ryzen 5 3600	
+	
+2,557
+
+Intel Celeron G4950 @ 3.30GHz	
+	2,041
+Last 1 Baselines for Intel Celeron G4950 @ 3.30GHz
+Most recent listed first
+
+Baseline	CPU Mark	
+BL1385155 - Mar 21 2021	
+	
+2714
+Additional baselines can be obtained using Windows version of PerformanceTest's Manage Baselines feature.
+Popular comparisons for Intel Celeron G4950 @ 3.30GHz
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+Intel Celeron G4950 @ 3.30GHz	
+	2,714
+Intel Celeron G5905 @ 3.50GHz vs Intel Celeron G4950	
+	2,769 (+2.0%)
+Intel Celeron G5920 @ 3.50GHz vs Intel Celeron G4950	
+	2,667 (-1.7%)
+AMD A10-5800K APU vs Intel Celeron G4950	
+	2,972 (+9.5%)
+AMD A8-5600K APU vs Intel Celeron G4950	
+	2,859 (+5.3%)
+AMD Phenom II X4 965 vs Intel Celeron G4950	
+	2,677 (-1.4%)
+AMD A8-5500 APU vs Intel Celeron G4950	
+	2,621 (-3.4%)
+AMD Phenom II X4 955 vs Intel Celeron G4950	
+	2,563 (-5.6%)
+Intel Celeron G4930 @ 3.20GHz vs Intel Celeron G4950	
+	2,517 (-7.3%)
+Intel Celeron G4900 @ 3.10GHz vs Intel Celeron G4950	
+	2,382 (-12.2%)
+AMD Athlon II X4 640 vs Intel Celeron G4950	
+	2,286 (-15.8%)
+Intel Celeron G3930 @ 2.90GHz vs Intel Celeron G4950	
+	2,258 (-16.8%)
+Intel Pentium G3260 @ 3.30GHz vs Intel Celeron G4950	
+	2,088 (-23.1%)
+
+
+Is the Intel Celeron G4950 @ 3.30GHz Good for Gaming?
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Relative Gaming Score	
+AMD Ryzen 9 9950X3D2	
+	
+15,390
+
+AMD Ryzen 7 9850X3D	
+	
+12,528
+
+AMD Ryzen 9 9900X3D	
+	
+12,394
+
+AMD Ryzen 7 9800X3D	
+	
+12,106
+
+AMD Ryzen 7 PRO 9755X3D	
+	
+12,028
+
+AMD Ryzen 9 9950X3D	
+	
+11,256
+
+Intel Core Ultra 7 270K Plus	
+	
+10,677
+
+Intel Core Ultra 5 250K Plus	
+	
+10,599
+
+AMD Ryzen 5 7600X3D	
+	
+10,510
+
+AMD Ryzen 9 7900X3D	
+	
+10,381
+
+Intel Core Ultra 9 285K	
+	
+10,355
+
+AMD Ryzen 5 7500X3D	
+	
+10,062
+
+Intel Celeron G4950 @ 3.30GHz	
+	394
+
+
+
+Software
+BurnInTest
+PerformanceTest
+OSForensics
+MemTest86
+WirelessMon
+Management Console
+Zoom Search Engine
+Free Software
+Hardware
+USB3.0 Loopback Plugs
+USB2.0 Loopback Plugs
+PCIe Test Cards
+USB Power Delivery Tester
+Serial and Parallel Loopback Plugs
+USB Short Circuit Testers
+Benchmarks
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+RAM Benchmarks
+PC Systems Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+Internet Bandwidth
+About Us
+Company
+Contact Us
+The Press Room
+Services
+Store
+Support
+Forums
+Compliance
+International
+Disclaimer
+Refunds
+Privacy
+Social  
+
+Advertise on this site.
+
+Copyright © 2026 PassMark® Software
+
+ 
+
+LINKS

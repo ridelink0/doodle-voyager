@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doodle Voyager</title>
+<meta name="description" content="A first-person spaceship shooter drawn in blue ballpoint on lined paper. Walk your ship, fly every catalogued galaxy and exoplanet, fight the red guys.">
+<meta name="theme-color" content="#f6f3e6">
+<meta property="og:title" content="Doodle Voyager">
+<meta property="og:description" content="A first-person spaceship shooter drawn in blue ballpoint on lined paper. Walk your ship, fly every catalogued galaxy and exoplanet, fight the red guys.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23f6f3e6'/%3E%3Cpath d='M6 22 L16 6 L26 22 L16 18 Z' fill='%23ffd84a' stroke='%231a30c0' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+</head>
+<body>
+<canvas id="gl" aria-label="Doodle Voyager game view"></canvas>
+
+<main id="main">
+<!-- HUD -->
+<div id="hud" hidden>
+  <div class="hud-tl">
+    <div class="shipname" id="h-ship">Pencil Case</div>
+    <div class="bar hull"><div class="fill" id="h-hull"></div><b>HULL</b><span id="h-hull-n"></span></div>
+    <div class="bar shield"><div class="fill" id="h-shield"></div><b>SHIELD</b><span id="h-shield-n"></span></div>
+    <div class="bar fuel"><div class="fill" id="h-fuel"></div><b id="h-fuel-t">ION</b><span id="h-fuel-n"></span></div>
+    <div class="bar heat"><div class="fill" id="h-heat"></div><b>HEAT</b><span id="h-heat-n"></span></div>
+    <div class="credits"><span id="h-cr">0</span> cr</div>
+  </div>
+  <div class="hud-tr">
+    <div class="where" id="h-where"></div>
+    <div class="zone" id="h-zone"></div>
+    <ul class="killfeed" id="h-kills"></ul>
+  </div>
+  <div class="hud-bl">
+    <div class="mode" id="h-mode">AT THE HELM</div>
+    <div class="keys" id="h-keys"></div>
+  </div>
+  <div class="hud-br">
+    <div class="speed"><span id="h-speed">0</span><small>u/s</small></div>
+    <div class="throttle"><div class="fill" id="h-thr"></div></div>
+    <div class="flags" id="h-flags"></div>
+    <div class="target" id="h-target"></div>
+  </div>
+  <div class="crosshair" id="h-cross" aria-hidden="true"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M20 4v10M20 26v10M4 20h10M26 20h10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/><circle cx="20" cy="20" r="2" fill="currentColor"/></svg></div>
+  <div class="prompt" id="h-prompt"></div>
+  <div class="message" id="h-msg"><h3></h3><p></p></div>
+  <ul class="toasts" id="h-toasts" aria-live="polite"></ul>
+  <div id="markers"></div>
+</div>
+
+<!-- Start screen -->
+<section class="overlay" id="title" aria-labelledby="t-h1">
+  <div class="panel start">
+    <h1 id="t-h1">DOODLE VOYAGER</h1>
+    <h2>a ballpoint space shooter · walk your own ship across every charted galaxy</h2>
+    <div class="mainbtns">
+      <button class="start" id="t-launch" disabled>LAUNCH<small id="t-launch-sub">loading the catalogues</small></button>
+      <button id="t-new">NEW VOYAGE<small id="t-new-sub">wipes the save · click twice</small></button>
+    </div>
+    <div class="cols">
+      <div>
+        <h3 class="sub">on foot</h3>
+        <ul class="legend">
+          <li><kbd>WASD</kbd> walk, <kbd>Shift</kbd> jog, <kbd>Space</kbd> hop</li>
+          <li><kbd>E</kbd> use whatever you are looking at: the helm, the MP4 screen, the nav screen, the stove, the shower, the hull breach lever</li>
+          <li><kbd>V</kbd> tapes and playlist, <kbd>N</kbd> next hold-music track</li>
+          <li><kbd>I</kbd> storage, <kbd>M</kbd> map, <kbd>K</kbd> photo</li>
+        </ul>
+        <h3 class="sub">outside (after the breach)</h3>
+        <ul class="legend">
+          <li><kbd>WASD</kbd> <kbd>Space</kbd> <kbd>Ctrl</kbd> jetpack · 120 s of air</li>
+          <li><kbd>E</kbd> at the hole climbs back in and tapes it shut</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub">at the helm</h3>
+        <ul class="legend">
+          <li><kbd>mouse</kbd> or arrow keys steer · hold <kbd>right</kbd> or <kbd>Q</kbd> to look around</li>
+          <li><kbd>W</kbd>/<kbd>S</kbd> or the wheel throttle, <kbd>A</kbd>/<kbd>D</kbd> roll, <kbd>X</kbd> all stop</li>
+          <li><kbd>left</kbd> or <kbd>Space</kbd> lasers (watch the heat) · <kbd>Shift</kbd> boost, burns more</li>
+          <li><kbd>L</kbd> autopilot to the nearest pump that sells your fuel</li>
+          <li><kbd>C</kbd> cruise drive: faster the emptier the space around you</li>
+          <li><kbd>T</kbd> autopilot to the map target, then get up and walk</li>
+          <li><kbd>J</kbd> warp: anywhere in under a minute, eats the tank</li>
+          <li><kbd>F</kbd> dock at a pump or a Bazaar shop</li>
+        </ul>
+        <h3 class="sub">drone</h3>
+        <ul class="legend">
+          <li><kbd>G</kbd> launch and recall · <kbd>left</kbd> or <kbd>B</kbd> drops a bomb</li>
+          <li>the bay prints a new bomb every 20 s while the drone is home</li>
+        </ul>
+      </div>
+    </div>
+    <div class="settings-inline">
+      <label>look sensitivity <input type="range" id="s-sens" min="0.3" max="2.5" step="0.05"><output id="s-sens-o"></output></label>
+      <label><input type="checkbox" id="s-invert"> invert vertical look</label>
+      <label><input type="checkbox" id="s-music"> hold music (N skips)</label>
+      <label><input type="checkbox" id="s-drone"> drone mode</label>
+      <label><input type="checkbox" id="s-track"> trackpad mode · Space fires, hold Q looks, double-tap W jogs</label>
+      <button class="linkish" data-open="settings">more settings</button>
+    </div>
+    <div class="stats" id="t-stats"></div>
+    <p class="fine" id="t-counts"></p>
+    <p class="fine touch-note">Needs a keyboard and a mouse.</p>
+    <footer class="credits">made by Gev · after Doodle Shooter · three.js · NASA Exoplanet Archive · OpenNGC (CC BY-SA 4.0) · Wikipedia</footer>
+  </div>
+</section>
+
+<!-- Pause -->
+<section class="overlay" id="pause" hidden aria-labelledby="p-h">
+  <div class="panel small">
+    <h3 id="p-h">PAUSED</h3>
+    <div class="stack">
+      <button data-act="resume">back to the ship</button>
+      <button data-open="map">map</button>
+      <button data-open="storage">storage</button>
+      <button data-open="settings">settings</button>
+      <button data-open="help">controls</button>
+      <button data-act="tow">call a tow (<span id="p-tow"></span>)</button>
+      <button data-act="logoff" class="warn">log off · re-rolls the enemy zones</button>
+    </div>
+    <p class="fine" id="p-note"></p>
+  </div>
+</section>
+
+<!-- Map -->
+<section class="overlay" id="map" hidden aria-labelledby="m-h">
+  <div class="panel wide">
+    <div class="maphead">
+      <h3 id="m-h">NAV MAP</h3>
+      <input type="search" id="m-search" placeholder="search galaxies, stars, sights..." autocomplete="off" aria-label="Search the map">
+      <div class="chips" id="m-chips" role="tablist">
+        <button data-f="near" class="on">near me</button>
+        <button data-f="galaxies">galaxies</button>
+        <button data-f="stars">stars here</button>
+        <button data-f="planets">planets here</button>
+        <button data-f="exo">known planets</button>
+        <button data-f="saved">saved</button>
+        <button data-f="sights">sights</button>
+        <button data-f="zones">enemy zones</button>
+        <button data-f="stations">fuel</button>
+        <button data-f="bazaar">bazaar</button>
+      </div>
+      <button class="x" data-close aria-label="Close map">close</button>
+    </div>
+    <div class="mapbody">
+      <ol class="results" id="m-list"></ol>
+      <div class="mapview">
+        <canvas id="m-canvas" width="640" height="460" aria-label="Top-down map"></canvas>
+        <label class="zoom">zoom <input type="range" id="m-zoom" min="3" max="10.8" step="0.05"></label>
+      </div>
+    </div>
+    <div class="sel" id="m-sel"></div>
+  </div>
+</section>
+
+<!-- Station / shop -->
+<section class="overlay" id="station" hidden aria-labelledby="st-h">
+  <div class="panel wide">
+    <div class="maphead"><h3 id="st-h"></h3><span class="credits-chip"><span id="st-cr"></span> cr</span><button class="x" data-close>undock</button></div>
+    <div id="st-body" class="stbody"></div>
+    <p class="fine" id="st-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- Storage -->
+<section class="overlay" id="storage" hidden aria-labelledby="sg-h">
+  <div class="panel">
+    <div class="maphead"><h3 id="sg-h">STORAGE</h3><button class="x" data-close>close</button></div>
+    <div id="sg-body"></div>
+    <p class="fine" id="sg-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- Settings -->
+<section class="overlay" id="settings" hidden aria-labelledby="se-h">
+  <div class="panel small">
+    <div class="maphead"><h3 id="se-h">SETTINGS</h3><button class="x" data-close>done</button></div>
+    <div class="form">
+      <label>look sensitivity <input type="range" id="s2-sens" min="0.3" max="2.5" step="0.05"></label>
+      <label><input type="checkbox" id="s2-invert"> invert vertical look</label>
+      <label><input type="checkbox" id="s2-music"> hold music</label>
+      <label>music volume <input type="range" id="s2-mv" min="0" max="1" step="0.05"></label>
+      <label>effects volume <input type="range" id="s2-sv" min="0" max="1" step="0.05"></label>
+      <label><input type="checkbox" id="s2-drone"> drone mode (G)</label>
+      <label><input type="checkbox" id="s2-boil"> wobbly pen lines</label>
+      <label>resolution <select id="s2-q"><option value="0.6">low</option><option value="0.8">medium</option><option value="1">full</option></select></label>
+      <label><input type="checkbox" id="s2-hints"> key hints in the corner</label>
+      <label><input type="checkbox" id="s2-track"> trackpad mode (Space fires, hold Q to look, double-tap W jogs, B bombs)</label>
+      <label>field of view <input type="range" id="s2-fov" min="55" max="100" step="1"><output id="s2-fov-o"></output></label>
+      <label><input type="checkbox" id="s2-wheel"> mouse wheel sets the throttle</label>
+      <label><input type="checkbox" id="s2-shake"> screen shake</label>
+      <label><input type="checkbox" id="s2-fps"> show frames per second</label>
+      <label><input type="checkbox" id="s2-blur"> pause when you switch windows</label>
+    </div>
+  </div>
+</section>
+
+<!-- Help -->
+<section class="overlay" id="help" hidden aria-labelledby="he-h">
+  <div class="panel">
+    <div class="maphead"><h3 id="he-h">CONTROLS</h3><button class="x" data-close>close</button></div>
+    <div id="he-body"></div>
+  </div>
+</section>
+
+<!-- Death -->
+<section class="overlay" id="dead" hidden aria-labelledby="d-h">
+  <div class="panel small">
+    <h3 id="d-h" class="red">LOST IN THE MARGIN</h3>
+    <p id="d-why"></p>
+    <div class="stack"><button data-act="respawn" class="start">patch up and fly again</button></div>
+  </div>
+</section>
+
+<!-- Crash -->
+<section class="overlay" id="crash" hidden aria-labelledby="c-h">
+  <div class="panel small">
+    <h3 id="c-h" class="red">THE PEN SKIPPED</h3>
+    <p>Something broke. Your ship was saved a few seconds ago.</p>
+    <pre id="c-err"></pre>
+    <div class="stack"><button data-act="reload">reload</button></div>
+  </div>
+</section>
+</main>
+
+<noscript><p class="noscript">Doodle Voyager is a game and needs JavaScript and WebGL.</p></noscript>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

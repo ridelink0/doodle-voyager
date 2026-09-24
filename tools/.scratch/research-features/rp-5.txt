@@ -1,0 +1,741 @@
+Community Requests to Frontier Developments : r/EliteDangerous
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/
+
+Skip to main content
+Community Requests to Frontier Developments : r/EliteDangerous
+Sign Up
+Log In
+Expand user menu
+Go to EliteDangerous
+r/EliteDangerous
+•
+7y ago
+ryan_m
+Community Requests to Frontier Developments
+Discussion
+Community Requests
+
+To Frontier Developments for Elite: Dangerous
+
+But we still had a lot of fun -
+
+please don't think this comes from hate.
+
+We bitch because we like you
+
+and we want you to be great!
+
+from "Goodbye Black Ops" by Miracle of Sound
+
+Preamble
+
+On September 19th, 2019, in response to another broken update a conference for content creators, influencers, community developers, and player group leaders was created. The purpose of the gathering is to push for a better game experience through publication of this joint request. We encourage Frontier Developments to allow volunteers to more readily contribute to the testing process as testing performed purely by Frontier has proven inadequate.
+
+All of us love Elite:Dangerous, and we feel that Elite: Dangerous is not what it could be. We don’t ask Frontier Developments for miracles. We don’t ask for new content and we don’t ask for a major shift in development. We simply want everything already delivered to be maintained properly.
+
+This document outlines primary issues and proposes changes we believe will ensure a better relationship between Frontier Developments and the Elite:Dangerous community.
+
+Primary Grievances
+
+The following bullet points are a simplified list of current grievances the community has with Frontier Developments and Elite: Dangerous.
+
+Lack of communication across the board which includes: direction of the game, future roadmap, bug fixes and more.
+
+Game-breaking bugs go unresolved for years at a time, primarily affecting multiplayer, but this is true across all aspects of the game regardless of mode.
+
+Gross balance issues in multiple areas that cement the divide between combat-focused players and everyone else.
+
+No Beta testing for most updates, with only ‘major’ releases seeing any kind of beta period while ‘minor’ releases go straight to live and always contain serious, game-breaking bugs that are immediately apparent during play.
+
+Implement a Permanent Test Server, and bring back Betas
+
+We feel that the implementation of a Permanent Test Server (PTS) where Frontier can actively test bug fixes and balance passes alongside players is the best way to ensure the quality of future releases.
+
+Defining Open Beta: A beta test period open to everyone with a minimum base copy of the Elite: Dangerous Game.
+
+Requested Test Server Guidelines
+
+Frontier should deploy all patches to the permanent test server prior to release on the live server.
+
+All changes applied to the test server should have their own patch notes separate from the live game releases so players volunteering to test can focus their efforts.
+
+Test server access outside of Open Betas can be limited to LEP (Lifetime Expansion Pass) holders or those who have purchased beta access for the current expansion cycle. This honors previous agreements/promises made during LEP sales.
+
+All releases both major and minor should have an open beta period of sufficient length (2 weeks minimum) to identify and correct all bugs introduced by the patch prior to going live. We understand hot fixes and other micro releases may not warrant a beta period.
+
+PTS should provide all the tools and features necessary to facilitate efficient testing (cheap/free engineering, reduced prices, etc). Players should not spend time acquiring resources they need to test the game.
+
+Improve Bug Reporting & Communication
+
+In addition to having a permanent test environment we would like to see improvements in the bug reporting process and feedback about what is being worked on. While the issue tracker was a major step in the right direction we would like to see the following changes implemented.
+
+The issue tracker should allow differentiation between bug reports for the live game and the test server.
+
+Allow developers to reply to the issues and ask for more information. Players are happy to help the process, if they are asked.
+
+We want to see a concerted effort to ensure that each update to the game resolves at least 10 of the top issues voted on by the community in the tracker. Furthermore, there should be a monthly forum post outlining the status and progress on these issues.
+
+Each patch should be accompanied with a complete and verbose changelog listing all changes. We do not ask to reveal new content beforehand, but all changes to the existing content must be clearly outlined. In the past, changes have gone undocumented and left the players to discover them through long and meticulous testing, leading to much frustration.
+
+Empower Frontier-Employed Community Managers
+
+The current utilization of community managers by Frontier is widely felt to be entirely in a Public Relations and media release manner. We would like to see the Community Management team used to represent the community to the company and the company to the community.
+
+We would like to see CM’s brought into the development process and have Frontier harness their interaction with us to help inform the development teams of the aspects of the game that need the most attention outside of bugs being tracked in the issue tracker.
+
+Support These Requests
+
+If you are a member of the community and want to show your support for these requests to frontier, please visit this petition and sign it with your Commander Name as shown in game. This will allow Frontier to compare the list of signatories on the petition to their databases directly without sharing any of your own personal data.
+
+https://www.ipetitions.com/petition/community-requests-to-fdev-for-elite-dangerous
+
+Contributing Parties
+
+The following Commanders who fill roles as community leaders, content producers or otherwise contributed to these requests.
+
+Elite Dangerous: Community
+
+Rhea
+
+Ryan_m17
+
+r/EliteDangerous
+
+StuartGT
+
+Anti-Xeno Initiative
+
+100.RUB
+
+OSA
+
+Necron99
+
+Coriolis
+
+Willyb321
+
+Fett_Li
+
+Galactic Academy
+
+Arsen Cross
+
+Galactic Combat Initiative
+
+Space Mage
+
+Kale Regan
+
+GXI
+
+KuzSan
+
+Elite Racers
+
+FatHaggard
+
+GGI
+
+Harry Potter
+
+Rinzler o7o7o7
+
+GalCop
+
+Content Creators
+
+Obsidian Ant
+
+Yamiks
+
+DigThat32
+
+CrimsonGamer99
+
+The Pilot
+
+Ph1lt0r
+
+Wickedlala
+
+Read more
+Archived post. New comments cannot be posted and votes cannot be cast.
+Share
+Sort by:
+Comments Section
+GrannyEye
+•
+7y ago
+
+C&P of my YouTube post:
+
+Over the past few weeks, there has been growing concerns within the Elite Dangerous community about various issues within and surrounding the game. Much of this has been sparked by the significant problems in the September Update. With this in mind, a number of members within the community set out to highlight these issues, and publicly request that Frontier address them. The attached document details the issues that are perceived to be of significant concern to the well being of the game itself.
+
+Whilst I was not personally involved in the writing or wording of this document, I do agree with and support the underlying message. To be entirely clear, the authors of this document have not written in order to make demands. There are no ultimatums or expressions of hostility. There is no naming and shaming. The issues expressed within the document come from a place of concern and love for the game. Everyone that contributed to the document enjoys Elite and appreciates what Frontier have created.
+
+The intention of the authors then, is simple. They wish Elite Dangerous to be the best it can be, and - in whatever way possible - desire to help Frontier achieve this. It is also an expression of concern for a number of recent as well as ongoing problems.
+
+Just like the authors of the document, I continue to be a massive fan of Elite Dangerous. Likewise I support and agree with many of their concerns.
+
+30 more replies
+Yamiks
+•
+7y ago
+
+o7
+
+Rapturesjoy
+•
+7y ago
+
+Why are you ramming stations?
+
+ryan_m
+•
+7y ago
+
+Why are you not ramming stations?
+
+3 more replies
+6 more replies
+1 more reply
+David_Trest
+•
+7y ago
+
+The public beta is really simple. Take a similar path that EVE Online did: make it accessible to anyone who wants to go through the steps to run it (really, not hard, just the steps to install a second client in parallel), periodically import production character data over, and set the pricing of everything to 1Cr. Or just create new characters and give everyone commands to increase rank/money as appropriate so they can test whatever they want. It quickly becomes a case of infinite wrenches, which allows for a lot of bugtesting and balance-fixing.
+
+22 more replies
+[deleted]
+•
+7y ago
+
+Folks,
+
+I'd advise against signing this petition until it's moved to another petition hosting site that's less obscure, and onto a more well-known platform such as "change.org" and ask yourselves why it's being hosted on a more obscure site like iPetitions...
+
+Here's why:
+
+1st point: SDC is asking this:
+
+If you are a member of the community and want to show your support for these requests to frontier, please visit this petition and sign it with your Commander Name as shown in game. This will allow Frontier to compare the list of signatories on the petition to their databases directly without sharing any of your own personal data.
+
+Off the bat this makes no sense because anyone can put any CMDR name you want, as there's no authentication. This means that even if FDev cared enough to compare anything against their database, it would still be meaningless. SDC isn't dumb enough to believe this, so they have some other reason they want to be very sure that you put your CMDR name in correctly. What is that reason? Well look at that last line:
+
+without sharing any of your own personal data. (This isn't true... keep reading)
+
+This leads to point #2: let's take a look at the privacy policy on ipetitions:
+
+When you sign a petition powered by iPetitions, you will be asked for your name, and you may be asked for your email address as well as certain demographic information. Some of this information may be optional, but we encourage you to provide it as it will allow us to better customize your experience. In addition, we store your IP address in our database. The information you provide and your IP address are stored on our servers but can also be accessed by the petition host who is a member of iPetitions and who has agreed to the terms of this privacy policy. As with the information you supply iPetitions, hosts will be asked not to sell, share, or rent this information with any other company or individual except in an aggregated form.
+
+Important line here: ...also be accessed by the petition host
+
+To me this looks like if you sign your CMDR name, SDC gets that name plus your email and IP address to link it to, Essentially granting the ability to build a database of players real IP's & personal info. In a nutshell, this opens up a host of concerning possibilities. Your email can be used to look you up on many platforms (such as social media, etc), Your general location/ISP can be identified, all game instances are peer-to-peer, meaning your IP can be used to identify your alts, manipulate connections as an exploit in PvP, etc. While there isn't a whole lot a single IP can do except locate a regional hop from that persons ISP, that regional data, in conjunction with the rest of the personal info that's being ask is enough to potentially become personally identifiable and crosses the line into becoming dangerous, and opens yourself up to potential doxxing.
+
+While I agree with the points made in principal, I cannot sign this petition in it's current form, and advise people who care about their privacy to avoid doing so also. I'd also ask that this petition be moved to change.org or somewhere with a less invasive privacy policy.
+
+19 more replies
+4sonicride
+•
+7y ago
+•
+Edited 7y ago
+
+edit: actually there are a few comments being made. They are a little all over and scrambled through a lot of comments, but I'll try and link individual comments and context by frontier here.
+
+All of these are still in the first initial reply thread.
+
+u/ZacAntonaci_Frontier's comments
+
+Zac's initial reply thread
+
+A reply about current priorities
+
+Yamiks and a reply from zac
+
+Another reply
+
+Another reply
+
+Reply to an EDDI dev
+
+double edit: I can't believe I have to even say this, but sending frontier employees personal attacks and death threats is super uncool and will get you an immediate ban from this community. Make your criticism as pointed and as loud as you want, but attack the problems you have, not the people.
+
+CMDRTheDarkLord
+•
+7y ago
+
+I've participated in some previous public Betas, and I think there have been differing levels of success. Anyone who works in software development knows that for QA to work, you have to target it.
+
+So, take, for example the Collector Limpet bug in the September update: I can work with the notion that no QA tester validated the collector mechanic. With a Public Test Server, FD could approach a dedicated miner (Inara has a top-10 for this, by the way) and give them a simple task - "We've updated the build on the test server, could you please check that mining still works?" Any semi-proficient miner would have discovered that collectors were broken in the first 10 minutes of their session.
+
+Frontier has the ability to place players in specific locations, and to modify finances, resources, shipyards, etc. I know this because I participated in a network-stress-test exercise where this was done specifically. Frontier asked the players to check connectivity under load. This simple "can you test this for us?" approach allows the players to find things that are wrong, and to work with the developers, rather than slagging them off.
+
+In the beta for the last round of Beyond updates, there were stages, and the last of these was 2 weeks (IIRC) to test the BGS changes. But this could have been much better organised (an action which is as much on the player faction owners as it is on FDev themselves). "Test the BGS changes" is not a SMART objective.
+
+There's a powerful resource at Frontier's disposal. Smart people with time, who have invested their time in the game, and who are vocal about making it better. It's a shame that this resource is not being better utilised.
+
+7 more replies
+KeniEcherie
+•
+7y ago
+
+I agree with 99% of this. As a QA Tester and developer myself, I am appalled at the amount of game breaking bugs that I've seen deployed in my single year of playing. I can't imagine what it had been like for those who have played for years.
+
+And the Fdev response to this is just pathetic. Instead of getting mad at us and trying to make your company look like gods, actually listen to the community.
+
+Signed and passing on the link to others.
+
+23 more replies
+NecroBones
+•
+7y ago
+•
+Edited 7y ago
+
+Usually I'm not too critical of how a game's release process works, as long as it gets resolved and remains reasonably playable during that release cycle. But having said that, here's what really bugs me abut how Frontier does it, and this was touched on by OP:
+
+Glaring bugs persist for years.
+
+Patch notes are often wrong about bugfixes. The notes will sometimes say that something is fixed, when it either was only partially fixed, or wasn't fixed at all. And other bugs will be stealth fixed without being in the patch notes, which wouldn't bother me normally, except that it's a stark contrast to those that are mentioned despite not being resolved.
+
+On point #2, I can think of several examples at any given time. For instance, from Chapter 4 release in December, there are many surface life forms that do not scan into the codex, even though this was supposedly fixed. We're approaching a year since release, and have had two big updates as opportunities to roll this in. And the FSS still doesn't show zoomed-in orbit lines in VR, also unaddressed since December. These aren't game-breaking, but they're certainly game-impacting, and since they're part of a major gameplay overhaul that was the focus for the year, you would think that there would be some priority to cleaning up the outstanding issues that limit its functionality.
+
+2 more replies
+tonechild
+•
+7y ago
+
+"The product errors reflect the organizational errors" Elon Musk
+
+CMDR_Rivertide
+•
+7y ago
+
+Frontier, this is not just about the September update. This is about every update.
+
+Please look critically at yourselves before you get defensive with us.
+
+1 more reply
+Askorti
+•
+7y ago
+
+So, I had a quick look through the threads, and it seems to me like all that Zac's communication with the community here managed to accomplish was only strengthen the feeling that they don't (want to) hear our grievances. All that I really saw from Zac here was deflecting the criticism people raised and trying to act like there's no problems. Like we, the players, are in the wrong and unreasonably demand improvement to things that are fine and dandy. With that attitude I really don't see how this game can improve in the future.
+
+CZdigger146
+•
+7y ago
+
+You know how to communicate properly? Take a look at Factorio devblog (FFF). Read it if you have 5 mins, it's on Steam and Factorio forums
+
+Weekly devblogs written by anyone who has done something that week. Texture guy has been working on new train texture? Sure buddy, put it in the devblog! Bugfix guy found the cause of this bug? Write that down! Hired a new person? Going to gamescom? Random stats and trivia? Changing color of this specific pixel?
+
+WRITE EVERYTHING! PEOPLE WILL ALWAYS READ IT! PLAYERS CARE
+
+Also let players comment on the devblogs (with a voting system like on reddit) and the devs will read the comments and reply. That is called feedback, people! As long as people provide constructive criticism and the devs will have the balls to hear it and change something, the system will work
+
+Also notice that Factorio has the best user rating on Steam after portal And is praised for it's amazing devs (my phone keyboard even suggests me the words "devs" and "devblog" after writing "Factorio"). Just sayin that a lot of other devs should take a lesson from Factorio devs (Gaijin, Frontier, Wargaming, Blizzard are on my mind rn)
+
+Tldr give us devblogs at least, show us what you're working on!
+
+6 more replies
+StuartGT
+•
+7y ago
+Implement a Permanent Test Server
+
+We feel that the implementation of a Permanent Test Server (PTS) where Frontier can actively test bug fixes and balance passes alongside players is the best way to ensure the quality of future releases.
+
+Good news is it looks like FDev are already making inroads into that, according to this Steam depot
+
+9 more replies
+[deleted]
+•
+7y ago
+
+I don’t have a lot more to add to the discussion, but if FD is reading this, your game has an incredible amount of potential. Even in the games current state, it is still more than salvageable. Please listen to the community, continue to expand the gameplay, and stop wasting the games potential.
+
+Toyotale
+•
+7y ago
+•
+Edited 7y ago
+
+Unfortunately I feel frontier are just going to sweep this under the rug and move on knowing there is little consequence for doing so. After all they already have our money all they need to do is to attract new players and take their money until they realize what’s going on and then they rinse and repeat. Plus they probably know we love and commit too much to the game (ex: player groups) to abandon it. There’s a reason why there was outrage from the community in the past and little action was taken. Remember Frontier is a business so if they got your money they probably accomplished what they want.
+
+1 more reply
+crustaceomutoid
+•
+7y ago
+
+“You guys all have phones, right?” #fdev #disconnected
+
+CMDR_Hoodathunk
+•
+7y ago
+
+u/ZacAntonaci_Frontier
+
+Your response is beyond disappointing.
+
+Did it occur to you that this 'Conference' is resorting to this 'so-called tactic' because they have individually and collectively exhausted all other options and have reached a point of peak frustration.
+
+As an EDDI co-developer, while I know there are others in the EDCD community who have reached a level of peak frustration, I will only speak for myself in saying that FDEV's poor engagement and overall ambivalence for a community of evangelists, who give freely of their time to enhance the experience and immersion for players, is confusing and hurtful.
+
+What am I saying? The communication breakdown is not isolated. It's permeated the entirety of FDEV's culture and 'thought leaders' in the community are sincerely telling you something has to change.
+
+You're either part of the problem or part of the solution, Zac. Which are you?
+
+24 more replies
+CarolTheCleaningLady
+•
+7y ago
+
+Beta access should not be a paid requirement. You would only turn people away from beta testing if they have to cough up cash.
+
+Look at the way SC does their PTU access, you opt in and it copies over a copy of your account to the test server to test.
+
+8 more replies
+Nemisis_Wolf
+•
+7y ago
+
+This game has so much history to it, no other game can claim to have a history as rich as Elite. It has the possibility of being the greatest franchise ever! You could literally walk into Netflix HQ and get a fantastic TV series made from this game, it has everything alien threat, political power play, ancient legends of secret locations of great power, action, intrigue and the biggest set any TV series could ever hope for! The Milky Way Galaxy! Where anything could happen.
+
+It also that the biggest plus point any franchise could every ask for! A Huge And devoted fan base willing to do anything to improve and promote this game above anything anyone could have hoped for.
+
+Unfortunately it has the one of the worst Community response teams available!
+
+I sit here totally insulted and in total disbelief that yet again for the umpteenth time when a serious issue has arisen Frontier developments only and i do mean only response to what clearly is a development team failure is to blame the community and claim from their ivory tower! WE ARE PERFECT WE HAVE DONE NOTHING WRONG WE ARE ALREADY DOING EVERYTHING YOU SAY WE DON'T! THE ONLY PROBLEM IS THE COMMUNITY BULLYING US WHEN WE HAVE DONE NOTHING WRONG AND NOT PLAYING THE GAME LIKE YOU'RE SUPPOSED TO! BULLSHIT!!!
+
+We give you free updates (no you don't we pay for those update in additionally accounts, we pay for those updates by buying ARX and gladly paying literally in some cases hundreds of pounds in cosmetics per commander so we can get a name on the side of our ships and a different colour!)
+
+WE LOVE ELITE! BUT YOU FDEV ARE KILLING IT SLOWLY!
+
+I take it David Braben doesn't come in to say hello too often or when he does everythings made to look ship shape so he doesn't see what you doing to his legacy!
+
+I played Elite original bbc version and it was the most memorable game i ever played back in my school days and i was overjoyed to return to it again in his current form 30 years later. But you have serious issues in your team, you can't honestly believe that you're testing and QA/QC departments are doing thier job properly. When honestly 2 joe bloggs players could have sat and played the game for a couple of hours and found probably 90% of the bugs your QA team didn't, in what i imagine you will tell us is hundreds of hours of testing! Pathetic!!
+
+I literally can't write anymore I'm so angry at being spoken to so condescendingly.
+
+1 more reply
+IHaTeD2
+•
+7y ago
+
+I can totally sign this.
+Especially the lack of communication bothers me personally. I understand that things can change, re-prioritize or even get scrapped entirely, but I just feel there's no real info on what is going on at the studio.
+Yes we do get a roadmap, but it is usually just the mainline features and thus very rough. A lot of the updates had "QoL features" that I were looking forward to much more than the main feature itself that were completely unknown until very shortly before the release.
+I also hugely miss the whole development insight. The last big one was back with the Horizon dev video "How to Make a Real World", and before that we had all those dev diary / progression videos. It just helped to get an idea of what is being worked on, what to look forward to, regardless of if it makes it for the planned update or not.
+Right now on the other hand? Ice planet overhaul? Scrapped? Postponed? We have no idea. We saw a target rendering art, a simple ice shader, and that was it.
+Especially in a content drought like we have it right now, which affects especially us long term players, I feel this would be a lot more motivating for us to actually stay involved with the game instead of waiting for something to eventually happen at some point. Because right now it is not just the game itself that feels all the same, but also the development of it (and this is not a complaint about focusing a couple updates on the new player experience - I totally support that).
+
+1 more reply
+epicbubbleisepic
+•
+7y ago
+
+It is disheartening to see FDev staff actively deflecting any kind of criticism aimed at them.
+
+I really wish FDev was more consumer focused as opposed to just shafting their player base to please stake holders.
+
+Elite had the potential to be an amazing game, shame on you FDev, shame on you.
+
+I guess those glassdoor reviews are accurate...
+
+2 more replies
+[deleted]
+•
+7y ago
+
+I do think that this criticism of Frontier is valid. I also feel that Frontier is fortunate to have passionate fans of the game that care this much and want to see the game get better.
+
+If I was in Frontier’s shoes I would carefully consider what happened here today, why it happened, and figure out how to prevent these kinds of frustrations from boiling over again. I’d take this constructive criticism to heart and really do some soul searching as to what aspects of the operation of Elite Dangerous is no longer working.
+
+Because it clearly is not longer working.
+
+1 more reply
+ZacAntonaci_Frontier
+•
+7y ago
+
+Hi everyone,
+
+I wanted to address these comments personally and directly as they relate to, and make claims about, many different teams within the studio and how they work. It’s going to be a long old post but I wanted to address as many of the points, and the general sentiment of the post, as thoroughly as possible.
+
+I think the first thing to say is that I understand that this list of grievances comes from a place of desire and wanting the game to be as awesome as possible. I should also remind everyone that we, as a studio, also have the same goal. With that being said, allow me to address the feedback, grievances and requests being made.
+
+Lack of communication
+
+“Lack of communication, relating to direction of the game, future roadmap, bug fixes and more”
+
+Let’s start with the lack of roadmap and future game discussion. It has been the case since Elite Dangerous launched that we have, in my opinion, been open and honest with the future direction of the game. Horizons was communicated what the core features were up to two years ahead. Beyond shared a full year’s roadmap of free updates at Frontier Expo, after Beyond we shared the next years content plan (also free) leading up to Fleet Carriers this December and also gave some understanding behind the changes to those updates, as we directed some of the team’s efforts towards a larger 2020 paid update.
+
+To me, this shows us communicating often and transparently about the future of the game. While there may be some examples of game studios giving roadmaps even further in advance, I feel this cadence is more than you would often find in other games communities.
+
+But why aren’t we sharing information further in advance? The main reason is to avoid content changes.
+
+It’s no secret that games change regularly while in development. It’s a healthy process and an important part of making a game. While some people are more than happy with changing content plans, we know that this is often not the case on a wider scale. Fleet Carriers and Ice Planets are a good example where there was a large amount of disappointment when they were removed from the (still very large) Beyond - Chapter Four update last December. These are the reasons that we aim (where possible) to ensure that what we communicate gives our community enough future vision to see where the next period of development will go, but ensures that we believe that it is achievable and can be delivered within that time frame.
+
+Digging a little deeper, it’s then about each specific update. We then look at releasing information and updates when they are far enough into development that we have a good level of confidence (for the same reasons above) and that we can show them in all their glory. Rather than me telling everyone what the 2020 update is in this forum post, I’m sure that people would rather have the update announced properly where they can see and be excited for what’s being worked on when it’s ready to be seen.
+
+A secondary benefit to announcing content when it’s able to be shown rather than discussing it in smaller updates is that it helps make the biggest impact to people who have yet to try Elite Dangerous. It is important to remember that Elite Dangerous is a single price purchase. After that point, players are free to enjoy the game on an ongoing basis without any additional spend, despite the ongoing costs to manage, host and run the game. This means that being able to wow people with a new trailer when we’re ready to show the content, helps bring new players to the game, build the community and support the ongoing development for the long term.
+
+“Empower Frontier employed Community Managers”
+
+The post mentions that Frontier Community Management is only a PR or media capacity. While there is a level of support for new announcements and updates, their roles go so very far beyond that. Will and the community team work incredibly hard to ensure that the community are supported. As an example, during the September Update, you will have seen posts from the Community team until well gone midnight in their local time, in order to ensure that the information is relayed clearly. This is just one example of the community team dedicating their time to ensure that their role as a conduit between players and studio is serviced as best as it possibly can. Whether it is jumping in this weekend’s charity livestream with CMDR Plater in their own time, hosting 24-hour charity streams, taking time out of hours to support and communicate issues as they arise, attending and hosting events like Lavecon, Fantasticon, Gamescom, etc they are always available and committed to supporting the community. In addition to this they also ensure that feedback and thoughts are clearly communicated through the business. They take and compile detailed weekly reports on conversations across all areas of the community which include the most discussed topics and threads, reviews of comments on all platforms, and a number of other data points to check the widest possible health of the community and keep an eye on hot topics. These are shared into development. Community, Development and the rest of the studio work very closely together.
+
+318 more replies
+People also ask about section
+People also ask about
+Tools for product roadmap prioritization
+Community feedback for game developers
+Best ships for exploration in Elite Dangerous
+Top tips for new players in Elite Dangerous
+Best locations for mining in Elite Dangerous
+More posts you may like
+Related posts
+The most expensive simple advice
+r/SaaS
+•
+4mo ago
+The most expensive simple advice
+1.3K upvotes · 265 comments
+December 3rd Community Update
+r/Stadia
+•
+7y ago
+December 3rd Community Update
+409 upvotes · 249 comments
+They have no roadmap because they don’t know what to do
+r/DestinyTheGame
+•
+7mo ago
+They have no roadmap because they don’t know what to do
+2.6K upvotes · 725 comments
+Not every game needs a roadmap and constant new content
+r/truegaming
+•
+7y ago
+Not every game needs a roadmap and constant new content
+940 upvotes · 140 comments
+Netflix's top shows have been losing 30-70% of their audience between seasons 1 and 2. Executives are trying to figure out why.
+r/wallstreetbets
+•
+3mo ago
+Netflix's top shows have been losing 30-70% of their audience between seasons 1 and 2. Executives are trying to figure out why.
+15K upvotes · 4.5K comments
+Open letter from Powerplay community staff to Frontier
+r/EliteDangerous
+•
+1mo ago
+Open letter from Powerplay community staff to Frontier
+55 upvotes · 182 comments
+Advice to SaaS Founders- Build a Business Not a Product
+r/SaaS
+•
+5mo ago
+Advice to SaaS Founders- Build a Business Not a Product
+36 upvotes · 30 comments
+🗳️ Product Feedback for Notion 🛎️
+r/Notion
+•
+2y ago
+🗳️ Product Feedback for Notion 🛎️
+59 upvotes · 258 comments
+potential direction of Elite Dangerous for 2026
+r/EliteDangerous
+•
+10mo ago
+potential direction of Elite Dangerous for 2026
+21 upvotes · 77 comments
+New Roadmap
+r/Stormgate
+•
+2y ago
+New Roadmap
+438 upvotes · 190 comments
+Gold tools don't seem worth it
+r/AnimalCrossing
+•
+7y ago
+Gold tools don't seem worth it
+200 upvotes · 23 comments
+Is Julia Programming Language Destined to Fade Away ?
+r/Julia
+•
+3y ago
+Is Julia Programming Language Destined to Fade Away ?
+113 upvotes · 92 comments
+Help me understand: Mexican Independence Day celebrations
+r/chicago
+•
+3y ago
+Help me understand: Mexican Independence Day celebrations
+476 upvotes · 709 comments
+What’s the worst going away present you gave your company after you quit?
+r/sysadmin
+•
+3y ago
+What’s the worst going away present you gave your company after you quit?
+184 upvotes · 367 comments
+I finally "get" Exploration!
+r/EliteDangerous
+•
+9d ago
+I finally "get" Exploration!
+253 upvotes · 32 comments
+I analyzed the top 25 most upvoted posts since Marathon came out to see if the community gatekeeps or ignores the game's flaws
+r/Marathon
+•
+5mo ago
+I analyzed the top 25 most upvoted posts since Marathon came out to see if the community gatekeeps or ignores the game's flaws
+294 upvotes · 245 comments
+Frontier Scum campaign- finally complete!
+r/TTRPG
+•
+12d ago
+Frontier Scum campaign- finally complete!
+52 upvotes · 6 comments
+Road Roadmap for the second half of 2026 and early 2027.
+r/PSO2NGS
+•
+3mo ago
+Road Roadmap for the second half of 2026 and early 2027.
+32 upvotes · 42 comments
+So it begins
+r/EliteDangerous
+•
+9d ago
+So it begins
+76 upvotes · 16 comments
+What’s FDev have left for us this year?
+r/EliteDangerous
+•
+13d ago
+What’s FDev have left for us this year?
+71 upvotes · 133 comments
+The future of online genealogy - is Facebook-ization and/or gamification inevitable?
+r/Genealogy
+•
+3y ago
+The future of online genealogy - is Facebook-ization and/or gamification inevitable?
+52 upvotes · 79 comments
+How to find uncharted territory in 2026?
+r/EliteDangerous
+•
+5mo ago
+How to find uncharted territory in 2026?
+5 upvotes · 37 comments
+I am so sick of professional negligence being blindly tolerated in this ecosystem [Rant]
+r/salesforce
+•
+2y ago
+I am so sick of professional negligence being blindly tolerated in this ecosystem [Rant]
+216 upvotes · 199 comments
+Frontier, please do this for all ships! (this is an image, not a video^^)
+r/EliteDangerous
+•
+5mo ago
+Frontier, please do this for all ships! (this is an image, not a video^^)
+358 upvotes · 88 comments
+Notion, we need to talk: without an offline mode, no one will take the platform seriously.
+r/Notion
+•
+6y ago
+Notion, we need to talk: without an offline mode, no one will take the platform seriously.
+5.7K upvotes · 222 comments
+VIEW POST IN
+简体中文
+See more
+Public
+TOP POSTS
+Reddit
+reReddit: Top posts of September 30, 2019
+Reddit
+reReddit: Top posts of September 2019
+Reddit
+reReddit: Top posts of 2019
+Home
+Popular
+News
+Explore
+Best of Reddit
+Best of Reddit in Portuguese
+Best of Reddit in German
+Reddit Rules
+Privacy Policy
+User Agreement
+Your Privacy Choices
+Accessibility
+Reddit, Inc. © 2026. All rights reserved.
+
+Join the most real place on the internet
+
+ Sign in with Apple
+Continue with Phone Number
+Continue with Email
+
+By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.
+
+LINKS
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f1zyqm5/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f1zxpbe/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20ldz3/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20myo7/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f2015ik/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f231gi2/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f2010ev/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/f1zzujj/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/f1zzuwi/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/f2061uh/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/f205a0n/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/f202lij/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/f207348/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/f20jiyz/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f205us8/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f206ldp/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f203eub/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f24cvrx/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f21ety8/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f23e9d3/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f21z9t6/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f1zy70x/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20lz7g/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20k13x/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f2358tp/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20a7c9/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f206nnk/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20syq7/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20ars2/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f23ev7c/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f20zveh/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/comment/f1zzujj/
+https://www.reddit.com/r/SaaS/comments/1tvm0uh/the_most_expensive_simple_advice/
+https://www.reddit.com/r/Stadia/comments/e5nb2n/december_3rd_community_update/
+https://www.reddit.com/r/DestinyTheGame/comments/1r4hzme/they_have_no_roadmap_because_they_dont_know_what/
+https://www.reddit.com/r/truegaming/comments/bna25v/not_every_game_needs_a_roadmap_and_constant_new/
+https://www.reddit.com/r/wallstreetbets/comments/1uoiivp/netflixs_top_shows_have_been_losing_3070_of_their/
+https://www.reddit.com/r/EliteDangerous/comments/1vph0zo/open_letter_from_powerplay_community_staff_to/
+https://www.reddit.com/r/SaaS/comments/1t6czzl/advice_to_saas_founders_build_a_business_not_a/
+https://www.reddit.com/r/Notion/comments/1gk8qjl/product_feedback_for_notion/
+https://www.reddit.com/r/EliteDangerous/comments/1ovnwzg/potential_direction_of_elite_dangerous_for_2026/
+https://www.reddit.com/r/Stormgate/comments/1fijtit/new_roadmap/
+https://www.reddit.com/r/AnimalCrossing/comments/fvqn83/gold_tools_dont_seem_worth_it/
+https://www.reddit.com/r/Julia/comments/18s0ubz/is_julia_programming_language_destined_to_fade/
+https://www.reddit.com/r/chicago/comments/16ks3s7/help_me_understand_mexican_independence_day/
+https://www.reddit.com/r/sysadmin/comments/176m5bk/whats_the_worst_going_away_present_you_gave_your/
+https://www.reddit.com/r/EliteDangerous/comments/1wfoy5p/i_finally_get_exploration/
+https://www.reddit.com/r/Marathon/comments/1t3rbka/i_analyzed_the_top_25_most_upvoted_posts_since/
+https://www.reddit.com/r/TTRPG/comments/1wcmgcb/frontier_scum_campaign_finally_complete/
+https://www.reddit.com/r/PSO2NGS/comments/1ujoaej/road_roadmap_for_the_second_half_of_2026_and/
+https://www.reddit.com/r/EliteDangerous/comments/1wfon2p/so_it_begins/
+https://www.reddit.com/r/EliteDangerous/comments/1wcilgu/whats_fdev_have_left_for_us_this_year/
+https://www.reddit.com/r/Genealogy/comments/19bdwm8/the_future_of_online_genealogy_is_facebookization/
+https://www.reddit.com/r/EliteDangerous/comments/1soadvo/how_to_find_uncharted_territory_in_2026/
+https://www.reddit.com/r/salesforce/comments/1gqh0l9/i_am_so_sick_of_professional_negligence_being/
+https://www.reddit.com/r/EliteDangerous/comments/1sx4wwd/frontier_please_do_this_for_all_ships_this_is_an/
+https://www.reddit.com/r/Notion/comments/kqlfoz/notion_we_need_to_talk_without_an_offline_mode_no/
+https://www.reddit.com/r/EliteDangerous/comments/dbbxeb/community_requests_to_frontier_developments/

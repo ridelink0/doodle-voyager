@@ -1,0 +1,268 @@
+Steam Hardware & Software Survey
+https://store.steampowered.com/hwsurvey/Steam-Hardware-Software-Survey-Welcome-to-Steam
+
+STORE
+COMMUNITY
+ABOUT
+SUPPORT
+Install Steam sign in  |  language
+Steam Hardware & Software Survey: August 2026
+
+Steam conducts a monthly survey to collect data about what kinds of computer hardware and software our customers are using. Participation in the survey is optional, and anonymous. The information gathered is incredibly helpful to us as we make decisions about what kinds of technology investments to make and products to offer.
+
+PC VIDEO CARD USAGE BY MFG
+MARCH 2025 - AUGUST 2026
+0.41%
+
+
+8.03%
+
+
+18.68%
+
+
+72.88%
+OTHER
+INTEL
+AMD
+NVIDIA
+CLICK FOR MORE INFO
+DX10/11/12 SYSTEMS
+MARCH 2025 - AUGUST 2026
+57.05%
+
+
+33.85%
+
+
+3.14%
+
+
+1.56%
+
+
+1.04%
+
+
+3.35%
+DX12GPU & WIN10
+DX12GPU & PRE-WIN10
+DX11GPU & VISTA+
+DX10GPU & VISTA+
+DX10/11/12GPU & XP
+OTHER
+CLICK FOR MORE INFO
+PC PROCESSOR USAGE BY MANUFACTURER
+MARCH 2025 - AUGUST 2026
+46.47%
+
+
+53.53%
+AMD
+INTEL
+CLICK FOR MORE INFO
+
+
+PC NUMBER OF CPUS PER COMPUTER
+MARCH 2025 - AUGUST 2026
+28.65%
+
+
+28.08%
+
+
+27.39%
+
+
+12.84%
+
+
+3.04%
+OTHER CPUS
+8 CPUS
+6 CPUS
+4 CPUS
+2 CPUS
+CLICK FOR MORE INFO
+MAC HARDWARE OWNERSHIP
+MARCH 2025 - AUGUST 2026
+0.11%
+
+
+0.19%
+
+
+1.03%
+
+
+2.90%
+
+
+12.29%
+
+
+17.13%
+MACBOOK
+MACPRO
+MACMINI
+IMAC
+MACBOOKAIR
+MACBOOKPRO
+VR HEADSETS
+MARCH 2025 - AUGUST 2026
+9.87%
+
+
+2.08%
+
+
+2.24%
+
+
+2.39%
+
+
+3.39%
+
+
+4.48%
+
+
+11.07%
+
+
+11.50%
+
+
+26.01%
+
+
+26.97%
+OTHER
+WINDOWS MIXED REALITY
+SONY PS VR2
+HTC VIVE
+OCULUS RIFT S
+PICO 4
+VALVE INDEX HMD
+META QUEST 3S
+META QUEST 3
+OCULUS QUEST 2
+
+
+   Windows, Mac and Linux Use the dropdown to filter by platform or view combined stats.
+August 2026 (click line item to see more detail)
+ITEM
+MOST POPULAR
+PERCENTAGE
+CHANGE
+OS Version
+Windows 11 64 bit
+70.97%
++0.71%
+
+
+System RAM
+16 GB
+41.20%
++0.23%
+
+
+Intel CPU Speeds
+2.3 Ghz to 2.69 Ghz
+19.98%
++0.07%
+
+
+Physical CPUs
+8 cpus
+28.04%
++0.19%
+
+
+Video Card Description
+NVIDIA GeForce RTX 3060
+3.76%
++0.05%
+
+
+VRAM
+16 GB
+26.92%
++1.02%
+
+
+Primary Display Resolution
+1920 x 1080
+50.52%
+-0.58%
+
+
+Multi-Monitor Desktop Resolution
+3840 x 1080
+47.62%
+-0.44%
+
+
+Language
+English
+38.25%
+-1.36%
+
+
+Free Hard Drive Space
+100 GB to 249 GB
+23.98%
++0.44%
+
+
+Total Hard Drive Space
+Above 1 TB
+49.51%
++0.18%
+
+
+VR Headsets
+Oculus Quest 2
+26.97%
++0.30%
+
+
+Other Settings
+LAHF / SAHF
+98.15%
++0.13%
+
+
+
+
+
+
+
+© 2026 Valve Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries.
+VAT included in all prices where applicable.
+
+STEAM
+About Steam
+Steam SSA
+Steamworks
+Steam Distribution
+Gift Cards
+VALVE
+About Valve
+Jobs
+Hardware
+Recycling
+LEGAL
+Privacy
+Accessibility
+Notices & Policies
+Cookies
+Refunds
+MORE
+Get Steam
+Get Mobile Apps
+Get Support
+My Account
+
+LINKS

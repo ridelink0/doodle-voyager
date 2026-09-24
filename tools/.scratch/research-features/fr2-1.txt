@@ -1,0 +1,93 @@
+Public Statistics - Dashboards - Grafana
+https://grafana.fuelrats.com/d/H-iTUTPmz/public-statistics?orgId=2&from=now-1y&to=now&timezone=utc
+
+Skip to main content
+Grafana
+
+Home
+
+Starred
+
+Dashboards
+
+Alerting
+
+Dashboards
+Public Statistics
+Search...
+ctrl+k
+Sign in
+Last 1 year
+UTC
+Cancel
+All Time Statistics
+title
+Total Successful Rescues
+173159
+Average Rescues/day
+42.1
+Horizons Rescues/day
+35.8
+PS Rescues/day
+5.1
+All Time Success Rate
+96.39%
+Registered Rats by Platform
+pc
+19193
+ps
+2711
+xb
+3794
+Series color
+Name
+Last *
+pc
+19193
+ps
+2711
+xb
+3794
+Total Failed Rescues
+6476
+XB Rescues/day
+6.7
+Odyssey Rescues/day
+13.3
+PC Rescues/day
+32.8
+Statistics over time (Default - Last 1 year)
+title
+Successful Rescues for Period
+6545
+Average Rescues/day for Period
+17.9
+Average Horizons Rescues/day for Period
+6.0
+Average PS Rescues/day for Period
+2.3
+Success Rate for Period
+95.72%
+Rescues by System - Top 5
+Series color
+Name
+Value
+ALPHA CENTAURI
+82
+DROMI
+48
+36 OPHIUCHI
+43
+CAPRICORNI SECTOR GI-R A5-0
+32
+HIP 97950
+28
+Failed Rescues for Period
+Average XB Rescues/day for Period
+Average Odyssey Rescues/day for Period
+Average PC Rescues/day for Period
+Successful Rescues by Platform
+Rescues by Outcome
+Code Red Rescue results
+
+LINKS

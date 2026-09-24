@@ -1,0 +1,497 @@
+Major programming faults discovered in Starfield's code by VKD3D dev - performance issues are *not* the result of non-upgraded hardware : r/Starfield
+https://www.reddit.com/r/Starfield/comments/16ewupt/major_programming_faults_discovered_in_starfields/
+
+Skip to main content
+Major programming faults discovered in Starfield's code by VKD3D dev - performance issues are *not* the result of non-upgraded hardware : r/Starfield
+Sign Up
+Log In
+Expand user menu
+Go to Starfield
+r/Starfield
+•
+3y ago
+LavaMeteor
+Major programming faults discovered in Starfield's code by VKD3D dev - performance issues are *not* the result of non-upgraded hardware
+Discussion
+
+I'm copying this text from a post by u/nefsen402 , so credit for this write-up goes to them. I haven't seen anything in this subreddit about these horrendous programming issues, and it really needs to be brought up.
+
+Vkd3d (the dx12->vulkan translation layer) developer has put up a change log for a new version that is about to be (released here) and also a pull request with more information about what he discovered about all the awful things that starfield is doing to GPU drivers (here).
+
+Basically:
+
+Starfield allocates its memory incorrectly where it doesn't align to the CPU page size. If your GPU drivers are not robust against this, your game is going to crash at random times.
+
+Starfield abuses a dx12 feature called ExecuteIndirect. One of the things that this wants is some hints from the game so that the graphics driver knows what to expect. Since Starfield sends in bogus hints, the graphics drivers get caught off gaurd trying to process the data and end up making bubbles in the command queue. These bubbles mean the GPU has to stop what it's doing, double check the assumptions it made about the indirect execute and start over again.
+
+Starfield creates multiple `ExecuteIndirect` calls back to back instead of batching them meaning the problem above is compounded multiple times.
+
+What really grinds my gears is the fact that the open source community has figured out and came up with workarounds to try to make this game run better. These workarounds are available to view by the public eye but Bethesda will most likely not care about fixing their broken engine. Instead they double down and claim their game is "optimized" if your hardware is new enough.
+
+Read more
+Archived post. New comments cannot be posted and votes cannot be cast.
+Share
+Roblox
+•
+Ad
+Precise aim and fast reactions decide the winner in Roblox's intense FPS experiences.
+Play Now
+roblox.com
+Collapse video player
+Sort by:
+Comments Section
+Traxendre
+•
+3y ago
+
+Where can we find the workaround and patch ourself?
+
+LavaMeteor
+•
+3y ago
+
+We don't have it yet. The faults in the code are yet to be addressed - hopefully in the next patch but I wouldn't count on it.
+
+32 more replies
+50 more replies
+Slavik_Sandwich
+•
+3y ago
+
+This person - "this game badly handles interfacing with gpu drivers".
+
+Fanboys - "ZERO CRASHES GUYS!!!!!!"
+
+LavaMeteor
+•
+3y ago
+
+I just don't really get it, honestly. I'm on RTX 3060, with an i5-12600K. I've had one crash, sure, but my FPS when I'm in exteriors is atrocious. 15-20 FPS, while interiors get a smooth 60+ consistently.
+
+There's serious optimization issues ongoing, and I don't know what people are hoping to gain by just chiming in with whatever GPU they've had and how many crashes they've had. That isn't fixing anything, nor is it proving a point that a random open-source developer is lying to make Bethesda look bad because... uh, reasons I guess.
+
+23 more replies
+108 more replies
+TBHN0va
+•
+3y ago
+
+I dunno. I tend not to first believe the specs of strangers on the internet over a dev. There. I said it.
+
+LavaMeteor
+•
+3y ago
+
+This doesn't have anything to do with specs, this is the code for how Starfield interacts with GPU drivers. It would be really, really improbable for vkd3d's dev to just document fake examples code and explanations for said fake code.
+
+59 more replies
+106 more replies
+theblackwhisper
+•
+3y ago
+
+That guy spotted the GTA Online memory issue and R* fixed and rewarded him. Would like to think Bethesda will at the very least try and patch this.
+
+16 more replies
+u/shopify
+•
+Ad
+YSK: The economy is unpredictable. Shopify is here to help you roll with it. (Yes, this is an ad, but it's helpful, FWIW)
+shopify.com
+Sign Up
+InAnimaginaryPlace
+•
+3y ago
+
+What's not clear in the info is the degree to which these inefficiencies affect FPS. There's no benchmarks, obv. It might all be very minor, despite looking bad at the level of code. Probably best to keep expectations in check.
+
+964 more replies
+sbalani
+•
+3y ago
+
+Steamdeck here. Only crashing when I try to leave cydonia via the front door.
+
+Chevalitron
+•
+3y ago
+
+Weird, that's the only crash I've had too.
+
+6 more replies
+151 more replies
+DV-McKenna
+•
+3y ago
+
+Has to be more to it, on a PC setup level that pushes it over the edge for certain users Otherwise every GPU would be crashing without exception.
+
+6800xt here no crashes playing at 4k.
+
+orsikbattlehammer
+•
+3y ago
+
+The first point is a rare issue. The real kicker is 2 and 3. If you read the comment on the PR he linked it goes more into depth. Basically the renderer is creating a bunch of garbage overhead for the drivers that wastes a ton of GPU time.
+
+25 more replies
+168 more replies
+TheTabman
+•
+3y ago
+
+If I understand this correctly, this is about Proton (Linux)?
+
+LavaMeteor
+•
+3y ago
+•
+Edited 3y ago
+
+No, it's how the game interfaces with any Nvidia GPU. It just happened to be posted in the git for Proton, since the devs found out about it.
+
+EDIT: This appears to be for all GPUs on further inspection.
+
+4 more replies
+u/progressive
+•
+Ad
+Pet Injury coverage is included with Comprehensive & Collision insurance from Progressive.
+Get a Quote
+progressive.com
+Pinguinwithgatling
+•
+3y ago
+
+2060 crash when I change the resolution of the window borderless to full screen which is not supported cos the game doesn't have a full screen dedicated mode
+
+43 more replies
+Drymvir
+•
+3y ago
+
+3080 here, ive crashed 0 times in 80 hours
+
+Samphaa7
+•
+3y ago
+
+1080ti here, I crash probably once every couple of hours, I quicksave a lot as I'm starting to get paranoid about it.
+
+110 more replies
+335 more replies
+marcottedan
+•
+3y ago
+
+5800x3d with 4900
+
+I crash often, usually when saving. I have crashed probably 6 times so far in 30 hours.
+
+25 more replies
+just01guy
+•
+3y ago
+
+I am on AMD gpu and game has crashed twice in 97 hours. I have also seen quite a number of driver crashes but that didn’t interrupt the game. Hopefully this gets acknowledged and fixed.
+
+7 more replies
+Multiplex419
+•
+3y ago
+•
+Edited 3y ago
+
+"It works if you get a hardware upgrade" is literally the opposite of optimization.
+
+I think "You may need to upgrade your pc" is going to be the new "It just works."
+
+23 more replies
+vonbalt
+•
+3y ago
+•
+Edited 3y ago
+
+game crashes randomly here too (atleast once very 40min-1hour usually) with no mods whatsoever and my nvidia gpu usage is always at 100% even if everything else is around or bellow 30% (cpu, ram and vram)
+
+12 more replies
+dtol2020
+•
+3y ago
+
+I have a i7-12700, and I have stuttering issues. Trying to find a mod to help with that if anyone knows, or will I need to wait for a patch?
+
+10 more replies
+Soarin-GB
+•
+3y ago
+
+Despite this people are still blaming other people systems....
+
+8 more replies
+Mr_Zeldion
+•
+3y ago
+
+When you go from 120 FPS to 40 FPS depending on what area your in that's not an issue with "needing an upgrade" if Todd Howard lives in some delusion where people need to upgrade a £4000 gaming pc to get a stable 60fps experience then perhaps he's right
+
+5 more replies
+[deleted]
+•
+3y ago
+
+I recall reading something about DX12 giving more freedom for the graphic programmers to do their work, in comparison to DX11, but that also meant more programmers going off the rails and implementing inefficient code into the games, lo and behold, it seems what I heard was right. Let's hope for a fix on this.
+
+3 more replies
+People also ask about section
+People also ask about
+Community recommendations for Starfield mods
+Starfield code structure analysis
+Troubleshooting Starfield crashes
+Developer insights on Starfield bugs
+More posts you may like
+Related posts
+Starfield designer believes the sci-fi game “would be talked about like the second coming” if anyone other than Bethesda made made it
+r/pcmasterrace
+•
+8mo ago
+Starfield designer believes the sci-fi game “would be talked about like the second coming” if anyone other than Bethesda made made it
+3.5K upvotes · 951 comments
+progressive
+•
+Ad
+Progressive’s Name Your Price® tool makes it easy to find auto coverage for your budget. Don’t look so surprised.
+progressive.com
+Get a Quote
+STARFIELD CONTINUES!! - A NOTE FROM BETHESDA GAME STUDIOS
+r/Starfield
+•
+2mo ago
+STARFIELD CONTINUES!! - A NOTE FROM BETHESDA GAME STUDIOS
+1.2K upvotes · 86 comments
+Major programming faults discovered in Starfield's code by VKD3D dev - performance issues are *not* the result of non-upgraded hardware - Good news for steamdeck as well
+r/SteamDeck
+•
+3y ago
+Major programming faults discovered in Starfield's code by VKD3D dev - performance issues are *not* the result of non-upgraded hardware - Good news for steamdeck as well
+1.2K upvotes · 340 comments
+Major programming faults discovered in Starfield's code by VKD3D dev - performance issues are *not* the result of non-upgraded hardware - Good news forproton
+r/linux_gaming
+•
+3y ago
+Major programming faults discovered in Starfield's code by VKD3D dev - performance issues are *not* the result of non-upgraded hardware - Good news forproton
+662 upvotes · 126 comments
+Bad news for Starfield
+r/Starfield
+•
+3mo ago
+Bad news for Starfield
+3.5K upvotes · 992 comments
+Starfield devs faced "a lot of pressure" to use Unreal Engine 5, former Bethesda artist says, but the Creation Engine won because of its modding capab
+r/Starfield
+•
+5mo ago
+Starfield devs faced "a lot of pressure" to use Unreal Engine 5, former Bethesda artist says, but the Creation Engine won because of its modding capab
+1.6K upvotes · 440 comments
+Starfield - the "fuck it, that'll do" of space games
+r/patientgamers
+•
+8mo ago
+Spoiler
+Starfield - the "fuck it, that'll do" of space games
+1.2K upvotes · 359 comments
+Starfield (PC) after recent DLC and update? Worth it?
+r/ShouldIbuythisgame
+•
+5mo ago
+Starfield (PC) after recent DLC and update? Worth it?
+14 upvotes · 54 comments
+Losercity Starfield
+r/Losercity
+•
+6mo ago
+Losercity Starfield
+4K upvotes · 134 comments
+So what do we think is going on with the sector at the moment at the time of this upcoming game?
+r/starcraft
+•
+9d ago
+So what do we think is going on with the sector at the moment at the time of this upcoming game?
+6 upvotes · 8 comments
+This wouldn't have been possible a year from now
+r/starfieldmods
+•
+15d ago
+This wouldn't have been possible a year from now
+62 upvotes · 20 comments
+Starfield's Future Will Be Unveiled Next Week by Bethesda
+r/pcgaming
+•
+6mo ago
+Starfield's Future Will Be Unveiled Next Week by Bethesda
+1.1K upvotes · 565 comments
+How tedious this must have been for a dev.
+r/Starfield
+•
+5mo ago
+How tedious this must have been for a dev.
+518 upvotes · 69 comments
+I never had to build an app with nontrivial error handling until now
+r/ExperiencedDevs
+•
+3y ago
+I never had to build an app with nontrivial error handling until now
+27 upvotes · 33 comments
+Starfield Update 1.16.236 (Many QOL features not shown in trailers)
+r/Starfield
+•
+6mo ago
+Starfield Update 1.16.236 (Many QOL features not shown in trailers)
+1.1K upvotes · 298 comments
+Starfield Linux: i found a fix for a minority of mesa radv users, who experience freezes and crashes!
+r/linux_gaming
+•
+3y ago
+Starfield Linux: i found a fix for a minority of mesa radv users, who experience freezes and crashes!
+26 upvotes · 12 comments
+Regardless of the issues I'm having a blast with this game
+r/Starfield
+•
+5mo ago
+Regardless of the issues I'm having a blast with this game
+43 upvotes · 7 comments
+(Unity 2019.4.40f1) PC build support 'not installed' in one specific project - 'Currently selected scripting backend ( IL2CPP ) is not installed.'
+r/Unity3D
+•
+3y ago
+(Unity 2019.4.40f1) PC build support 'not installed' in one specific project - 'Currently selected scripting backend ( IL2CPP ) is not installed.'
+1 upvote · 13 comments
+Starfield is a bloody Great game
+r/Starfield
+•
+2mo ago
+Starfield is a bloody Great game
+324 upvotes · 186 comments
+I’ll get extremely frustrated then the game hits me with this
+r/Starfield
+•
+17d ago
+I’ll get extremely frustrated then the game hits me with this
+1K upvotes · 37 comments
+DX12 Ultimate, Vulkan - Has "Starfield" been coded using it?
+r/Starfield
+•
+3y ago
+DX12 Ultimate, Vulkan - Has "Starfield" been coded using it?
+41 comments
+Cannot put this game down
+r/Starfield
+•
+25d ago
+Cannot put this game down
+227 upvotes · 59 comments
+New build, but I'm not entirely sold on th design.
+r/Starfield
+•
+4d ago
+New build, but I'm not entirely sold on th design.
+185 upvotes · 32 comments
+After hundreds of hours and more playthroughs than I can count there is only one inexcusable complaint I still have
+r/Starfield
+•
+5mo ago
+After hundreds of hours and more playthroughs than I can count there is only one inexcusable complaint I still have
+333 upvotes · 65 comments
+This data slate was . . . unexpected
+r/Starfield
+•
+17d ago
+This data slate was . . . unexpected
+635 upvotes · 46 comments
+VIEW POST IN
+Русский
+繁體中文
+See more
+Public
+TOP POSTS
+Reddit
+reReddit: Top posts of September 10, 2023
+Reddit
+reReddit: Top posts of September 2023
+Reddit
+reReddit: Top posts of 2023
+Home
+Popular
+News
+Explore
+Best of Reddit
+Best of Reddit in Portuguese
+Best of Reddit in German
+Reddit Rules
+Privacy Policy
+User Agreement
+Your Privacy Choices
+Accessibility
+Reddit, Inc. © 2026. All rights reserved.
+
+Join the most real place on the internet
+
+ Sign in with Apple
+Continue with Phone Number
+Continue with Email
+
+By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.
+
+LINKS
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzya1e8/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyj5cy/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyrun3/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzz389j/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyo747/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyqoi3/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/k00c4dh/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyp16k/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyui4a/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyzvbv/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyrsnz/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzywvp7/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzy55it/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzy5pi7/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzytf4r/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyokap/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyshdp/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzysrzf/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyqx1a/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyl2mi/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyl135/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzzvzsm/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzz47f0/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/k010ytx/
+https://www.reddit.com/r/Starfield/comments/16ewupt/comment/jzyqi1l/
+https://www.reddit.com/r/pcmasterrace/comments/1qtsggl/starfield_designer_believes_the_scifi_game_would/
+https://www.reddit.com/r/Starfield/comments/1uz1q71/starfield_continues_a_note_from_bethesda_game/
+https://www.reddit.com/r/SteamDeck/comments/16fdbym/major_programming_faults_discovered_in_starfields/
+https://www.reddit.com/r/linux_gaming/comments/16fk1cs/major_programming_faults_discovered_in_starfields/
+https://www.reddit.com/r/Starfield/comments/1uoykhb/bad_news_for_starfield/
+https://www.reddit.com/r/Starfield/comments/1sy3zgh/starfield_devs_faced_a_lot_of_pressure_to_use/
+https://www.reddit.com/r/patientgamers/comments/1qh88e1/starfield_the_fuck_it_thatll_do_of_space_games/
+https://www.reddit.com/r/ShouldIbuythisgame/comments/1skn0k8/starfield_pc_after_recent_dlc_and_update_worth_it/
+https://www.reddit.com/r/Losercity/comments/1s3mam2/losercity_starfield/
+https://www.reddit.com/r/starcraft/comments/1wflgk0/so_what_do_we_think_is_going_on_with_the_sector/
+https://www.reddit.com/r/starfieldmods/comments/1w9uk94/this_wouldnt_have_been_possible_a_year_from_now/
+https://www.reddit.com/r/pcgaming/comments/1rtf9i0/starfields_future_will_be_unveiled_next_week_by/
+https://www.reddit.com/r/Starfield/comments/1sqoy77/how_tedious_this_must_have_been_for_a_dev/
+https://www.reddit.com/r/ExperiencedDevs/comments/15i2zky/i_never_had_to_build_an_app_with_nontrivial_error/
+https://www.reddit.com/r/Starfield/comments/1seyolu/starfield_update_116236_many_qol_features_not/
+https://www.reddit.com/r/linux_gaming/comments/16d4gz4/starfield_linux_i_found_a_fix_for_a_minority_of/
+https://www.reddit.com/r/Starfield/comments/1stzr79/regardless_of_the_issues_im_having_a_blast_with/
+https://www.reddit.com/r/Unity3D/comments/15gm1o5/unity_2019440f1_pc_build_support_not_installed_in/
+https://www.reddit.com/r/Starfield/comments/1vgu8x8/starfield_is_a_bloody_great_game/
+https://www.reddit.com/r/Starfield/comments/1w86q38/ill_get_extremely_frustrated_then_the_game_hits/
+https://www.reddit.com/r/Starfield/comments/15hqgeo/dx12_ultimate_vulkan_has_starfield_been_coded/
+https://www.reddit.com/r/Starfield/comments/1w1ilep/cannot_put_this_game_down/
+https://www.reddit.com/r/Starfield/comments/1wjv3rv/new_build_but_im_not_entirely_sold_on_th_design/
+https://www.reddit.com/r/Starfield/comments/1squ8d1/after_hundreds_of_hours_and_more_playthroughs/
+https://www.reddit.com/r/Starfield/comments/1w84pm6/this_data_slate_was_unexpected/
+https://www.reddit.com/r/Starfield/comments/16ewupt/major_programming_faults_discovered_in_starfields/

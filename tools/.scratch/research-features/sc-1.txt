@@ -1,0 +1,487 @@
+SC is actually intolerable to play at this point : r/starcitizen
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/sc_is_actually_intolerable_to_play_at_this_point/?solution=f5c5e0b628fdf00ef5c5e0b628fdf00e&js_challenge=1&jsc_token=2824be10929bdc604753c70a67a1c3316bbe96720a2aaa2e3b18bc117d2f60df&jsc_orig_r=
+
+Skip to main content
+SC is actually intolerable to play at this point : r/starcitizen
+Sign Up
+Log In
+Expand user menu
+Go to starcitizen
+r/starcitizen
+•
+2mo ago
+B1dz
+SC is actually intolerable to play at this point
+DISCUSSION
+
+- PVE combat missions worth 150k ending with a Polaris that you need P2W power to kill. (armour locking out any combat pathway for smaller ships, forcing larger ships or multicrew for mission pay outs that are frankly pathetic)
+- Ships randomly exploding in hangers.
+- Ships internal storage being wiped when you store them.
+- inventory in general vanishing. while the inventory system is still tier-junk
+- mission markers not loading.|
+- quantum travel is also still tier-junk
+- Salvage basically abandoned as a game-loop at this point.
+- latest patch wiping most if not everyone's materials.
+- mining bags still bugging out on occasion.
+- Nerfing all ship weapons into the ground and saying "we're trying to put everything in the same place to see what you will use next" only to have some size 4 weapon so borked it basically 1 taps small fighters and can nuke practically everything.
+
+This is only the surface of what I and my org mates have had to put up with in recent months.
+
+The amount of work-arounds and things to avoid and so on. You genuinely need to study for hours to get a baseline "fun experience" and even then, you end up getting shafted by some incomplete game-loop or bug.
+
+All of this stacked up against what marketing asks us for ships and the funnelling of those funds into 42, I genuinely feel scammed. every ship comes with an advertisement pushing this narrative story on how with this ship you can do "XYZ" only to find you can hardly do X, while Y and Z straight up fairy tails.
+
+"It's an Alpha"
+It's not marketed like one.
+
+EDIT:
+
+I would just like to add that i genuinely tried to give the new Recco missions a go in the prospector.
+the session started with my Prospector getting stuck in the hanger floor, had to re request. cool whatever,
+
+- boarding mission had my ship fly away on its own so I was stranded. yes I made sure it wasn't moving when i got off out of the cockpit, made sure it wasn't moving as i made my way to the Caterpillar. and yet it still managed to fly off after the fact. cool
+
+- picked up the repair tool while my main weapon was holstered and my existing multi tool was placed in my bag (making sure the new one had a slot) - main gun just yeeeted itself into the nether while on my shoulder. awesome. fucking thanks.
+- Tried doing the mining missions, scanning kept breaking and dropping markers had to keep turning my ship on and off. couldn't mine iron with a base prospector and couldn't get the scanning mission to credit me with scans. sat at iron for 20 minutes waiting for the objective icon to pop up me to scan an Iron rock, tried tracking/untracking wouldn't update. scanned one rock with scan function, it then showed all 5 rocks as "previously identified."
+
+I genuinely have no idea how people can defend SC anymore. The game performs better and looks prettier. But functionality wise it's still absolutely in the toilet, every single feature is still tier-junk
+
+Read more
+Share
+Sort by:
+Comments Section
+PowerfulLab104
+•
+2mo ago
+
+I don't think some missions being impossible in smaller ships is a bad thing. It just needs to be CLEARLY LABELED AND COMMUNICATED. Something CIG is horrible at.
+
+Eve Online did it with a tier system. A mission was tier 1, 2, 3, etc, each representing an increase in ship class you'd encounter. In Star Citizen you just have to guess.
+
+B1dz
+•
+2mo ago
+
+I'm absolutely fine with this. the frustration came with the time wasted to find I have to face down the second largest ship we currently have available to us lol
+
+ClubChaos
+•
+2mo ago
+
+the entire mobi-ui
+ sucks so, so much
+
+SnarkyCarbivore
+•
+2mo ago
+
+Maybe, but if they're going to require larger multicrew ships for these missions, they need to pay appropriately.
+
+4 more replies
+NKato
+•
+2mo ago
+ Top 1% Commenter
+
+Further proof that CIG is really bad at MMO design. or rather, their mmo design skills are non-existent!
+
+2 more replies
+6 more replies
+Lichensuperfood
+•
+2mo ago
+
+It amazing that mining, salvaging, looting and hauling USED TO BE FUN and CIG
+ actively redesigned them to make them tedious and unrewarding.
+
+Extraordinary.
+
+basicwhitelich
+•
+2mo ago
+
+Man I miss salvage. There was a great loop for a bit scavenging battlefields for parts and cargo before skinning the ships. Bricking components makes exploring wrecks feel pointless.
+
+B1dz
+•
+2mo ago
+
+people have been trying to argue salvaging is still a valid game-loop. but you just summed up why it sucks now lol. there as so many white-knights who just live on reddit and spectrum. at least on reddit you can be critical and not get banned
+
+1 more reply
+3 more replies
+88 more replies
+TheManWithSevenAsses
+•
+2mo ago
+
+The alpha argument only really holds value if you don't treat your game like a live service, which they do.
+
+suchla12
+•
+2mo ago
+
+saying this for like 2 years and only getting downvotes...
+
+B1dz
+•
+2mo ago
+
+the mood has well and truly changed in the last 2 years. even the most positive of content creators are starting to show a fair bit of salt. apart from that one who's on the payroll now, what's his name again? (this is joke i know his name)
+
+7 more replies
+41 more replies
+72 more replies
+SudoScience808
+•
+2mo ago
+
+The naked npcs in bunker bug
+ is back. 
+
+4 more replies
+StellarSurveyor
+•
+2mo ago
+
+The whole bricked thing killed the game for me. Salvage is no longer Salvage
+.
+
+13 more replies
+IIsOath
+•
+2mo ago
+
+Hull-C
+ auto load not working but still selling the dam ship for $550 is bonkers
+
+KLGBilly
+•
+2mo ago
+
+i had about 2 hours of gameplay where the game was genuinely functional, ran decently and had a solid 30 server FPS everywhere i went, and it was the first 2 hours of 4.0 before the login servers got so slammed you couldn't get in for another 12 hours. after that, it was far less stable but there was stuff to do. then supply or die came around, and i was able to keep with the event missions. then every single piece of content ever released since that point has bugged out in a way that prevented me from playing through the piece of content i wanted to play, leading to me leaving the game pretty early on into every patch. then comes 4.9, where i try to do basic cargo hauling, aaaaand the cargo doesn't spawn from the missions. waste of damn time.
+
+9 more replies
+This-acc-is-hacked
+•
+2mo ago
+
+"It's an Alpha"
+It's not marketed like one.
+
+You hit the nail on the head. They treat the game like a fucking live service, with frequent aggressive rebalancing and everything, and when stuff falls apart everyone's like "it's an alpha grow up play something else then"
+
+22 more replies
+ITdirectorguy
+•
+2mo ago
+•
+Edited 2mo ago
+
+They need to make the game fun. Yes, it's cool that it's also a world simulator.
+
+But if it's not fun, it's going to fail in the long run. Then again, they don't care, because in the meantime they've raised a billion dollars.
+
+15 more replies
+FreeFragUK
+•
+2mo ago
+
+Unfortunately these issues will only persist and get worse while the root of the problem continues to sit unchallenged. Sadly, due to the structure of CIG, the root of the problem cannot be readily challenged.
+
+I've since given up and walked away. I keep an eye on the community on the off chance something changes but ultimately it just goes from bad to worse.
+
+Life is far too short to dedicate your time to Star Citizen, it's already consumed over 14 years in development time with very little to show for it. The priority is feeding CR's fantasy of being a Hollywood director and because this is the priority, the majority of funds people pay for SC end up siphoned off into a vanity project instead.
+
+scalp_eg
+•
+2mo ago
+
+"Ships randomly exploding in hangers". I left after 3.0 and sorry guys but still reading this after so many years ... its kind of hilarous and sad at the same time
+
+1 more reply
+sophisitcatedAPE
+•
+2mo ago
+
+This Game sadly is made for Content-Creators to show off, Not for Gamers to enjoy Gameplay.
+
+Chris Roberts wants stuff to "look cool".
+
+kanevast
+•
+2mo ago
+
+This is how it's always been, it's just got more things implemented to break now.
+
+So instead of just 30king and losing your stuff, you can now lose it in more varied and interesting ways.
+
+Iudex_Gundyr_ML
+•
+2mo ago
+
+"It's an Alpha"
+It's not marketed like one.
+
+I'll tell you what it is: It's a virtual playground to fly virtual vehicles.
+
+It's a business model where the developer/publisher found a way to sell the game itself multiple times to the same people, and each of those sales cost at a minium as much as a feature complete game. And it not only works.. it works extremely well. The earnings do not lie.
+
+Despite everything you just said on your post, people continue to buy ships. CIG continues to focus on launching the next big ship, and people keep falling head over heels to buy them.
+
+So stop focusing on what the game "should" be, and try to milk any fun you can get from what the game actually is right now. If you can, great! If you can't, then drop the game and be kind to yourself.
+
+Silly_Budget7926
+•
+2mo ago
+
+Yeah.. you should have seen my face when i got an Idris as enemy on a 200k Patrol... and its unboardable cause its the old model without interior.
+
+Hour_Job5445
+•
+2mo ago
+
+Cant forget about the 300$ heavy fighter f8c which is nerfed to hell and fant even damage other heavy fighters which all have size 4s lol
+
+10 more replies
+ThatOneMartian
+•
+2mo ago
+ Top 1% Commenter
+
+It's not getting better because they can't make it better. They can just bolt more crap onto this failure.
+
+5 more replies
+People also ask about section
+People also ask about
+Discuss issues with playing Star Citizen
+Most anticipated features in Star Citizen
+Best ships for beginners in Star Citizen
+Tips for effective trading in Star Citizen
+How to optimize your Star Citizen gameplay
+More posts you may like
+Related posts
+Me and my SC friends during these trying times
+r/starcitizen
+•
+4mo ago
+Me and my SC friends during these trying times
+236 upvotes · 81 comments
+I was going through my old clips of SC and found this gem
+r/starcitizen
+•
+17d ago
+I was going through my old clips of SC and found this gem
+114 upvotes · 13 comments
+For those who don't understand why folks are salty with the recent SCL. This is what 4 people on a private server gives you during a mission.
+r/starcitizen
+•
+2mo ago
+For those who don't understand why folks are salty with the recent SCL. This is what 4 people on a private server gives you during a mission.
+2.2K upvotes · 621 comments
+This game is unplayable
+r/starcitizen
+•
+1mo ago
+This game is unplayable
+682 upvotes · 383 comments
+How is a new player meant to get into CS2?
+r/GlobalOffensive
+•
+5mo ago
+How is a new player meant to get into CS2?
+240 upvotes · 125 comments
+What is the current state of this game honestly?
+r/starcitizen
+•
+1mo ago
+What is the current state of this game honestly?
+21 upvotes · 210 comments
+Apparently SC has close to half of the split of devs.
+r/starcitizen
+•
+26d ago
+Apparently SC has close to half of the split of devs.
+231 upvotes · 190 comments
+I used to be hyped for SC, but man, it all feels so far off...
+r/starcitizen
+•
+2mo ago
+I used to be hyped for SC, but man, it all feels so far off...
+2.7K upvotes · 760 comments
+New player wanting to get SC, how is playability at the moment?
+r/starcitizen
+•
+8mo ago
+New player wanting to get SC, how is playability at the moment?
+23 upvotes · 68 comments
+Recon Is The Reason The Meta Is Stale
+r/Marathon
+•
+3mo ago
+Recon Is The Reason The Meta Is Stale
+824 upvotes · 415 comments
+Is the Star Citizen community finally starting to get fed up? I hope so.
+r/starcitizen
+•
+2mo ago
+Is the Star Citizen community finally starting to get fed up? I hope so.
+814 upvotes · 382 comments
+With a few exceptions of greatness, 2026 for SC has been a massive flop for me
+r/starcitizen
+•
+1mo ago
+With a few exceptions of greatness, 2026 for SC has been a massive flop for me
+43 upvotes · 34 comments
+Just a reminder that SC is not actual real game and never will be.
+r/starcitizen_refunds
+•
+4mo ago
+Just a reminder that SC is not actual real game and never will be.
+99 upvotes · 44 comments
+I really do love this game....
+r/starcitizen
+•
+18d ago
+I really do love this game....
+527 upvotes · 42 comments
+Is UHDK just cooked at this point?
+r/worldofpvp
+•
+5mo ago
+Is UHDK just cooked at this point?
+22 upvotes · 28 comments
+Escalation Guidelines for anyone looking to Solo Q
+r/thedivision
+•
+4mo ago
+Escalation Guidelines for anyone looking to Solo Q
+37 comments
+When did Star Citizen get so un-immersive?
+r/starcitizen
+•
+15d ago
+When did Star Citizen get so un-immersive?
+1K upvotes · 383 comments
+The game has been working absurdly well for me lately. Anybody else?
+r/starcitizen
+•
+19d ago
+The game has been working absurdly well for me lately. Anybody else?
+88 upvotes · 72 comments
+What’s an "unwritten rule" of SC that you think every player should learn on day one?
+r/starcitizen
+•
+21d ago
+What’s an "unwritten rule" of SC that you think every player should learn on day one?
+69 upvotes · 319 comments
+SC ruined gaming
+r/starcitizen
+•
+10d ago
+SC ruined gaming
+128 upvotes · 251 comments
+Sometimes I really love this game
+r/starcitizen
+•
+2mo ago
+Sometimes I really love this game
+162 upvotes · 26 comments
+Times are tough in SC these days.
+r/starcitizen
+•
+1mo ago
+Times are tough in SC these days.
+103 upvotes · 30 comments
+I believe the new direction the devs have taken scrap mechanic in is worse and also just straight up not fitting for the game.
+r/ScrapMechanic
+•
+2mo ago
+I believe the new direction the devs have taken scrap mechanic in is worse and also just straight up not fitting for the game.
+41 comments
+SC is not complex.
+r/starcitizen
+•
+1mo ago
+SC is not complex.
+1.5K upvotes · 292 comments
+Found this and thought of SC
+r/starcitizen
+•
+2mo ago
+Found this and thought of SC
+2.2K upvotes · 201 comments
+Public
+Home
+Popular
+News
+Explore
+Best of Reddit
+Best of Reddit in Portuguese
+Best of Reddit in German
+Reddit Rules
+Privacy Policy
+User Agreement
+Your Privacy Choices
+Accessibility
+Reddit, Inc. © 2026. All rights reserved.
+
+Join the most real place on the internet
+
+ Sign in with Apple
+Continue with Phone Number
+Continue with Email
+
+By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.
+
+LINKS
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oylw6b3/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oymima1/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oym6h83/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oym69yf/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oym75xy/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oymisn9/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oynzri5/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oysn2bg/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oylstue/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oym9r2b/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oymglrt/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oylzuih/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oynh59g/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oymzpu9/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oylumtb/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oyltfpm/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oyltzk2/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oypxpyg/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oymwnqm/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oyn2ti6/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oynmdo5/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oyozeik/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oypak2p/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oylsxbc/
+https://www.reddit.com/r/starcitizen/comments/1v19zqx/comment/oym8sak/
+https://www.reddit.com/r/starcitizen/comments/1tzo9pu/me_and_my_sc_friends_during_these_trying_times/
+https://www.reddit.com/r/starcitizen/comments/1w8kna5/i_was_going_through_my_old_clips_of_sc_and_found/
+https://www.reddit.com/r/starcitizen/comments/1vi6d13/for_those_who_dont_understand_why_folks_are_salty/
+https://www.reddit.com/r/starcitizen/comments/1vjswk5/this_game_is_unplayable/
+https://www.reddit.com/r/GlobalOffensive/comments/1suqx6g/how_is_a_new_player_meant_to_get_into_cs2/
+https://www.reddit.com/r/starcitizen/comments/1vqjo76/what_is_the_current_state_of_this_game_honestly/
+https://www.reddit.com/r/starcitizen/comments/1w00xw0/apparently_sc_has_close_to_half_of_the_split_of/
+https://www.reddit.com/r/starcitizen/comments/1v0kxct/i_used_to_be_hyped_for_sc_but_man_it_all_feels_so/
+https://www.reddit.com/r/starcitizen/comments/1qaj17u/new_player_wanting_to_get_sc_how_is_playability/
+https://www.reddit.com/r/Marathon/comments/1upn5w9/recon_is_the_reason_the_meta_is_stale/
+https://www.reddit.com/r/starcitizen/comments/1vgn6dk/is_the_star_citizen_community_finally_starting_to/
+https://www.reddit.com/r/starcitizen/comments/1vr5nsf/with_a_few_exceptions_of_greatness_2026_for_sc/
+https://www.reddit.com/r/starcitizen_refunds/comments/1tihapj/just_a_reminder_that_sc_is_not_actual_real_game/
+https://www.reddit.com/r/starcitizen/comments/1w7afj2/i_really_do_love_this_game/
+https://www.reddit.com/r/worldofpvp/comments/1suh81w/is_uhdk_just_cooked_at_this_point/
+https://www.reddit.com/r/thedivision/comments/1ta81ew/escalation_guidelines_for_anyone_looking_to_solo_q/
+https://www.reddit.com/r/starcitizen/comments/1w9ygno/when_did_star_citizen_get_so_unimmersive/
+https://www.reddit.com/r/starcitizen/comments/1w6s6sv/the_game_has_been_working_absurdly_well_for_me/
+https://www.reddit.com/r/starcitizen/comments/1w59iih/whats_an_unwritten_rule_of_sc_that_you_think/
+https://www.reddit.com/r/starcitizen/comments/1wexba7/sc_ruined_gaming/
+https://www.reddit.com/r/starcitizen/comments/1v5a2nm/sometimes_i_really_love_this_game/
+https://www.reddit.com/r/starcitizen/comments/1vkqlg6/times_are_tough_in_sc_these_days/
+https://www.reddit.com/r/ScrapMechanic/comments/1v0unpf/i_believe_the_new_direction_the_devs_have_taken/
+https://www.reddit.com/r/starcitizen/comments/1vp6k63/sc_is_not_complex/
+https://www.reddit.com/r/starcitizen/comments/1v8q04a/found_this_and_thought_of_sc/

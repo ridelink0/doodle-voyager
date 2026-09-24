@@ -1,0 +1,5 @@
+[
+  { "id": "life", "title": "Game of Life, blue ink on lined paper", "src": "assets/videos/life.mp4", "duration": 30 },
+  { "id": "mandelbrot", "title": "Mandelbrot zoom, 60,000x", "src": "assets/videos/mandelbrot.mp4", "duration": 30 },
+  { "id": "testcard", "title": "SMPTE colour bars, 1 kHz tone", "src": "assets/videos/testcard.mp4", "duration": 24 }
+]

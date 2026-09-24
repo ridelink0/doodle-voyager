@@ -1,0 +1,171 @@
+{
+  "when": "2026-09-23T02:46:18.531Z",
+  "viewport": "1366x768 @1x",
+  "scenes": {
+    "title": {
+      "frames": 17,
+      "updateMs": 17.42,
+      "sceneJsMs": 0.48,
+      "renderCallMs": 19.59,
+      "drawCalls": 77,
+      "triangles": 10009,
+      "points": 69624,
+      "lineSegs": 1056,
+      "objects": {
+        "meshes": 154,
+        "points": 31,
+        "lines": 4
+      },
+      "geometries": 67,
+      "textures": 7,
+      "heapMB": 35.8,
+      "mode": "title"
+    },
+    "helm-sol": {
+      "frames": 21,
+      "updateMs": 27.43,
+      "sceneJsMs": 0.31,
+      "renderCallMs": 8.4,
+      "drawCalls": 104,
+      "triangles": 15851,
+      "points": 69624,
+      "lineSegs": 1056,
+      "objects": {
+        "meshes": 154,
+        "points": 31,
+        "lines": 4
+      },
+      "geometries": 78,
+      "textures": 13,
+      "heapMB": 68,
+      "mode": "helm"
+    },
+    "foot-scout": {
+      "frames": 20,
+      "updateMs": 7.63,
+      "sceneJsMs": 0.24,
+      "renderCallMs": 2.5,
+      "drawCalls": 105,
+      "triangles": 15876,
+      "points": 69624,
+      "lineSegs": 1056,
+      "objects": {
+        "meshes": 154,
+        "points": 31,
+        "lines": 4
+      },
+      "geometries": 79,
+      "textures": 13,
+      "heapMB": 70.8,
+      "mode": "foot"
+    },
+    "foot-cruiser": {
+      "frames": 19,
+      "updateMs": 21.44,
+      "sceneJsMs": 1.36,
+      "renderCallMs": 4.81,
+      "drawCalls": 106,
+      "triangles": 29316,
+      "points": 69624,
+      "lineSegs": 1056,
+      "objects": {
+        "meshes": 193,
+        "points": 31,
+        "lines": 4
+      },
+      "geometries": 100,
+      "textures": 17,
+      "heapMB": 56.2,
+      "mode": "foot"
+    },
+    "helm-enemy-zone": {
+      "frames": 17,
+      "updateMs": 7.33,
+      "sceneJsMs": 0.4,
+      "renderCallMs": 1.98,
+      "drawCalls": 76,
+      "triangles": 25048,
+      "points": 70322,
+      "lineSegs": 1056,
+      "objects": {
+        "meshes": 250,
+        "points": 32,
+        "lines": 4
+      },
+      "geometries": 106,
+      "textures": 18,
+      "heapMB": 77.6,
+      "mode": "helm"
+    },
+    "helm-enemy-zone-cpu4x": {
+      "frames": 23,
+      "updateMs": 99.87,
+      "sceneJsMs": 1.53,
+      "renderCallMs": 17.17,
+      "drawCalls": 76,
+      "triangles": 25046,
+      "points": 70322,
+      "lineSegs": 1056,
+      "objects": {
+        "meshes": 259,
+        "points": 32,
+        "lines": 4
+      },
+      "geometries": 106,
+      "textures": 18,
+      "heapMB": 43.6,
+      "mode": "helm"
+    }
+  },
+  "boot": {
+    "requests": 20,
+    "mb": 3.62,
+    "biggest": [
+      {
+        "n": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "kb": 1284
+      },
+      {
+        "n": "/data/galaxies.json",
+        "kb": 753
+      },
+      {
+        "n": "/data/exoplanets.json",
+        "kb": 628
+      },
+      {
+        "n": "/data/stars.json",
+        "kb": 596
+      },
+      {
+        "n": "/js/game.js",
+        "kb": 78
+      },
+      {
+        "n": "/js/ships.js",
+        "kb": 73
+      },
+      {
+        "n": "/js/audio.js",
+        "kb": 69
+      },
+      {
+        "n": "/js/universe.js",
+        "kb": 47
+      }
+    ],
+    "heapMB": 46.8,
+    "counts": {
+      "galaxies": 10828,
+      "hosts": 4747,
+      "planets": 6338,
+      "sights": 69,
+      "stars": 11071
+    },
+    "quality": 1,
+    "pr": 1,
+    "hw": 8,
+    "mem": 16
+  },
+  "errors": []
+}

@@ -1,0 +1,373 @@
+{{short description|Galaxies bound to the Milky Way}}
+The [[Milky Way]] has several smaller [[Satellite galaxy|galaxies gravitationally bound to it]], as part of the Milky Way [[Galaxy group|subgroup]], which is part of the local galaxy cluster, the [[Local Group]].<ref>{{cite journal |title= An Eclectic View of our Milky Way Galaxy |author= David G. Turner |date= 15 August 2013 |publication-date= September 2013 |journal= Canadian Journal of Physics |volume= 92 |issue= 9 |pages= 959–963 |doi= 10.1139/cjp-2013-0429 |bibcode= 2014CaJPh..92..959T |arxiv= 1310.0014 |s2cid= 118390693 }}</ref>
+
+There are 61 small galaxies confirmed to be within {{convert|420|kpc|e6ly|abbr=off|lk=on}} of the Milky Way,<ref name="satellitecensus" /> but not all of them are necessarily in orbit, and some may themselves be in orbit of other satellite galaxies. The only ones visible to the naked eye are the [[Large Magellanic Cloud|Large]] and [[Small Magellanic Cloud|Small]] Magellanic Clouds, which have been observed since prehistory. Measurements with the Hubble Space Telescope in 2006 suggest the Magellanic Clouds may be moving too fast to be orbiting the Milky Way.<ref>{{cite web|title=Press release: Magellanic Clouds May Be Just Passing Through|url=https://www.cfa.harvard.edu/news/2007-02|publisher=Harvard University|date=January 9, 2007}}</ref> Of the galaxies confirmed to be in orbit, the largest is the [[Sagittarius Dwarf Spheroidal Galaxy]], which has a diameter of {{convert|2.6|kpc|ly}}<ref name="Karachentsev et al. 2004">{{cite journal
+  |last1      = Karachentsev |first1 = I. D.
+  |last2      = Karachentseva |first2 = V. E.
+  |last3      = Hutchmeier |first3= W. K.
+  |last4      = Makarov |first4= D. I.
+  |title      = A Catalog of Neighboring Galaxies
+  |journal    = [[The Astronomical Journal]]
+  |date       = 2004
+  |volume     = 127
+  |issue      = 4
+  |pages      = 2031–2068
+  |bibcode    = 2004AJ....127.2031K
+  |doi        = 10.1086/382905 |doi-access= free
+  }}</ref> or roughly a twentieth that of the Milky Way.
+
+==Characteristics==
+Satellite galaxies that orbit from {{convert|1000|ly|pc|abbr=on|lk=on}} of the edge of the [[disc (galaxy)|disc]] of the Milky Way Galaxy to the edge of the [[dark matter halo]] of the Milky Way at {{tooltip|{{convert|300|kpc|ly|abbr=on|order=flip}}|virial radius of our galaxy}} from the center of the galaxy,{{efn|The distance to edge of the dark matter halo of the galaxy from its center is the virial radius of a galaxy, R<sub>vir</sub>}} are generally depleted in hydrogen gas compared to those that orbit more distantly. This is because of their interactions with the dense hot gas halo of the Milky Way that strip cold gas from the satellites. Satellites beyond that region still retain copious quantities of gas.<ref>{{cite news |url= http://www.spacedaily.com/reports/Milky_Way_Ransacks_Nearby_Dwarf_Galaxies_Stripping_All_Traces_of_Star_Forming_Gas_999.html |publisher= SpaceDaily |date= 17 October 2014 |title= Milky Way Ransacks Nearby Dwarf Galaxies}}</ref><ref>{{cite news |url= https://www.sciencedaily.com/releases/2014/10/141015152552.htm |publisher= ScienceDaily |date= 15 October 2014 |title= Milky Way ransacks nearby dwarf galaxies}}</ref>
+
+==List==
+The Milky Way's satellite galaxies include the following:<ref>{{cite web |url=http://www.astro.uu.se/~ns/mwsat.html |title=Milky Way satellite galaxies |author=Sjölander, Nils |archive-url=https://web.archive.org/web/20140219170336/http://www.astro.uu.se/~ns/mwsat.html |archive-date=2014-02-19 }}</ref><ref name="satellitecensus">{{cite journal |title=The Astrophysical Journal {{!}} Milky Way Satellite Census. I. The Observational Selection Function for Milky Way Satellites in DES Y3 and Pan-STARRS DR1 |author=A. Drlica-Wagner |year=2020 |journal=The Astrophysical Journal|volume=893 |issue=1 |page=47 |doi=10.3847/1538-4357/ab7eb9 |hdl=10150/642363 |s2cid=208857848 |hdl-access=free |doi-access=free |arxiv=1912.03302 }}</ref>
+
+{| class="wikitable sortable"
+|-
+! Name
+! Diameter ([[parsec|kpc]])
+! Distance <br/> (kpc)
+! [[Absolute magnitude|Absolute visual magnitude]]
+! [[Galaxy morphological classification|Type]]
+! data-sort-type=number | Discovered
+|-
+| [[Large Magellanic Cloud]] || 4 || 48.5 
+| &minus;18.1 || SBm || prehistoric
+|-
+| [[Antlia 2]] || 2.9 
+| 130 
+|  &minus;8.5 || Irr? || 2018
+|-
+| [[Sagittarius Dwarf Elliptical Galaxy|Sagittarius Dwarf]] || 2.6 || 20 
+| &minus;13.5 || E || 1994
+|-
+| [[Crater II]] || 2.2 || 117.5 
+| &minus;8.2 || dSph || 2016 <ref name="Torrealba2016">{{cite journal |title=The feeble giant. Discovery of a large and diffuse Milky Way dwarf galaxy in the constellation of Crater |author1=Torrealba, G. |author2=Koposov, S.E. |author3=Belokurov, V. |author4=Irwin, M. |journal=Monthly Notices of the Royal Astronomical Society |doi=10.1093/mnras/stw733 |date=13 April 2016 |bibcode=2016MNRAS.459.2370T |volume=459 |issue=3 |pages=2370–2378 |doi-access=free |arxiv=1601.07178}}</ref>
+|-
+| [[Small Magellanic Cloud]] || 2 || 61 
+| &minus;16.8 || Irr || prehistoric
+|-
+| [[Canes Venatici I]] || 1.1 || 220 
+| &minus;8.6 || dSph || 2006
+|-
+| [[Canis Major Dwarf]] || 1.5 || 8 
+| &minus;14.4 || Irr || 2003
+|-
+| [[Boötes III]] || 1.0 || 46 
+| &minus;5.75 || dSph? || 2009
+|-
+| [[Sculptor Dwarf]] || 0.8 || 90 
+| &minus;11.1 || dE3 || 1937
+|-
+| [[Draco Dwarf]] || 0.7 || 80 
+| &minus;8.8 || dE0 || 1954
+|-
+| [[Hercules (dwarf galaxy)|Hercules]] || 0.7 || 135 
+| &minus;6.6 || dSph || 2006
+|-
+| [[Leo II (dwarf galaxy)|Leo II]] || 0.7 || 210
+| &minus;9.8 || dE0 || 1950
+|-
+| [[Fornax Dwarf]] || 0.6 || 140 
+| &minus;13.4 || dE2 || 1938
+|-
+| [[Eridanus II]]<ref name="Crnojevic2016">{{cite journal |title=Deep imaging of Eridanus II and its lone star cluster |journal=The Astrophysical Journal |volume=824 |issue=1 |page=L-14 |first1=D. |last1=Crnojević |first2=D.J. |last2=Sand |first3=D. |last3=Zaritsky|author4-link=Kristine Spekkens |first4=K. |last4=Spekkens |first5=B. |last5=Willman |first6=J.R. |last6=Hargis |arxiv=1604.08590 |bibcode=2016ApJ...824L..14C |doi=10.3847/2041-8205/824/1/L14 |year=2016|s2cid=2202492 |doi-access=free }}</ref> || 0.55 ||366
+| &minus;7.1 || dSph || 2015 <ref name=Koposov2015/><ref name=Bechtol2015/>
+|-
+| [[Sextans Dwarf Spheroidal]] || 0.5 || 90 
+| &minus;9.3 || dE3 || 1990
+|-
+| [[Carina Dwarf Spheroidal Galaxy|Carina Dwarf Spheroidal]] || 0.5 || 100 
+| &minus;9.1 || dE3 || 1977
+|-
+| [[Leo I (dwarf galaxy)|Leo I]] || 0.5 || 250 
+| &minus;12.0 || dE3 || 1950
+|-
+| [[Ursa Minor Dwarf]] || 0.4 || 60
+| &minus;8.8 || dE4 || 1954
+|-
+| [[Leo T]] || 0.34 || 420 
+| &minus;8.0 || dSph/dIrr || 2006
+|-
+| [[Aquarius II]]|| 0.32 || 108 
+| &minus;4.2 || dSph || 2016 <ref name="TorrealbaAquarius2016">{{cite journal |title=At the survey limits: Discovery of the Aquarius 2 dwarf galaxy in the VST ATLAS and the SDSS data |first1=G. |last1=Torrealba |first2=S.E. |last2=Koposov |first3=V. |last3=Belokurov |first4=M. |last4=Irwin |first5=M. |last5=Collins |first6=M. |last6=Spencer |first7=R. |last7=Ibata |first8=M. |last8=Matteo |first9=A. |last9=Bonaca |first10=P. |last10=Jethwa |arxiv=1605.05338 |doi=10.1093/mnras/stw2051 |volume=463 |issue=1 |journal=Monthly Notices of the Royal Astronomical Society |pages=712–722 |bibcode=2016MNRAS.463..712T |year=2016|doi-access=free }}</ref>
+|-
+| [[Boötes I]] || 0.30 || 60 
+| &minus;6.3 || dSph || 2006
+|-
+| [[Canes Venatici II]] || 0.30 || 155 
+| &minus;4.9 || dSph || 2006
+|-
+| [[Leo IV (dwarf galaxy)|Leo IV]] || 0.30 || 160 
+| &minus;5.8 || dSph || 2006
+|-
+| [[Tucana IV (dwarf galaxy)|Tucana IV]]|| 0.25 || 48 
+| &minus;3.5 || dSph || 2015 <ref name="Drlica-Wagner2015"/>
+|-
+| [[Columba I (dwarf galaxy)|Columba I]]|| 0.21 || 182 
+| &minus;4.5 || dSph || 2015 <ref name="Drlica-Wagner2015"/>
+|-
+| [[Ursa Major II Dwarf]] || 0.20 || 30 
+| &minus;4.25 || dG D || 2006
+|-
+| [[Grus II (dwarf galaxy)|Grus II]]|| 0.19 || 53 
+| &minus;3.9 || dSph || 2015 <ref name="Drlica-Wagner2015">{{cite journal |title=Eight ultra-faint galaxy candidates discovered in Year Two of the Dark Energy Survey |author1=Drlica-Wagner, A. |display-authors=etal |journal=The Astrophysical Journal |volume=813 |issue=2 |page=109 |doi=10.1088/0004-637X/813/2/109 |date=4 November 2015 |arxiv = 1508.03622 |bibcode=2015ApJ...813..109D|s2cid=55909299 }}</ref>
+|-
+| [[Cetus III (dwarf galaxy)|Cetus III]]|| 0.18 || 251 
+| &minus;2.4 || dSph? || 2017 <ref name="Homma2017">{{Cite journal |last1=Homma |first1=Daisuke |last2=Chiba |first2=Masashi |last3=Okamoto |first3=Sakurako |last4=Komiyama |first4=Yutaka |last5=Tanaka |first5=Masayuki |last6=Tanaka |first6=Mikito |last7=Ishigaki |first7=Miho N. |last8=Hayashi |first8=Kohei |last9=Arimoto |first9=Nobuo |date=2017-04-19 |title=Searches for New Milky Way Satellites from the First Two Years of Data of the Subaru/Hyper Suprime-Cam Survey: Discovery of Cetus III  |journal=Publications of the Astronomical Society of Japan |volume=70 |pages=S18 |arxiv=1704.05977 |doi=10.1093/pasj/psx050|bibcode=2018PASJ...70S..18H }}</ref>
+|-
+| [[Coma Berenices (dwarf galaxy)|Coma Berenices]] || 0.14 || 42 
+| &minus;4.1 || dG D || 2006
+|-
+| [[Hydra II (dwarf galaxy)|Hydra II]]|| 0.14 || 128 
+| &minus;4.8 || dSph || 2015 <ref name="Martin2015">{{cite journal |title=Hydra II: A faint and compact Milky Way dwarf galaxy found in the survey of the Magellanic stellar history |first=Nicolas F. |last=Martin |collaboration=Survey of the Magellanic Stellar History |journal=The Astrophysical Journal Letters |date=23 April 2015 | volume=804 | issue=1 | pages=L5 | doi=10.1088/2041-8205/804/1/L5|arxiv = 1503.06216 |bibcode = 2015ApJ...804L...5M |s2cid=7814048 }}</ref>
+|-
+| [[Reticulum III (dwarf galaxy)|Reticulum III]]|| 0.13 || 92 
+| &minus;3.3 || dSph || 2015 <ref name="Drlica-Wagner2015"/>
+|-
+| [[Pisces II]] || 0.12 || 180 
+| &minus;5.0 || Sph || 2010 
+|-
+| [[Pegasus III (dwarf galaxy)|Pegasus III]]|| 0.11 || 215 
+| &minus;3.4 || dSph || 2015 <ref name="Dongwon2015">{{cite journal |title=A hero's dark horse: Discovery of an ultra-faint Milky Way satellite in Pegasus |first1=Dongwon |last1=Kim |first2=Helmut |last2=Jerjen |first3=Dougal |last3=Mackey |first4=Gary S. |last4=Da Costa |first5=Antonino P. |last5=Milone |journal=The Astrophysical Journal Letters |date=12 May 2015 |volume=804 |issue=2 |page=L-44 |doi=10.1088/2041-8205/804/2/L44 |arxiv=1503.08268 |bibcode=2015ApJ...804L..44K|s2cid=119302178 }}</ref><ref name="Dongwon2016">{{cite journal |title=Portrait of a dark horse: Photometric properties and kinematics of the ultra-faint Milky Way satellite Pegasus III |first1=Dongwon |last1=Kim |first2=Helmut |last2=Jerjen |first3=Marla |last3=Geha|author3-link= Marla Geha |first4=Anirudh |last4=Chiti |first5=Antonino P. |last5=Milone |first6=Dougal |last6=Mackey |first7=Gary |last7=da Costa |first8=Anna |last8=Frebel |first9=Blair |last9=Conn |arxiv=1608.04934 |doi=10.3847/0004-637X/833/1/16 |volume=833 |issue=1 |journal=The Astrophysical Journal |page=16|bibcode = 2016ApJ...833...16K |year=2016 |s2cid=73677994 |doi-access=free }}</ref>
+|-
+| [[Hydrus I]]|| 0.10 || 28 
+| &minus;4.7 || dSph || 2018 <ref name="Koposov2018">{{Cite journal |last1=Koposov |first1=Sergey E. |last2=Walker |first2=Matthew G. |last3=Belokurov |first3=Vasily |last4=Casey |first4=Andrew R. |last5=Geringer-Sameth |first5=Alex |last6=Mackey |first6=Dougal |last7=Da Costa |first7=Gary |last8=Erkal |first8=Denis |last9=Jethwa |first9=Prashin |date=2018-10-01 |title=Snake in the Clouds: a new nearby dwarf galaxy in the Magellanic bridge* |journal=Monthly Notices of the Royal Astronomical Society |language=en |volume=479 |issue=4 |pages=5343–5361 |doi=10.1093/mnras/sty1772 |doi-access=free |issn=0035-8711|arxiv=1804.06430|bibcode=2018MNRAS.479.5343K }}</ref>
+|-
+| [[Boötes II]] || 0.10 || 42 
+| &minus;2.7 || dSph || 2007
+|-
+| [[Tucana III (dwarf galaxy)|Tucana III]]|| 0.09 || 25 
+| &minus;2.4 || dSph || 2015 <ref name="Drlica-Wagner2015"/>
+|-
+| [[Virgo I]] || 0.09 || 91 
+| &minus;0.3 || dSph || 2016 <ref name="Homma2017"/>
+|-
+| [[Horologium II (dwarf galaxy)|Horologium II]]|| 0.09 || 78 
+| &minus;2.6 || dSph || 2015 <ref name="Kim2015">{{cite journal |title=Horologium II: A second ultra-faint Milky Way satellite in the Horologium constellation |date=28 July 2015 |author1=Kim, Dongwon |author2=Jerjen, Helmut |name-list-style=amp |journal=The Astrophysical Journal Letters |volume=808 |issue=2 |page=L–39 |doi=10.1088/2041-8205/808/2/L39 |arxiv=1505.04948 |bibcode=2015ApJ...808L..39K |s2cid=117190468 }}</ref>
+|-
+| [[Sagittarius II (dwarf galaxy)|Sagittarius II]]|| 0.08 || 67 
+| &minus;5.2 || dSph || 2015 <ref name="Laevens2015"/>
+|-
+| [[Leo V (dwarf galaxy)|Leo V]] || 0.08 || 180 
+| &minus;5.2 || dSph || 2007
+|-
+| [[Triangulum II]] || 0.07 || 30 
+| &minus;1.8 || dSph || 2015
+|-
+| [[Segue 2]] || 0.07 || 35 
+| &minus;2.5 || dSph || 2007
+|-
+| [[Segue 1]] || 0.06 || 23 
+| &minus;1.5 || dSph || 2007
+|-
+| [[Draco II (dwarf galaxy)|Draco II]]|| 0.04 || 20 
+| &minus;2.9 || dSph || 2015 <ref name="Laevens2015">{{cite journal |title=Sagittarius II, Draco II and Laevens 3: Three new Milky Way satellites discovered in the PAN-STARRS 1 3π survey |last1=Laevens |first1=B.P.M |last2=Martin |first2=N.F. |last3=Bernard |first3=E.J. |last4=Schlafly |first4=E.F. |last5=Sesar |first5=B. |journal=The Astrophysical Journal |date=1 November 2015 |volume=813 |issue=1 |page=44 |doi=10.1088/0004-637X/813/1/44 |arxiv=1507.07564 |bibcode=2015ApJ...813...44L|s2cid=54042426 }}</ref>
+|-
+| [[Tucana V (dwarf galaxy)|Tucana V]]|| 0.03 || 55 
+| &minus;1.6 || dSph || 2015 <ref name="Drlica-Wagner2015"/>
+|-
+| [[Cetus II (dwarf galaxy)|Cetus II]]|| 0.03 || 30 
+| 0.0 || dSph? || 2015 <ref name="Drlica-Wagner2015"/>
+|-
+| [[Reticulum II]] || 0.064 || 30 
+| &minus;3.6 || dSph || 2015 <ref name=Koposov2015>{{cite journal |title=Beasts of the Southern Wild. Discovery of a large number of ultra faint satellites in the vicinity of the Magellanic Clouds |author1=Koposov, Sergey E. |author2=Belokurov, Vasily |author3=Torrealba, Gabriel |author4=Evans, N. Wyn |date=10 March 2015 |arxiv=1503.02079 |journal=The Astrophysical Journal |bibcode=2015ApJ...805..130K |doi=10.1088/0004-637X/805/2/130 |volume=805 |issue=2 |pages=130|s2cid=118267222 }}</ref><ref name=Bechtol2015>{{cite journal |title=Eight New Milky Way companions discovered in first-year Dark Energy Survey data |author=DES Collaboration |date=10 March 2015 |arxiv=1503.02584 |journal=The Astrophysical Journal |bibcode=2015ApJ...807...50B |doi=10.1088/0004-637X/807/1/50 |volume=807 |issue=1 |pages=50|s2cid=12011753 }}</ref>
+|-
+| [[Tucana II (dwarf galaxy)|Tucana II]]|| 0.33 || 70 
+| &minus;3.9 || dSph || 2015 <ref name=Koposov2015/><ref name=Bechtol2015/>
+|-
+| [[Pisces Overdensity]] || 1.5 || 80 
+| &minus;13 || dSph? || 2009
+|-
+| [[DES 1]]|| 0.02 || 82 
+| &minus;3.05 || dSph? || 2016 <ref name="Luque2016">{{cite journal |title=Digging deeper into Southern skies: A compact Milky Way companion discovered in first-year Dark Energy Survey data |author1=Luque, E. |display-authors=etal |journal=Monthly Notices of the Royal Astronomical Society |volume=458 |issue=1 |pages=603–612 |doi=10.1093/mnras/stw302 |date=9 February 2016 |doi-access=free |arxiv=1508.02381 |bibcode=2016MNRAS.458..603L}}</ref>
+|-
+| [[Eridanus III (dwarf galaxy)|Eridanus III]]|| 0.028 || 90 
+| &minus;2.4 || dSph?{{efn|name=GC}} || 2015 <ref name=Koposov2015/><ref name=Bechtol2015/>
+|-
+| [[Horologium I (dwarf galaxy)|Horologium I]]|| 0.06 || 100 
+| &minus;3.5 || dSph?{{efn|name=GC}} || 2015 <ref name=Koposov2015/><ref name=Bechtol2015/>
+|-
+| [[Kim 2|Kim 2/Indus I]] || 0.074 || 100 
+| &minus;3.5 || GC/dSph || 2015 <ref name=Koposov2015/><ref name=Bechtol2015/>
+|-
+| [[Phoenix II (dwarf galaxy)|Phoenix II]]|| 0.0521 || 100 
+| &minus;3.7 || dSph?{{efn|name=GC}} || 2015 <ref name=Koposov2015/><ref name=Bechtol2015/>
+|-
+| [[Ursa Major I Dwarf]] || 0.64 || 100 
+| &minus;5.5 || dG Sph || 2005
+|-
+| [[Pictoris I (dwarf galaxy)|Pictoris I]]|| 0.058 || 115 
+| &minus;3.7 || dSph?{{efn|name=GC}} || 2015 <ref name=Koposov2015/><ref name=Bechtol2015/>
+|-
+| [[Grus I (dwarf galaxy)|Grus I]]|| 0.12 || 120 
+| &minus;3.4 || dSph || 2015 <ref name=Koposov2015/>
+|-
+| [[Pegasus IV]]|| 0.082 || 90 
+| &minus;4.25 || dSph || 2022<ref name=PegasusIV>{{cite journal | arxiv=2203.11788 | doi=10.3847/1538-4357/aca1c3 | title=Pegasus IV: Discovery and Spectroscopic Confirmation of an Ultra-faint Dwarf Galaxy in the Constellation Pegasus | year=2023 | last1=Cerny | first1=W. | last2=Simon | first2=J. D. | last3=Li | first3=T. S. | last4=Drlica-Wagner | first4=A. | last5=Pace | first5=A. B. | last6=Martínez-Vázquez | first6=C. E. | last7=Riley | first7=A. H. | last8=Mutlu-Pakdil | first8=B. | last9=Mau | first9=S. | last10=Ferguson | first10=P. S. | last11=Erkal | first11=D. | last12=Munoz | first12=R. R. | last13=Bom | first13=C. R. | last14=Carlin | first14=J. L. | last15=Carollo | first15=D. | last16=Choi | first16=Y. | last17=Ji | first17=A. P. | last18=Manwadkar | first18=V. | last19=Martínez-Delgado | first19=D. | last20=Miller | first20=A. E. | last21=Noël | first21=N. E. D. | last22=Sakowska | first22=J. D. | last23=Sand | first23=D. J. | last24=Stringfellow | first24=G. S. | last25=Tollerud | first25=E. J. | last26=Vivas | first26=A. K. | last27=Carballo-Bello | first27=J. A. | last28=Hernandez-Lang | first28=D. | last29=James | first29=D. J. | last30=Nidever | first30=D. L. | journal=The Astrophysical Journal | volume=942 | issue=2 | page=111 | bibcode=2023ApJ...942..111C | s2cid=247597301 | display-authors=1 | doi-access=free }}</ref>
+|-
+| [[Carina II (dwarf galaxy)|Carina II]]|| 0.182 || 36 
+| &minus;4.5 || dSph || 2018 <ref name="Torrealba2018">{{Cite journal |last1=Torrealba |first1=G. |last2=Belokurov |first2=V. |last3=Koposov |first3=S. E. |last4=Bechtol |first4=K. |last5=Drlica-Wagner |first5=A. |last6=Olsen |first6=K. A. G. |last7=Vivas |first7=A. K. |last8=Yanny |first8=B. |last9=Jethwa |first9=P. |date=2018-01-22 |title=Discovery of two neighbouring satellites in the Carina constellation with MagLiteS |journal=Monthly Notices of the Royal Astronomical Society |volume=475 |issue=4 |pages=5085–5097 |doi=10.1093/mnras/sty170 |doi-access=free |arxiv=1801.07279 |df=dmy-all}}</ref>
+|-
+| [[Carina III (dwarf galaxy)|Carina III]]|| 0.06 || 28 
+| &minus;2.4 || GC? || 2018 <ref name=Torrealba2018/>
+|-
+| [[Boötes IV (dwarf galaxy)|Boötes IV]]|| 0.28 || 209
+| &minus;4.53 || dSph || 2019 <ref name="Homma2019">{{cite journal |title=Boötes. IV. A new Milky Way satellite discovered in the Subaru Hyper Suprime-Cam Survey and implications for the missing satellite problem  |last=Homma |year=2019 |journal=Publications of the Astronomical Society of Japan |volume=71 |issue=5 |page=94 |doi=10.1093/pasj/psz076 |url=https://academic.oup.com/pasj/article-abstract/71/5/94/5539816|arxiv=1906.07332 |bibcode=2019PASJ...71...94H }}</ref>
+|-
+| [[Centaurus I (dwarf galaxy)|Centaurus I]]|| 0.076 || 116
+| &minus;5.55 || dSph || 2020 <ref name="Mau2020">{{cite journal |title=Two Ultra-faint Milky Way Stellar Systems Discovered in Early Data from the DECam Local Volume Exploration Survey |last=Mau |year=2020 |journal=The Astrophysical Journal |volume=890 |issue=2 |page=136 |doi=10.3847/1538-4357/ab6c67 |arxiv=1912.03301 |bibcode=2020ApJ...890..136M |s2cid=208857609 |doi-access=free }}</ref>
+|-
+| [[Pictor II (dwarf galaxy)|Pictor II]]|| 0.046 || 46
+| &minus;3.2 || dSph || 2016 <ref name="Drlica-Wagner2016">{{cite journal |author=Drlica-Wagner |title=An Ultra-Faint Galaxy Candidate Discovered in Early Data from the Magellanic Satellites Survey |year=2016 |journal=The Astrophysical Journal |volume=833 |issue=1 |pages=L5 |doi=10.3847/2041-8205/833/1/L5 |arxiv=1609.02148 |bibcode=2016ApJ...833L...5D |hdl=1885/153579 |s2cid=56071154 |doi-access=free }}</ref>
+|-
+| [[Boötes V]]
+| 0.0194
+| 102
+| &minus;3.2
+| dSph?
+| 2022<ref name=Cerny2022>{{cite journal|doi=10.3847/1538-4357/acdd78|doi-access=free |title=Six More Ultra-faint Milky Way Companions Discovered in the DECam Local Volume Exploration Survey |date=2023 |last1=Cerny |first1=W. |last2=Martínez-Vázquez |first2=C. E. |last3=Drlica-Wagner |first3=A. |last4=Pace |first4=A. B. |last5=Mutlu-Pakdil |first5=B. |last6=Li |first6=T. S. |last7=Riley |first7=A. H. |last8=Crnojević |first8=D. |last9=Bom |first9=C. R. |last10=Carballo-Bello |first10=J. A. |last11=Carlin |first11=J. L. |last12=Chiti |first12=A. |last13=Choi |first13=Y. |last14=Collins |first14=M. L. M. |last15=Darragh-Ford |first15=E. |last16=Ferguson |first16=P. S. |last17=Geha |first17=M. |last18=Martínez-Delgado |first18=D. |last19=Massana |first19=P. |last20=Mau |first20=S. |last21=Medina |first21=G. E. |last22=Muñoz |first22=R. R. |last23=Nadler |first23=E. O. |last24=Noël |first24=N. E. D. |last25=Olsen |first25=K. A. G. |last26=Pieres |first26=A. |last27=Sakowska |first27=J. D. |last28=Simon |first28=J. D. |last29=Stringfellow |first29=G. S. |last30=Tollerud |first30=E. J. |journal=The Astrophysical Journal |volume=953 |issue=1 |page=1 |arxiv=2209.12422 |bibcode=2023ApJ...953....1C |display-authors=1 }}</ref>
+|-
+| [[Leo Minor I]]
+| 0.0897
+| 82
+| &minus;2.4
+| dSph
+| 2022<ref name=Cerny2022/>
+|-
+| [[Virgo II]]
+| 0.07
+| 72
+| &minus;1.6
+| dSph
+| 2022<ref name=Cerny2022/>
+|-
+| [[Willman 1]] || 0.02 || 38
+| &minus;2.53 || dSph || 2018 <ref name="Muñoz2018">{{cite journal |title=A MegaCam Survey of Outer Halo Satellites. III. Photometric and Structural Parameters |last=Muñoz |year=2018 |journal=The Astrophysical Journal |volume=860 |issue=1 |page=66 |doi=10.3847/1538-4357/aac16b |arxiv=1806.06891 |bibcode=2018ApJ...860...66M |s2cid=118978019 |doi-access=free }}</ref>
+|-
+|[[Ursa Major III]]
+|0.003
+|10
+| +2.2
+|dSph?
+|2023
+|-
+| [[Leo K (galaxy)|Leo K]]
+| 0.0087
+| 434
+| &minus;4.86
+| dSph
+| 2024<ref name=McQuinn>{{cite journal|doi=10.3847/1538-4357/ad429b|doi-access=free |title=Discovery and Characterization of Two Ultrafaint Dwarfs outside the Halo of the Milky Way: Leo M and Leo K |date=2024 |last1=McQuinn |first1=Kristen. B. W. |last2=Mao |first2=Yao-Yuan |last3=Tollerud |first3=Erik J. |last4=Cohen |first4=Roger E. |last5=Shih |first5=David |last6=Buckley |first6=Matthew R. |last7=Dolphin |first7=Andrew E. |journal=The Astrophysical Journal |volume=967 |issue=2 |page=161 |arxiv=2307.08738 |bibcode=2024ApJ...967..161M }}</ref>
+|-
+| [[Leo M]]
+| 0.009
+| 459
+| &minus;5.77
+| dSph
+| 2024<ref name=McQuinn/>
+|-
+|[[Sextans II]]
+| 0.024?
+| –
+| –
+| dSph
+|2024<ref name=":0">{{Cite web |author1=Robert Lea |date=2024-07-02 |title=Scientists finally found 2 of the Milky Way's missing satellite galaxies. What could this mean for astronomy? |url=https://www.space.com/milky-way-satellite-dwarf-galaxies-found |access-date=2024-07-04 |website=Space.com |language=en}}</ref>
+|-
+|[[Virgo III]]
+| 0.015
+| 154<ref>{{cite journal | doi=10.3847/1538-3881/ad49a9 | doi-access=free | arxiv=2405.05482 | bibcode=2024AJ....168....8N | title=Discovery of RR Lyrae in the Ultra-faint-dwarf Galaxy Virgo III | date=2024 | last1=Ngeow | first1=Chow-Choong | last2=Bhardwaj | first2=Anupam | journal=The Astronomical Journal | volume=168 | issue=1 | page=8 }}</ref>
+| –
+| dSph
+|2024<ref name=":0" />
+|-
+|[[Pegasus W]]
+|0.01
+|227
+| +1
+|dSph
+|2020
+|-
+|[[Eridanus IV]]
+|0.034
+|59.7
+| +0.2
+|dSph?
+|2021
+|-
+|[[Laevens 1]] (Crater 1)
+|0.09
+|26.8
+| +0.8
+|dG D
+|2014
+|-
+|[[Leo VI (galaxy)|Leo VI]]
+|0.28<!-- Physical Semi-Major Axis Length = 140 pc -->
+|111
+|&minus;3.56
+|dSph
+|2024<ref>{{cite journal|doi=10.3847/1538-4357/ad9b0c|doi-access=free |title=A Pride of Satellites in the Constellation Leo? Discovery of the Leo VI Milky Way Satellite Ultra-faint Dwarf Galaxy with DELVE Early Data Release 3 |date=2025 |last1=Tan |first1=C. Y. |last2=Cerny |first2=W. |last3=Drlica-Wagner |first3=A. |last4=Pace |first4=A. B. |last5=Geha |first5=M. |last6=Ji |first6=A. P. |last7=Li |first7=T. S. |last8=Adamów |first8=M. |last9=Anbajagane |first9=D. |last10=Bom |first10=C. R. |last11=Carballo-Bello |first11=J. A. |last12=Carlin |first12=J. L. |last13=Chang |first13=C. |last14=Chaturvedi |first14=A. |last15=Chiti |first15=A. |last16=Choi |first16=Y. |last17=Collins |first17=M. L. M. |last18=Doliva-Dolinsky |first18=A. |last19=Ferguson |first19=P. S. |last20=Gruendl |first20=R. A. |last21=James |first21=D. J. |last22=Limberg |first22=G. |last23=Navabi |first23=M. |last24=Martínez-Delgado |first24=D. |last25=Martínez-Vázquez |first25=C. E. |last26=Medina |first26=G. E. |last27=Mutlu-Pakdil |first27=B. |last28=Nidever |first28=D. L. |last29=Noël |first29=N. E. D. |last30=Riley |first30=A. H. |journal=The Astrophysical Journal |volume=979 |issue=2 |page=176 |arxiv=2408.00865 |bibcode=2025ApJ...979..176T |display-authors=1 }}</ref>
+|-
+|[[Aquarius III (galaxy)|Aquarius III]]
+|0.102<!-- Physical Semi-Major Axis Length = 51 pc -->
+|85
+|&minus;2.5
+|dSph
+|2024<ref>{{cite journal|doi=10.3847/1538-4357/ad8eba|doi-access=free |title=Discovery and Spectroscopic Confirmation of Aquarius III: A Low-mass Milky Way Satellite Galaxy |date=2025 |last1=Cerny |first1=W. |last2=Chiti |first2=A. |last3=Geha |first3=M. |last4=Mutlu-Pakdil |first4=B. |last5=Drlica-Wagner |first5=A. |last6=Tan |first6=C. Y. |last7=Adamów |first7=M. |last8=Pace |first8=A. B. |last9=Simon |first9=J. D. |last10=Sand |first10=D. J. |last11=Ji |first11=A. P. |last12=Li |first12=T. S. |last13=Vivas |first13=A. K. |last14=Bell |first14=E. F. |last15=Carlin |first15=J. L. |last16=Carballo-Bello |first16=J. A. |last17=Chaturvedi |first17=A. |last18=Choi |first18=Y. |last19=Doliva-Dolinsky |first19=A. |last20=Gnedin |first20=O. Y. |last21=Limberg |first21=G. |last22=Martínez-Vázquez |first22=C. E. |last23=Mau |first23=S. |last24=Medina |first24=G. E. |last25=Navabi |first25=M. |last26=Noël |first26=N. E. D. |last27=Placco |first27=V. M. |last28=Riley |first28=A. H. |last29=Roederer |first29=I. U. |last30=Stringfellow |first30=G. S. |journal=The Astrophysical Journal |volume=979 |issue=2 |page=164 |arxiv=2410.00981 |bibcode=2025ApJ...979..164C |display-authors=1 }}</ref>
+|-
+|[[Aquarius IV]]
+| 0.062<!-- half-light radius = 19 pc -->
+| 109
+| &minus;1.9
+| dSph
+| 2026<ref>{{cite journal|last1=Cerny |first1=William |last2=Pai |first2=Aashay |last3=Drlica-Wagner |first3=Alex |last4=Pace |first4=Andrew B. |last5=Ferguson |first5=Peter S. |last6=Geha |first6=Marla |last7=Tan |first7=Chin Yi |last8=Campana |first8=Sasha |last9=Carlin |first9=Jeffrey L. |last10=Crnojević |first10=Denija |last11=Ji |first11=Alexander P. |last12=Limberg |first12=Guilherme |last13=Massana |first13=Pol |last14=Mau |first14=Sidney |last15=Medina |first15=Gustavo E. |last16=Mutlu-Pakdil |first16=Burçin |last17=Sakowska |first17=Joanna D. |last18=Shipp |first18=Nora |last19=Stringfellow |first19=Guy S. |title=Discovery of the Distant, Ultra-faint Milky Way Satellite Aquarius IV with the Vera C. Rubin Observatory Early Data Preview 2 |journal=Research Notes of the AAS |date=2026 |volume=10 |issue=8 |page=239 |doi=10.3847/2515-5172/ae993b |doi-access=free |arxiv=2608.02601 |bibcode=2026RNAAS..10..239C }}</ref>
+|}
+
+==Map with clickable regions==
+<imagemap>
+Image:Satellite_Galaxies.svg|frame|center|Milky Way's satellite galaxies (clickable map)
+
+rect 289 219 352 251 [[Milky Way]]
+rect 319 252 380 281 [[Sagittarius Dwarf Elliptical Galaxy]]
+rect 187 81 229 113 [[Sextans Dwarf]]
+rect 168 273 249 318 [[Large Magellanic Cloud]]
+rect 229 326 288 368 [[Small Magellanic Cloud]]
+rect 297 376 352 407 [[Sculptor Dwarf]]
+rect 183 446 234 476 [[Fornax Dwarf]]
+rect 107 297 150 332 [[Carina Dwarf]]
+rect 296 107 339 144 [[Bootes Dwarf]]
+rect 336 180 408 196 [[Ursa Major II]]
+rect 357 40 423 59 [[Ursa Major I]]
+rect 370 110 428 142 [[Ursa Minor Dwarf]]
+rect 430 119 470 154 [[Draco Dwarf]]
+</imagemap>
+
+==Streams==
+{{See also|List of stellar streams}}
+The Sagittarius Dwarf Spheroidal Galaxy is currently in the process of being [[Interacting galaxy|consumed]] by the Milky Way and is expected to pass through it within the next 100 million years. The [[Sagittarius Stream]] is a stream of stars in polar orbit around the Milky Way leeched from the Sagittarius Dwarf. The [[Virgo Stellar Stream]] is a stream of stars that is believed to have once been an orbiting dwarf galaxy that has been completely distended by the Milky Way's gravity.
+
+==See also==
+* [[List of Andromeda's satellite galaxies]]
+* [[List of nearest galaxies]]
+* [[Local Group]]
+
+==Notes==
+{{notes
+| notes =
+{{efn
+| name = GC
+| 1 = May be a globular cluster instead
+}}}}{{notelist}}
+
+== References ==
+{{reflist}}
+
+== Further reading ==
+* {{cite journal |title= The Dearth of Neutral Hydrogen in Galactic Dwarf Spheroidal Galaxies |author1=K. Spekkens |author2=N. Urbancic |author3=B. S. Mason |author4=B. Willman |author5=J. E. Aguirre |date= 30 September 2014 |arxiv= 1410.0028 |bibcode= 2014ApJ...795L...5S |doi= 10.1088/2041-8205/795/1/L5 |journal= The Astrophysical Journal Letters |volume= 795 |number= 1 |publication-date= 13 October 2014 |pages=L5|s2cid=35113298 }}
+
+{{Milky Way}}
+{{Earth's location}}
+{{Portal bar|Physics|Stars|Science}}
+
+[[Category:Milky Way Subgroup|*]]
+[[Category:Local Group]]

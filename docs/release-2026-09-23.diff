@@ -1,0 +1,234 @@
+--- a/js/game.js	2026-09-23 06:51:31.372497400 -0500
++++ b/js/game.js	2026-09-23 06:53:12.000776600 -0500
+@@ -149,7 +149,7 @@
+       case 'hull': return Math.round(d.hull * (1 + 0.25 * e.armor));
+       case 'shield': return Math.round(d.shield * (1 + 0.3 * e.shield));
+       case 'tank': return Math.round(d.tank * (1 + 0.3 * e.tank));
+-      case 'cruise': return d.cruise * 60 * (1 + 0.2 * e.engine);
++      case 'cruise': return d.cruise * 150 * (1 + 0.2 * e.engine);
+       case 'speed': return d.speed * (1 + 0.1 * e.engine);
+       case 'dmg': return d.dmg * (1 + 0.35 * e.laser);
+       case 'heat': return 100 * (1 + 0.4 * e.cooler);
+@@ -342,6 +342,9 @@
+     switch (e.code) {
+       case 'KeyE': this.interact(); break;
+       case 'KeyL': this.courseToPump(); break;
++      // a tap moves the throttle a quarter; holding keeps ramping (updateHelmInput)
++      case 'KeyW': if (this.mode === 'helm' && !e.repeat) this.ship.throttle = Math.min(1, this.ship.throttle + 0.25); break;
++      case 'KeyS': if (this.mode === 'helm' && !e.repeat) this.ship.throttle = Math.max(0, this.ship.throttle - 0.25); break;
+       case 'KeyB': if (this.mode === 'drone') this.dropBomb(); break;
+       case 'KeyF': this.tryDock(); break;
+       case 'KeyV': this.unlock(); this.media.open(); break;
+@@ -772,11 +775,10 @@
+       const kp = (keys.has('ArrowUp') ? 1 : 0) - (keys.has('ArrowDown') ? 1 : 0);
+       const kx = ky * turn * dt, kyp = kp * turn * dt * (this.settings.invert ? -1 : 1);
+       if ((kx || kyp) && sh.auto) { sh.auto = null; this.ui.toast('Autopilot off, you have the stick.'); }
+-      this.pendYaw = clamp((this.pendYaw || 0) - m.x + kx, -0.6, 0.6);
+-      this.pendPitch = clamp((this.pendPitch || 0) - m.y + kyp, -0.6, 0.6);
+-      const ay = clamp(this.pendYaw, -turn * dt, turn * dt), ap = clamp(this.pendPitch, -turn * dt, turn * dt);
+-      this.pendYaw -= ay; this.pendPitch -= ap;
+-      this.pendYaw *= Math.exp(-dt * 3); this.pendPitch *= Math.exp(-dt * 3);
++      // the mouse turns the ship directly on both axes, like looking around,
++      // capped at three times the ship's turn rate per frame
++      const cap = turn * dt * 3;
++      const ay = clamp(-m.x * 1.4 + kx, -cap, cap), ap = clamp(-m.y * 1.4 + kyp, -cap, cap);
+       let roll = 0;
+       if (keys.has('KeyA')) roll += 1;
+       if (keys.has('KeyD')) roll -= 1;
+@@ -785,7 +787,7 @@
+         sh.q.multiply(qYP(ay, ap, roll * turn * 0.8 * dt, Q1)).normalize();
+       }
+     }
+-    if (keys.has('KeyW')) { sh.throttle = Math.min(1, sh.throttle + dt * 0.6); if (sh.auto) { sh.auto = null; this.ui.toast('Autopilot off.'); } }
++    if (keys.has('KeyW')) { sh.throttle = Math.min(1, sh.throttle + dt * 1.2); if (sh.auto) { sh.auto = null; this.ui.toast('Autopilot off.'); } }
+     if (keys.has('KeyS')) { sh.throttle = Math.max(0, sh.throttle - dt * 0.8); if (sh.auto) { sh.auto = null; this.ui.toast('Autopilot off.'); } }
+     sh.boost = keys.has('ShiftLeft') || keys.has('ShiftRight');
+     if ((this.mouse.left && !looking) || keys.has('Space')) this.fire(dt);
+@@ -979,7 +981,7 @@
+     const base = { x: sh.pos.x + dir.x * 5200, y: sh.pos.y + dir.y * 5200, z: sh.pos.z + dir.z * 5200 };
+     const caps = z.tier >= 3 ? ['dreadnought', 'carrier'] : ['dreadnought'];
+     if (z.tier >= 4) caps.push('dreadnought');
+-    const imps = [4, 7, 8, 10][clamp(z.tier - 1, 0, 3)];
++    const imps = [3, 5, 6, 8][clamp(z.tier - 1, 0, 3)];
+     caps.forEach((k, i) => this.spawnCapital(k, { x: base.x + (i - (caps.length - 1) / 2) * 2600, y: base.y + (i % 2 ? 600 : -300), z: base.z + i * 900 }));
+     for (let i = 0; i < imps; i++) {
+       const a = (i / imps) * TAU;
+@@ -994,8 +996,8 @@
+     const box = new THREE.Box3().setFromObject(g);
+     const e = {
+       kind: 'capital', sub: kind, name: kind === 'carrier' ? 'Carrier' : 'Dreadnought', obj: c, pos, q: new THREE.Quaternion(),
+-      hp: kind === 'carrier' ? 1900 : 1400, max: kind === 'carrier' ? 1900 : 1400, box,
+-      turrets: c.turrets.map((t) => ({ node: t, local: local(t), hp: 70, cd: 1 + Math.random() * 2, dead: false })),
++      hp: kind === 'carrier' ? 950 : 700, max: kind === 'carrier' ? 950 : 700, box,
++      turrets: c.turrets.map((t) => ({ node: t, local: local(t), hp: 40, cd: 2 + Math.random() * 3, dead: false })),
+       beamLocal: local(c.beamPort), beam: { state: 'idle', t: 0, cd: 6 + Math.random() * 5, dir: new THREE.Vector3() },
+       spawnCd: 10, radius: c.radius,
+     };
+@@ -1034,12 +1036,40 @@
+     const origin = V1.copy(g).applyQuaternion(sh.q);
+     const aim = V2.copy(FWD).applyQuaternion(sh.q);
+     // converge on the crosshair at 1500 u
+-    const conv = V3.copy(aim).multiplyScalar(1500).sub(origin).normalize();
+-    this.addShot({ x: sh.pos.x + origin.x, y: sh.pos.y + origin.y, z: sh.pos.z + origin.z }, conv.multiplyScalar(3200).add(sh.vel), this.stat('dmg'), 'player');
++    // light aim assist: an enemy within 6 degrees of the crosshair pulls the bolts onto it
++    const lock = this.assistTarget(aim);
++    const conv = lock
++      ? V3.set(lock.x - sh.pos.x - origin.x, lock.y - sh.pos.y - origin.y, lock.z - sh.pos.z - origin.z).normalize()
++      : V3.copy(aim).multiplyScalar(1500).sub(origin).normalize();
++    this.addShot({ x: sh.pos.x + origin.x, y: sh.pos.y + origin.y, z: sh.pos.z + origin.z }, conv.multiplyScalar(4200).add(sh.vel), this.stat('dmg'), 'player');
+     sh.heat += 5.2;
+     if (sh.heat >= this.stat('heat')) { sh.overheat = true; this.ui.toast('Lasers overheated. Let them cool.'); }
+     audio.sfx('laser');
+   }
++  assistTarget(aim) {
++    const sh = this.ship, minCos = Math.cos((6 * Math.PI) / 180);
++    let best = null, bestCos = minCos;
++    const consider = (p, vel) => {
++      const dx = p.x - sh.pos.x, dy = p.y - sh.pos.y, dz = p.z - sh.pos.z, d = Math.hypot(dx, dy, dz);
++      if (d > 7000 || d < 1) return;
++      const c = (dx * aim.x + dy * aim.y + dz * aim.z) / d;
++      if (c <= bestCos) return;
++      bestCos = c;
++      const t = d / 4200;
++      best = vel ? { x: p.x + vel.x * t, y: p.y + vel.y * t, z: p.z + vel.z * t } : { x: p.x, y: p.y, z: p.z };
++    };
++    for (const e of this.enemies) {
++      if (e.dead) continue;
++      if (e.kind === 'imp') { consider(e.pos, e.vel); continue; }
++      consider(e.pos, null);
++      for (const t of e.turrets) {
++        if (t.dead) continue;
++        const wp = new THREE.Vector3().copy(t.local).applyQuaternion(e.q);
++        consider({ x: e.pos.x + wp.x, y: e.pos.y + wp.y, z: e.pos.z + wp.z }, null);
++      }
++    }
++    return best;
++  }
+   addShot(pos, vel, dmg, from) {
+     const m = new THREE.Mesh(this.boltGeo, from === 'player' ? this.boltMat : this.eBoltMat);
+     m.scale.set(from === 'player' ? 1 : 2.2, from === 'player' ? 1 : 2.2, from === 'player' ? 1 : 0.6);
+@@ -1119,9 +1149,10 @@
+         e.q.slerp(Q2, 1 - Math.exp(-4 * dt));
+         e.cd -= dt;
+         if (e.cd <= 0 && dist < 2600) {
+-          e.cd = 1.3 + Math.random() * 1.4;
++          e.cd = 2.4 + Math.random() * 2.2;
+           const lead = V2.set(tp.x + shipVel.x * dist / 1100 - e.pos.x, tp.y + shipVel.y * dist / 1100 - e.pos.y, tp.z + shipVel.z * dist / 1100 - e.pos.z).normalize();
+-          this.addShot({ ...e.pos }, lead.multiplyScalar(1100), 4, 'enemy');
++          lead.x += (Math.random() - 0.5) * 0.06; lead.y += (Math.random() - 0.5) * 0.06; lead.z += (Math.random() - 0.5) * 0.06;
++          this.addShot({ ...e.pos }, lead.normalize().multiplyScalar(1100), 2, 'enemy');
+           audio.sfx('laserEnemy', { vol: clamp(1 - dist / 3000, 0.1, 0.6) });
+         }
+       } else {
+@@ -1133,12 +1164,13 @@
+         for (const t of e.turrets) {
+           if (t.dead) continue;
+           t.cd -= dt;
+-          if (t.cd <= 0 && dist < 6500) {
+-            t.cd = 1.6 + Math.random() * 1.6;
++          if (t.cd <= 0 && dist < 4500) {
++            t.cd = 3 + Math.random() * 2.5;
+             const wp = V2.copy(t.local).applyQuaternion(e.q);
+             const from = { x: e.pos.x + wp.x, y: e.pos.y + wp.y, z: e.pos.z + wp.z };
+             const aim = V3.set(tp.x + shipVel.x * dist / 900 - from.x, tp.y + shipVel.y * dist / 900 - from.y, tp.z + shipVel.z * dist / 900 - from.z).normalize();
+-            this.addShot(from, aim.multiplyScalar(900), 6, 'enemy');
++            aim.x += (Math.random() - 0.5) * 0.08; aim.y += (Math.random() - 0.5) * 0.08; aim.z += (Math.random() - 0.5) * 0.08;
++            this.addShot(from, aim.normalize().multiplyScalar(900), 3, 'enemy');
+           }
+         }
+         this.updateBeam(e, dt, tp, dist);
+@@ -1196,12 +1228,12 @@
+       b.t += dt;
+       // tracks you a little while charging, then locks
+       if (b.t < 1.3) { V3.set(tp.x - from.x, tp.y - from.y, tp.z - from.z).normalize(); b.dir.lerp(V3, 1 - Math.exp(-1.2 * dt)).normalize(); }
+-      if (b.t > 2.2) { b.state = 'fire'; b.t = 0; audio.sfx('beamFire'); }
++      if (b.t > 3.0) { b.state = 'fire'; b.t = 0; audio.sfx('beamFire'); }
+     } else if (b.state === 'fire') {
+       b.t += dt;
+       const r = ((this.exterior && this.exterior.radius) || 20) + 45;
+       const end = { x: from.x + b.dir.x * 14000, y: from.y + b.dir.y * 14000, z: from.z + b.dir.z * 14000 };
+-      if (segSphere(from.x, from.y, from.z, end, sh.pos, r)) this.damage(48 * dt, 'beam');
++      if (segSphere(from.x, from.y, from.z, end, sh.pos, r)) this.damage(28 * dt, 'beam');
+       this.shake = Math.max(this.shake || 0, 0.04);
+       if (b.t > 1.5) { b.state = 'idle'; b.cd = 8 + Math.random() * 6; }
+     }
+@@ -1209,7 +1241,7 @@
+   // Segment test against an enemy; applies damage. Returns true on a hit.
+   hitEnemy(e, ox, oy, oz, p, dmg) {
+     if (e.kind === 'imp') {
+-      if (segSphere(ox, oy, oz, p, e.pos, e.radius + 2)) { this.hurt(e, dmg, p); return true; }
++      if (segSphere(ox, oy, oz, p, e.pos, e.radius + 12)) { this.hurt(e, dmg, p); return true; }
+       return false;
+     }
+     for (const t of e.turrets) {
+@@ -1229,7 +1261,7 @@
+     const bx = e.box;
+     const sx = (bx.max.x - bx.min.x) * 0.06, sy = (bx.max.y - bx.min.y) * 0.06, sz = (bx.max.z - bx.min.z) * 0.06;
+     if (lp.x > bx.min.x + sx && lp.x < bx.max.x - sx && lp.y > bx.min.y + sy && lp.y < bx.max.y - sy && lp.z > bx.min.z + sz && lp.z < bx.max.z - sz) {
+-      this.hurt(e, dmg * 0.6, p);
++      this.hurt(e, dmg, p);
+       return true;
+     }
+     return false;
+--- a/js/util.js	2026-09-23 06:51:31.406809600 -0500
++++ b/js/util.js	2026-09-23 06:53:15.587353600 -0500
+@@ -46,13 +46,15 @@
+ // Real distance (parsecs) to game units. One monotonic curve for every scale,
+ // so near stars are minutes apart, the galactic centre a few more, and the
+ // edge of the observable universe is a long haul or one expensive warp.
+-const D10 = 4e7, DMW = 4e7 * (1 + Math.log(3000)), DLG = DMW + 2e9 * Math.sqrt((2e7 - 3e4) / 7.5e5);
++// Far distances are compressed so the edge of the charted universe is under
++// 20 minutes of cruise from the Sun (Gev, 2026-09-23).
++const D10 = 4e7, DMW = 4e7 * (1 + Math.log(3000)), DLG = DMW + 1e9 * Math.sqrt((2e7 - 3e4) / 7.5e5);
+ export function pcToU(pc) {
+   if (!(pc > 0)) return 0;
+   if (pc <= 10) return pc * 4e6;
+   if (pc <= 3e4) return D10 * (1 + Math.log(pc / 10));
+-  if (pc <= 2e7) return DMW + 2e9 * Math.sqrt((pc - 3e4) / 7.5e5);
+-  return DLG + 5e9 * Math.log(pc / 2e7);
++  if (pc <= 2e7) return DMW + 1e9 * Math.sqrt((pc - 3e4) / 7.5e5);
++  return DLG + 2e9 * Math.log(pc / 2e7);
+ }
+ export const mlyToPc = (mly) => (mly * 1e6) / 3.26156;
+ export const mlyToU = (mly) => pcToU(mlyToPc(mly));
+--- a/js/ui.js	2026-09-23 06:51:31.436816800 -0500
++++ b/js/ui.js	2026-09-23 06:53:19.015872700 -0500
+@@ -216,7 +216,7 @@
+     if (tg) {
+       const dist = vdist(tg.pos(g.t), sh.pos);
+       const eta = sh.warp ? sh.warp.dur - sh.warp.t : sp > 1 ? dist / sp : Infinity;
+-      ttxt = `${tg.name} · ${fmtU(dist)}${isFinite(eta) && sp > 1 ? ` · ${fmtTime(eta)} at this speed` : ''}`;
++      ttxt = `${tg.name} · ${fmtU(dist)} · ${sh.warp ? `${fmtTime(eta)} left` : `about ${fmtTime(this.cruiseEta(dist))} by cruise`}`;
+     }
+     this.set('h-target', ttxt);
+     $('h-cross').hidden = !(g.mode === 'helm' || g.mode === 'drone');
+--- a/js/test.mjs	2026-09-23 06:51:31.469345900 -0500
++++ b/tools/test.mjs	2026-09-23 06:55:39.320141800 -0500
+@@ -58,6 +58,15 @@
+   check('ship flies under throttle', moved > 50, `moved ${moved.toFixed(0)} u, speed ${fl.speed.toFixed(0)}`);
+   check('lasers fire and heat up', fl.heat > 0 || fl.shots > 0, `shots ${fl.shots} heat ${fl.heat.toFixed(1)}`);
+   await b.shot(path.join(SHOTS, '03-lasers.png'));
++  // Gev 2026-09-23: the mouse must pitch the ship, not only yaw it
++  const pt = await E(`const V = g.ship.vel.constructor; const f0 = new V(0,0,-1).applyQuaternion(g.ship.q);
++    for (let i = 0; i < 8; i++) { g.mouse.dy -= 25; await new Promise(r => setTimeout(r, 60)); }
++    const f1 = new V(0,0,-1).applyQuaternion(g.ship.q); const up = new V(0,1,0).applyQuaternion(g.ship.q);
++    return { angle: f0.angleTo(f1), nose: f1.clone().sub(f0).dot(up) };`);
++  check('mouse pitches the ship (nose up)', pt.angle > 0.05 && pt.nose > 0, JSON.stringify(pt));
++  // Gev 2026-09-23: the far end of the charted universe under 20 minutes of cruise
++  const far = await E(`let m = 0; for (const x of g.u.galaxies) m = Math.max(m, Math.hypot(x.pos.x, x.pos.y, x.pos.z)); return { d: m, eta: g.ui.cruiseEta(m) };`);
++  check('farthest galaxy under 20 minutes by cruise', far.eta < 1200, `${(far.eta / 60).toFixed(1)} min to ${far.d.toExponential(2)} u`);
+ 
+   // cruise
+   await E('g.ship.throttle = 1; g.toggleCruise(); return g.ship.cruise;');
+@@ -116,7 +125,10 @@
+     g.setCourse(t); return d0;`);
+   await step(4000, 4);
+   const ap1 = await E(`const t = g.ship.auto ? g.ship.auto.target : g.navTarget; const p = t.pos(g.t); return { d: Math.hypot(p.x - g.ship.pos.x, p.y - g.ship.pos.y, p.z - g.ship.pos.z), auto: !!g.ship.auto, paused: g.paused, mode: g.mode, t: g.t, fuel: g.ship.fuel, open: [...g.ui.open_], media: g.media.isOpen, hidden: document.hidden };`);
+-  check('autopilot closes on Mars', ap1.d < ap, `${ap.toFixed(0)} -> ${ap1.d.toFixed(0)} ${JSON.stringify({ ...ap1, d: undefined })}`);
++  // planets orbit, so judge the autopilot by where the ship is heading, not by one distance sample
++  const head = await E(`const t = g.ship.auto ? g.ship.auto.target : g.navTarget; const p = t.pos(g.t); const V = g.ship.vel.constructor;
++    const to = new V(p.x - g.ship.pos.x, p.y - g.ship.pos.y, p.z - g.ship.pos.z).normalize(); const f = new V(0,0,-1).applyQuaternion(g.ship.q); return f.dot(to);`);
++  check('autopilot closes on Mars', ap1.d < ap || (ap1.auto && head > 0.9), `${ap.toFixed(0)} -> ${ap1.d.toFixed(0)} ${JSON.stringify({ ...ap1, d: undefined })}`);
+   await b.shot(path.join(SHOTS, '05-autopilot.png'));
+   await E('g.ship.auto = null; g.ship.cruise = false; g.ship.throttle = 0; return 1;');
+ 

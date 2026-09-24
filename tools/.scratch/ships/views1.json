@@ -1,0 +1,8 @@
+[
+ ["g-seat", 2, [["scout","seat",{"mode":"doodle"}],["racer","seat",{"mode":"doodle"}],["fighter","seat",{"mode":"doodle"}],["hauler","seat",{"mode":"doodle"}]]],
+ ["g-spawn", 2, [["scout","spawn",{"mode":"doodle"}],["racer","spawn",{"mode":"doodle"}],["fighter","spawn",{"mode":"doodle"}],["cruiser","spawn",{"mode":"doodle"}]]],
+ ["g-top", 2, [["scout","top",{}],["racer","top",{}],["fighter","top",{}],["hauler","top",{}]]],
+ ["g-top-cr", 1, [["cruiser","top",{"zc":-15.5,"span":8}],["cruiser","top",{"zc":15,"span":8}]]],
+ ["g-ext", 2, [["scout","ext",{"mode":"doodle","hole":true}],["racer","ext",{"mode":"doodle","hole":true,"paint":"blue"}],["fighter","ext",{"mode":"doodle","hole":true,"paint":"outline"}],["hauler","ext",{"mode":"doodle","hole":true}]]],
+ ["g-ext2", 2, [["cruiser","ext",{"mode":"doodle","hole":true,"paint":"blue"}],["cruiser","ext",{"mode":"doodle","az":2.3,"el":0.3}],["racer","ext",{"mode":"doodle","hole":true,"az":-1.4,"el":0.1,"dist":0.9,"target":[3.7,1.2,1]}],["fighter","ext",{"mode":"doodle","hole":true,"az":-1.4,"el":0.1,"dist":0.7,"target":[4.1,1.2,3.4]}]]]
+]

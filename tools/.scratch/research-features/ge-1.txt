@@ -1,0 +1,404 @@
+Learn About Chromebooks for Schools - Google for Education
+https://edu.google.com/intl/ml/chromebooks/overview/
+
+Jump to content
+
+for Education
+
+Our values
+Our Commitment
+Privacy and Security
+Screen Value
+Accessibility
+Sustainability
+Products
+Workspace for Education
+Products
+Classroom
+Gemini for Education
+Gemini Notebook
+Google Meet
+Workspace LTI
+Editions
+About editions
+Education Fundamentals
+Education Plus
+Compare editions
+Add-ons
+Google AI Pro for Education
+Teaching and Learning
+Chromebooks
+About Chromebooks
+ChromeOS Flex
+Explore Devices
+Repairability
+Login to Classroom
+Product demos
+App Hub
+Pricing
+AI
+Our approach
+Google AI Pro for Education
+Gemini for Education
+Gemini Notebook
+Resources
+Get started
+Resources by role
+Paid Workspace
+Product help
+Product demos
+App Hub
+Training
+Learning Center
+Google AI Educator Series
+Certifications
+K-12 AI Use Cases
+Higher Ed AI Use Cases
+Connect
+Communities
+Find a partner
+Institution Type
+K-12
+Higher Ed
+Sign in
+Google Classroom
+Google Workspace admin
+Google Cloud
+Contact sales
+AI literacy training that fits in your schedule. The Google AI Educator Series is here! Earn your first badge.
+Close
+Home Learn About Chromebooks for Schools
+Teach and learn with Chromebooks
+
+Explore a range of powerful, secure devices designed to help educators and students create their own learning environment.
+
+Chromebooks
+Chromebook Plus
+Chromebox OPS
+Desktops
+Kiosks
+Chromebooks for everyone
+
+Meet the needs of every student at your school with versatile, easy-to-manage devices featuring all-day battery life. Chromebooks are an all-in-one solution with accessibility, productivity, and security features built in.
+
+Explore devices
+Why Chromebooks
+Chromebooks features
+Related products
+ChromeOS Education Upgrade
+Built for teaching and learning
+
+Chromebooks are designed to meet the needs of your institution with built-in accessibility and security features that deepen classroom connections while keeping user information safe.
+
+More collaboration
+
+Learn from anywhere and collaborate in real time, whether with shared devices or 1:1.
+
+Designed to last
+
+Chromebooks are durable enough to keep up with your students, and repair programs will keep them going year after year.
+
+Security
+
+Advanced security and privacy features to ensure school data is safe with layers of encryption, and zero successful reported ransomware attacks – ever.
+
+Long-term value
+
+An investment in Chromebooks can save money for your institution over time.
+
+Designed for everyone
+
+Whether you’re a student, teacher, or IT administrator, Chromebooks come with features designed just for you. Take a closer look at the benefits of Chromebooks for everyone in education.
+
+K-8 students
+Devices with built-in security to keep kids safe while they learn. Collaborate in real time, whether with shared devices or individual use. Durable materials and all day battery life mean they’re built to handle long days.
+Explore devices
+High school & college students
+High-performance Chromebooks integrate seamlessly with Google Workspace for Education. Lightweight models offer maximum portability for moving between classes.
+Explore devices
+Educators
+Do more with Chromebook Plus, designed to meet the needs of teachers and staff with powerful generative AI features built in.
+Explore devices
+IT admins and staff
+Chromebooks make it easy to deploy, manage, and secure all of your devices thanks to features like automatic updates, virus protection and 1000s of policies in the cloud-based Google Admin console.
+Explore Google Admin console
+Find the right Chromebook for your school
+
+Explore a variety of Chromebooks to keep students engaged and to help teachers supercharge lessons.
+
+PERFECT FOR K-12
+
+Chromebook
+
+Easy-to-use computers that offer reliable performance and unmatched security.
+
+Features:
+
+Keep students engaged with built-in learning tools
+
+Best-in-class security and simple management
+
+Leverage built-in accessibility tools on Chromebook like Reading mode, text-to-speech, and more
+
+Explore devices
+
+FOR HIGHER ED STUDENTS
+
+FOR EDUCATORS
+
+Chromebook Plus
+
+Devices with advanced features, more performance, and powerful AI capabilities.
+
+Features:
+
+Advanced AI-powered features to help you take on whatever comes your way
+
+2x power, speed, memory, and storage
+
+Same best-in-class security and simple management as Chromebooks
+
+Explore devices
+Unlock the power of a completely connected classroom
+
+Powerful devices, comprehensive management solutions, and interactive teaching tools. See how it all works together when you bring Chromebooks into your school.
+
+Contact sales
+
+DEVICES
+
+Chromebook Plus
+
+Our most powerful devices, designed to supercharge teaching with the power of AI.
+
+Explore devices
+
+DEPLOYMENT & MANAGEMENT
+
+ChromeOS Education Upgrade
+
+Enhance deployment, onboarding, security, and IT support for your entire fleet of Chromebooks with ChromeOS device management.
+
+Download guide
+
+FOR TEACHERS
+
+Class tools
+
+Real-time management and student engagement features for managed Chromebooks, available with Google Workspace for Education Plus.
+
+Learn more
+Hillsborough Township Public Schools
+“Teachers tell us that it’s easier for them to support their students because they’re on the same platform. It’s much easier for people to demonstrate a lesson and then ask the kids to do exactly what they’re telling them to do, rather than trying to make it look the same.”
+Amy Mele, District Tech Coach
+Forsyth County School System
+“With Chromebooks, my team can push out an app or software to thousands of Chromebooks at the same time and remotely manage those devices.”
+Dr. Lessell Martiny Bray, Chief Technology and Information Officer
+1234
+Learning tools available on Chromebook
+
+Chromebooks are powered by a suite of features and tools that make learning more collaborative, connected, and engaging than ever.
+
+Related Products
+Related features
+Record and share with Screencast
+
+Teachers and students can record presentations with built-in transcription and translation with the Screencast app on ChromeOS.
+
+Learn more
+Google for Education App Hub
+
+Use apps that connect with Google to help unlock more personal learning experiences for students and teachers, and enable simpler setup for school admins.
+
+Explore App Hub
+Google Workspace for Education
+
+Secure your learning environment and equip teachers with innovative AI-driven tools to create more personalized and engaging learning experiences for every student.
+
+Go to Google Workspace
+ChromeOS device management
+
+Enhance deployment, onboarding, security, and IT support for your entire fleet of Chromebooks with ChromeOS Education Upgrade.
+
+Simple deployment
+
+Quickly enroll new and existing devices into your school’s domain and get your students set up faster.
+
+Easy management
+
+Configure security settings, content filters, and much more – all from Google Admin console.
+
+24/7 IT support
+
+Get help any time, day or night, at no additional cost.
+
+Get ChromeOS Education Upgrade
+More resources
+
+Find more information about why Chromebooks for education are an invaluable addition to your institution.
+
+GUIDE
+
+ChromeOS Education Upgrade
+Learn about Chromebook management
+
+GUIDE
+
+Guardian’s Guide to Chromebooks
+Share with families
+Get started with Chromebooks today
+
+Talk to a Google for Education expert to learn which Chromebooks are right for your institution.
+
+Contact sales
+Find answers to common questions about Chromebooks
+Expand all
+What makes Chromebook Plus different from a standard Chromebook?
+
+Chromebook Plus devices offer more power, speed, and memory than standard Chromebooks. For educators, this means smoother multitasking and exclusive AI-powered tools, such as enhanced video call features (like noise cancellation and lighting adjustment) and generative AI to help with writing and organizing lessons.
+
+Compare Chromebook models
+See Chromebook Plus for teachers
+
+How do Chromebooks support students with different learning needs?
+
+Accessibility is built in, not bolted on. Every Chromebook includes features like Reading Mode to reduce distractions, Select-to-speak for audio support, and a built-in screen magnifier. These tools allow students to customize their learning environment without needing additional software.
+
+Explore all accessibility features
+Download the Accessibility Guide (PDF)
+
+Can students use Chromebooks if they don't have internet at home?
+
+Yes. Students can use "Offline Mode" in Google Docs, Sheets, and Slides to continue working on their assignments without a Wi-Fi connection. Any changes made will automatically sync to their Google Drive once they are back online.
+
+Are Chromebooks really safe from ransomware?
+
+Yes. To date, there have been zero successful reported ransomware attacks on ChromeOS. Chromebooks have built-in security, including verified boot, data encryption, and sandboxing, which ensures that even if one tab is compromised, the rest of the system remains safe.
+
+Learn more about security on ChromeOS
+
+How long will a new fleet of Chromebooks receive updates?
+
+Google is committed to long-term value. Starting in 2024, all Chromebooks released from 2021 onwards receive 10 years of automatic security and feature updates. This ensures your investment stays secure and functional for a decade.
+
+Check the Auto Update policy for specific models
+
+How does the ChromeOS Education Upgrade simplify management?
+
+ChromeOS Education Upgrade unlocks the full potential of the Google Admin console. You can remotely manage thousands of devices, configure 500+ policies (like blocking sites or pre-installing apps), and even disable lost or stolen devices instantly from a single central dashboard.
+
+Learn about ChromeOS Education Upgrade
+
+Sign up for updates, insights, resources, and more
+Follow us
+Facebook
+Blog
+X (formerly known as Twitter)
+YouTube
+Products
+Classroom
+Gemini for Education
+Gemini Notebook
+Google Meet
+Workspace LTI
+Assignments
+Editions
+About editions
+Education Fundamentals
+Education Plus
+Compare editions
+Sign up for Education Fundamentals free trial
+Add-ons
+Google AI Pro for Education
+Teaching and Learning
+Chromebooks
+About Chromebooks
+ChromeOS Flex
+Explore Devices
+Repairability
+Get started
+Resources by role
+Paid Workspace
+Product help
+Product demos
+App Hub
+Training
+Learning Center
+Google AI Educator Series
+Course Catalog
+Certifications
+K-12 AI Use Cases
+Higher Ed AI Use Cases
+FAQ
+Support
+Contact sales
+Customer stories
+Research
+Connect
+Reference Program
+Communities
+News & events
+Sign up for updates
+Institution Type
+K-12
+Higher Ed
+Distance learning
+AI
+Our approach
+Google AI Pro for Education
+Gemini for Education
+Gemini Notebook
+Partner program
+Find a partner
+Sales partner
+Professional development partners
+Our values
+Our commitment
+Privacy and Security
+Screen Value
+Accessibility
+Sustainability
+Future of Education
+More from Google
+Learning.Google
+Code with Google
+Grow with Google
+Google Education blog
+Google Workspace
+Google Cloud
+Apply for Google Cloud credits
+About Google
+Google Products
+Privacy
+Terms
+Help
+Change language or region
+Global (English)
+Australia (English)
+Brasil (Português)
+Canada (English)
+Danmark (Dansk)
+Deutschland (Deutsch)
+España (Español)
+France (Français)
+India (English)
+भारत (हिन्दी)
+Indonesia (Indonesia)
+Italia (Italiano)
+日本 (日本語)
+대한민국 (한국어)
+Latinoamérica (Español)
+Malaysia (Melayu)
+Nederland (Nederlands)
+Norge (Norsk bokmål)
+Philippines (English)
+Singapore (English)
+Suomi (Suomi)
+Sverige (Svenska)
+ประเทศไทย (ไทย)
+Türkiye (Türkçe)
+台灣 (中文)
+United Kingdom (English)
+United States (English)
+
+LINKS

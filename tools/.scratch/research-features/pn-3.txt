@@ -1,0 +1,385 @@
+MediaTek Kompanio 520-528 (MT8186-MT8186T) Benchmark
+https://www.cpubenchmark.net/cpu.php?cpu=MediaTek+Kompanio+520
+
+Software
+Hardware
+Benchmarks
+Services
+Store
+Support
+About Us
+Forums
+0
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+Memory Benchmarks
+PC Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+CPU Benchmarks
+
+Over 1,000,000 CPUs Benchmarked
+
+MediaTek Kompanio 520-528 (MT8186-MT8186T)
+
+Benchmarks for the MediaTek Kompanio 520-528 (MT8186-MT8186T) can be found below. Release dates, price and performance comparisons are also listed when available. This is made using thousands of PerformanceTest benchmark results and is updated daily.
+
+The first graph shows the relative performance of the CPU compared to the 10 other common (single) CPUs in terms of PassMark CPU Mark.
+The 2nd graph shows the value for money, in terms of the CPUMark per dollar.
+The pricing history data shows the price for a single Processor. For multiple Processors, multiply the price shown by the number of CPUs.
+
+CPUS
+
+Multithread
+Page: 
+1,
+2,
+3,
+4
+Single Thread
+Page: 
+1,
+2,
+3,
+4
+Best Value (On Market)
+Best Value XY Scatter
+Best Value (All time)
+New Desktop
+New Laptop
+New Server
+New Mobile
+Systems with Multiple CPUs
+Overclocked
+Power Performance
+CPU Mark by Socket Type
+Cross-Platform CPU Performance
+Top Gaming CPUs
+CPU Mega List
+Search Model
+Compare
+0
+Common
+Most Benchmarked
+AMD vs Intel Market Share
+Year on Year Performance
+
+
+MediaTek Kompanio 520-528 (MT8186-MT8186T)
+
+Description: Note: Kompanio 520/528 can not be differentiated in Google Corsola devices. Listings has been merged.
+
+Class: Mobile/Embedded
+
+Socket:
+
+Total Cores: 8 Cores, 8 Threads
+
+Primary Cores: 2 Cores, 2 Threads, 2.2 GHz Base, NA Turbo
+
+Secondary Cores: 6 Cores, 6 Threads, 2.0 GHz Base, NA Turbo
+
+Typical TDP: 4 W
+
+Cache per CPU Package:
+L2 Cache: 1 x 256 KB
+
+
+Cache per Eff. CPU Package:
+Eff. L2 Cache: 1 x 128 KB
+
+
+Other names: MediaTek Kompanio 520 (MT8186), MediaTek Kompanio 528 (MT8186T), Mediatek MT8186, MT8186, Mediatek Kompanio 528 MT8186T
+
+CPU First Seen on Charts: Q1 2023
+
+CPUmark/$Price: NA
+
+Overall Rank:
+2907th fastest in multithreading out of 6006 CPUs
+3116th fastest in single threading out of 6006 CPUs
+533rd fastest in out of 1321 Mobile/Embedded CPUs
+
+
+Last Price Change: NA
+
+Average CPU Mark
+Multithread Rating
+3693
+Single Thread Rating
+1385
+
+Samples: 45*
+*Margin for error: Low
+
++ COMPARE
+CPU Test Suite Average Results for MediaTek Kompanio 520-528 (MT8186-MT8186T)
+Integer Math	22,068 MOps/Sec
+Floating Point Math	6,180 MOps/Sec
+Find Prime Numbers	9 Million Primes/Sec
+Random String Sorting	9,540 Thousand Strings/Sec
+Data Encryption	2,951 MBytes/Sec
+Data Compression	60,116 KBytes/Sec
+Physics	174 Frames/Sec
+Extended Instructions	1,177 Million Matrices/Sec
+Single Thread	1,385 MOps/Sec
+From submitted results to PerformanceTest V10 as of 22nd of September 2026.
+CPU Mark Distribution for MediaTek Kompanio 520-528 (MT8186-MT8186T)
+Submitted Baseline Distribution Graph as of 22nd of September 2026
+From submitted results since PerformanceTest V10 as of 22nd of September 2026.
+For distribution graph only: Results are trimmed to exclude outliers by disregarding the bottom 1% and top 1% of submissions.
+
+
+
+Search for MediaTek Kompanio 520-528 (MT8186-MT8186T)
+from the Featured Merchants below:
+
+
+
+
+Note: PassMark Software may earn compensation for sales from links on this site through affiliate programs.
+CPU Mark Relative to Top 10 Common Mobile/Embedded CPUs
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+AMD Ryzen Z1 Extreme	
+	
+24,583
+
+AMD Ryzen 5 PRO 230	
+	
+19,162
+
+Apple M1 8 Core 3200 MHz	
+	
+14,122
+
+Intel Core i5-1235U	
+	
+12,418
+
+Apple A15 Bionic	
+	
+9,868
+
+Apple A14 Bionic	
+	
+8,543
+
+Apple A13 Bionic	
+	
+5,799
+
+Intel N150	
+	
+5,346
+
+Intel N100	
+	
+5,306
+
+AMD Ryzen Embedded R1505G	
+	
+3,802
+
+MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	3,693
+CPU Value (CPU Mark / $Price )
+As of 23rd of September 2026 - Higher results represent better value
+
+Processor	CPU Mark / $Price	
+Intel N100	
+	
+41.45
+
+Intel Core i5-1235U	
+	
+40.19
+
+MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	NA
+Intel N150	
+	
+NA
+
+AMD Ryzen Z1 Extreme	
+	
+NA
+
+AMD Ryzen 5 PRO 230	
+	
+NA
+
+AMD Ryzen Embedded R1505G	
+	
+NA
+
+Apple M1 8 Core 3200 MHz	
+	
+NA
+
+Apple A15 Bionic	
+	
+NA
+
+Apple A14 Bionic	
+	
+NA
+
+Apple A13 Bionic	
+	
+NA
+Single Thread Rating
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average Thread Rating	
+Apple M1 8 Core 3200 MHz	
+	
+3,672
+
+Apple A15 Bionic	
+	
+3,569
+
+AMD Ryzen Z1 Extreme	
+	
+3,524
+
+AMD Ryzen 5 PRO 230	
+	
+3,495
+
+Apple A14 Bionic	
+	
+3,381
+
+Intel Core i5-1235U	
+	
+3,046
+
+Apple A13 Bionic	
+	
+2,361
+
+Intel N150	
+	
+1,893
+
+Intel N100	
+	
+1,880
+
+AMD Ryzen Embedded R1505G	
+	
+1,826
+
+MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	1,385
+Last 5 Baselines for MediaTek Kompanio 520-528 (MT8186-MT8186T)
+Most recent listed first
+
+Baseline	CPU Mark	
+BL8113901 - Mar 06 2026	
+	
+3790
+
+BL8113415 - Feb 22 2026	
+	
+2686
+
+BL8113396 - Feb 21 2026	
+	
+3576
+
+BL8110635 - Dec 27 2025	
+	
+3972
+
+BL8109397 - Dec 03 2025	
+	
+3211
+Additional baselines can be obtained using Windows version of PerformanceTest's Manage Baselines feature.
+Popular comparisons for MediaTek Kompanio 520-528 (MT8186-MT8186T)
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	3,693
+Intel Celeron 6600HE @ 2.60GHz vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	3,286 (-11.0%)
+Mediatek Dimensity 7025 (MT6855) vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,583 (+24.1%)
+Samsung s5e8535 vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,566 (+23.7%)
+Intel N200 vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,555 (+23.3%)
+Samsung s5e8825 vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,472 (+21.1%)
+QTI SM7225 vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,281 (+15.9%)
+Mediatek MT6789V-CD vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,272 (+15.7%)
+QTI SM6375 vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,174 (+13.0%)
+MediaTek G99 Ultimate (MT6789) vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,109 (+11.3%)
+Mediatek MT8781V-CA vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,070 (+10.2%)
+Mediatek MT6833 vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	4,069 (+10.2%)
+Qualcomm SM7250 vs MediaTek Kompanio 520-528 (MT8186-MT8186T)	
+	3,960 (+7.2%)
+
+
+Software
+BurnInTest
+PerformanceTest
+OSForensics
+MemTest86
+WirelessMon
+Management Console
+Zoom Search Engine
+Free Software
+Hardware
+USB3.0 Loopback Plugs
+USB2.0 Loopback Plugs
+PCIe Test Cards
+USB Power Delivery Tester
+Serial and Parallel Loopback Plugs
+USB Short Circuit Testers
+Benchmarks
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+RAM Benchmarks
+PC Systems Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+Internet Bandwidth
+About Us
+Company
+Contact Us
+The Press Room
+Services
+Store
+Support
+Forums
+Compliance
+International
+Disclaimer
+Refunds
+Privacy
+Social  
+
+Advertise on this site.
+
+Copyright © 2026 PassMark® Software
+
+ 
+
+LINKS

@@ -1,0 +1,652 @@
+Starfield Mods - Nexus Mods
+https://www.nexusmods.com/games/starfield/mods?sort=endorsements
+
+Skip to content
+Starfield
+Clear game filter
+Games
+Mods
+Collections
+Media
+Community
+Support
+unauthenticated
+Log in
+Download App
+Home
+Starfield
+Mods
+Starfield mods
+Browse the internet's best mods
+Hide filters
+CATEGORY
+
+Animations
+(113)
+
+Appearance
+(186)
+
+Armor
+(209)
+
+Audio
+(337)
+
+Characters
+(636)
+
+Clothing
+(1,328)
+
+Companions
+(296)
+
+Crafting
+(133)
+
+Environment
+(315)
+
+Gameplay
+(2,412)
+
+Items
+(296)
+
+Locations
+(191)
+
+Miscellaneous
+(899)
+
+Modders Resources
+(188)
+
+Outposts
+(388)
+
+Perks and Skills
+(284)
+
+Planets
+(101)
+
+Player Home
+(188)
+
+Quests
+(144)
+
+Races
+(10)
+
+Ships
+(1,168)
+
+Space Suits
+(289)
+
+User Interface
+(892)
+
+Utilities
+(209)
+
+Vehicles
+(84)
+
+Visuals
+(1,084)
+
+Weapons
+(1,021)
+
+TAGS
+Includes
+Excludes
+SEARCH PARAMETERS
+Title
+Description
+Author
+Uploader
+Apply
+LANGUAGE SUPPORT
+
+Hide translations
+
+Czech
+(15)
+
+English
+(7,606)
+
+French
+(578)
+
+German
+(316)
+
+Hungarian
+(5)
+
+Italian
+(99)
+
+Japanese
+(40)
+
+Korean
+(6)
+
+Polish
+(18)
+
+Portuguese (Brazil)
+(4)
+
+Portuguese (Portugal)
+(100)
+
+Russian
+(435)
+
+Simplified Chinese
+(448)
+
+Spanish (Spain)
+(158)
+
+Turkish
+(13)
+
+Ukrainian
+(55)
+
+CONTENT OPTIONS
+
+Hide adult content
+
+Show only adult content
+
+Supported by Vortex
+
+Show only updated mods
+
+FILE SIZE
+No min
+
+to
+
+No max
+DOWNLOADS
+No min
+
+to
+
+No max
+ENDORSEMENTS
+No min
+
+to
+
+No max
+
+Make mods.
+Earn rewards.
+
+Learn More
+13,401 results
+All time
+Endorsements
+Desc
+20 Items
+Hide adult content
+StarUI Inventory
+m8r98a4f2
+User Interface
+
+2 weeks ago
+
+04 Sept 2023
+
+StarUI Inventory improves all inventory screens for use on a PC. Compact display style. More details in sortable columns. Item tag icons. Category as left sidebar. Many quality of life features!
+
+Endorsements
+45.8k
+
+Downloads
+2m
+
+File size
+2.4MB
+
+Starfield Script Extender (SFSE)
+ianpatt
+Utilities
+
+3 months ago
+
+03 Sept 2023
+
+Starfield Script Extender (SFSE) is a tool adding additional scripting capabilities and functionality to the game.
+
+Endorsements
+39.7k
+
+Downloads
+3.1m
+
+File size
+372.0KB
+
+Baka Achievement Enabler (SFSE)
+shad0wshayd3
+Miscellaneous
+
+6 months ago
+
+04 Sept 2023
+
+Prevents achievements from being disabled with mods or when using the console. Also removes the warning when opening the console for the first time in a session, and the flag on modded save files.
+
+Endorsements
+26.4k
+
+Downloads
+1.4m
+
+File size
+1.6MB
+
+Address Library for SFSE Plugins
+meh321
+Modders Resources
+
+3 months ago
+
+19 Sept 2023
+
+Contains a database to make SFSE DLL plugins version independent easily.
+
+Endorsements
+22k
+
+Downloads
+1.6m
+
+File size
+24.7MB
+
+Neutral LUTs - No Color Filters
+fadingsignal
+Visuals
+
+2 years ago
+
+01 Sept 2023
+
+Removes the color filters from the game + DLC, making the colors more uniformly neutral with deeper blacks.
+
+Endorsements
+18.6k
+
+Downloads
+819.6k
+
+File size
+88.0KB
+
+Undelayed Menus
+Seb263
+User Interface
+
+12 months ago
+
+02 Sept 2023
+
+This mod's goal is to significantly improve the user experience by enhancing the responsiveness and efficiency of in-game menus.
+
+Endorsements
+14.7k
+
+Downloads
+780.3k
+
+File size
+2.5MB
+
+StarUI HUD
+m8r98a4f2
+User Interface
+
+2 weeks ago
+
+20 Sept 2023
+
+StarUI HUD gives you full control over most HUD widgets and provides an updated loot list and better item cards with DPS and V/W. Resize, move, recolour or disable most of the HUD widgets. The loot list can show additional columns like V/W
+
+Endorsements
+14.4k
+
+Downloads
+596k
+
+File size
+1.4MB
+
+Plugins.txt Enabler
+Nukem
+Utilities
+
+2 years ago
+
+27 Sept 2023
+
+Restores plugins.txt functionality as in previous BGS games. Supports Steam (Starfield Script Extender) and Game Pass (ASI loader).
+
+Endorsements
+13.1k
+
+Downloads
+668.8k
+
+File size
+105.0KB
+
+Cleanfield - No-Intro and Clean Menu Fix
+Gametism
+User Interface
+
+5 months ago
+
+31 Aug 2023
+
+Cleanfield: - No Epilepsy & Seizure Warning - No Bethesda Logo Video - No Bethesda Logo - No Message of the Day- No Starfield Logo- 120 FPS
+
+Endorsements
+12.4k
+
+Downloads
+605.9k
+
+File size
+169.0KB
+
+Achievement Enabler
+Priqrade
+Utilities
+
+3 years ago
+
+01 Sept 2023
+
+An achievement enabler for Starfield. Stops your save from being marked as modded.
+
+Endorsements
+12k
+
+Downloads
+362.3k
+
+File size
+15.0KB
+
+Starfield Performance Optimizations
+E3roKK
+Visuals
+
+3 years ago
+
+31 Aug 2023
+
+Simple performance optimizations to make this game as smooth as possible! Potato Mode also included! FPS boost here we go!
+
+Endorsements
+11.7k
+
+Downloads
+664.7k
+
+File size
+1.0KB
+
+Easy Digipick (Lockpick)
+IxionXVII
+Gameplay
+
+5 months ago
+
+02 Sept 2023
+
+Simplifies the digipick minigame.
+
+Endorsements
+11.6k
+
+Downloads
+620.4k
+
+File size
+1.0KB
+
+EXE - Effect Textures Enhanced
+weijiesen
+Visuals
+
+3 years ago
+
+04 Sept 2023
+
+Every last visual effect in Starfield remade and improved. *NOT Ai UPSCALE!!!* This will enhance your game in a big way. Muzzleflashes, storms, blood, explosions, lasers, and everything else.
+
+Endorsements
+10.5k
+
+Downloads
+773.1k
+
+File size
+219.0KB
+
+Compact Mission Menu
+Stentorious
+User Interface
+
+6 months ago
+
+04 Sept 2023
+
+Modifies the mission menu so more items can be seen at once. Increases viewable items by 50%.
+
+Endorsements
+10.5k
+
+Downloads
+573.5k
+
+File size
+1.3MB
+
+StarUI Workbench
+m8r98a4f2
+User Interface
+
+2 weeks ago
+
+08 Oct 2023
+
+StarUI Workbench improves all workbenches with a more compact layout, more information, sortable columns, new data columns, custom layout, recolouring, dark mode, Quality-of-Life features and more!
+
+Endorsements
+9.8k
+
+Downloads
+431.5k
+
+File size
+2.7MB
+
+Enhanced Player Healthbar
+SilverEzredes
+User Interface
+
+2 years ago
+
+02 Sept 2023
+
+This mod dynamically changes the player's healthbar color at 75%, 50% and 25%.
+
+Endorsements
+9.8k
+
+Downloads
+447.9k
+
+File size
+231.0KB
+
+Smooth Ship Reticle (120fps Smooth UI)
+alexbulluk
+Utilities
+
+6 months ago
+
+01 Sept 2023
+
+Fixes the spaceship targeting reticle looking choppy. Also includes an option to boost every UI element to 120fps!
+
+Endorsements
+9k
+
+Downloads
+410.9k
+
+File size
+377.0KB
+
+BetterHUD - Immersive and Dynamic - User Configurable
+KhaoMaat
+User Interface
+
+3 years ago
+
+01 Sept 2023
+
+Less distracting, more immersive, and simply a better HUD. Sneak peek of fully customizable version available in optional files and features added over time.
+
+Endorsements
+8.9k
+
+Downloads
+410.2k
+
+File size
+89.0KB
+
+Starfield Community Patch (SFCP)
+StarfieldCommunityPatch
+Gameplay
+
+2 years ago
+
+24 Oct 2023
+
+A community-driven mod fixing bugs, errors and inconsistencies in Starfield. This project aims to make the game better for everyone by offering up fixes in a free and collaborative manner.
+
+Endorsements
+8.6k
+
+Downloads
+441k
+
+File size
+2.9MB
+
+The Eyes of Beauty - Starfield Edition
+LogRaam
+Visuals
+
+3 years ago
+
+03 Sept 2023
+
+This mod offers new textures for your character's eyes.It's not a direct transfer from the original Skyrim or Fallout mod, but rather a new version of TEOB specifically designed for Starfield.
+
+Endorsements
+8.1k
+
+Downloads
+309.6k
+
+File size
+307.5MB
+
+1
+2
+3
+4
+...
+671
+
+Page
+
+Go
+NEXUS MODS
+News
+Statistics
+Careers
+About us
+Premium features
+DISCOVER
+All games
+All mods
+New mods
+Popular mods
+Trending mods
+All collections
+All images
+SUPPORT
+Help
+Wiki
+API
+Feedback
+Report a bug
+Unban requests
+DMCA
+Manage cookie settings
+COMMUNITY
+Forums
+Discord
+Support authors
+Contact us
+SUPPORT NEXUS MODS
+Mod faster with premium
+NETWORK STATS
+
+Members
+
+78,576,528
+
+Mods
+
+935,278
+
+Kudos
+
+4,366,445
+
+Server info
+
+Served in --s
+
+2026.0922.1607 | UK 2
+
+Copyright © 2026 Black Tree Gaming Ltd. All rights reserved.
+
+Terms of Service
+
+|
+
+Privacy Policy
+ 

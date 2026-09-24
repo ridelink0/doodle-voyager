@@ -1,0 +1,156 @@
+Requirements | Poki Documentation
+https://developers.poki.com/guide/requirements-quality
+
+/
+Why Poki
+Working with Poki
+What we look for
+Poki for Developers 101
+Poki for Developers platform
+Poki Inspector
+Requirements & policies
+Requirements
+Content & player safety
+External resources policy
+Web game engines
+Player device report
+Build & optimize
+Easy access & onboarding
+Engagement
+Localization
+Game thumbnail
+Testing your game
+How testing works
+Adding your game
+Playtesting
+Player fit test
+Web fit test
+Interpreting your test results
+Monetization
+Monetization overview
+Monetization tips
+SDK reference
+SDK overview & events
+Game Events
+PokiSDK: HTML5
+PokiSDK: Unity
+PokiSDK: Defold
+PokiSDK: GameMaker
+PokiSDK: Phaser 3
+PokiSDK: Godot
+PokiSDK: Cocos
+PokiSDK: Construct 3
+PokiSDK: GDevelop
+Platform features
+Poki Networking Library (Netlib)
+AUDS: Arbitrary User Data Store
+User Accounts
+Partnering with Poki
+How we partner with you
+Final review
+Release process
+Post-release updates
+Payouts & billing
+Your game on Poki
+Your game page
+Reference
+Glossary
+Developer Guide
+Sign In
+Requirements
+
+Before your game can go live, our QA team checks it against the requirements below. Think of these as the bar for a smooth, player-friendly experience across all the devices and connections our audience uses.
+
+Before you upload, take a moment to read the Terms & Conditions for developers.
+
+Hard requirements
+Desktop, mobile, and tablet support. Poki players play on everything. On mobile, cover the full screen in portrait or landscape, or both for the best experience. Force mobile control schemes on tablets.
+16:9 aspect ratio. Your game must scale to cover the full canvas. Scale proportionally to 640x360, 836x470, or 1031x580.
+Incognito support. Incognito mode restricts localStorage, so wrap localStorage operations in a try/catch. Your game must stay playable.
+No external requests. Poki blocks all external requests by default. Bundle fonts, assets, and libraries into your build. Details and exceptions in the external resources policy.
+No branding or external ads. Remove splash screens and outgoing links; your studio logo is welcome on the loading screen. Poki's SDK handles ads, so no other ad systems are allowed.
+No ad block prevention. Your game must stay playable with an ad blocker active. Messaging regarding ad blockers is handled on Poki's side.
+What we expect
+
+Poki is a highly curated platform, and we decide which games to feature. Read the Quality Guidelines to give your game the best chance of making it onto the playground. The standards below are what the Developer Support team checks on every game.
+
+Technical standards
+SDK integration: implement SDK events correctly (required for Web Fit testing and all releases). Common issues to look out for:
+SDK events should not fire twice in succession.
+e.g. a gameplayStart() cannot follow another gameplayStart();
+a gameplayStop() cannot fire after a gameplayStop().
+gameplayStart() must fire on the player's first input (not on load).
+gameplayStop() must fire on any gameplay interruption (pause, menu open, level end, cutscene).
+It should not be possible to fire any SDK events during midrolls or rewarded videos.
+commercialBreak() must fire only when exiting a pause and heading back into gameplay.
+e.g. closing a Pause menu and heading into gameplay = Correct ✅ ; leaving gameplay and going into a Level selection = Wrong ❌.
+Edge cases: "Dress-up" games may fire commercialBreak() when swapping clothing categories.
+SDK DOCUMENTATION
+For the full overview of our SDK, see the SDK overview.
+Clean build: remove all development tools, debug code, and testing artifacts before publication.
+Save system: implement progress saving where appropriate, or clearly inform players when progress won't be saved upon exit.
+Small file size. Players tend to move to another game if loading takes more than 10 seconds, and they load from everywhere in the world. Keep the initial download even smaller with progressive loading. For Unity games, follow our optimization guidelines to get there.
+Platform integration
+Game thumbnails: all games must include both static and animated thumbnails for global release. See the game thumbnail guide for detailed specifications.
+Page integration: prevent game viewport scrolling from affecting the parent page during the review process.
+Mobile controls: automatically force mobile control schemes on tablet devices.
+Responsive design: ensure a consistent experience across different screen sizes and input methods.
+In-game privacy policy: if your game links externally (even for analytics exemptions), include an in-game, accessible Privacy Policy UI and provide us a hosted policy URL (no Google Doc links).
+User interface & experience design
+Streamlined entry: minimize UI screens and menus, ideally placing players directly into gameplay.
+Keyboard support: for keyboard-controlled games, implement ESC or spacebar for pause/resume. Make sure the game fires the appropriate SDK events in that case.
+Cutscene management: ensure all cutscenes and introductory sequences are skippable.
+Clear instructions: design tutorials that are visual and intuitive rather than text-heavy.
+Adaptive controls: display appropriate control schemes (mobile controls on mobile/tablets, keyboard instructions on desktop).
+Localization (recommended for text-heavy games)
+Offer multiple language options for UI and in-game text.
+Ensure text fields and layouts adapt to longer translations.
+Advertisement integration
+Ad break integration: implement commercialBreak() and/or rewardedBreak() functions as appropriate for your game.
+Audio management: automatically mute game audio during advertisement playback.
+Timing control: do not implement internal ad timers, rely on Poki's system to manage ad frequency.
+One-per-reward: don't require players to watch multiple consecutive videos for a single reward.
+Clear hierarchy: design reward options with proper visual hierarchy:
+there must always be a standard continue button as an alternative to a 🎬 rewarded one;
+standard and reward options appear simultaneously;
+standard button equal or larger size than reward button;
+standard button positioned next to or above reward button;
+rewarded buttons cannot use green color;
+all reward buttons include prominent 🎬  icons.
+Confirmation feedback: provide clear confirmation when players receive rewards through animations, sounds, or visual celebrations.
+Immediate application: when possible, automatically equip or activate rewards to reduce navigation steps.
+Single reward policy: prevent double-rewarding scenarios for the same action.
+No reward policy: when ad blockers are detected, do not follow through and provide rewards.
+Silent handling: avoid displaying custom "ad blocked" messages, Poki manages this communication.
+Content & community standards
+Profanity filtering: for multiplayer games with username input, implement strict profanity filtering using the provided bad words list (expand it further for your games).
+No internal purchases: remove any in-game UI elements for purchasing currency or disabling advertisements.
+Platform-only monetization: only Poki's advertisement system is allowed to be implemented for ads in all games.
+External Links: Any buttons that open external links when clicked (for example opening a YouTube channel or Discord community page) are required to fire the following SDK rather than directly leading to the URL. 
+PokiSDK.openExternalLink('URL'); 
+Monetization Best Practices
+In-app purchases are not available. Poki's ad system is the only form of monetization.
+Secondary currencies. Dual economies such as gems-plus-coins are a mobile pattern built to drive in-app purchases. Without them, the second currency only adds confusion and grind, and grind is one of the fastest ways to lose a web player.
+Third-party ad systems. The Poki SDK handles all advertising. Any other ad system conflicts with the platform's delivery, degrades the player experience, and will not pass review.
+Ad-timer manipulation. Don't add internal cooldowns or timers to force ad frequency. Poki manages ad frequency.
+Reward-walling core gameplay. Rewarded videos are an optional extra, never a gate. If a player has to watch an ad to progress, it isn't a reward, and it won't pass review.
+Pushy prompts. Frequent popups and notifications pushing players toward rewarded videos lower engagement, and lower engagement means lower ad revenue.
+Misleading buttons. Rewarded buttons must carry a clear video icon, must never be green, and must never be positioned to trick the player into clicking them.
+Ad blockers. Your game must stay fully playable with an ad blocker active, and without custom messaging. When a blocker is detected during a rewarded break, don't grant the reward and let Poki handle the rest on the platform side.
+
+For more information on monetisation, see monetization strategies & examples.
+
+Poki Inspector
+Content & player safety
+Let the world play
+DOCUMENTATION
+Home
+GET TO KNOW US
+About
+Blog
+Jobs
+GET IN THE GAME
+Poki.com
+Play a surprise game
+
+LINKS

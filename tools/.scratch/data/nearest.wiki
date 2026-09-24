@@ -1,0 +1,3377 @@
+{{Short description|Galaxies within 3.8 megaparsecs of the Solar System}}
+
+[[File:Thelocalgroup.jpg|thumb|upright=1.2|Diagram of the nearby local group of galaxies including the [[Milky Way]], the [[Magellanic Clouds]], [[Andromeda Galaxy|Andromeda]], [[dwarf galaxy|dwarf galaxies]], [[globular cluster]], and [[list of stellar streams|stellar streams]].]]
+
+This is a list of known [[galaxy|galaxies]] within 3.8 [[parsec|megaparsecs]] (12.4 million [[light-year]]s) of the [[Solar System]], in ascending order of heliocentric distance, or the distance to the Sun.
+
+This encompasses about 50 major [[Local Group]] galaxies, and some that are members of neighboring [[galaxy group]]s, the [[M81 Group]] and the [[Centaurus A/M83 Group]], and some that are currently not in any defined galaxy group.
+
+The list aims to reflect current knowledge: not all galaxies within the 3.8 Mpc radius have been discovered. Nearby [[dwarf galaxy|dwarf galaxies]] are still being discovered, and galaxies located behind the central plane of the [[Milky Way]] are extremely difficult to discern. It is possible for any galaxy to mask another located beyond it.
+Intergalactic distance measurements are subject to large uncertainties.  Figures listed are composites of [[Cosmic distance ladder|many measurements]], some of which may have had their individual error bars tightened to the point of no longer overlapping with each other.<ref name="Karachentsev2004">{{cite journal|doi=10.1086/382905|title=A Catalog of Neighboring Galaxies|year=2004|last1=Karachentsev|first1=Igor D.|last2=Karachentseva|first2=Valentina E.|last3=Huchtmeier|first3=Walter K.|last4=Makarov|first4=Dmitry I.|journal=The Astronomical Journal|volume=127|issue=4|pages=2031–2068|bibcode=2004AJ....127.2031K|s2cid=124129428 |doi-access=free}}</ref>
+
+==List==
+{{sticky header}}{{sort under}}
+{| class="wikitable sortable sort-under-center sticky-header" style="font-size: 90%"
+|-
+! align="center"|#
+! |Picture
+! |Galaxy
+! |[[Galaxy morphological classification|Type]]
+! |Distance<ref group="lower-alpha" name="DistFromEarth">Distances are measured from Earth. Dwarf satellite galaxies' distances to the plane or center of the Milky Way may be higher or lower.</ref> ([[light-year|Mly]])
+! |Distance<ref group="lower-alpha" name="DistFromEarth"/> ([[Megaparsecs|Mpc]])
+! |[[Absolute magnitude]]
+! |[[Apparent magnitude]]
+! align="center"|Group<br />member{{soft hyphen}}ship
+! |Notes
+! data-sort-type="number" |Diameter (ly)
+|-
+|&nbsp;&nbsp;-
+| align="center"|[[Image:Milky Way 2010.jpg|frameless|60px]]
+|[[Milky Way]]
+|[[Barred spiral galaxy]]
+| 0.0265 <br> (to the galactic center)<ref name="zero">Earth is 8,122 ± 31 parsecs (26,490 ± 100 ly) or 0.0265 million light years from the galactic center (the center of the Milky Way).  The distance of Earth from the galaxy which contains it is of course "zero"</ref>
+| align="center" | 0.008<ref name="zero" />
+| −20.8<ref name="Karachentsev2004" />
+| n/a
+| align="center"|[[Local Group]]
+|Home galaxy of [[Earth]]. Barred spiral galaxy.
+|87,400
+|-
+| &nbsp;&nbsp;1
+| align="center"|[[Image:Ursa_Major_III.png|60px]]
+| [[Ursa Major III]]
+| [[Dwarf spheroidal galaxy]] or Star Cluster
+| 0.033
+| 0.010<ref name=smith2024>{{Citation |last1=Smith |first1=Simon E. T. |last2=Cerny |first2=William |last3=Hayes |first3=Christian R. |last4=Sestito |first4=Federico |last5=Jensen |first5=Jaclyn |last6=McConnachie |first6=Alan W. |last7=Geha |first7=Marla|author7-link= Marla Geha |last8=Navarro |first8=Julio |last9=Li |first9=Ting S. |date=January 2024 |title=The discovery of the faintest known Milky Way satellite using UNIONS |journal=[[The Astrophysical Journal]] |volume=961 |issue=1 |pages=92 |doi=10.3847/1538-4357/ad0d9f |doi-access=free |arxiv=2311.10147 |bibcode=2024ApJ...961...92S}}</ref>
+| +2.2<ref name=smith2024/>
+| 18.87<ref name=smith2024/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 16.67 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]; status as galaxy or star cluster under study
+| 20<ref name="smith2024" /><!-- half-light radius = 3 pc -->
+|-
+| &nbsp;&nbsp;2
+| align="center"|[[File:Draco II Dwarf Galaxy.jpg|frameless|60x60px]]
+| [[Draco II]]
+| dSph
+| 0.0701
+| 0.0215<ref name=Longeard2018>{{cite journal|doi=10.1093/mnras/sty1986|title=Pristine dwarf galaxy survey – I. A detailed photometric and spectroscopic study of the very metal-poor Draco II satellite|year=2018|last1=Longeard|first1=Nicolas|last2=Martin|first2=Nicolas|last3=Starkenburg|first3=Else|last4=Ibata|first4=Rodrigo A.|last5=Collins|first5=Michelle L M.|last6=Geha|first6=Marla|author6-link= Marla Geha |last7=Laevens|first7=Benjamin P M.|last8=Rich|first8=R Michael|last9=Aguado|first9=David S.|last10=Arentsen|first10=Anke|last11=Carlberg|first11=Raymond G.|last12=Côté|first12=Patrick|last13=Hill|first13=Vanessa|last14=Jablonka|first14=Pascale|last15=González Hernández|first15=Jonay I.|last16=Navarro|first16=Julio F.|last17=Sánchez-Janssen|first17=Rubén|last18=Tolstoy|first18=Eline|last19=Venn|first19=Kim A.|last20=Youakim|first20=Kris|journal=Monthly Notices of the Royal Astronomical Society|volume=480|issue=2|pages=2609–2627|doi-access=free |arxiv=1807.10655|bibcode=2018MNRAS.480.2609L}}</ref>
+| −0.8<ref name=Longeard2018/>
+| 15.87<ref name=Longeard2018/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 16.67 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 120<ref name=Longeard2018/><!-- half-light radius = 19 pc -->
+|-
+| &nbsp;&nbsp;3
+| align="center"|[[File:Tucana III.jpg|frameless|60x60px]]
+| [[Tucana Dwarf|Tucana III]] 
+| dSph
+| 0.0747
+| 0.0229<ref name=MutluPakdil/>
+| −1.3<ref name=MutluPakdil/>
+| 15.5<ref name=MutluPakdil/><ref group="lower-alpha" name="apparentmag">Calculated from the [[distance modulus]] (<math>m - M</math>) and the [[absolute magnitude]] (<math>M_{V}</math>)</ref><!-- from distance modulus m - M = 16.8 and absolute magnitude -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]] that is being tidally disrupted<ref name=MutluPakdil/>
+| 220<!-- half-light radius = 34 pc -->
+|-
+| &nbsp;&nbsp;4
+|
+| [[Segue 1]]
+| dSph or Glob Clus
+| 0.075
+| 0.023<ref name=Belokurov2007/>
+| −3.0<ref name=Belokurov2007/>
+| 13.8<ref name=Belokurov2007/>
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;&nbsp;5
+| align="center"| [[Image:S sgrdw1.jpg|60px]]           
+| [[Sagittarius Dwarf Elliptical Galaxy|Sagittarius Dwarf Sphr]] SagDEG 
+| dSph/E7
+| 0.078
+| 0.024<ref name="Karachentsev2005">{{cite journal
+ | author=I. D. Karachentsev
+ | title=The Local Group and Other Neighboring Galaxy Groups
+ | journal=Astronomical Journal
+ | date=2005
+ | volume=129
+ | issue=1
+ | pages=178–188
+ | bibcode=2005AJ....129..178K | doi=10.1086/426368
+|arxiv = astro-ph/0410065 | s2cid=119385141
+ }}</ref>
+| −12.67<ref name="Karachentsev2005" />
+| 4.5<ref name="NASAIPAC">{{cite web |title=NASA/IPAC Extragalactic Database |url=http://nedwww.ipac.caltech.edu/ |access-date=2008-06-20 |archive-date=2011-05-14 |archive-url=https://web.archive.org/web/20110514100451/http://nedwww.ipac.caltech.edu/ |url-status=live }} Retrieved 2008.</ref>
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]] (partial [[accretion (astrophysics)|accretion]] by [[Milky Way]])
+|10,000 
+|-
+| &nbsp;&nbsp;6
+|
+| Hydrus I
+| 0.09128
+| 0.09
+| 0.0276<ref name=Koposov2018>{{cite journal|bibcode=2018MNRAS.479.5343K|title=Snake in the Clouds: A new nearby dwarf galaxy in the Magellanic bridge|last1=Koposov|first1=Sergey E.|last2=Walker|first2=Matthew G.|last3=Belokurov|first3=Vasily|last4=Casey|first4=Andrew R.|last5=Geringer-Sameth|first5=Alex|last6=MacKey|first6=Dougal|last7=Da Costa|first7=Gary|last8=Erkal|first8=Denis|last9=Jethwa|first9=Prashin|last10=Mateo |first10=Mario |last11=Olszewski|first11=Edward W.|last12=Bailey|first12=John I.|journal=Monthly Notices of the Royal Astronomical Society|year=2018|volume=479|issue=4|pages=5343|doi=10.1093/mnras/sty1772|doi-access=free |arxiv=1804.06430}}</ref>
+| −4.71<ref name=Koposov2018/>
+| 12.49<ref name=Koposov2018/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 17.20 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]], possibly associated with the Magellanic Clouds<ref name=Koposov2018/>
+| 348<ref name=Koposov2018/><!-- half-light radius = 53.3 pc -->
+|-
+| &nbsp;&nbsp;7
+| align="center"|
+| [[Carina III]]
+| 
+| 0.0907
+| 0.0278<ref name=Li2018/>
+| −2.4<ref name=Li2018/>
+| 14.82<ref name=Li2018/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 17.22 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 200<ref name=Li2018/><!-- half-light radius = 30 pc -->
+|-
+| &nbsp;&nbsp;8
+|
+| [[Ursa Major II Dwarf]] 
+| dSph
+| 0.098
+| 0.030
+| −4.2
+| 14.3
+| align="center"|[[Local Group]] 
+| Satellite of [[Milky Way]] ([[accretion (astrophysics)|accretion]] by [[Milky Way]])
+|data-sort-value="1800"|~1,800
+|-
+| &nbsp;&nbsp;8
+|
+| [[Triangulum II]] 
+| 
+| 0.098
+| 0.030<ref name=Kallivayalil/>
+| −1.8<ref name=Kallivayalil/>
+| 15.6<ref name=Kallivayalil/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 17.4 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]] ([[accretion (astrophysics)|accretion]] by [[Milky Way]])
+|
+|-
+| &nbsp;10
+| align="center"|
+| [[Reticulum II]]
+| 
+| 0.102
+| 0.0314<ref name=MutluPakdil>{{cite journal|doi= 10.3847/1538-4357/aacd0e|title= A Deeper Look at the New Milky Way Satellites: Sagittarius II, Reticulum II, Phoenix II, and Tucana III|year= 2018|last1= Mutlu-Pakdil|first1= Burçin|last2= Sand|first2= David J.|last3= Carlin|first3= Jeffrey L.|last4= Spekkens|first4= Kristine|last5= Caldwell|first5= Nelson|last6= Crnojević|first6= Denija|last7= Hughes|first7= Allison K.|last8= Willman|first8= Beth|last9= Zaritsky|first9= Dennis|journal= The Astrophysical Journal|volume= 863|issue= 1|pages= 25|arxiv= 1804.08627|bibcode= 2018ApJ...863...25M|s2cid= 118877962|doi-access= free}}</ref>
+| −3.1<ref name=MutluPakdil/>
+| 14.4<ref name=MutluPakdil/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus m - M = 17.5 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 378<!-- half-life radius = 58 pc -->
+|-
+| &nbsp;11
+| align="center"|
+| [[Segue 2]]
+| dSph
+| 0.114
+| 0.035<ref name=Belokurov2009>{{cite journal|last=Belokurov|first=V.|author2=Walker, M.G. |author3=Evans, N.W. |display-authors=etal |title=Segue 2: A Prototype of the Population of Satellites of Satellites|date=2009|journal=Mon. Not. R. Astron. Soc.|volume=397|issue=4|pages=1748–1755|doi=10.1111/j.1365-2966.2009.15106.x
+|doi-access=free |bibcode=2009MNRAS.397.1748B|arxiv=0903.0818|s2cid=20051174}}</ref>
+| −2.5<ref name=Belokurov2009/>
+| 
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]], one of the smallest known galaxies
+| 220
+|-
+| &nbsp;12
+| align="center"|
+| [[Carina II Dwarf Galaxy|Carina II]]<!-- Carina II redirects to Toyota Carina II -->
+| 
+| 0.122
+| 0.0374<ref name=Li2018>{{cite journal|bibcode=2018ApJ...857..145L|title=Ships Passing in the Night: Spectroscopic Analysis of Two Ultra-faint Satellites in the Constellation Carina|last1=Li|first1=T. S.|last2=Simon|first2=J. D.|last3=Pace|first3=A. B.|last4=Torrealba|first4=G.|last5=Kuehn|first5=K.|last6=Drlica-Wagner|first6=A.|last7=Bechtol|first7=K.|last8=Vivas|first8=A. K.|last9=Van Der Marel|first9=R. P.|last10=Wood|first10=M.|last11=Yanny|first11=B.|last12=Belokurov|first12=V.|last13=Jethwa|first13=P.|last14=Zucker|first14=D. B.|last15=Lewis|first15=G.|last16=Kron|first16=R.|last17=Nidever|first17=D. L.|last18=Sánchez-Conde|first18=M. A.|last19=Ji|first19=A. P.|last20=Conn|first20=B. C.|last21=James|first21=D. J.|last22=Martin|first22=N. F.|last23=Martinez-Delgado|first23=D.|last24=Noël|first24=N. E. D.|author25=MagLiteS Collaboration|journal=The Astrophysical Journal|year=2018|volume=857|issue=2|pages=145|doi=10.3847/1538-4357/aab666|arxiv=1802.06810|s2cid=96446126 |doi-access=free }}</ref>
+| −4.5<ref name=Li2018/>
+| 13.36<ref name=Li2018/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 17.86 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 590<ref name=Li2018/><!-- half-light radius = 91 pc -->
+|-
+| &nbsp;13
+| align="center"|
+| [[Willman 1]]
+| dSph or Star Clus
+| 0.124
+| 0.038<ref name=Martin2008a/>
+| −2.7<ref name=Martin2008a/>
+| 
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;14
+| align="center"|
+| [[Boötes II]]
+| dSph
+| 0.137
+| 0.042<ref name=Martin2008a>{{cite journal|author1=Martin, Nicolas F.|author2=de Jong, Jelte T. A.|author3=Rix, Hans-Walter|date=September 2008|title=A Comprehensive Maximum Likelihood Analysis of the Structural Properties of Faint Milky Way Satellites|journal=The Astrophysical Journal|volume=684|issue=2|pages=1075–1092|bibcode=2008ApJ...684.1075M|doi=10.1086/590336|arxiv=0805.2945|s2cid=17838966}}</ref>
+| −2.7<ref name=Martin2008a/>
+| 
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;14
+| align="center"|
+| [[Coma Berenices (dwarf galaxy)|Coma Berenices Dwarf]]
+| dSph
+| 0.137
+| 0.042<ref name=Musella2009>{{cite journal|last=Musella|first=Ilaria|author2=Ripepi, Vincenzo |author3=Clementini, Gisella |title=Pulsating Variable Stars in the Coma Berenices Dwarf Spheroidal Galaxy|year=2009|journal=The Astrophysical Journal Letters|volume=695|issue=1|pages=L83–1L87|doi=10.1088/0004-637X/695/1/L83|bibcode=2009ApJ...695L..83M |arxiv=0902.4230 |s2cid=11594422|display-authors=etal}}</ref>
+| −3.6<ref name=Musella2009/>
+| 
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;16
+| align="center"| [[File:Pictor II ultra-faint dwarf galaxy (noirlab2607a).tiff|60px]]
+| [[Pictor II]]
+| 
+| 0.147
+| 0.045<ref name=DrlicaWagner2016>{{cite journal|bibcode=2016ApJ...833L...5D|title=An Ultra-faint Galaxy Candidate Discovered in Early Data from the Magellanic Satellites Survey|last1=Drlica-Wagner|first1=A.|last2=Bechtol|first2=K.|last3=Allam|first3=S.|last4=Tucker|first4=D. L.|last5=Gruendl|first5=R. A.|last6=Johnson|first6=M. D.|last7=Walker|first7=A. R.|last8=James|first8=D. J.|last9=Nidever|first9=D. L.|last10=Olsen|first10=K. A. G.|last11=Wechsler|first11=R. H.|last12=Cioni|first12=M. R. L.|last13=Conn|first13=B. C.|last14=Kuehn|first14=K.|last15=Li|first15=T. S.|last16=Mao|first16=Y. -Y.|last17=Martin|first17=N. F.|last18=Neilsen|first18=E.|last19=Noel|first19=N. E. D.|last20=Pieres|first20=A.|last21=Simon|first21=J. D.|last22=Stringfellow|first22=G. S.|last23=Van Der Marel|first23=R. P.|last24=Yanny|first24=B.|journal=The Astrophysical Journal|year=2016|volume=833|issue=1|pages=L5|doi=10.3847/2041-8205/833/1/L5|arxiv=1609.02148|s2cid=56071154 |doi-access=free }}</ref>
+| −3.2<ref name=DrlicaWagner2016/>
+| 15.1<ref name=DrlicaWagner2016/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 18.3 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]] possibly associated with the [[Large Magellanic Cloud]]<ref name=DrlicaWagner2016/>
+| 300<ref name=DrlicaWagner2016/><!-- half-light radius = 46 pc -->
+|-
+| &nbsp;17
+| align="center"|
+| [[Boötes III]]
+| dSph
+| 0.150
+| 0.046<ref name=Grillmair2009>{{cite journal|last=Grillmair|first=C.J.|title=Four New Stellar Debris Streams in the Galactic Halo|date=2009|journal=The Astrophysical Journal|volume=693|issue=2|pages=1118–1127|doi=10.1088/0004-637X/693/2/1118|bibcode=2009ApJ...693.1118G|arxiv=0811.3965 |s2cid=17328907}}</ref>
+| −5.8<ref name=Carlin2009>{{cite journal|last1=Carlin|first1=Jeffrey L.|last2=Grillmair|first2=Carl J.|last3=Muñoz|first3=Ricardo R.|title=Kinematics and Metallicities in the Boötes III Stellar Overdensity: a Disrupted Dwarf Galaxy?|date=September 2009|journal=The Astrophysical Journal Letters|volume=702|issue=1|pages=L9–L13|doi=10.1088/0004-637X/702/1/L9|bibcode=2009ApJ...702L...9C|arxiv=0907.3738 |s2cid=62784400|display-authors=etal}}</ref>
+| 
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;18
+| align="center"|
+| [[Tucana IV]]
+| 
+| 0.157
+| 0.048<ref name=Kallivayalil/>
+| −3.5<ref name=Kallivayalil/>
+| 14.9<ref name=Kallivayalil/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 18.4 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;19
+| align="center"| [[Image:The Large Magellanic Cloud revealed by VISTA.jpg|60px]]
+| [[Large Magellanic Cloud]] (LMC)
+| SB(s)m
+| 0.163
+| 0.050<ref name="Karachentsev2005" />
+| −17.93<ref name="Karachentsev2005" />
+| 0.9<ref name="NASAIPAC" />
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|32,200
+|-
+| &nbsp;20
+| align="center"|
+| [[Grus II]]
+| 
+| 0.179
+| 0.055<ref name=MartinezVazquez/><!-- from table 5: final distance = 55 +/- 2 kpc -->
+| −3.9<ref name=MartinezVazquez/>
+| 
+| align="center"|[[Local Group]]
+| Satellite of Milky Way
+| 607<ref name=MartinezVazquez/><!-- from 5.4: half-light radius = 93 pc -->
+|-
+| &nbsp;21
+| align="center"|
+| [[Tucana II]]
+| 
+| 0.186
+| 0.057<ref name=Walker>{{cite journal|bibcode=2016ApJ...819...53W|arxiv=1511.06296|doi=10.3847/0004-637X/819/1/53|title= Magellan/M2FS Spectroscopy of Tucana 2 and Grus 1|year=2016|last1=Walker|first1=Matthew G.|last2=Mateo|first2=Mario|last3=Olszewski|first3=Edward W.|last4=Koposov|first4=Sergey|last5=Belokurov|first5=Vasily|last6=Jethwa|first6=Prashin|last7=Nidever|first7=David L.|last8=Bonnivard|first8=Vincent|last9=Iii|first9=John I. Bailey|last10=Bell|first10=Eric F.|last11=Loebman|first11=Sarah R.|journal=The Astrophysical Journal|volume=819|issue=1|pages=53|s2cid=118507573 |doi-access=free }}</ref>
+| −3.8<ref name=Walker/>
+| 15.0<ref name=Walker/><ref group="lower-alpha" name=apparentmag/><!-- from Distance modulus m - M = 18.8 and M = -3.8 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|1080<ref name=Walker/><!-- Radius = 165 pc, so diameter = 330 pc -->
+|-
+| &nbsp;22
+| align="center"| [[File:Boo SDSS enhanced.jpg|60px]]
+| [[Boötes I]]
+| dSph
+| 0.197<ref name="NASAIPAC" />
+| 0.060
+| −5.8<ref name="bootesDw">Belokurov, 2006 ''A Faint New Milky Way Satellite in Bootes''</ref>
+| 13.1
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;23
+| align="center"| [[Image:VISTA’s view of the Small Magellanic Cloud.jpg|60px]]
+| [[Small Magellanic Cloud]] (SMC, NGC 292) 
+| SB(s)m pec
+| 0.205
+| 0.063<ref name="Karachentsev2005" />
+| −16.35<ref name="Karachentsev2005" />
+| 2.7<ref name="NASAIPAC" />
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|18,900
+|-
+| &nbsp;23
+| align="center"| [[File:Ursa Minor Dwarf - Giuseppe Donatiello.jpg|60px]]
+| [[Ursa Minor Dwarf]] 
+| dE4
+| 0.205
+| 0.063<ref name="Karachentsev2005" />
+| −7.13<ref name="Karachentsev2005" />
+| 11.9<ref name="NASAIPAC" />
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;24
+|
+| [[Virgo II]]
+| 
+| 0.235
+| 0.072<ref name=Cerny2022/>
+| −1.6<ref name=Cerny2022/>
+| 17.7<ref name=Cerny2022/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 19.30 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;25
+| align="center"|
+| [[Eridanus IV]]
+| 
+| 0.250
+| 0.0767<ref name=Cerny>{{cite journal|doi=10.3847/2041-8213/ac2d9a|title=Eridanus IV: An Ultra-faint Dwarf Galaxy Candidate Discovered in the DECam Local Volume Exploration Survey|year=2021|last1=Cerny|first1=W.|last2=Pace|first2=A. B.|last3=Drlica-Wagner|first3=A.|last4=Koposov|first4=S. E.|last5=Vivas|first5=A. K.|last6=Mau|first6=S.|last7=Riley|first7=A. H.|last8=Bom|first8=C. R.|last9=Carlin|first9=J. L.|last10=Choi|first10=Y.|last11=Erkal|first11=D.|last12=Ferguson|first12=P. S.|last13=James|first13=D. J.|last14=Li|first14=T. S.|last15=Martínez-Delgado|first15=D.|last16=Martínez-Vázquez|first16=C. E.|last17=Munoz|first17=R. R.|last18=Mutlu-Pakdil|first18=B.|last19=Olsen|first19=K. A. G.|last20=Pieres|first20=A.|last21=Sakowska|first21=J. D.|last22=Sand|first22=D. J.|last23=Simon|first23=J. D.|last24=Smercina|first24=A.|last25=Stringfellow|first25=G. S.|last26=Tollerud|first26=E. J.|last27=Adamów|first27=M.|last28=Hernandez-Lang|first28=D.|last29=Kuropatkin|first29=N.|last30=Santana-Silva|first30=L.|journal=The Astrophysical Journal Letters|volume=920|issue=2|pages=L44|arxiv=2107.09080|bibcode=2021ApJ...920L..44C|s2cid=236134310|display-authors=1 |doi-access=free }}</ref>
+| &minus;4.7<ref name=Cerny/>
+| 14.72<ref name=Cerny/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 19.42 and absolute magnitude -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]<ref name=Cerny/>
+| 489<ref name=Cerny/><!-- half-light radius = 75 pc -->
+|-
+| &nbsp;26
+| align="center"|
+| [[Horologium II]]
+| 
+| 0.254
+| 0.078<ref name=Kallivayalil>{{cite journal|bibcode=2018ApJ...867...19K|title=The Missing Satellites of the Magellanic Clouds? Gaia Proper Motions of the Recently Discovered Ultra-faint Galaxies|last1=Kallivayalil|first1=Nitya|author1-link=Nitya Kallivayalil|last2=Sales|first2=Laura V.|last3=Zivick|first3=Paul|last4=Fritz|first4=Tobias K.|last5=Del Pino|first5=Andrés|last6=Sohn|first6=Sangmo Tony|last7=Besla|first7=Gurtina|author7-link=Gurtina Besla|last8=Van Der Marel|first8=Roeland P.|last9=Navarro|first9=Julio F.|last10=Sacchi|first10=Elena|journal=The Astrophysical Journal|year=2018|volume=867|issue=1|pages=19|doi=10.3847/1538-4357/aadfee|arxiv=1805.01448|s2cid=55073922 |doi-access=free }}</ref>
+| −2.6<ref name=Kallivayalil/>
+| 16.9<ref name=Kallivayalil/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 19.5 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 287<ref name=Munoz>{{cite journal|bibcode=2018ApJ...860...66M|title=A MegaCam Survey of Outer Halo Satellites. III. Photometric and Structural Parameters|last1=Muñoz|first1=Ricardo R.|last2=Côté|first2=Patrick|last3=Santana|first3=Felipe A.|last4=Geha|first4=Marla|author4-link= Marla Geha |last5=Simon|first5=Joshua D.|last6=Oyarzún|first6=Grecco A.|last7=Stetson|first7=Peter B.|last8=Djorgovski|first8=S. G.|journal=The Astrophysical Journal|year=2018|volume=860|issue=1|pages=66|doi=10.3847/1538-4357/aac16b|arxiv=1806.06891 |doi-access=free}}</ref><!-- half-light radius = 44.0 pc -->
+|-
+| &nbsp;27
+| align="center"| [[File:PGC 60095 Draco Dwarf Hubble WikiSky.jpg|60px]] 
+| [[Draco Dwarf]] (DDO 208)
+| dE0 pec
+| 0.258
+| 0.079<ref name="Karachentsev2005" />
+| −8.74<ref name="Karachentsev2005" />
+| 10.9<ref name="NASAIPAC" />
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]] with a large amount of dark matter
+|data-sort-value="2700"|~2,700 × 1,900
+|-
+| &nbsp;27
+| 
+| [[Horologium I]]
+|
+| 0.258
+| 0.079<ref name=HorologiumI>{{cite journal|doi=10.1088/0004-637X/811/1/62|title=Kinematics and Chemistry of Recently Discovered Reticulum 2 and Horologium 1 Dwarf Galaxies|year=2015|last1=Koposov|first1=Sergey E.|last2=Casey|first2=Andrew R.|last3=Belokurov|first3=Vasily|last4=Lewis|first4=James R.|last5=Gilmore|first5=Gerard|last6=Worley|first6=Clare|last7=Hourihane|first7=Anna|last8=Randich|first8=S.|last9=Bensby|first9=T.|last10=Bragaglia|first10=A.|last11=Bergemann|first11=M.|last12=Carraro|first12=G.|last13=Costado|first13=M. T.|last14=Flaccomio|first14=E.|last15=Francois|first15=P.|last16=Heiter|first16=U.|last17=Hill|first17=V.|last18=Jofre|first18=P.|last19=Lando|first19=C.|last20=Lanzafame|first20=A. C.|last21=Laverny|first21=P. de|last22=Monaco|first22=L.|last23=Morbidelli|first23=L.|last24=Sbordone|first24=L.|last25=Mikolaitis|first25=Š.|last26=Ryde|first26=N.|journal=The Astrophysical Journal|volume=811|issue=1|pages=62|arxiv=1504.07916|bibcode=2015ApJ...811...62K|s2cid=53419855}}</ref>
+| -3.4<ref name=HorologiumI/>
+| 
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 196<!-- half-light radius = 30 pc, diameter = 60 pc -->
+|-
+| &nbsp;29
+| align="center"|
+| [[Pisces Overdensity]]
+| dIrr/dSph<ref name=Boyer2009>{{cite journal | bibcode=2009ApJ...697.1993B | doi=10.1088/0004-637X/697/2/1993 | arxiv=0903.3871 | title=Aspitzerstudy of Asymptotic Giant Branch Stars. Iii. Dust Production and Gas Return in Local Group Dwarf Irregular Galaxies | journal=The Astrophysical Journal | volume=697 | issue=2 | pages=1993–2014 | year=2009 | last1=Boyer | first1=Martha L | last2=Skillman | first2=Evan D | last3=Van Loon | first3=Jacco Th | last4=Gehrz | first4=Robert D | last5=Woodward | first5=Charles E | s2cid=12162514 }}</ref>
+| 0.26
+| 0.08<ref name=Watkins2009>{{citation | display-authors=1 | last1=Watkins | first1=L. L. | last2=Evans | first2=N. W. | last3=Belokurov | first3=V. | last4=Smith | first4=M. C. | last5=Hewett | first5=P. C. | last6=Bramich | first6=D. M. | last7=Gilmore | first7=G. F. | last8=Irwin | first8=M. J. | last9=Vidrih | first9=S. | last10=Wyrzykowski | first10=Ł. | last11=Zucker | first11=D. B. | title=Substructure revealed by RR Lyraes in SDSS Stripe 82 | date=2009 | journal=[[Monthly Notices of the Royal Astronomical Society]] | volume=398 | issue=4 | pages=1757–70 | doi=10.1111/j.1365-2966.2009.15242.x | doi-access=free | bibcode=2009MNRAS.398.1757W | arxiv=0906.0498 | s2cid=14409027 | postscript=. }}</ref>
+| −10.35<ref name=Boyer2009/>
+| 
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;29
+|
+| [[Leo Minor I]]
+| 
+| 0.267
+| 0.082<ref name=Cerny2022/>
+| −2.4<ref name=Cerny2022/>
+| 17.16<ref name=Cerny2022/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 19.56 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;29
+|
+| [[Aquarius III (galaxy)|Aquarius III]]
+| 
+| 0.277
+| 0.085<ref name=Cerny2025>{{cite journal|doi=10.3847/1538-4357/ad8eba|doi-access=free |title=Discovery and Spectroscopic Confirmation of Aquarius III: A Low-mass Milky Way Satellite Galaxy |date=2025 |last1=Cerny |first1=W. |last2=Chiti |first2=A. |last3=Geha |first3=M. |last4=Mutlu-Pakdil |first4=B. |last5=Drlica-Wagner |first5=A. |last6=Tan |first6=C. Y. |last7=Adamów |first7=M. |last8=Pace |first8=A. B. |last9=Simon |first9=J. D. |last10=Sand |first10=D. J. |last11=Ji |first11=A. P. |last12=Li |first12=T. S. |last13=Vivas |first13=A. K. |last14=Bell |first14=E. F. |last15=Carlin |first15=J. L. |last16=Carballo-Bello |first16=J. A. |last17=Chaturvedi |first17=A. |last18=Choi |first18=Y. |last19=Doliva-Dolinsky |first19=A. |last20=Gnedin |first20=O. Y. |last21=Limberg |first21=G. |last22=Martínez-Vázquez |first22=C. E. |last23=Mau |first23=S. |last24=Medina |first24=G. E. |last25=Navabi |first25=M. |last26=Noël |first26=N. E. D. |last27=Placco |first27=V. M. |last28=Riley |first28=A. H. |last29=Roederer |first29=I. U. |last30=Stringfellow |first30=G. S. |journal=The Astrophysical Journal |volume=979 |issue=2 |page=164 |arxiv=2410.00981 |bibcode=2025ApJ...979..164C |display-authors=1 }}</ref>
+| &minus;2.5<ref name=Cerny2025/>
+| 
+| align="center" | [[Local Group]]
+| Satellite of the [[Milky Way]]
+| 330<ref name=Cerny2025/><!-- Elliptical physical half-light radius = 51 pc, so diameter = 102 pc -->
+|-
+| &nbsp;30
+|
+|[[Sextans Dwarf|Sextans Dwarf Sph]]
+| dSph
+| 0.280
+| 0.086<ref name="Karachentsev2005" />
+| −7.98<ref name="Karachentsev2005" />
+| 12<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+|8,400
+|-
+| &nbsp;31
+| align="center" |[[File:Sculptor Dwarf Galaxy ESO.jpg|60px]]
+|[[Sculptor Dwarf]] (ESO 351-G30)
+| dE3
+| 0.287
+| 0.088<ref name="Karachentsev2005" />
+| −9.77<ref name="Karachentsev2005" />
+| 10.1<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;32
+| align="center" |
+| [[Pegasus IV]]
+| 
+| 0.294
+| 0.090<ref name=PegasusIV>{{cite journal | arxiv=2203.11788 | doi=10.3847/1538-4357/aca1c3 | title=Pegasus IV: Discovery and Spectroscopic Confirmation of an Ultra-faint Dwarf Galaxy in the Constellation Pegasus | year=2023 | last1=Cerny | first1=W. | last2=Simon | first2=J. D. | last3=Li | first3=T. S. | last4=Drlica-Wagner | first4=A. | last5=Pace | first5=A. B. | last6=Martínez-Vázquez | first6=C. E. | last7=Riley | first7=A. H. | last8=Mutlu-Pakdil | first8=B. | last9=Mau | first9=S. | last10=Ferguson | first10=P. S. | last11=Erkal | first11=D. | last12=Munoz | first12=R. R. | last13=Bom | first13=C. R. | last14=Carlin | first14=J. L. | last15=Carollo | first15=D. | last16=Choi | first16=Y. | last17=Ji | first17=A. P. | last18=Manwadkar | first18=V. | last19=Martínez-Delgado | first19=D. | last20=Miller | first20=A. E. | last21=Noël | first21=N. E. D. | last22=Sakowska | first22=J. D. | last23=Sand | first23=D. J. | last24=Stringfellow | first24=G. S. | last25=Tollerud | first25=E. J. | last26=Vivas | first26=A. K. | last27=Carballo-Bello | first27=J. A. | last28=Hernandez-Lang | first28=D. | last29=James | first29=D. J. | last30=Nidever | first30=D. L. | journal=The Astrophysical Journal | volume=942 | issue=2 | page=111 | bibcode=2023ApJ...942..111C | s2cid=247597301 | display-authors=1 | doi-access=free }}</ref>
+| &minus;4.25<ref name=PegasusIV/>
+| 15.52<ref name=PegasusIV/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 19.77 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;32
+| align="center" |
+| [[Virgo I]]
+| 
+| 0.297
+| 0.091<ref name=Kallivayalil/>
+| −0.3<ref name=Kallivayalil/>
+| 19.5<ref name=Kallivayalil/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 19.8 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| &nbsp;33
+| align="center"|
+| [[Reticulum III]]
+| 
+| 0.300
+| 0.092<ref name=DrlicaWagner2015>{{cite journal|doi=10.1088/0004-637X/813/2/109|title=Eight Ultra-Faint Galaxy Candidates Discovered in Year Two of the Dark Energy Survey|year=2015|last1=Drlica-Wagner|first1=A.|last2=Bechtol|first2=K.|last3=Rykoff|first3=E. S.|last4=Luque|first4=E.|last5=Queiroz|first5=A.|last6=Mao|first6=Y.-Y.|last7=Wechsler|first7=R. H.|last8=Simon|first8=J. D.|last9=Santiago|first9=B.|last10=Yanny|first10=B.|last11=Balbinot|first11=E.|last12=Dodelson|first12=S.|last13=Neto|first13=A. Fausti|last14=James|first14=D. J.|last15=Li|first15=T. S.|last16=Maia|first16=M. A. G.|last17=Marshall|first17=J. L.|last18=Pieres|first18=A.|last19=Stringer|first19=K.|last20=Walker|first20=A. R.|last21=Abbott|first21=T. M. C.|last22=Abdalla|first22=F. B.|last23=Allam|first23=S.|last24=Benoit-Lévy|first24=A.|last25=Bernstein|first25=G. M.|last26=Bertin|first26=E.|last27=Brooks|first27=D.|last28=Buckley-Geer|first28=E.|author28-link=Elizabeth Buckley-Geer|last29=Burke|first29=D. L.|last30=Rosell|first30=A. Carnero|journal=The Astrophysical Journal|volume=813|issue=2|pages=109|arxiv=1508.03622|bibcode=2015ApJ...813..109D|s2cid=55909299|display-authors=29}}</ref>
+| −3.3<ref name=DrlicaWagner2015/>
+| 16.51<ref name=DrlicaWagner2015/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 19.81 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 420<ref name=DrlicaWagner2015/><!-- half-light radius = 64 pc -->
+|-
+| &nbsp;34
+|
+|[[Ursa Major I Dwarf]] (UMa I dSph)
+| dSph
+| 0.3157
+| 0.0968<ref name=Martin2008a/>
+| −6.75<ref name="Willman2005">Willman, Dalcanton, Martinez-Delgado, et al. (2005) "''A New Milky Way Dwarf Galaxy in''
+Ursa Major''", submitted to Astrophysical Journal Letters, on arXiv.org: [https://arxiv.org/abs/astro-ph/0503552 astro-ph/0503552] {{Webarchive|url=https://web.archive.org/web/20151212194857/http://arxiv.org/abs/astro-ph/0503552 |date=2015-12-12 }}''</ref>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+|~2,000
+|-
+| &nbsp;35
+| align="center" |
+| [[Phoenix II]]
+| 
+| 0.326
+| 0.100<ref name=MartinezVazquez>{{cite journal|doi=10.1093/mnras/stz2609|title=Search for RR Lyrae stars in DES ultra-faint systems: Grus I, Kim 2, Phoenix II, and Grus II|year=2019|last1=Martínez-Vázquez|first1=C. E.|last2=Vivas|first2=A. K.|last3=Gurevich|first3=M.|last4=Walker|first4=A. R.|last5=McCarthy|first5=M.|last6=Pace|first6=A. B.|last7=Stringer|first7=K. M.|last8=Santiago|first8=B.|last9=Hounsell|first9=R.|last10=Macri|first10=L.|last11=Li|first11=T. S.|last12=Bechtol|first12=K.|last13=Riley|first13=A. H.|last14=Kim|first14=A. G.|last15=Simon|first15=J. D.|last16=Drlica-Wagner|first16=A.|last17=Nadler|first17=E. O.|last18=Marshall|first18=J. L.|last19=Annis|first19=J.|last20=Avila|first20=S.|last21=Bertin|first21=E.|last22=Brooks|first22=D.|last23=Buckley-Geer|first23=E.|last24=Burke|first24=D. L.|last25=Rosell|first25=A Carnero|last26=Kind|first26=M Carrasco|last27=Da Costa|first27=L. N.|last28=De Vicente|first28=J.|last29=Desai|first29=S.|last30=Diehl|first30=H. T.|journal=Monthly Notices of the Royal Astronomical Society|volume=490|issue=2|pages=2183|doi-access=free |arxiv=1909.06308|bibcode=2019MNRAS.490.2183M|display-authors=29}}</ref>
+| −2.7<ref name=MartinezVazquez/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of Milky Way
+| 290<ref name=MartinezVazquez/><!-- From conclusion, 7: half-light radius = 44 pc -->
+|-
+| &nbsp;36
+| align="center" |[[File:Carina Dwarf Galaxy.jpg|60px]]
+| [[Carina Dwarf]] (ESO 206-G220)
+| dE3
+| 0.33
+| 0.10<ref name="Karachentsev2005" />
+| −8.97<ref name="Willman2005" />
+| 11.3<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 1,600
+|-
+| &nbsp;36
+|
+| [[Boötes V]]
+| 
+| 0.333
+| 0.102<ref name=Cerny2022>{{cite journal|doi=10.3847/1538-4357/acdd78|doi-access=free |title=Six More Ultra-faint Milky Way Companions Discovered in the DECam Local Volume Exploration Survey |date=2023 |last1=Cerny |first1=W. |last2=Martínez-Vázquez |first2=C. E. |last3=Drlica-Wagner |first3=A. |last4=Pace |first4=A. B. |last5=Mutlu-Pakdil |first5=B. |last6=Li |first6=T. S. |last7=Riley |first7=A. H. |last8=Crnojević |first8=D. |last9=Bom |first9=C. R. |last10=Carballo-Bello |first10=J. A. |last11=Carlin |first11=J. L. |last12=Chiti |first12=A. |last13=Choi |first13=Y. |last14=Collins |first14=M. L. M. |last15=Darragh-Ford |first15=E. |last16=Ferguson |first16=P. S. |last17=Geha |first17=M. |last18=Martínez-Delgado |first18=D. |last19=Massana |first19=P. |last20=Mau |first20=S. |last21=Medina |first21=G. E. |last22=Muñoz |first22=R. R. |last23=Nadler |first23=E. O. |last24=Noël |first24=N. E. D. |last25=Olsen |first25=K. A. G. |last26=Pieres |first26=A. |last27=Sakowska |first27=J. D. |last28=Simon |first28=J. D. |last29=Stringfellow |first29=G. S. |last30=Tollerud |first30=E. J. |journal=The Astrophysical Journal |volume=953 |issue=1 |page=1 |arxiv=2209.12422 |bibcode=2023ApJ...953....1C |display-authors=1 }}</ref>
+| −3.2<ref name=Cerny2022/>
+| 16.84<ref name=Cerny2022/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 20.04 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;37
+| align="center" |
+| [[Aquarius II]]
+| 
+| 0.3519
+| 0.1079<ref name="Torrealba2016a">{{cite journal|doi=10.1093/mnras/stw2051|title=At the survey limits: Discovery of the Aquarius 2 dwarf galaxy in the VST ATLAS and the SDSS data|year=2016|last1=Torrealba|first1=G.|last2=Koposov|first2=S. E.|last3=Belokurov|first3=V.|last4=Irwin|first4=M.|last5=Collins|first5=M.|last6=Spencer|first6=M.|last7=Ibata|first7=R.|last8=Mateo|first8=M.|last9=Bonaca|first9=A.|last10=Jethwa|first10=P.|journal=Monthly Notices of the Royal Astronomical Society|volume=463|issue=1|pages=712–722|doi-access=free |arxiv=1605.05338|bibcode=2016MNRAS.463..712T}}</ref>
+| −4.36<ref name="Torrealba2016a" />
+| 15.8<ref name="Torrealba2016a" /><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus m - M = 20.16 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 1,040<ref name="Torrealba2016a" /><!-- radius = 159 pc, so diameter = 318 pc -->
+|-
+| &nbsp;38
+| align="center" |
+| [[Aquarius IV]]
+| 
+| 0.356
+| 0.109<ref name=Cerny2026>{{cite journal|last1=Cerny |first1=William |last2=Pai |first2=Aashay |last3=Drlica-Wagner |first3=Alex |last4=Pace |first4=Andrew B. |last5=Ferguson |first5=Peter S. |last6=Geha |first6=Marla |last7=Tan |first7=Chin Yi |last8=Campana |first8=Sasha |last9=Carlin |first9=Jeffrey L. |last10=Crnojević |first10=Denija |last11=Ji |first11=Alexander P. |last12=Limberg |first12=Guilherme |last13=Massana |first13=Pol |last14=Mau |first14=Sidney |last15=Medina |first15=Gustavo E. |last16=Mutlu-Pakdil |first16=Burçin |last17=Sakowska |first17=Joanna D. |last18=Shipp |first18=Nora |last19=Stringfellow |first19=Guy S. |title=Discovery of the Distant, Ultra-faint Milky Way Satellite Aquarius IV with the Vera C. Rubin Observatory Early Data Preview 2 |journal=Research Notes of the AAS |date=2026 |volume=10 |issue=8 |page=239 |doi=10.3847/2515-5172/ae993b |doi-access=free |arxiv=2608.02601 |bibcode=2026RNAAS..10..239C }}</ref>
+| &minus;1.9<ref name=Cerny2026/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;38
+| 
+| [[Leo VI (galaxy)|Leo VI]]
+|
+| 0.362
+| 0.111<ref name=Tan2025>{{cite journal|doi=10.3847/1538-4357/ad9b0c|doi-access=free |title=A Pride of Satellites in the Constellation Leo? Discovery of the Leo VI Milky Way Satellite Ultra-faint Dwarf Galaxy with DELVE Early Data Release 3 |date=2025 |last1=Tan |first1=C. Y. |last2=Cerny |first2=W. |last3=Drlica-Wagner |first3=A. |last4=Pace |first4=A. B. |last5=Geha |first5=M. |last6=Ji |first6=A. P. |last7=Li |first7=T. S. |last8=Adamów |first8=M. |last9=Anbajagane |first9=D. |last10=Bom |first10=C. R. |last11=Carballo-Bello |first11=J. A. |last12=Carlin |first12=J. L. |last13=Chang |first13=C. |last14=Chaturvedi |first14=A. |last15=Chiti |first15=A. |last16=Choi |first16=Y. |last17=Collins |first17=M. L. M. |last18=Doliva-Dolinsky |first18=A. |last19=Ferguson |first19=P. S. |last20=Gruendl |first20=R. A. |last21=James |first21=D. J. |last22=Limberg |first22=G. |last23=Navabi |first23=M. |last24=Martínez-Delgado |first24=D. |last25=Martínez-Vázquez |first25=C. E. |last26=Medina |first26=G. E. |last27=Mutlu-Pakdil |first27=B. |last28=Nidever |first28=D. L. |last29=Noël |first29=N. E. D. |last30=Riley |first30=A. H. |journal=The Astrophysical Journal |volume=979 |issue=2 |page=176 |arxiv=2408.00865 |bibcode=2025ApJ...979..176T |display-authors=1 }}</ref>
+| &minus;3.56<ref name=Tan2025/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 910<ref name=Tan2025/><!-- Physical Semi-Major Axis Length = 140 pc, so diameter = 280 pc -->
+|-
+| &nbsp;38
+| align="center" |
+| [[Pictor I]]<!-- sometimes called Pictoris I -->
+| 
+| 0.372
+| 0.114<ref name=Koposov2015>{{cite journal|bibcode=2015ApJ...805..130K|title=Beasts of the Southern Wild: Discovery of Nine Ultra Faint Satellites in the Vicinity of the Magellanic Clouds|last1=Koposov|first1=Sergey E.|last2=Belokurov|first2=Vasily|last3=Torrealba|first3=Gabriel|last4=Evans|first4=N. Wyn|journal=The Astrophysical Journal|year=2015|volume=805|issue=2|pages=130|doi=10.1088/0004-637X/805/2/130|arxiv=1503.02079|s2cid=118267222}}</ref>
+| −3.1<ref name=Koposov2015/>
+| 20.3<ref name=Koposov2015/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus m - M = 17.2 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 190<ref name=Koposov2015/><!-- half-light radius = 29 pc, so diameter = 58 pc -->
+|-
+| &nbsp;39
+| align="center" |
+|[[Crater II]]
+| 
+| 0.383
+| 0.1175<ref name=Kallivayalil/>
+| −8.2<ref name=Kallivayalil/>
+| 12.2<ref name=Kallivayalil/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 20.4 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;40
+| align="center" |
+| [[Grus I]]
+| 
+| 0.391<ref name=Walker/>
+| 0.120<ref name=Walker/>
+| −3.4<ref name=Walker/>
+| 17.0<ref name=Walker/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus m - M = 20.4, and Mv = −3.4 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 404<!-- radius = 62 pc, so diameter = 124 pc -->
+|-
+| &nbsp;41
+| align="center" |
+| [[Sextans II]]
+| 
+| 0.411
+| 0.126<ref name=Homma2024>{{cite journal | last1=Homma | first1=Daisuke | last2=Chiba | first2=Masashi | last3=Komiyama | first3=Yutaka | last4=Tanaka | first4=Masayuki | last5=Okamoto | first5=Sakurako | last6=Tanaka | first6=Mikito | last7=Ishigaki | first7=Miho N | last8=Hayashi | first8=Kohei | last9=Arimoto | first9=Nobuo | last10=Lupton | first10=Robert H | last11=Strauss | first11=Michael A | last12=Miyazaki | first12=Satoshi | last13=Wang | first13=Shiang-Yu | last14=Murayama | first14=Hitoshi | title=Final results of the search for new Milky Way satellites in the Hyper Suprime-Cam Subaru Strategic Program survey: Discovery of two more candidates | journal=Publications of the Astronomical Society of Japan | date=2024-06-08 | volume=76 | issue=4 | pages=733–752 | issn=0004-6264 | doi=10.1093/pasj/psae044| arxiv=2311.05439 }}</ref>
+|−3.9<ref name=Homma2024 />
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;41
+| align="center" |
+| [[Antlia 2]]
+| 
+| 0.430
+| 0.1318<ref name=Ji>{{cite journal|doi=10.3847/1538-4357/ac1869|title=Kinematics of Antlia 2 and Crater 2 from the Southern Stellar Stream Spectroscopic Survey (S 5)|year=2021|last1=Ji|first1=Alexander P.|last2=Koposov|first2=Sergey E.|last3=Li|first3=Ting S.|last4=Erkal|first4=Denis|last5=Pace|first5=Andrew B.|last6=Simon|first6=Joshua D.|last7=Belokurov|first7=Vasily|last8=Cullinane|first8=Lara R.|last9=Da Costa|first9=Gary S.|last10=Kuehn|first10=Kyler|last11=Lewis|first11=Geraint F.|last12=MacKey|first12=Dougal|last13=Shipp|first13=Nora|last14=Simpson|first14=Jeffrey D.|last15=Zucker|first15=Daniel B.|last16=Hansen|first16=Terese T.|last17=Bland-Hawthorn|first17=Joss|author18=S5 Collaboration|journal=The Astrophysical Journal|volume=921|issue=1|page=32|arxiv=2106.12656|bibcode=2021ApJ...921...32J|s2cid=235624056 |doi-access=free }}</ref>
+| −9.86<ref name=Ji/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]], most diffuse galaxy ever found
+| 
+|-
+| &nbsp;42
+| align="center" |[[File:Hercules Dwarf Galaxy.jpg|60px]]
+| [[Hercules (dwarf galaxy)|Hercules Dwarf]]
+| dSph
+| 0.434
+| 0.133<ref name="Sand2009">{{cite journal|last=Sand|first=David J.|author2=Olszewski, Edward W. |author3=Willman, Beth |title=The Star Formation History and Extended Structure of the Hercules Milky Way Satellite|date=2009|journal=The Astrophysical Journal|volume=704|issue=2|pages=898–914|doi=10.1088/0004-637X/704/2/898|bibcode=2009ApJ...704..898S |arxiv=0906.4017 |s2cid=42754875}}</ref>
+| −5.3<ref name="Sand2009" />
+| 14.7<ref name="Belokurov2007" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;43
+| align="center" |[[File:Fornax dwarf galaxy.jpg|60px]]
+|[[Fornax Dwarf]] (ESO 356-G04)
+| dSph/E2
+| 0.466
+| 0.143<ref>{{cite journal|doi=10.3847/1538-4357/ac5b07|title=Distances to Local Group Galaxies via Population II, Stellar Distance Indicators. II. The Fornax Dwarf Spheroidal |year=2022 |last1=Oakes |first1=Elias K. |last2=Hoyt |first2=Taylor J. |last3=Freedman |first3=Wendy L. |last4=Madore |first4=Barry F. |last5=Tran |first5=Quang H. |last6=Cerny |first6=William |last7=Beaton |first7=Rachael L. |last8=Seibert |first8=Mark |journal=The Astrophysical Journal |volume=929 |issue=2 |page=116 |arxiv=2204.09699 |bibcode=2022ApJ...929..116O |s2cid=248260222 |doi-access=free }}</ref>
+| −11.5<ref name="Karachentsev2005" />
+| 9.28<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;44
+| align="center" |
+|[[Canes Venatici II Dwarf]]
+| dSph
+| 0.49
+| 0.15<ref name="Belokurov2007" />
+| −4.8<ref name="Belokurov2007" />
+| 15.1<ref name="Belokurov2007">{{Cite journal | last1 = Belokurov | first1 = V. | last2 = Zucker | first2 = D. B. | last3 = Evans | first3 = N. W. | last4 = Kleyna | first4 = J. T. | last5 = Koposov | first5 = S. | last6 = Hodgkin | first6 = S. T. | last7 = Irwin | first7 = M. J. | last8 = Gilmore | first8 = G. |author-link8 = Gerard F. Gilmore| last9 = Wilkinson | first9 = M. I. | last10 = Fellhauer | doi = 10.1086/509718 | first10 = M. | last11 = Bramich | first11 = D. M. | last12 = Hewett | first12 = P. C. | last13 = Vidrih | first13 = S. | last14 = De Jong | first14 = J. T. A. | last15 = Smith | first15 = J. A. | last16 = Rix | first16 = H. -W. | last17 = Bell | first17 = E. F. | last18 = Wyse | first18 = R. F. G. | last19 = Newberg | first19 = H. J. | last20 = Mayeur | first20 = P. A. | last21 = Yanny | first21 = B. | last22 = Rockosi | first22 = C. M. |author-link22=Constance M. Rockosi| last23 = Gnedin | first23 = O. Y. | last24 = Schneider | first24 = D. P. | last25 = Beers | first25 = T. C. | last26 = Barentine | first26 = J. C. | last27 = Brewington | first27 = H. | last28 = Brinkmann | first28 = J. | last29 = Harvanek | first29 = M. | last30 = Kleinman | first30 = S. J. | title = Cats and Dogs, Hair and a Hero: A Quintet of New Milky Way Companions | journal = The Astrophysical Journal | volume = 654 | issue = 2 | pages = 897–906 | year = 2007 |arxiv = astro-ph/0608448 |bibcode = 2007ApJ...654..897B  | s2cid = 18617277 }}</ref>
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;45
+| align="center" |
+| [[Hydra II]]
+| dSph
+| 0.492
+| 0.151<ref name=Vivas>{{cite journal|bibcode=2016AJ....151..118V|title=Variable Stars in the Field of the Hydra II Ultra-faint Dwarf Galaxy|last1=Vivas|first1=A. Katherina|last2=Olsen|first2=Knut|last3=Blum|first3=Robert|last4=Nidever|first4=David L.|last5=Walker|first5=Alistair R.|last6=Martin|first6=Nicolas F.|last7=Besla|first7=Gurtina|author7-link=Gurtina Besla|last8=Gallart|first8=Carme|last9=Van Der Marel|first9=Roeland P.|last10=Majewski|first10=Steven R.|last11=Kaleida|first11=Catherine C.|last12=Muñoz|first12=Ricardo R.|last13=Saha|first13=Abhijit|last14=Conn|first14=Blair C.|last15=Jin|first15=Shoko|journal=The Astronomical Journal|year=2016|volume=151|issue=5|pages=118|doi=10.3847/0004-6256/151/5/118|arxiv=1510.05539|s2cid=53536842 |doi-access=free }}</ref>
+| −5.1<ref name=Vivas/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 500<ref name=Vivas/><!-- half-light radius = 76 pc -->
+|-
+| &nbsp;45
+| align="center" |
+| [[Virgo III]]
+| 
+| 0.492
+| 0.151<ref name=Homma2024 />
+| −2.7<ref name=Homma2024 />
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;46
+| align="center" |[[File:Leo IV dwarf galaxy.jpeg|60px]]
+| [[Leo IV (dwarf galaxy)|Leo IV Dwarf]]
+| dSph
+| 0.502
+| 0.154<ref name="Sand2010">{{cite journal|last1=Sand|first1=David J. |last2=Seth|first2=Anil |last3=Olszewski|first3=Edward W. |display-authors=etal |title=A Deeper Look at Leo IV: Star Formation History and Extended Structure|date=2010|journal=The Astrophysical Journal|volume=718|issue=1 |pages=530–42 |bibcode=2010ApJ...718..530S|doi=10.1088/0004-637X/718/1/530|arxiv=0911.5352|s2cid=32122744 }}</ref>
+| −5.5<ref name="Sand2010" />
+| 15.9<ref name="Belokurov2007" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;47
+| align="center" |
+| [[Leo V (dwarf galaxy)|Leo V Dwarf]]
+| dSph
+| 0.571
+| 0.175<ref name="deJong2010">{{Cite journal | last1 = de Jong | first1 = J. T. A. | last2 = Martin | first2 = N. F. | last3 = Rix | first3 = H. W. | last4 = Smith | first4 = K. W. | last5 = Jin | first5 = S. | last6 = Macciò | first6 = A. V. | doi = 10.1088/0004-637X/710/2/1664 | title = The Enigmatic Pair of Dwarf Galaxies Leo Iv and Leo V: Coincidence or Common Origin? | journal = The Astrophysical Journal | volume = 710 | issue = 2 | pages = 1664–1671 | year = 2010 |arxiv = 0912.3251 |bibcode = 2010ApJ...710.1664D | s2cid = 5667891 }}</ref>
+| −5.2<ref name="deJong2010" />
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;48
+| align="center" |
+| [[Pisces II]]
+| dG<ref name="Sand2012">{{cite journal|bibcode=2012ApJ...756...79S|doi=10.1088/0004-637X/756/1/79|arxiv=1111.6608|title=Tidal Signatures in the Faintest Milky Way Satellites: The Detailed Properties of Leo V, Pisces II, and Canes Venatici II|journal=The Astrophysical Journal|volume=756|pages=79|year=2012|last1=Sand|first1=David J|last2=Strader|first2=Jay|last3=Willman|first3=Beth|last4=Zaritsky|first4=Dennis|last5=McLeod|first5=Brian|last6=Caldwell|first6=Nelson|last7=Seth|first7=Anil|last8=Olszewski|first8=Edward|issue=1|s2cid=46030862}}</ref>
+| 0.597
+| 0.183<ref name="Sand2012" />
+| −4.28<ref name=Richstein/>
+| 17.03<ref name=Richstein/>
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| &nbsp;48
+| align="center"|
+| [[Columba I]]
+| 
+| 0.597
+| 0.183<ref name=Carlin2017>{{cite journal|bibcode=2017AJ....154..267C|title=Deep Subaru Hyper Suprime-Cam Observations of Milky Way Satellites Columba I and Triangulum II|last1=Carlin|first1=Jeffrey L.|last2=Sand|first2=David J.|last3=Muñoz|first3=Ricardo R.|last4=Spekkens|first4=Kristine|last5=Willman|first5=Beth|last6=Crnojević|first6=Denija|last7=Forbes|first7=Duncan A.|last8=Hargis|first8=Jonathan|last9=Kirby|first9=Evan|last10=Peter|first10=Annika H. G.|last11=Romanowsky|first11=Aaron J.|last12=Strader|first12=Jay|journal=The Astronomical Journal|year=2017|volume=154|issue=6|pages=267|doi=10.3847/1538-3881/aa94d0|arxiv=1710.06444|s2cid=54537259 |doi-access=free }}</ref>
+| −4.2<ref name=Carlin2017/>
+| 17.11<ref name=Carlin2017/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 21.31 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]
+| 760<ref name=Carlin2017/><!-- half-light radius = 117 pc -->
+|-
+| &nbsp;50
+| align="center"|
+| [[Boötes IV]]
+| 
+| 0.682
+| 0.209<ref name=Homma2019>{{cite journal|doi=10.1093/pasj/psz076|title=Boötes. IV. A new Milky Way satellite discovered in the Subaru Hyper Suprime-Cam Survey and implications for the missing satellite problem|year=2019|last1=Homma|first1=Daisuke|last2=Chiba|first2=Masashi|last3=Komiyama|first3=Yutaka|last4=Tanaka|first4=Masayuki|last5=Okamoto|first5=Sakurako|last6=Tanaka|first6=Mikito|last7=Ishigaki|first7=Miho N.|last8=Hayashi|first8=Kohei|last9=Arimoto|first9=Nobuo|last10=Carlsten|first10=Scott G.|last11=Lupton|first11=Robert H.|last12=Strauss|first12=Michael A.|last13=Miyazaki|first13=Satoshi|last14=Torrealba|first14=Gabriel|last15=Wang|first15=Shiang-Yu|last16=Murayama|first16=Hitoshi|journal=Publications of the Astronomical Society of Japan|volume=71|issue=5|pages=94|arxiv=1906.07332|bibcode=2019PASJ...71...94H}}</ref>
+| −4.53<ref name=Homma2019/>
+| 17.07<ref name=Homma2019/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 21.6 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Milky Way]]<ref name=Homma2019/>
+| 3,000<ref name=Homma2019/><!-- half-light radius = 924 pc -->
+|-
+| 51
+| align="center" |[[File:LG Leo II (26422781005).jpg|60px]]
+| [[Leo II (dwarf galaxy)|Leo II Dwarf]] (Leo B, DDO 93)
+| dE0 pec
+| 0.701<ref name="Sidney2000">van den Bergh, S. (2000)''Updated Information on the Local Group''
+</ref>
+| 0.215
+| −9.23<ref name="Karachentsev2005" />
+| 12.45<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+|4,100 (tidal)
+|-
+| 51
+| align="center" |
+| [[Pegasus III]]
+| 
+| 0.701
+| 0.215<ref name=Kim>{{cite journal|bibcode=2016ApJ...833...16K|title=Portrait of a Dark Horse: A Photometric and Spectroscopic Study of the Ultra-faint Milky Way Satellite Pegasus III|last1=Kim|first1=Dongwon|last2=Jerjen|first2=Helmut|last3=Geha|first3=Marla|author3-link= Marla Geha |last4=Chiti|first4=Anirudh|last5=Milone|first5=Antonino P.|last6=Da Costa|first6=Gary|last7=MacKey|first7=Dougal|last8=Frebel|first8=Anna|last9=Conn|first9=Blair|journal=The Astrophysical Journal|year=2016|volume=833|issue=1|pages=16|doi=10.3847/0004-637X/833/1/16|arxiv=1608.04934|s2cid=73677994 |doi-access=free }}</ref>
+| −4.17<ref name=Kim/>
+| 17.50<ref name=Richstein>{{cite journal|doi=10.3847/1538-4357/ac7226|title=Structural Parameters and Possible Association of the Ultra-faint Dwarfs Pegasus III and Pisces II from Deep Hubble Space Telescope Photometry |year=2022 |last1=Richstein |first1=Hannah |last2=Patel |first2=Ekta |last3=Kallivayalil |first3=Nitya |last4=Simon |first4=Joshua D. |last5=Zivick |first5=Paul |last6=Tollerud |first6=Erik |last7=Fritz |first7=Tobias |last8=Warfield |first8=Jack T. |last9=Besla |first9=Gurtina|author9-link=Gurtina Besla |last10=Van Der Marel |first10=Roeland P. |last11=Wetzel |first11=Andrew |last12=Choi |first12=Yumi |last13=Deason |first13=Alis |last14=Geha |first14=Marla|author14-link= Marla Geha |last15=Guhathakurta |first15=Puragra |last16=Jeon |first16=Myoungwon |last17=Kirby |first17=Evan N. |last18=Libralato |first18=Mattia |last19=Sacchi |first19=Elena |last20=Sohn |first20=Sangmo Tony |journal=The Astrophysical Journal |volume=933 |issue=2 |page=217 |arxiv=2204.01917 |bibcode=2022ApJ...933..217R |s2cid=247957904 |doi-access=free }}</ref>
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 350<ref name=Kim/><!-- half-light radius = 53 pc -->
+|-
+| 53
+| align="center" |
+| [[Canes Venatici I Dwarf]]
+| dSph
+| 0.711
+| 0.218<ref name="Martin2008">{{Cite journal | last1 = Martin | first1 = N. F. | last2 = Coleman | first2 = M. G. | last3 = De Jong | first3 = J. T. A. | last4 = Rix | first4 = H. W. | last5 = Bell | first5 = E. F. | last6 = Sand | first6 = D. J. | last7 = Hill | first7 = J. M. | last8 = Thompson | first8 = D. | last9 = Burwitz | first9 = V. | last10 = Giallongo | first10 = E. | last11 = Ragazzoni | first11 = R. | last12 = Diolaiti | first12 = E. | last13 = Gasparo | first13 = F. | last14 = Grazian | first14 = A. | last15 = Pedichini | first15 = F. | last16 = Bechtold | first16 = J. | title = A Deep Large Binocular Telescope View of the Canes Venatici I Dwarf Galaxy | doi = 10.1086/525559 | journal = The Astrophysical Journal | volume = 672 | pages = L13–L16 | year = 2008 | issue = 1 |arxiv = 0709.3365 |bibcode = 2008ApJ...672L..13M | s2cid = 14614201 }}</ref>
+| −7.9<ref name="Zucker2006" />
+| 13.9<ref name="Zucker2006">{{Cite journal | last1 = Zucker | first1 = D. B. | last2 = Belokurov | first2 = V. | last3 = Evans | first3 = N. W. | last4 = Wilkinson | first4 = M. I. | last5 = Irwin | first5 = M. J. | last6 = Sivarani | first6 = T. | last7 = Hodgkin | first7 = S. | last8 = Bramich | first8 = D. M. | last9 = Irwin | first9 = J. M. | last10 = Gilmore | doi = 10.1086/505216 | first10 = G. | last11 = Willman | first11 = B. | last12 = Vidrih | first12 = S. | last13 = Fellhauer | first13 = M. | last14 = Hewett | first14 = P. C. | last15 = Beers | first15 = T. C. | last16 = Bell | first16 = E. F. | last17 = Grebel | first17 = E. K. | last18 = Schneider | first18 = D. P. | last19 = Newberg | first19 = H. J. | last20 = Wyse | first20 = R. F. G. | last21 = Rockosi | first21 = C. M. |author-link21=Constance M. Rockosi| last22 = Yanny | first22 = B. | last23 = Lupton | first23 = R. | last24 = Smith | first24 = J. A. | last25 = Barentine | first25 = J. C. | last26 = Brewington | first26 = H. | last27 = Brinkmann | first27 = J. | last28 = Harvanek | first28 = M. | last29 = Kleinman | first29 = S. J. | last30 = Krzesinski | first30 = J. | title = A New Milky Way Dwarf Satellite in Canes Venatici | journal = The Astrophysical Journal | volume = 643 | issue = 2 | pages = L103 | year = 2006 |arxiv = astro-ph/0604354 |bibcode = 2006ApJ...643L.103Z | s2cid = 119421888 }}</ref>
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| 54
+| align="center" |
+| [[Cetus III]]
+|
+| 0.819
+| 0.251<ref name="Homma2018">{{cite journal|doi=10.1093/pasj/psx050|title=Searches for new Milky Way satellites from the first two years of data of the Subaru/Hyper Suprime-Cam survey: Discovery of Cetus III|year=2018|last1=Homma|first1=Daisuke|last2=Chiba|first2=Masashi|last3=Okamoto|first3=Sakurako|last4=Komiyama|first4=Yutaka|last5=Tanaka|first5=Masayuki|last6=Tanaka|first6=Mikito|last7=Ishigaki|first7=Miho N.|last8=Hayashi|first8=Kohei|last9=Arimoto|first9=Nobuo|last10=Garmilla|first10=José A.|last11=Lupton|first11=Robert H.|last12=Strauss|first12=Michael A.|last13=Miyazaki|first13=Satoshi|last14=Wang|first14=Shiang-Yu|last15=Murayama|first15=Hitoshi|journal=Publications of the Astronomical Society of Japan|volume=70|article-number=S18|arxiv=1704.05977|bibcode=2018PASJ...70S..18H}}</ref>
+| −2.45<ref name="Homma2018" />
+| 19.55<ref name="Homma2018" /><ref group="lower-alpha" name="apparentmag" /><!-- from distance modulus (m - M) = 22.0 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 580<ref name="Homma2018" /><!-- half-light radius = 90 pc -->
+|-
+| 55
+| align="center" |[[Image:Ugc5470.jpg|60px]]
+| [[Leo I Dwarf]] (DDO 74, UGC 5470)
+| dE3
+| 0.820<ref name="Sidney2000" />
+| 0.251
+| −10.97<ref name="Karachentsev2005" />
+| 11.18<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| 56
+| align="center" |
+| [[Eridanus II]]
+| 
+| 1.19<ref name=Li/>
+| 0.366<ref name=Li>{{cite journal|doi=10.3847/1538-4357/aa6113|title=Farthest Neighbor: The Distant Milky Way Satellite Eridanus II|year=2017|last1=Li|first1=T. S.|last2=Simon|first2=J. D.|last3=Drlica-Wagner|first3=A.|last4=Bechtol|first4=K.|last5=Wang|first5=M. Y.|last6=García-Bellido|first6=J.|last7=Frieman|first7=J.|last8=Marshall|first8=J. L.|last9=James|first9=D. J.|last10=Strigari|first10=L.|last11=Pace|first11=A. B.|last12=Balbinot|first12=E.|last13=Zhang|first13=Y.|last14=Abbott|first14=T. M. C.|last15=Allam|first15=S.|last16=Benoit-Lévy|first16=A.|last17=Bernstein|first17=G. M.|last18=Bertin|first18=E.|last19=Brooks|first19=D.|last20=Burke|first20=D. L.|last21=Rosell|first21=A. Carnero|last22=Kind|first22=M. Carrasco|last23=Carretero|first23=J.|last24=Cunha|first24=C. E.|last25=d'Andrea|first25=C. B.|last26=Costa|first26=L. N. da|last27=Depoy|first27=D. L.|last28=Desai|first28=S.|last29=Diehl|first29=H. T.|last30=Eifler|first30=T. F.|journal=The Astrophysical Journal|volume=838|issue=1|pages=8|arxiv=1611.05052|bibcode=2017ApJ...838....8L|s2cid=45137837|display-authors=29 |doi-access=free }}</ref>
+| −7.1<ref name=Li/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 1,810<ref name=Li/><!-- half-light radius = 277 pc, so diameter = 554 pc -->
+|-
+| 57
+| <!--image-->
+| [[Leo T Dwarf]]<!--name(s)-->
+| dIrr/dSph
+| 1.35<!--dist/mly-->
+| 0.413<ref name=Higgs>{{cite journal|doi=10.1093/mnras/stab002|arxiv=2101.03189|bibcode=2021MNRAS.503..176H|title=Solo dwarfs II: The stellar structure of isolated Local Group dwarf galaxies|year=2021|last1=Higgs|first1=C. R.|last2=McConnachie|first2=A. W.|last3=Annau|first3=N.|last4=Irwin|first4=M.|last5=Battaglia|first5=G.|last6=Côté|first6=P.|last7=Lewis|first7=G. F.|last8=Venn|first8=K.|journal=Monthly Notices of the Royal Astronomical Society|volume=503|issue=1 |pages=176–199|doi-access=free }}</ref><!--dist/Mpc-->
+| <!--M-->
+| 16<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Local Group]]<!--group if any-->
+| Satellite of [[Milky Way]]?<!--notes-->
+|2,300
+|-
+| 58
+|
+|[[Leo K (dwarf galaxy)|Leo K]]
+| 
+| 1.42
+| 0.434<ref name=McQuinn/>
+| −4.86<ref name=McQuinn>{{cite journal|doi=10.3847/1538-4357/ad429b|doi-access=free |title=Discovery and Characterization of Two Ultrafaint Dwarfs outside the Halo of the Milky Way: Leo M and Leo K |date=2024 |last1=McQuinn |first1=Kristen. B. W. |last2=Mao |first2=Yao-Yuan |last3=Tollerud |first3=Erik J. |last4=Cohen |first4=Roger E. |last5=Shih |first5=David |last6=Buckley |first6=Matthew R. |last7=Dolphin |first7=Andrew E. |journal=The Astrophysical Journal |volume=967 |issue=2 |page=161 |arxiv=2307.08738 |bibcode=2024ApJ...967..161M }}</ref>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| 58
+| align="center" |[[Image:Phoenix Dwarf Hubble WikiSky.jpg|60px]]
+|[[Phoenix Dwarf Galaxy]] (P 6830)
+| IAm
+| 1.44
+| 0.44
+| −10.22<ref name="Karachentsev2005" />
+| 13.07<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| 58
+|
+|[[Leo M]]
+| 
+| 1.50
+| 0.459<ref name=McQuinn/>
+| −5.77<ref name=McQuinn/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+| 
+|-
+| 59
+| align="center" | 
+| [[Pisces V (dwarf galaxy)| Pisces V]] (Andromeda XVI)
+| dSph<ref name=Skillman>{{cite journal|bibcode=2017ApJ...837..102S|title=The ISLAndS Project. II. The Lifetime Star Formation Histories of Six Andromeda DSPHS|last1=Skillman|first1=Evan D.|last2=Monelli|first2=Matteo|last3=Weisz|first3=Daniel R.|last4=Hidalgo|first4=Sebastian L.|last5=Aparicio|first5=Antonio|last6=Bernard|first6=Edouard J.|last7=Boylan-Kolchin|first7=Michael|last8=Cassisi|first8=Santi|last9=Cole|first9=Andrew A.|last10=Dolphin|first10=Andrew E.|last11=Ferguson|first11=Henry C.|last12=Gallart|first12=Carme|last13=Irwin|first13=Mike J.|last14=Martin|first14=Nicolas F.|last15=Martínez-Vázquez|first15=Clara E.|last16=Mayer|first16=Lucio|last17=McConnachie|first17=Alan W.|last18=McQuinn|first18=Kristen B. W.|last19=Navarro|first19=Julio F.|last20=Stetson|first20=Peter B.|journal=The Astrophysical Journal|year=2017|volume=837|issue=2|pages=102|doi=10.3847/1538-4357/aa60c5|arxiv=1606.01207|s2cid=53958697 |doi-access=free }}</ref>
+| 1.79
+| 0.55<ref name=Skillman/><ref group="lower-alpha" name=Dist/><!-- from distance modulus (m - M)0 = 23.71 -->
+| −7.6<ref name=Skillman/>
+| 16.1<ref name=Skillman/>
+| align="center" | [[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 985<ref name=Skillman/>
+|-
+| 60
+| align="center" | [[Image:Barnard&#039;s Galaxy.jpg|60px]]
+|[[Barnard's Galaxy]] ([[NGC 6822]])
+| IB(s)m IV-V
+| 1.859
+| 0.570<ref name=Higgs/>
+| −15.22<ref name="Karachentsev2005" />
+| 9.32<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| It contains several large H II regions
+|7,000
+|-
+| 61
+| align="center" | [[Image:NGC 185 HST.jpg|60px]]
+|[[NGC 185]]
+| dE3 pec
+| 2.05<ref name="TRGB2005" />
+| 0.63
+| −14.76<ref name="Karachentsev2005" />
+| 9.99<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]; possibly closest [[Seyfert galaxy]] to Earth
+| 
+|-
+| 62
+| align="center" |[[File:Andromeda II color cutout hst 13028 06 acs wfc f814w f475w sci.jpg|60px]]
+| [[Andromeda II]]
+| dE0
+| 2.22
+| 0.68<ref name="Skillman" /><ref group="lower-alpha" name="Dist" /><!-- from distance modulus (m - M) = 24.17 -->
+| −12.6<ref name="Skillman" />
+| 11.7<ref name="Skillman" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 6,820<ref name="Skillman" /><!-- half-light radius = 1045 pc -->
+|-
+| 63
+| align="center" |
+| [[Cassiopeia II]] (Andromeda XXX)
+| dSph<ref name="Collins2013" />
+| 2.221
+| 0.681<ref name="Hodkinson" />
+| −8.0<ref name="Martin">{{cite journal|bibcode=2016ApJ...833..167M|title=The PAndAS View of the Andromeda Satellite System. II. Detailed Properties of 23 M31 Dwarf Spheroidal Galaxies|last1=Martin|first1=Nicolas F.|last2=Ibata|first2=Rodrigo A.|last3=Lewis|first3=Geraint F.|last4=McConnachie|first4=Alan|last5=Babul|first5=Arif|last6=Bate|first6=Nicholas F.|last7=Bernard|first7=Edouard|last8=Chapman|first8=Scott C.|last9=Collins|first9=Michelle M. L.|last10=Conn|first10=Anthony R.|last11=Crnojević|first11=Denija|last12=Fardal|first12=Mark A.|last13=Ferguson|first13=Annette M. N.|last14=Irwin|first14=Michael|last15=MacKey|first15=A. Dougal|last16=McMonigal|first16=Brendan|last17=Navarro|first17=Julio F.|last18=Rich|first18=R. Michael|journal=The Astrophysical Journal|year=2016|volume=833|issue=2|pages=167|doi=10.3847/1538-4357/833/2/167|arxiv=1610.01158|s2cid=73620398 |doi-access=free }}</ref>
+| 16.0<ref name="Martin" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 1,800<!-- half-light radius = 270 pc -->
+|-
+| 64
+| align="center" |[[File:IC1613-3.jpg|60px]]
+| [[IC 1613]] (UGC 668)
+| IAB(s)m V
+| 2.24
+| 0.686<ref name=Higgs/>
+| −14.51<ref name="Karachentsev2005" />
+| 9.92<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| 
+|
+|-
+| 65
+| align="center" |
+| [[Pegasus V (galaxy)|Pegasus V]] (Andromeda XXXIV)
+| 
+| 2.26
+| 0.692<ref name=Collins/>
+| −6.3<ref name=Collins/>
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name=Collins>{{cite journal |arxiv=2204.09068 |last1=Collins |first1=Michelle L. M. |last2=Charles |first2=Emily J. E. |last3=Martínez-Delgado |first3=David |last4=Monelli |first4=Matteo |last5=Karim |first5=Noushin |last6=Donatiello |first6=Giuseppe |last7=Tollerud |first7=Erik J. |last8=Boschin |first8=Walter |title=Pegasus V/Andromeda XXXIV–a newly discovered ultrafaint dwarf galaxy on the outskirts of Andromeda |journal=Monthly Notices of the Royal Astronomical Society: Letters |year=2022  |volume=515 |issue=1 |pages=L72–L77 |doi=10.1093/mnrasl/slac063 |doi-access=free |bibcode=2022MNRAS.515L..72C }}</ref>
+| 
+|-
+| 66
+| align="center" |[[File:Leo A Hubble WikiSky.jpg|60px]]
+| [[Leo A]] (Leo III, DDO 69)
+| IBm V
+| 2.34<ref name=Higgs/>
+| 0.717<ref name=Higgs/>
+| −11.68<ref name="Karachentsev2008" />
+| 12.92
+| align="center" |[[Local Group]]
+| Satellite of [[Milky Way]]
+|
+|-
+| 67
+| align="center" |
+| [[Andromeda XVII]]
+| dSph<ref name="Collins2013" />
+| 2.371
+| 0.727<ref name="Hodkinson" />
+| −7.8<ref name="Martin" />
+| 16.6<ref name="Martin" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 1,900<!-- half-light radius = 285 pc -->
+|-
+| 68
+| align="center" |
+| [[Andromeda XXV]]
+| dSph<ref name="Collins2013" />
+| 2.401
+| 0.736<ref name="Hodkinson" />
+| −9.0<ref name="Martin" />
+| 15.3<ref name="Martin" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 3,560<!-- half-light radius = 545 pc -->
+|-
+| 69
+| align="center" |
+| [[Andromeda XI]]
+| dSph<ref name="Collins2013" />
+| 2.41
+| 0.74<ref name="Cosmicflows">{{cite journal|title=Cosmicflows-2: The Data|author1=Tully, R. Brent|display-authors=etal|journal=The Astronomical Journal|volume=146|issue=4|date=2013|bibcode=2013AJ....146...86T|doi=10.1088/0004-6256/146/4/86|arxiv=1307.7213|page=86|s2cid=118494842}}</ref>
+| −7.3<ref name="Yang2011">{{cite journal|bibcode=2012MNRAS.419.1362Y|title=HST/WFPC2 Imaging of the Dwarf Satellites And XI and And XIII : HB Morphology and RR Lyraes|journal=Monthly Notices of the Royal Astronomical Society|volume=419|issue=2|pages=1362|doi=10.1111/j.1365-2966.2011.19792.x|year=2012|last1=Yang|first1=S.-C|last2=Sarajedini|first2=A|doi-access=free |arxiv=1109.2038|s2cid=119190619}}</ref>
+|
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+|
+|-
+| 70
+| align="center" |
+| [[Andromeda XX]]
+| dSph<ref name="Collins2013">{{cite journal|bibcode=2013ApJ...768..172C|title=A Kinematic Study of the Andromeda Dwarf Spheroidal System|last1=Collins|first1=Michelle L. M.|last2=Chapman|first2=Scott C.|last3=Rich|first3=R. Michael|last4=Ibata|first4=Rodrigo A.|last5=Martin|first5=Nicolas F.|last6=Irwin|first6=Michael J.|last7=Bate|first7=Nicholas F.|last8=Lewis|first8=Geraint F.|last9=Peñarrubia|first9=Jorge|last10=Arimoto|first10=Nobuo|last11=Casey|first11=Caitlin M.|author-link11=Caitlin Casey|last12=Ferguson|first12=Annette M. N.|last13=Koch|first13=Andreas|last14=McConnachie|first14=Alan W.|last15=Tanvir|first15=Nial|journal=The Astrophysical Journal|year=2013|volume=768|issue=2|pages=172|doi=10.1088/0004-637X/768/2/172|arxiv=1302.6590|s2cid=67749084}}</ref>
+| 2.417
+| 0.741<ref name="Collins2013" />
+| −6.4<ref name="Martin" />
+| 18.0<ref name="Martin" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 590<ref name="Martin" /><!-- half-light radius = 90 pc -->
+|-
+| 71
+| align="center" |
+| [[Andromeda XXIII]]
+| dSph<ref name="Collins2013" />
+| 2.440
+| 0.748<ref name="Collins2013" />
+| −9.8<ref name="Martin" />
+| 14.6<ref name="Martin" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 7,770<ref name="Martin" /><!-- half-light radius = 1190 pc -->
+|-
+| 72
+| align="center" |
+| [[IC 10]] (UGC 192)
+| dIrr IV/BCD<ref name="NASAIPAC" />
+| 2.446
+| 0.750
+| −15.57<ref name="Karachentsev2005" />
+| 12.2<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+|
+|-
+| 73
+| align="center" |[[File:Andromeda III color cutout hst 13739 22 acs wfc f814w f475w sci.jpg|60px]]
+| [[Andromeda III]]
+| dE2
+| 2.45
+| 0.75<ref name=Skillman/><ref group="lower-alpha" name=Dist/><!-- from distance modulus (m - M) = 24.38 -->
+| −10.1<ref name=Skillman/>
+| 14.4<ref name=Skillman/>
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 2750<ref name=Skillman/><!-- half-light radius = 421 pc -->
+|-
+| 73
+| align="center" | [[File:Cassiopeia Dwarf (PGC 2807155) Hubble WikiSky.jpg|60px|]]
+|[[Cassiopeia Dwarf]] (Cas dSph, [[Andromeda VII]])
+| dSph
+| 2.45
+| 0.75<ref name=Navabi>{{cite journal|doi=10.3847/1538-4357/abdec1|title=The Isaac Newton Telescope Monitoring Survey of Local Group Dwarf Galaxies. IV. The Star Formation History of Andromeda VII Derived from Long-period Variable Stars|year=2021|last1=Navabi|first1=Mahdieh|last2=Saremi|first2=Elham|last3=Javadi|first3=Atefeh|last4=Noori|first4=Majedeh|last5=Van Loon|first5=Jacco Th.|last6=Khosroshahi|first6=Habib G.|last7=McDonald|first7=Iain|last8=Alizadeh|first8=Mina|last9=Danesh|first9=Arash|last10=Gozaliasl|first10=Ghassem|last11=Molaeinezhad|first11=Alireza|last12=Parto|first12=Tahere|last13=Raouf|first13=Mojtaba|journal=The Astrophysical Journal|volume=910|issue=2|page=127|arxiv=2101.09900|bibcode=2021ApJ...910..127N|s2cid=231698580 |doi-access=free }}</ref><ref group="lower-alpha" name=Dist/><!-- from distance modulus (m - M) = 24.38 -->
+| −11.67<ref name="Karachentsev2005" />
+| 13.65<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name="Karachentsev2005" />
+| 
+|-
+| 75
+| align="center" |
+| [[Andromeda XXVI]]
+| dSph<ref name="Collins2013" />
+| 2.459
+| 0.754<ref name="Hodkinson" />
+| −5.8<ref name="Martin" />
+| 18.5<ref name="Martin" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 980<!-- half-light radius = 150 pc -->
+|-
+| 76
+| align="center" |[[File:Cetus Dwarf Galaxy color cutout hst 10505 31 acs wfc f814w f475w sci.jpg|60px]]
+| [[Cetus Dwarf]]
+| dSph/E4
+| 2.460<ref name="TRGB2005">McConnachie, A. W. ''et al.'' 2005 ''Distances and Metallicities for 17 Local Group Galaxies''</ref>
+| 0.754
+| −10.18<ref name="Karachentsev2005" />
+| 14.4<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name="Karachentsev2005" />
+|
+|-
+| &nbsp;77
+| align="center"|
+| [[List of Andromeda's satellite galaxies|Pisces III]] (Andromeda XIII)
+| dSph<ref name=Collins2013/>
+| 2.479
+| 0.760<ref name=Hodkinson/>
+| −6.5<ref name=Martin/>
+| 17.8<ref name=Martin/>
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 850<!-- half-light radius = 130 pc -->
+|-
+| &nbsp;78
+| align="center" |
+| [[Andromeda XV]]
+| dSph<ref name="Skillman" />
+| 2.48
+| 0.76<ref name="Skillman" /><ref group="lower-alpha" name="Dist" /><!-- from distance modulus (m - M) = 24.43 -->
+| −8.4<ref name="Skillman" />
+| 16.0<ref name="Skillman" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name="Karachentsev2005" />
+| 1840<ref name="Skillman" /><!-- half-light radius = 282 pc -->
+|-
+| &nbsp;79
+| align="center" | [[File:M32 Lanoue.png|60px]]
+|[[Messier 32|M32]] ([[NGC 221]])
+| E2
+| 2.489<ref name="Sidney2000" />
+| 0.763
+| −15.96<ref name="Karachentsev2005" />
+| 8.73<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Close Satellite of [[Andromeda Galaxy|Andromeda]]
+|6,500
+|-
+| &nbsp;80
+|
+|[[Andromeda IX]]
+| dE
+| 2.500<ref name="TRGB2005" />
+| 0.767
+| −7.5<ref name="Karachentsev2005" />
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name="Karachentsev2005" />
+| 
+|-
+| &nbsp;81
+| align="center" | [[File:LGS 3 ubv.jpg|60px]]
+|[[Pisces Dwarf]] (LGS 3)
+| dIrr/dSph
+| 2.510<ref name="TRGB2005" />
+| 0.770
+| −7.96<ref name="Karachentsev2005" />
+| 16.18<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Triangulum Galaxy|Triangulum]]<wbr>{{Citation needed|date=June 2008}}
+| 
+|-
+| &nbsp;82
+| align="center" |
+| [[Cassiopeia III]] (Andromeda XXXII)
+|
+| 2.518
+| 0.772<ref name="Martin2013">{{cite journal|bibcode=2013ApJ...772...15M|title=Lacerta I and Cassiopeia III. Two Luminous and Distant Andromeda Satellite Dwarf Galaxies Found in the 3π Pan-STARRS1 Survey|last1=Martin|first1=Nicolas F.|last2=Slater|first2=Colin T.|last3=Schlafly|first3=Edward F.|last4=Morganson|first4=Eric|last5=Rix|first5=Hans-Walter|last6=Bell|first6=Eric F.|last7=Laevens|first7=Benjamin P. M.|last8=Bernard|first8=Edouard J.|last9=Ferguson|first9=Annette M. N.|last10=Finkbeiner|first10=Douglas P.|last11=Burgett|first11=William S.|last12=Chambers|first12=Kenneth C.|last13=Hodapp|first13=Klaus W.|last14=Kaiser|first14=Nicholas|last15=Kudritzki|first15=Rolf-Peter|last16=Magnier|first16=Eugene A.|last17=Morgan|first17=Jeffrey S.|last18=Price|first18=Paul A.|last19=Tonry|first19=John L.|last20=Wainscoat|first20=Richard J.|journal=The Astrophysical Journal|year=2013|volume=772|issue=1|pages=15|doi=10.1088/0004-637X/772/1/15|arxiv=1305.5301|s2cid=119262613}}</ref>
+| −12.3<ref name="Martin2013" />
+| 12.15<ref name="Martin2013" /><ref group="lower-alpha" name="apparentmag" /><!-- from distance modulus (m - M) = 24.45 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 9,500<ref name="Martin2013" /><!-- half-light radius = 1456 pc -->
+|-
+| &nbsp;83
+|
+| [[Andromeda V]]
+| dSph<ref name="Collins2013" />
+| 2.52<ref name="TRGB2005" />
+| 0.773
+| −8.41<ref name="Karachentsev2005" />
+| 16.67<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name="Karachentsev2005" />
+|
+|-
+| &nbsp;84
+| align="center"|
+| [[Lacerta I]] (Andromeda XXXI)
+| dSph
+| 2.521
+| 0.773<ref name=Rhode2017>{{cite journal|doi=10.3847/1538-4357/836/1/137|title=Structural and Photometric Properties of the Andromeda Satellite Dwarf Galaxy Lacerta I from Deep Imaging with WIYN pODI|year=2017|last1=Rhode|first1=Katherine L.|last2=Crnojević|first2=Denija|last3=Sand|first3=David J.|last4=Janowiecki|first4=Steven|last5=Young|first5=Michael D.|last6=Spekkens|first6=Kristine|journal=The Astrophysical Journal|volume=836|issue=1|pages=137|arxiv=1701.08168|bibcode=2017ApJ...836..137R|s2cid=118918041 |doi-access=free }}</ref>
+| −11.4<ref name=Rhode2017/>
+| 13.04<ref name=Rhode2017/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 24.44 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name=Rhode2017/>
+| 4,750<ref name=Rhode2017/><!-- half-light radius = 728 pc -->
+|-
+| &nbsp;85
+| align="center" | [[Image:NGC147.jpg|60px]]
+| [[NGC 147]] (DDO 3)
+| dE5 pec
+| 2.53<ref name="TRGB2005" />
+| 0.776
+| −14.9<ref name="Karachentsev2005" />
+| 10.36<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 
+|-
+| &nbsp;86
+| align="center" |[[File:M31bobo.jpg|frameless|60px]]
+|[[Andromeda Galaxy]] (M31)
+| SA(s)b
+| 2.538<ref name="TRGB2005" />
+| 0.778
+| −21.58<ref name="Karachentsev2005" />
+| 4.17<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Largest Galaxy in the Local Group (The Milky Way is the second largest), with at least 19 satellite galaxies. Barred spiral galaxy.
+|152,000
+|-
+| &nbsp;87
+| align="center" | [[File:Andromeda VI color cutout hst 08272 04 wfpc2 f555w f450w wf sci.jpg|60px]]
+|[[Pegasus Dwarf Spheroidal]] (Andromeda VI)
+| dSph<ref name=Collins2013/>
+| 2.55<ref name="TRGB2005" />
+| 0.78
+| −10.80<ref name="Karachentsev2005" />
+| 14.05<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]<ref name="Karachentsev2005" />
+| 
+|-
+| &nbsp;88
+| align="center"|
+| [[Perseus I]] (Andromeda XXXIII)
+| 
+| 2.560
+| 0.785<ref name=Martin2013a>{{cite journal|bibcode=2013ApJ...779L..10M|title=Perseus I: A Distant Satellite Dwarf Galaxy of Andromeda|last1=Martin|first1=Nicolas F.|last2=Schlafly|first2=Edward F.|last3=Slater|first3=Colin T.|last4=Bernard|first4=Edouard J.|last5=Rix|first5=Hans-Walter|last6=Bell|first6=Eric F.|last7=Ferguson|first7=Annette M. N.|last8=Finkbeiner|first8=Douglas P.|last9=Laevens|first9=Benjamin P. M.|last10=Burgett|first10=William S.|last11=Chambers|first11=Kenneth C.|last12=Draper|first12=Peter W.|last13=Hodapp|first13=Klaus W.|last14=Kaiser|first14=Nicholas|last15=Kudritzki|first15=Rolf-Peter|last16=Magnier|first16=Eugene A.|last17=Metcalfe|first17=Nigel|last18=Morgan|first18=Jeffrey S.|last19=Price|first19=Paul A.|last20=Tonry|first20=John L.|last21=Wainscoat|first21=Richard J.|last22=Waters|first22=Christopher|journal=The Astrophysical Journal|year=2013|volume=779|issue=1|pages=L10|doi=10.1088/2041-8205/779/1/L10|arxiv=1310.4170|s2cid=55729618}}</ref>
+| −10.3<ref name=Martin2013a/>
+| 14.19<ref name=Martin2013a/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 24.49 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 2,600<ref name=Martin2013a/><!-- half-light radius = 400 pc -->
+|-
+| &nbsp;89
+| align="center"|
+| [[Andromeda XIV]] (Pisces IV)
+| 
+| 2.586
+| 0.793<ref name=Hodkinson/>
+| −8.5<ref name=Martin/>
+| 15.8<ref name=Martin/>
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| ~1,700<!-- half-light radius = ~265 pc -->
+|-
+| &nbsp;90
+| align="center" |[[File:Andromeda I Hubble WikiSky.jpg|60px]]
+| [[Andromeda I]]
+| dE3 pec
+| 2.61
+| 0.80<ref name=Skillman/><ref group="lower-alpha" name="Dist">Calculated from the [[distance modulus]] (<math>m - M</math>) using the formula <math>d_{pc} = 10^{\frac{m - M}{5} + 1}</math></ref><!-- from distance modulus (m - M) = 24.51 -->
+| −12.0<ref name=Skillman/>
+| 12.7<ref name=Skillman/>
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 5,840<ref name=Skillman/><!-- half-light radius = 895 pc -->
+|-
+| &nbsp;91
+| align="center"|
+| [[Andromeda XXVIII]]
+| dSph<ref name=Collins2013/>
+| 2.645
+| 0.811<ref name=Slater2015>{{cite journal|bibcode=2015ApJ...806..230S|title=A Deep Study of the Dwarf Satellites Andromeda XXVIII and Andromeda XXIX|last1=Slater|first1=Colin T.|last2=Bell|first2=Eric F.|last3=Martin|first3=Nicolas F.|last4=Tollerud|first4=Erik J.|last5=Ho|first5=Nhung|journal=The Astrophysical Journal|year=2015|volume=806|issue=2|pages=230|doi=10.1088/0004-637X/806/2/230|arxiv=1505.02161|s2cid=118698841}}</ref>
+| −8.7<ref name=Slater2015/>
+| 15.85<ref name=Slater2015/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 24.55 -->
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 1,800<ref name=Slater2015/><!-- half-light radius = 280 pc -->
+|-
+| &nbsp;92
+| align="center" | [[Image:Not So Dead After All Messier 110.tif|60px]]
+|[[Messier 110|M110]] ([[NGC 205]])
+| E6p
+| 2.67<ref name="TRGB2005" />
+| 0.82
+| −16.15<ref name="Karachentsev2005" />
+| 8.72<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Close Satellite of [[Andromeda Galaxy|Andromeda]]
+|
+|-
+| &nbsp;93
+|
+|[[Andromeda VIII]]
+| dSph<ref name="Morrison2003">Morrison ''et al.'' 2003 ''Andromeda VIII, a New Tidally Distorted satellite of M31'' — for details see [http://www.journals.uchicago.edu/doi/pdf/10.1086/379625] {{Webarchive|url=https://web.archive.org/web/20200708082106/https://www.journals.uchicago.edu/doi/pdf/10.1086/379625|date=2020-07-08}}</ref>
+| 2.700
+| 0.828
+| −15.6
+| 9.1
+| align="center" |[[Local Group]]
+| Tidally distorted dwarf close to [[Andromeda Galaxy|Andromeda]] discovered 2003<ref name="Morrison2003" />
+|
+|-
+| &nbsp;94
+| align="center" |
+| [[Andromeda XXIX]]
+|
+| 2.704
+| 0.829<ref name="Slater2015" />
+| −8.5<ref name="Slater2015" />
+| 16.09<ref name="Slater2015" /><ref group="lower-alpha" name="apparentmag" /><!-- from distance modulus (m - M) = 24.59 -->
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 2,050<ref name="Slater2015" /><!-- half-light radius = 315 pc -->
+|-
+| &nbsp;95
+| align="center" |[[Image:VST snaps a very detailed view of the Triangulum Galaxy.jpg|60px]]
+| [[Triangulum Galaxy]] ([[Triangulum Galaxy|M33]])
+| SA(s)cd
+| 2.73<ref name="TRGB2005" />
+| 0.84
+| −18.87<ref name="Karachentsev2005" />
+| 6.19<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]
+| Most distant (difficult) naked eye object. Closest unbarred spiral galaxy to us and third largest galaxy in the Local Group.
+|61,100
+|-
+| &nbsp;96
+| align="center" |
+| [[Andromeda XXI]]<ref name="Martin2009">{{Cite journal | arxiv=0909.0399 | author1=Martin | display-authors=4 | author2=McConnachie | author3=Mike Irwin | author4=Widrow | author5=Ferguson | author6=Ibata | author7=John Dubinski | author8=Arif Babul | author9=Scott Chapman | title=PAndAS' cubs: Discovery of two new dwarf galaxies in the surroundings of the Andromeda and Triangulum galaxies | date=2009 | doi=10.1088/0004-637X/705/1/758 | volume=705 | journal=The Astrophysical Journal | issue=1 | pages=758–765 | bibcode=2009ApJ...705..758M| s2cid=15277245 }}</ref>
+| dSph<ref name=Collins2013/>
+| 2.802
+| 0.859
+| −9.9
+| 
+| align="center" |[[Local Group]]
+| Satellite of Andromeda
+| 
+|-
+| &nbsp;97
+| align="center" | [[Image:Tucana Dwarf Hubble WikiSky.jpg|60px]]
+| [[Tucana Dwarf]]
+| dE5
+| 2.87
+| 0.88<ref name="Karachentsev2005" />
+| −9.16
+| 15.7<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]<ref name="Karachentsev2005" />
+| Isolated group member — a 'primordial' galaxy<ref>{{Cite journal |last1=Lewis |first1=G. F. |last2=Ibata |first2=R. A. |last3=Chapman |first3=S. C. |last4=McConnachie |first4=A. |last5=Irwin |first5=M. J. |last6=Tolstoy |first6=E. |last7=Tanvir |first7=N. R. |date=2007 |title=Inside the whale: the structure and dynamics of the isolated Cetus dwarf spheroidal: The Cetus dwarf galaxy |journal=Monthly Notices of the Royal Astronomical Society |language=en |volume=375 |issue=4 |pages=1364–1370 |doi=10.1111/j.1365-2966.2007.11395.x |doi-access=free |arxiv=astro-ph/0612293 }}</ref>
+| 
+|-
+| &nbsp;98
+| align="center" | [[File:Andromeda X.jpg|60px]]
+| [[Andromeda X]]
+| dSph<ref name="NASAIPAC" />
+| 2.90
+| 0.889
+| −8.1<ref name="Zucker2007">Zucker ''et al.'' 2007 ''Andromeda X, a New Dwarf Spheroidal satellite of M31:Photometry'' — for details see [http://www.journals.uchicago.edu/doi/abs/10.1086/516748?journalCode=apjl]</ref>
+| 16.1<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]] discovered 2006
+| 
+|-
+| 99
+| align="center"|
+| [[Andromeda XXIV]]
+| dSph<ref name=Collins2013/>
+| 2.929
+| 0.898<ref name=Collins2013/>
+| −8.4<ref name=Martin/>
+| 16.3<ref name=Martin/>
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 4,440<ref name=Martin/><!-- half-light radius = 680 pc -->
+|-
+| 99
+| align="center" | [[File:Pegasus Irregular Dwarf Galaxy.jpg|60px]]
+|[[Pegasus Dwarf Irregular Galaxy|Pegasus Dwarf Irregular]] (DDO 216)
+| dIrr/dSph<ref name="NASAIPAC" />
+| 2.929<ref name=Higgs/>
+| 0.898<ref name=Higgs/>
+| −11.47<ref name="Karachentsev2005" />
+| 13.21<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+|
+|-
+| 101
+|
+| [[Pisces VII]] (Triangulum III)
+| 
+| 2.99
+| 0.916<ref name=Collins2024>{{cite journal | arxiv=2305.13966 | doi=10.1093/mnras/stae199 | doi-access=free | bibcode=2024MNRAS.528.2614C | title=Pisces VII/Triangulum III – M33's second dwarf satellite galaxy | date=2024 | last1=Collins | first1=Michelle L M. | last2=Karim | first2=Noushin | last3=Martinez-Delgado | first3=David | last4=Monelli | first4=Matteo | last5=Tollerud | first5=Erik J. | last6=Donatiello | first6=Giuseppe | last7=Navabi | first7=Mahdieh | last8=Charles | first8=Emily | last9=Boschin | first9=Walter | journal=Monthly Notices of the Royal Astronomical Society | volume=528 | issue=2 | pages=2614–2620 }}</ref>
+| −6.0<ref name=Collins2024/>
+| 
+| align="center" |[[Local Group]]
+| Likely satellite of [[Triangulum Galaxy|Triangulum]]<ref name=Collins2024/>
+| 
+|-
+| 102
+| align="center"|[[File:Andromeda XXXV false-color image derived from CFHT-MegaCam PAndAS imaging.tif|alt=False-color image of Andromeda XXXV.|frameless|60px]]
+| [[Andromeda XXXV]]
+| 
+| 3.023
+| 0.927<ref name=Arias2025>{{Cite journal |last1=Arias |first1=Jose Marco |last2=Bell |first2=Eric F. |last3=Gozman |first3=Katya |last4=Jang |first4=In Sung |last5=Stockton |first5=Saxon |last6=Gnedin |first6=Oleg Y. |last7=D’Souza |first7=Richard |last8=Monachesi |first8=Antonela |last9=Bailin |first9=Jeremy |last10=Nidever |first10=David |last11=de Jong |first11=Roelof S. |date=2025-03-11 |title=Andromeda XXXV: The Faintest Dwarf Satellite of the Andromeda Galaxy |journal=The Astrophysical Journal Letters |volume=982 |issue=1 |pages=L3 |doi=10.3847/2041-8213/adb433 |arxiv=2502.19516 |doi-access=free |bibcode=2025ApJ...982L...3A |issn=2041-8205}}</ref>
+| −5.2<ref name=Arias2025/>
+|
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| {{convert|106|pc|ly|abbr=on|disp=number}}<ref name=Arias2025/><!-- half-light radius = 53 pc -->
+|-
+| 102
+| align="center"|
+| [[Andromeda XII]]
+| dSph<ref name=Collins2013/>
+| 3.027
+| 0.928<ref name=Hodkinson>{{cite journal|bibcode=2019MNRAS.488.3231H|title=Proper motions of the satellites of M31|last1=Hodkinson|first1=Ben|last2=Scholtz|first2=Jakub|journal=Monthly Notices of the Royal Astronomical Society|year=2019|volume=488|issue=3|pages=3231|doi=10.1093/mnras/stz1893|doi-access=free |arxiv=1904.03192}}</ref>
+| −7.0<ref name=Martin/>
+| 17.7<ref name=Martin/>
+| align="center"|[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]]
+| 2,740<!-- half-light radius = 420 pc -->
+|-
+| 103
+| align="center" |[[File:The WLM galaxy on the edge of the Local Group.jpg|60px]]
+|[[Wolf-Lundmark-Melotte]] (WLM, [[DDO 221]])
+| IB(s)m<ref name="NASAIPAC" />
+| 3.043
+| 0.933<ref name="Karachentsev2008">{{cite journal | author1=Karachentsev | author2=Kashibadze | author3=Makarov | author4=Tully | title=The Hubble flow around the Local Group | doi=10.1111/j.1365-2966.2008.14300.x | date=2009 | journal=[[Monthly Notices of the Royal Astronomical Society]] | volume=393 | issue=4 | pages=1265 | doi-access=free | arxiv=0811.4610 |bibcode = 2009MNRAS.393.1265K | s2cid=13912040 }}</ref>
+| −14.06<ref name="Karachentsev2008" />
+| 11.03<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]
+| Isolated member at the edge of the local group
+|11,500
+|-
+| 103
+| 
+|[[Andromeda XIX]]<ref name="Mcconachi2008">A Trio of New Local Group Galaxies with Extreme Properties, Alan W. McConnachie et al. 2008, ApJ 688 1009–1020, https://arxiv.org/abs/0806.3988 {{Webarchive|url=https://web.archive.org/web/20171201182050/https://arxiv.org/abs/0806.3988 |date=2017-12-01 }}</ref>
+| dSph<ref name=Collins2013/>
+| 3.043
+| 0.933
+| −9.3
+| 
+| align="center" |[[Local Group]]
+| Satellite of [[Andromeda Galaxy|Andromeda]], spread over 1.7 kpc
+|2,200
+|-
+| 105
+| align="center" |
+|[[Andromeda XXII]]<ref name="Martin2009" />
+| dSph<ref name="Collins2013" />
+| 3.219
+| 0.987
+|
+| 18.0
+| align="center" |[[Local Group]]
+| Satellite of Andromeda
+|
+|-
+| 106
+| align="center" | [[Image:Aquariusdwarf.gif|60px]]
+| [[Aquarius Dwarf Galaxy]] (DDO 210)
+| Im V
+| 3.22<ref name="Higgs" />
+| 0.988<ref name="Higgs" />
+| −11.09<ref name="Karachentsev2008" />
+| 14.0<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]
+| Isolated group member
+|
+|-
+| 107
+| align="center" |[[Image:SagDIG.jpg|60px]]
+| [[Sagittarius Dwarf Irregular Galaxy]] (SagDIG)
+| IB(s)m V<ref name="NASAIPAC" />
+| 3.907
+| 1.198<ref name=Higgs/>
+| −11.49
+| 15.5
+| align="center" |[[Local Group]]<ref name="Karachentsev2004" />
+| Isolated, star forming group member
+|3,000
+|-
+| 108
+| align="center" | [[Image:UGC 4879.jpg|60px]]
+| [[UGC 4879]] (VV124)<ref>{{cite journal | author1=Kopylov | display-authors=4 | author2=Tikhonov | author3=Sergey Fabrika | author4=Igor Drozdovsky | author5=Valeev | title=VV124 (UGC4879): A new transitional dwarf galaxy in the periphery of the Local Group | doi=10.1111/j.1745-3933.2008.00482.x | date=2008 | journal=Monthly Notices of the Royal Astronomical Society: Letters | volume=387 | issue=1 | pages=L45–L49 | doi-access=free | arxiv=0803.1107 |bibcode = 2008MNRAS.387L..45K | s2cid=17166212 }}</ref>
+| IAm
+| 3.956
+| 1.213<ref name=Higgs/>
+| −11.5<ref name="Karachentsev2008" />
+| 13.2
+| align="center" |[[Local Group]]
+| Isolated, star forming group member
+|3,000
+|-
+| 109
+| align="center" | [[Image:Andromeda XVIII.jpg|60px]]
+| [[Andromeda XVIII]]<ref name="Mcconachi2008" />
+| dSph<ref name="Collins2013" />
+| 3.960
+| 1.214<ref name="Collins2013" />
+| −9.2<ref name="Martin" />
+| 16.2<ref name="Martin" />
+| align="center" |[[Local Group]]
+| 1,700<ref name="Martin" /><!-- half-light radius = 265 pc -->
+|≈ 1,200
+|-
+| 110
+| align="center" | [[Image:Antlia Dwarf PGC 29194 Hubble WikiSky.jpg|60px]]
+| [[Antlia Dwarf]]
+| dE3.5<ref name="NASAIPAC" />
+| 4.28
+| 1.31<ref name="Karachentsev2008" />
+| −9.63<ref name="Karachentsev2008" />
+| 16.19<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]<ref group="lower-alpha" name="Antlia">Galaxies of small [[Antlia-Sextans Group]], which is considered as part of [[Local Group]], but membership of it is uncertain.</ref>
+| May have interacted with NGC 3109<ref name="Soszynski2006" />
+|3,000
+|-
+| 111
+| align="center" | [[Image:Sextans dwarf.jpg|60px]]
+| [[Sextans A]] (UGCA 205, DDO 75)
+| IBm<ref name="NASAIPAC" />
+| 4.31<ref name="Dolphin2003">Dolphin, Andrew E. ''et al.'' 2003 ''Deep Hubble Space Telescope Imaging of Sextans A. II. Cepheids and Distance''</ref>
+| 1.32
+| −13.95<ref name="Karachentsev2005" />
+| 11.86<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]<ref group="lower-alpha" name="Antlia" />
+| Contains cluster of young hot blue stars
+|5,000
+|-
+| 112
+| align="center" | [[Image:NGC 3109 814 606.jpg|60px]]
+| [[NGC 3109]]
+| SB(s)m
+| 4.338
+| 1.35<ref name="Soszynski2006">Soszynski "et al."(2006) ''The Araucaria Project: Distance to the Local Group Galaxy NGC 3109 from Near-Infrared Photometry of Cepheids'' see [http://www.journals.uchicago.edu/doi/abs/10.1086/505789?journalCode=apj] {{Webarchive|url=https://web.archive.org/web/20200201224641/https://www.journals.uchicago.edu/doi/abs/10.1086/505789?journalCode=apj|date=2020-02-01}}</ref>
+| −15.68<ref name="Karachentsev2004" />
+| 10.39<ref name="Karachentsev2004" />
+| align="center" |[[Local Group]]<ref group="lower-alpha" name="Antlia" />
+| Possibly spiral galaxy
+|25,000
+|-
+| 113
+| align="center" |
+| [[Antlia B]]
+|dSph/Irr
+| 4.40
+| 1.35<ref name="Hargis2020">{{cite journal|doi=10.3847/1538-4357/ab58d2|title=Hubble Space Telescope Imaging of Antlia B: Star Formation History and a New Tip of the Red Giant Branch Distance|year=2020|last1=Hargis|first1=J. R.|last2=Albers|first2=S.|last3=Crnojević|first3=D.|last4=Sand|first4=D. J.|last5=Weisz|first5=D. R.|last6=Carlin|first6=J. L.|last7=Spekkens|first7=K.|last8=Willman|first8=B.|last9=Peter|first9=A. H. G.|last10=Grillmair|first10=C. J.|last11=Dolphin|first11=A. E.|journal=The Astrophysical Journal|volume=888|issue=1|pages=31|bibcode=2020ApJ...888...31H|hdl=10150/640977|s2cid=197431299|hdl-access=free |doi-access=free |arxiv=1907.07185 }}</ref>
+| −9.7<ref name="Hargis2020" />
+| 15.95<ref name="Hargis2020" /><ref group="lower-alpha" name="apparentmag" /><!-- from distance modulus (m - M) = 25.65 -->
+| align="center" |[[Local Group]]<ref group="lower-alpha" name=Antlia/>
+| Satellite of [[NGC 3109]]<ref name="Hargis2020" />
+| 1,780<ref name="Hargis2020" /><!-- half-light radius = 273 pc -->
+|-
+| 114
+| align="center" |
+| [[Sculptor A]]
+| 
+| 4.40
+| 1.35<ref name=Sand2024>{{cite journal|bibcode=2024ApJ...977L...5S|arxiv=2409.16345|doi=10.3847/2041-8213/ad927c|doi-access=free |title=Three Quenched, Faint Dwarf Galaxies in the Direction of NGC 300: New Probes of Reionization and Internal Feedback |date=2024 |last1=Sand |first1=David J. |last2=Mutlu-Pakdil |first2=Burçin |last3=Jones |first3=Michael G. |last4=Karunakaran |first4=Ananthan |last5=Andrews |first5=Jennifer E. |last6=Bennet |first6=Paul |last7=Crnojević |first7=Denija |last8=Donatiello |first8=Giuseppe |last9=Drlica-Wagner |first9=Alex |last10=Fielder |first10=Catherine |last11=Martínez-Delgado |first11=David |last12=Martínez-Vázquez |first12=Clara E. |last13=Spekkens |first13=Kristine |last14=Doliva-Dolinsky |first14=Amandine |last15=Hunter |first15=Laura C. |last16=Carlin |first16=Jeffrey L. |last17=Cerny |first17=William |last18=Hai |first18=Tehreem N. |last19=McQuinn |first19=Kristen B.W. |last20=Pace |first20=Andrew B. |last21=Smercina |first21=Adam |journal=The Astrophysical Journal Letters |volume=977 |issue=1 |pages=L5 }}</ref>
+| &minus;6.9<ref name=Sand2024/>
+| 
+| align="center" |[[Local Group]]<ref name=Sand2024/>
+|
+|
+|-
+| 114
+| align="center" | [[Image:Sextans B Hubble WikiSky.jpg|60px]]
+| [[Sextans B]] (UGC 5373)
+| IM IV-V<ref name="NASAIPAC" />
+| 4.47
+| 1.37<ref name="Karachentsev2008" />
+| −14.08<ref name="Karachentsev2008" />
+| 11.85<ref name="NASAIPAC" />
+| align="center" |[[Local Group]]<ref group="lower-alpha" name=Antlia/>
+| One of the smallest galaxies with planetary nebulae
+|6,000
+|-
+| 114
+| align="center" | 
+| [[Tucana B]]
+|dSph
+| 4.56
+| 1.4<ref name=Sand2022>{{cite journal|doi=10.3847/2041-8213/ac85ee|title=Tucana B: A Potentially Isolated and Quenched Ultra-faint Dwarf Galaxy at D ≈ 1.4 MPC |year=2022 |last1=Sand |first1=David J. |last2=Mutlu-Pakdil |first2=Burçin |last3=Jones |first3=Michael G. |last4=Karunakaran |first4=Ananthan |last5=Wang |first5=Feige |last6=Yang |first6=Jinyi |last7=Chiti |first7=Anirudh |last8=Bennet |first8=Paul |last9=Crnojević |first9=Denija |last10=Spekkens |first10=Kristine |journal=The Astrophysical Journal Letters |volume=935 |issue=1 |pages=L17 |s2cid=251615833 |hdl=10261/309130 |hdl-access=free |doi-access=free |arxiv=2205.09129 |bibcode=2022ApJ...935L..17S }}</ref>
+| −6.9<ref name=Sand2022/>
+| 18.85<ref name=Sand2022/><ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 25.75 -->
+| align="center" |[[Local Group]]
+| Isolated group member
+| 522
+|-
+|115
+|
+|[[Cassiopeia 1]]
+|Irr
+|5.19
+|1.59<ref>{{Cite journal |last=Tikhonov |first=N. A. |date=2019-12-01 |title=Distance to Irregular Galaxy Cas 1 Located near the Milky Way |url=https://ui.adsabs.harvard.edu/abs/2019AstBu..74..396T |journal=Astrophysical Bulletin |volume=74 |issue=4 |pages=396–402 |doi=10.1134/S1990341319040060|bibcode=2019AstBu..74..396T |s2cid=213381996 }}</ref>
+| -14.2
+|14.62
+|Isolated
+|Isolated galaxy
+|
+|-
+| 116
+| align="center" | [[File:Leo P color cutout hst 13376 08 acs wfc f814w f475w sci.jpg|60px]]
+| [[Leo P]]
+| Irr<!--type-->
+| 5.28<!--dist/mly-->
+| 1.62<!--dist/Mpc--><ref name="Karachentsev2004" />
+| -9.27
+| 16.89
+| align="center" | [[Local Group]]<ref group="lower-alpha" name="Antlia" /><!--group if any-->
+| Extremely low metallicity
+| 3,690
+|-
+| 117
+| align="center" | [[File:IC 5152 HST.png|60px]]
+| [[IC 5152]]
+| IA(s)m<ref name="NASAIPAC" />
+| 5.68
+| 1.74<ref name="Karachentsev2008" />
+| −15.56<ref name="Karachentsev2008" />
+| 11.06<ref name="NASAIPAC" />
+| align="center" | [[Local Group]] ?
+| Possible outlying member of [[Local Group]]
+|4,000
+|-
+| 118
+| align="center" | [[Image:View of the southern spiral NGC 300.jpg|60px]]
+| [[NGC 300]]
+| SA(s)d<ref name="NASAIPAC" />
+| 6.07
+| 1.86<ref name="Karachentsev2003" />
+| −17.92<ref name="Karachentsev2004" />
+| 8.95<ref name="NASAIPAC" />
+| align="center" |between LG and [[Sculptor Group]]
+| Closest spiral galaxy to [[Local Group]] <br>forms pair with NGC 55
+|94,000
+|-
+| 119
+| align="center" |[[File:Color cutout hst 11986 07 wfpc2 f814w f606w wf sci KKR 25.jpg|60px]]
+| [[KKR 25]]<!--name(s)-->
+| Irr<!--type-->
+| 6.20<!--dist/mly-->
+| 1.90<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −9.94<!--M--><ref name="Karachentsev2008" />
+| 17.0<!--m--><ref name="NASAIPAC" />
+| between LG and [[M81 Group|M81]] <!--group if any-->
+| <!--notes-->
+|
+|-
+| 120
+| align="center" |[[File:Color cutout HST MOS 4488 ACS WFC F814W F606W sci ESO 410-G 005.jpg|60px]]
+| [[ESO 410-G005]]
+| E3<ref name="NASAIPAC" />
+| 6.213
+| 1.905<ref name="Karachentsev2008" />
+| −11.60<ref name="Karachentsev2008" />
+| 14.85<ref name="NASAIPAC" />
+| align="center" | NGC 55 & 300
+| 
+|≈ 2,500
+|-
+| 121
+| align="center" | [[File:Color cutout hst 10503 07 acs wfc f814w f606w sci ESO 294-010.jpg|60px]]
+| [[ESO 294-010]]
+| dS0/Im<ref name="NASAIPAC" />
+| 6.36<ref name="Karachentsev2003">Karachentsev, I. D. ''et al.'' (2003) ''Distances to Nearby Galaxies in Sculptor''</ref>
+| 1.96<ref name="Karachentsev2008" />
+| −10.95<ref name="Karachentsev2008" />
+| 15.6<ref name="NASAIPAC" />
+| align="center" | NGC 55 & 300
+|
+|
+|-
+| 122
+| align="center" |
+| [[Pavo (dwarf galaxy)|Pavo]]
+| 
+| 6.49
+| 1.99<ref name=Pavo>{{cite journal|doi=10.3847/2041-8213/ad0130|doi-access=free |title=Pavo: Discovery of a Star-forming Dwarf Galaxy Just Outside the Local Group |date=2023 |last1=Jones |first1=Michael G. |last2=Mutlu-Pakdil |first2=Burçin |last3=Sand |first3=David J. |last4=Donnerstein |first4=Richard |last5=Crnojević |first5=Denija |last6=Bennet |first6=Paul |last7=Fielder |first7=Catherine E. |last8=Karunakaran |first8=Ananthan |last9=Spekkens |first9=Kristine |last10=Strader |first10=Jay |last11=Urquhart |first11=Ryan |last12=Zaritsky |first12=Dennis |journal=The Astrophysical Journal Letters |volume=957 |issue=1 |pages=L5 |arxiv=2310.01478 |bibcode=2023ApJ...957L...5J }}</ref>
+| −10.0<ref name=Pavo/>
+| 
+| align="center" |
+| 
+| 
+|-
+| 122
+| align="center" | [[File:Irregular Galaxy NGC 55 (ESO 0914a).jpg|60px]]
+| [[NGC 55]]
+| SB(s)m<ref name="NASAIPAC" />
+| 6.52
+| 2.00<ref name="Karachentsev2008" />
+| −18.47<ref name="Karachentsev2008" />
+| 8.84<ref name="Karachentsev2004" />
+| align="center" |between LG and [[Sculptor Group]]
+| Forms pair with NGC 300
+|70,000
+|-
+| 123
+| align="center" |
+| [[Sculptor C]]
+| 
+| 6.65
+| 2.04<ref name=Sand2024/>
+| &minus;9.1<ref name=Sand2024/>
+| 
+| align="center" |
+| Satellite of NGC 300
+|
+|-
+| 123
+| align="center" |
+| [[KKs 3]]
+| dSph<ref name="Sharina2017" />
+| 6.91
+| 2.12<ref name="Sharina2017">{{cite journal|bibcode=2017MNRAS.471.1955S|doi=10.1093/mnras/stx1605|arxiv=1706.07344|title=Nuclei of dwarf spheroidal galaxies KKs 3 and ESO 269−66 and their counterparts in our Galaxy|journal=Monthly Notices of the Royal Astronomical Society|volume=471|issue=2|pages=1955|year=2017|last1=Sharina|first1=M. E|last2=Shimansky|first2=V. V|last3=Kniazev|first3=A. Y|doi-access=free }}</ref>
+| −12.3<ref name="Sharina2017" />
+| 14.47<ref name="Sharina2017" />
+| align="center" |
+| 
+| 4,900<ref name="Sharina2017" />
+|-
+| 124
+| align="center" |[[File:PGC 166185.jpeg|60px]]
+| [[KKR 3]] ([[KK 230]])<!--name(s)-->
+| dIrr<!--type-->
+| 6.98<!--dist/mly-->
+| 2.14<!--dist/Mpc--><ref name="Karachentsev2008" />
+| −9.8<!--M-->
+| 17.90<!--m--><ref name="NASAIPAC" />
+| align="center" | Inner edge of [[M94 Group]]
+| <!--notes-->
+|980
+|-
+| 125
+| align="center" |
+| [[UGCA 438]] ([[ESO 407-018]])
+| IB(s)m pec:<ref name="NASAIPAC" />
+| 7.24
+| 2.22<ref name="Karachentsev2008" />
+| −12.92<ref name="Karachentsev2008" />
+| 13.86<ref name="Karachentsev2004" />
+| align="center" | NGC 55 & 300
+|
+|
+|-
+| 126
+| align="center" |
+| [[KK 258]] (ESO 468–20)
+| dTr<ref name=Karachentsev2014/>
+| 7.27
+| 2.23<ref name=Karachentsev2014>{{cite journal|doi=10.1093/mnras/stu1217|title=KK258, a new transition dwarf galaxy neighbouring the Local Group|year=2014|last1=Karachentsev|first1=I. D.|last2=Makarova|first2=L. N.|last3=Tully|first3=R. B.|last4=Wu|first4=Po-Feng|last5=Kniazev|first5=A. Y.|journal=Monthly Notices of the Royal Astronomical Society|volume=443|issue=2|pages=1281–1290|doi-access=free |arxiv=1406.4479|bibcode=2014MNRAS.443.1281K}}</ref>
+| −10.3<ref name=Karachentsev2014/>
+| 
+| align="center" | NGC 55 & 300
+| 
+| 
+|-
+| 127
+| align="center" |[[File:UGC 9128.jpg|60px]]
+| [[UGC 9128]] ([[DDO 187]])<!--name(s)-->
+| ImIV-V<!--type-->
+| 7.31<!--dist/mly-->
+| 2.24<!--dist/Mpc--><ref name="Karachentsev2008" />
+| −12.47<!--M--><ref name="Karachentsev2008" />
+| 14.38<!--m--><ref name="NASAIPAC" />
+| align="center" | Inner edge of [[M94 Group]]<!--group if any-->
+| <!--notes-->
+|
+|-
+| 128
+| align="center" | [[File:Color cutout hst 08601 27 wfpc2 f814w f606w wf sci IC 3104.jpg|60px]]
+| [[IC 3104]]<!--name(s)-->
+| IB(s)m<!--type-->
+| 7.40<!--dist/mly-->
+| 2.27<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −14.85<!--M--><ref name="Karachentsev2008" />
+| 13.63<!--m--><ref name="NASAIPAC" />
+| <!--group if any-->
+| On the way to Circinus galaxy<!--notes-->
+|
+|-
+| 129
+| align="center" |
+| [[Dw1907+63]]
+| 
+| 7.8
+| 2.4<ref name=Karachentsev2025/>
+| 
+| 17.0
+| align="center" |
+|
+|
+|-
+| 129
+| align="center" |[[File:Footprint galaxy.png|60px]]
+| [[GR 8 (galaxy)|GR 8]] (DDO 155, UGC 8091)
+| ImV<ref name="NASAIPAC" />
+| 7.8
+| 2.4<ref name="Karachentsev2008" />
+| −12.14<ref name="Karachentsev2008" />
+| 14.65<ref name="NASAIPAC" />
+| align="center" | Inner edge of [[M94 Group]]
+| "footprint galaxy"
+|
+|-
+| 129
+| align="center"|[[File:The_Hedgehog_Galaxy.png|frameless|60px]]
+| [[Hedgehog (galaxy)|Hedgehog Galaxy]]
+|
+| 7.86
+| 2.41<ref name=Hedgehog>{{cite journal|doi=10.3847/2041-8213/ad5b59|doi-access=free |title=Hedgehog: An Isolated Quiescent Dwarf Galaxy at 2.4 MPC |date=2024 |last1=Li 李 |first1=Jiaxuan 嘉轩 |last2=Greene |first2=Jenny E. |last3=Carlsten |first3=Scott G. |last4=Danieli |first4=Shany |journal=The Astrophysical Journal Letters |volume=975 |issue=1 |pages=L23 |arxiv=2406.00101 |bibcode=2024ApJ...975L..23L }}</ref>
+| &minus;9.84&nbsp;(V), &minus;9.56&nbsp;(g)<ref name="Hedgehog" />
+| 17.5&nbsp;(NUV), 19.00&nbsp;(FUV)<ref name=Hedgehog/>
+| 
+| Isolated dwarf
+|
+|-
+| 130
+| align="center" | [[File:Hubble ACS image of IC 4662 (opo0919d).jpg|60px]]
+| [[IC 4662]] ([[IC 4662|ESO 102-14]])<!--name(s)-->
+| IBm<!--type-->
+| 7.96<!--dist/mly-->
+| 2.44<!--dist/Mpc--><ref name="Karachentsev2008" />
+| −15.56<!--M--><ref name="Karachentsev2008" />
+| 11.74<!--m--><ref name="NASAIPAC" />
+| <!--group if any-->
+| On the way to Circinus galaxy<!--notes-->
+|7,000
+|-
+| 131
+| align="center" |[[File:Color cutout hst 10915 0n acs wfc f814w f475w sci KKh 98.jpg|60px]]
+| [[KKH 98]]<!--name(s)-->
+| Irr<!--type-->
+| 7.99<!--dist/mly-->
+| 2.45<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −10.78<!--M--><ref name="Karachentsev2004" />
+| 16.7<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]<!--group if any-->
+| <!--notes-->
+|
+|-
+| 131
+| align="center" |
+| [[Sculptor B]]
+| 
+| 8.09
+| 2.48<ref name=Sand2024/>
+| &minus;8.1<ref name=Sand2024/>
+| 
+| align="center" |
+|
+|
+|-
+| 131
+| align="center" |[[File:SMDG 0956+82.png|frameless|60x60px]]
+| [[SMDG 0956+82]]
+| 
+| 8.48
+| 2.6<ref name=Karachentsev2025>{{cite journal|doi=10.1093/mnrasl/slae111 |doi-access=free |title=New radial velocities for 40 nearby dwarf galaxies |date=2025 |last1=Karachentsev |first1=Igor D. |last2=Chazov |first2=Maxim I. |last3=Kaisin |first3=Serafim S. |journal=Monthly Notices of the Royal Astronomical Society: Letters |volume=537 |pages=L21–L25 |arxiv=2411.15603 }}</ref>
+| 
+| 18.1
+| align="center" |
+|
+|
+|-
+| 132
+| align="center" | [[File:Color cutout hst 11719 19 wfc3 ir f160w f110w sci UGC 8508.jpg|60px]]
+| [[UGC 8508]] ([[I Zw 060]])
+| IAm
+| 8.35<ref name="Karachentsev2002">{{cite journal|doi=10.1051/0004-6361:20011741|title=The M 81 group of galaxies: New distances, kinematics and structure|year=2002|last1=Karachentsev|first1=I. D.|last2=Dolphin|first2=A. E.|last3=Geisler|first3=D.|last4=Grebel|first4=E. K.|last5=Guhathakurta|first5=P.|last6=Hodge|first6=P. W.|last7=Karachentseva|first7=V. E.|last8=Sarajedini|first8=A.|last9=Seitzer|first9=P.|last10=Sharina|first10=M. E.|journal=Astronomy & Astrophysics|volume=383|pages=125–136|bibcode=2002A&A...383..125K|doi-access=free}}</ref>
+| 2.69<ref name="Karachentsev2008" />
+| −13.09<ref name="Karachentsev2008" />
+| 14.40<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]
+| 
+|
+|-
+| 133
+| align="center" | [[File:Color cutout hst 11986 13 wfpc2 f814w f606w wf sci KKh 086.jpg|60px]]
+| [[KKH 86]]<!--name(s)-->
+| Irr<!--type-->
+| 8.48<!--dist/mly-->
+| 2.60<!--dist/Mpc--><ref name="Karachentsev2008" />
+| −10.30<!--M--><ref name="Karachentsev2008" />
+| 16.8<!--m--><ref name="NASAIPAC" />
+| <!--group if any-->
+| Isolated (M94/Cent A)<!--notes-->
+|
+|-
+| 134
+| align="center" | [[File:Color cutout hst 11986 15 wfpc2 f814w f606w wf sci DDO 99.jpg|60px]]
+| [[DDO 99]] ([[UGC 6817]])<!--name(s)-->
+| Im<!--type-->
+| 8.61<!--dist/mly-->
+| 2.64<!--dist/Mpc--><ref name="Karachentsev2004" />&ndash;3.9<ref name="NASAIPAC" />
+| −13.52<!--M--><ref name="Karachentsev2008" />
+| 13.4<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+| <!--notes-->
+|
+|-
+| 135
+| align="center" |
+| [[Dw1245+61]]
+| 
+| 8.81
+| 2.7<ref name=Karachentsev2025/>
+| 
+| 18.4
+| align="center" |
+|
+|
+|-
+| 135
+| align="center" | 
+| [[ESO 6-1]]<!--name(s)-->
+| Ir
+| 8.81
+| 2.70<ref name=Makarova2023/>
+| &minus;12.41<ref name=Makarova2023/>
+| 14.75<ref name=Makarova2023>{{cite journal|doi=10.3847/1538-4357/acb048|title=A Nearby Isolated Dwarf: Star Formation and Structure of ESO 006–001 |year=2023 |last1=Makarova |first1=Lidia N. |last2=Tully |first2=R. Brent |last3=Anand |first3=Gagandeep S. |last4=Lambert |first4=Trystan S. |last5=Sharina |first5=Margarita E. |last6=Koribalski |first6=Bärbel S. |last7=Kraan-Korteweg |first7=Renée C. |journal=The Astrophysical Journal |volume=943 |issue=2 |page=139 |arxiv=2301.12789 |bibcode=2023ApJ...943..139M |s2cid=256390080 |doi-access=free }}</ref>
+| align="center" |
+| [[Blue compact dwarf]] galaxy<ref name=Karachentsev2013/>
+|
+|-
+| 136
+| align="center" | [[File:Color cutout hst 11986 11 wfpc2 f814w f606w wf sci DDO 125.jpg|60px]]
+| [[UGC 7577]] ([[DDO 125]])<!--name(s)-->
+| Im<!--type-->
+| 8.94<!--dist/mly-->
+| 2.74<!--dist/Mpc--><ref name="Karachentsev2008" />
+| −14.32<!--M--><ref name="Karachentsev2008" />
+| 12.84<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+| <!--notes-->
+|
+|-
+| 137
+| align="center" |
+| [[KDG 162]]
+| 
+| 9.13
+| 2.8<ref name=Karachentsev2025/>
+| 
+| 17.3
+| align="center" |
+|
+|
+|-
+| 137
+| align="center" | [[File:Dwingeloo 1 (WISE).png|60px]]
+| [[Dwingeloo 1]]<!--name(s)-->
+| SB(s)cd<!--type-->
+| 9.13<!--dist/mly-->
+| 2.8<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −18.78<!--M-->
+| 19.8<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+|<!--notes-->
+|35,000
+|-
+| 138
+| align="center" | [[File:UGC 9240 galaxy HST.jpg|60px]]
+| [[UGC 9240]] ([[DDO 190]])<!--name(s)-->
+| IAm<!--type-->
+| 9.13<!--dist/mly-->
+| 2.80<!--dist/Mpc--><ref name="Karachentsev2008" />
+| −14.19<!--M--><ref name="Karachentsev2008" />
+| 13.25<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+|<!--notes-->
+|15,000
+|- 
+| 139
+| align="center" | [[File:NGC 4190 hst 10905 R606GB450 hst 11012 R606.png|60px]]
+| [[NGC 4190]]
+| Irr ([[blue compact dwarf|BCD]])
+| 9.19<ref name=Karachentsev2013/>
+| 2.82<ref name=Karachentsev2013>{{cite journal|bibcode=2013AJ....145..101K|title=Updated Nearby Galaxy Catalog|last1=Karachentsev|first1=Igor D.|last2=Makarov|first2=Dmitry I.|last3=Kaisina|first3=Elena I.|s2cid=118585268|journal=The Astronomical Journal|year=2013|volume=145|issue=4|page=101|doi=10.1088/0004-6256/145/4/101|arxiv=1303.5328}}</ref><ref group="lower-alpha" name=Dist/><!-- from distance modulus (m - M) = 27.25 -->
+| 
+| 13.50<ref name=Karachentsev2013/><!-- B-magnitude -->
+| align="center" |
+| Satellite of [[NGC 4214]]<ref name=Karachentsev2013/>
+|
+|-
+| 140
+| align="center" |
+| [[Dw1645+46]]
+| 
+| 11.09
+| 2.9<ref name=Karachentsev2025/>
+| 
+| 17.6
+| align="center" |
+|
+|
+|- 
+| 140
+| align="center" |
+| [[KKs 53]] (Cen 7)
+| dSph<ref name=Cote1997>{{cite journal | first1=S. | last1=Côté | first2=K. C. | last2=Freeman | first3=C. | last3=Carigan | first4=P. J. | last4=Quinn | title=Discovery of Numerous Dwarf Galaxies in the Two Nearest Groups of Galaxies | journal=Astronomical Journal | year=1997 | volume=114 | pages=1313 | bibcode=1997AJ....114.1313C | doi=10.1086/118565 | arxiv=astro-ph/9704030 | s2cid=119495338 }}</ref>
+| 9.56
+| 2.93<ref name=Tully2015>{{cite journal|bibcode=2015ApJ...802L..25T|doi=10.1088/2041-8205/802/2/L25|title=Two Planes of Satellites in the Centaurus A Group|year=2015|last1=Tully|first1=R. Brent|last2=Libeskind|first2=Noam I.|last3=Karachentsev|first3=Igor D.|last4=Karachentseva|first4=Valentina E.|last5=Rizzi|first5=Luca|last6=Shaya|first6=Edward J.|journal=The Astrophysical Journal|volume=802|issue=2|pages=L25|arxiv=1503.05599|s2cid=118512897}}</ref>
+| −10.86
+| 17.30<ref name=Karachentsev2004/>
+| align="center" |[[Centaurus A/M83 Group]]
+| 
+|
+|-
+| 141
+| align="center" | [[Image:NGC 4214HSTFull.jpg|60px]]
+| [[NGC 4214]] ([[UGC 7278]])<!--name(s)-->
+| IAB(s)m<!--type-->
+| 9.59<!--dist/mly-->
+| 2.94<!--dist/Mpc--><ref name="Karachentsev2004" />
+| <!--M-->
+| 10.24<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+| Starburst galaxy<!--notes-->
+|
+|-
+| 142
+| align="center" | [[File:UGCA 276 (or DDO 113) color cutout hst 10915 0r acs wfc f814w f475w sci.jpg|60px]]
+| [[UGCA 276]] ([[DDO 113]])<!--name(s)-->
+| Im<!--type-->
+| 9.62<!--dist/mly-->
+| 2.95<!--dist/Mpc--><ref>{{cite journal|doi=10.1093/mnras/stz3526| arxiv=1908.11367|title=The case for strangulation in low-mass hosts: DDO 113|year=2020|last1=Garling|first1=Christopher T.|last2=Peter|first2=Annika H G.|last3=Kochanek|first3=Christopher S.|last4=Sand|first4=David J.|last5=Crnojević|first5=Denija|journal=Monthly Notices of the Royal Astronomical Society|volume=492|issue=2|pages=1713–1730|doi-access=free}}</ref>
+| <!--M-->
+| 15.40<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+| <!--notes-->
+|
+|-
+| 143
+| align="center" |[[File:UGCA 133 (or DDO 44) color cutout hst 10915 0x acs wfc f814w f475w sci.jpg|60px]]
+| [[UGCA 133]] ([[DDO 44]])
+| Im
+| 9.65
+| 2.96<ref name=jeffrey>{{cite journal|arxiv=1906.08260|doi=10.3847/1538-4357/ab4c32|title=Tidal Destruction in a Low-mass Galaxy Environment: The Discovery of Tidal Tails around DDO 44|year=2019|last1=Carlin|first1=Jeffrey L.|last2=Garling|first2=Christopher T.|last3=Peter|first3=Annika H. G.|last4=Crnojević|first4=Denija|last5=Forbes|first5=Duncan A.|last6=Hargis|first6=Jonathan R.|last7=Mutlu-Pakdil|first7=Burçin|last8=Pucha|first8=Ragadeepika|last9=Romanowsky|first9=Aaron J.|last10=Sand|first10=David J.|last11=Spekkens|first11=Kristine|last12=Strader|first12=Jay|last13=Willman|first13=Beth|journal=The Astrophysical Journal|volume=886|issue=2|page=109|bibcode=2019ApJ...886..109C|s2cid=195218404 |doi-access=free }}</ref>
+| &minus;12.9<ref name=jeffrey/>
+| 15.54<ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+| Likely satellite of [[NGC 2403]]
+| 
+|-
+| 143
+| align="center" | [[File:NGC 4163 Hubble.jpg|60px]]
+| [[NGC 4163]] ([[NGC 4167]])
+| dIrr
+| 9.65
+| 2.96<ref name="Karachentsev2006">{{Cite web |url=http://www.iop.org/EJ/article/1538-3881/131/3/1361/205003.tb1.html |access-date=2009-09-21 |title=Archived copy |archive-date=2020-09-25 |archive-url=https://web.archive.org/web/20200925123153/https://www.iop.org/EJ/article/1538-3881/131/3/1361/205003.tb1.html |url-status=dead }}</ref>
+| 
+| 14.5<ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]
+|
+|4,000
+|-
+| 144
+| align="center" | [[File:UGCA 86 color cutout hst 9771 14 acs wfc f814w f606w sci.jpg|60px]]
+| [[UGCA 86]]
+| SAB(s)m<ref name="Buta1999" />
+| 9.72
+| 2.98<ref name=Karachentsev2020>{{cite journal|doi=10.1051/0004-6361/202037993|doi-access=free|title=KKH 22, the first dwarf spheroidal satellite of IC 342|year=2020|last1=Karachentsev|first1=Igor D.|last2=Makarova|first2=Lidia N.|last3=Brent Tully|first3=R.|last4=Anand|first4=Gagandeep S.|last5=Rizzi|first5=Luca|last6=Shaya|first6=Edward J.|last7=Afanasiev|first7=Viktor L.|s2cid=218538458|journal=Astronomy & Astrophysics|volume=638|pages=A111|arxiv=2005.03132|bibcode=2020A&A...638A.111K}}</ref>
+| 
+| 13.5<ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]<ref name="Buta1999" />
+| Satellite of [[IC 342]]<ref name=Karachentsev2020/>
+|20,000
+|-
+| 145
+| align="center" |[[File:NGC1560 - GALEX-WIKISKY.png|60px]]
+| [[NGC 1560]]
+| SA(s)d HII
+| 9.75
+| 2.99<ref name="Karachentsev2004" />
+| −16.87<ref name="Karachentsev2005" />
+| 12.16<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| Satellite of [[IC 342]]<ref name=Karachentsev2020/>
+|
+|-
+| 146
+| <!--image-->
+| MADCASH-2 (MADCASH J121007+<wbr>352635-dw)<!--name(s)-->
+| dSph
+| 9.78
+| 3.00<ref name=Carlin2021>{{cite journal|doi=10.3847/1538-4357/abe040|arxiv=2012.09174|bibcode=2021ApJ...909..211C|title=Hubble Space Telescope Observations of Two Faint Dwarf Satellites of Nearby LMC Analogs from MADCASH|year=2021|last1=Carlin|first1=Jeffrey L.|last2=Mutlu-Pakdil|first2=Burçin|last3=Crnojević|first3=Denija|last4=Garling|first4=Christopher T.|last5=Karunakaran|first5=Ananthan|last6=Peter|first6=Annika H. G.|last7=Tollerud|first7=Erik|last8=Forbes|first8=Duncan A.|last9=Hargis|first9=Jonathan R.|last10=Lim|first10=Sungsoon|last11=Romanowsky|first11=Aaron J.|last12=Sand|first12=David J.|last13=Spekkens|first13=Kristine|last14=Strader|first14=Jay|journal=The Astrophysical Journal|volume=909|issue=2|page=211|s2cid=229297953 |doi-access=free }}</ref>
+| −9.15<ref name=Carlin2021/>
+| 18.24<ref group="lower-alpha" name=apparentmag/><!-- from distance modulus (m - M) = 27.39 -->
+| align="center" |[[M94 Group]]
+| Likely satellite of [[NGC 4214]]
+|
+|-
+|147
+| <!--image-->
+| [[Dwingeloo 2]]<!--name(s)-->
+| Im?<!--type-->
+| 9.8<!--dist/mly-->
+| 3.0<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −14.55<ref name="Karachentsev2004" /><!--M-->
+| 20.5<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| <!--notes-->
+|20,000
+|-
+|147
+| <!--image-->
+| [[KKH 11]] ([[ZOAG G135.74-04.53]])<!--name(s)-->
+| dE/N<!--type-->
+| 9.8<!--dist/mly-->
+| 3.0<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −13.35<ref name="Karachentsev2005" /><!--M-->
+| 16.2<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| <!--notes-->
+|
+|-
+| 147
+| <!--image-->
+| [[KKH 12]]<!--name(s)-->
+| Irr<!--type-->
+| 9.8<!--dist/mly-->
+| 3.0<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −13.03<!--M-->
+| 17.8<!--m--><ref name="NASAIPAC" />
+| align="center" | [[IC 342/Maffei Group]]
+| <!--notes-->
+|
+|-
+| 147
+| <!--image-->
+| [[MB 3]]<!--name(s)-->
+| dSph<!--type-->
+| 9.8<!--dist/mly-->
+| 3.0<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −13.65<ref name="Karachentsev2005" /><!--M-->
+| 19.8<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| <!--notes-->
+|10,000
+|-
+| 147
+| <!--image-->
+| [[MB 1]] ([[KK 21]])<!--name(s)-->
+| SAB(s)d?<!--type-->
+| 9.8<!--dist/mly-->
+| 3.0<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −14.81<ref name="Karachentsev2005" /><!--M-->
+| 20.5<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| <!--notes-->
+|5,000
+|-
+| 147
+| align="center" |[[File:Maf1atlas.jpg|60px]]
+| [[Maffei 1]]<!--name(s)-->
+| S0- pec<!--type-->
+| 9.8<!--dist/mly-->
+| 3.0<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −18.97<ref name="Karachentsev2005" /><!--M-->
+| 11.4<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| <!--notes-->
+|55,000
+|-
+| 153
+| align="center" | [[File:Maf2atlas.jpg|60px]]
+| [[Maffei 2]]<!--name(s)-->
+| SAB(rs)bc<!--type-->
+| 9.801<!--dist/mly-->
+| 3.005<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −20.15<ref name="Karachentsev2005" /><!--M-->
+| 14.77<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| <!--notes-->
+|60,000
+|-
+| 154
+| align="center" | [[File:UGC 8651 color cutout hst 10210 04 acs wfc f814w f606w sci.jpg|60px]]
+| [[UGC 8651]] ([[DDO 181]])<!--name(s)-->
+| Im<!--type-->
+| 9.82<!--dist/mly-->
+| 3.01<!--dist/Mpc--><ref name="Karachentsev2004" />
+| <!--M-->
+| 14.7<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+| <!--notes-->
+|
+|-
+| 155
+| align="center" | [[File:Donatiello I TNG official (cropped).jpg|60px]]
+| [[Donatiello I]] 
+| dSph
+| 9.88
+| 3.04<ref name="Karachentsev2006" />
+| 
+| <ref name="NASAIPAC" />
+| align="center" |
+| Possible satellite of [[NGC 404]]
+|
+|-
+| 156
+| align="center" | [[Image:NGC2403-Subaru-HST-L.jpg|60px]]
+| [[NGC 2403]]
+| SAB(s)cd HII
+| 9.92
+| 3.04<ref name=Carlin2021/>
+| −19.29
+| 8.93<!--m--><ref name="NASAIPAC" />
+| align="center" |Inner edge of [[M81 Group]]
+|
+| 50,000
+|-
+| 156
+| align="center" |
+| [[KK 153]]
+| 
+| 9.98
+| 3.06<ref name=Bellazzini2026>{{cite journal|last1=Bellazzini |first1=M. |last2=Beccari |first2=G. |last3=Pascale |first3=R. |last4=Paris |first4=D. |last5=Annibali |first5=F. |last6=Cusano |first6=F. |last7=Pérez-Millán |first7=D. |title=Red giant branch tip distance to the faint gas-rich dwarf KK 153 |journal=Astronomy & Astrophysics |date=2026 |volume=705 |pages=A253 |doi=10.1051/0004-6361/202557872  |doi-access=free|arxiv=2511.17132 |bibcode=2026A&A...705A.253B }}</ref>
+| −10.87<ref name=Bellazzini2026/>
+| 
+| align="center" | 
+| 
+| 
+|-
+| 157
+| align="center" | [[File:NGC 404 Hubble.jpg|60px]]
+| [[NGC 404]]
+| SA(s)0-:<ref name="NASAIPAC" />
+| 10.05
+| 3.08<ref name="Karachentsev2008" />
+| −16.61<ref name="Karachentsev2008" />
+| 11.21<ref name="NASAIPAC" />
+| align="center" |
+| 'Mirach's Ghost'
+|
+|-
+| 158
+| align="center" | [[File:PGC 54392.jpg|60x60px]]
+| [[ESO 274-01]]<ref name="Karachentsev2007">{{cite journal|doi= 10.1086/510125|title= The Hubble Flow around the Centaurus A/M83 Galaxy Complex|year= 2007|last1= Karachentsev|first1= Igor D.|last2= Tully|first2= R. Brent|last3= Dolphin|first3= Andrew|last4= Sharina|first4= Margarita|last5= Makarova|first5= Lidia|last6= Makarov|first6= Dmitry|last7= Sakai|first7= Shoko|last8= Shaya|first8= Edward J.|last9= Kashibadze|first9= Olga G.|last10= Karachentseva|first10= Valentina|last11= Rizzi|first11= Luca|journal= The Astronomical Journal|volume= 133|issue= 2|pages= 504–517|arxiv= astro-ph/0603091|bibcode= 2007AJ....133..504K|s2cid= 120584}}</ref>
+| SAd:
+| 10.1
+| 3.09
+| 
+| 11.7
+| align="center" |[[Centaurus A/M83 Group]]
+| 
+|
+|-
+| 159
+| align="center" |
+| [[Dw1558+67]]
+| 
+| 10.1
+| 3.1<ref name=Karachentsev2025/>
+| 
+| 16.8
+| align="center" |
+|
+|
+|-
+| 159
+| align="center" | 
+| [[GALFA-Dw4]]<ref name=Bennet>{{cite journal|doi=10.3847/1538-4357/ac356c|title=Hubble Space Telescope Imaging of Isolated Local Volume Dwarfs GALFA-Dw3 and Dw4|year=2022|last1=Bennet|first1=P.|last2=Sand|first2=D. J.|last3=Crnojević|first3=D.|last4=Weisz|first4=D. R.|last5=Caldwell|first5=N.|last6=Guhathakurta|first6=P.|last7=Hargis|first7=J. R.|last8=Karunakaran|first8=A.|last9=Mutlu-Pakdil|first9=B.|last10=Olszewski|first10=E.|last11=Salzer|first11=J. J.|last12=Seth|first12=A. C.|last13=Simon|first13=J. D.|last14=Spekkens|first14=K.|last15=Stark|first15=D. P.|last16=Strader|first16=J.|last17=Tollerud|first17=E. J.|last18=Toloba|first18=E.|last19=Willman|first19=B.|journal=The Astrophysical Journal|volume=924|issue=2|page=98|arxiv=2101.08270|bibcode=2022ApJ...924...98B|s2cid=231662303 |doi-access=free }}</ref>
+| dIrr
+| 10.1
+| 3.10
+| −11.8
+| 15.7
+| align="center" |
+| Isolated
+|
+|-
+| 160
+| 
+| [[KKH 22]]
+| dSph
+| 10.17
+| 3.12<ref name=Karachentsev2020/>
+| –12.19<ref name=Karachentsev2020/>
+| 15.28<ref name=Karachentsev2020/>
+| align="center"|[[IC 342/Maffei Group]]
+| Satellite of [[IC 342]]<ref name=Karachentsev2020/>
+|
+|-
+| 161
+| align="center" | [[File:NGC 3741.png|60px]]
+| [[NGC 3741]]
+| ImIII/BCD
+| 10.21<ref name="Karachentsev2002" />
+| 3.13
+|
+| 14.3<ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]
+|
+|
+|-
+| 162
+| <!--image-->
+| [[KK 35]]<!--name(s)-->
+| Irr<!--type-->
+| 10.31<!--dist/mly-->
+| 3.16<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −14.30<!--M-->
+| 17.2<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]<!--group if any-->
+| Satellite of [[IC 342]]<ref name=Karachentsev2020/>
+|
+|-
+| 162
+| <!--image-->
+| [[HIPASS J1247-77]]<!--name(s)-->
+| Im<!--type-->
+| 10.31<!--dist/mly-->
+| 3.16<!--dist/Mpc--><ref name="Advcam2006" />
+| <!--M-->
+| 17.B<!--m--><ref name="NASAIPAC" />
+| <!--group if any-->
+| Aligned with IC 3104<!--notes-->
+|
+|-
+| 164
+| align="center" |[[File:NGC 2366HST.jpg|60px]]
+| [[NGC 2366]]
+| IB(s)m
+| 10.40<ref name="Karachentsev2002" />
+| 3.19
+|
+| 11.43<ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 164
+| align="center" | [[Image:Starburst galaxy NGC 1569 (opo0838a).jpg|60px]]
+| [[NGC 1569]] (UGC 3056)
+| IBm;Sbrst<ref name="NASAIPAC" />
+| 10.40
+| 3.19<ref name=Karachentsev2020/>
+| −18.17<ref name="Karachentsev2004" />
+| 11.86<ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]<ref name="Buta1999" />
+| Satellite of [[IC 342]]<ref name=Karachentsev2020/>
+|6,000
+|-
+| 164
+| align="center" | [[File:Color cutout hst 11986 16 wfpc2 f814w f606w wf sci ESO 321-14.jpg|60px]]
+| [[ESO 321-014]]<ref name="Karachentsev2007" />
+| IBm<ref name="NASAIPAC" />
+| 10.40<ref name="Karachentsev2007" />
+| 3.19
+|
+| 15.16<ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|- 
+| 167
+| align="center" | [[Image:UGC 8833 (HST).jpg|60px]]
+| [[UGC 8833]]<!--name(s)-->
+| Im<!--type-->
+| 10.41<!--dist/mly-->
+| 3.19<!--dist/Mpc--><ref name="Karachentsev2004" />
+| <!--M-->
+| 16.5<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+| <!--notes-->
+|
+|- 
+| 168
+| align="center" | [[File:PGC 621 Hubble-WikiSky.jpg|60px]]
+| [[Sculptor Dwarf Irregular Galaxy|Sculptor dIG]] (ESO 349–31)
+| dIrr
+| 10.44
+| 3.2<ref name=Lianou>{{cite journal|arxiv=1211.0137|doi=10.1051/0004-6361/201220193|doi-access=free|bibcode=2013A&A...549A..47L|title=The star formation history of the Sculptor Dwarf Irregular Galaxy|year=2013|last1=Lianou|first1=S.|last2=Cole|first2=A. A.|s2cid=55237783|journal=Astronomy & Astrophysics|volume=549|pages=A47}}</ref>
+| &minus;11.87
+| 15.5<ref name="NASAIPAC" />
+| align="center" |[[Sculptor Group]]
+| Satellite of [[NGC 7793]]
+|
+|-
+| 169
+| align="center" | [[File:UGC 4483 color cutout hst 08769 20 wfpc2 f814w f555w wf sci.jpg|60px]]
+| [[UGC 4483]]
+| dIrr
+| 10.47<ref name="Karachentsev2002" />
+| 3.21
+|
+| 15.2<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 169
+| align="center" |
+| [[dw0910p7326]] ("Blobby")
+| dSph
+| 10.47
+| 3.21<ref name=Casey2023>{{cite journal | arxiv=2211.00629 | doi=10.1093/mnras/stad352 | title=Discovery of a red backsplash galaxy candidate near M81 | year=2023 | last1=Casey | first1=Kirsten J. | last2=Greco | first2=Johnny P. | last3=Peter | first3=Annika H G. | last4=Davis | first4=A Bianca | journal=Monthly Notices of the Royal Astronomical Society | volume=520 | issue=3 | pages=4715–4729 | doi-access=free }}</ref>
+| 11.57<!-- B magnitude --><ref name=Casey2023/>
+| 15.96<!-- B magnitude --><ref name=Casey2023/>
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 170
+|
+| [[UGC 8760]] (DDO 183)
+| I<ref name=UGC8760/>
+| 10.50
+| 3.22<ref name=Dalcanton2009/>
+| &minus;13.08<ref name=Dalcanton2009/>
+| 14.78<ref name=UGC8760>{{cite simbad|title=UGC 8760|access-date=2025-02-08}}</ref>
+| 
+| 
+|-
+| 170
+| align="center" |[[File:Color cutout hst 9771 16 acs wfc f814w f606w sci UGCA 92.jpg|60px]]
+| [[UGCA 92]]
+| Im?<ref name="NASAIPAC" />
+| 10.50
+| 3.22<ref name="Karachentsev2020" />
+| 
+| 13<ref name="NASAIPAC" />
+| align="center" | [[IC 342/Maffei Group]]<ref name="Buta1999">{{Cite journal |title=see article at |journal=The Astrophysical Journal Supplement Series |date=September 1999 |volume=124 |issue=1 |pages=33–93 |doi=10.1086/313255 |s2cid=119907629 |last1=Buta |first1=Ronald J. |last2=McCall |first2=Marshall L. |doi-access=free }}</ref>
+| Satellite of [[IC 342]]<ref name="Karachentsev2020" />
+|
+|-
+| 171
+| align="center" | [[File:IC342 RGB2.jpg|60px]]
+| [[IC 342]]
+| SAB(rs)cd<ref name="NASAIPAC" />
+| 10.70
+| 3.28<ref name="Karachentsev2004" />
+| −20.69<ref name="Karachentsev2004" />
+| 9.37<ref name="Karachentsev2004" />
+| align="center" |[[IC 342/Maffei Group]]
+| "the hidden galaxy"
+|75,000
+|-
+| 173
+| align="center" | [[File:Color cutout hst 10915 0z acs wfc f814w f475w sci DDO 006.jpg|60px]]
+| [[UGCA 15]] ([[DDO 6]])
+| IB(s)m
+| 10.90
+| 3.34<ref name="Karachentsev2005" />
+| −12.50<ref name="Karachentsev2005" />
+| 15.19<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Sculptor Group]]
+|
+|
+|-
+| 174
+|
+| [[KKs 58]]
+| dSph<ref name=Muller/>
+| 10.96
+| 3.36<ref name=Muller2019>{{cite journal|doi=10.1051/0004-6361/201935807|doi-access=free|title=The dwarf galaxy satellite system of Centaurus A|year=2019|last1=Müller|first1=Oliver|last2=Rejkuba|first2=Marina|last3=Pawlowski|first3=Marcel S.|last4=Ibata|first4=Rodrigo|last5=Lelli|first5=Federico|last6=Hilker|first6=Michael|last7=Jerjen|first7=Helmut|journal=Astronomy & Astrophysics|volume=629|pages=A18|arxiv=1907.02012|bibcode=2019A&A...629A..18M|s2cid=195791783}}</ref>
+| −11.93<ref name=Muller2019/>
+| 
+| align="center" |[[Centaurus A/M83 Group]]
+| 
+| 
+|-
+| 175
+| align="center" |[[File:Hst 11719 38 wfc3 ir f160w f110w sci KKH 37.jpg|60px]]
+| [[KKH 37]] ([[Mai 16]])<!--name(s)-->
+| S/Irr<!--type-->
+| 11.06<!--dist/mly-->
+| 3.39<!--dist/Mpc--><ref name="Advcam2006">{{cite journal|doi=10.1086/500013|title=Advanced Camera for Surveys Imaging of 25 Galaxies in Nearby Groups and in the Field|year=2006|last1=Karachentsev|first1=Igor D.|last2=Dolphin|first2=Andrew|last3=Tully|first3=R. Brent|last4=Sharina|first4=Margarita|last5=Makarova|first5=Lidia|last6=Makarov|first6=Dmitry|last7=Karachentseva|first7=Valentina|last8=Sakai|first8=Shoko|last9=Shaya|first9=Edward J.|journal=The Astronomical Journal|volume=131|issue=3|pages=1361–1376|arxiv=astro-ph/0511648|bibcode=2006AJ....131.1361K|s2cid=16689229}}</ref>
+|<!--M-->
+| 16.4<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+|<!--notes-->
+|
+|-
+| 175
+| align="center" | [[File:Ugca105.jpg|60px]]
+| [[UGCA 105]]
+| Im?
+| 11.06
+| 3.39<ref name="Karachentsev2020" />
+| −16.81
+| 13.9<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| Satellite of IC 342<ref name="Karachentsev2020" />
+|
+|-
+| 175
+| align="center" | [[File:Irregular galaxy Holmberg II (captured by the Hubble Space Telescope).tif|60px]]
+| [[Holmberg II]] (DDO 50, UGC 4305)
+| Im
+| 11.06<ref name="Karachentsev2002" />
+| 3.39
+|
+| 11.1<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 175
+| align="center" |
+| [[Dw1559+46]]
+| 
+| 11.09
+| 3.4<ref name=Karachentsev2025/>
+| 
+| 17.1
+| align="center" |
+|
+|
+|-
+| 175
+| align="center" | [[File:NGC 5102 2MASS.jpg|60px]]
+| [[NGC 5102]]<!--name(s)-->
+| SA0- HII<!--type-->
+| 11.09<!--dist/mly-->
+| 3.40<!--dist/Mpc--><ref name="Karachentsev2004" />
+| −18.0856<!--M-->
+| 10.35<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]<!--group if any-->
+|<!--notes-->
+|
+|-
+| 175
+| align="center" | [[File:Color cutout hst 9771 94 acs wfc f814w f606w sci NGC 5237.jpg|60px]]
+| [[NGC 5237]]
+| I0?<ref name="NASAIPAC" />
+| 11.09
+| 3.40<ref name="Karachentsev2007" />
+|
+| 13.23<ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|-
+| 175
+| align="center" | [[File:Color cutout hst 11986 24 wfpc2 f814w f606w wf sci ESO 325-11.jpg|60px]]
+| [[ESO 325-11]]
+|
+| 11.09
+| 3.40<ref name="Karachentsev2007" />
+|
+| 13.99<ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|-
+| 175
+| align="center" | [[Image:ESO 540-030.jpg|60px]]
+| [[ESO 540-030]] (KDG 2)
+| IABm
+| 11.09
+| 3.40<ref name="Karachentsev2005" />
+| −11.39
+| 16.45<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Sculptor Group]]
+|
+|
+|-
+| 182
+| align="center" | [[File:Wide Field Imager view of the spiral galaxy NGC 247.jpg|60px]]
+| [[NGC 247]]
+| SAB(s)d
+| 11.1
+| 3.4<ref name="Karachentsev2005" />
+| −20.00
+| 9.9<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Sculptor Group]]
+|
+|
+|-
+| 183
+|<!--image-->
+| MADCASH-1 (MADCASH J074238+<wbr>652501-dw)<!--name(s)-->
+| dSph
+| 11.12
+| 3.41<ref name="Carlin2021" />
+| −7.81<ref name="Carlin2021" />
+| 19.85<ref group="lower-alpha" name="apparentmag" /><!-- from distance modulus (m - M) = 27.66 -->
+| align="center" |[[M81 Group]]
+| Likely satellite of [[NGC 2403]]
+|
+|-
+| 184
+|
+| [[F6D1]] (FM 1, PGC&nbsp;3097828)
+| dSph<ref>{{cite journal|doi=10.1088/0004-6256/137/2/3009|title=Discovery of New Dwarf Galaxies in the M81 Group|year=2009|last1=Chiboucas|first1=Kristin|last2=Karachentsev|first2=Igor D.|last3=Tully|first3=R. Brent|s2cid=14156955|journal=The Astronomical Journal|volume=137|issue=2|pages=3009–3037|arxiv=0805.1250|bibcode=2009AJ....137.3009C}}</ref>
+| 11.15<ref name="Karachentsev2002" />
+| 3.42
+|
+| 17.5<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 184
+| align="center" | [[File:Color cutout hst 10503 33 acs wfc f814w f606w sci ESO 540-32.jpg|60px]]
+| [[ESO 540-032]]
+| IAB(s)m pec:
+| 11.15
+| 3.42<ref name="Karachentsev2005" />
+| −11.32<ref name="Karachentsev2005" />
+| 16.55<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Sculptor Group]]
+|
+|
+|-
+| 186
+| align="center" | [[File:Color cutout hst 11986 04 wfpc2 f814w f606w wf sci ESO 383-87.jpg|60px]]
+| [[ESO 383-087]] ([[ISG 39]])<!--name(s)-->
+| SB(s)dm<!--type-->
+| 11.25
+| 3.45<!--dist/Mpc--><ref name="Karachentsev2007" />
+| −15.16<!--M--><ref name="Karachentsev2004" />
+| 11.03<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]<!--group if any-->
+|<!--notes-->
+|
+|-
+| 187
+| align="center" | [[File:Color cutout hst 06814 01 wfpc2 f814w f555w f439w pc sci NGC 5206.jpg|60px]]
+| [[NGC 5206]]
+| SB0
+| 11.32
+| 3.47<ref name="Karachentsev2007" />
+|
+|
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|-
+| 188
+| align="center" | [[File:Color cutout hst 11986 35 wfpc2 f814w f606w wf sci ESO 269-37.jpg|60px]]
+| [[KK 179]] ([[ESO 269-37]])
+| IABm:
+| 11.4
+| 3.48<ref name="Karachentsev2007" />
+|
+|
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|-
+| 188
+| align="center" |
+| [[Corvus A]]
+| 
+| 11.4
+| 3.48<ref name=Jones2024>{{cite journal | doi=10.3847/2041-8213/ad676e | doi-access=free | title=Corvus A: A Low-mass, Isolated Galaxy at 3.5 MPC | date=2024 | last1=Jones | first1=Michael G. | last2=Sand | first2=David J. | last3=Mutlu-Pakdil | first3=Burçin | last4=Fielder | first4=Catherine E. | last5=Crnojević | first5=Denija | last6=Bennet | first6=Paul | last7=Spekkens | first7=Kristine | last8=Donnerstein | first8=Richard | last9=Doliva-Dolinsky | first9=Amandine | last10=Karunakaran | first10=Ananthan | last11=Strader | first11=Jay | last12=Zaritsky | first12=Dennis | journal=The Astrophysical Journal Letters | volume=971 | issue=2 | pages=L37 | arxiv=2407.03393 | bibcode=2024ApJ...971L..37J }}</ref>
+| &minus;11.2
+| 
+| align="center" |
+|
+|
+|-
+| 193
+| align="center" |
+|[[Scl-MM-dw3]]
+| 
+| 11.35
+| 3.48<ref name=MutluPakdil2022/>
+| &minus;7.24<ref name=MutluPakdil2022/>
+| 
+| align="center" |[[Sculptor Group]]
+| 
+|
+|- 
+| 189
+| align="center" | [[File:Sculptor Galaxy by VISTA.jpg|60px]]
+| [[Sculptor Galaxy]] <br>(NGC 253)
+| SAB(s)c
+| 11.40<ref name="Karachentsev2002" />
+| 3.49
+|
+| 8.0<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Sculptor Group]]
+|
+|90,000
+|-
+| 190
+| align="center" | [[File:Color cutout hst 9884 05 acs wfc f814w f606w sci DDO 71.jpg|60px]]
+| [[DDO 71]] (UGC 5428)
+| Im
+| 11.42<ref name="Karachentsev2002" />
+| 3.50
+|
+| 18<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 191
+|
+| [[Camelopardalis B]]
+| Irr
+| 11.46
+| 3.50<ref name="Karachentsev2020" />
+| −11.85
+| 16.1<!--m--><ref name="NASAIPAC" />
+| align="center" |[[IC 342/Maffei Group]]
+| Satellite of [[IC 342]]<ref name="Karachentsev2020" />
+|
+|-
+| 192
+| align="center" | [[Image:M82 HST ACS 2006-14-a-large web.jpg|60px]]
+|[[Messier 82]]
+| I0;Sbrst HII
+| 11.42
+| 3.53<ref name="Karachentsev2005" />
+| −19.63<ref name="Karachentsev2005" />
+| 9.30 <!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|37,000, possibly up to 100,000
+|-
+| 193
+| align="center" | [[Image:A Peculiar Compact Blue Dwarf Galaxy.jpg|60px]]
+|[[NGC 5253]]
+| Im pec
+| 11.51
+| 3.53<ref name="Karachentsev2005" />
+|
+| 10.9 <!--m--><ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]
+|Nearest Wolf-Rayet galaxy to us.
+|
+|-
+| 193
+| align="center" |
+|[[Scl-MM-dw1]]
+| 
+| 11.51
+| 3.53<ref name=MutluPakdil2022/>
+| &minus;8.75<ref name=MutluPakdil2022>{{cite journal | doi=10.3847/1538-4357/ac4418 | doi-access=free | arxiv=2108.09312 | bibcode=2022ApJ...926...77M | title=Hubble Space Telescope Observations of NGC 253 Dwarf Satellites: Three Ultra-faint Dwarf Galaxies | date=2022 | last1=Mutlu-Pakdil | first1=Burçin | last2=Sand | first2=David J. | last3=Crnojević | first3=Denija | last4=Jones | first4=Michael G. | last5=Caldwell | first5=Nelson | last6=Guhathakurta | first6=Puragra | last7=Seth | first7=Anil C. | last8=Simon | first8=Joshua D. | last9=Spekkens | first9=Kristine | last10=Strader | first10=Jay | last11=Toloba | first11=Elisa | journal=The Astrophysical Journal | volume=926 | issue=1 | page=77 }}</ref>
+| 
+| align="center" | [[Sculptor Group]]
+| 
+|
+|-
+| 193
+| align="center" |
+|[[Scl-MM-dw2]]
+| 
+| 11.51
+| 3.53<ref name=MutluPakdil2022/>
+| &minus;12.10<ref name=MutluPakdil2022/>
+| 
+| align="center" |[[Sculptor Group]]
+| 
+|
+|-
+| 194
+|
+|[[M81 Dwarf A]] ([[KDG 52]])
+| I?
+| 11.58<ref name="Karachentsev2002" />
+| 3.55
+| −11.49<ref name="Karachentsev2005" />
+| 16.5<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|- 
+| 194
+| align="center" | [[File:Color cutout hst 9884 01 acs wfc f814w f606w sci KK98 77.jpg|60px]]
+| [[KK 77]] (F12D1)
+| dSph
+| 11.58
+| 3.55<ref name=Dalcanton2009/>
+|
+| 16.2<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 196
+| align="center" | [[File:NGC 2976SSTFull.jpg|60px]]
+| [[NGC 2976]]
+| SAc pec HII
+| 11.61<ref name="Karachentsev2002" />
+| 3.56
+| −17.1<ref name="Karachentsev2005" />
+| 10.82<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 196
+|
+| [[Camelopardalis A]]
+| 
+| 11.61
+| 3.56<ref name=Karachentsev2020/>
+| 
+| 
+| align="center" |[[IC 342/Maffei Group]]
+| Satellite of [[IC 342]]<ref name=Karachentsev2020/>
+|
+|-
+| 198
+|
+| [[KK 211]] (AM 1339–445)
+| dSph<ref name=Puzia>{{cite journal|bibcode=2008ApJ...674..909P|doi=10.1086/525038|title=VLT Spectroscopy of Globular Clusters in Low Surface Brightness Dwarf Galaxies|year=2008|last1=Puzia|first1=Thomas H.|last2=Sharina|first2=Margarita E.|journal=The Astrophysical Journal|volume=674|issue=2|pages=909–926|arxiv=0710.1550 |s2cid=14231914}}</ref>
+| 11.68
+| 3.58<ref name=Karachentsev2020/>
+| −11.93<ref name=Karachentsev2020/>
+| 16.32<ref name=Karachentsev2020/>
+| align="center" |[[Centaurus A/M83 Group]]
+| Satellite of [[NGC 5128]]<ref name=Puzia/>
+|
+|-
+| 198
+|
+| [[PGC 51659]] (UKS 1424–460)
+| IBm<ref name=Young>{{cite journal|doi=10.1093/mnras/stu1646|title=Deep near-infrared surface photometry and properties of Local Volume dwarf irregular galaxies|year=2014|last1=Young|first1=T.|last2=Jerjen|first2=H.|last3=López-Sánchez|first3=Á. R.|last4=Koribalski|first4=B. S.|journal=Monthly Notices of the Royal Astronomical Society|volume=444|issue=4|pages=3052–3077|doi-access=free |arxiv=1408.2609}}</ref>
+| 11.68
+| 3.58<ref name=Karachentsev2020/>
+| −11.83<ref name=Karachentsev2020/>
+| 16.50<ref name=Karachentsev2020/>
+| align="center" |[[Centaurus A/M83 Group]]
+| 
+| 
+|-
+| 198
+|
+| [[KDG 61]]
+| dE/dSph<ref name=Makarova/>
+| 11.68
+| 3.58<ref name=Makarova>{{cite journal|doi=10.1111/j.1365-2966.2010.16746.x|title=Star formation history of KDG 61 and KDG 64 from spectroscopy and colour-magnitude diagrams|year=2010|last1=Makarova|first1=Lidia|last2=Koleva|first2=Mina|last3=Makarov|first3=Dmitry|last4=Prugniel|first4=Philippe|journal=Monthly Notices of the Royal Astronomical Society|volume=406|issue=2|page=1152|doi-access=free |arxiv=1003.6061|bibcode=2010MNRAS.406.1152M|s2cid=119281422}}</ref>
+| −12.84<ref name=Makarova/>
+| 14.93<ref name=Makarova/>
+| align="center" |[[M81 Group]]
+| 
+| 
+|-
+| 201
+| align="center" | [[File:Phot-18b-99-hires.jpg|60px]]
+| [[NGC 4945]]
+| SB(s)cd:sp<ref name="NASAIPAC" />
+| 11.70<ref name="Karachentsev2002b">I. D. Karachentsev ''et al.''(2002)'' New distances to galaxies in the Centaurus A group''
+</ref>
+| 3.59
+| −20.51<ref name="Karachentsev2004" />
+| 9.3<ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|-
+| 202
+| align="center" | [[File:NGC 6789 hst 09162 R814B606.png|60px]]
+| [[NGC 6789]]
+| Im<ref name="NASAIPAC" />
+| 11.74
+| 3.6<ref name=Karachentsev2004/>
+| −14.32<ref name=Karachentsev2004/>
+| 13.76<ref name=Karachentsev2004/>
+| 
+| In the [[Local Void]]<ref>{{cite journal|bibcode=2014MNRAS.445.1694L|doi=10.1093/mnras/stu1804|arxiv=1409.1239|title=The triggering of starbursts in low-mass galaxies|year=2014|last1=Lelli|first1=Federico|last2=Verheijen|first2=Marc|last3=Fraternali|first3=Filippo|journal=Monthly Notices of the Royal Astronomical Society|volume=445|issue=2|pages=1694–1712|doi-access=free }}</ref>
+|
+|-
+| 202
+| align="center" | [[File:Messier 81 HST.jpg|60px]]
+| [[Messier 81]]
+| SA(s)ab, LINER
+| 11.74<ref name="Karachentsev2002" />
+| 3.6
+|
+| 6.94<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+| Brightest galaxy in M81 Group
+| 90,000
+|-
+| 202
+| align="center" |
+| [[UGC 6451]]
+| 
+| 11.74
+| 3.6<ref name=Karachentsev2025/>
+| 
+| 15.4
+| align="center" |
+|
+|
+|-
+| 204
+| align="center" | [[File:Hubble_dwarf_galaxy_Holmberg_IX.jpg|60px]]
+| [[Holmberg IX]] (UGC 5336, DDO 66)
+| Irr<ref name="Karachentsev2013" />
+| 11.77
+| 3.61<ref name="Karachentsev2013" />
+|
+| 14.53<ref name="Karachentsev2013" />
+| align="center" |[[M81 Group]]
+| Contains [[ultraluminous X-ray source]] (ULX) Holmberg IX X-1
+|
+|- 
+| 204
+| align="center" | [[File:UGCA 292 color cutout hst 10915 0u acs wfc f814w f475w sci.jpg|60px]]
+| [[UGCA 292]] (CVn I dwA)
+| ImIV-V<!--type-->
+| 11.77<!--dist/mly-->
+| 3.61<ref name="Dalcanton2009" /><!-- two distances given: 3.61 and 3.62, used one with lower error -->
+|<!--M-->
+| 16.0<!--m--><ref name="NASAIPAC" />
+| align="center" |[[M94 Group]]<!--group if any-->
+|<!--notes-->
+|
+|-
+| 206
+|
+| [[BK 5N]]
+| dSph<ref name=Karachentsev2013/>
+| 11.84
+| 3.63<ref name=Cosmicflows/>
+| 
+| 17.49<ref name=Cosmicflows/>
+| align="center" |[[M81 Group]]
+| 
+| 
+|-
+| 207
+|
+| [[DDO 78]] (KK 89)
+| dSph<ref name=Karachentsev2013/>
+| 11.94
+| 3.66<ref name=Dalcanton2009>{{cite journal|bibcode=2009ApJS..183...67D|doi=10.1088/0067-0049/183/1/67|title=The ACS Nearby Galaxy Survey Treasury|year=2009|last1=Dalcanton|first1=Julianne J.|last2=Williams|first2=Benjamin F.|last3=Seth|first3=Anil C.|last4=Dolphin|first4=Andrew|last5=Holtzman|first5=Jon|last6=Rosema|first6=Keith|last7=Skillman|first7=Evan D.|last8=Cole|first8=Andrew|last9=Girardi|first9=Léo|last10=Gogarten|first10=Stephanie M.|last11=Karachentsev|first11=Igor D.|last12=Olsen|first12=Knut|last13=Weisz|first13=Daniel|last14=Christensen|first14=Charlotte|last15=Freeman|first15=Ken|last16=Gilbert|first16=Karoline|last17=Gallart|first17=Carme|last18=Harris|first18=Jason|last19=Hodge|first19=Paul|last20=De Jong|first20=Roelof S.|last21=Karachentseva|first21=Valentina|last22=Mateo|first22=Mario|last23=Stetson|first23=Peter B.|last24=Tavarez|first24=Maritza|last25=Zaritsky|first25=Dennis|last26=Governato|first26=Fabio|last27=Quinn|first27=Thomas|journal=The Astrophysical Journal Supplement Series|volume=183|issue=1|pages=67–108|arxiv=0905.3737|s2cid=5032304}}</ref>
+| 
+| 16.50<ref name=Karachentsev2013/>
+| align="center" |[[M81 Group]]
+| 
+| 
+|-
+| 207
+|
+| [[F8D1]]
+| dSph<ref name=Karachentsev2013/>
+| 11.94
+| 3.66<ref name=Dalcanton2009/>
+| −12.20<ref>{{cite journal|doi=10.1088/0004-637X/739/1/5|title=The ACS Nearby Galaxy Survey Treasury. VIII. The Global Star Formation Histories of 60 Dwarf Galaxies in the Local Volume|year=2011|last1=Weisz|first1=Daniel R.|last2=Dalcanton|first2=Julianne J.|last3=Williams|first3=Benjamin F.|last4=Gilbert|first4=Karoline M.|last5=Skillman|first5=Evan D.|last6=Seth|first6=Anil C.|last7=Dolphin|first7=Andrew E.|last8=McQuinn|first8=Kristen B. W.|last9=Gogarten|first9=Stephanie M.|last10=Holtzman|first10=Jon|last11=Rosema|first11=Keith|last12=Cole|first12=Andrew|last13=Karachentsev|first13=Igor D.|last14=Zaritsky|first14=Dennis|journal=The Astrophysical Journal|volume=739|issue=1|page=5|arxiv=1101.1093|bibcode=2011ApJ...739....5W|s2cid=119230989}}</ref>
+| 15.70<ref name=Karachentsev2013/>
+| align="center" |[[M81 Group]]
+| 
+| 
+|-
+| 209
+| align="center" |[[File:UGC 4459.jpg|60px]]
+| [[UGC 4459]] ([[DDO 53]])
+| Im
+| 12.00
+| 3.68<ref>{{cite journal|doi=10.1093/mnras/stab2710|arxiv=2109.08526|title=Star formation in the nearby dwarf galaxy DDO 53: Interplay between gas accretion and stellar feedback|year=2021|last1=Egorov|first1=Oleg V.|last2=Lozinskaya|first2=Tatiana A.|last3=Vasiliev|first3=Konstantin I.|last4=Yarovova|first4=Anastasiya D.|last5=Gerasimov|first5=Ivan S.|last6=Kreckel|first6=Kathryn|last7=Moiseev|first7=Alexei V.|journal=Monthly Notices of the Royal Astronomical Society|volume=508|issue=2|pages=2650–2667|doi-access=free }}</ref>
+| −13.37<ref name="Karachentsev2005" />
+| 14.48 <!--m--><ref name="NASAIPAC" />
+| align="center" |[[M81 Group]]
+|
+|
+|-
+| 210
+| align="center" | [[File:ESO Centaurus A LABOCA.jpg|60px]]
+| [[Centaurus A]] (NGC 5128)
+| S0 pec
+| 12.01<ref name="Karachentsev2002" />
+| 3.68 
+|
+| 6.84<!--m--><ref name="NASAIPAC" />
+| align="center" |[[Centaurus A/M83 Group]]
+| Brightest galaxy in Centaurus A Group and brightest and nearest [[radio galaxy]]
+| 60,000
+|-
+| 211
+|
+| [[KDG 64]] (UGC 5442)
+| dE/dSph
+| 12.07
+| 3.70<ref name=Makarova/>
+| −12.55<ref name=Makarova/>
+| 15.29<ref name=Makarova/>
+| align="center" |[[M81 Group]]
+| 
+| 
+|-
+| 212
+|
+| IKN
+| dE
+| 12.23
+| 3.75<ref name=Okamoto/>
+| −14.29<ref name=Okamoto>{{cite journal|doi=10.3847/1538-4357/ab44a7|title=Stellar Population and Structural Properties of Dwarf Galaxies and Young Stellar Systems in the M81 Group|year=2019|last1=Okamoto|first1=Sakurako|last2=Arimoto|first2=Nobuo|last3=Ferguson|first3=Annette M. N.|last4=Irwin|first4=Mike J.|last5=Bernard|first5=Edouard J.|last6=Utsumi|first6=Yousuke|journal=The Astrophysical Journal|volume=884|issue=2|page=128|arxiv=1909.12997|bibcode=2019ApJ...884..128O|s2cid=203593758 |doi-access=free }}</ref>
+| 
+| align="center" |[[M81 Group]]
+| 
+| 
+|-
+| 212
+|
+| [[KKs 54]]
+| dSph<ref name=Muller/>
+| 12.23
+| 3.75<ref name=Muller2019/>
+| −10.41<ref name=Muller2019/>
+| 
+| align="center" |[[Centaurus A/M83 Group]]
+| 
+| 
+|-
+| 213
+|align="center"| [[File:Potw1253a.png|60px]]
+| [[NGC 5011C]] (ESO 269–68)
+| dE/Im<ref>{{cite journal|doi=10.1086/512157|title=NGC 5011C: An Overlooked Dwarf Galaxy in the Centaurus A Group|last1=Saviane|first1=Ivo|last2=Jerjen|first2=Helmut|year=2007|journal=The Astronomical Journal|volume=133|issue=4|pages=1756–1762|arxiv=astro-ph/0701280|bibcode=2007AJ....133.1756S|s2cid=14755909 }}</ref>
+| 12.3
+| 3.77<ref name=Lee2016>{{cite journal
+ | title=Dual Stellar Halos in the Standard Elliptical Galaxy M105 and Formation of Massive Early-type Galaxies 
+ | last1=Lee | first1=Myung Gyoon | last2=Jang | first2=In Sung
+ | journal=The Astrophysical Journal
+ | volume=822 | issue=2 | id=70 | pages=17 | date=May 2016
+ | doi=10.3847/0004-637X/822/2/70
+ | bibcode=2016ApJ...822...70L | arxiv=1601.06798 | s2cid=118372642 | doi-access=free }}</ref><ref group="lower-alpha" name="Dist"/><!-- from distance modulus (m - M) = 27.88 -->
+| −14.74<ref name=Lee2016/>
+| 13.47<ref name=Lee2016/>
+| align="center" |[[Centaurus A/M83 Group]]
+| 
+| 
+|-
+| 213
+| align="center" |
+| [[Centaurus N]]
+|
+| 12.3
+| 3.77<ref name="Crnojevic">{{cite journal|doi=10.1051/0004-6361/200913429|title=A close look at the Centaurus a group of galaxies|year=2010|last1=Crnojević|first1=D.|last2=Grebel|first2=E. K.|last3=Koch|first3=A.|journal=Astronomy and Astrophysics|volume=516|pages=A85|doi-access=free|arxiv=1002.0341}}</ref>
+| −11.15<ref name="Crnojevic" />
+|
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|-
+| 213
+| align="center" |
+| [[KK 213]]
+| dSph<ref name=Karachentsev2013/>
+| 12.3
+| 3.77<ref name="Cosmicflows"/>
+| 
+| 18.00<ref name=Karachentsev2013/>
+| align="center" |[[Centaurus A/M83 Group]]
+|
+|
+|-
+| 213
+| align="center" |
+| [[KK 203]]
+| dSph<ref name="Muller" />
+| 12.30
+| 3.77<ref name="Muller">{{cite journal|doi=10.1051/0004-6361/202039359|doi-access=free|title=The properties of dwarf spheroidal galaxies in the Cen A group. Stellar populations, internal dynamics, and a heart-shaped Hα ring|year=2021|last1=Müller|first1=Oliver|last2=Fahrion|first2=Katja|last3=Rejkuba|first3=Marina|last4=Hilker|first4=Michael|last5=Lelli|first5=Federico|last6=Lutz|first6=Katharina|last7=Pawlowski|first7=Marcel S.|last8=Coccato|first8=Lodovico|last9=Anand|first9=Gagandeep S.|last10=Jerjen|first10=Helmut|journal=Astronomy & Astrophysics|volume=645|pages=A92|arxiv=2011.04990|s2cid=226289648|bibcode=2021A&A...645A..92M}}</ref>
+| &minus;11.7<ref name="Muller" />
+|
+| align="center" |[[Centaurus A/M83 Group]]
+| In Centaurus&nbsp;A Group; contains a ring of H&alpha; emission<ref name=Muller/>
+|
+|-
+|}
+
+==See also==
+* [[Lists of astronomical objects]]
+* [[List of galaxies]]
+* [[List of nearest stars and brown dwarfs]]
+* [[List of spiral galaxies]]
+* [[Canis Major Overdensity]] – disputed dwarf irregular galaxy 25,000 light-years away (closer than Milky Way center)
+
+==Notes==
+{{reflist|group="lower-alpha"}}
+
+== References ==
+{{Reflist}}
+== External links==
+*{{cite journal
+ | author=Belokurov, V.
+ | title=A Faint New Milky Way Satellite in Bootes
+ | journal=The Astrophysical Journal
+ | date=2006
+ | volume=647
+ | issue=2
+ | pages=L111–L114
+ | bibcode=2006ApJ...647L.111B
+ | doi=10.1086/507324
+|arxiv = astro-ph/0604355
+ | display-authors=1
+ | last2=Zucker
+ | first2=D. B.
+ | last3=Evans
+ | first3=N. W.
+ | last4=Wilkinson
+ | first4=M. I.
+ | last5=Irwin
+ | first5=M. J.
+ | last6=Hodgkin
+ | first6=S.
+ | last7=Bramich
+ | first7=D. M.
+ | last8=Irwin
+ | first8=J. M.
+ | last9=Gilmore
+ | first9=G. | last10=Willman
+ | first10=B.
+ | last11=Vidrih
+ | first11=S.
+ | last12=Newberg
+ | first12=H. J.
+ | last13=Wyse
+ | first13=R. F. G.
+ | last14=Fellhauer
+ | first14=M.
+ | last15=Hewett
+ | first15=P. C.
+ | last16=Cole
+ | first16=N.
+ | last17=Bell
+ | first17=E. F.
+ | last18=Beers
+ | first18=T. C.
+ | last19=Rockosi
+ | first19=C. M.
+ | last20=Yanny
+ | first20=B.
+ | last21=Grebel
+ | first21=E. K.
+ | last22=Schneider
+ | first22=D. P.
+ | last23=Lupton
+ | first23=R.
+ | last24=Barentine
+ | first24=J. C.
+ | last25=Brewington
+ | first25=H.
+ | last26=Brinkmann
+ | first26=J.
+ | last27=Harvanek
+ | first27=M.
+ | last28=Kleinman
+ | first28=S. J.
+ | last29=Krzesinski
+ | first29=J.
+ | last30=Long
+ | first30=D.
+ | s2cid=15348323
+ }} 
+*{{cite journal
+ |author          = Dolphin
+ |date            = March 2003
+ |title           = Deep Hubble Space Telescope Imaging of Sextans A. II. Cepheids and Distance
+ |journal         = The Astronomical Journal
+ |volume          = 125
+ |issue           = 3
+ |pages           = 1261–1290
+ |url             = http://www.iop.org/EJ/article/1538-3881/125/3/1261/202477.html
+ |doi             = 10.1086/346279
+ |bibcode         = 2003AJ....125.1261D
+ |arxiv           = astro-ph/0211486
+ |name-list-style = vanc
+ |author2         = A. E.
+ |display-authors = 2
+ |last3           = Skillman
+ |first3          = Evan D.
+ |last4           = Dohm-Palmer
+ |first4          = R. C.
+ |last5           = Tolstoy
+ |first5          = Eline
+ |last6           = Cole
+ |first6          = A. A.
+ |last7           = Gallagher
+ |first7          = J. S.
+ |last8           = Hoessel
+ |first8          = J. G.
+ |last9           = Mateo
+ |first9          = Mario
+ |s2cid           = 116691617
+ |access-date     = 2008-09-14
+ |archive-date    = 2020-06-19
+ |archive-url     = https://web.archive.org/web/20200619062713/https://hkvalidate.perfdrive.com/captcha?ssa=fc861d4f-f35e-4bce-a23a-2b86c8d6a56a&ssb=f2z2kg2padabghmbkh1zg04da&ssc=http%3A%2F%2Fiopscience.iop.org%2Farticle%2F1538-3881%2F125%2F3%2F1261%2F202477.html&ssd=276416699770821&sse=dmcopglbhj%40gpdb&ssf=ea8c803d7d378f51dd0eddda0d3c2e227eb19bef&ssg=d83b41ae-5d35-47aa-9161-bfaf85961126&ssh=48659a12-de8d-4ec2-bd67-eda1c8d9ce92&ssi=155b20ba-8427-41d4-bdbe-3e146e4b59d5&ssj=c46e0566-31ce-4bb3-8f3a-823fd9e0c02a&ssk=support%40shieldsquare.com&ssl=719245454604&ssm=67532714144380605406547473468004&ssn=6bc9bfa86a594c4e987187653347316f8ca29116ea12-55be-4989-b5d989&sso=7f24f814-f03359ad64852cb4d1fa484983a7a1e913036409cabb65a0&ssp=63895192071592542433159255798181099&ssq=85326134803325108694929957921722327643067&ssr=MjA3LjI0MS4yMjYuMjMw&sss=Mozilla%2F5.0%20%28compatible%3B%20Yahoo%21%20Slurp%3B%20http%3A%2F%2Fhelp.yahoo.com%2Fhelp%2Fus%2Fysearch%2Fslurp%29&sst=python-requests%2F2.23.0&ssu=Mozilla%2F4.0%20%28compatible%3B%20MSIE%208.0%3B%20Windows%20NT%206.1%29%20Gecko%2F20100101%20Firefox%2F39.0&ssv=4%40mu3s%404n4v4%40r%40&ssw=&ssx=904095041861426&ssy=bgdab%40k%40k%40pconleffoamaem%40clfbkbma%40cbkkci&ssz=7badee938a33cfd
+ |url-status      = dead
+}}
+*{{cite journal
+| author=Karachentsev 
+| date=2002 
+| title=The M 81 group of galaxies: New distances, kinematics and structure 
+| journal=Astronomy and Astrophysics 
+| volume=383 
+| issue=1 
+| pages=125–136 
+| url=http://www.edpsciences.org/articles/aa/pdf/2002/07/aa1940.pdf?access=ok 
+| doi=10.1051/0004-6361:20011741
+| bibcode=2002A&A...383..125K
+| name-list-style=vanc
+| author2=I. D.
+| display-authors=2
+| last3=Geisler
+| first3=D.
+| last4=Grebel
+| first4=E. K.
+| last5=Guhathakurta
+| first5=P.
+| last6=Hodge
+| first6=P. W.
+| last7=Karachentseva
+| first7=V. E.
+| last8=Sarajedini
+| first8=A.
+| last9=Seitzer
+| first9=P.
+| last10=Sharina 
+| first10=M. E. 
+| doi-access=free
+}}
+*{{cite journal
+ | author=Karachentsev
+ | title=New distances to galaxies in the Centaurus A group
+ | journal=Astronomy and Astrophysics
+ | date=2002
+ | volume=385
+ | issue=1
+ | pages=21–31
+ | bibcode=2002A&A...385...21K
+ | doi=10.1051/0004-6361:20020042
+ | name-list-style=vanc
+ | author2=I. D.
+ | display-authors=2
+ | last3=Dolphin
+ | first3=A. E.
+ | last4=Grebel
+ | first4=E. K.
+ | last5=Geisler
+ | first5=D.
+ | last6=Guhathakurta
+ | first6=P.
+ | last7=Hodge
+ | first7=P. W.
+ | last8=Karachentseva
+ | first8=V. E.
+ | last9=Sarajedini
+ | first9=A.
+| last10=Seitzer
+ | first10=P.
+ | doi-access=free
+ }}
+*{{cite journal
+| author=Karachentsev 
+|date=June 2003 
+| title=Distances to Nearby Galaxies in Sculptor 
+| journal=Astronomy and Astrophysics 
+| volume=404 
+| issue=1 
+| pages=93–112 
+| arxiv=astro-ph/0302045 
+| doi=10.1051/0004-6361:20030170
+| doi-access=free| bibcode=2003A&A...404...93K
+| name-list-style=vanc
+| author2=I. D.
+| display-authors=2
+| last3=Sharina
+| first3=M. E.
+| last4=Dolphin
+| first4=A. E.
+| last5=Geisler
+| first5=D.
+| last6=Guhathakurta
+| first6=P.
+| last7=Hodge
+| first7=P. W.
+| last8=Karachentseva
+| first8=V. E.
+| last9=Sarajedini
+| first9=A.
+|last10=Seitzer 
+|first10=P. 
+|s2cid=54977869 
+}}
+*{{cite journal
+ | author=Karachentsev
+ | title=A Catalog of Neighboring Galaxies
+ | journal=Astronomical Journal
+ | date=2004
+ | volume=127
+ | issue=4
+ | pages=2031–2068
+ | url=http://www.iop.org/EJ/abstract/1538-3881/127/4/2031
+ | doi=10.1086/382905
+| bibcode=2004AJ....127.2031K
+ | name-list-style=vanc
+ | author2=I. D.
+ | display-authors=2
+ | last3=Huchtmeier
+ | first3=Walter K.
+ | last4=Makarov
+ | first4=Dmitry I.
+| doi-access=free
+ }}
+*{{cite journal
+ | author=Karachentsev, I. D. 
+ | title=The Local Group and Other Neighbouring Galaxy Groups
+ | journal=Astronomical Journal
+ | date=2005
+ | volume=129
+ | issue=1
+ | pages=178–188
+ | url=http://www.iop.org/EJ/abstract/1538-3881/129/1/178
+ | doi=10.1086/426368
+| bibcode=2005AJ....129..178K
+|arxiv = astro-ph/0410065 | s2cid=119385141
+ }} 
+*{{cite journal
+| author=McConnachie 
+| date=2005 
+| title=Distances and Metallicities for 17 Local Group Galaxies 
+| journal=MNRAS 
+| volume=356 
+| issue=3 
+| pages=979–997 
+| arxiv=astro-ph/0410489 
+| doi=10.1111/j.1365-2966.2004.08514.x
+| bibcode=2005MNRAS.356..979M
+| name-list-style=vanc
+| author2=A. W.
+| display-authors=2
+| last3=Ferguson
+| first3=A. M. N.
+| last4=Ibata
+| first4=R. A.
+| last5=Lewis
+| first5=G. F.
+| last6=Tanvir
+| first6=N.
+| doi-access=free 
+}}
+*{{cite journal
+ | author=Tonry 
+ | title=The SBF Survey of Galaxy Distances. IV. SBF Magnitudes, Colors, and Distances
+ | journal=Astrophysical Journal
+ | date=2001
+ | volume=546
+ | issue=2
+ | pages=681–693
+ | bibcode=2001ApJ...546..681T | doi=10.1086/318301
+|arxiv = astro-ph/0011223
+ | name-list-style=vanc
+ | author2=J. L.
+ | display-authors=2
+ | last3=Blakeslee
+ | first3=John P.
+ | last4=Ajhar
+ | first4=Edward A.
+ | last5=Fletcher
+ | first5=Andre B.
+ | last6=Luppino
+ | first6=Gerard A.
+ | last7=Metzger
+ | first7=Mark R.
+ | last8=Moore
+ | first8=Christopher B. | s2cid=17628238
+ }}
+*{{cite journal
+ |author  = Van den Bergh, S.
+ |date    = April 2000
+ |title   = Updated Information on the Local Group
+ |journal = The Publications of the Astronomical Society of the Pacific
+ |volume  = 112
+ |issue   = 770
+ |pages   = 529–536
+ |doi     = 10.1086/316548
+ |bibcode = 2000PASP..112..529V
+ |arxiv   = astro-ph/0001040
+|s2cid = 1805423
+ }}
+{{Star}}
+{{galaxy}}
+{{Portal bar|Stars|Outer space|Science}}
+
+[[Category:Lists of galaxies|Nearest galaxies]]
+[[Category:Lists of superlatives in astronomy|nearest galaxies]]
+[[Category:Lists by distance|nearest galaxies]]

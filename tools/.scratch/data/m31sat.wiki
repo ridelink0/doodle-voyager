@@ -1,0 +1,565 @@
+{{Short description|Collections of galaxies around Messier 31}}
+[[File:Andromeda Galaxy 2025.png|thumb|The Andromeda Galaxy with M110 at the bottom and M32 to the upper left of the core.]]
+The [[Andromeda Galaxy]] (M31) has [[Satellite galaxy|satellite galaxies]] just like the [[Milky Way]]. Orbiting M31 are at least 35 [[dwarf galaxy|dwarf galaxies]]:<ref>{{Cite web |date=2025-02-27 |title=NASA's Hubble Provides Bird's-Eye View of Andromeda Galaxy's Ecosystem - NASA Science |url=https://science.nasa.gov/missions/hubble/nasas-hubble-provides-birds-eye-view-of-andromeda-galaxys-ecosystem/ |access-date=2025-03-18 |language=en-US}}</ref> the brightest and largest is [[Messier 110|M110]], which can be seen with a basic telescope. The second-brightest and closest one to M31 is [[Messier 32|M32]]. The other galaxies are fainter, and were mostly discovered starting from the 1970s.
+
+On January 11, 2006, it was announced that Andromeda Galaxy's faint companion galaxies lie on or close to a single plane running through the Andromeda Galaxy's center. This unexpected distribution is not obviously understood in the context of current models for [[Galaxy formation and evolution|galaxy formation]]. The plane of satellite galaxies points toward a nearby group of galaxies ([[M81 Group]]), possibly tracing the large-scale distribution of [[dark matter]].
+
+It is unknown whether the [[Triangulum Galaxy]] is a satellite of Andromeda.
+
+==Table of known satellites==
+Andromeda Galaxy's satellites are listed here by discovery (orbital distance is not known). [[Andromeda IV]] is not included in the list, as it was discovered to be roughly 10 times further than Andromeda from the Milky Way in 2014, and therefore a completely unrelated galaxy.
+
+{| class="wikitable sortable" style="text-align:center;font-size:90%"
+|+ '''Andromeda Galaxy's satellites'''
+|-
+! Name
+! [[Galaxy morphological classification|Type]]
+! Distance from [[Sun]]<br>(million [[light-year|ly]])
+! Right Ascension{{efn|name=ra-dec}}
+! Declination{{efn|name=ra-dec}}
+! [[Absolute Magnitude]]<ref name="kilarai10">{{cite journal | bibcode=2010ApJ...711..671K | title=The SPLASH Survey: Internal Kinematics, Chemical Abundances, and Masses of the Andromeda I, II, III, VII, X, and XIV Dwarf Spheroidal Galaxies | last1=Kalirai | first1=Jason S. | last2=Beaton | first2=Rachael L. | last3=Geha | first3=Marla C.|author3-link= Marla Geha | last4=Gilbert | first4=Karoline M. | last5=Guhathakurta | first5=Puragra | last6=Kirby | first6=Evan N. | last7=Majewski | first7=Steven R. | last8=Ostheimer | first8=James C. | last9=Patterson | first9=Richard J. | last10=Wolf | first10=Joe | journal=The Astrophysical Journal | year=2010 | volume=711 | issue=2 | pages=671–692 | doi=10.1088/0004-637X/711/2/671 | arxiv=0911.1998 | s2cid=43188686 }}</ref>
+! [[Apparent magnitude]]
+! [[Mass-to-light ratio]]
+! 3D distance to M31 ([[light-year|kly]])
+! Year<br>discovered
+! Notes
+|- 
+| [[Messier 32|M32]] 
+| dE2
+| 2.48
+| {{RA|00|42|41.877}}
+| {{DEC|+40|51|54.71}}
+| 
+| +8.1
+|
+| 
+| 1749
+| 
+|-
+| [[Messier 110|M110]]
+| dE6 
+| 2.69 
+| {{RA|00|40|22.054}}
+| {{DEC|+41|41|08.04}}
+| −16.5
+| +8.5
+|
+| 
+| 1773
+|
+|- 
+| [[NGC 185]]
+| dE5
+| 2.01
+| {{RA|00|38|57.523}}
+| {{DEC|+48|20|14.86}}
+| 
+| +10.1
+|
+|
+| 1787
+|
+|- 
+| [[NGC 147]]
+| dE5
+| 2.2
+| {{RA|00|33|12.131}}
+| {{DEC|+48|30|32.82}}
+|
+| +10.5
+|
+|
+| 1829
+|
+|- 
+| [[Andromeda I]]
+| [[Dwarf spheroidal galaxy|dSph]]
+| 2.43
+| {{RA|00|45|39.264}}
+| {{DEC|+38|02|35.17}}
+| −11.8
+| +13.6
+| 31 ± 6<ref name="kilarai10" />
+| 
+| 1970
+|
+|- 
+| [[Andromeda II]]{{efn|name=andromeda-ii|text=Martin et al. (2009) gave aliases to several satellite galaxies of the Andromeda Galaxy that are located in Pisces.<ref name="Martin2009">{{cite journal|last=Martin|first=Nicolas F.|author2=McConnachie, Alan W.|author3=Irwin, Mike|author4=Widrow, Lawrence M.|author5=Ferguson, Annette M. N.|author6=Ibata, Rodrigo A.|author7=Dubinski, John|author8=Babul, Arif|author9=Chapman, Scott|author10=Fardal, Mark|author11=Lewis, Geraint F.|author12=Navarro, Julio|author13=Rich, R. Michael|display-authors=8|title=PAndAS' CUBS: Discovery of Two New Dwarf Galaxies in the Surroundings of the Andromeda and Triangulum Galaxies|journal=The Astrophysical Journal|date=1 November 2009|volume=705|issue=1|pages=758–765 |doi=10.1088/0004-637X/705/1/758 |arxiv = 0909.0399 |bibcode = 2009ApJ...705..758M |s2cid=15277245}}</ref> However, the name Pisces II was later used for a different galaxy that is a satellite of the Milky Way,<ref name="Belokurov2010">{{Cite journal|last1=Belokurov|first1=V.|last2=Walker|first2=M. G.|last3=Evans|first3=N. W.|last4=Gilmore|first4=G.|author-link4=Gerard F. Gilmore| last5=Irwin|first5=M. J.|last6=Just|first6=D.|last7=Koposov|first7=S.|last8=Mateo|first8=M.|last9=Olszewski|first9=E.|last10=Watkins|first10=L.|last11=Wyrzykowski|first11=L.|title=Big Fish, Little Fish: Two New Ultra-Faint Satellites of the Milky Way|doi=10.1088/2041-8205/712/1/L103|journal=The Astrophysical Journal|volume=712|pages=L103–L106|year=2010|issue=1 |arxiv=1002.0504|bibcode=2010ApJ...712L.103B|s2cid=29195107 }}</ref> so it is not used here.}}
+| dSph 
+| 2.13 
+| {{RA|01|16|28.136}}
+| {{DEC|+33|25|50.36}}
+| −12.6
+| +13.5
+| 13 ± 3<ref name="kilarai10"/>
+|
+| 1970
+|
+|- 
+| [[Andromeda III]]
+| dSph
+| 2.44
+| {{RA|00|35|31.777}}
+| {{DEC|+36|30|04.19}}
+| −10.2
+| +15.0
+| 19 ± 12<ref name="kilarai10"/>
+|
+| 1970
+|
+<!--|- 
+| [[Andromeda IV]] <sup>*</sup> 
+| [[Irregular galaxy|dIm?]]  
+| 22-24
+| {{RA|00|42|32.798}}
+| {{DEC|+40|34|16.27}}
+| &nbsp;
+| +16.6
+|
+|
+| 1972
+| Previously believed to be a satellite of Andromeda, but disproven in 2014-->
+|- 
+| [[Andromeda V]]
+| dSph
+| 2.52
+| {{RA|01|10|16.952}}
+| {{DEC|+47|37|40.12}}
+| −9.6
+| +15.9
+| 78 ± 50<ref name="collins11">{{cite journal | bibcode=2011MNRAS.417.1170C | title=The scatter about the 'Universal' dwarf spheroidal mass profile: A kinematic study of the M31 satellites and V and VI | last1=Collins | first1=M. L. M. | last2=Chapman | first2=S. C. | last3=Rich | first3=R. M. | last4=Irwin | first4=M. J. | last5=Peñarrubia | first5=J. | last6=Ibata | first6=R. A. | last7=Arimoto | first7=N. | last8=Brooks | first8=A. M. | last9=Ferguson | first9=A. M. N. | last10=Lewis | first10=G. F. | last11=McConnachie | first11=A. W. | last12=Venn | first12=K. | journal=Monthly Notices of the Royal Astronomical Society | year=2011 | volume=417 | issue=2 | page=1170 | doi=10.1111/j.1365-2966.2011.19342.x | doi-access=free | arxiv=1103.2121 | s2cid=6345715 }}</ref>
+|
+| 1998
+|
+|- 
+| [[Pegasus Dwarf Spheroidal Galaxy|Pegasus Dwarf Spheroidal]]<br>(Andromeda VI)
+| dSph
+| 2.55
+| {{RA|23|51|46.516}}
+| {{DEC|+24|34|55.69}}
+| −11.5
+| +14.2
+| 12 ± 5<ref name="collins11" />
+|
+| 1998
+|
+|-
+| [[Cassiopeia Dwarf]]<br>(Andromeda VII) 
+| dSph 
+| 2.49
+| {{RA|23|26|33.321}}
+| {{DEC|+50|40|49.98}}
+| −13.3
+| +12.9
+| 7.1 ± 2.8<ref name="kilarai10"/>
+|
+| 1998
+|
+|-
+| [[Andromeda VIII]]
+| dSph 
+| 2.7 
+| ''{{RA|00|42|06}}''
+| ''{{DEC|+40|37|00}}''
+| 
+| +9.1
+|
+|
+| 2003
+| Tidally disrupting; identification unclear
+|-  
+| [[Andromeda IX]] 
+| dSph  
+| 2.5
+| {{RA|00|52|52.493}}
+| {{DEC|+43|11|55.66}}
+| −8.3
+| +16.2
+|
+| 127.2
+| 2004
+|
+|-
+| [[Andromeda X]]
+| dSph
+| 2.9
+| {{RA|01|06|34.740}}
+| {{DEC|+44|48|23.31}}
+| −8.1
+| +16.1
+| 63 ± 40<ref name="kilarai10"/>
+| 332.7
+| 2005
+|
+|-
+| [[Andromeda XI]]<ref name="martin">{{cite journal | arxiv=astro-ph/0607472 | doi=10.1111/j.1365-2966.2006.10823.x | title=Discovery and analysis of three faint dwarf galaxies and a globular cluster in the outer halo of the Andromeda galaxy | year=2006 | last1=Martin | first1=N. F. | last2=Ibata | first2=R. A. | last3=Irwin | first3=M. J. | last4=Chapman | first4=S. | last5=Lewis | first5=G. F. | last6=Ferguson | first6=A. M. N. | last7=Tanvir | first7=N. | last8=McConnachie | first8=A. W. | journal=Monthly Notices of the Royal Astronomical Society | volume=371 | issue=4 | pages=1983–1991 | doi-access=free | bibcode=2006MNRAS.371.1983M | s2cid=20171599 }}</ref>
+| dSph
+|
+| ''{{RA|00|46|20}}''
+| ''{{DEC|+33|48|05}}''
+| −7.3
+|
+| 
+| 
+| 2006
+|
+|-
+| Andromeda XII<ref name="martin"/>
+| dSph
+|
+| ''{{RA|00|47|27}}''
+| ''{{DEC|+33|22|29}}''
+| −6.4
+|
+| 
+| 
+| 2006
+|
+|-
+| Andromeda XIII<ref name="martin"/> (Pisces III)
+| dSph
+| 
+| {{RA|00|51|49.555}}
+| {{DEC|+33|00|31.40}}
+| −6.9
+|
+|
+|
+| 2006
+|
+|-
+| [[Andromeda XIV]]<ref name="seds">[http://spider.seds.org/spider/LG/Add/lg_dis.html Discovery of the Local Group Galaxies]</ref> (Pisces IV)
+|  dSph
+| 
+| {{RA|00|41|35.219}}
+| {{DEC|+29|41|45.87}}
+| −8.3
+| 
+| 102 ± 71<ref name="kilarai10"/>
+|
+| 2007
+|
+|-
+| Andromeda XV<ref name="seds"/>
+| dSph
+| 
+| ''{{RA|01|14|18.7}}''
+| ''{{DEC|+38|07|02.9}}''
+| −9.4
+|
+|
+|
+| 2007
+|
+|-
+| Andromeda XVI<ref name="seds"/> (Pisces V)
+| dSph
+| 2.143<ref name="monelli">{{cite journal | doi=10.3847/0004-637X/819/2/147 | title=The Islands Project. I. Andromeda Xvi, an Extremely Low Mass Galaxy Not Quenched by Reionization | year=2016 | last1=Monelli | first1=Matteo | last2=Martínez-Vázquez | first2=Clara E. | last3=Bernard | first3=Edouard J. | last4=Gallart | first4=Carme | last5=Skillman | first5=Evan D. | last6=Weisz | first6=Daniel R. | last7=Dolphin | first7=Andrew E. | last8=Hidalgo | first8=Sebastian L. | last9=Cole | first9=Andrew A. | last10=Martin | first10=Nicolas F. | last11=Aparicio | first11=Antonio | last12=Cassisi | first12=Santi | last13=Boylan-Kolchin | first13=Michael | last14=Mayer | first14=Lucio | last15=McConnachie | first15=Alan | last16=McQuinn | first16=Kristen B. W. | last17=Navarro | first17=Julio F. | journal=The Astrophysical Journal | volume=819 | issue=2 | page=147 | arxiv=1603.00625 | bibcode=2016ApJ...819..147M | s2cid=32263075 | doi-access=free }}</ref>
+| {{RA|00|59|29.843}}
+| {{DEC|+32|22|27.96}}
+| −9.2
+|
+|
+| 580.6
+| 2007
+|
+|-
+| [[Andromeda XVII]]<ref name="seds"/>
+| dSph
+|
+| ''{{RA|00|37|07}}''
+| ''{{DEC|+44|19|20}}''
+| −8.5
+|
+|
+| 313.1
+| 2008
+|
+|-
+| [[Andromeda XVIII]]<ref name="seds"/>
+| dSph/Sm
+| 
+| {{RA|00|02|15.184}}
+| {{DEC|+45|05|19.78}}
+| 
+|
+|
+| 515.3
+| 2008
+|
+|-
+| [[Andromeda XIX]]<ref name="seds"/>
+| dSph
+|
+| ''{{RA|00|19|32.1}}''
+| ''{{DEC|+35|02|37.1}}''
+| −9.3
+|
+|
+| 
+| 2008
+|
+|-
+| [[Andromeda XX]]<ref name="seds"/>
+| dSph
+|
+| {{RA|00|07|30.530}}
+| {{DEC|+35|07|45.94}}
+| −6.3
+| 
+|
+| 512.1
+| 2008
+|
+|-
+| [[Andromeda XXI]]<ref name="seds"/>
+| dSph
+|
+| ''{{RA|23|54|47.7}}''
+| ''{{DEC|+42|28|15}}''
+| −9.9
+|
+|
+| 472.9
+| 2009
+|
+|-
+| [[Andromeda XXII]]<ref name="seds"/>
+| dSph
+|
+| ''{{RA|00|27|40}}''
+| ''{{DEC|+28|05|25}}''
+| −7.0
+|
+|
+| 910
+| 2009
+|
+|-
+| [[Andromeda XXIII]]<ref name="seds"/>
+| dIrr
+|
+| {{RA|01|29|21.944}}
+| {{DEC|+38|43|05.97}}
+|
+|
+|
+| 427.3
+| 2011
+|
+|-
+| [[Andromeda XXIV]]<ref name="seds"/>
+|
+|
+| ''{{RA|01|18|30}}''
+| ''{{DEC|+46|21|58}}''
+|
+|
+|
+| 401.2
+| 2011
+|
+|-
+| [[Andromeda XXV]]<ref name="seds"/>
+|
+|
+| ''{{RA|00|30|08.9}}''
+| ''{{DEC|+46|51|07}}''
+|
+|
+|
+| 319.6
+| 2011
+|
+|-
+| [[Andromeda XXVI]]<ref name="seds"/>
+|
+| 
+| {{RA|00|23|45.6}}
+| {{DEC|+47|54|58}}
+|
+|
+|
+| 489.2
+| 2011
+|
+|-
+| [[Andromeda XXVII]]<ref name="seds"/>
+|
+|
+| ''{{RA|00|37|27.1}}''
+| ''{{DEC|+45|23|13}}''
+|
+|
+|
+| 
+| 2011
+| Tidally disrupted<ref>{{cite journal|doi=10.1093/mnras/stz2529|arxiv=1909.09661|bibcode=2019MNRAS.490.2905P|title=A dwarf disrupting - Andromeda XXVII and the North West Stream|author1=Preston, Janet|author2=Collins, Michelle L. M.|author3=Ibata, Rodrigo A.|author4=Tollerud, Erik J.|author5=Rich, R. Michael|author6=Bonaca, Ana|author7=McConnachie, Alan W.|author8=Mackey, Dougal|author9=Lewis, Geraint F.|author10=Martin, Nicolas F.|author11=Peñarrubia, Jorge|author12=Chapman, Scott C.|author13=Delorme, Maxime|journal=Monthly Notices of the Royal Astronomical Society|year=2019 |volume=490|issue=2|pages=2905–2917|doi-access=free }}</ref>
+|-
+| [[Andromeda XXVIII]]<ref name=ncm2011>{{Citation |last=Moore |first=Nicole Casal |date=7 Nov 2011 |title=Newly found dwarf galaxies could help reveal the nature of dark matter |work=News Service |publisher=University of Michigan |url=http://www.ns.umich.edu/new/releases/20040-newly-found-dwarf-galaxies-could-help-reveal-the-nature-of-dark-matter |access-date=10 Dec 2011 }} ([http://www.rdmag.com/News/2011/11/General-Science-Astrophysics-Dwarf-Galaxies-Could-Help-Reveal-The-Nature-Of-Dark-Matter/ reprinted in ''R&D Magazine''])</ref>
+| dSph
+|
+| {{RA|22|32|41.449}}
+| {{DEC|+31|12|59.10}}
+| &minus;8.8<ref>{{cite journal|doi=10.3847/1538-4357/ad76a2|doi-access=free |title=Stellar Metallicities and Gradients in the Faint M31 Satellites Andromeda XVI and Andromeda XXVIII |date=2024 |last1=Fu |first1=Sal Wanying |last2=Weisz |first2=Daniel R. |last3=Starkenburg |first3=Else |last4=Martin |first4=Nicolas |last5=Collins |first5=Michelle L. M. |last6=Savino |first6=Alessandro |last7=Boylan-Kolchin |first7=Michael |last8=Côté |first8=Patrick |last9=Dolphin |first9=Andrew E. |last10=Longeard |first10=Nicolas |last11=Mateo |first11=Mario L. |last12=Mercado |first12=Francisco J. |last13=Sandford |first13=Nathan R. |last14=Skillman |first14=Evan D. |journal=The Astrophysical Journal |volume=975 |issue=1 |page=2 |arxiv=2407.04698 |bibcode=2024ApJ...975....2F }}</ref>
+|
+|
+|
+| 2011
+|
+|-
+| [[Andromeda XXIX]]<ref name=ncm2011/>
+| dIrr
+| 
+| {{RA|23|58|55.440}}
+| {{DEC|+30|45|22.09}}
+|
+|
+|
+| 636
+| 2011
+|
+|-
+| [[Andromeda XXX]] (Cassiopeia II)<ref name=McConnachie>{{Cite journal |last1=McConnachie |first1=Alan W. |year=2012 |title=The observed properties of dwarf galaxies in and around the Local Group |journal=The Astronomical Journal |volume=144 |issue=1 |pages=4 |arxiv=1204.1562 |doi=10.1088/0004-6256/144/1/4|bibcode=2012AJ....144....4M |s2cid=118515618 |url=http://www.astro.uvic.ca/~alan/Nearby_Dwarf_Database.html }}</ref>
+| dSph?
+| 
+| {{RA|00|36|34.9}}
+| {{DEC|+49|38|48}}
+|
+|
+|
+|
+| 
+| 
+|-
+| [[Andromeda XXXI]] (Lacerta I)<ref name=McConnachie/>
+| dSph?
+| 
+| {{RA|22|58|16.3}}
+| {{DEC|+41|17|28}}
+|
+|
+|
+|
+| 2013
+| 
+|-
+| [[Andromeda XXXII]] (Cassiopeia III)<ref name=McConnachie/>
+| dSph?
+| 2.74<!-- 839 kpc --><ref name=Rhode/>
+| {{RA|00|35|59.4}}
+| {{DEC|+51|33|35}}
+|
+|
+|
+| 508<!-- 156 kpc --><ref name=Rhode>{{cite journal | doi=10.3847/1538-3881/acf859 | doi-access=free | title=Exploring the Structures and Substructures of the Andromeda Satellite Dwarf Galaxies Cassiopeia III, Perseus I, and Lacerta I | date=2023 | last1=Rhode | first1=Katherine L. | last2=Smith | first2=Nicholas J. | last3=Crnojevic | first3=Denija | last4=Sand | first4=David J. | last5=Lambert | first5=Ryan A. | last6=Vesperini | first6=Enrico | last7=Smith | first7=Madison V. | last8=Janowiecki | first8=Steven | last9=Salzer | first9=John J. | last10=Karunakaran | first10=Ananthan | last11=Spekkens | first11=Kristine | journal=The Astronomical Journal | volume=166 | issue=5 | page=180 | arxiv=2309.01045 | bibcode=2023AJ....166..180R }}</ref>
+| 2013
+| 
+|-
+| [[Andromeda XXXIII]] (Perseus I)<ref name=McConnachie/>
+| dSph?
+| 2.41<!-- 738 kpc --><ref name=Rhode/>
+| {{RA|03|01|23.6}}
+| {{DEC|+40|59|18}}
+|
+|
+|
+| 1,140<!-- 351 kpc --><ref name=Rhode/>
+| 2013
+| 
+|-
+|[[Andromeda XXXVI]]
+|dSph
+|
+|01 16 39.91
+| +47 39 13.3
+|
+|
+|64 ±30
+|388<!--119 kpc-->
+|2026
+|A ultra-faint galaxy. Possibly the second most compact satellite of Andromeda.<ref>{{cite journal |last1=Sakowska |first1=Joanna D. |title=Andromeda XXXVI: discovery of a new ultra-faint dwarf galaxy towards M31 |date=2026-03-30 |url=http://arxiv.org/abs/2603.28492 |access-date=2026-04-07 |arxiv=2603.28492 |last2=Martínez-Delgado |first2=David |last3=Collins |first3=Michelle L. M. |last4=Monelli |first4=Matteo |last5=Donatiello |first5=Giuseppe |last6=Doliva-Dolinsky |first6=Amandine |last7=Santos-Santos |first7=Isabel M. E. |journal=Astronomy and Astrophysics |volume=710 |pages=A342 |doi=10.1051/0004-6361/202660151  |doi-access=free|bibcode=2026A&A...710A.342S }}</ref>
+|-
+| [[Tidal Stream Northwest]]<br> (Tidal Stream E and F)<ref name="raja">[http://www.ucolick.org/~raja/aas_prs_rls_010610/ New tidal streams found in Andromeda reveal history of galactic mergers]</ref>
+| 
+| 
+| ''{{RA|00|20|00}}''
+| ''{{DEC|+46|00|00}}''
+|
+|
+| 
+|
+| 2009
+|
+|-
+| [[Tidal Stream Southwest]]<ref name="raja"/>
+|
+| 
+| ''{{RA|00|30|00}}'' 
+| ''{{DEC|+37|30|00}}''
+|
+|
+| 
+|
+| 2009
+|
+|-
+| [[Pegasus V galaxy]] (Peg V, Andromeda XXXIV)
+| d
+| {{convert|682|kpc|Mly|abbr=on}}
+| {{RA|23|18|27.8}}±0.1
+| {{DEC|+33|21|32}}±3
+| −6.3
+| 
+| 
+| {{convert|245|kpc|kly|abbr=on|disp=number}}
+| 2022
+| <ref name="scinews-20220701-10960">{{cite news |url= http://www.sci-news.com/astronomy/pegasus-v-10960.html |title= Pegasus V: New Ultra-Faint Dwarf Galaxy Spotted in Outskirts of Andromeda |date= 1 July 2022 |publisher= Sci-News }}</ref><ref name=Eurekalert-20220630-957530>{{cite news |url= https://www.eurekalert.org/news-releases/957530 |title= New fossil galaxy discovery could answer important questions about the history of the universe |date= 30 June 2022 |author= University of Surrey |work= EurkAlert! |publisher= AAAS }}</ref><ref name="arXiv-2204.09068">{{cite journal |arxiv=2204.09068 |last1=Collins |first1=Michelle L. M. |last2=Charles |first2=Emily J. E. |last3=Martínez-Delgado |first3=David |last4=Monelli |first4=Matteo |last5=Karim |first5=Noushin |last6=Donatiello |first6=Giuseppe |last7=Tollerud |first7=Erik J. |last8=Boschin |first8=Walter |title=Pegasus V/Andromeda XXXIV–a newly discovered ultrafaint dwarf galaxy on the outskirts of Andromeda |journal=Monthly Notices of the Royal Astronomical Society: Letters |year=2022  |volume=515 |issue=1 |pages=L72–L77 |doi=10.1093/mnrasl/slac063 |doi-access=free |bibcode=2022MNRAS.515L..72C }}</ref>
+|-
+|[[Andromeda XXXV]]<ref>{{Cite journal |last1=Arias |first1=Jose Marco |last2=Bell |first2=Eric F. |last3=Gozman |first3=Katya |last4=Jang |first4=In Sung |last5=Stockton |first5=Saxon |last6=Gnedin |first6=Oleg Y. |last7=D’Souza |first7=Richard |last8=Monachesi |first8=Antonela |last9=Bailin |first9=Jeremy |last10=Nidever |first10=David |last11=de Jong |first11=Roelof S. |date=2025-03-11 |title=Andromeda XXXV: The Faintest Dwarf Satellite of the Andromeda Galaxy |journal=The Astrophysical Journal Letters |volume=982 |issue=1 |pages=L3 |doi=10.3847/2041-8213/adb433 |doi-access=free |bibcode=2025ApJ...982L...3A |issn=2041-8205|arxiv=2502.19516 }}</ref>
+|
+|3.02<!-- 927 kpc -->
+| {{RA|00|26|38.6}}
+| {{DEC|+40|06|29.3}}
+| -5.2
+|
+|
+|{{convert|158|kpc|kly|abbr=on|disp=number}}<!-- 158 kpc -->
+|2025
+|
+|-
+| [[Triangulum Galaxy]]<br>(M33){{efn|name=triangulum}}
+| SA(s)cd
+| 2.59
+| {{RA|01|33|50.883}}
+| {{DEC|+30|39|36.54}}
+|
+| +6.27
+|
+| 750<ref>{{Cite web|title=Messier Object 33|url=https://www.messier.seds.org/m/m033.html|access-date=2021-05-21|website=www.messier.seds.org|archive-date=2023-06-29|archive-url=https://web.archive.org/web/20230629151748/http://www.messier.seds.org/m/m033.html|url-status=dead}}</ref>
+| 1654?
+| Its relation to Andromeda is uncertain.
+|-
+|}
+{{notelist|refs=
+{{efn|name=ra-dec|text=RA and DEC values marked in ''italics'' are rough estimates.}}
+{{efn|name=triangulum|text=It is uncertain whether it is a companion galaxy of the [[Andromeda Galaxy]].}}
+}}
+
+==See also==
+* [[Satellite galaxies of the Milky Way]]
+* [[List of nearest galaxies]]
+* [[Local Group]]
+
+==References==
+{{Reflist}}
+
+==External links==
+*[https://web.archive.org/web/20060216104017/http://www.astro.unibas.ch/press/satplane/M31_AAS207_PR06.html Andromeda's thin sheet of satellites – Dark matter filiments or galaxtic cannibalism?]
+*[http://www.space.com/scienceastronomy/060123_andromeda_plane.html Strange Setup: Andromeda's Satellite Galaxies All Lined Up]
+{{Andromeda galaxy}}
+
+[[Category:Local Group]]
+[[Category:Andromeda Subgroup|*]]
+[[Category:Andromeda (constellation)]]
+[[Category:Andromeda Galaxy]]

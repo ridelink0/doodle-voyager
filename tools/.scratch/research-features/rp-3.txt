@@ -1,0 +1,909 @@
+August 9th, 2026 is No Man's Sky 10th Anniversary. Here are 16 updates that would finally achieve Hello Game's vision of a living, breathing universe. : r/NoMansSkyTheGame
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/august_9th_2026_is_no_mans_sky_10th_anniversary/
+
+Skip to main content
+August 9th, 2026 is No Man's Sky 10th Anniversary. Here are 16 updates that would finally achieve Hello Game's vision of a living, breathing universe. : r/NoMansSkyTheGame
+Sign Up
+Log In
+Expand user menu
+Go to NoMansSkyTheGame
+r/NoMansSkyTheGame
+•
+2y ago
+Few-Lime-7234
+August 9th, 2026 is No Man's Sky 10th Anniversary. Here are 16 updates that would finally achieve Hello Game's vision of a living, breathing universe.
+Discussion
+
+No Man's Sky has clearly been a labor of love by Hello Games for the last 9 years.
+
+After 30+ free updates it is now an excellent game that I would recommend to anyone.
+
+Still, it isn't quite the "living, breathing universe" the Hello Games team imagined.
+
+How could any game be?
+
+Here are the 16 updates I think could change that.
+
+1. Creatures that Make Exploration Memorable and Rewarding.
+
+1. Improved creature animations, behavior, and ecology.
+
+Despite some subtle predator/prey mechanics, creatures still roam around aimlessly on whatever terrain they happen to exist on. Their design, actions, and behavior is unrelated to the planet they exist on.
+
+This creature variety often breaks immersion and makes planets feel largely similar - a feline quadruped and giant floating tentacle creature aimlessly walking around the same rocky terrain.
+
+What if instead, creatures were generated to feel like part of an ecology? Creatures could be seen interacting with their environment by grazing on grassy pastures, eating certain plants, sleeping in burrows, climbing trees, traveling as a herd through trenches, and knocking down trees?
+
+2. Deeper Interactions with creatures
+
+Much of the action in No Man's Sky still feels like "reaching a destination" and "pressing a button". Adding interactions to spend more time in the world and less time navigating through menus. Encounters like:
+
+- Finding a wounded creature and scanning to see what's wrong. This could lead to a) finding a plant nearby that can be used to heal it, developing the cure and feeding it to the creature. b) leading you to the domain of the dangerous predator who killed it.
+
+- Attaching a tracker to creatures to monitor their behavior and map out their activity in the area. This could be considered a deep creature scan, and could net rewards like leading you to a special resource deposit, a river where creatures are hunting fish, drinking or cooling off; a crashed freighter, or abandoned building that the creatures are using for food or as a home etc.
+
+- Getting attacked by creatures with dynamic and interesting movement; like a flock of flying creatures swarming and biting you, slimy creatures latching onto you, quadrupeds charging or leaping at you, or larger predators hunting you and being able to hide in tall grass or trick them into going a different direction.
+
+- A creature stealing your multi-tool or another item from you and running away, and you having to chase it to get it back. You would have to press the interact button quickly to hold onto your multi-tool as it tries to pull it away.
+
+3. Immersive Companions
+
+Adopting a creature as a companion and riding it currently totally changes the creature's original behavior. Companion animations and behavior would benefit from being much more natural (especially while riding), and process of getting companions could be a lot deeper.
+
+For example:
+
+- Rather than clicking "adopt as companion", you had to first tame it by building trust with it, sneaking up on it and riding it, finding out what food it likes to eat and feeding it, or even having to defend yourself against it. Then after adopting it, getting it to actually follow you, and listen to you while riding could take time, perhaps even throwing you off when it gets startled. Creatures could have varying degrees of difficulty to adopt as companions based on their speed stats.
+
+- The current riding animations break immersion, and options are limited. Improving this mechanic could allow more control over a companion as you build trust and make riding a regular creature vs riding a companion a much different experience.
+
+4. Boss-Like Creature Encounters
+
+There are already some “boss-like” creature encounters that have been added; Worms the Void Mother, and the Fishing Boss. The large beetles are the better of the two, but both need quite a bit of work to make the combat more interesting, challenging, and fun. In addition to the combat itself being improved, a huge issue for me here is the lack of surprise, excitement, and adventure.
+
+I keep thinking about the scene from Star Trek (2009) where Kirk lands on an ice planet, and a huge creature comes up from underneath the ice without warning.
+
+I can seek out a vile brood. I can seek out an abysmal horror. But I have never been on a planet and seen a fearsome monster come up from the ground, plow through the forest, attack a building or settlement, attack wandering NPCs, or a flying monster swoop in from the top of a mountain when you get too close to it's domain.
+
+Adding a few land, flying, cave, water, and deep sea boss-like creatures with procedural variations that come find you - rather than being a programmed sequence - would go a long way to make exploration exciting, memorable, and satisfying. 
+
+TLDR: Creatures need improved procedural design reflecting their planet, more natural animations and behavior, and more interesting and exciting player interactions.
+
+2. Space Battles that Make the Universe Feel Alive
+
+Space Battles right now follow 3 formats:
+
+Emerge from hyperspace to pirate fighters attacking a civilian freighter.
+
+Emerge from hyperspace to a pirate freighter attacking a civilian freighter
+
+Destroy enough Sentinel fighters and to trigger a Sentinel freighter to emerge from hyperspace.
+
+These are great, but all follow a predictable pattern. It would make the universe feel more alive, if battles popped up in space and in planet atmospheres based on the conflict level of the system rather than a very specific event. Systems with high conflict levels = higher chance of there being space battles in the system. And instead of the same basic format, add a new variety of space battle types:
+
+1. Large scale space battles with hundreds of ships. 
+
+This already happened in a glitch, but it was 100 vs 1 instead of a large number of both fighters and freighters each on opposing sides.
+
+2. Faction vs Faction battles. Original gameplay trailers for No Man's Sky showed factions battling against other faction instead of only pirates. In the clip below, another kind of frigate warps in during mid-battle. Perhaps a triumphant win for an opposing faction could even result in the destruction of a space station for it to then be rebuilt as a new space station controlled by the winning faction.
+
+3. Battles over planets for control of buildings, settlements, and resources. As seen in the original trailer, a traveling frigate is attacked by ships within a planet's atmosphere. While you can now fight other ships within a planet's atmosphere, battles between frigates do not exist. Battling for planets could result in pirates or other factions controlling settlements, trade routes and resources from the planet.
+
+4. Frigate Escort
+
+Since the Orbital update, you can now receive messages from your fleet to assist with one-off assignments. While I still have yet to receive one of these myself, players report that the missions consist of choosing between two text options, collecting resources or even warping into protect your frigate. This last mission sounds particularly exciting.
+
+But what if you could join your frigates on expeditions? For example, what if you could accompany your frigate as an escort as it jumps from one planet to another, scanning and collecting resources? This could add a fast-paced component and a sense of speed the game is missing, as you participate in scans and fend off pirates while moving quickly from one planet to the next - visually looking a lot like what was seen in the original fast-paced gameplay trailers.
+
+5. Fleet Battles
+
+Despite having a massive fleet, you currently can't use your ships to enter any kind of space battle at your own command. What if you could warp into a target system with your entire fleet to battle for control of a system or planet - or protect a space station that is under attack? Being able to see each of your ships warp one at a time and then you follow them into battle. 
+
+6. Ship Boarding
+
+Currently, you can attack any freighter you want to - take it to near destruction - and then board it while the crew simply stands there and lets you board. You can speak to them business as usual and even offer to buy their ship.
+
+It would make the universe feel more alive if NPCs responded to your attacks on the ship. What if when boarding an enemy vessel (either one you're attacking or the vessel of a faction you have an extremely low reputation with) the crew was in attack formation? What if the freighter ship interiors were updated so you had to sneak or fight your way through security to disable the ship from the inside?
+
+Adding boarding mechanics could add depth to space battles and give you more choices for how you want to engage in them.
+
+7. Space POIs
+
+Each time you warp into any new system you have several Points of Interest, but really only two you can actually explore; A) Space Station B) Planets.
+
+It could add a lot of immersion to the game to add "anomalies" to the system that you can explore, rather than confronting you with them through the pulse drive "anomaly" mechanic - only for them to disappear one moment later.
+
+Some possible POIs that could exist in a space system:
+
+- A derelict freighter orbiting near a planet
+
+- Space whales moving through the system and then warping through a black hole which you could follow them through
+
+- Space battles happening in different parts of the system.
+
+- Freighters & frigates crashing down to planets below
+
+- Small privately-owned space stations that orbit planets that you could land on and may be operated by a few NPCs
+
+8. Improving Current Space Battles.
+
+Space combat on the whole could benefit from a sense of speed, challenge, and variety. Squadron A.I could be improved to be more effective, and enemies like the Pirate Dreadnought could be tweaked to be more engaging. Unfortunately, all you have to do to defeat a pirate dreadnought is move extremely slowly through the two trenches, destroying each generator and the component that pops up after it. It's the only effective way to win - but it also isn't very fun.
+
+TLDR: Space battles should reflect the conflict level of the system and come in more varieties. They should have a better sense of speed, challenge, and meaningful choice.
+
+3. Deeper NPC Interactions That Bridge Various Isolated Aspects of the Game and add Surprise to Exploration
+
+Adding interesting NPC encounters could be an excellent way to bridge different aspects of No Man’s Sky together. It could help bring more game-play mechanics to the player simply through exploration, rather than the player having to seek out a gameplay feature by following one pre-programmed step after another.
+
+1. Diverse NPC Encounters
+
+- Meeting an NPC on a skiff who is fishing. In this interaction you could learn how to get the fishing rod technology, get fishing tips, get the location of a great fishing spot, or get the location of a settlement on the planet where you can meet up with him later to sell a requested fish. 
+
+- An interaction where you meet an NPC stranded in the wreckage of a crashed ship on the ocean and help get them to the nearest settlement or space station
+
+- An interaction where a group of NPCs are travelling towards a settlement or another building, but the path ahead is filled with dangerous predators and you can escort them to the Settlment by defending against the predators.
+
+2. Space Station Encounters
+
+- Two NPCs arguing on a Space Station. You can learn why they are arguing, take sides, bribe them, diplomatically end the argument, or engage in hand-to-hand combat, all affecting your reputation. (Maybe DerZappes could finally punch that one dude: https://www.reddit.com/r/NoMansSkyTheGame/comments/1j1pm6r/please_sean_let_me_punch_this_dude_on_my/ )
+
+- Recurring Procedurally Generated NPCs. Maybe after rescuing an NPC from a dangerous creature, he later comes up to you at a Space Station and gives you a reward to thank you.
+
+- Going to the Mission Agent at a Space Station and choosing a mission feels programmatic. Instead, being able to talk to random NPCs aboard a space station, have interesting interactions, learn rumors and pick up possible building coordinates could be a lot more exciting and support more exploration than simply going to a mission agent; "I heard from another mechanic that a freighter crashed on Talto Alpha IV. I could give you the coordinates...for a price."
+
+Perhaps we could replace the cartographer and mission agent altogether with diverse and varied NPCs wandering around the space station - then exploring each station and talking to the NPCs there could make each space station more unique, exploring it more fun, and more rewarding then going to a mission agent.
+
+3. Deep Crew Interactions
+
+Similarly to speaking with NPCs on space stations, what if you could check in with your different crew members - especially your squadron members. What if they had requests for you and as you developed your relationship with them, you could also improve their stats?
+
+You could have the choice to upgrade their weapons, shielding or speed, give them a certain attack pattern, or outfit them with a specific weapon. The more you interact with them and use them as part of your squadron, the more useful they become. Maybe you could even give them a "nickname" and alter their appearance, or the appearance of their ships.
+
+Interactions with frigate captains could be similar. By interacting with them you could improve their stats and lead to other customization options to really flesh out this entire mechanic.
+
+TLDR: NPCs are under utilized. They could be used to allow the player to engage with all kinds of different aspects of the game while simply exploring - instead of having to decide of gameplay element and then seek it out. Squadrons could likewise be improved with added depth.
+
+Side note: Where are all the children and families? Currently every single NPC presents as a single adult traveling by themselves. It would liven up the universe to see NPCs traveling in groups, as couples, as families, Gek taking care of their young, etc
+
+4. Immersive Weather and Crash Landings that add a Survival Element to Spaceships and another Reason to Use Exocrafts
+
+Flying through an intense storm where your visibility is reduced is a fun experience. But since No Man’s Sky is a Survival game, it would be more immersive if storms affected your ship beyond just limiting visibility.
+
+- Strong winds could make your ship more difficult to control. Counter-steer and maneuver to tame the challenge or end up spiraling out of control and crashing on the planet below. 
+
+- New animations and effects could make crash landings feel immersive and thrilling. After a crash landing, one or more ship technologies will likely need repair > a perfect fit for the gameplay loop.
+
+Ships being able to be struck by lighting and catching on fire, hit by floating rocks, or freezing and losing control in ice storms would all make the game much more immersive and add an exciting survival mechanic to exploration.
+
+The Ornithopter entering a sandstorm in Dune (2021) to lose homing missiles, and then losing control would be a perfect Sci-fi moment for No Man’s Sky. 
+
+(Side Note: We have Worms, can we get localized Sandstorms and Ornithopters?)
+
+Crash landings would add an interesting mechanic not just for player ships - but for larger frigates and freighters destroyed within or near a planet’s atmosphere. 
+
+A crashed freighter could then become a crashed freighter site after it lands.
+
+Knowing a freighter destroyed in combat (or by a space storm, or space whales, or an asteroid belt) could then plummet to a planet below, crash magnificently, and then become a crashed freighter site to explore would make the universe feel alive.
+
+5. Choices that have Far-Reaching Consequences Across the Universe
+
+"The game is all about choices" - Sean Murray
+
+While No Man's Sky offers the player a multitude of choices - those choices generally do not result in meaningful change, consequences, or impact on the world around you.
+
+Even with all the money in the galaxy, owner of a massive starfleet, overseer of a Settlement, and high reputation with factions, the impact of my actions on the world around me often feels empty.
+
+1. System Take Over
+
+An interesting way to help create a tangible impact on the universe of No Man’s Sky could be a “System Take Over” Mechanic
+
+Here's how it could work:
+
+In systems with a conflict status of “At War”, factions may engage in battles for control of the system. This could be Korvax battling for control of a Gek system, Pirates battling for control of a Vykeen system, etc. I
+
+If the opposing faction wins the battle, the space station is destroyed and reconstructed. If for example, Korvax win the battle against the Gek in a Gek system, it would then become a Korvax system and a Korvax Space Station.
+
+The player would be able to pick a side and participate in battles like these, making the difference in the outcome of the battle.
+
+Imagine one-by-one being able to look at the galaxy map and see all the systems near by be taken over by one faction. A faction that you can then benefit from now that they control the trade routes, settlements, and resources in that system. (Perhaps guilds could even be created or joined by the players and these factions could win space stations through this mechanic.)
+
+2. Deeper Reputation
+
+This could be improved further by deepening the reputation mechanic.
+
+Some ideas:
+
+If your reputation drops low enough with any given faction:
+
+If you are scanned by a Sentinel while in an extremely low reputation faction-controlled system, the faction could send enemy ships out to attack you. Losing could mean losing your ship
+
+You could get a bounty on your head with one or more factions, and then be hunted throughout the galaxy in populated systems, whether in space, planet atmosphere, or on the ground.
+
+Merchants at buildings and stations controlled by the low-reputation faction could refuse to do business with you, or have you escorted from the premises.
+
+On the other hand, if your reputation raises high enough with a given faction:
+
+You could be invited to a special faction capital ship where you meet with high-ranking members of the faction and take on special more complicated missions with better rewards than you find on Space Stations.
+
+You get bonuses to Settlements owned with a high-rep faction-controlled system, such as better resource gains.
+
+Just like your squadron, you could request backup from faction ships when engaged in a space battle, and faction ships could come help defend your Settlement from attacks. 
+
+3. Settlements (and/or Bases) Contribute to System Control
+
+A System Control Mechanic could also place more importance on the role of Settlements.
+
+Settlements and/or Bases could be equipped with Station Shielding technology that each adds a protective layer to the system's space station. Opposing factions would need to first raid any settlements in the system and disable the shield technology before the Space Station would be vulnerable.
+
+6. Online Co-Operative Interactions that Give You A Reason to Explore the Universe with Friends.
+
+It's currently difficult to know what to do when exploring the galaxy with friends. Multiplayer game-play sessions typically consist of parallel play rather than cooperative play.
+
+Adding co-operative mechanics into the core gameplay could give you a reason to explore with friends instead of solo.
+
+Some examples:
+
+1. Hostile Planetary Survival
+
+The most severe of storms could require players to shelter in place and work together to share resources, repair base parts, all while defending against hostile creatures or sentinels.
+
+2. Collaborative Ship Piloting (+ Ship Interiors)
+
+Players could work together to control a ship and solve hazards. One player pilots while the other controls the weapons. Perhaps they have to work together to put out fires or environmental leaks.
+
+3. Exploring Derelict Freighters & Abandoned Buildings
+
+Players could work together to fight against dangerous enemies in new varieties of derelict freighters and abandoned buildings.
+
+4. Fleet Battles
+
+In larger space battles, players could work together with their individual squadrons to coordinate their attacks on enemy ships, freighters, incoming combat frigates, and buildings that house Station Shield generators to work together to win climatic battles.
+
+7. Immersive Audio that Makes Planets & Systems Feel Unique
+
+A lot of the universe just sounds the same.
+
+The new Gas Giants look visually incredible, but the giant storms and floating boulders don't make any noise at all as you fly by or crash into them. This takes away from the beauty and intensity of these new worlds.
+
+Have you heard the audio clips of the sounds of Mars from that one clip? Honestly, the way it sounded felt more alien than the way it looked.
+
+Sounds of Mars (NASA, 2021)
+
+Some new creature sounds, new NPC sounds, new impact / collision sounds, new procedural music scores, new sound effects (I'm looking at you, jetpack sounds) and new planetary hums would all go along way to make the universe feel alive.
+
+NOTE: Also, small gripe, if we could turn off "Units Received & Temperature Level Rising etc" I would be immensely grateful.
+
+8. More Derelict Freighter Variety with Dramatic Endings
+
+Derelict freighters have been one of my favorite editions and are a great way to breakup the core gameplay.
+
+Even though the variety is small, they are a still a ton of fun to walk through. 10/10 atmosphere.
+
+Derelict freighters could be greatly improved and come in more procedural varieties than ever before, featuring:
+
+1. New Challenging Enemies These "space dungeons" would benefit from new enemy varieties with unique attacks, unique weaknesses and varying challenge levels - including pirates boarding the vessel to loot it while you're still onboard.
+
+2. New Interesting Lore New ship logs could add interesting lore to the universe and come in more varieties than before
+
+3. Thrilling Ending Sequences Thrilling new sequences, such as finding surviving crew members and bringing them to safety, a self-destruct sequence requiring you to urgently exit the freighter before it explodes, a boss-like creature on one of the floors, or having to launch an escape pod to the planet below.
+
+9. Sprawling Settlements With More Control, Deeper NPC Interactions, In-Game Impact
+
+Settlements currently give you limited control of the layout and production of the settlement and feature simplistic choices. The entire mechanic is largely isolated from the rest of the game and only requires you to interact to choose option A or option B.
+
+More building types and control over the kind of resources your Settlement produces, along with more dynamic NPC interactions would make engaging with part of the game more worthwhile.
+
+It could be integrated into more parts of the game as well:
+
+- When you meet an NPC on a space station or by helping them in an encounter, you could have the option to invite them to your settlement.
+
+- Settlements could have special hubs for your fleet crew and squadron. Your squadron and other crew members could visit the Settlement when off-duty.
+
+- Defense technology like turrets & shielding could ward off sentinel, hostile creature, and pirate attacks while you're away.
+
+- Bustling settlements could serve as trade routes between other settlements and space stations. NPC ships could travel from one settlement in a system to another so that settlements could directly affect the economy of that system.
+
+- A settlement getting raided, or a space battle along a trade route could dramatically affect the economy of the system.
+
+10. Rivers
+
+No Man's Sky currently has bodies of water shaped like rivers, but having actual rivers that flow into larger bodies of water and effect the planet's ecosystem could add realistic diversity to planets and encourage exploration.
+
+Flora could grow denser closer to rivers.
+
+Rafts or other objects could float downstream.
+
+Milling technology could introduce a new power source.
+
+There is a lot of potential for physics to introduce new gameplay mechanics that deepen the exploration of the game and the way you interact with the world.
+
+11. Player/Ship Movement & Animations that Make Moving through the World Satisfying & Immersive
+
+Player Movement & Animations:
+
+The jetpack is versatile but it's movement and animations feel clunky. Exploring planets and engaging in combat could feel more satisfying with more fun movement options and new animations:
+
+- Jumping forward, left, right, and backwards to avoid incoming attacks
+
+- Crouching to hide from creatures and sentinels in tall grass and to steady aim
+
+- Updated movement animations that make the player character respond more realistically to walking down steep hills and up rocky terrain.
+
+-Animations for activating different tools and weapons in both first person and third person.
+
+Satisfactory is an excellent example of engaging first-person animations for a similar use-case as No Man's Sky. Player hands, tools, boots, and more are visible in first-person with beautiful animations for each action.
+
+- A new method of scaling large landmarks instead of facing the terrain and jetpacking; like holding down several buttons for a massive jetpack boost that launches you upward with an exciting animation. A climbing or grappling mechanic + animation could also work well.
+
+- A new forward traversal method. The jetpack is not well-designed for traversing long, open distances, which the majority of No Man's Sky is. (The punch-jetpack hack is an option, but not particularity satisfying or immersive) Some kind of wingsuit, or legitimate rocket boots, or other jetpack mechanic + animation could work well.
+
+Ship Movement & Animations:
+
+Oftentimes while flying I feel the need to take evasive maneuvers. But all I'm able to do is hit the brake and turn around. New controls that would allow for faster, more dramatic maneuvers if executed with precision could make piloting more dynamic.
+
+If you could pull off some fancy moves with some skill while piloting, it would make simply flying through the universe and over planets more enjoyable.
+
+As a side note, the new ability to divert power to engines, weapons, or shields had been long requested and is a fantastic addition. New animations that give the visceral feeling of switching between these systems would make the mechanic more fun to use.
+
+12. Physics Based Puzzles / Surprising Fauna Encounters
+
+Most discoveries you make in No Man’s Sky currently require you to A. Shoot it with your multi-tool (Mining Laser or Terrain Manipulator) or simply press the “interact”  button (Monoliths, Displays, etc)
+
+It would create a lot of additional variety in gameplay to add physics based puzzles, or flora/fauna that you can interact with in interesting ways.
+
+For example, in the Space Exploration Anime “Astra Lost in Space” (a show that reminds me a lot of No Man’s Sky) on the very first planet the crew lands on, they encounter both a portion of the ground that they can bounce on like a trampoline, and plants that shoot up into the sky and then descend like a parachute. 
+
+Interesting encounters like this with unique flora would add diverse gameplay beyond scanning and mining. Including resource rewards for this kind of discovery would help encourage exploration and make it more fun, especially when players can already get most of the resources they need from farming.
+
+Additionally, a physics-based gameplay mechanic could involve adding a “tractor beam” technology to the multi-tool that allows you to pick up objects; including rocks, plants, gravitino balls, small creatures, and other objects.
+
+Puzzles could involve getting one object from one place to another. This would be an interesting addition to ruins, monoliths, and buildings instead of just pressing the interact button to get a result. 
+
+13. Deeper & More Varied On-Foot Combat That Feels Engaging and Supports Exploration
+
+Since ground combat only exists on wide, open terrain against sentinels - and there are no cover mechanics - it can sometimes feel more like a nuisance than an exciting part of exploration.
+
+- Adding deep crashed freighter sites that you could explore the vast interior of - similar to derelict freighters but on the ground - would be a unique combat opportunity you could stumble upon through exploration.
+
+- Abandoned buildings taken over by pirates or autophage gone rogue could give you an opportunity to plan your approach, defeat the pirates and increase your reputation.
+
+- Stumbling onto a parade of Creature Hunters could lead you to discover that a massive predator lurks in a nearby cave or mountaintop. You could willingly explore there to face a dangerous enemy with unique attacks.
+
+- Pirates riding horse-like creatures could be raiding a settlement or other building and you could help the locals defend against them.
+
+- Being able to scan & target different individual components of sentinels to disable their technology could create deeper combat mechanics.
+
+- Large, dangerous predators could come out of nowhere - scaring all the smaller creatures away. You could try to fight it - learning to avoid it's unique attack pattern. Or you could crouch and quietly hide in the tall grass to sneak around it back to your ship.
+
+14. Improved UI that Makes Scanning more Fun & Reduces Time Spent in Menus
+
+In any given play session, No Man's Sky plays close to the edge of becoming an inventory management simulator. The auto-sort update included with Worlds Part II is an amazing edition to help reduce time spent in the inventory.
+
+I loved the minimal UI portrayed in the original gameplay trailers, but obviously No Man's Sky has evolved a lot since then.
+
+Other improvements to the UI could make core aspects of the game like scanning more enjoyable.
+
+1. Scanning Flora & Fauna
+
+Right now, when you scan fauna or flora, it gives you a simple 0% - 100% completion bar, and then a wall of text. While the lore is interesting and appreciated, a more minimal approach could a) encourage the user to look at the world around them and b) make them actually read the lore, since there would be less of it.
+
+Scanning could be a mini-game in itself where you have to keep the target in the center of the object while it tries to move around at you. The screen could flash through symbols that represent behavior, diet, genetics while you scan.
+
+At the end of the scan; an animation shows you've learned just one thing about the creature or plant.
+
+You may need to scan one or two more of the same fauna or flora to learn the other information.
+
+Rather than just being lore - this info could inform how you need to interact with the creature. For example, maybe you learn it's diet is a certain kind of berry that grows on the planet that you have to use to feed it instead of creature pellets to adopt it as a companion.
+
+Or maybe it tells you the kind of attacks the creature is able to perform, or the kinds of actual locations on the planet it lay eggs.
+
+2. Thermal Imaging
+
+A new kind of scanning technology - thermal imaging - could show you signs of life before you enter an abandoned building, cave, crashed freighter or other potentially dangerous site. This could provide you with enough information just to keep things interesting before going out to explore.
+
+15. Unique Ship & Freighter Interiors that Reflect Faction Characteristics.
+
+1. Small Ship Interiors
+
+From the ice-age, to the dole-age
+There is but one concern
+I have just discovered
+Some ships are bigger than others.
+
+And since some ships are bigger than others, having varying passenger capacity would make sense.
+
+Introducing more ship classes of varying sizes with interiors would make entering and exiting ships more immersive, give you the ability to explore and work together with friends, and make collecting ships more rewarding than only collecting for cosmetics.
+
+2. Freighter Interiors
+
+It breaks immersion when - no matter how the freighter looks on the outside - they all have exactly the same hangar and bridge.
+
+Boarding different ships would be more satisfying if they had an interior that was at least unique to the faction. A hangar, entrance, & bridge could look different in a Gek freighter vs a Vykeen freighter. Redesigning these interiors would also make the possibility of combat aboard ships more enticing.
+
+16. Emergent Gameplay from Dynamic, Interconnecting Systems
+
+Bringing all of these ideas together;
+
+Most of the content of No Man's Sky is locked behind walls of menus and quests - instead of simply being enjoyed through the natural exploration that is at the heart of No Ma's Sky.
+
+Interconnecting systems and the above ideas in this post could make the universe come alive to the player simply through exploration.
+
+Interconnecting Systems:
+
+Creatures who are aware of weather, the player, NPCS, fauna, and the environment. So they might prefer to eat a certain kind of plant, take cover in a storm, and attack NPCs who enter their domain.
+
+NPCs who are aware of creatures, weather, objects, other NPCS etc. So an NPC ship might be damaged in a storm and crash, they might take cover in a base or building, and so on.
+
+Red Dead Redemption 2 and Zelda: Breath of the Wild are both good examples of well implemented interconnecting systems.
+
+How Emergent Gameplay with Interconnecting Systems could look vs "Each Game Mechanic is an Island"
+
+How exploration looks now:
+
+You open your galaxy map. You choose a system and warp there. You find a planet that looks interesting. You fly to it. It's toxic. You wouldn't build a summer home there, but really it's quite lovely. You scan around for some resources. Look at some nice views. Fly around a bit. Mine a few resources if you need them or just for fun. Grind the grind if you haven't already grinded the grind. Take a picture for posterity. On to the next planet.
+
+Not many other game systems come at you unless you go directly seek them out. Not much to get distracted in the joy of exploration or the spirit of "Ooo, what's over there?"
+
+How exploration could look with interconnected systems + updates from this post:
+
+You open your galaxy map. You choose a system and warp there. You find a planet that looks interesting. But the system is at war. As you fly to it, you see the remains of a freighter crashing down to the planet. You follow it and see where it lands. But there is a localized storm near the crash site. You brace your ship for impact. The wind is rough and you need to countersteer to avoid crashing too.
+
+With some skill, you eventually manage to land. As you approach the crash site, a creature walks up to you and bites your multi-tool. You press the interact button rapidly to hold on, but it wins and takes off with your multi-tool through the nearby treeline. You take off after it.
+
+Eventually it runs into an abandoned building that it has made it's nest. You find your multi-tool in it's prized pile of other various items. You press the interact button to search and find a powerful new multi-tool hidden in the pile of objects as well. You pick up some of the creature's eggs while you're there and head back to the site of the crashed freighter.
+
+Scanning the crash site with the heat signature tool shows signs of life. Your drone companion confirms this and gives you a tip about the best approach vector. You enter the crashed freighter - much like a derelict freighter in space. Parts of it are still on fire. You navigate through the floors collecting resources and reading logs.
+
+Eventually you find some survivors. You bring them out of the crashed freighter one at a time to safety. You summon the local authorities for a rescue pick-up and your faction standing improves. You decide to wait long enough to see the rescue ship come - the NPCs don't just disappear.
+
+Your faction standing improves, and it's on to the explore the rest of the planet. The little creature that stole your multi-tool piqued your interest, so you decide to head back that way and attach a tracker to it. Unfortunately, on the way there you stumble across the same kind of creature lying wounded on the ground.
+
+A scan reveals it needs the leaf of a certain kind of flower that grows nearby - showing you the picture of what it looks like and where it grows. You scour the nearby area for the plant, use the interact button to take a leaf, and return to the wounded creature. You place the leaf in the nutrient refiner and the other listed ingredient and give the cure to the animal.
+
+To your delight, it happily gets up and runs away. You look for another creature to add the tracker to so you can find out more about this new world.
+
+TLDR: No Man's Sky is a wonderful game that still has even more potential. A lot of the core systems in No Man's Sky are isolated from each other. Creatures need a lot of work to feel immersive. Animations lack polish, the action gets repetitive quickly, there isn't a strong sense of impact on the world around you, and all the interesting stuff is locked behind menus and programmed actions rather than natural exploration. Despite being almost 10 years old, No Man's Sky continues to improve. Hello Games has proved it has the potential to overhaul all the areas addressed in this post - in their own way - and more.
+
+Final Notes:
+
+No Man's Sky is a fantastic game.
+
+I know not all of these updates seem realistic. Between overhauling multiple game mechanics, and adding entire new ones - the content of this post could be an entirely new game.
+
+But given that we're more likely to get another 5 years of free updates then ever get a No Man's Sky 2, I figured it was worth the effort to show Hello Games how much potential I believe No Man's Sky still has.
+
+I'm sure I missed something. In your opinion, what is the ONE biggest thing No Man's Sky needs to feel like a living, breathing universe?
+
+Thank you.
+
+Read more
+424
+Sort by:
+Comments Section
+jeremydgreat
+•
+2y ago
+
+This was a labor of love and really wonderfully done.
+
+I know Sean
+ and the team would get a kick out of reading these ideas. I'm also sure some of what you're suggesting has been debated extensively by their team there and I wouldn't be shocked if some version of a few of these ideas come to pass. Heck, I'm pretty sure that's how the game got fishing
+ – a confluence of an existing idea at HG and a passionate player that expressed wanting the same.
+
+Few-Lime-7234
+•
+2y ago
+
+Thank you so much
+
+3 more replies
+NectarineMassive5722
+•
+2y ago
+
+I agree that it’s not very realistic to expect most of these to happen, but I appreciate the thought and detail you’ve put into this, and I definitely agree that the universe doesn’t truly feel alive, and that is its biggest drawback. Really nice write-up, and I hope HG at least saves this post to draw on it for some small amount of inspiration.
+
+Few-Lime-7234
+•
+2y ago
+
+Thank you so much!
+
+azulur
+•
+2y ago
+
+Probably controversial but I wish people would just actually be happy with the game we have. HG have put so much time and love and dedication to this game and it always seems that no matter what is put out there people always want more and demand more from a small team who really can focus their energy in other ways and on other projects since the game will be almost 10 years old.
+
+Few-Lime-7234
+•
+2y ago
+
+Not controversial at all! I agree. That is inevitably the problem with an infinite universe; there is always something more that could be done. While Hello Games continues to support the game, I think it's important for players to continue to share their feedback and ideas. That however shouldn't come at the cost of enjoying the experience as it is now.
+
+1 more reply
+jeremydgreat
+•
+2y ago
+
+With every update, they sign off with "Our journey continues." Sean and the HG team still seem passionate about building. I don't know what kind of work culture they've built over there but it's clear that these folks love their craft.
+
+When you stay small like they have and have a dedicated fanbase, it's fun to continue creating. I imagine HG has low turnover, especially in game development, and the team enjoys their work. Few businesses have the discipline to remain small and excel at what they do. They expand too quickly, take on too much capital, and start trying to do things outside of their wheelhouse. HG seems to be a rare studio that has avoided this and appears to be in it for the love of the... ahem... game.
+
+Anyway, I believe posts like this celebrate HG's achievements with the game. People like OP clearly love it, they're thinking about it, dreaming up new mechanics, and reflecting on their experience. I think we all recognize this is a 10 year old game but clearly, HG still likes cookin' up their space game and want the journey to continue.
+
+5 more replies
+GreatStateOfSadness
+•
+2y ago
+
+You lost me after you mentioned a few features that were already in the game or would be impossible to add, but I 100% agree on just making the whole universe more cohesive. Fauna and PoI that are specific to different biomes, NPCs that are aware of their surroundings and speak to them, with potential procedural missions unique to each star system that draw from its individual features. I want to speak to a Korvax who, through broken translation, laments being reassigned to the frozen wastes of Luriak IV after accidentally destroying the research station they had set up on the nearby Glorbag Prime to study the radiation resistance of native N. Cloreastrum populations. Such a waste of good technology, left abandoned for anyone to take for themselves...
+
+Few-Lime-7234
+•
+2y ago
+
+Definitely! It took way too long to make this post, and I'm sure my articulation skills only degraded as the hours went on.
+
+RainbowNinjaKat
+•
+2y ago
+
+“16” changes he said..
+
+Few-Lime-7234
+•
+2y ago
+
+Haha, that was the intention.
+
+Dvulture
+•
+2y ago
+
+To me, they already fulfilled their promise, and while there can always have more stuff, I am satisfied regarding what was promised.
+
+Few-Lime-7234
+•
+2y ago
+
+For sure. Labor of love at this point.
+
+Dr_Overdose
+•
+1y ago
+
+Number 15. Ohh Hey look Corvettes! Cant wait to see what they have in store for the 10 year anniversary next year.
+
+1 more reply
+Common-Reporter4121
+•
+1y ago
+
+Magnificent text, I completely agree to almost everything, one thing that I personally think would add interesting things is ICE! There are no ice layers in "water" anywhere or thick ice layers, icebergs or anything like that. I want breakable ice and maybe carve an ice cave and build base there? Thoughts??
+
+2 more replies
+sadmadstudent
+•
+2y ago
+
+Animal behaviour overhaul
+, ship battle overhaul, deep sea and planetary monsters/boss encounters, and battling for control of systems in an intergalactic war (maybe one that requires the use of fleets for the larger battles?) are all ideas I could see them doing as big updates.
+
+Other than that I still think NMS's biggest problem currently remains locking the coolest content behind Expeditions
+: nearly every jaw-dropping moment from a trailer is expedition related yet nobody playing the game will do them until hours and hours into the experience.
+
+HG, please consider making each Expedition accessible in the main story itself.
+
+You could design a quest in which an Artemis 2.0 is discovered, and when you arrive at their grave you find and scan their data. The player is then warped into the expedition, where they live out the simulated life of the late adventurer through their memories.
+
+When it's over, we return to our original bodies and we're given the coordinates of the adventurer's ship, which we can fly to and add to our collection. That way every player can get all the coolest ships just by playing through the story. Rinse and repeat for each expedition.
+
+3 more replies
+VegaStyles
+•
+2y ago
+
+My brother i would shit all over my xbox and toss it out the window if a fucking bird grabbed my multitool and flew off.
+
+3 more replies
+Madbear1
+•
+2y ago
+ Top 1% Commenter
+
+They don't have the manpower to do this. Even a AAA studio would be hard pressed.
+
+Plus_Independent_683
+•
+2y ago
+
+Yup pretty much I'd say we could pick one of these things for one update. I'd say Op was onto something at the start with an animal behavior overhaul. It would definitely make planet ecosystems feel more organic.
+
+2 more replies
+3 more replies
+haltingpoint
+•
+2y ago
+
+Great suggestions if unrealistic.
+
+The thing I took away from this though is...
+
+People actually use the "divert power" function in their ships? I just max out my infraknife and melt things.
+
+8 more replies
+Puyolda
+•
+2y ago
+
+I agree with most of this and I wish this is the path Hello Games is going fordward
+
+WhateverMars
+•
+2y ago
+
+Great write up. Thanks for putting in so much time for it. It shows.
+
+I agree with basically all your suggestions and to me the most important one is your final point of creatures and npcs reacting more to their environments. Do we ever see an npc using a multitool. It'd be nice to see npcs travel by exocraft too. Why are we the only ones with that tech despite every space station having a vender for it. I'd like to see Npcs with backpacks etc acting more like players, less like props to talk to. They've come along way in the last years since npcs first arrived. The fact that they can walk around now and you see them land and get out of their ships was a massive step in the right direction.
+
+And yeah the dream is still always having creatures react like in those first trailers. Herds running away from a big predator, etc.
+
+[deleted]
+•
+2y ago
+
+I would really love to just have more to do with fleets and freighters.
+
+dwho422
+•
+2y ago
+6 is literally why I don't play the game much anymore. It sucks to have 6 of us going "do you want to fly over and look at X thing?" With no real way to interact aside from looking at what the others are doing and maybe mining together.
+1 more reply
+[deleted]
+•
+2y ago
+
+Brother, the engine is straining under its own limitations as it is. I feel like some of you guys don't understand that software isn't magic and you can't just do everything you want.
+
+2 more replies
+People also ask about section
+People also ask about
+16 updates for No Man's Sky 10th anniversary
+Is No Man's Sky worth playing in 2026
+What to do in No Man's Sky 2026
+Unique creatures players have encountered
+Strategies for surviving hostile environments
+More posts you may like
+Related posts
+10 Years of No Man's Sky
+r/NoMansSkyTheGame
+•
+2mo ago
+10 Years of No Man's Sky
+16K upvotes · 385 comments
+What should I do in No Man’s Sky?
+r/NoMansSkyTheGame
+•
+8mo ago
+What should I do in No Man’s Sky?
+3 upvotes · 13 comments
+A TIMELINE of No Man's Sky updates!
+r/gaming
+•
+1y ago
+A TIMELINE of No Man's Sky updates!
+3.3K upvotes · 277 comments
+D-30 We are now one month away from the 10th anniversary of No Man’s Sky, and the Expedition for the Dreamers is here to help Travellers take part in the celebration. Over the next few days, we will highlight one milestone per day, with activities players can complete to join https://nms10.online
+r/NoMansSkyTheGame
+•
+2mo ago
+D-30 We are now one month away from the 10th anniversary of No Man’s Sky, and the Expedition for the Dreamers is here to help Travellers take part in the celebration. Over the next few days, we will highlight one milestone per day, with activities players can complete to join https://nms10.online
+140 upvotes · 11 comments
+No Man's Sky 10th Anniversary Cosmos Update Actually Updates Space, Lets Players Finally Reach Stars
+r/PS5
+•
+13d ago
+No Man's Sky 10th Anniversary Cosmos Update Actually Updates Space, Lets Players Finally Reach Stars
+1.7K upvotes · 128 comments
+10 Years Ago and Now
+r/NoMansSkyTheGame
+•
+1mo ago
+10 Years Ago and Now
+8.4K upvotes · 185 comments
+No Man’s Sky - Cosmos Update [10th Anniversary]
+r/Games
+•
+14d ago
+No Man’s Sky - Cosmos Update [10th Anniversary]
+1.2K upvotes · 403 comments
+HAPPY 10th BIRTHDAY NO MANS SKY!! 🎉
+r/NoMansSkyTheGame
+•
+1mo ago
+HAPPY 10th BIRTHDAY NO MANS SKY!! 🎉
+12K upvotes · 656 comments
+No mans sky 2026. How’s the game been
+r/NoMansSkyTheGame
+•
+4mo ago
+No mans sky 2026. How’s the game been
+4 upvotes · 20 comments
+Happy 10th anniversary, No Man's Sky. Let's celebrate.
+r/NoMansSkyTheGame
+•
+2mo ago
+Happy 10th anniversary, No Man's Sky. Let's celebrate.
+1.9K upvotes · 33 comments
+60 days til the 10th anniversary of No Man's Sky. Join us, Dreamers
+r/NoMansSkyTheGame
+•
+3mo ago
+60 days til the 10th anniversary of No Man's Sky. Join us, Dreamers
+2K upvotes · 105 comments
+i dont intend to be mean, im just curious. I never played no man sky and im ready to give it a go after all the updates, but how does this spreadsheet looks today with all the updates?
+r/NoMansSkyTheGame
+•
+3y ago
+i dont intend to be mean, im just curious. I never played no man sky and im ready to give it a go after all the updates, but how does this spreadsheet looks today with all the updates?
+2 upvotes · 14 comments
+I played No Man’s Sky 2026 for the first time… why did I wait so long?
+r/nms
+•
+8mo ago
+I played No Man’s Sky 2026 for the first time… why did I wait so long?
+163 upvotes · 42 comments
+Travelers! It's time to come together! Join us in the hub system as we celebrate 10 incredible years of No Man's Sky. August 9th all day long! Let's make it unforgettable. Details below. See you there! 🚀
+r/NoMansSkyTheGame
+•
+2mo ago
+Travelers! It's time to come together! Join us in the hub system as we celebrate 10 incredible years of No Man's Sky. August 9th all day long! Let's make it unforgettable. Details below. See you there! 🚀
+77 upvotes · 69 comments
+The 10 year anniversary update Confirmed. No Mans Sky Cosmos
+r/NoMansSkyTheGame
+•
+1mo ago
+The 10 year anniversary update Confirmed. No Mans Sky Cosmos
+12K upvotes · 837 comments
+Is No man's sky worth it in 2026?
+r/NoMansSkyTheGame
+•
+7mo ago
+Is No man's sky worth it in 2026?
+28 comments
+The Spreadsheet of promised features in InternetHistorian's No Man Sky Video
+r/NoMansSkyTheGame
+•
+7y ago
+The Spreadsheet of promised features in InternetHistorian's No Man Sky Video
+407 upvotes · 88 comments
+18 Quintillion Worlds? How??
+r/NoMansSkyTheGame
+•
+2y ago
+18 Quintillion Worlds? How??
+85 upvotes · 147 comments
+No Man's Sky 10th Anniversary Trailer
+r/pcgaming
+•
+1mo ago
+No Man's Sky 10th Anniversary Trailer
+563 upvotes · 168 comments
+How long to beat?
+r/NOMANSSKY
+•
+1y ago
+How long to beat?
+22 comments
+No man's sky 10th aniversary
+r/NoMansSkyTheGame
+•
+2mo ago
+No man's sky 10th aniversary
+62 upvotes · 7 comments
+Is No Man's Sky worth it in 2026?
+r/NoMansSkyTheGame
+•
+8mo ago
+Is No Man's Sky worth it in 2026?
+27 comments
+Is No Man's Sky worth buying now? (April 2026)
+r/NOMANSSKY
+•
+6mo ago
+Is No Man's Sky worth buying now? (April 2026)
+51 upvotes · 56 comments
+Future Update and Content Speculation
+r/NoMansSkyTheGame
+•
+9mo ago
+Future Update and Content Speculation
+3 upvotes · 12 comments
+No Man's Sky 10th Anniversary Trailer
+r/PS5
+•
+1mo ago
+No Man's Sky 10th Anniversary Trailer
+277 upvotes · 58 comments
+Public
+TOP POSTS
+Reddit
+reReddit: Top posts of March 5, 2025
+Reddit
+reReddit: Top posts of March 2025
+Reddit
+reReddit: Top posts of 2025
+Home
+Popular
+News
+Explore
+Best of Reddit
+Best of Reddit in Portuguese
+Best of Reddit in German
+Reddit Rules
+Privacy Policy
+User Agreement
+Your Privacy Choices
+Accessibility
+Reddit, Inc. © 2026. All rights reserved.
+
+Join the most real place on the internet
+
+ Sign in with Apple
+Continue with Phone Number
+Continue with Email
+
+By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.
+
+LINKS
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j1pm6r/please_sean_let_me_punch_this_dude_on_my/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg31cyy/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg33qly/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg30u4f/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg33nmr/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg2us65/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg34oys/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg34nrs/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg2vnet/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg3597z/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg35n0a/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg365jo/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg32qws/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg35dvr/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/nckeunf/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/nndgn7x/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg3pgj4/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg3l7i2/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg2s2ep/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg2td7p/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg36j71/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg32j5c/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg4lpy9/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg2z9e4/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg4dn3q/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1j3s8li/comment/mg39b2l/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1v209lc/10_years_of_no_mans_sky/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1qqr6tx/what_should_i_do_in_no_mans_sky/
+https://www.reddit.com/r/gaming/comments/1n6z0p9/a_timeline_of_no_mans_sky_updates/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1usvuru/d30_we_are_now_one_month_away_from_the_10th/
+https://www.reddit.com/r/PS5/comments/1wbs518/no_mans_sky_10th_anniversary_cosmos_update/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1vlg5f5/10_years_ago_and_now/
+https://www.reddit.com/r/Games/comments/1wbkxzb/no_mans_sky_cosmos_update_10th_anniversary/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1vjgauw/happy_10th_birthday_no_mans_sky/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1tufyaj/no_mans_sky_2026_hows_the_game_been/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1vjcew4/happy_10th_anniversary_no_mans_sky_lets_celebrate/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1u2cg4m/60_days_til_the_10th_anniversary_of_no_mans_sky/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/12y3v3x/i_dont_intend_to_be_mean_im_just_curious_i_never/
+https://www.reddit.com/r/nms/comments/1r01zlx/i_played_no_mans_sky_2026_for_the_first_time_why/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1vheebu/travelers_its_time_to_come_together_join_us_in/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1vkkcrj/the_10_year_anniversary_update_confirmed_no_mans/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1redjq8/is_no_mans_sky_worth_it_in_2026/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/ep858q/the_spreadsheet_of_promised_features_in/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1ivf1ws/18_quintillion_worlds_how/
+https://www.reddit.com/r/pcgaming/comments/1vkkjj7/no_mans_sky_10th_anniversary_trailer/
+https://www.reddit.com/r/NOMANSSKY/comments/1lgcnaw/how_long_to_beat/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1vhz8f4/no_mans_sky_10th_aniversary/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1qougyc/is_no_mans_sky_worth_it_in_2026/
+https://www.reddit.com/r/NOMANSSKY/comments/1sdth2z/is_no_mans_sky_worth_buying_now_april_2026/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1q4824i/future_update_and_content_speculation/
+https://www.reddit.com/r/PS5/comments/1vkkrom/no_mans_sky_10th_anniversary_trailer/

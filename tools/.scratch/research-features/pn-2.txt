@@ -1,0 +1,462 @@
+Intel Celeron N4020 Benchmark
+https://www.cpubenchmark.net/cpu.php?cpu=Intel+Celeron+N4020+%40+1.10GHz
+
+Software
+Hardware
+Benchmarks
+Services
+Store
+Support
+About Us
+Forums
+0
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+Memory Benchmarks
+PC Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+CPU Benchmarks
+
+Over 1,000,000 CPUs Benchmarked
+
+Intel Celeron N4020 @ 1.10GHz
+
+Benchmarks for the Intel Celeron N4020 can be found below. Release dates, price and performance comparisons are also listed when available. This is made using thousands of PerformanceTest benchmark results and is updated daily.
+
+The first graph shows the relative performance of the CPU compared to the 10 other common (single) CPUs in terms of PassMark CPU Mark.
+The 2nd graph shows the value for money, in terms of the CPUMark per dollar.
+The pricing history data shows the price for a single Processor. For multiple Processors, multiply the price shown by the number of CPUs.
+
+Is the Intel Celeron N4020 @ 1.10GHz Good for Gaming?
+
+This is a fairly old CPU that is no longer competitive with newer CPUs. But this CPU contains 2 Cores and 2 Threads. This CPU may not do well with games especially more recent releases. Best to check with your system requirements from the developer of the games you are interested to see if it is compatible. [More ...]
+
+CPUS
+
+Multithread
+Page: 
+1,
+2,
+3,
+4
+Single Thread
+Page: 
+1,
+2,
+3,
+4
+Best Value (On Market)
+Best Value XY Scatter
+Best Value (All time)
+New Desktop
+New Laptop
+New Server
+New Mobile
+Systems with Multiple CPUs
+Overclocked
+Power Performance
+CPU Mark by Socket Type
+Cross-Platform CPU Performance
+Top Gaming CPUs
+CPU Mega List
+Search Model
+Compare
+0
+Common
+Most Benchmarked
+AMD vs Intel Market Share
+Year on Year Performance
+
+
+Intel Celeron N4020 @ 1.10GHz
+
+Description: Intel UHD Graphics 600
+
+Class: Laptop
+
+Socket: FCBGA1090
+
+Clockspeed: 1.1 GHz
+
+Turbo Speed: 2.8 GHz
+
+Cores: 2 Threads: 2
+
+Typical TDP: 6 W
+
+TDP Down: 4.8 W
+
+Cache per CPU Package:
+L1 Instruction Cache: 2 x 32 KB
+L1 Data Cache: 2 x 24 KB
+L2 Cache: 1 x 4096 KB
+
+
+Other names: Intel(R) Celeron(R) N4020 CPU @ 1.10GHz, Intel Celeron N4020 CPU @ 1.10GHz, Intel N4020
+
+CPU First Seen on Charts: Q1 2020
+
+CPUmark/$Price: NA
+
+Overall Rank:
+4161st fastest in multithreading out of 6006 CPUs
+3695th fastest in single threading out of 6006 CPUs
+942nd fastest in out of 1652 Laptop CPUs
+
+
+Last Price Change: NA
+
+Average CPU Mark
+Multithread Rating
+1531
+Single Thread Rating
+1122
+
+Samples: 1608*
+*Margin for error: Low
+
++ COMPARE
+CPU Test Suite Average Results for Intel Celeron N4020 @ 1.10GHz
+Integer Math	5,580 MOps/Sec
+Floating Point Math	3,043 MOps/Sec
+Find Prime Numbers	5 Million Primes/Sec
+Random String Sorting	2,525 Thousand Strings/Sec
+Data Encryption	884.8 MBytes/Sec
+Data Compression	20,859 KBytes/Sec
+Physics	118 Frames/Sec
+Extended Instructions	607 Million Matrices/Sec
+Single Thread	1,122 MOps/Sec
+From submitted results to PerformanceTest V10 as of 22nd of September 2026.
+CPU Mark Distribution for Intel Celeron N4020 @ 1.10GHz
+Submitted Baseline Distribution Graph as of 22nd of September 2026
+From submitted results since PerformanceTest V10 as of 22nd of September 2026.
+For distribution graph only: Results are trimmed to exclude outliers by disregarding the bottom 1% and top 1% of submissions.
+
+
+
+Search for Intel Celeron N4020 @ 1.10GHz
+from the Featured Merchants below:
+
+
+
+
+Note: PassMark Software may earn compensation for sales from links on this site through affiliate programs.
+Machines with this CPU (or similar)
+	ASUS E410MA 14"" Laptop Computer Intel Celeron N4020 1.1GHz Processor; 4GB DDR4 Onboard RAM; 64GB eMMC Storage; Intel UHD Graphics 600, E410MA-TB.CL464	$199.00
+(www.amazon.com)
+
+	Lenovo IdeaPad Flex 3 CB 11IGL05 82BB0008US 11.6" Touchscreen 2 in 1 Chromebook - HD - 1366 x 768 - Intel Celeron N4020 Dual-core (2 Core) 1.10 GHz - 4 GB RAM - 64 GB Flash Memory - Almond	$169.00
+(www.amazon.com)
+
+	HP 14 Laptop, Intel Celeron N4020, 4 GB RAM, 64 GB Storage, 14-inch Micro-Edge HD Display, Windows 11 Home, Thin & Portable, 4K Graphics, One Year of Microsoft 365 (14-dq0010nr, Indigo Blue)	$227.00
+(www.amazon.com)
+
+	ASUS E410 Intel Celeron N4020 4GB 128GB eMMC 14-inch HD LED Win 10 Laptop (Blue)	$309.00
+(www.amazon.com)
+
+	Acer Chromebook 2023 Flagship Laptop Computer Thin Light, 15.6” HD Display, Dual Core Intel Celeron N4020 (Upto 2.80 GHz), 4GB RAM, 64GB eMMC, Webcam, WiFi, Long Battery, Chrome OS+HubxcelAccessory	$239.99
+(www.amazon.com)
+Note: PassMark Software may earn compensation for sales from links on this site through affiliate programs.
+CPU Mark Relative to Top 10 Common Laptop CPUs
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+Intel Core i7-12700H	
+	
+24,938
+
+Apple M4 10 Core	
+	
+23,584
+
+AMD Ryzen 7 5800H	
+	
+20,460
+
+Intel Core i7-11800H @ 2.30GHz	
+	
+19,577
+
+AMD Ryzen 7 4800H	
+	
+17,814
+
+AMD Ryzen 5 5600H	
+	
+16,345
+
+Apple M2 8 Core 3500 MHz	
+	
+15,649
+
+Apple M1 8 Core 3200 MHz	
+	
+14,122
+
+Intel Core i7-9750H @ 2.60GHz	
+	
+10,543
+
+Intel Core i5-1135G7 @ 2.40GHz	
+	
+9,294
+
+Intel Celeron N4020 @ 1.10GHz	
+	1,531
+CPU Value (CPU Mark / $Price )
+As of 23rd of September 2026 - Higher results represent better value
+
+Processor	CPU Mark / $Price	
+Intel Core i7-12700H	
+	
+54.57
+
+Intel Core i7-11800H @ 2.30GHz	
+	
+49.56
+
+Intel Core i5-1135G7 @ 2.40GHz	
+	
+30.08
+
+Intel Core i7-9750H @ 2.60GHz	
+	
+10.98
+
+Intel Celeron N4020 @ 1.10GHz	
+	NA
+Apple M1 8 Core 3200 MHz	
+	
+NA
+
+Apple M2 8 Core 3500 MHz	
+	
+NA
+
+Apple M4 10 Core	
+	
+NA
+
+AMD Ryzen 7 5800H	
+	
+NA
+
+AMD Ryzen 5 5600H	
+	
+NA
+
+AMD Ryzen 7 4800H	
+	
+NA
+Single Thread Rating
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average Thread Rating	
+Apple M4 10 Core	
+	
+4,494
+
+Apple M2 8 Core 3500 MHz	
+	
+3,882
+
+Apple M1 8 Core 3200 MHz	
+	
+3,672
+
+Intel Core i7-12700H	
+	
+3,480
+
+Intel Core i7-11800H @ 2.30GHz	
+	
+3,005
+
+AMD Ryzen 7 5800H	
+	
+2,987
+
+AMD Ryzen 5 5600H	
+	
+2,869
+
+Intel Core i5-1135G7 @ 2.40GHz	
+	
+2,594
+
+AMD Ryzen 7 4800H	
+	
+2,579
+
+Intel Core i7-9750H @ 2.60GHz	
+	
+2,382
+
+Intel Celeron N4020 @ 1.10GHz	
+	1,122
+Last 5 Baselines for Intel Celeron N4020 @ 1.10GHz
+Most recent listed first
+
+Baseline	CPU Mark	
+BL3710842 - Sep 12 2026	
+	
+1667
+
+BL3696932 - Sep 05 2026	
+	
+1650
+
+BL3694489 - Sep 04 2026	
+	
+1750
+
+BL3694166 - Sep 04 2026	
+	
+962
+
+BL3693718 - Sep 04 2026	
+	
+1269
+Additional baselines can be obtained using Windows version of PerformanceTest's Manage Baselines feature.
+Popular comparisons for Intel Celeron N4020 @ 1.10GHz
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+Intel Celeron N4020 @ 1.10GHz	
+	1,531
+Intel Celeron 5205U @ 1.90GHz vs Intel Celeron N4020	
+	1,430 (-6.6%)
+AMD R-272F APU vs Intel Celeron N4020	
+	1,215 (-20.7%)
+AMD A9-9425 vs Intel Celeron N4020	
+	1,520 (-0.7%)
+Intel Celeron N4000C @ 1.10GHz vs Intel Celeron N4020	
+	1,456 (-4.9%)
+Intel Celeron N4000 @ 1.10GHz vs Intel Celeron N4020	
+	1,432 (-6.5%)
+AMD A6-9225 vs Intel Celeron N4020	
+	1,323 (-13.6%)
+AMD A4-9125 vs Intel Celeron N4020	
+	1,194 (-22.0%)
+Intel Celeron 4305UE @ 2.00GHz vs Intel Celeron N4020	
+	1,747 (+14.1%)
+AMD A9-9410 vs Intel Celeron N4020	
+	1,539 (+0.5%)
+AMD A9-9420 vs Intel Celeron N4020	
+	1,537 (+0.4%)
+Intel Celeron 4205U @ 1.80GHz vs Intel Celeron N4020	
+	1,339 (-12.6%)
+AMD A6-9220 vs Intel Celeron N4020	
+	1,323 (-13.6%)
+
+
+Is the Intel Celeron N4020 @ 1.10GHz Good for Gaming?
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Relative Gaming Score	
+AMD Ryzen 9 9955HX3D	
+	
+9,759
+
+Intel Core Ultra 9 290HX Plus	
+	
+9,300
+
+Intel Core Ultra 9 285HX	
+	
+9,083
+
+Intel Core Ultra 9 275HX	
+	
+8,940
+
+Intel Core Ultra 7 270HX Plus	
+	
+8,855
+
+Intel Core Ultra 7 251HX	
+	
+8,433
+
+Intel Core Ultra 5 235HX	
+	
+8,015
+
+Intel Core Ultra 7 265HX	
+	
+7,815
+
+Intel Core Ultra 7 255HX	
+	
+7,716
+
+Intel Core Ultra 9 285H	
+	
+7,649
+
+Intel Core Ultra 7 265H	
+	
+7,593
+
+AMD Ryzen 9 9850HX	
+	
+7,294
+
+Intel Celeron N4020 @ 1.10GHz	
+	193
+
+
+
+Software
+BurnInTest
+PerformanceTest
+OSForensics
+MemTest86
+WirelessMon
+Management Console
+Zoom Search Engine
+Free Software
+Hardware
+USB3.0 Loopback Plugs
+USB2.0 Loopback Plugs
+PCIe Test Cards
+USB Power Delivery Tester
+Serial and Parallel Loopback Plugs
+USB Short Circuit Testers
+Benchmarks
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+RAM Benchmarks
+PC Systems Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+Internet Bandwidth
+About Us
+Company
+Contact Us
+The Press Room
+Services
+Store
+Support
+Forums
+Compliance
+International
+Disclaimer
+Refunds
+Privacy
+Social  
+
+Advertise on this site.
+
+Copyright © 2026 PassMark® Software
+
+ 
+
+LINKS

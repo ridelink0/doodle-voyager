@@ -1,0 +1,290 @@
+Proposal Discussion - Radio Stations in Elite Dangerous | Frontier Forums
+https://forums.frontier.co.uk/threads/radio-stations-in-elite-dangerous.38095/
+
+This website uses cookies
+We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+Consent Selection
+Necessary
+Preferences
+Statistics
+Marketing
+Show details
+Allow all cookies
+Allow selection
+Deny
+ 
+HOME
+ 
+FORUMS
+ 
+WHAT'S NEW
+ 
+Log in
+Register
+ Search
+Staff / Developer Posts
+ 
+New posts
+ 
+Search forums
+Forums 
+Elite Dangerous 
+Dangerous Discussion 
+Dangerous Discussion Archives 
+Proposal Discussion Radio Stations in Elite Dangerous
+ 
+Thread starter
+BigBossLucas  
+Start date
+Aug 29, 2014
+ Would you like to have Elite Dedicated Radio Stations available @ your SpaceShip
+Yes that SOUNDS good.	Votes: 105	84.7%	
+No I Dislike it.	Votes: 19	15.3%	
+Total voters 124 Poll closed Sep 14, 2014.
+1
+	
+2
+	
+3
+	
+…
+	
+7
+ Next
+BigBossLucas
+Aug 29, 2014
+#1
+Just Imagine,
+
+For our long trips to inmense Void, for work, fighting, Pirating or just for Leisure, you have the option to enjoy live radio broadcasts, with:
+
+Music (some genres) with it's natural Ads (in-game companies such "Zorgon Peterson Company", "Core Dynamics" anouncing new ships or items for hardpoints, and real Ads to support the Real bradcast production and to pay for the music rights (as a normal radio station).
+
+Podcasts (i Know there are some real podcast already for Elite dangerous)
+
+News, for in-game stories, devs announcments, Newsletters, RSS, etc.
+
+Don't you think that would be dessirable?
+
+
+What do you think?, don't missunderstandme, the differencie between this radio and the (real radio is that it's main objective is to emulate a futuristic radio with E's stories, stuff embedded).
+ 
+Mobius
+Aug 29, 2014
+#2
+or you could just open a window in the background and tune into the radio station of your choice. problem would be licencing the music that's being played, chances are that sometime in the future some group will do something like this to be played while playing the game.
+ 
+MikeSnos
+Aug 29, 2014
+#3
+Or, if you're feeling somewhat masochistic, you could listen to Lave Radio
+ 
+Cmdr Andy B
+Aug 29, 2014
+#4
+that's one heck of a lot of work, it may work as a fan creation but in my experience it takes about 20 people to reliably provide one hour of content per day and that's real world.
+
+something so in-depth as far as role play goes would require a level of structure and scripting that even the biggest production company would find difficult to do live and challenging at best to deliver as recorded content.
+
+for even a few hours of airtime a day you would require a volunteer staff of around 100 people and you would have to recruit new members so often that every show would have a help wanted advert.
+
+i'm not saying it cant be done, but given the level of expenditure involved to do even a passable job at it i cannot ever see it happening.
+ 
+Ayo
+Aug 29, 2014
+#5
+If it doesn't get done officially, I guarantee it will be done unofficially. Eventually with a mod that seamlessly integrates it into the game too  (I hope!)
+ 
+Mobius
+Aug 29, 2014
+#6
+then can I add that the immersion crowd wont like it one bit, what with radio waves only traveling at the speed of light people will complain as to why they are able to receive a radio transmission out in the middle of nowhere.
+ 
+Ayo
+Aug 29, 2014
+#7
+Cmdr Andy B said:
+that's one heck of a lot of work, it may work as a fan creation but in my experience it takes about 20 people to reliably provide one hour of content per day and that's real world.
+
+something so in-depth as far as role play goes would require a level of structure and scripting that even the biggest production company would find difficult to do live and challenging at best to deliver as recorded content.
+
+for even a few hours of airtime a day you would require a volunteer staff of around 100 people and you would have to recruit new members so often that every show would have a help wanted advert.
+
+i'm not saying it cant be done, but given the level of expenditure involved to do even a passable job at it i cannot ever see it happening.
+Click to expand...
+
+Just 3 hours a week would be enough  I would donate, or even pay a subscription if it was good 
+ 
+Ayo
+Aug 29, 2014
+#8
+Mobius said:
+then can I add that the immersion crowd wont like it one bit, what with radio waves only traveling at the speed of light people will complain as to why they are able to receive a radio transmission out in the middle of nowhere.
+
+You get a recording from the last station you docked at and play it back whenever you like?
+
+Edit: Oooor... Hyperspace radio
+ 
+Last edited: Aug 29, 2014
+BigBossLucas
+Aug 29, 2014
+#9
+Cmdr Andy B said:
+that's one heck of a lot of work, it may work as a fan creation but in my experience it takes about 20 people to reliably provide one hour of content per day and that's real world.
+
+something so in-depth as far as role play goes would require a level of structure and scripting that even the biggest production company would find difficult to do live and challenging at best to deliver as recorded content.
+
+for even a few hours of airtime a day you would require a volunteer staff of around 100 people and you would have to recruit new members so often that every show would have a help wanted advert.
+
+i'm not saying it cant be done, but given the level of expenditure involved to do even a passable job at it i cannot ever see it happening.
+Click to expand...
+
+
+
+
+Totally Agree, that's why I'm thinking of real Ads embeded, to pay the bills, for those producers, in fact, if it is well done, it can pay music rights, the people involved.
+
+I actually work in IT (App GUI designer) and technically is not a problem.
+
+What do you think?
+
+
+By the way pardoin my English is not my natural Language as you can see
+ 
+Cmdr Andy B
+Aug 29, 2014
+#10
+no problems at all with your english 
+
+the issue there would more than likely be licencing, as the station would be entirely game centric and money would change hands you would quickly fall foul of IP and copyright issues.
+
+a quick look at the media usage rules is enough to convince you of that.
+
+saying that a 3 hour a week podcast made by a fan team is doable but would still require a lot of work from the person who is organising it.
+
+my advice would be that as a first step you post in fan creations asking for contributors and come up with some possible names/logos for the website that is sure to follow soon after.
+
+possibly the most challenging part will be finding your place in the ED universe as we already have Lave radio for factual game discussion and news as well as a few role play/dramatisation based podcasts.
+
+if you decide to go ahead with it good luck to you but you are going to be busy busy busy and not have a lot of time left to actually play the game.
+ 
+ErikNikolai
+E
+Aug 29, 2014
+#11
+I don't think it'd be worth it for the music, since most of us will likely customize playlists for ourselves using Spotify (or similar services) anyway, and since licensing is very expensive. Faction anthems would be good though. I'd mainly like to listen to in-game news broadcasts, faction propaganda, advertisements, and interviews. Loved listening to this in Fallout 3.
+ 
+Last edited: Aug 29, 2014
+Allen Stroud
+Aug 29, 2014
+#12
+Lave Radio has a selection of all the content mentioned by the OP.
+
+We get a thread on in game radio appearing on the forum about once every three weeks.
+
+http://forums.frontier.co.uk/search.php?searchid=3722127
+
+I think everyone acknowledges its a good idea. Just a matter of whether Frontier would like to include it.
+
+We have said consistently we would be prepared to produce in game content.
+
+
+ErikNikolai said:
+I don't think it'd be worth it for the music, since most of us will likely customize playlists for ourselves using Spotify (or similar services) anyway, and since licensing is very expensive. I'd like to listen to in-game news broadcasts, faction propaganda, advertisements, and interviews though. Loved listening to this in Fallout 3.
+
+As mentioned elsewhere, there is a raft of excellent music produced by Elite Fans here - https://soundcloud.com/groups/frontier-and-elite-inspired-music
+ 
+DaveB
+Aug 29, 2014
+#13
+The only real expense involved here is time and a streaming service. I've got the equivalent of a full recording studio in this room with enough channels on the mixer I could stream the audio for a live band performance from my house if I wanted to. Interviews, live performed content (to which the performer has the rights) are no problem. "talk radio" perhaps using skype for "call-in" type shows, radio theater etc.. no problem with this setup.
+ 
+hypergreatthing
+H
+Aug 29, 2014
+#14
+hmm....
+I don't know much about music being played, but for radio, it would be really awesome if there was some sort of streaming news we could get that could tell us status of the system, events that happened in the area, power struggles, economy status, etc.
+ 
+BigBossLucas
+Aug 29, 2014
+#15
+Ayo said:
+You get a recording from the last station you docked at and play it back whenever you like?
+
+Edit: Oooor... Hyperspace radio
+
+
+Like it so much, yo con somehow download (gigs of information while docked) you download latest transmition and upload new information retrieved from your last visited place to the server on that station.
+ 
+BigBossLucas
+Aug 29, 2014
+#16
+DaveB said:
+The only real expense involved here is time and a streaming service. I've got the equivalent of a full recording studio in this room with enough channels on the mixer I could stream the audio for a live band performance from my house if I wanted to. Interviews, live performed content (to which the performer has the rights) are no problem. "talk radio" perhaps using skype for "call-in" type shows, radio theater etc.. no problem with this setup.
+
+Wow that sounds 'FM with dolby great!!!' Can the streaming service be paid for the REAL Advertisers?... I Guess so, with the impressive ammount of players in the game (Braben was talking at INSOMNIA for about 75,000 players right now!!!).
+ 
+OldSalt
+O
+Aug 30, 2014
+#17
+Fallout 3 had something similar, playing retro tunes. It added a lot of atmosphere to the game.
+
+Would be a great idea for ED I think.
+ 
+BigBossLucas
+Aug 30, 2014
+#18
+We need more voters
+ 
+darshie76
+D
+Aug 30, 2014
+#19
+I say yes, but only if it is "in lore" radio.
+
+We can all play music on our own; but to have radio station where you know what is going on in the universe...that's really cool 
+
+I am about to load cargo to go to a system, and check the radio and hear that there is a fierce assault at the space station! Change in plans....let's go for a different route!
+
+If that's the idea, yes, I would love it  problem is: who wants to be recording news every single day, to update players ?  I doubt that this could be a realistic feature.
+ 
+Diamond Dog
+Aug 30, 2014
+#20
+I like the idea of having an optional radio for Those long trade runs. I figure that at the very lease they can use the 'news feeds' to let us know what's happening in the system/constellation at the time. Like wars, pirates, even trade information. It would add to the experience of 'being there'
+
+How ever that could get old quick and would be hard to keep at a premium level for long periods of time. So As cool as it might be, I think it's still better for the FD team to focus on more game play features.... like mining... *hint hint* 
+ 
+1
+	
+2
+	
+3
+	
+…
+	
+7
+ Next
+You must log in or register to reply here.
+Share:
+Facebook
+X
+Bluesky
+LinkedIn
+Reddit
+WhatsApp
+Email
+Link
+Forums 
+Elite Dangerous 
+Dangerous Discussion 
+Dangerous Discussion Archives 
+Contact us
+Terms and rules
+Forum Rules
+Privacy policy
+Help
+Home
+RSS

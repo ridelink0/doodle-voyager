@@ -1,0 +1,98 @@
+[
+  {
+    "name": "CURRENT",
+    "path": "hyg/CURRENT",
+    "sha": "1de901eb23c3f55920c9d75c39b5f534b5dd6bd1",
+    "size": 0,
+    "url": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/CURRENT?ref=main",
+    "html_url": "https://github.com/astronexus/HYG-Database/tree/main/hyg/CURRENT",
+    "git_url": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/1de901eb23c3f55920c9d75c39b5f534b5dd6bd1",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/CURRENT?ref=main",
+      "git": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/1de901eb23c3f55920c9d75c39b5f534b5dd6bd1",
+      "html": "https://github.com/astronexus/HYG-Database/tree/main/hyg/CURRENT"
+    }
+  },
+  {
+    "name": "README.md",
+    "path": "hyg/README.md",
+    "sha": "83d5f9e3d263a2237a4c798bd15bbfed801b4b28",
+    "size": 6416,
+    "url": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/README.md?ref=main",
+    "html_url": "https://github.com/astronexus/HYG-Database/blob/main/hyg/README.md",
+    "git_url": "https://api.github.com/repos/astronexus/HYG-Database/git/blobs/83d5f9e3d263a2237a4c798bd15bbfed801b4b28",
+    "download_url": "https://raw.githubusercontent.com/astronexus/HYG-Database/main/hyg/README.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/README.md?ref=main",
+      "git": "https://api.github.com/repos/astronexus/HYG-Database/git/blobs/83d5f9e3d263a2237a4c798bd15bbfed801b4b28",
+      "html": "https://github.com/astronexus/HYG-Database/blob/main/hyg/README.md"
+    }
+  },
+  {
+    "name": "athyg_v3",
+    "path": "hyg/athyg_v3",
+    "sha": "3f32f90dc60a0b7f94fb3c80a9eff01f624fcf15",
+    "size": 0,
+    "url": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/athyg_v3?ref=main",
+    "html_url": "https://github.com/astronexus/HYG-Database/tree/main/hyg/athyg_v3",
+    "git_url": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/3f32f90dc60a0b7f94fb3c80a9eff01f624fcf15",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/athyg_v3?ref=main",
+      "git": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/3f32f90dc60a0b7f94fb3c80a9eff01f624fcf15",
+      "html": "https://github.com/astronexus/HYG-Database/tree/main/hyg/athyg_v3"
+    }
+  },
+  {
+    "name": "v2",
+    "path": "hyg/v2",
+    "sha": "cdd23a379ed87be25bb1af8644e4579f13314cb6",
+    "size": 0,
+    "url": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/v2?ref=main",
+    "html_url": "https://github.com/astronexus/HYG-Database/tree/main/hyg/v2",
+    "git_url": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/cdd23a379ed87be25bb1af8644e4579f13314cb6",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/v2?ref=main",
+      "git": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/cdd23a379ed87be25bb1af8644e4579f13314cb6",
+      "html": "https://github.com/astronexus/HYG-Database/tree/main/hyg/v2"
+    }
+  },
+  {
+    "name": "v3",
+    "path": "hyg/v3",
+    "sha": "9f7178fdfba14980034e75cedf7b4f7f604e0474",
+    "size": 0,
+    "url": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/v3?ref=main",
+    "html_url": "https://github.com/astronexus/HYG-Database/tree/main/hyg/v3",
+    "git_url": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/9f7178fdfba14980034e75cedf7b4f7f604e0474",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/v3?ref=main",
+      "git": "https://api.github.com/repos/astronexus/HYG-Database/git/trees/9f7178fdfba14980034e75cedf7b4f7f604e0474",
+      "html": "https://github.com/astronexus/HYG-Database/tree/main/hyg/v3"
+    }
+  },
+  {
+    "name": "version-info.md",
+    "path": "hyg/version-info.md",
+    "sha": "c58f27725b3cdbc3c2b46d93362f91bf28db0240",
+    "size": 19933,
+    "url": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/version-info.md?ref=main",
+    "html_url": "https://github.com/astronexus/HYG-Database/blob/main/hyg/version-info.md",
+    "git_url": "https://api.github.com/repos/astronexus/HYG-Database/git/blobs/c58f27725b3cdbc3c2b46d93362f91bf28db0240",
+    "download_url": "https://raw.githubusercontent.com/astronexus/HYG-Database/main/hyg/version-info.md",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/astronexus/HYG-Database/contents/hyg/version-info.md?ref=main",
+      "git": "https://api.github.com/repos/astronexus/HYG-Database/git/blobs/c58f27725b3cdbc3c2b46d93362f91bf28db0240",
+      "html": "https://github.com/astronexus/HYG-Database/blob/main/hyg/version-info.md"
+    }
+  }
+]

@@ -1,0 +1,811 @@
+Ships | Elite Dangerous Wiki | Fandom
+https://elite-dangerous.fandom.com/wiki/Ships
+
+SIGN IN
+CREATE A FREE ACCOUNT
+EXPLORE
+ELITE DANGEROUS
+ELITE SERIES
+GUIDES
+COMMUNITY
+SIGN IN
+CREATE A FREE ACCOUNT
+Home
+Explore
+Saved
+Progress
+History
+Utilities
+Settings
+More
+ADVERTISEMENT
+SKIP TO CONTENT
+Elite Dangerous Wiki
+2,915
+PAGES
+EXPLORE
+ELITE DANGEROUS
+ELITE SERIES
+GUIDES
+COMMUNITY
+in: Ships, Guides
+English
+Ships
+107
+SAVE
+VIEW SOURCE
+
+Ship squadron
+
+Ships are used to traverse the Milky Way and to perform various tasks. There are over 45 flyable ships with configurable builds to suit roles and careers. Every ship is equipped with a Frame Shift Drive to supercruise at 100s to 1000s of times lightspeed in a star system and for interstellar travel via hyperspace. Many ship designs in Elite Dangerous are inspired by the wireframe and polygonal models of the classic Elite games.
+
+Every flyable ship is upgradeable and the components are fully customizable, with the exception of Ship-Launched Fighters and Ship-Launched Vessels.[1] There are a range of optional modules to specialize as a trader, explorer, hauler, smuggler, bounty hunter, pirate etc. The modules can be changed or upgraded at Stations and Surface Ports with an Outfitting service.
+
+The starships are built by several manufacturers with unique styles and specifications. All Commanders start their careers with a Sidewinder. New ships are purchasable with credits. Pre-built ships are equipped with modules and engineering for ARX. The ships vessels are for sale via the Shipyard menu and Inter Astra in the Concourse of a station or surface port. Ships can only land on a planetary body without an atmosphere, or with a tenuous atmosphere. The latter requires Odyssey and the Advanced Planetary Approach Suite.
+
+Ship-Launched Fighters can be deployed for combat or exploration. Ship-Launched Vessels are more versatile. The Drake-Class Carrier is available for 5 billion credits. This capital ship has 16 Landing Pads, various station services including customizable ship interiors, max 500 light years jump range, and can carry 25,000 tons. Squadrons can own a Javelin-Class Carrier for 25 billion credits which includes 32 landing pads, 500 ly jump range and 60,000 t cargo capacity.
+
+You can join other ships as a hologram via multicrew. However, walking inside ships is currently unavailable. All ships are designed with interiors in mind and for future gameplay opportunities. Nearly all ships and stations are fitted with GalNet for market information, galactic news and communication.[2][3]
+
+Contents
+1	Available Ships
+1.1	Small
+1.2	Medium
+1.3	Large
+1.4	Ship-Launched Fighters
+1.5	Ship-Launched Vessels
+1.6	Capital Ships
+2	Compare Ships
+2.1	Specifications
+2.2	Outfitting
+3	Pre-Built Ships
+4	Multicrew & Teams
+5	Ship size
+6	SCO optimized ships
+6.1	List of SCO optimized ships
+7	Ship Roles
+7.1	Multirole
+7.2	Combat
+7.3	Explorer
+7.4	Freighter
+7.5	Passenger
+8	Ship Interiors
+9	NPC Ships
+9.1	Capital Ships
+9.2	Megaships
+9.3	Thargoid Ships
+10	Development Notes: Fleet Hierarchy
+10.1	Cruisers (Battlecruisers, Battleships, Interdictors)
+10.2	Frigates
+10.3	Destroyers
+10.4	Carriers
+10.5	Transporters (Couriers)
+10.6	Corvettes (Cutters)
+10.7	Fighters
+10.8	Drones
+11	Companies
+12	Market share
+13	On Foot Gestures
+14	Videos
+15	Gallery
+16	References
+Available Ships
+
+All ships available to players are presented below. Some ships require to attain a specific rank of the Federal or Imperial navies before they can be purchased. Ship-Launched Fighters, Vessels and certain capital ships can be purchased with credits, but are not classified as conventional ships.
+
+Small
+
+Small ships can dock on small landing pads.
+
+Adder
+Cobra Mk III
+Cobra Mk IV
+Cobra Mk V
+Diamondback Scout
+Diamondback Explorer
+Dolphin
+Eagle
+Hauler
+Imperial Courier
+Imperial Eagle
+Kestrel Mk II
+Sidewinder
+Viper Mk III
+Viper Mk IV
+Vulture
+Medium
+
+Medium ships can dock on medium landing pads.
+
+Alliance Challenger
+Alliance Chieftain
+Alliance Crusader
+Asp Explorer
+Asp Scout
+Corsair
+Federal Assault Ship
+Federal Dropship
+Federal Gunship
+Fer-de-Lance
+Keelback
+Krait Mk II
+Krait Phantom
+Lynx Highliner
+Mamba
+Mandalay
+Python
+Python Mk II
+Type-6 Transporter
+Type-8 Transporter
+Type-11 Prospector
+Large
+
+Large ships can dock on large landing pads.
+
+Anaconda
+Beluga Liner
+Caspian Explorer
+Federal Corvette
+Imperial Clipper
+Imperial Cutter
+Orca
+Panther Clipper Mk II
+Type-7 Transporter
+Type-9 Heavy
+Type-10 Defender
+Ship-Launched Fighters
+
+Ship-Launched Fighters can only be deployed from a Vessel Hangar on a suitable ship. They cannot be customised in Outfitting apart from their Livery, and they lack Frame Shift Drives.
+
+F63 Condor
+Gu-97
+Taipan
+XG7 Trident
+XG8 Javelin
+XG9 Lance
+Ship-Launched Vessels
+
+Ship-Launched Vessels can only be deployed from a Vessel Hangar on a suitable ship. These versatile vessels lack Frame Shift Drives.
+
+Nomad
+Capital Ships
+
+These are very large, capital sized, jump-capable vessels. The owner of a Drake-Class Carrier uses executive control to order hyperspace jumps between star systems. Owners can customise the interior with the onboard Livery service. It features 16 Landing Pads and a jump range of up to 500 light years. The Colonisation Ship is used for colonizing star systems. The Javelin-Class Carrier supports the activities of a squadron.
+
+Colonisation Ship
+Drake-Class Carrier
+Javelin-Class Carrier
+Compare Ships
+
+The following tables are initially sorted in order of increasing ship cost.
+
+Specifications
+Base Ship
+Trading Ship
+Explorer Ship
+A-Class Ship
+
+Default ship specifications as equipped when purchased[4]. The Sidewinder can be obtained for free.
+Default table sort order is by increasing Cost.
+
+Model	Type	Jump Range
+[Laden]
+(LY)	Mnvr
+Rating	Cargo
+[Max]
+(T)	Pad Size	Speed
+[Boost]
+(m/s)	Armour	Shield
+(MJ)	Cost
+(CR)	Hull
+Mass (T)	Mass Lock
+Factor	Optional Modules
+(Restricted)	Fighter Hangar Capable	Multicrew	SCO Optimised	Model
+Sidewinder Mk I	Multirole	8.15
+[7.25]	6	4
+[12]	S	221
+[322]	108	52	32,000	25	6	6	No	No	No	Sidewinder MkI
+Eagle Mk II	Combat	9.15
+[8.62]	6	2
+[16]	S	240
+[350]	72	78	44,800	50	6	7 (1)	No	No	No	Eagle MkII
+Hauler	Freighter	11.62
+[8.46]	4	8
+[22]	S	204
+[306]	180	65	52,720	14	6	6	No	No	No	Hauler
+Adder	Multirole	10.28
+[8.67]	4	6
+[26]	S	221
+[321]	162	78	87,808	35	7	7	No	Yes	No	Adder
+Imperial Eagle	Combat	8.22
+[8.03]	5	2
+[16]	S	298
+[397]	108	104	110,830	50	6	7 (1)	No	No	No	Imperial Eagle
+Viper Mk III	Combat	8.09
+[7.51]	4	4
+[22]	S	316
+[395]	126	137	142,931	50	7	7 (1)	No	No	No	Viper MkIII
+Cobra Mk III	Multirole	11.16
+[9.85]	5	18
+[60]	S	282
+[403]	216	92	379,718	180	8	8	No	Yes	No	Cobra MkIII
+Viper Mk IV	Combat	11.04
+[9.76]	3	18
+[50]	S	272
+[342]	270	103	426,990	190	7	9 (1)	No	No	No	Viper MkIV
+Diamondback Scout	Combat Explorer	12.17
+[11.44]	5	0
+[28]	S	283
+[384]	216	92	564,330	170	8	6	No	No	No	Diamondback Scout
+Cobra Mk IV	Multirole	9.92
+[8.43]	3	34
+[88]	S	200
+[300]	216	125	745,610	210	N/A	10	No	Yes	No	Cobra MkIV
+Type-6 Transporter	Freighter	13.38
+[10.15]	3	50
+[112]	M	223
+[356]	324	77	1,045,945	155	8	8	No	No	No	Type-6 Transporter
+Dolphin	Passenger	11.39
+[10.19]	3	14
+[84]	S	258
+[361]	198	143	1,337,330	140	9	9	No	No	No	Dolphin
+Diamondback Explorer	Combat Explorer	17.03
+[15.20]	4	12
+[56]	S	251
+[328]	270	131	1,894,760	260	10	8	No	No	No	Diamondback Explorer
+Cobra Mk V	Multirole	17.87
+[15.95]	5	12
+[110]	S	294
+[415]	324	235	1,989,461	150	8	9	No	Yes	Yes	Cobra Mk V
+Imperial Courier	Multirole	8.83
+[7.69]	4	12
+[30]	S	280
+[380]	144	230	2,542,931	35	7	8	No	No	No	Imperial Courier
+Keelback	Combat Freighter	11.70
+[9.41]	2	38
+[88]	M	202
+[303]	486	80	3,048,000	180	8	7	Yes	Yes	No	Keelback
+Asp Scout	Combat Explorer	12.45
+[10.93]	5	16
+[72]	M	223
+[304]	324	105	3,862,130	150	8	7	No	Yes	No	Asp Scout
+Vulture	Combat	8.12
+[7.79]	5	8
+[56]	S	215
+[349]	288	293	4,925,615	230	10	8 (1)	No	Yes	No	Vulture
+Asp Explorer	Multirole	14.10
+[12.12]	4	38
+[128]	M	254
+[345]	378	152	6,661,153	280	11	8	No	Yes	No	Asp Explorer
+Federal Dropship	Combat Freighter	7.25
+[6.77]	3	56
+[164]	M	183
+[304]	540	104	14,314,210	580	14	10 (2)	No	Yes	No	Federal Dropship
+Type-7 Transporter	Freighter	13.14
+[9.67]	1	128
+[304]	L	182
+[304]	612	78	17,472,252	420	10	10	No	No	No	Type-7 Transporter
+Mandalay	Explorer	22.26
+[18.76]	5	40
+[154]	M	285
+[357]	414	269	17,639,220	230	11	10	No	Yes	Yes	Mandalay
+Alliance Chieftain	Combat	9.62
+[8.84]	4	40
+[120]	M	235
+[338]	504	162	19,382,250	400	13	9 (3)	No	Yes	No	Alliance Chieftain
+Federal Assault Ship	Combat	8.33
+[7.69]	4	32
+[96]	M	214
+[357]	540	133	19,814,205	480	14	9 (2)	No	Yes	No	Federal Assault Ship
+Imperial Clipper	Multirole	8.98
+[8.05]	5	74
+[248]	L	306
+[388]	486	186	22,295,860	400	12	9	No	Yes	No	Imperial Clipper
+Alliance Crusader	Combat	8.24
+[7.66]	3	40
+[122]	M	183
+[305]	540	126	25,367,279	500	13	10 (3)	Yes	Yes	No	Alliance Crusader
+Alliance Challenger	Combat	8.61
+[7.98]	4	40
+[152]	M	204
+[316]	540	208	30,472,265	450	13	10 (3)	No	Yes	No	Alliance Challenger
+Federal Gunship	Combat	6.66
+[6.54]	1	16
+[168]	M	171
+[282]	630	186	35,814,210	580	14	9 (3)	Yes	Yes	No	Federal Gunship
+Krait Phantom	Multirole	9.78
+[8.23]	3	82
+[190]	M	256
+[358]	324	260	37,472,254	270	17	9	No	Yes	No	Krait Phantom
+Type-8 Transporter	Freighter	24.68
+[17.55]	1	176
+[406]	M	201
+[342]	792	122	38,453,970	400	18	9	No	No	Yes	Type-8 Transporter
+Krait Mk II	Multirole	9.01
+[7.68]	3	82
+[228]	M	245
+[337]	396	262	45,814,205	320	17	9	Yes	Yes	No	Krait MkII
+Orca	Passenger	11.10
+[10.08]	1	72
+[192]	L	308
+[390]	396	233	48,539,887	290	15	9	No	Yes	No	Orca
+Fer-de-Lance	Combat	6.79
+[6.31]	4	24
+[70]	M	265
+[357]	405	271	51,567,040	250	12	6	No	Yes	No	Fer-de-Lance
+Mamba	Combat	6.79
+[6.37]	3	20
+[66]	M	316
+[387]	414	244	55,867,041	250	12	6	No	Yes	No	Mamba
+Python	Multirole	8.61
+[7.38]	2	82
+[292]	M	234
+[306]	468	294	56,978,179	350	17	10	No	Yes	No	Python
+Python Mk II	Combat	18.41
+[17.85]	4	10
+[96]	M	261
+[352]	504	316	67,527,361	450	17	6	No	Yes	Yes	Python Mk II
+Type-11 Prospector	Miner	15.81
+[13.41]	2	64
+[288]	M	261
+[352]	630	271	67,861,850	320	17	12 (2)	Yes	Yes	Yes	Type-11 Prospector
+Type-9 Heavy	Freighter	9.15
+[6.73]	0	348
+[788]	L	132
+[202]	864	110	76,555,842	850	16	11	Yes	Yes	No	Type-9 Heavy
+Corsair	Multirole	13.58
+[12.04]	4	48
+[318]	M	288
+[366]	486	264	79,304,750	265	17	10	No	Yes	Yes	Corsair
+Beluga Liner	Passenger	10.62
+[9.59]	2	44
+[368]	L	197
+[276]	504	92	84,532,780	950	18	12	Yes	Yes	No	Beluga Liner
+Type-10 Defender	Combat Freighter	6.98
+[5.88]	0	220
+[532]	L	179
+[219]	1044	99	124,755,342	1200	26	12 (2)	Yes	Yes	No	Type-10 Defender
+Anaconda	Multirole	9.66
+[8.54]	1	114
+[468]	L	183
+[244]	945	362	146,969,451	400	23	13 (1)	Yes	Yes	No	Anaconda
+Federal Corvette	Combat	6.31
+[6.03]	2	76
+[616]	L	198
+[257]	666	516	180,327,022	900	24	13 (2)	Yes	Yes	No	Federal Corvette
+Imperial Cutter	Multirole	8.21
+[7.57]	0	164
+[792]	L	202
+[323]	720	705	203,745,220	1100	27	12 (2)	Yes	Yes	No	Imperial Cutter
+Panther Clipper Mk II	Freighter	12.52
+[10.68]	0	192
+[1238]	L	182
+[252]	1116	245	301,348,586	1200	25	12 (2)	Yes	Yes	Yes	Panther Clipper Mk II
+Model	Type	Jump Range
+[Laden]
+(LY)	Mnvr
+Rating	Cargo
+[Max]
+(T)	Pad Size	Speed
+[Boost]
+(m/s)	Armour	Shield
+(MJ)	Cost
+(CR)	Hull
+Mass (T)	Mass Lock
+Factor	Optional Modules
+(Restricted)	Fighter Hangar Capable	Multicrew	SCO Optimised	Model
+Outfitting
+External
+Core Internal
+Optional Internal
+
+External Hardpoints and Utility Mounts.
+Default table sort order is by increasing Cost.
+
+Model	Small	Medium	Large	Huge	Utility
+Mount
+Sidewinder Mk I	2	-	-	-	2
+Eagle	3	-	-	-	1
+Hauler	1	-	-	-	2
+Adder	2	1	-	-	2
+Imperial Eagle	2	1	-	-	1
+Viper Mk III	2	2	-	-	2
+Cobra Mk III	2	2	-	-	2
+Viper Mk IV	2	2	-	-	2
+Diamondback Scout	2	2	-	-	4
+Cobra Mk IV	3	2	-	-	2
+Type-6 Transporter	2	-	-	-	3
+Dolphin	2	-	-	-	3
+Diamondback Explorer	-	2	1	-	4
+Cobra Mk V	2	3	-	-	4
+Imperial Courier	-	3	-	-	4
+Keelback	2	2	-	-	3
+Asp Scout	2	2	-	-	2
+Vulture	-	-	2	-	4
+Asp Explorer	4	2	-	-	4
+Federal Dropship	-	4	1	-	4
+Type-7 Transporter	4	-	-	-	4
+Mandalay	2	4	-	-	4
+Alliance Chieftain	3	1	2	-	4
+Federal Assault Ship	-	2	2	-	4
+Imperial Clipper	-	2	2	-	4
+Alliance Crusader	3	2	1	-	4
+Alliance Challenger	3	3	1	-	4
+Federal Gunship	2	4	1	-	4
+Krait Phantom	-	2	2	-	4
+Type-8 Transporter	5	1	-	-	4
+Krait Mk II	-	2	3	-	4
+Orca	-	2	1	-	4
+Fer-de-Lance	-	4	-	1	6
+Mamba	2	-	2	1	6
+Python	-	2	3	-	4
+Python Mk II	-	2	4	-	6
+Type-11 Prospector	3+1[m]	1+2[m]	1[m]	-	4
+Type-9 Heavy	2	3	-	-	4
+Corsair	-	3	3	-	4
+Beluga Liner	-	5	-	-	6
+Type-10 Defender	2	3	4	-	8
+Anaconda	2	2	3	1	8
+Federal Corvette	2	2	1	2	8
+Imperial Cutter	-	4	2	1	8
+Panther Clipper Mk II	4	4	2	-	6
+Model	Small	Medium	Large	Huge	Utility
+Mount
+[m] = hardpoints reserved solely for mining tools.
+Pre-Built Ships
+
+AX Combat Jumpstart Alliance Chieftain and Thargoid Spires
+
+Main article: Pre-Built Ships
+
+A Pre-Built Ship is a package which includes instant-access to a pre-fitted ship, a ship kit, and a paintjob.[5] It's themed to match an in-game activity.[5] The purpose is to provide new and casual players with a solid start of their career without requiring to build ships from scratch.[5] This benefits players because unlocking modules, outfitting and engineering ships is a complicated and time consuming grind. Pre-Built Ships have 0 rebuy cost unless you customize the loadout.
+
+List of Available Pre-Built Ships.
+
+Multicrew & Teams
+
+Multicrew lets crewmembers join the bridge of 1 ship via telepresence. Members can assume 3 roles: Helm, Gunner, and Fighter Con. The Helm is the ship owner and pilot. The gunner controls the turrets and weapons. The Fighter Con can pilot SLFs. Crewmembers can also use the Full System Scanner and the Detailed Surface Scanner. A ship must have at least 2 seats for multicrew. Teams allows up to 4 pilots with ships to play together in a group.
+
+Ship size
+
+ED Ship Size Chart 3.0.1 Dark
+
+The size of flyable ships ranges from small to large. Small ships have the lowest cost and tend to be very maneuverable. Medium ships have more hull mass, armor, cargo space and jump range. Large ships have more utility mounts, bigger weapons, cargo space, hull mass and armor. However, they are less maneuverable and have higher costs for outfitting and repair. Small and medium ships may be authorized to dock on larger landing pads if others are occupied. Large ships always require large landing pads so they cannot dock at small outposts.
+
+Elite ship scale video 2021 edition
+Elite Dangerous Ship Comparison, All ships as of 2026
+The true INSANE scale of the Imperial Cutter - Elite Dangerous Ship Sizes
+Elite- Dangerous — Generation Ship size comparison
+SCO optimized ships
+Main article: Frame Shift Drive (SCO)
+
+Newer ships are optimized for the Frame Shift Drive (SCO). They have improved handling during Supercruise Overcharge, lower heat levels and less fuel consumption than other ships. Achilles Aerospace made the prototype FSD (SCO) available on the market on 10 April 3310.[6]
+
+SCO boosts a ship to hundreds to thousands of times the speed of light in seconds. Boosting drastically reduces travel time within a star system. The FSD SCO also offers a slightly increased max jump range compared to the standard FSDs. The increased fuel consumption and additional heat while in SCO can be mitigated by equipping the ship with extra Fuel Tanks and Heatsink Launchers, respectively.
+
+List of SCO optimized ships
+Caspian Explorer
+Cobra Mk V
+Corsair
+Kestrel Mk II
+Lynx Highliner
+Mandalay
+Panther Clipper Mk II
+Python Mk II
+Type-8 Transporter
+Type-11 Prospector
+Ship Roles
+Multirole
+
+Multirole/multipurpose ships are a jack-of-all-trades in that they can easily be fitted for whatever role the player needs, whether it be hauling cargo, ship-to-ship combat, or exploring the stars; multirole ships can do it all. Multirole ships can perform most jobs as well, if not better than, comparable ships targeted towards those jobs. Those ships, while considered multipurpose, sometimes lean into a more specialized role. The Imperial Courier, for example, is considered a multirole ship for being a superb combat and exploration vessel, but is less suited for trading/mining. Other examples of multirole ships are the Cobra Mk III, Python, and Anaconda.
+
+Combat
+
+Combat ships are usually faster, more agile and more heavily armed than other ships of the same size. The exception to this would be gun boats, which have more weapon mounts designed for turrets, but sacrifice their agility for them. Some examples of combat-focused ships are the Viper Mk III, Fer-de-Lance, and Federal Corvette.
+
+Explorer
+
+Exploration ships typically come with large default jump ranges, large Fuel Tanks for ships of their size, and should be fitted with lots of low class Internal Compartments for scanners to optimize jump distance. These ships are designed to be able to equip the multitude of scanning equipment needed for an expedition, then fly long distances into the void without the need for regular refueling through the use of Fuel Scoops. Some examples of exploration-focused ships are the Diamondback Explorer, Asp Explorer, and Mandalay.
+
+Freighter
+
+Freighters are typically slow, cumbersome and lightly armed, but provide extreme hauling capabilities. Useful for traders and smugglers alike. Some examples of trade-focused ships are the Hauler, Type-6 Transporter, and Type-9 Heavy.
+
+Passenger
+
+Couriers who fly passengers and valuable items with small storage requirements have a special class of ships available to them. These ships are elegant and fast, designed to quickly and comfortably get from one system to the next. Some examples of passenger-focused ships are the Dolphin, Orca, and Beluga Liner.
+
+Ship Interiors
+
+We're designing all the ships with the interiors in mind. How the cargo is unloaded all of that sort of thing, how damage occurs. That's because another thing we are doing is, again down the line, is that you will be able to walk around inside your ship. You'll be able to get out of your ship, walk around inside space stations, other vehicles. All of that sort of thing. We've shown the damage on the ship, the damage models. Imagine looking at that from inside the ship outwards seeing your cargo fly out into space, seeing the flames trying to fight them. All of those things that we plan with time, they won't be at the first release, because we want to do them right, we want to do them well. All of these will be done as updates. The game has to be structured in a way to allow it from the start. So we're designing the ships so that they work that way and so that when we come to do it, it's not a problem.
+
+— David Braben, December 2012[7]
+
+Ship Interior concept art
+
+EVA ship repair concept art
+
+All flyable ships in Elite Dangerous were designed to include interior - as well as exterior - features, most notably in the distinct placement of various internal modules and the ways in which they take damage. During the very early stages of development for the game, David Braben expressed a desire to eventually implement walkable ship interiors in order to add more complex gameplay opportunities such as internal cargo loading/unloading or repairs.[7]
+
+In Newsletter #29, it was mentioned as one of the planned updates on the roadmap: "Walking around interiors and combative boarding of other ships"[8]
+
+Frontier released the video ''Cockpit Interiors'' on July 18, 2014: "Spaceship interiors from Elite: Dangerous, a look at some of the work-in-progress. Getting up out of your seat and walking around your ship will be just the beginning for plans to expand Elite: Dangerous after the initial product. Imagine landing on planets or boarding other ships..."[9]
+
+As of June 8, 2021, shortly after the PC launch of Elite Dangerous: Odyssey, ship interiors were not in active development, and Frontier Developments was focusing on improvements to Odyssey and preparing for its launch on consoles. Frontier community manager Arthur Tolmie (CM Arf) said on Lave Radio, "I can relay the message as best I can. If players are saying ship interiors are an absolute must, obviously we'll assess it, but at the moment it's a case of where do we put our resources, and at the moment it's not ship interiors."[10][11]
+
+The Drake-Class and Javelin-Class Carrier have fully accessible interiors. The Lynx Highliner is the first ship that allows players to walk up functional ramps to inside the hull until the entrance doors.[12] However, you teleport from a blue ring at the door into the cockpit. The 4.3.3.0 Update (28 April 2026) improved the scaling and detailing of the Imperial Cutter's landing gear and stairs.[12] The Nomad is the first flyable vessel with a ship interior.[13] It released for ARX on 30 June 2026.[13]
+
+Currently, only the Panther Clipper Mk II and Lynx Highlander have walk up the ramp to enter via the door.[14] Most ships have a blue circle to teleport inside.[14]
+
+Anaconda interior
+Damaged Anaconda
+Viper Mk III interior cutaway
+The Future of Elite Dangerous
+Elite Dangerous Development Plan
+Designing the Future - The Ships of Elite Dangerous
+Elite Dangerous - Cockpit Interiors
+One Small Step Towards Ship Interiors? (Elite Dangerous)
+Elite Dangerous - Nomad - Release Trailer
+NPC Ships
+Capital Ships
+
+The Federation's Farragut-Class Battle Cruiser and the Empire's Majestic-Class Interdictor are both Battlecruisers. They are heavily armed, can launch several fighter squadrons, and are piloted by NPCs. However, Frontier said in their roadmap that they intend to add the "availability of giant ‘executive control’ ships to players" in a future content update.[15]
+
+In The Commanders Livestream, a viewer asked, "Any chance of playing capital ships in the future?", David Braben answered, "It's on the list, but a long way down it, because there's a lot of gameplay to make it work. The issue is what we call the difference between direct control and executive control. Where rather than flying by the seat of your pants you're giving orders to a giant ship. Because you can't expect it to change course very rapidly and that sort of thing. So it's certainly a long-term possibility, but it's long-term."[16]
+
+Megaships
+
+Naphtha Class Tanker in Okinura
+
+A Megaship is a class of massive ships that travel through the galaxy, and are utilized in a wide variety of roles.[17] Comparable in size to most stations, and in some cases much longer, a number of Megaships are also equipped with docking facilities for small, medium, and large vessels. All services normally available at stations are on offer, with the exception of the Shipyard. Currently, only NPCs can directly control Megaships, but certain Player Groups can petition for Community Goals to construct new Megaships, and those with docking facilities are usually placed under the control of the sponsoring Group's Player Minor Faction. Even more rarely, a Player Group may be permitted to relocate their Megaship to a different location, as with The Gnosis.
+
+There are various types of Megaships:[17]
+
+Bulk Cruiser
+Asteroid Miner
+Agricultural Vessel
+Bulk Cargo Ship
+Dredger
+Prison Ship
+Science Vessel
+Survey Vessel
+Tanker
+Tourist Ship
+Flight Operations Carrier
+Detention Centre
+Rescue Vessel
+Wells-class Carrier[18]
+Generation Ship
+Thargoid Ships
+
+The Thargoids have 4 known ship types in their arsenal: Hunter, Interceptor, Scout and Titan. Each type has multiple variants except the Titan. Old logs retrieved from the Intergalactic Naval Reserve Arm's Carmichael Point base attested to the existence of Titans. These capital ships were discovered inside Thargoid Maelstroms in 3309.
+
+Thargoid vessels employ radically different technologies than human ships, such as the ability to interdict ships during hyperspace transit and hyperspace jump without leaving an identifiable wake signature. Their powerful offensive and defensive capabilities make them deadly opponents in combat.
+
+Scout
+Hunter
+Interceptor
+Titan
+Development Notes: Fleet Hierarchy
+
+The fleet-class ships that are available to the game's major factions follow a hierarchy.[19]
+
+Cruisers (Battlecruisers, Battleships, Interdictors)
+
+Farragut-Class Battle Cruiser and a Vulture
+
+Majestic-Class Interdictor
+
+Long range, independent ships that are capable of controlling entire systems. Heavily armed and capable of deploying large fighter squadrons. The capital ships already shown are an example of this class. In the Empire they are usually known as “Interdictors” – named after the first successful class of cruisers. Currently the most common and most successful Imperial Cruiser is the Majestic-Class – generally referred to as a “Majestic-Class Interdictor”. As ships that can also carry out ambassadorial missions they can be used for ‘soft’ power projection, as well as hard, the same goes for the Federation's most common and successful Cruiser, named the Farragut-Class Battle Cruiser.
+
+Frigates
+
+These are large ships designed for escort duties. The actual vessels vary greatly between navies, but are all designed to engage multiple small, fast enemies (typically fighters and missile swarms) and are loaded with point defence batteries. They will also have some anti-ship capability, but are not designed to go up against other warships.
+
+Destroyers
+
+These are anti-warship vessels, but are generally no longer used in the front line, though some are still in service.
+
+Carriers
+
+A Drake-Class Carrier
+
+Carriers are designed for the deployment of fighter squadrons. They have been considered obsolete and phased out of the fleets of the major factions due to the popularity of Cruisers, but small navies still make use of them and some have even been converted into transporters.
+
+The 34th century saw the resurgence of carriers with the introduction of the Drake-Class Carrier and the Javelin-Class Carrier. These aerospace product are made by Brewer Corporation.
+
+Transporters (Couriers)
+
+Federal Dropship in a planetary ring
+
+Armoured warships designed specifically for transporting valuable assets and cargo quickly and safely.
+
+Corvettes (Cutters)
+File:Fed corvette.png
+
+Federal Corvette
+
+Light multi-role warships, capable of reconnaissance, incursions and escort missions. These small warships are also popular with smaller factions, organizations and even wealthy individuals due to their adaptability. The Federal Corvette is a slower Corvette-class Ship with more maneuverability and firepower, while The Imperial Cutter is a lighter and faster Corvette-class ship, players will be able to get their hands on these ships in the game (assuming they can make the right contacts).
+
+Fighters
+
+Imperial Fighter
+
+Small short-range craft that generally cannot operate independently due to having no jump capability. Their main roles include the defence of stations and the large warships that they are deployed from. Commercial fighters are typically jump-capable and are therefore much more flexible than their faction-specific counterparts.
+
+Drones
+
+Small automated ships that have largely been phased out due to the existence of effective counter-measures. The closest setting-modern analogue would be Limpets, which are used almost purely for logistical/support tasks such as field repairs rather than direct combat, though some can be used for sabotage.
+
+Companies
+
+These are important ship building companies.
+
+Name	Description	Type	
+Collapse
+Logo
+Brewer Corporation	Independent manufacturer of Stations, weapons platforms, and capital ships.	Colonisation Ship, Drake-Class Carrier, Javelin-Class Carrier	
+Core Dynamics	Federal manufacturer of ships, skimmers, and ship modules based in Sol.	Eagle, F63 Condor, Farragut-Class Battle Cruiser, Federal Assault Ship, Federal Corvette, Federal Dropship, Federal Gunship, Kestrel Mk II, Vulture	
+Faulcon DeLacy	Independent manufacturer of ships and equipment that is based in Reorte.	Anaconda, Cobra Mk III, Cobra Mk IV, Cobra Mk V, Krait Mk II, Krait Phantom, Nomad, Python, Python Mk II, Sidewinder, Taipan, Viper Mk III, Viper Mk IV	
+Gutamaya	Imperial manufacturer of ships and various equipment.	Gu-97, Corsair, Imperial Clipper, Imperial Courier, Imperial Cutter, Imperial Eagle, Majestic-Class Interdictor	
+Lakon Spaceways	Allied manufacturer of ships and equipment based in Alioth.	Alliance Challenger, Alliance Chieftain, Alliance Crusader, Asp Explorer, Asp Scout, Diamondback Explorer, Diamondback Scout, Keelback, Type-6 Transporter, Type-7 Transporter, Type-8 Transporter, Type-9 Heavy, Type-10 Defender, Type-11 Prospector	
+Saud Kruger	Independent corporation based in Bedaho that manufactures luxury passenger ships and equipment.	Beluga Liner, Dolphin, Narwhal Liner, Orca	
+Zorgon Peterson	Independent manufacturer of ships and equipment, subsidiary of Faulcon DeLacy.	Adder, Caspian Explorer, Fer-de-Lance, Hauler, Lynx Highliner, Mamba, Mandalay, Panther Clipper Mk II	
+Market share
+
+On 19 September 3300, GalNet published a Ship Sales Services Report about the market share per ship manufacturer.[20]
+
+Ship manufacturer	Percentage[20]	
+Collapse
+Date
+Faulcon DeLacy	41.6%	19 Sep 3300
+Zorgon Peterson	26%	19 Sep 3300
+Core Dynamics	13.6%	19 Sep 3300
+Other	18.8%	19 Sep 3300
+
+The three most popular ships in 2019 were the Cobra Mk III, Asp Explorer and the Python.[21]
+
+On Foot Gestures
+If you stand outside, aim at a ship or SRV and use the clap gesture it will turn on the exterior lights.[22]
+If you use the goodbye wave the ship will depart.[22]
+Videos
+Elite ship scale video 2021 edition
+Elite Dangerous Ship Comparison, All ships as of 2026
+The true INSANE scale of the Imperial Cutter - Elite Dangerous Ship Sizes
+All Ships Reviewed 2025- Elite Dangerous Odyssey
+Gallery
+ED Ship Size Chart v3.0.1 Light
+ED Ship Size Chart v3.0.1 Dark
+Ship Size Comparison
+ED Ship Size Chart 3305 Edition
+FDL vs Boeing 747-400
+Station docking with a Boeing 747 and Imperial Courier
+Elite Dangerous Ships and Boeing 747-123
+Elite Dangerous Ships and Aircraft Carrier
+Asp Explorer and horses scale
+Corvette and Farragut scale
+Megaship in New York scale
+Majestic-Class Interdictor ship scale Dubai
+Type-10 with Diamondback Explorer and SRV
+Anaconda ship size comparison
+Alliance Chieftain and Boeing 747
+Anaconda size comparison
+Large ships size comparison
+ED Ship Scale Comparison v2 by CMDR iolair
+Corvette and a settlement
+Anaconda, Cobra, Sidewinder scale
+Evolution of the Cobra in the Elite Universe
+Ship squadron
+Panther Clipper Mk II size comparison
+Scorpion vs Imperial Eagle scale
+Beluga Asp Sidewinder ship scale.
+References
+↑ Elite Dangerous website - Starships - 9 May 2024
+↑ Elite Dangerous Newsletter #22
+↑ Tourist Spot 0249, "Pilots Federation's Near Monopoly"
+↑ Starship Database, on elitedangerous.com
+↑ 
+Jump up to:
+5.0 5.1 5.2 Python Mk II & Updates to the Gamestore - 23 April 2024
+↑ New Supercruise Overcharge module enters the market, a “turning point for humanity” - Galnet - 10 April 3310
+↑ 
+Jump up to:
+7.0 7.1 YouTube: Elite: Dangerous Development Plan (2:44)
+↑ Elite: Dangerous Newsletter #29 - From Frontier Developments - August 2014
+↑ YouTube: Cockpit Interiors
+↑ Twitch: "If players are saying ship interiors are an absolute must, obviously we'll assess it for resources" - June 8, 2021
+↑ reddit: CM Arf on LaveRadio: I can relay the message as best I can...
+↑ 
+Jump up to:
+12.0 12.1 Elite Dangerous - 4.3.3.0 Update Notes - Elite Dangerous website - 28 April 2026
+↑ 
+Jump up to:
+13.0 13.1 Nomad – Available Now Via ARX Early Access - 30 June 2026
+↑ 
+Jump up to:
+14.0 14.1 We can exit and enter through doors now! - lunchanddinner - Reddit - 6 Sep 2026
+↑ Elite Dangerous Newsletter #29
+↑ YouTube: 2.3 - The Commanders Release (17:30)
+↑ 
+Jump up to:
+17.0 17.1 Frontier Forums: 2.3 The Commanders Beta - Changelog
+↑ GalNet: Galactic News: Zeus Bureau Appeal Concludes
+↑ Elite Dangerous Newsletter #7 - (archived)
+↑ 
+Jump up to:
+20.0 20.1 Ship Sales Service Report - 19 SEP 3300 - Galnet - Inara
+↑ Most popular ships in 2019 - Elite Dangerous on Facebook - https://archive.vn/Ga3f1 - 19 Dec 2019
+↑ 
+Jump up to:
+22.0 22.1 reddit: Started playing odyssey and this is peak development
+show
+v • d • e
+Ships
+Categories
+Languages
+Community content is available under CC-BY-SA unless otherwise noted.
+More Fandoms
+Sci-fi
+
+107 Comments
+
+Join the conversation
+Sign in to read what others are saying and share your thoughts.
+SIGN IN
+
+Don't have account? Register now
+
+ADVERTISEMENT
+New to Fandom? Let's make it official.
+
+Create your free account and dive into the worlds you love with fans who love them too.
+
+Continue with Email
+
+By continuing, you agree to Fandom's Terms of Use and Privacy Policy.
+
+ADVERTISEMENT
+ADVERTISEMENT
+ADVERTISEMENT
+EXPLORE PROPERTIES
+Fandom
+Fanatical
+GameSpot
+Metacritic
+TV Guide
+Honest Entertainment
+FOLLOW US
+OVERVIEW
+What is Fandom?
+Essentials
+About
+Careers
+Press
+Contact
+Terms of Use
+Privacy Policy
+Digital Services Act
+Global Sitemap
+Local Sitemap
+Do Not Sell My Personal Information
+COMMUNITY
+Community Central
+Support
+Help
+Accessibility Statement
+ADVERTISE
+Media Kit
+Contact
+FANDOM APPS
+Take your favorite fandoms with you and never miss a beat.
+Elite Dangerous Wiki is a Fandom Games Community.
+VIEW MOBILE SITE
+Search this wiki
+Search all wikis
+When you visit our website, we may "share" or "sell" information about your use of our site with marketing and analytics partners, as those terms are defined by applicable law. You may opt out of this selling/sharing, and if you do, we will honor that decision and direct our partners to do the same.Privacy Policy
+Manage Options
+
+LINKS
+https://www.reddit.com/r/EliteDangerous/comments/nve0e0/cm_arf_on_laveradio_i_can_relay_the_message_as/
+https://www.reddit.com/r/EliteDangerous/comments/1w8m0q6/we_can_exit_and_enter_through_doors_now/
+https://www.reddit.com/r/EliteDangerous/comments/wskguu/started_playing_odyssey_and_this_is_peak/

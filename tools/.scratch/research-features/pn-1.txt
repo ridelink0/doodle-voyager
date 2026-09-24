@@ -1,0 +1,402 @@
+Intel Celeron N4500 Benchmark
+https://www.cpubenchmark.net/cpu.php?cpu=Intel+Celeron+N4500+%40+1.10GHz
+
+Software
+Hardware
+Benchmarks
+Services
+Store
+Support
+About Us
+Forums
+0
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+Memory Benchmarks
+PC Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+CPU Benchmarks
+
+Over 1,000,000 CPUs Benchmarked
+
+Intel Celeron N4500 @ 1.10GHz
+
+Benchmarks for the Intel Celeron N4500 can be found below. Release dates, price and performance comparisons are also listed when available. This is made using thousands of PerformanceTest benchmark results and is updated daily.
+
+The first graph shows the relative performance of the CPU compared to the 10 other common (single) CPUs in terms of PassMark CPU Mark.
+The 2nd graph shows the value for money, in terms of the CPUMark per dollar.
+The pricing history data shows the price for a single Processor. For multiple Processors, multiply the price shown by the number of CPUs.
+
+CPUS
+
+Multithread
+Page: 
+1,
+2,
+3,
+4
+Single Thread
+Page: 
+1,
+2,
+3,
+4
+Best Value (On Market)
+Best Value XY Scatter
+Best Value (All time)
+New Desktop
+New Laptop
+New Server
+New Mobile
+Systems with Multiple CPUs
+Overclocked
+Power Performance
+CPU Mark by Socket Type
+Cross-Platform CPU Performance
+Top Gaming CPUs
+CPU Mega List
+Search Model
+Compare
+0
+Common
+Most Benchmarked
+AMD vs Intel Market Share
+Year on Year Performance
+
+
+Intel Celeron N4500 @ 1.10GHz
+
+Description: Intel UHD Graphics
+
+Class: Mobile/Embedded
+
+Socket: FCBGA1338
+
+Clockspeed: 1.1 GHz
+
+Turbo Speed: 2.8 GHz
+
+Cores: 2 Threads: 2
+
+Typical TDP: 6 W
+
+TDP Down: 4.8 W
+
+Cache per CPU Package:
+L1 Instruction Cache: 2 x 32 KB
+L1 Data Cache: 2 x 32 KB
+L2 Cache: 1 x 1536 KB
+L3 Cache: 4 MB
+
+
+Other names: Intel(R) Celeron(R) N4500 @ 1.10GHz, Intel Celeron N4500 @ 1.10GHz, Intel N4500
+
+CPU First Seen on Charts: Q1 2021
+
+CPUmark/$Price: NA
+
+Overall Rank:
+3986th fastest in multithreading out of 6006 CPUs
+3395th fastest in single threading out of 6006 CPUs
+851st fastest in out of 1321 Mobile/Embedded CPUs
+
+
+Last Price Change: NA
+
+Average CPU Mark
+Multithread Rating
+1761
+Single Thread Rating
+1252
+
+Samples: 1291*
+*Margin for error: Low
+
++ COMPARE
+CPU Test Suite Average Results for Intel Celeron N4500 @ 1.10GHz
+Integer Math	5,467 MOps/Sec
+Floating Point Math	3,487 MOps/Sec
+Find Prime Numbers	9 Million Primes/Sec
+Random String Sorting	3,130 Thousand Strings/Sec
+Data Encryption	1,318 MBytes/Sec
+Data Compression	22,488 KBytes/Sec
+Physics	153 Frames/Sec
+Extended Instructions	628 Million Matrices/Sec
+Single Thread	1,252 MOps/Sec
+From submitted results to PerformanceTest V10 as of 22nd of September 2026.
+CPU Mark Distribution for Intel Celeron N4500 @ 1.10GHz
+Submitted Baseline Distribution Graph as of 19th of September 2026
+From submitted results since PerformanceTest V10 as of 19th of September 2026.
+For distribution graph only: Results are trimmed to exclude outliers by disregarding the bottom 1% and top 1% of submissions.
+
+
+
+Search for Intel Celeron N4500 @ 1.10GHz
+from the Featured Merchants below:
+
+
+
+
+Note: PassMark Software may earn compensation for sales from links on this site through affiliate programs.
+Machines with this CPU (or similar)
+	acer Chromebook 315 CB315-4H-C0BR 15.6" Full HD Laptop, Intel Celeron N4500 1.1GHz, 4GB RAM, 64GB eMMC, ChromeOS, Silver	$218.99
+(www.amazon.com)
+
+	Lenovo Ideapad 1 15.6" HD Student Laptop, Intel Celeron N4500, 1.1GHz, 4GB DDR4 Memory, 128GB eMMC, One Year Microsoft Office 365 Included, Windows 11 Home in S Mode, Cloud Grey, 82LX00DGUS	$254.99
+(www.amazon.com)
+
+	Lenovo IdeaPad 3i Chromebook 15.6” FHD 1920 x 1080 Display | Intel Celeron N4500 1.1GHz | Intel UHD Graphics | Camera |Grey | 4GB RAM | 64GB SSD | Chrome OS | Bundle with USB 3.0 Hub	$289.99
+(www.amazon.com)
+
+	HP Chromebook 14'' HD Laptop, Student and Business Laptop, Intel Celeron N4500, 4GB RAM, 64GB eMMC, Long Battery Life, Fast Charge, Chrome OS, Gray, 14a-ne1013dx	$225.99
+(www.amazon.com)
+
+	Lenovo IdeaPad 3i Chromebook 15.6” FHD 1920 x 1080 Display | Intel Celeron N4500 1.1GHz | Intel UHD Graphics | Camera |Grey | 4GB RAM | 64GB SSD | Chrome OS | Bundle with 64GB USB Flash Drive	$299.99
+(www.amazon.com)
+Note: PassMark Software may earn compensation for sales from links on this site through affiliate programs.
+CPU Mark Relative to Top 10 Common Mobile/Embedded CPUs
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+AMD Ryzen Z1 Extreme	
+	
+24,583
+
+AMD Ryzen 5 PRO 230	
+	
+19,162
+
+Apple M1 8 Core 3200 MHz	
+	
+14,122
+
+Intel Core i5-1235U	
+	
+12,418
+
+Apple A15 Bionic	
+	
+9,868
+
+Apple A14 Bionic	
+	
+8,543
+
+Apple A13 Bionic	
+	
+5,799
+
+Intel N150	
+	
+5,346
+
+Intel N100	
+	
+5,306
+
+AMD Ryzen Embedded R1505G	
+	
+3,802
+
+Intel Celeron N4500 @ 1.10GHz	
+	1,761
+CPU Value (CPU Mark / $Price )
+As of 23rd of September 2026 - Higher results represent better value
+
+Processor	CPU Mark / $Price	
+Intel N100	
+	
+41.45
+
+Intel Core i5-1235U	
+	
+40.19
+
+Intel Celeron N4500 @ 1.10GHz	
+	NA
+Intel N150	
+	
+NA
+
+AMD Ryzen Z1 Extreme	
+	
+NA
+
+AMD Ryzen 5 PRO 230	
+	
+NA
+
+AMD Ryzen Embedded R1505G	
+	
+NA
+
+Apple M1 8 Core 3200 MHz	
+	
+NA
+
+Apple A15 Bionic	
+	
+NA
+
+Apple A14 Bionic	
+	
+NA
+
+Apple A13 Bionic	
+	
+NA
+Single Thread Rating
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average Thread Rating	
+Apple M1 8 Core 3200 MHz	
+	
+3,672
+
+Apple A15 Bionic	
+	
+3,569
+
+AMD Ryzen Z1 Extreme	
+	
+3,524
+
+AMD Ryzen 5 PRO 230	
+	
+3,495
+
+Apple A14 Bionic	
+	
+3,381
+
+Intel Core i5-1235U	
+	
+3,046
+
+Apple A13 Bionic	
+	
+2,361
+
+Intel N150	
+	
+1,893
+
+Intel N100	
+	
+1,880
+
+AMD Ryzen Embedded R1505G	
+	
+1,826
+
+Intel Celeron N4500 @ 1.10GHz	
+	1,252
+Last 5 Baselines for Intel Celeron N4500 @ 1.10GHz
+Most recent listed first
+
+Baseline	CPU Mark	
+BL3721297 - Sep 17 2026	
+	
+2201
+
+BL3721258 - Sep 17 2026	
+	
+433
+
+BL3721099 - Sep 17 2026	
+	
+1895
+
+BL3720239 - Sep 16 2026	
+	
+1843
+
+BL3720237 - Sep 16 2026	
+	
+1843
+Additional baselines can be obtained using Windows version of PerformanceTest's Manage Baselines feature.
+Popular comparisons for Intel Celeron N4500 @ 1.10GHz
+As of 23rd of September 2026 - Higher results represent better performance
+
+Processor	Average CPU Mark	
+Intel Celeron N4500 @ 1.10GHz	
+	1,761
+Apple A9 vs Intel Celeron N4500	
+	2,077 (+17.9%)
+Apple A8 vs Intel Celeron N4500	
+	1,533 (-12.9%)
+Intel Celeron 6305E @ 1.80GHz vs Intel Celeron N4500	
+	2,021 (+14.8%)
+Rockchip RK3399 vs Intel Celeron N4500	
+	1,550 (-12.0%)
+Intel Atom x6211E @ 1.20GHz vs Intel Celeron N4500	
+	1,695 (-3.7%)
+Intel Atom x6211E @ 1.20GHz vs Intel Celeron N4500	
+	1,695 (-3.7%)
+AMD 3015Ce vs Intel Celeron N4500	
+	2,090 (+18.7%)
+Intel Celeron N4505 @ 2.00GHz vs Intel Celeron N4500	
+	2,013 (+14.3%)
+Intel Celeron 4305U @ 2.20GHz vs Intel Celeron N4500	
+	1,615 (-8.3%)
+Intel Celeron N4020C @ 1.10GHz vs Intel Celeron N4500	
+	1,535 (-12.8%)
+Apple A9X vs Intel Celeron N4500	
+	2,508 (+42.4%)
+Qualcomm Technologies, Inc SDM632 vs Intel Celeron N4500	
+	2,111 (+19.9%)
+
+
+Software
+BurnInTest
+PerformanceTest
+OSForensics
+MemTest86
+WirelessMon
+Management Console
+Zoom Search Engine
+Free Software
+Hardware
+USB3.0 Loopback Plugs
+USB2.0 Loopback Plugs
+PCIe Test Cards
+USB Power Delivery Tester
+Serial and Parallel Loopback Plugs
+USB Short Circuit Testers
+Benchmarks
+CPU Benchmarks
+Video Card Benchmarks
+Hard Drive Benchmarks
+RAM Benchmarks
+PC Systems Benchmarks
+Software Marketshare
+Database Benchmarks
+Android Benchmarks
+iOS Benchmarks
+Internet Bandwidth
+About Us
+Company
+Contact Us
+The Press Room
+Services
+Store
+Support
+Forums
+Compliance
+International
+Disclaimer
+Refunds
+Privacy
+Social  
+
+Advertise on this site.
+
+Copyright © 2026 PassMark® Software
+
+ 
+
+LINKS

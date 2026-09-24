@@ -1,0 +1,530 @@
+Capital fleets, endgame money sink, and starship specialization : r/NoMansSkyTheGame
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/capital_fleets_endgame_money_sink_and_starship/
+
+Skip to main content
+Capital fleets, endgame money sink, and starship specialization : r/NoMansSkyTheGame
+Sign Up
+Log In
+Expand user menu
+Go to NoMansSkyTheGame
+r/NoMansSkyTheGame
+•
+1y ago
+Any-Object-553
+Capital fleets, endgame money sink, and starship specialization
+Suggestion
+
+I think that Freighter and fleet game play is a little underwhelming. I dismissed all but the expedition frigates because it was so annoying to warp my freighter unto a system and have my screen shaking over and over while each frigate warps one at a time behind it, just for them to sit there and do nothing. Sure you can send them on fleet expeditions, but it's really just a text based adventure. Here's my loose idea for a fleet refresh.
+
+You warp into a system from the bridge of your capital ship. Your trade frigates dock at the infrastructure of the space station and start automatically selling the goods in their inventories for units, nanites, and a small amount of exclusive frigate bonus quicksilver. Prices boosted based on reputation with system faction. Prices boosted for each rank of settlement in the system. (Time gated)
+
+Your science vessels fly to the main planet and start flying through the atmosphere for passive scanning mission. (The discovery page says "evidence of" and the details of each scannable item on the planet). Works its way through each planet and moons. (Real time or time gated). When "discovered by the player, anything with the "Evidence of" scans grant a bonus, double bonus if "discovered" by a deployed orbiter or rover. (More on this later)
+
+Combat frigates start searching for pirates and engaging with the aid of the players squadron. The Freighter has an option to designate a security detail, this frigate stay with the capital ship. (Real time)
+
+Industrial frigates fly to an asteroid field and start mining tritium, gold, etc.(real time)
+
+Pirate frigates scan other fleets in the system and provide stats. Can be toggled to attack a capital ship fleet, and start a conflict. If attack is initiated, trade frigate timer pauses and all trade bonuses are negated. (Real time)
+
+Living frigates im not so sure, maybe they could sniff out derelict freighters and space encounters, or even locate stellar ice for a quicksilver bonus.
+
+Capital ship fleets are big, and expensive to maintain. Each frigate in a fleet adds to fleet maintenance cost, and requires payment in units to fulfill their missions. Non payment results in the ships just hovering by the capital ship like they do now. The higher class a Freighter is, the lower the maintenance cost. I think this could be a solid endgame money sink, would require steady income to ensure your fleet provides you with the scan boosts and trade bonuses. We should be able to spend our 4 billion units!
+
+As for orbiters and rovers, I think it would be awesome if there was a workshop behind the freighters starship hangar where you could construct deployable exocraft sized technologies. This would also play into specialization of existing starship types.
+
+Orbiters would be Deployable via tractor beam by explorer class ships, and would circle one planet. There could be any number of orbiter types, here are some examples.
+
+Visitor log. We've all been wanting a guest book to clear up the comms ball issue. What if instead of a guestbook, there was a piece of machinery orbiting a planet that logged all the visitors to the planet? This orbiter would function like a spy satellite. You could toggle it to log all visitors, or maybe link it to monitor one specific location, like a crash site or a planetary base.this could be defeated by a starship having a new "stealth coating"
+
+Atmospheric extractors that worked like the stellar extractors on the freighters, but collected atmospheric gasses from that specific planet.
+
+Planetary mapping orbiters could slowly scan the planet and highlight structures/locate portals etc.
+
+Sentinel shielding. Each additional reduces sentinel activity level by 1
+
+Rovers! I know that exocraft stations on corvettes are a widely requested feature, and I think it's awesome. But what if Haulers could carry and deploy one planetary rover? A rover could be dropped on a planet to slowly cruise around and passively scan all flora/fauna/minerals. Would grant a monetary bonus if a fleet science vessel had scanned the planet prior, and had suggested there was "evidence of" each entity scanned.
+
+One last idea to cram into here before it gets too long; Ship cloaking technology-like for the exosuit, but to escape space encounters. Imagine cloaking mid battle for an ambush or to escape sentinels. Or even a tech that causes the skin of the ship to change colors, like a chameleon or octopus to match the environment. Can be toggled to change automatically, or locked. Stealth coating makes sentinels and pirates less likely to notice and target you. Stealth coating also passively reduces chances of a successful cargo scan, but not as much as the cargo scan deflector. Stealth coating also allows you to land on planets with orbiters undetected.
+
+In all, I love this game. I think that if HG said, "this game is complete" I would agree with them. However, we know Sean and the awesome dev team are always cooking something up back there. I would just love to use all of the games systems together, and feel like I'm really a powerhouse in the universe. I want to arrive in a system and there be no doubt that our endgame loadout is the most impressive thing that any alien has ever seen. If you made it this far, thanks for taking the time to read and let me know what you think!
+
+Read more
+250
+ThriventBank
+•
+Ad
+Ready for a bank you can finally bank on? We believe trust is just as important as money. That’s why we’ll always have your back.
+Learn More
+thriventbank.com
+Sort by:
+Comments Section
+Hardcase360
+•
+1y ago
+•
+Edited 1y ago
+
+You can turn off screen shake and then it's just a nice immersive sound effect.
+
+Everything else you said seems well though out, like you see it all in your mind in a strategic way. I like and relate to this
+
+Any-Object-553
+•
+1y ago
+
+That's a fair point, I will be turning off screen shake as soon as I get back online, haha.
+
+But thank you for the reply!
+
+1 more reply
+Capable_Ad_2842
+•
+1y ago
+
+This is exactly the post I’ve been meaning to write. I love these ideas, the only issue I have is the possibility of them getting this work in the game engine. With all these new moving parts in a system, I would bet on it being more of a hassle with bugs and glitches for them than the corvettes have been. However, I hope and pray it’s all possible. 
+
+One thing I would add is they could make a class system for the freighters, like your average C class cargo freighter could give mining and cargo bonuses, maybe the sentinel freighter would be combat focused and so on. They then need to make the defense turrets on the freighters and frigates to be viable in combat, what’s the point of my billion credit fleet if it can’t fight off 5 pirates with the 30+ laser cannons on all of my vessels.
+
+Any-Object-553
+•
+1y ago
+
+Thank you! And yes, I agree. While all of this (and the dozens of other amazing ideas I've seen on this subreddit) would expand the games depth, there is always limitations of what an engine can realistically handle. But I also believe that the big dreams of HG rubbed off on the players too! I didn't think corvettes would be possible, but they sure surprised us. I think there could be hope. I've also heard whispers about a Freighter update in the pipeline, so who knows?
+
+And I love your idea about specialized freighters giving a class bonus-it would really add another layer of who we are as a character in the universe. Imagine being a gek trading mogul and warping into a system currently occupied by an autophage pirate fleet, etc.
+
+And oh boy, the laser cannons. Our fleets should be absolutely smoking pirates. Thanks for the reply!
+
+2 more replies
+Steel-Tempered
+•
+1y ago
+
+We definitely need some kind of end game to progress towards. Building bases and corevettes only has so much replay value. And Settlements are little more than clicking a button or two with the usual gathering of stuff.
+
+Any-Object-553
+•
+1y ago
+
+Yeah I agree completely. Best game I ever played, but it feels unbalanced to have so much money and employees, but also doing all of the grunt work too
+
+9 more replies
+Ignisiumest
+•
+1y ago
+
+The game could really use an economy balancing update.
+
+7 more replies
+6 more replies
+ender_tll
+•
+1y ago
+
+I. LOVE. THIS.
+
+3 more replies
+djtrace1994
+•
+1y ago
+
+Agreed. Freighters are cool on their own, but we need a FLEET COMMAND update to integrate it better into the other game mechanics.
+
+Your Capital Ship should have some sort of Mobile Operations functionality within its Star System, and I agree that Frigates should give some sort of boost to this mechanics.
+
+If a system has a Level 3 Conflict, you should be able to park an S-Class Dreadnought in the system to temporarily reduce to a Level 1.
+
+Like, if your settlement is in a Level 3 Conflict system but your massive battleship is in orbit right above, what lunatic pirate would try to attack my settlement? At the same time, I have 10 combat frigates and an undeployed Squadron right above my Settlement, but I have to physically go there to kill 4 Sentinel Drones every few days?
+
+Any-Object-553
+•
+1y ago
+
+Yes, this exactly. I think the existing real estate in the bridge (near the captain) would be perfect to add additional terminals. Each terminal could even be assigned to each class of freighters, so you could command each "arm" of your fleet individually. This would also encourage players to actually stay in a system for a while, instead of just bunny hopping systems after visiting the station real fast
+
+BattleGrown
+•
+1y ago
+
+This perfectly addresses the "mile wide, an inch deep" syndrome that NMS suffers from. You work so hard to obtain everything, but then do next to nothing with them. And this type of approach to game design opens up the game for emergent gameplay too. An orbiter could become a hazard for navigation. Or pirates could be distracted by it, etc. Nothing in NMS interact with anything. There is zero emergent gameplay. But a sandbox like this should've had it. The original trailers showed that there would be emergent gameplay, like the herds of animals escaping a ship landing.
+
+Any-Object-553
+•
+1y ago
+
+Yes, exactly! There is so much to do and explore, but the systems and galaxies just feel lifeless. A system at war feels exactly the same as a peaceful system, for example.
+
+I think this game is already a masterpiece, but after 9 years of love it STILL has huge potential!
+
+u/CABENUVA_US
+•
+Ad
+Will upvoted injectable CABENUVA 4+ years ago. And he still trusts it. See it for yourself.
+Learn More
+cabenuva.com
+a2brute01
+•
+1y ago
+
+These are really good suggestions!
+
+I suggest you send them to hellogames.zendesk.com -- I know they listen to their users, and you have presented some compelling game depth.
+
+1 more reply
+mightylordredbeard
+•
+1y ago
+
+I wanna be able to fly my own capital ship, command gunners to fire, send out my AI fleet from my docking bay to attack other ships, and manage my fleet.. basically I want to feel like I’m playing my own Battlestar Galactica sim! I think I’d dump 100s of hours into the game if I could feel like I’m controlling my own fleet more directly.
+
+1 more reply
+Destroyer_2_2
+•
+1y ago
+
+Wait the maintenance cost goes down as the freighter goes up in class? That seems odd
+
+1 more reply
+Ch3apcont3nt
+•
+1y ago
+
+Honestly, this is a brilliant idea! The concept of not only building your freighter but also maintaining it with costs and having it perform tasks within the system is fantastic. Currently, if I leave the system, my freighter remains in its previous location until I warp it. Since I might not warp it for a while, adding these systems would encourage endgame players to use their freighters more frequently.
+
+Any-Object-553
+•
+1y ago
+
+Thank you so much for the reply, and the award!
+
+I know we all love this game, but the sad truth is that once you get to the "end", there dosent seem to be any significant game play loops. I think a system like this could solve a lot of issues, just by tweaking the resources we already have in-game. I think the ultimate reward of no mans sky could really be an emphasis on the very title of the game. The skies might belong to nobody, but after hundreds of hours of game play and amassing a legendary fleet, we should be pretty damn close to owning the skies. I love the characters humble beginnings, and I think the natural progression of gameplay should end by commanding-not just owning- fleets.
+
+Thank you!
+
+1 more reply
+half_dragon_dire
+•
+1y ago
+
+I'm always kind of fascinated by how many of the suggestions that people make for NMS boil down to "This part of the game is boring and repetitive, make the game do it for me. Oh but make it really expensive so the useless billions I spent time grinding don't feel so pointless."
+
+Like, come on, you mention how divorced fleet expeditions are from real gameplay right at the start, but rather than hanging any actual gameplay on them to make it real, you just put them to work grinding more cash for you. Bonus points for "actively not playing the game should earn me quicksilver", I guess, that's a new one for me.
+
+1 more reply
+Kassaken
+•
+1y ago
+
+No Mans Sky turning into a capital fleet management game as end game would be really cool.
+
+2 more replies
+u/tractorsupply
+•
+Ad
+Check out new arrivals, in-stock favorites, and some products exclusive to Tractor Supply.
+Learn More
+tractorsupply.com
+Collapse video player
+Archipocalypse
+•
+1y ago
+
+I wish there was an actual money sink, I'm sitting close to max $$$ with 100s and 100s of Fusion Ignitors and Stasis Devices just chillin in my freighter, and so much other inventory I could make 100s more. I spend some money here and there but there is nothing to justify me needing billions of units. Which honestly gives me less incentive to play, feels like i've hit the end wall even though there's a lot more game to play.... because almost anything I earn along the way just feels so pointless and gives me zero reason to visit my harvesting bases, farms, harvest any resource, all these objectives, missions, mining, etc everywhere I go and zero reason to ever do it again except to continue to stack endless wealth I have absolutely nothing to do with it though.... I woulda been thrilled if they made the new extended Settlement systems where you can have multiple settlements, and continue building upgrades..... I woulda been happy with that costing money and resources for each building, and cost a buncha money to start new settlements.... literally anything progressive that makes sense where we can spent our fortunes, settlements even pay you back over time....
+
+2 more replies
+[deleted]
+•
+1y ago
+
+Yeah the capital ships are my favorite feature but I really want a refresh on them. I want to actually be able to somehow use them. Like it would be cool at least to be able to control them in a fleet combat scenario
+
+[deleted]
+•
+1y ago
+
+I wanna do more stuff with Frigates, honestly. They're really cool and barely expanded on... I'd say like a mini freighter base with more support and pilotable? But, sadly, because of Corvettes, I don't think we're getting a frigate update...
+
+OpinionHaver_42069
+•
+1y ago
+
+I want to be able to join my frigates on an expedition. The stuff they report back from sounds so cool! Sure I won't be there for the entire 5-20 hour process but there should be some way to join them on these expeditions!
+
+1 more reply
+BowelMovement4
+•
+1y ago
+
+I love all these ideas and I agree with the overall sentiment that your fleet should be able to do more. As a money sink it also feels like of all the things currently in the game you would think the acquisition and upkeep of a large fleet would be where A LOT of funds could potentially go. I had commented on another post about similar updates to the fleet - I will copy that at the bottom of this
+
+I also think it would be neat to be able to buy 1-3 system freighters in addition to your main capital freighter to round out your fleet. Aside from potential extra base and garage space I am not too sure what function it would serve but from both a visual and collector standpoint I find it very appealing. NPC fleets appear to often warp in with multiple freighters (and those cargo pod ships) and I would like to get the same in my fleet. Maybe alongside your ideas having some extra freighters could allow you the ability to deploy different freighters in different systems which would allow you to allocate frigates to different systems at once. A player might want to do this because maybe different systems provide different benefits IE a trading ship might get more out of a tier 3 economy system, a combat one might find higher bounties in a pirate system etc -- and or a system could potentially have a max capacity or diminishing returns - IE a space station may only have room for so many trade frigates to dock. (this could also potentially give the game a way to limit the amount of stuff going on in a system without making it so only a portion of your fleet could be doing stuff)
+
+I am, similar to you, a bit unsure about where exactly living frigates fit in with all of this. I like the idea of them being able to sniff stuff out though. My only issue is it sounds like a function most similar to exploration type ships so if the living frigate stat wise specialized in combat it feels a bit weird to have it not able to do something more in line with that.
+
+Also do you have any ideas for support ships? I have more supports in my fleet than any other single ship type and I would want for them to have something to do. Maybe they could be sent to accompany any of the other ships in their tasks to improve their efficiency. Potentially you could allow living frigates to do this as well and I would not complain if they were just uniquely suited to function both as a support in this way but also have their unique sniffing out various things function.
+
+comment from previous post: "I think it would be really cool to be able to manually deploy frigates to do things. Ex send an industrial ship to a planet in system to extract resources from and you could then see it fly over to the planet - send ships down to it with workers and exocraft - mine some stuff - then return to the frigate and rejoin the main fleet. Other ship types might be good at other things IE a trade ship could go and dock by the space station or send ships down to a trading outpost to trade - explorer ship could maybe seek out anomalies to scan - and combat ships could fly out to bounty targets in the system and dispatch fighters/ fire it's main guns to take them out. Other ships could potentially do the other tasks just less effectively Ex you could send a trade ship to extract resources and they might go do it but they may not be equiped with exocraft and stuff or an explorer ship could maybe fight pirates but would have limited firepower or a lack of ships to dispatch to do so effectively with. Supports would still be relevant because tasks could still have travel times - fuel requirements - and benefit from more hands on deck doing the tasks even if they are specialized hands. Not too sure about living frigates since many of the tasks I imagine would involve the frigates deploying smaller ships once they arrive at their destination but I am sure someone could figure something out.
+
+I really love having a big capital ship and a fleet to go along with it and just want more ways to use and interface with it all."
+
+Legendofstuff
+•
+1y ago
+
+Have to agree. As it is, I find myself roleplaying more or less what you’re describing as I play - warp freighter between stars exploring. First thing I do is send expeditions out. Then the scan to find anything interesting to start off. Visit station.
+
+And as my fleets do their thing, I’ll try not to warp out my freighter from the system or use teleports for the most part. It plays out much like you say in my mind, just without all the added fun and bonuses lol. Good write up, and I’d hope that with what we have from corvettes so far building wise, freighters/fleets aren’t far behind for a rework of sorts.
+
+People also ask about section
+People also ask about
+Capital Fleet Strategies
+Endgame Money Management
+Starship Specialization Tips
+Best Capital Fleet Builds
+Efficient Endgame Resource Use
+More posts you may like
+Related posts
+Best Freighter? Dreadnought, pirate dreadnought, or some other capital ship?
+r/NoMansSkyTheGame
+•
+2y ago
+Best Freighter? Dreadnought, pirate dreadnought, or some other capital ship?
+16 upvotes · 41 comments
+LowesHomeImprovement
+•
+Ad
+Get your home ready for the holidays. We'll install new windows and doors before Christmas. Schedule your quote today and let's get started.
+lowes.com
+Get a Quote
+Capital Freighter
+r/NoMansSkyTheGame
+•
+4y ago
+Capital Freighter
+14 upvotes · 18 comments
+Tips for making money?
+r/NoMansSkyTheGame
+•
+10d ago
+Tips for making money?
+11 upvotes · 37 comments
+"System" vs Capital ... capital freighter??
+r/NoMansSkyTheGame
+•
+5y ago
+"System" vs Capital ... capital freighter??
+10 upvotes · 14 comments
+How do I get a capital freighter
+r/NoMansSkyTheGame
+•
+4y ago
+How do I get a capital freighter
+15 upvotes · 27 comments
+I always thought capital freighters were better then system freighters.
+r/NoMansSkyTheGame
+•
+5mo ago
+I always thought capital freighters were better then system freighters.
+262 upvotes · 111 comments
+Are we certain the capital ships are large enough?
+r/NoMansSkyTheGame
+•
+1y ago
+Are we certain the capital ships are large enough?
+1.4K upvotes · 107 comments
+Why Can't We Customise Starships?
+r/NoMansSkyTheGame
+•
+9d ago
+Why Can't We Customise Starships?
+324 upvotes · 83 comments
+Is this how new starships are made?
+r/NOMANSSKY
+•
+1mo ago
+Is this how new starships are made?
+1.9K upvotes · 110 comments
+Is this how starships are made?
+r/nms
+•
+3mo ago
+Is this how starships are made?
+2.9K upvotes · 164 comments
+Does anyone still use their starships?
+r/NoMansSkyTheGame
+•
+9mo ago
+Does anyone still use their starships?
+1.3K upvotes · 466 comments
+We can make our own starships, and now we can make our own space stations, so surely it's a matter of time until we can make our own freighters, right?
+r/NoMansSkyTheGame
+•
+12d ago
+We can make our own starships, and now we can make our own space stations, so surely it's a matter of time until we can make our own freighters, right?
+302 upvotes · 58 comments
+After countless hours, here it finally is: "coeur mourrant", my endgame base.
+r/NoMansSkyTheGame
+•
+2y ago
+After countless hours, here it finally is: "coeur mourrant", my endgame base.
+1.4K upvotes · 75 comments
+What's your endgame goal after your endgame?
+r/NoMansSkyTheGame
+•
+3y ago
+What's your endgame goal after your endgame?
+442 upvotes · 229 comments
+Get rid of money
+r/NoMansSkyTheGame
+•
+3mo ago
+Get rid of money
+631 upvotes · 224 comments
+Starships
+r/NOMANSSKY
+•
+4mo ago
+Starships
+274 upvotes · 118 comments
+No interesting end game content or places to really use my maxed out gear.
+r/NoMansSkyTheGame
+•
+2y ago
+No interesting end game content or places to really use my maxed out gear.
+98 upvotes · 98 comments
+Cadomai Prime Defense Fleet - Imperial
+r/StarWarsShips
+•
+1y ago
+Cadomai Prime Defense Fleet - Imperial
+87 upvotes · 19 comments
+The most badass starship i've found so far
+r/NoMansSkyTheGame
+•
+6mo ago
+The most badass starship i've found so far
+694 upvotes · 50 comments
+We can make our own starships, and now we can make our own space stations, so surely it's a matter of time until we can make our own freighters, right?
+r/nms
+•
+11d ago
+We can make our own starships, and now we can make our own space stations, so surely it's a matter of time until we can make our own freighters, right?
+175 upvotes · 37 comments
+How do you guys have so much money????
+r/NoMansSkyTheGame
+•
+1mo ago
+How do you guys have so much money????
+141 upvotes · 326 comments
+Mid-game money making?
+r/NoMansSkyTheGame
+•
+2mo ago
+Mid-game money making?
+4 upvotes · 41 comments
+Starship
+r/NOMANSSKY
+•
+1mo ago
+Starship
+187 upvotes · 68 comments
+What endgame activities or goals can I pursue?
+r/NoMansSkyTheGame
+•
+5y ago
+What endgame activities or goals can I pursue?
+34 upvotes · 37 comments
+What would you consider to be the „endgame“?
+r/NoMansSkyTheGame
+•
+3y ago
+What would you consider to be the „endgame“?
+36 upvotes · 52 comments
+VIEW POST IN
+简体中文
+Русский
+Português (Brasil)
+日本語
+See more
+Public
+TOP POSTS
+Reddit
+reReddit: Top posts of September 24, 2025
+Reddit
+reReddit: Top posts of September 2025
+Reddit
+reReddit: Top posts of 2025
+Home
+Popular
+News
+Explore
+Best of Reddit
+Best of Reddit in Portuguese
+Best of Reddit in German
+Reddit Rules
+Privacy Policy
+User Agreement
+Your Privacy Choices
+Accessibility
+Reddit, Inc. © 2026. All rights reserved.
+
+Join the most real place on the internet
+
+ Sign in with Apple
+Continue with Phone Number
+Continue with Email
+
+By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.
+
+LINKS
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyi4x8/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyklob/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyhcs1/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyjj51/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfy9iog/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfycmx1/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyvuq1/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfy9qj0/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfzekn0/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfznfrr/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfzfdqe/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfzmehv/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyfz9v/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfzep9t/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/ng1pvk5/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/ng3yyo9/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/ng4bzdp/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/ngycdup/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfypo8i/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyutd4/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyrbml/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfyt1i5/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfz384x/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfz3bhv/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/comment/nfys890/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1gdhicg/best_freighter_dreadnought_pirate_dreadnought_or/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/ueacfg/capital_freighter/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1wepzyu/tips_for_making_money/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/srus6j/system_vs_capital_capital_freighter/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/125d8ss/how_do_i_get_a_capital_freighter/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1swy1rd/i_always_thought_capital_freighters_were_better/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1mno7l8/are_we_certain_the_capital_ships_are_large_enough/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1wf9vdm/why_cant_we_customise_starships/
+https://www.reddit.com/r/NOMANSSKY/comments/1vkxu38/is_this_how_new_starships_are_made/
+https://www.reddit.com/r/nms/comments/1ueazce/is_this_how_starships_are_made/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1px20cn/does_anyone_still_use_their_starships/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1wcv1zb/we_can_make_our_own_starships_and_now_we_can_make/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1fuikvd/after_countless_hours_here_it_finally_is_coeur/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/16j08si/whats_your_endgame_goal_after_your_endgame/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1um6oa2/get_rid_of_money/
+https://www.reddit.com/r/NOMANSSKY/comments/1tb83b8/starships/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1i4hx3t/no_interesting_end_game_content_or_places_to/
+https://www.reddit.com/r/StarWarsShips/comments/1m17rqk/cadomai_prime_defense_fleet_imperial/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1se49fc/the_most_badass_starship_ive_found_so_far/
+https://www.reddit.com/r/nms/comments/1wdl0ij/we_can_make_our_own_starships_and_now_we_can_make/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1vwc0ei/how_do_you_guys_have_so_much_money/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1utj034/midgame_money_making/
+https://www.reddit.com/r/NOMANSSKY/comments/1vlfzxh/starship/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/p3m1b6/what_endgame_activities_or_goals_can_i_pursue/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/17jel23/what_would_you_consider_to_be_the_endgame/
+https://www.reddit.com/r/NoMansSkyTheGame/comments/1npcwxp/capital_fleets_endgame_money_sink_and_starship/

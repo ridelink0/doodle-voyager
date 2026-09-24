@@ -1,0 +1,9 @@
+[
+ ["t-scout", 1, [["scout","top",{"reach":true}]]],
+ ["t-racer", 1, [["racer","top",{"reach":true}]]],
+ ["t-fighter", 1, [["fighter","top",{"reach":true}]]],
+ ["t-hauler", 1, [["hauler","top",{"reach":true}]]],
+ ["t-cr1", 1, [["cruiser","top",{"reach":true,"zc":-22,"span":7.5}]]],
+ ["t-cr2", 1, [["cruiser","top",{"reach":true,"zc":-2,"span":7.5}]]],
+ ["t-cr3", 1, [["cruiser","top",{"reach":true,"zc":20,"span":7.5}]]]
+]

@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#fff;overflow:hidden} canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"}}</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { SHIPS, buildInterior, buildExterior, walkCheck } from '../../../js/ships.js';
+import { Renderer } from '../../../js/render.js';
+
+const TYPES = ['scout', 'racer', 'fighter', 'hauler', 'cruiser'];
+const canvas = document.getElementById('gl');
+let plain = null, doodle = null;
+
+function stats(group) {
+  let tris = 0, calls = 0, lights = 0;
+  group.traverse((o) => {
+    if (o.isLight) lights++;
+    if (!o.isMesh) return;
+    calls++;
+    const g = o.geometry;
+    tris += (g.index ? g.index.count : g.attributes.position.count) / 3;
+  });
+  return { tris: Math.round(tris), calls, lights };
+}
+
+window.report = () => {
+  const out = {};
+  for (const t of TYPES) {
+    const I = buildInterior(t, 'yellow');
+    const E = buildExterior(t, 'yellow');
+    const w = walkCheck(I);
+    const ids = [...new Set(I.interact.map((i) => i.id))];
+    const lever = I.interact.find((i) => i.id === 'breach');
+    const holeD = E.hole.pos.distanceTo(I.breach.pos.clone().addScaledVector(I.breach.normal, 3.5).setY(1.4));
+    out[t] = {
+      interior: stats(I.group), exterior: stats(E.group), walk: { ok: w.ok, problems: w.problems, unreached: w.unreached },
+      ids, n: I.interact.length, spawn: I.spawn.toArray(), seat: I.seat.pos.toArray(), spawnYaw: I.spawnYaw,
+      breach: { pos: I.breach.pos.toArray(), normal: I.breach.normal.toArray(), panelParent: I.breach.panel.parent === I.group, panelPos: I.breach.panel.position.toArray() },
+      leverD: lever && Math.hypot(lever.pos.x - I.breach.pos.x, lever.pos.z - I.breach.pos.z),
+      hole: { pos: E.hole.pos.toArray(), normal: E.hole.normal.toArray(), visible: E.hole.mesh.visible, evaToHole: holeD },
+      radius: E.radius, length: E.length, guns: E.guns.length, gunsDef: SHIPS[t].guns, engines: E.engines.length, dronePort: E.dronePort.toArray(),
+      bounds: [I.bounds.min.toArray(), I.bounds.max.toArray()],
+      screens: Object.fromEntries(Object.entries(I.screens).map(([k, m]) => [k, [m.geometry.parameters.width, m.geometry.parameters.height, m.parent === I.group]])),
+      lightsN: I.lights.length, lightTypes: I.lights.map((l) => l.type), animate: typeof I.animate,
+    };
+  }
+  return out;
+};
+
+function setupPlain() {
+  if (plain) return plain;
+  const c = document.createElement('canvas'); c.id = 'plain'; c.style.cssText = 'position:fixed;left:0;top:0'; document.body.appendChild(c);
+  const r = new THREE.WebGLRenderer({ canvas: c, antialias: true });
+  r.setSize(innerWidth, innerHeight, false);
+  r.setPixelRatio(1);
+  plain = r;
+  return r;
+}
+
+// which: spawn | seat | top | ext | eye
+window.view = async (t, which, o = {}) => {
+  const mode = o.mode || 'plain';
+  const paint = o.paint || 'yellow';
+  const cam = new THREE.PerspectiveCamera(o.fov || 72, innerWidth / innerHeight, 0.05, 2000);
+  const I = buildInterior(t, paint);
+  const E = buildExterior(t, paint);
+  if (o.hole) E.hole.mesh.visible = true;
+  I.animate(0.016, o.t || 0);
+  let grp;
+  if (which === 'ext') {
+    grp = E.group;
+    const R = E.radius;
+    const a = o.az ?? -0.75, e = o.el ?? 0.45, d = (o.dist || 1.9) * R;
+    const tgt = new THREE.Vector3(...(o.target || [0, 0, 0]));
+    cam.position.set(tgt.x + Math.sin(a) * Math.cos(e) * -d, tgt.y + Math.sin(e) * d, tgt.z + Math.cos(a) * Math.cos(e) * -d);
+    if (o.pos) cam.position.set(...o.pos);
+    cam.lookAt(tgt);
+    cam.near = 0.3;
+  } else {
+    grp = I.group;
+    if (which === 'spawn') { cam.position.set(I.spawn.x, 1.65, I.spawn.z); cam.rotation.set(o.pitch || 0, I.spawnYaw + (o.yaw || 0), 0, 'YXZ'); }
+    if (which === 'seat') { cam.position.copy(I.seat.pos); cam.rotation.set(o.pitch || 0, o.yaw || 0, 0, 'YXZ'); }
+    if (which === 'eye') { cam.position.set(o.x, o.y ?? 1.65, o.z); cam.rotation.set(o.pitch || 0, o.yaw || 0, 0, 'YXZ'); }
+    if (which === 'top') {
+      const hw = (I.bounds.max.x - I.bounds.min.x) / 2, hl = (I.bounds.max.z - I.bounds.min.z) / 2;
+      const zc = o.zc ?? 0, span = o.span || Math.max(hw * 1.15, hl * 1.05 * innerHeight / innerWidth);
+      const oc = new THREE.OrthographicCamera(-span * innerWidth / innerHeight, span * innerWidth / innerHeight, span, -span, 0.1, 100);
+      oc.position.set(0, 40, zc); oc.up.set(1, 0, 0); oc.lookAt(0, 0, zc);
+      // hide the ceiling: clip everything above cut height
+      grp.traverse((m) => { if (m.isMesh && m.material) { m.material = m.material.clone(); m.material.clippingPlanes = [new THREE.Plane(new THREE.Vector3(0, -1, 0), o.cut || 2.35)]; } });
+      // collider outlines (red) and interactable reach circles (green)
+      const pts = [];
+      for (const c of I.colliders) {
+        const y = 2.3;
+        pts.push(c.x0, y, c.z0, c.x1, y, c.z0, c.x1, y, c.z0, c.x1, y, c.z1, c.x1, y, c.z1, c.x0, y, c.z1, c.x0, y, c.z1, c.x0, y, c.z0);
+      }
+      const lg = new THREE.BufferGeometry(); lg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+      grp.add(new THREE.LineSegments(lg, new THREE.LineBasicMaterial({ color: 0xff0000 })));
+      const cp = [];
+      for (const it of I.interact) {
+        for (let i = 0; i < 24; i++) {
+          const a0 = i / 24 * Math.PI * 2, a1 = (i + 1) / 24 * Math.PI * 2;
+          cp.push(it.pos.x + Math.cos(a0) * it.r, 2.31, it.pos.z + Math.sin(a0) * it.r, it.pos.x + Math.cos(a1) * it.r, 2.31, it.pos.z + Math.sin(a1) * it.r);
+        }
+        cp.push(it.pos.x - 0.1, 2.31, it.pos.z, it.pos.x + 0.1, 2.31, it.pos.z, it.pos.x, 2.31, it.pos.z - 0.1, it.pos.x, 2.31, it.pos.z + 0.1);
+      }
+      const cg = new THREE.BufferGeometry(); cg.setAttribute('position', new THREE.Float32BufferAttribute(cp, 3));
+      if (o.reach) grp.add(new THREE.LineSegments(cg, new THREE.LineBasicMaterial({ color: 0x00aa00 })));
+      return render(mode, grp, oc, which, I, E, o, true);
+    }
+  }
+  cam.updateMatrixWorld();
+  return render(mode, grp, cam, which, I, E, o, false);
+};
+
+function render(mode, grp, cam, which, I, E, o, clip) {
+  if (mode === 'plain') {
+    const r = setupPlain();
+    r.domElement.style.display = 'block'; canvas.style.display = 'none';
+    r.localClippingEnabled = clip;
+    const sc = new THREE.Scene();
+    sc.background = new THREE.Color(o.bg ?? 0x223355);
+    sc.add(new THREE.HemisphereLight(0xfff1d8, 0x9aa4c0, 1.5));
+    const dl = new THREE.DirectionalLight(0xffffff, 1.6); dl.position.set(1, 2, 0.6); sc.add(dl);
+    sc.add(grp);
+    r.render(sc, cam);
+    sc.remove(grp);
+    return true;
+  }
+  if (!doodle) doodle = new Renderer(canvas);
+  const r = doodle;
+  canvas.style.display = 'block'; if (plain) plain.domElement.style.display = 'none';
+  r.gl.localClippingEnabled = clip;
+  r.world.clear(); r.shipScene.clear();
+  if (which === 'ext') {
+    r.world.add(new THREE.HemisphereLight(0xfff6e0, 0x8090b0, 1.1));
+    const dl = new THREE.DirectionalLight(0xffffff, 2.1); dl.position.set(1, 0.6, 0.4); r.world.add(dl);
+    r.world.add(grp);
+  } else {
+    r.shipScene.add(new THREE.HemisphereLight(0xfff1d8, 0x9aa4c0, 1.5));
+    r.shipScene.add(grp);
+  }
+  r.camera.copy(cam);
+  r.camera.aspect = innerWidth / innerHeight;
+  r.camera.updateProjectionMatrix();
+  r.boil = 0;
+  r.render(0);
+  return true;
+}
+const mode = (o) => (o && o.mode) || 'plain';
+// Render several views and tile them into one 2D canvas shown on top.
+window.grid = async (list, cols = 2) => {
+  const W = innerWidth, H = innerHeight, rows = Math.ceil(list.length / cols);
+  const tw = Math.floor(W / cols), th = Math.floor(tw * H / W);
+  let c2 = document.getElementById('tiles');
+  if (!c2) { c2 = document.createElement('canvas'); c2.id = 'tiles'; c2.style.cssText = 'position:fixed;left:0;top:0;background:#fff'; document.body.appendChild(c2); }
+  c2.width = W; c2.height = th * rows;
+  c2.style.display = 'none';
+  const g = c2.getContext('2d');
+  g.fillStyle = '#fff'; g.fillRect(0, 0, W, th * rows);
+  for (let i = 0; i < list.length; i++) {
+    const [t, which, o] = list[i];
+    await window.view(t, which, o || {});
+    g.drawImage(mode(o) === 'plain' ? plain.domElement : canvas, (i % cols) * tw, Math.floor(i / cols) * th, tw, th);
+    g.fillStyle = '#d02030'; g.font = '14px monospace'; g.fillText(`${t} ${which} ${o && o.label || ''}`, (i % cols) * tw + 6, Math.floor(i / cols) * th + 16);
+  }
+  c2.style.display = 'block';
+  return true;
+};
+window.ready = true;
+</script>
+</body>
+</html>

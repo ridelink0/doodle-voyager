@@ -1,0 +1,104 @@
+Requesting Joystick (HOTAS) support! :: No Man's Sky New Feature Suggestions
+https://steamcommunity.com/app/275850/discussions/3/3826424998950590783/
+
+STORE
+COMMUNITY
+ABOUT
+SUPPORT
+Install Steam sign in  |  language
+Store Page
+No Man's Sky
+All
+Discussions
+Screenshots
+Artwork
+Broadcasts
+Videos
+News
+Guides
+Reviews
+No Man's Sky > New Feature Suggestions > Topic Details
+Amputator
+Aug 27, 2023 @ 1:18pm
+Requesting Joystick (HOTAS) support!
+With recent updates to the game I can no longer play in VR (performance issues). So I thought I'd try playing on a normal flat screen using Keyboard and Mouse. Very quickly I find myself struggling to pilot my ship with the mouse. The mouse just isn't the right way to fly a ship. No problem though, I have a nice joystick and throttle here. I'll just set them up to the side, so whenever I jump in my ship I can use a real HOTAS setup to fly.
+
+Except I can't. The game won't let me bind the joystick or throttle. Really? It won't accept any generic Windows input device? I found some people talking about workarounds to get your joystick to simulate an XBox controller. Ugh. Could we just get proper support for binding other input devices like joysticks? That would even make playing in VR easier.
+
+Thanks.
+Showing 1-7 of 7 comments
+Coyote
+Aug 28, 2023 @ 4:12pm 
+Seconded
+#1
+BruceNitro
+Aug 30, 2023 @ 6:34am 
+It is unthinkable that it doesn't already have HOTAS support. I shouldn't have to use third party tools and work around to get my HOTAS to work haphazardly with a game involving flight sim mechanics.
+#2
+R-TEAM
+Sep 1, 2023 @ 8:10am 
++1
+#3
+Nanakra
+Sep 11, 2023 @ 11:07am 
++1000
+#4
+SirProsik
+Sep 14, 2023 @ 2:59am 
+Would be very nice.
+Used to work with x360 pre-beyond and may with the new version.
+With the release of Beyond Hello Games dropped all direct controller support in favor of Steam's controller support unfortunately. I bought the Gog version and gave up on controller support there.
+
+Tried other 'programs' but the delay is too annoying for me so I use keyboard and mouse.
+#5
+WhulfPack
+Nov 14, 2023 @ 10:25am 
+Yes please! I have a 1000$ Virpil HOTAS setup collecting dust because Star Citizen and Elite Dangerous just weren't my cup of tea.
+
+Add the support so I can make use of these top notch flight controls, I beg of you.
+#6
+Malferellon
+Nov 14, 2023 @ 10:51am 
+Motion in space and motion on the ground are not flight. HOTAS, admittedly, is good for atmospheric flight, but what throttle setting is "stop and hover"? What throttle setting is "walk backwards"?
+
+My point is that HOTAS may not translate as well as it might seem, no matter how much you spent on your HOTAS setup or what performance issues you have with VR. HOTAS works well in a flight simulator, but NMS isn't a flight simulator.
+#7
+Showing 1-7 of 7 comments
+Per page:
+15
+30
+50
+
+
+No Man's Sky > New Feature Suggestions > Topic Details
+Date Posted: Aug 27, 2023 @ 1:18pm
+Posts: 7
+ Discussions Rules and Guidelines
+
+© 2026 Valve Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries.
+VAT included in all prices where applicable.
+
+STEAM
+About Steam
+Steam SSA
+Steamworks
+Steam Distribution
+Gift Cards
+VALVE
+About Valve
+Jobs
+Hardware
+Recycling
+LEGAL
+Privacy
+Accessibility
+Notices & Policies
+Cookies
+Refunds
+MORE
+Get Steam
+Get Mobile Apps
+Get Support
+My Account
+
+LINKS

@@ -1,0 +1,321 @@
+ship interiors - will they happen | Frontier Forums
+https://forums.frontier.co.uk/threads/ship-interiors-will-they-happen.625789/
+
+This website uses cookies
+We use cookies to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services.
+Consent Selection
+Necessary
+Preferences
+Statistics
+Marketing
+Show details
+Allow all cookies
+Allow selection
+Deny
+ 
+HOME
+ 
+FORUMS
+ 
+WHAT'S NEW
+ 
+Log in
+Register
+ Search
+Staff / Developer Posts
+ 
+New posts
+ 
+Search forums
+Forums 
+Elite Dangerous 
+Dangerous Discussion 
+ship interiors - will they happen
+ 
+Thread starter
+Woakes  
+Start date
+May 25, 2024
+1
+	
+2
+	
+3
+	
+…
+	
+191
+ Next
+Woakes
+W
+May 25, 2024
+#1
+I still hold onto hope that ship interiors will happen one day.
+
+Has there been any kind of confirmation?
+I know there was a lot of backlash when one of the community managers shut the idea down when he was trying to focus on the new odyssey gameplay and a lot of people took that as golden word that ship interiors were indeed canceled, but has it ever been confirmed by the actual dev team?
+
+EDIT:
+For those of you who wish to talk about ship interiors without the negativity, trolling and flaming, I've started a new thread over
+
+Expanding on foot gameplay
+Positive Ideas for expanding on-foot gameplay that does not interfere with current gameplay loops and mechanics. Sorry if I nabbed/paraphrasing an suggestion from another thread but I want to start a thread with no fighting because (I get it) there are a hardcore sim-pilot who think this isn't...
+ forums.frontier.co.uk
+ 
+Last edited: Mar 27, 2025
+Reactions:
+wildBcat, Rochester, Toko and 17 others
+Darkfyre99
+May 25, 2024
+#2
+Frontier Developments has been rather consistent about ship interiors: They’ll be their own paid update. Given the Odyssey debacle, who knows if Frontier will ever invest in producing another paid update?
+ 
+Reactions:
+MQC, lysan, Wotthe Dickens and 16 others
+oblivionmanman 2476
+O
+May 25, 2024
+#3
+do you need it,walk around the ship thats it,i hardly walk around my fc .
+ 
+Reactions:
+Qasmir, Henri, CMDR K L Barrett and 19 others
+Ian Doncaster
+May 25, 2024
+#4
+Woakes said:
+but has it ever been confirmed by the actual dev team?
+The dev team communicate via the community managers, because programming software and talking to grumpy people are very distinct skill sets. It's all one company; you can assume that the community managers are making statements with some level of official backing unless they say otherwise.
+
+They're highly unlikely to say "ship interiors will never happen" (and haven't yet). After all, in N years time they might decide to do them.
+They're even less likely to say "ship interiors will happen" at any notice longer than 2-3 months before their planned release.
+
+
+
+Of course, "ship interiors" covers a really wide range of potential features which go from "already implemented" (our ships have interiors and we can sit in chairs in them) to "you could play for years without exiting the ship or flying it anywhere". So even if they did rule out one person's interpretation of ship interiors that doesn't mean that they wouldn't implement someone else's interpretation the next week.
+ 
+Last edited: May 26, 2024
+Reactions:
+AlSki, GraXXoR, adventurer8612 and 9 others
+Internaut
+May 25, 2024
+#5
+Im thinking the game will need to be coded from the ground up for that to happen.
+ 
+Reactions:
+Vasja, Kirth, xylaki and 3 others
+vanFace
+V
+May 25, 2024
+#6
+With them luckily giving in to the "dark" side of P2W, I sure hope they will some day add ship interiors gradually by means of ARX unlock. Like e.g. the engine allowing wandering around your cockpit being coded in generally, but only unlocked for each ship by some 100k ARX or so. This will make it more calculable for them regarding return of development investment. I can see how each ship's interior design, collision detection, feature set (e.g. hatches, interaction points) can take quite some effort for little actual game-play. Those who'd love it, though, would certainly open their wallets to get it.
+ 
+Reactions:
+Traeloth, Thinking and Sighman
+oblivionmanman 2476
+O
+May 25, 2024
+#7
+as i see no need for it,its just immersion thats not needed,if a DLC was developed that contained interiors and ability to land on atmosphere planets with locations you could walk around, i would pay for it,but how far can you go,the games been around for a while,we all have are own ideas,but im not knocking the suggestions by any means.
+ 
+Reactions:
+adventurer8612
+something
+S
+May 25, 2024
+#8
+When Odyssey was released it was reviewed to nothing - still sits at "mostly negative" on steam.
+With Fdev now going the way to sell gameplay features such as ships on the arx store, you no longer have the ability to downvote them. Ever wondered why there was no feature that allowed you to rate content on their store? Ship kits literally blocking your weapons (aka pay to lose) from firing and there's no way of telling other customers "hey don't buy this right now this is inhibiting the functions of your ship!"... Yeah...I wonder why that is....
+
+So why would fdev go back to embarrass themselves and release a new DLC in an unfinished state, if they can just release it on the arx store for 300k arx and nobody will ever know what kind of product they released.
+ 
+CMDR Ginge
+C
+May 25, 2024
+#9
+Can kinda walk around the cockpit a little, atleast I can with my pico neo link 3 and while very cool for a little bit i can see it getting tedious fast. it seems a lot of effort for little return and I'd rather they work on all the bugs before stretching the engine even further. Feels like it cant handle that much more tbh.
+
+looking at all the details it is a shame it isnt a proper feature cause the detail is brilliant right down to the little scratched in date on a panel in one of my ships.
+ 
+Reactions:
+Jaffz, Tessa R Act, ODINOJI and 1 other person
+Jack Winter
+May 25, 2024
+#10
+As usual most seem to forget that without the on foot content introduced in Odyssey it would have been impossible to do on foot ship interiors.
+
+I wonder what people would have said if we could walk around our ships instead of setting foot on planets and moons. Hopefully the financial side improves for Frontier, and they can do a future DLC with ship interiors, EVA, exploration of crashed ships, and boarding of capital, and enemy ships.
+ 
+Reactions:
+MariusTitus, Ryder7, Wotthe Dickens and 20 others
+oblivionmanman 2476
+O
+May 25, 2024
+#11
+seems a hint of starfield around somewhere,may be skyrim in space is rubbing off .
+ 
+MUTILADOR
+May 25, 2024
+#12
+Woakes said:
+I still hold onto hope that ship interiors will happen one day.
+
+Has there been any kind of confirmation?
+I know there was a lot of backlash when one of the community managers shut the idea down when he was trying to focus on the new odyssey gameplay and a lot of people took that as golden word that ship interiors were indeed canceled, but has it ever been confirmed by the actual dev team?
+It has been the most requested feature for many years, along with atmospheric planets. And there is no doubt that Frontier is very aware of this, if they have not done it in so many years it is unlikely that they will do it now with the current situation they are going through. The best thing you can do is make do with what you have for now. Other video game companies are also aware of this feature, currently in Starfield they are developing this feature more because they realized that it is one of the most played qualities, (creation of ships and remodeling their interiors), or wait for SC to be more stable, or even wait for a new space game with such characteristics to come out this or next year. I have faith in AI and how it will help small companies have more opportunities to create something better.
+ 
+Reactions:
+digijon
+Cablefast
+May 26, 2024
+#13
+I remember some of the old promotional videos saying that the ships were designed with interiors in mind.
+
+I found this guy on YouTube that designed a couple of ship interiors for a few Elite ships. I thought his work was pretty good.
+
+Here's one of the Sidewinder:
+
+Source: https://youtu.be/RfGfBX2gj2g?si=dx28mojw0VXBJN9B
+
+
+I think his Viper is even better:
+
+Source: https://youtu.be/pxPkrWe7Q88?si=OmlwCl7BSTiQLBRk
+
+
+These might be helpful for you, if you can use your imagination in game.
+
+I'm not sure, but I think some of the later ships have impossible dimensions for the amount of internals they're supposed to have.
+ 
+Reactions:
+Richard Portier, baudelier, r09u3 and 10 others
+Neestar
+N
+May 26, 2024
+#14
+something said:
+Ship kits literally blocking your weapons (aka pay to lose) from firing and there's no way of telling other customers "hey don't buy this right now this is inhibiting the functions of your ship!"..
+hi, do you by chance know exactly which 'ship kits' do that block error?
+
+Asking for a friend. 
+ 
+Reactions:
+IstvaanDCIV
+Cosmo
+May 26, 2024
+#15
+Woakes said:
+I still hold onto hope that ship interiors will happen one day.
+Has there been any kind of confirmation?
+
+Ship interiors were confirmed by Braben as a feature in the future. Obsidian Ant conducted a poll in March 2021. The result shows 97% want ship interiors based on 6900 votes. Interiors could also be monetized easily with cosmetics. So it makes sense to add it from a gameplay and business pov. We already have interiors (Concourse) for the Fleet Carrier.
+
+When will we get interiors? I think after the big new feature of 2024, there's a high chance we'll get it for 1 ship and they'll expand it to others.
+
+
+
+Cablefast said:
+I found this guy on YouTube that designed a couple of ship interiors for a few Elite ships. I thought his work was pretty good.
+
+Here's one of the Sidewinder:
+
+Source: https://youtu.be/RfGfBX2gj2g?si=dx28mojw0VXBJN9B
+Click to expand...
+
+It's amazing how 1 guy designed the detailed interior of the Sidewinder and other ships. They should hire FRj to make it for ED.
+ 
+Last edited: May 26, 2024
+Reactions:
+digijon, madmongoose, Uxi and 8 others
+Astrnn
+May 26, 2024
+#16
+Cosmo said:
+Ship interiors were confirmed by Braben as a feature in the future. Obsidian Ant conducted a poll in March 2021. The result shows 97% want ship interiors based on 6900 votes. Interiors could also be monetized easily with cosmetics. So it makes sense to add it from a gameplay and business pov. We already have interiors (Concourse) for the Fleet Carrier.
+
+When will we get interiors? I think after the big new feature of 2024, there's a high chance we'll get it for 1 ship and they'll expand it to others.
+Ha ha, no.
+
+But I think we'll definitely see interiors of animal cages and dinosaurs for sure
+
+ED needs a complete redesign to create ship interiors, which fdev has no money, no desire and most importantly no faith in success for
+
+And without faith in success in the current financial situation and under the leadership of effective managers, you can't expect anything breakthrough
+ 
+Dragsham
+May 26, 2024
+#17
+A few essentials for continuity.
+
+1) EVA.
+2) ship interiors (opens up a swathe of potential gameplay loops not too dissimilar to that other game)
+3) salvaging hulks - again that other game leads the way albeit crap atm.
+4) boarding crippled vessels intent on piracy. Piracy does need a balance pass, npc loot prices at the black market are pants.
+5) sandbox instead of instancing.
+6) open only.
+7) tractor beam or grappling hook.
+
+But I'd pass on all of it just for some new exploration content.
+Rant over! o7
+ 
+Reactions:
+Excalith, MariusTitus, Rhaazerus Orzhov and 2 others
+Doctor Dread
+May 26, 2024
+#18
+For 10 years I've been wishing the ship's interiors.
+
+Six months ago I've purchased my first VR (Q3) and realized it was there from the start - that what I actually wished was cabin interiors, to see the difference in layouts and sizes 'n all... it was there from the day one.
+
+VR does the job. You will not ask again for ship interiors.
+ 
+Reactions:
+Globusdiablo, Rat Catcher and Jack Winter
+IstvaanDCIV
+May 26, 2024
+#19
+Maybe I'm just suffering from a lack of imagination, but as pretty and immersive as ship interiors could be, I'm struggling to work out how they could form an integral part of more than one or maybe two compelling gameplay loops.
+ 
+Reactions:
+adventurer8612, Nowski, DazeDreamer and 1 other person
+MUTILADOR
+May 26, 2024
+#20
+IstvaanDCIV said:
+Maybe I'm just suffering from a lack of imagination, but as pretty and immersive as ship interiors could be, I'm struggling to work out how they could form an integral part of more than one or maybe two compelling gameplay loops.
+Believe me, in this forum they have given dozens of ideas and possibilities, some really very creative. Perhaps this topic is the most repeated in the forum, it reappears constantly. It is, I would say, down to the first intuitive idea that appears when playing ED.
+ 
+Reactions:
+Kamiyoda, Credit Noon and Cosmo
+1
+	
+2
+	
+3
+	
+…
+	
+191
+ Next
+You must log in or register to reply here.
+Share:
+Facebook
+X
+Bluesky
+LinkedIn
+Reddit
+WhatsApp
+Email
+Link
+Forums 
+Elite Dangerous 
+Dangerous Discussion 
+Contact us
+Terms and rules
+Forum Rules
+Privacy policy
+Help
+Home
+RSS
+
+LINKS

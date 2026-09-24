@@ -1,0 +1,699 @@
+[PC/XBOX] Update 1.201 - Most Wanted : r/spaceengineers
+https://www.reddit.com/r/spaceengineers/comments/ue043n/pcxbox_update_1201_most_wanted/
+
+Skip to main content
+[PC/XBOX] Update 1.201 - Most Wanted : r/spaceengineers
+Sign Up
+Log In
+Expand user menu
+Go to spaceengineers
+r/spaceengineers
+•
+4y ago
+AlfieUK4
+[PC/XBOX] Update 1.201 - Most Wanted
+UPDATE
+
+Previous Update discussion | All Update Threads
+
+ 
+
+Update Trailer
+
+Argyre Basin Outpost - Steam Workshop World
+
+ 
+
+Hello, Engineers!
+
+Our newest release is here! YOU, our community, are the inspiration for this release. We have reviewed your feedback and from it, created a collection of new additions based on your requests. We hope this update contains some of the many items we have seen on wishlists and the support portal. This update contains several highly requested blocks, fixes, and improvements.
+
+While all Major updates are free, many include a premium (DLC) component. This “Community” update is completely free and contains no DLC. On top of this it includes new content for existing DLCs (this means an additional free update for everyone who owns these DLC’s). Our focus in the Community update is on blocks the community may consider missing, and on important fixes across Space Engineers.
+
+This update will be just that, an update that focuses solely on community requested content. We will not be releasing any premium content or DLC with this update.
+
+While we certainly didn't get to every community request (there are many) we focused on realizing as many as possible from the most commonly requested items.
+
+ 
+
+Marek's Blog Post
+
+ 
+
+Features
+
+New Camera Overlay
+
+Added Weldless Armor Skin
+
+Added Corrugated Metal Armor Skin
+
+ 
+
+New Block Images
+
+ 
+
+Added new Blocks - Base Game
+
+New Armor shapes (S + L grid, Light + Heavy, 10 shapes, 40 blocks total)
+
+T Junction Conveyor (S + L grid, 2 blocks total)
+
+Round Windows (S + L grid, 4 shapes, 16 blocks total)
+
+Small advanced rotor (S grid, 1 block)
+
+Conveyor Converter (S grid, 1 block)
+
+Half Cover Wall Mirror (L grid, 1 block)
+
+Plushie Engineer (S grid, 1 block)
+
+Ladder Shaft (L grid, 1 block)
+
+Reinforced Conveyors (S + L grid, 3 shapes, 6 blocks total)
+
+ 
+
+Added new Blocks to existing DLCs:
+
+Inverted Corner Desks (L grid, 2 blocks total) [Deco Pack 1]
+
+Grated Catwalk Variants (L grid, 4 blocks total) [Deco Pack 2]
+
+Railing Variants (L grid, 3 blocks total) [Deco Pack 2]
+
+Neon Tubes (L grid got 3 new shapes, S grid got 8 new shapes, 11 blocks total) [Sparks of the Future]
+
+Industrial Conveyor T-junction [Heavy Industry]
+
+Diagonal Window Wall (L grid, 2 blocks total) [Warfare 1]
+
+Diagonal Bridge Window Inverted (L grid, 1 block) [Warfare 2]
+
+ 
+
+Combat Improvements & Quality of Life Changes
+
+Lead Indicator working in Gravity
+
+Explosion value tweaks for Explosive Ammo
+
+New system to determine small/large block size (for editing size of explosion particle effects)
+
+Added center variable for block mirroring
+
+ 
+
+Fixes & Improvements
+
+Fixed a crash in EOS DS
+
+Fixed persistence of identically named blocks in terminal after copy&paste (Small Reactor, Small Reactor used to become Small Reactor, Small Reactor 2)
+
+Fixed environmental flashes of light appearing at 0,0,0 instead of around actively shooting turrets
+
+Fixed difficulties with construction/deconstruction of Small Grid Armor Panels
+
+Fixed missing flyby sounds of turret ordinance
+
+Fixed Z-fighting on Large Warfare Reactor construction stage LOD3
+
+Fixed Searchlight not being present in Large Blocks Category of Toolbar Config (G-menu)
+
+Added Explosive components as detonatable inside inventories
+
+Fixed a gap in the geometry of Small Assault Turret
+
+Fixed Small grid Air vent conveyor ports to look like the non-interactive ports they are supposed to be
+
+Fixed width of Dispenser block to better fit with similar blocks
+
+Fixed missing Character Step, Fall, Impact sounds for Alien Soil voxel material
+
+Fixed Lost Colony world not being saved correctly through DS-GUI Save button
+
+Fixed 'Click' sound when using Ship tool secondary action
+
+Fixed formatting of Good.bot hints when using Gamepad
+
+Fixed Target indicator not scaling with resolution
+
+Fixed typo in Searchlight description
+
+Fixed formatting of Reactor description
+
+Fixed turret not stopping shooting when player takes over
+
+Fixed Z-fighting between multiple landing gears being placed in a row
+
+Fixed Passage 2 collision models for a better fit
+
+Fixed projectiles and tracers not pointing in the direction of flight
+
+Fixed a crash when stopping the game through Steam
+
+Fixed rotation of Small grid Solar panel emissive bar
+
+ 
+
+Support Site Fixes
+
+Fixed a crash when trying to cross the boundary of a size limited world via Jumping
+
+Fixed multiselect overwriting Custom Turret Controller settings incorrectly
+
+Fixed multiselect overwriting Exhaust pipe settings incorrectly
+
+Fixed sliders resetting when copying Heat Vent
+
+Fixed getting stuck in Cryo chamber when its ownership changed while player was offline
+
+Fixed Jump drives not jumping to Beacons on DS
+
+Fixed Cockpit's configured toolbar not being persistent through copy&paste
+
+Fixed turrets not targeting automatically on DS
+
+Fixed persistence of Heat Vent settings through reload
+
+Fixed Custom Turret continuing with motion initiated while relinquishing controls
+
+Fixed UI scrolling up under the cursor when right-click&dragging an item resulting in different item being relocated
+
+Fixed spaces at the end of ship names preventing creation of blueprints
+
+Fixed persistence of Custom Turret Controller AI range through reload
+
+Fixed penetrative projectiles ignoring subparts of blocks
+
+Fixed Armor panel collision issues
+
+Fixed Character getting stuck in place after using spectator while controlling Custom Turret Controller and exiting
+
+Fixed Warfare Hangar Door collisions to be in line with the old ones
+
+Fixed emissive parts of lights not being in sync with pointlights when set to flashing
+
+Fixed missing highlight on Warfare Rocket Launcher
+
+Fixed missing crosshair when viewing through Camera on a custom turret with new Camera overlay with built-in crosshair
+
+Fixed not playing the end sounds after a jump with a jump drive
+
+Fixed persistency for Sci-Fi Four-Button Panel button descriptions on DS
+
+Fixed a crash in Custom Turret Controller
+
+Fixed Window Wall blocks being airtight from the sides
+
+Fixed wolves not being able to be hit by turrets due to missing head offset
+
+Fixed Controller always being inverted in spectator regardless of Invert-Y axis setting
+
+Fixed black GPS signals reverting to blue after reload
+
+Fixed Searchlight not following characters on DS
+
+Fixed Load game screen not showing thumbnails when using a gamepad
+
+Fixed missing breathing sounds in survival with realistic sounds
+
+Fixed missing choking sounds in survival SP
+
+Fixed visible gaps on the Railgun models
+
+Fixed cycle subsystems not updating on toolbar when there are two turrets
+
+Fixed missing piston sounds after piston head detached
+
+Fixed collisions for Antenna Dish
+
+Fixed collisions for Medical room
+
+Fixed inconsistencies in Custom Turret Controller toolbar options when compared to regular turrets
+
+Fixed missing staircase for one of the Economy NPC trade stations preventing non-flying access
+
+Fixed /gps command not iterating when used multiple times
+
+Fixed Gatling turrets ignoring targeting orders from Programmable block
+
+ 
+
+Official patch notes (PC)
+
+Official patch notes (Xbox)
+
+Stream Announcement and VODS
+
+ 
+
+Hotfixes will be listed in a reply comment below:
+
+ 
+
+Read more
+Archived post. New comments cannot be posted and votes cannot be cast.
+27
+Sort by:
+Comments Section
+AlfieUK4
+•
+4y ago
+•
+Edited 4y ago
+
+[PC/XBOX] Hotfix - 1.201.013 03/05/2022
+
+ 
+
+Fixed crash in MyCharacter.UpdateAnimationNewSystem
+
+Fixed crash in MyCharacter.GetRotation
+
+Removed 'Non-craftable' item from Spawn Menu
+
+ 
+
+[XBOX] Hotfix - 1.201.013
+
+ 
+
+Fixed missing armor skins on Xbox
+
+ 
+
+[PC/XBOX] Hotfix - 1.201.014 07/12/2022
+
+ 
+
+Fixed several regressing crashes
+
+Fixed PCU/Ownership issue crash
+
+ 
+
+EyeofEnder
+•
+4y ago
+
+Which DLCs did the new armor skins get added to?
+
+AlfieUK4
+•
+4y ago
+
+None, they are base game. They should get added to your Steam Inventory soon if they haven't already appeared.
+
+1 more reply
+9 more replies
+Timo823
+•
+4y ago
+
+Am I blind or did they fix the turret issues?
+
+AlfieUK4
+•
+4y ago
+
+Did you mean?
+
+Fixed turrets not targeting automatically on DS
+
+2 more replies
+DARKxASSASSIN29
+•
+4y ago
+
+I don't see the new skins. Are they missing for Xbox?
+
+AlfieUK4
+•
+4y ago
+
+An issue with skins on Xbox was reported on the official support site and is shown as 'awaiting fix': https://support.keenswh.com/spaceengineers/xbox/topic/24618-xbox-one-new-most-wanted-skins-unavailable
+
+1 more reply
+klousGT
+•
+4y ago
+
+There's an end sound for jumping?
+
+AlfieUK4
+•
+4y ago
+
+Yup, should be charging, jump in and jump out sounds.
+
+AviatorEcho
+•
+4y ago
+
+Why does it say "searchlight" in a lighter font in the center of the small-grid conveyor (center image)? Am I missing something?
+
+Also, this is a very exciting update. Thank you Keen!
+
+1 more reply
+SnooHesitations3403
+•
+4y ago
+
+I can't find the corrugated armor skin?
+
+AlfieUK4
+•
+4y ago
+•
+Edited 4y ago
+
+If you're on Xbox an issue with skins was reported on the official support site and is shown as 'awaiting fix': https://support.keenswh.com/spaceengineers/xbox/topic/24618-xbox-one-new-most-wanted-skins-unavailable
+
+1 more reply
+PinkNinjaMan
+•
+4y ago
+
+I love that Keen did this for two great reasons. First, they went and look at what the community had for top items to get added to the game (in terms of blocks not features). Second, they have gone back and added more to existing DLCs not just base game and future DLCs.
+
+[deleted]
+•
+4y ago
+
+Any AAA developer would just sell them as a new DLC pack instead of adding them for free.
+
+I never had any issues with their DLC practices for SE, and them going back on older DLC to add requested blocks is pure fanservice from the best kind.
+
+VeryWeaponizedJerk
+•
+4y ago
+
+Adding blocks to older DLC instead of making a new pack is a very welcome move!
+
+ForgiLaGeord
+•
+4y ago
+
+They've done it several times, but usually shortly after release, and not in a comprehensive roundup like this.
+
+4 more replies
+yogabonita
+•
+4y ago
+
+The ladder shaft is a game changer in the ship interior design.
+
+MeatPopsicle28
+•
+4y ago
+
+Need elevators next!
+
+3 more replies
+ninjakitty7
+•
+4y ago
+
+Omg that skinny conveyor converter, I could die happy.
+
+TheRealDrSarcasmo
+•
+4y ago
+
+Preach. That is going to eliminate a huge amount of frustration I have with small-grid builds.
+
+rocketboy1244
+•
+4y ago
+
+They added that armor piece that someone on here posts about like every few days (the one that goes from the side of a 45 degree slope to the side of a 2x1 wedge slope), and everyone replies saying it'll never happen because its not symmetrical, its a weird shape, etc. They added a left and right variant of it. Boom, done.
+
+hymen_destroyer
+•
+4y ago
+
+Thank you Keen!
+
+I know we like to chirp about DLC on this subreddit...I really can't, since even after buying all the DLC the $/hr for me is measured in pennies, but in general they've all been pretty good and worth it.
+
+But this update is just good customer service. I still haven't even fully explored Warfare 2 and they just drop a bunch of free shit almost out of nowhere.
+
+If this post makes me sound like a KSH fanboy, it's because I'm quickly becoming one
+
+yogabonita
+•
+4y ago
+
+Weldless Armor Skin looks so interesting!
+
+2 more replies
+3davideo
+•
+4y ago
+
+Oh fantastic! The Plushie will satisfy my desire for a Wilson-thing much better than the "Dead Engineer" blocks from Frostbite.
+
+aaust84ct
+•
+4y ago
+
+All hail Keen!! They giveth gifts for Clang to taketh away!
+
+More posts you may like
+Related posts
+Stalker anomaly: Dark signal mod pack ( QoL and audio overhaul.)
+r/stalker
+•
+4y ago
+Stalker anomaly: Dark signal mod pack ( QoL and audio overhaul.)
+65 upvotes · 49 comments
+Interior Update
+r/spaceengineers
+•
+3mo ago
+Interior Update
+620 upvotes · 63 comments
+NASA awards SpaceX $946 million for 3 more astronaut missions to the ISS. The award brings SpaceX's total commercial crew haul to $5.92 billion.
+r/space
+•
+3d ago
+NASA awards SpaceX $946 million for 3 more astronaut missions to the ISS. The award brings SpaceX's total commercial crew haul to $5.92 billion.
+2.2K upvotes · 344 comments
+It starts well
+r/spaceengineers
+•
+3mo ago
+It starts well
+147 upvotes · 28 comments
+Next SpaceX announcement?
+r/SpaceXMasterrace
+•
+3d ago
+Next SpaceX announcement?
+185 upvotes · 53 comments
+New Episode up!
+r/SpaceXMasterrace
+•
+6d ago
+New Episode up!
+231 upvotes · 26 comments
+I'm Back (Again), and With More Improvements For the SpaceEngine 0.980 Shader
+r/spaceengine
+•
+11d ago
+I'm Back (Again), and With More Improvements For the SpaceEngine 0.980 Shader
+63 upvotes · 18 comments
+Here's an update using some of the ideas you guys gave me, thoughts?
+r/spaceengineers
+•
+6mo ago
+Here's an update using some of the ideas you guys gave me, thoughts?
+578 upvotes · 35 comments
+PyroProgression v.1.3: Fixed multiplayer, changed scaling, and bug fixing
+r/CubeWorld
+•
+5y ago
+PyroProgression v.1.3: Fixed multiplayer, changed scaling, and bug fixing
+53 upvotes · 33 comments
+Space X awarded 1 Billion Nasa Contract
+r/wallstreetbets
+•
+5d ago
+Space X awarded 1 Billion Nasa Contract
+798 upvotes · 130 comments
+Happy New Year!
+r/spaceengineers
+•
+9mo ago
+Happy New Year!
+894 upvotes · 16 comments
+Thoughts on my new ship design?
+r/spaceengineers
+•
+3d ago
+Thoughts on my new ship design?
+396 upvotes · 57 comments
+Update on my previous post:
+r/spaceengineers
+•
+6mo ago
+Update on my previous post:
+121 upvotes · 29 comments
+By far my proudest creation
+r/spaceengineers
+•
+1mo ago
+By far my proudest creation
+480 upvotes · 24 comments
+From humble beginnings
+r/spaceengineers
+•
+18d ago
+From humble beginnings
+226 upvotes · 9 comments
+Subcube updated with godot Engine under the hood. https://store.steampowered.com/app/873830 . Developing aftermath and other funny stories in the comment section.
+r/godot
+•
+5y ago
+Subcube updated with godot Engine under the hood. https://store.steampowered.com/app/873830 . Developing aftermath and other funny stories in the comment section.
+193 upvotes · 11 comments
+Added a Countdown Display to Deep Thought
+r/spaceengineers
+•
+24d ago
+Added a Countdown Display to Deep Thought
+747 upvotes · 27 comments
+NASA awards SpaceX $946 million for 3 more astronaut missions to the ISS | The award brings SpaceX's total commercial crew haul to $5.92 billion.
+r/technology
+•
+4d ago
+NASA awards SpaceX $946 million for 3 more astronaut missions to the ISS | The award brings SpaceX's total commercial crew haul to $5.92 billion.
+1K upvotes · 325 comments
+SRW 30 DLC 3: All details and video showcase!
+r/Super_Robot_Wars
+•
+5y ago
+SRW 30 DLC 3: All details and video showcase!
+21 upvotes · 22 comments
+Patch 6.1 Notes (Preliminary)
+r/ffxivdiscussion
+•
+5y ago
+Patch 6.1 Notes (Preliminary)
+92 upvotes · 228 comments
+Saddest launch in NASA history? (excluding Challenger of course)
+r/SpaceXMasterrace
+•
+3mo ago
+Saddest launch in NASA history? (excluding Challenger of course)
+197 upvotes · 109 comments
+my updated base
+r/spaceengineers
+•
+2mo ago
+my updated base
+31 upvotes · 10 comments
+Progress update since my last post 11 days ago! I'M IN SPACE!
+r/spaceengineers
+•
+6mo ago
+Progress update since my last post 11 days ago! I'M IN SPACE!
+48 upvotes · 8 comments
+SpaceX secures $946 million NASA award for three crew missions
+r/SPCXInvestors
+•
+4d ago
+SpaceX secures $946 million NASA award for three crew missions
+62 upvotes · 48 comments
+My first post, and a cry for help.
+r/spaceengineers
+•
+3mo ago
+My first post, and a cry for help.
+80 upvotes · 8 comments
+Public
+TOP POSTS
+Reddit
+reReddit: Top posts of April 28, 2022
+Reddit
+reReddit: Top posts of April 2022
+Reddit
+reReddit: Top posts of 2022
+Home
+Popular
+News
+Explore
+Best of Reddit
+Best of Reddit in Portuguese
+Best of Reddit in German
+Reddit Rules
+Privacy Policy
+User Agreement
+Your Privacy Choices
+Accessibility
+Reddit, Inc. © 2026. All rights reserved.
+
+Join the most real place on the internet
+
+ Sign in with Apple
+Continue with Phone Number
+Continue with Email
+
+By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy.
+
+LINKS
+https://www.reddit.com/r/spaceengineers/comments/sjqmrr/pcxbox_update_1200_warfare_2_broadside/
+https://www.reddit.com/r/spaceengineers/comments/ubjkrl/most_wanted_live_stream_thursday_28th_april_5pm/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i75x4az/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k8nfw/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k94oc/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6lybas/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6mxlcz/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6v7uxt/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6vfc35/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k8wif/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6mx5zl/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6kgffq/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6svp1b/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6szl8l/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k4dui/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6l6aye/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k5yfj/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6ki870/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k8evb/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k9wmo/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k9uph/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6khrha/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6knho4/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6kof1v/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k3jyc/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k9v4l/
+https://www.reddit.com/r/spaceengineers/comments/ue043n/comment/i6k7k39/
+https://www.reddit.com/r/stalker/comments/uavkiz/stalker_anomaly_dark_signal_mod_pack_qol_and/
+https://www.reddit.com/r/spaceengineers/comments/1u7ns81/interior_update/
+https://www.reddit.com/r/space/comments/1wktibw/nasa_awards_spacex_946_million_for_3_more/
+https://www.reddit.com/r/spaceengineers/comments/1unh6up/it_starts_well/
+https://www.reddit.com/r/SpaceXMasterrace/comments/1wkssub/next_spacex_announcement/
+https://www.reddit.com/r/SpaceXMasterrace/comments/1wiicly/new_episode_up/
+https://www.reddit.com/r/spaceengine/comments/1wdm47p/im_back_again_and_with_more_improvements_for_the/
+https://www.reddit.com/r/spaceengineers/comments/1ru4f7g/heres_an_update_using_some_of_the_ideas_you_guys/
+https://www.reddit.com/r/CubeWorld/comments/tk3gcr/pyroprogression_v13_fixed_multiplayer_changed/
+https://www.reddit.com/r/wallstreetbets/comments/1wj6afj/space_x_awarded_1_billion_nasa_contract/
+https://www.reddit.com/r/spaceengineers/comments/1q1e9zx/happy_new_year/
+https://www.reddit.com/r/spaceengineers/comments/1wl4lnl/thoughts_on_my_new_ship_design/
+https://www.reddit.com/r/spaceengineers/comments/1rz5uq4/update_on_my_previous_post/
+https://www.reddit.com/r/spaceengineers/comments/1vwdpec/by_far_my_proudest_creation/
+https://www.reddit.com/r/spaceengineers/comments/1w7qkdl/from_humble_beginnings/
+https://www.reddit.com/r/godot/comments/u14iqh/subcube_updated_with_godot_engine_under_the_hood/
+https://www.reddit.com/r/spaceengineers/comments/1w1sx4k/added_a_countdown_display_to_deep_thought/
+https://www.reddit.com/r/technology/comments/1wkjrj4/nasa_awards_spacex_946_million_for_3_more/
+https://www.reddit.com/r/Super_Robot_Wars/comments/u23a7f/srw_30_dlc_3_all_details_and_video_showcase/
+https://www.reddit.com/r/ffxivdiscussion/comments/tyz1sw/patch_61_notes_preliminary/
+https://www.reddit.com/r/SpaceXMasterrace/comments/1u2asee/saddest_launch_in_nasa_history_excluding/
+https://www.reddit.com/r/spaceengineers/comments/1v3txh7/my_updated_base/
+https://www.reddit.com/r/spaceengineers/comments/1s1nu9y/progress_update_since_my_last_post_11_days_ago_im/
+https://www.reddit.com/r/SPCXInvestors/comments/1wjutta/spacex_secures_946_million_nasa_award_for_three/
+https://www.reddit.com/r/spaceengineers/comments/1umxre7/my_first_post_and_a_cry_for_help/

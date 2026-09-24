@@ -1,0 +1,24 @@
+{
+  "helm-sol": {
+    "frames": 263,
+    "updateMs": 9.27,
+    "universeMs": 9.21,
+    "worstMs": 61.2,
+    "mode": "helm"
+  },
+  "helm-near-andromeda": {
+    "frames": 501,
+    "updateMs": 5.17,
+    "universeMs": 5.14,
+    "worstMs": 38.5,
+    "mode": "helm"
+  },
+  "helm-near-andromeda-cpu4x": {
+    "frames": 130,
+    "updateMs": 32.17,
+    "universeMs": 31.84,
+    "worstMs": 74,
+    "mode": "helm"
+  },
+  "errors": []
+}
