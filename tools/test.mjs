@@ -185,6 +185,124 @@ try {
   // clear the zone
   const cl = await E(`const c0 = g.state.credits; for (const e of g.enemies) if (!e.dead) g.hurt(e, 1e6, e.pos); g.updateZones(0.016); g.updateZones(0.016); return { lib: g.state.liberated.includes(${JSON.stringify(zn.id)}), dc: g.state.credits - c0, zone: !!g.zone };`);
   check('clearing a zone liberates the sector and pays', cl.lib && cl.dc > 0 && !cl.zone, JSON.stringify(cl));
+  // --- squadrons: tiers, waves, formation slots, leader loss, arcs, carriers
+  const tz = await E(`
+    const tiers = [...new Set(g.u.zones.map(z => z.tier))].sort();
+    return { tiers, n4: g.u.zones.filter(z => z.tier === 4).length, n5: g.u.zones.filter(z => z.tier === 5).length };`);
+  check('the universe rolls enemy zones from tier 1 up to tier 5', tz.n5 > 0 && [1, 2, 3].every((t) => tz.tiers.includes(t)), JSON.stringify(tz));
+  const tt = await E(`return g.fleet.tiers.map(t => t.caps.length + '/' + (t.screen * t.caps.length + t.waves.reduce((a, w) => a + w[1], 0)));`);
+  check('the tier ladder keeps the old red-guy totals and adds a fifth', tt.join(' ') === '1/3 1/5 2/6 3/8 4/12', tt.join(' '));
+
+  const hull0 = await E('return g.ship.hull;');
+  const t5 = await E(`
+    const z = g.u.zones.find(z => z.state === 'hostile' && z.id !== ${JSON.stringify(zn.id)});
+    if (!z) return { skip: true };
+    z.tier = 5;
+    const dir = { x: 0.6, y: 0.2, z: 0.77 }, r = z.radius * 0.9;
+    g.ship.pos = { x: z.pos.x + dir.x * r, y: z.pos.y + dir.y * r, z: z.pos.z + dir.z * r };
+    g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.warp = null; g.ship.hull = 1e6;
+    g.enterZone(z);
+    return {
+      id: z.id,
+      caps: g.enemies.filter(e => e.kind === 'capital' && !e.dead).length,
+      carriers: g.enemies.filter(e => e.sub === 'carrier' && !e.dead).length,
+      imps: g.enemies.filter(e => e.kind === 'imp' && !e.dead).length,
+      screens: g.fleet.squads.filter(s => s.kind === 'screen').length,
+      queued: g.fleet.queue.length, pending: g.fleet.pending(),
+    };`);
+  check('a tier 5 zone fields four capitals behind escort screens, later waves held back',
+    !t5.skip && t5.caps === 4 && t5.carriers === 2 && t5.screens === 4 && t5.imps === 8 && t5.queued === 2 && t5.pending, JSON.stringify(t5));
+  const wv = await E(`
+    const live = () => g.enemies.filter(e => e.kind === 'imp' && !e.dead).length;
+    const seen = [live()];
+    for (let i = 0; i < 360; i++) { g.updateCombat(1 / 60); if (i === 119 || i === 239) seen.push(live()); }
+    seen.push(live());
+    return { seen, pending: g.fleet.pending(), squads: g.fleet.squads.length };`);
+  check('the waves arrive in order and finish the order of battle',
+    wv.seen[0] === 8 && wv.seen[wv.seen.length - 1] === 12 && wv.seen[1] >= wv.seen[0] && !wv.pending, JSON.stringify(wv));
+  const sqs = await E(`
+    const wings = g.fleet.squads.filter(s => s.kind === 'wing');
+    return {
+      wings: wings.length,
+      oneLeader: wings.every(s => s.members.filter(m => m === s.leader).length === 1),
+      shared: g.fleet.squads.every(s => s.members.every(m => m.squad === s || m.docked)),
+      inSquad: g.enemies.filter(e => e.kind === 'imp' && !e.dead && e.squad).length,
+      imps: g.enemies.filter(e => e.kind === 'imp' && !e.dead).length,
+      named: [...new Set(g.enemies.filter(e => e.kind === 'imp' && !e.dead).map(e => e.name))].sort(),
+    };`);
+  check('every red guy flies in a squad, with one leader and one shared state',
+    sqs.wings > 0 && sqs.oneLeader && sqs.shared && sqs.inSquad === sqs.imps && sqs.named.length > 1, JSON.stringify(sqs));
+
+  const slots = await E(`
+    const V3 = g.ship.vel.constructor, p = g.ship.pos;
+    const w = g.fleet.wing(5, 'grunt', 'v', p.x + 2600, p.y + 400, p.z + 2600);
+    w.state = 'formup'; w.stateT = 0;
+    w.hold = { x: w.leader.pos.x, y: w.leader.pos.y, z: w.leader.pos.z };
+    g.fleet.tp = g.targetPoint();
+    for (let i = 0; i < 900; i++) for (const m of w.members) if (!m.dead) g.fleet.steer(m, 1 / 60);
+    const off = w.members.filter(m => !m.dead && m !== w.leader).map(m => {
+      const s = w.slots[m.slot], q = new V3(s[0], s[1], s[2]).applyQuaternion(w.leader.q);
+      return Math.hypot(m.pos.x - w.leader.pos.x - q.x, m.pos.y - w.leader.pos.y - q.y, m.pos.z - w.leader.pos.z - q.z);
+    });
+    const gaps = w.members.map(a => Math.min(...w.members.filter(b => b !== a).map(b => Math.hypot(a.pos.x - b.pos.x, a.pos.y - b.pos.y, a.pos.z - b.pos.z))));
+    return { shape: w.formation, n: w.members.length, max: Math.max(...off), minGap: Math.min(...gaps), formed: g.fleet.formed(w) };`);
+  check('a five-strong V settles into its slots without stacking up',
+    slots.n === 5 && slots.formed && slots.max < 90 && slots.minGap > 30, JSON.stringify(slots));
+
+  const lead = await E(`
+    const w = g.fleet.squads.find(s => s.kind === 'wing' && s.members.filter(m => !m.dead).length >= 2 && s.state !== 'retreat');
+    if (!w) return { skip: true };
+    const was = w.leader;
+    g.hurt(was, 1e6, was.pos);
+    return { promoted: !!w.leader && w.leader !== was && !w.leader.dead, state: w.state, slot0: w.leader ? w.leader.slot : -1, left: w.members.length };`);
+  check('killing a wing leader promotes the next one and reforms or retreats',
+    !lead.skip && lead.promoted && (lead.state === 'regroup' || lead.state === 'retreat'), JSON.stringify(lead));
+
+  const arc = await E(`
+    const V3 = g.ship.vel.constructor;
+    const cap = g.enemies.find(e => e.kind === 'capital' && !e.dead);
+    if (!cap) return { skip: true };
+    const bow = new V3(0, 0, -1).applyQuaternion(cap.q);
+    const inBow = cap.turrets.filter(t => g.fleet.inArc(t, cap, bow)).length;
+    g.ship.pos = { x: cap.pos.x + bow.x * 3000, y: cap.pos.y + bow.y * 3000, z: cap.pos.z + bow.z * 3000 };
+    g.ship.vel.set(0, 0, 0);
+    const to = new V3(g.ship.pos.x - cap.pos.x, g.ship.pos.y - cap.pos.y, g.ship.pos.z - cap.pos.z).normalize();
+    const blind = cap.turrets.filter(t => !g.fleet.inArc(t, cap, to));
+    for (const t of cap.turrets) t.cd = 0;
+    for (let i = 0; i < 3; i++) g.updateCombat(1 / 60);
+    return { total: cap.turrets.length, inBow, blind: blind.length, blindHeld: blind.filter(t => t.cd <= 0).length, fired: cap.turrets.filter(t => t.cd > 0).length };`);
+  check('a capital only brings the guns that bear, the blind quarter holds fire',
+    !arc.skip && arc.blind > 0 && arc.blindHeld === arc.blind && arc.fired > 0 && arc.inBow < arc.total, JSON.stringify(arc));
+
+  const cv = await E(`
+    const V3 = g.ship.vel.constructor;
+    const cap = g.enemies.find(e => e.sub === 'carrier' && !e.dead);
+    if (!cap) return { skip: true };
+    for (const e of g.enemies) if (e.kind === 'imp' && !e.dead) { e.dead = true; g.fxRoot.remove(e.obj.group); }
+    cap.bay = null;
+    g.fleet.carrier(cap, 9);
+    const sq = g.fleet.squads[g.fleet.squads.length - 1];
+    const bp = g.fleet.bayPoint(new V3(), cap);
+    const out = cap.bay.out.length, ready = cap.bay.ready;
+    const atBay = sq.members.every(f => Math.hypot(f.pos.x - bp.x, f.pos.y - bp.y, f.pos.z - bp.z) < 400);
+    sq.state = 'recover';
+    g.fleet.tp = g.targetPoint();
+    for (let i = 0; i < 600 && cap.bay.out.length; i++) for (const f of sq.members) if (!f.dead) g.fleet.steer(f, 1 / 60);
+    return { out, ready, atBay, launched: cap.bay.launched, recovered: cap.bay.recovered, left: cap.bay.out.length, readyNow: cap.bay.ready };`);
+  check('a carrier drops fighters out of its hull and takes them back aboard',
+    !cv.skip && cv.out === 2 && cv.ready === 2 && cv.atBay && cv.recovered === 2 && cv.left === 0 && cv.readyNow === 4, JSON.stringify(cv));
+
+  const hold = await E(`
+    const z = g.zone;
+    for (const e of g.enemies) if (!e.dead) g.hurt(e, 1e6, e.pos);
+    g.fleet.queue.push({ t: 1e9, fn: () => {} });
+    g.updateZones(0.016);
+    const held = !!g.zone;
+    g.fleet.queue.length = 0;
+    g.updateZones(0.016);
+    return { held, cleared: !g.zone };`);
+  check('a zone is not called clear while a wave is still on its way', hold.held && hold.cleared, JSON.stringify(hold));
+  await E(`g.clearCombat(); g.ship.hull = ${hull0}; g.ship.vel.set(0, 0, 0); return 1;`);
 
   // hull breach, EVA, re-entry
   const br = await E(`

@@ -3,9 +3,13 @@
 // cached; every call returns a clone that shares geometry and materials, so a
 // fight with ten imps or a Bazaar visit adds no GPU buffers and only a few
 // draw calls per actor (the Chromebook budget).
+// The bottom of this file is the Red Margin's order of battle: squadrons with
+// a leader, formation slots and a shared plan, escort screens around the
+// capital ships, and the carriers' hangar cycle.
 import * as THREE from 'three';
 import { ink, red, glow, screen, labelTexture, PAL } from './mats.js';
-import { rng, hash } from './util.js';
+import { rng, hash, clamp } from './util.js';
+import { audio } from './audio.js';
 
 const TAU = Math.PI * 2;
 const HALF = Math.PI / 2;
@@ -1005,4 +1009,484 @@ export function buildStation(kind, opts = {}) {
   });
   const group = t.clone();
   return { group, radius: t.userData.radius, dock: t.userData.dock.clone() };
+}
+
+// ---------------------------------------------------------------------------
+// Squadrons
+//
+// "In Doodle District they came in waves; out here they come in wings, in
+// formation, with a plan." (docs/STORY.md). A squad is a leader plus a list of
+// formation slots, and ONE state that the whole squad changes at once, so what
+// a wing is doing is readable from the cockpit: it forms up, patrols in, dives,
+// breaks, regroups, and runs when the leader is gone or it is down to a quarter
+// strength. Capital ships carry an escort screen, and their turrets only bear
+// on what is inside their own arc, so a blind quarter is a real place.
+//
+// Nothing here allocates in the per-frame path: the four scratch objects below
+// are reused by every steering call, and slot tables are plain number arrays
+// built once per spawn or regroup.
+
+const FWD_A = new THREE.Vector3(0, 0, -1);
+const _sv1 = new THREE.Vector3(), _sv2 = new THREE.Vector3(), _sv3 = new THREE.Vector3();
+const _sq1 = new THREE.Quaternion();
+
+const SP = 60;                                   // formation spacing, metres
+const MAXV = 240;                                // the same speed cap the loose orbit uses
+const SLOW = 300;                                // arrival braking radius
+const ARC_COS = Math.cos((65 * Math.PI) / 180);  // turret half-arc
+const LIVE_CAP = 6;                              // red guys alive a carrier may top up to
+
+// Slot offsets in the leader's local frame (x right, y up, -z forward).
+// Index 0 is the leader's own slot for every shape but `screen`, which rings a
+// capital ship instead of trailing a leader.
+export const FORMATIONS = {
+  v(n) {
+    const s = [[0, 0, 0]];
+    for (let i = 1; i < n; i++) { const side = i % 2 ? -1 : 1, rank = Math.ceil(i / 2); s.push([side * rank * SP * 0.85, 0, rank * SP]); }
+    return s;
+  },
+  echelon(n) {
+    const s = [];
+    for (let i = 0; i < n; i++) s.push([i * SP * 0.75, 0, i * SP * 0.6]);
+    return s;
+  },
+  lineAbreast(n) {
+    const s = [[0, 0, 0]];
+    for (let i = 1; i < n; i++) { const side = i % 2 ? -1 : 1, rank = Math.ceil(i / 2); s.push([side * rank * SP, 0, 0]); }
+    return s;
+  },
+  diamond(n) {
+    const ring = [[0, 0, 0], [-SP, 0, SP], [SP, 0, SP], [0, 0, SP * 1.8]];
+    const s = ring.slice(0, Math.min(n, 4));
+    for (let i = 4; i < n; i++) s.push([ring[i % 4][0] * 1.6, 0, ring[i % 4][2] * 1.6 + SP]);
+    return s;
+  },
+  box(n) {
+    const s = [[0, 0, 0]];
+    for (let i = 1; i < n; i++) { const rank = Math.ceil(i / 2), side = i % 2 ? -1 : 1; s.push([side * SP * 0.6, 0, rank * SP]); }
+    return s;
+  },
+  screen(n, radius) {
+    const s = [];
+    for (let i = 0; i < n; i++) { const a = (i / n) * TAU; s.push([Math.sin(a) * radius, Math.sin(a * 2) * radius * 0.18, Math.cos(a) * radius]); }
+    return s;
+  },
+};
+
+const SHAPE = { v: 'a clean V', echelon: 'echelon', lineAbreast: 'line abreast', diamond: 'diamond', box: 'box', screen: 'a screen' };
+
+// The seven from Doodle District, promoted (docs/STORY.md). Hull, damage, fire
+// rate and range are identical for every one of them - the 2026-09-23 balance -
+// so the only thing a type changes is how close it flies its attack run and
+// what the HUD calls it.
+export const RED = {
+  grunt: { name: 'Grunt', plural: 'Grunts', orbit: 620 },
+  rusher: { name: 'Rusher', plural: 'Rushers', orbit: 400 },
+  wasp: { name: 'Paper Wasp', plural: 'Paper Wasps', orbit: 700 },
+  shield: { name: 'Shieldbearer', plural: 'Shieldbearers', orbit: 620 },
+  sniper: { name: 'Sniper', plural: 'Snipers', orbit: 900 },
+};
+
+// Tier 1 to 5. waves: [delay seconds, count, type, formation]. Red-guy totals
+// are 3, 5, 6, 8 for tiers 1-4, exactly what the game spawned before - screens
+// come out of that budget, they are not added on top. Tier 5 is new: two
+// dreadnoughts, two carriers and twelve red guys.
+export const TIERS = [
+  { caps: ['dreadnought'], screen: 0, escort: 'shield', waves: [[0, 3, 'grunt', 'v']] },
+  { caps: ['dreadnought'], screen: 0, escort: 'shield', waves: [[0, 2, 'rusher', 'lineAbreast'], [1.5, 3, 'grunt', 'v']] },
+  { caps: ['dreadnought', 'carrier'], screen: 2, escort: 'shield', waves: [[1.5, 2, 'wasp', 'echelon']] },
+  { caps: ['dreadnought', 'dreadnought', 'carrier'], screen: 2, escort: 'shield', waves: [[1.5, 2, 'rusher', 'v']] },
+  { caps: ['dreadnought', 'dreadnought', 'carrier', 'carrier'], screen: 2, escort: 'shield', waves: [[1.5, 2, 'wasp', 'diamond'], [3.5, 2, 'sniper', 'box']] },
+];
+
+const vd2 = (a, b) => { const x = a.x - b.x, y = a.y - b.y, z = a.z - b.z; return x * x + y * y + z * z; };
+
+export class Squadrons {
+  constructor(game) {
+    this.g = game;
+    this.squads = [];
+    this.tiers = TIERS;
+    this.queue = [];   // waves that have not arrived yet: { t, fn }
+    this.t = 0;        // seconds since the zone was entered
+    this.n = 0;        // squad id counter
+    this.tp = null;    // what the enemies are shooting at, this frame
+  }
+  clear() { this.squads.length = 0; this.queue.length = 0; this.t = 0; this.tp = null; }
+  // True while a wave is still on its way, so a zone cannot be called clear.
+  pending() { return this.queue.length > 0; }
+
+  // ---------- order of battle ----------
+  // Called once, as the player crosses into a hostile zone.
+  plan(z, base, dir) {
+    const g = this.g;
+    const T = TIERS[clamp(((z && z.tier) | 0) - 1, 0, TIERS.length - 1)];
+    this.t = 0;
+    // A liberated sector leaves its dead behind in g.enemies; drop their squads.
+    for (let i = this.squads.length - 1; i >= 0; i--) if (!this.squads[i].members.some((m) => !m.dead)) this.squads.splice(i, 1);
+    T.caps.forEach((k, i) => {
+      const cap = g.spawnCapital(k, {
+        x: base.x + (i - (T.caps.length - 1) / 2) * 2600,
+        y: base.y + (i % 2 ? 600 : -300),
+        z: base.z + i * 900,
+      });
+      if (T.screen > 0) this.screenFor(cap, T.screen, T.escort);
+    });
+    const dn = T.caps.filter((k) => k === 'dreadnought').length, cr = T.caps.length - dn, bits = [];
+    if (dn) bits.push(`${dn} dreadnought${dn > 1 ? 's' : ''}`);
+    if (cr) bits.push(`${cr} carrier${cr > 1 ? 's' : ''}`);
+    if (T.screen) bits.push(`${T.screen * T.caps.length} ${RED[T.escort].plural} on screen`);
+    this.say(`Red Margin, tier ${TIERS.indexOf(T) + 1}: ${bits.join(', ')}`);
+    const wx = base.x - dir.x * 2600, wy = base.y, wz = base.z - dir.z * 2600;
+    for (const w of T.waves) {
+      const at = w[0], n = w[1], type = w[2], shape = w[3];
+      if (at <= 0) this.wing(n, type, shape, wx, wy, wz);
+      else this.queue.push({ t: at, fn: () => { if (this.g.zone) this.wing(n, type, shape, wx, wy, wz); } });
+    }
+    this.queue.sort((a, b) => a.t - b.t);
+    return T;
+  }
+
+  // A wing: n red guys of one type, one leader, one formation, one plan.
+  wing(n, type, shape, x, y, z, spread = 220) {
+    const g = this.g;
+    const slots = (FORMATIONS[shape] || FORMATIONS.v)(n);
+    const sq = {
+      id: 'w' + ++this.n, kind: 'wing', type, formation: shape, members: [], leader: null, slots,
+      state: 'formup', stateT: 0, hp0: 0, calledOut: false, dove: false, cap: null, home: null,
+      hold: { x, y, z }, patrol: { x, y, z, r: 1800, a: Math.random() * TAU },
+    };
+    for (let i = 0; i < n; i++) {
+      const s = slots[i];
+      this.enlist(sq, g.spawnImp({
+        x: x + s[0] * 2.2 + (Math.random() - 0.5) * spread,
+        y: y + s[1] * 2.2 + (Math.random() - 0.5) * spread * 0.7,
+        z: z + s[2] * 2.2 + (Math.random() - 0.5) * spread,
+      }), i, type);
+    }
+    sq.leader = sq.members[0] || null;
+    this.squads.push(sq);
+    this.announce(sq);
+    return sq;
+  }
+
+  // An escort screen: a ring that turns with the ship it is covering.
+  screenFor(cap, n, type) {
+    const g = this.g;
+    const radius = cap.radius + 260;
+    const slots = FORMATIONS.screen(n, radius);
+    const sq = {
+      id: 's' + ++this.n, kind: 'screen', type, formation: 'screen', members: [], leader: cap, slots,
+      state: 'approach', stateT: 0, hp0: 0, calledOut: true, dove: false, cap, home: null,
+      hold: null, patrol: null, peeled: false, radius,
+    };
+    for (let i = 0; i < n; i++) {
+      const s = slots[i];
+      _sv1.set(s[0], s[1], s[2]).applyQuaternion(cap.q);
+      this.enlist(sq, g.spawnImp({ x: cap.pos.x + _sv1.x, y: cap.pos.y + _sv1.y, z: cap.pos.z + _sv1.z }), i, type);
+    }
+    cap.screenSquad = sq;
+    this.squads.push(sq);
+    return sq;
+  }
+
+  enlist(sq, e, i, type) {
+    e.squad = sq;
+    e.slot = i;
+    e.red = type;
+    e.name = RED[type].name;
+    e.orbit = RED[type].orbit;
+    e.phase = (i / Math.max(1, sq.slots.length)) * TAU;  // the dive fans out, it does not scatter
+    sq.members.push(e);
+    sq.hp0 += e.max;
+    return e;
+  }
+
+  // ---------- the plan ----------
+  update(dt, tp) {
+    this.tp = tp || this.g.targetPoint();
+    if (this.queue.length) {
+      this.t += dt;
+      while (this.queue.length && this.queue[0].t <= this.t) this.queue.shift().fn();
+    }
+    for (let i = 0; i < this.squads.length; i++) this.think(this.squads[i], dt, this.tp);
+  }
+
+  think(sq, dt, tp) {
+    if (sq.state === 'gone') return;
+    let alive = 0, hp = 0;
+    for (const m of sq.members) if (!m.dead) { alive++; hp += Math.max(0, m.hp); }
+    if (!alive) { sq.state = 'gone'; return; }
+    sq.stateT += dt;
+
+    if (sq.kind === 'screen') {
+      const cap = sq.cap;
+      if (!cap || cap.dead) return;               // lost() has already turned it loose
+      const close = vd2(cap.pos, tp) < (sq.radius + 1700) * (sq.radius + 1700);
+      if (close && sq.state !== 'attack') {
+        sq.state = 'attack'; sq.stateT = 0;
+        if (!sq.peeled) { sq.peeled = true; this.say(`${RED[sq.type].plural} breaking off the ${cap.name.toLowerCase()} screen`); }
+      } else if (!close && sq.state === 'attack' && sq.stateT > 4) { sq.state = 'approach'; sq.stateT = 0; }
+      return;
+    }
+
+    if (sq.state === 'retreat') return;
+    if (!sq.leader || sq.leader.dead) { if (!this.promote(sq)) { sq.state = 'gone'; return; } }
+    const frac = hp / Math.max(1, sq.hp0);
+    // Fighters go home once their carrier is out of the fight.
+    if (sq.home && !sq.home.dead && sq.state !== 'recover' && vd2(sq.home.pos, tp) > 5200 * 5200) { sq.state = 'recover'; sq.stateT = 0; return; }
+    if (sq.state === 'recover') {
+      if (!sq.home || sq.home.dead || vd2(sq.home.pos, tp) < 4200 * 4200) { sq.state = 'attack'; sq.stateT = 0; }
+      return;
+    }
+    switch (sq.state) {
+      case 'formup':
+      case 'regroup':
+        if (this.formed(sq) || sq.stateT > 4) { sq.state = 'approach'; sq.stateT = 0; }
+        break;
+      case 'approach':
+        sq.patrol.a += dt * 0.25;
+        if (vd2(sq.leader.pos, tp) < 3200 * 3200) {
+          sq.state = 'attack'; sq.stateT = 0;
+          if (!sq.dove) { sq.dove = true; this.say(`${RED[sq.type].plural} breaking formation. Attack run`); }
+        }
+        break;
+      case 'attack':
+        if (sq.stateT > 6 || frac < 0.4) { sq.state = 'break'; sq.stateT = 0; }
+        break;
+      case 'break':
+        if (sq.stateT > 1.5) this.reform(sq);
+        break;
+    }
+    if (frac < 0.25 && sq.state !== 'retreat' && sq.state !== 'gone') {
+      sq.state = 'retreat'; sq.stateT = 0;
+      this.say(`What is left of the ${RED[sq.type].plural.toLowerCase()} is running`);
+    }
+  }
+
+  // Rebuild the formation around the survivors: a V that lost two is a smaller
+  // V, not a V with holes in it.
+  reform(sq) {
+    const live = [];
+    for (const m of sq.members) if (!m.dead) live.push(m);
+    sq.members = live;
+    if (!live.length) { sq.state = 'gone'; sq.leader = null; return; }
+    sq.slots = (FORMATIONS[sq.formation] || FORMATIONS.v)(live.length);
+    for (let i = 0; i < live.length; i++) live[i].slot = i;
+    sq.leader = live[0];
+    sq.hold = { x: sq.leader.pos.x, y: sq.leader.pos.y, z: sq.leader.pos.z };
+    sq.state = 'regroup';
+    sq.stateT = 0;
+  }
+
+  // The next living member, by slot, takes the point. With nobody left the
+  // squad keeps its last leader reference rather than a null one, so anything
+  // still holding the squad has something to read.
+  promote(sq) {
+    let next = null;
+    for (const m of sq.members) if (!m.dead && (!next || m.slot < next.slot)) next = m;
+    if (next) sq.leader = next;
+    return next;
+  }
+
+  formed(sq) {
+    for (const m of sq.members) {
+      if (m.dead || m === sq.leader) continue;
+      this.slotGoal(_sv1, sq, m);
+      if (vd2(m.pos, _sv1) > (2 * SP) * (2 * SP)) return false;
+    }
+    return true;
+  }
+
+  slotGoal(out, sq, e) {
+    const L = sq.leader || sq.cap;
+    const s = sq.slots[e.slot] || sq.slots[0] || [0, 0, 0];
+    out.set(s[0], s[1], s[2]).applyQuaternion(L.q);
+    out.x += L.pos.x; out.y += L.pos.y; out.z += L.pos.z;
+    return out;
+  }
+
+  // The leader holds where it formed up, then flies a slow arc around the wave
+  // point - the patrol route the wing is on when it finds you.
+  leadGoal(out, sq) {
+    const p = sq.patrol;
+    if (sq.state !== 'approach') { const h = sq.hold; return out.set(h.x, h.y, h.z); }
+    return out.set(p.x + Math.sin(p.a) * p.r, p.y, p.z + Math.cos(p.a) * p.r);
+  }
+
+  // ---------- steering ----------
+  // Called by updateCombat for every red guy in a squad. Returns true if it has
+  // taken over this one's movement for the frame, and with it its fire: a wing
+  // that is still forming up is not shooting at you yet.
+  steer(e, dt) {
+    const sq = e.squad;
+    if (!sq || e.tractorT > 0) return false;
+    const st = sq.state;
+    if (st === 'attack' || st === 'gone') return false;   // the dive is the old loose orbit, on purpose
+    if (st === 'break') {                                 // coast out along the dive: no steering, no guns
+      e.pos.x += e.vel.x * dt; e.pos.y += e.vel.y * dt; e.pos.z += e.vel.z * dt;
+      return true;
+    }
+    const tp = this.tp || this.g.targetPoint();
+    if (st === 'retreat') {
+      _sv1.set(e.pos.x - tp.x, e.pos.y - tp.y, e.pos.z - tp.z);
+      if (_sv1.lengthSq() < 1) _sv1.set(0, 1, 0);
+      _sv1.normalize().multiplyScalar(4000);
+      _sv1.x += e.pos.x; _sv1.y += e.pos.y; _sv1.z += e.pos.z;
+    } else if (st === 'recover') {
+      const cap = sq.home;
+      if (!cap || cap.dead) { sq.state = 'attack'; sq.stateT = 0; return false; }
+      this.bayPoint(_sv1, cap);
+      if (vd2(e.pos, _sv1) < 140 * 140) { this.dock(e); return true; }
+    } else if (sq.kind === 'wing' && e === sq.leader) {
+      this.leadGoal(_sv1, sq);
+    } else {
+      this.slotGoal(_sv1, sq, e);
+    }
+    // arrival: seek that brakes, so a wingman settles into its slot
+    _sv2.set(_sv1.x - e.pos.x, _sv1.y - e.pos.y, _sv1.z - e.pos.z);
+    const d = _sv2.length();
+    if (d > 0.01) _sv2.multiplyScalar((d < SLOW ? MAXV * (d / SLOW) : MAXV) / d);
+    // separation, over this squad only
+    for (const o of sq.members) {
+      if (o === e || o.dead) continue;
+      const dx = e.pos.x - o.pos.x, dy = e.pos.y - o.pos.y, dz = e.pos.z - o.pos.z;
+      const d2 = dx * dx + dy * dy + dz * dz;
+      if (d2 > 2500 || d2 < 0.01) continue;
+      const dd = Math.sqrt(d2), push = (1 - dd / 50) * 120;
+      _sv2.x += (dx / dd) * push; _sv2.y += (dy / dd) * push; _sv2.z += (dz / dd) * push;
+    }
+    e.vel.lerp(_sv2, 1 - Math.exp(-2 * dt));
+    e.pos.x += e.vel.x * dt; e.pos.y += e.vel.y * dt; e.pos.z += e.vel.z * dt;
+    _sv3.copy(e.vel);
+    if (_sv3.lengthSq() > 1) {
+      _sq1.setFromUnitVectors(FWD_A, _sv3.normalize());
+      e.q.slerp(_sq1, 1 - Math.exp(-4 * dt));
+    }
+    return true;
+  }
+
+  // ---------- capital ships ----------
+  // A turret only bears on what is inside its own cone. Its direction comes
+  // from where it is bolted on, which the geometry already decides, so a bow
+  // turret covers the bow and the stern quarter is a real blind spot.
+  inArc(t, e, to) {
+    if (!t.arc) {
+      const d = t.local.clone();
+      d.y *= 0.35;
+      if (d.lengthSq() < 1) d.set(0, 0, -1);
+      t.arc = d.normalize();
+    }
+    _sv3.copy(t.arc).applyQuaternion(e.q);
+    return _sv3.dot(to) > ARC_COS;
+  }
+
+  bayPoint(out, cap) {
+    out.set(0, -120, 160).applyQuaternion(cap.q);   // the glowing belly hangar
+    out.x += cap.pos.x; out.y += cap.pos.y; out.z += cap.pos.z;
+    return out;
+  }
+
+  liveImps() {
+    let n = 0;
+    for (const e of this.g.enemies) if (e.kind === 'imp' && !e.dead) n++;
+    return n;
+  }
+
+  // The carrier's hangar cycle: drop a pair out of the belly during the fight,
+  // take back whatever flies home. Same 12 s timer and the same live-red-guy
+  // cap as the reinforcement code this replaces, so the fight is no bigger.
+  carrier(cap, dt) {
+    if (!cap.bay) cap.bay = { ready: 4, out: [], cd: 8, launched: 0, recovered: 0 };
+    const bay = cap.bay;
+    for (let i = bay.out.length - 1; i >= 0; i--) if (bay.out[i].dead) bay.out.splice(i, 1);
+    bay.cd -= dt;
+    if (bay.cd > 0 || bay.ready <= 0) return;
+    const room = LIVE_CAP - this.liveImps();
+    if (room <= 0) { bay.cd = 3; return; }
+    bay.cd = 12;
+    const n = Math.min(2, bay.ready, room);
+    this.bayPoint(_sv1, cap);
+    const sq = this.wing(n, 'wasp', 'lineAbreast', _sv1.x, _sv1.y, _sv1.z, 40);
+    sq.home = cap;
+    _sv2.set(0, -1, 0).applyQuaternion(cap.q).multiplyScalar(90);
+    for (const f of sq.members) {
+      f.home = cap;
+      f.vel.copy(_sv2);
+      bay.out.push(f);
+      bay.ready--;
+      bay.launched++;
+    }
+    this.say(`${cap.name} is dropping ${n === 1 ? 'a Paper Wasp' : 'Paper Wasps'} out of the hangar`);
+    return sq;
+  }
+
+  // A fighter that made it back into the bay: off the board, back in the rack.
+  dock(f) {
+    const cap = f.home;
+    f.dead = true;
+    f.docked = true;
+    this.g.fxRoot.remove(f.obj.group);
+    const sq = f.squad;
+    if (sq && sq.leader === f) this.promote(sq);
+    if (cap && cap.bay) {
+      cap.bay.ready++;
+      cap.bay.recovered++;
+      const i = cap.bay.out.indexOf(f);
+      if (i >= 0) cap.bay.out.splice(i, 1);
+    }
+    f.squad = null;
+    f.home = null;
+  }
+
+  // ---------- losses ----------
+  // Called from hurt() the moment anything dies, after e.dead is set.
+  lost(e) {
+    if (e.screenSquad) {
+      const s = e.screenSquad;
+      e.screenSquad = null;
+      s.kind = 'wing';
+      s.cap = null;
+      s.formation = 'v';
+      s.patrol = { x: e.pos.x, y: e.pos.y, z: e.pos.z, r: 1800, a: 0 };
+      s.hold = { x: e.pos.x, y: e.pos.y, z: e.pos.z };
+      this.reform(s);
+      if (s.state !== 'gone') {
+        s.state = 'retreat'; s.stateT = 0;
+        this.say(`${e.name} gone. Its ${RED[s.type].plural.toLowerCase()} scatter`);
+      }
+    }
+    const sq = e.squad;
+    if (!sq || sq.kind === 'screen' || sq.leader !== e) return;
+    let hp = 0;
+    for (const m of sq.members) if (!m.dead) hp += Math.max(0, m.hp);
+    const frac = hp / Math.max(1, sq.hp0);
+    if (!this.promote(sq)) { sq.state = 'gone'; return; }
+    if (frac < 0.4) {
+      sq.state = 'retreat'; sq.stateT = 0;
+      this.say('Wing leader down. Watch the plan fall apart');
+    } else {
+      this.reform(sq);
+      this.say(`Wing leader down. Another ${RED[sq.type].name} takes the point`);
+    }
+  }
+
+  // ---------- HUD ----------
+  say(text) { if (this.g.ui && this.g.ui.toast) this.g.ui.toast(text); }
+
+  announce(sq) {
+    if (sq.calledOut || !sq.members.length) return;
+    sq.calledOut = true;
+    const n = sq.members.length;
+    const t = RED[sq.type];
+    this.say(`Wing of ${n} ${n === 1 ? t.name : t.plural} in ${SHAPE[sq.formation] || sq.formation}, bearing ${this.bearing(sq.members[0].pos)}`);
+    audio.sfx('alarm', { vol: 0.3 });
+  }
+
+  // Compass bearing off the ship's own nose, "042" style.
+  bearing(p) {
+    const sh = this.g.ship;
+    _sv3.copy(FWD_A).applyQuaternion(sh.q);
+    const a = (Math.atan2(p.x - sh.pos.x, -(p.z - sh.pos.z)) - Math.atan2(_sv3.x, -_sv3.z) + TAU * 2) % TAU;
+    return String(Math.round((a * 180) / Math.PI) % 360).padStart(3, '0');
+  }
 }

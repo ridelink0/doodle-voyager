@@ -799,7 +799,7 @@ export class Universe {
     for (let i = 0; i < 12 && gals.length; i++) {
       const g = pick(r, gals).g;
       const list = this.systemsOf(g);
-      add(pick(r, list), g.pc < 2e6 ? 3 : 4);
+      add(pick(r, list), g.pc < 2e6 ? 3 : g.pc < 1e7 ? 4 : 5);
     }
     this.zones = zones;
     return zones;

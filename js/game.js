@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import { Renderer, squash } from './render.js';
 import { Universe, FUELS } from './universe.js';
 import { SHIPS, buildInterior, buildExterior } from './ships.js';
-import { buildImp, buildCapital, buildDrone, buildDecoy } from './actors.js';
+import { buildImp, buildCapital, buildDrone, buildDecoy, Squadrons } from './actors.js';
 import { audio } from './audio.js';
 import { Media } from './media.js';
 import { UI } from './ui.js';
@@ -121,6 +121,7 @@ export class Game {
     this.t = (Date.now() / 1000) % 1e7;
     this.last = performance.now();
     this.enemies = [];
+    this.fleet = new Squadrons(this);   // the Red Margin's wings, screens and hangar cycle
     this.shots = [];
     this.fx = [];
     this.bombs = [];
@@ -1263,7 +1264,7 @@ export class Game {
       return;
     }
     const alive = this.enemies.filter((e) => !e.dead);
-    if (!alive.length) {
+    if (!alive.length && !this.fleet.pending()) {
       z.state = 'liberated';
       this.state.liberated.push(z.id);
       const bonus = 1500 * z.tier;
@@ -1289,14 +1290,7 @@ export class Game {
     const fwd = V2.copy(FWD).applyQuaternion(sh.q);
     const dir = V3.copy(fwd).lerp(toC, 0.5).normalize();
     const base = { x: sh.pos.x + dir.x * 5200, y: sh.pos.y + dir.y * 5200, z: sh.pos.z + dir.z * 5200 };
-    const caps = z.tier >= 3 ? ['dreadnought', 'carrier'] : ['dreadnought'];
-    if (z.tier >= 4) caps.push('dreadnought');
-    const imps = [3, 5, 6, 8][clamp(z.tier - 1, 0, 3)];
-    caps.forEach((k, i) => this.spawnCapital(k, { x: base.x + (i - (caps.length - 1) / 2) * 2600, y: base.y + (i % 2 ? 600 : -300), z: base.z + i * 900 }));
-    for (let i = 0; i < imps; i++) {
-      const a = (i / imps) * TAU;
-      this.spawnImp({ x: base.x + Math.cos(a) * 900 - dir.x * 2600, y: base.y + Math.sin(a) * 500, z: base.z + Math.sin(a) * 900 - dir.z * 2600 });
-    }
+    this.fleet.plan(z, base, dir);
   }
   spawnCapital(kind, pos) {
     const c = buildCapital(kind);
@@ -1334,6 +1328,7 @@ export class Game {
     for (const s of this.shots) this.fxRoot.remove(s.mesh);
     for (const d of this.decoys) if (d.obj) this.fxRoot.remove(d.obj.group);
     this.enemies = []; this.shots = []; this.decoys = [];
+    this.fleet.clear();
     this.zone = null;
     this.r.fx.damage = 0;
   }
@@ -1624,6 +1619,7 @@ export class Game {
   updateCombat(dt) {
     const sh = this.ship;
     const tp = this.targetPoint();
+    this.fleet.update(dt, tp);
     const shipVel = sh.vel;
     // enemies
     for (const e of this.enemies) {
@@ -1635,12 +1631,13 @@ export class Game {
       const dist = to.length();
       to.normalize();
       if (e.kind === 'imp') {
+        if (e.squad && this.fleet.steer(e, dt)) continue;   // the squad has this one
         e.phase += dt * 0.8;
         if (e.tractorT > 0) {
           // the Paperclip's beam owns this one's velocity while it holds
           e.tractorT -= dt;
         } else {
-          const orbit = V2.set(Math.cos(e.phase), Math.sin(e.phase * 0.7) * 0.5, Math.sin(e.phase)).multiplyScalar(620);
+          const orbit = V2.set(Math.cos(e.phase), Math.sin(e.phase * 0.7) * 0.5, Math.sin(e.phase)).multiplyScalar(e.orbit || 620);
           const goal = V3.set(at.x + orbit.x - e.pos.x, at.y + orbit.y - e.pos.y, at.z + orbit.z - e.pos.z);
           const gl = goal.length();
           goal.normalize().multiplyScalar(Math.min(240, gl * 0.8)).add(V2.copy(shipVel).multiplyScalar(0.9));
@@ -1666,7 +1663,7 @@ export class Game {
         for (const t of e.turrets) {
           if (t.dead) continue;
           t.cd -= dt;
-          if (t.cd <= 0 && dist < 4500) {
+          if (t.cd <= 0 && dist < 4500 && this.fleet.inArc(t, e, to)) {
             t.cd = 3 + Math.random() * 2.5;
             const wp = V2.copy(t.local).applyQuaternion(e.q);
             const from = { x: e.pos.x + wp.x, y: e.pos.y + wp.y, z: e.pos.z + wp.z };
@@ -1676,13 +1673,7 @@ export class Game {
           }
         }
         this.updateBeam(e, dt, at, dist);
-        if (e.sub === 'carrier') {
-          e.spawnCd -= dt;
-          if (e.spawnCd <= 0 && this.enemies.filter((x) => x.kind === 'imp' && !x.dead).length < 6) {
-            e.spawnCd = 12;
-            this.spawnImp({ x: e.pos.x + (Math.random() - 0.5) * 400, y: e.pos.y - 200, z: e.pos.z + (Math.random() - 0.5) * 400 });
-          }
-        }
+        if (e.sub === 'carrier') this.fleet.carrier(e, dt);
       }
     }
     // shots
@@ -1779,6 +1770,7 @@ export class Game {
     if (e.aimMesh) this.fxRoot.remove(e.aimMesh);
     const st = this.state;
     st.stats.kills++;
+    this.fleet.lost(e);
     if (e.kind === 'capital') {
       st.stats.capitals++;
       st.credits += 1200;
@@ -1789,7 +1781,7 @@ export class Game {
       st.credits += 40;
       this.boom(e.pos, 14);
       audio.sfx('explosion');
-      this.ui.kill('Red guy popped. +40 cr');
+      this.ui.kill(`${e.name} popped. +40 cr`);
     }
   }
   spark(p) { this.boom(p, 8, false, 4); }
