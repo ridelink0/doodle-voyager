@@ -240,6 +240,37 @@ try {
     return bad;`);
   check('every new hull can be bought, flown and walked', roster.length === 0, roster.join(',') || 'all 9 ok');
 
+  // gravity: a planet pulls a drifting ship, and a black hole keeps it
+  const grav = await E(`
+    g.setMode('helm'); g.ship.throttle = 0; g.ship.cruise = false; g.ship.auto = null;
+    const sol = g.u.sol; const planet = g.u.planetsOf(sol).find(p => p.name === 'Earth');
+    const earth = g.u.target('planet', { sys: sol, planet });
+    const p = earth.pos(g.t);
+    // park two radii above the surface, at rest, and let go
+    const r = planet.r || earth.arrive || 1500;
+    g.ship.pos.x = p.x + r * 3; g.ship.pos.y = p.y; g.ship.pos.z = p.z; g.ship.vel.set(0, 0, 0);
+    const d0 = Math.hypot(g.ship.pos.x - p.x, g.ship.pos.y - p.y, g.ship.pos.z - p.z);
+    for (let i = 0; i < 60; i++) g.update(0.05);
+    const p1 = earth.pos(g.t);
+    const d1 = Math.hypot(g.ship.pos.x - p1.x, g.ship.pos.y - p1.y, g.ship.pos.z - p1.z);
+    return { d0, d1, speed: g.ship.vel.length(), flag: g.grav && g.grav.kind };`);
+  check('gravity pulls a drifting ship toward a planet', grav.d1 < grav.d0 && grav.speed > 5, JSON.stringify({ ...grav, d0: Math.round(grav.d0), d1: Math.round(grav.d1), speed: Math.round(grav.speed) }));
+
+  const hole = await E(`
+    const bh = g.u.ctx.bodies.find(b => b.kind === 'sight' && b.sight && b.sight.kind === 'blackhole')
+      || (g.u.sights || []).find(x => x.kind === 'blackhole');
+    if (!bh) return { skipped: 'no black hole in range' };
+    const r = bh.r > 0 ? bh.r : bh.sight.R;
+    const c = bh.pos;
+    g.setMode('helm');
+    g.ship.pos.x = c.x + r * 2.5; g.ship.pos.y = c.y; g.ship.pos.z = c.z; g.ship.vel.set(0, 0, 0);
+    g.ship.throttle = 1; g.ship.boost = true;          // burn as hard as the ship can
+    for (let i = 0; i < 80 && !g.ship.spaghetti; i++) g.update(0.05);
+    const caught = !!g.ship.spaghetti;
+    for (let i = 0; i < 80 && g.mode !== "dead"; i++) g.update(0.05);
+    return { caught, mode: g.mode };`);
+  check('a black hole takes the ship no matter the throttle', hole.skipped ? true : (hole.caught && hole.mode === 'dead'), JSON.stringify(hole));
+
   // motion blur: on from medium up, off on low, and it really reprojects
   const mb = await E(`
     g.setMode('helm');

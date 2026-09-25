@@ -12,6 +12,17 @@ import { UI } from './ui.js';
 import { glow, ink, screen, PAL } from './mats.js';
 import { clamp, damp, smooth, vdist, fmtU, fmtTime, TAU } from './util.js';
 
+
+// reach: multiples of the body's radius where the pull begins. accel: u/s^2 at
+// the surface. event: black holes only, the radius inside which nothing gets
+// out. Deliberately arcade - felt in flight, not physically correct.
+export const GRAVITY = {
+  moon: { reach: 5, accel: 26 },
+  planet: { reach: 7, accel: 60 },
+  star: { reach: 10, accel: 150 },
+  blackhole: { reach: 30, accel: 900, event: 2.2 },
+};
+
 export const EQUIP = {
   laser: { name: 'Sharper nibs', desc: 'Laser damage +35% a level', prices: [1500, 3400, 6800] },
   cooler: { name: 'Eraser-dust coolant', desc: 'Laser heat capacity +40% a level', prices: [1200, 2600, 5200] },
@@ -697,6 +708,7 @@ export class Game {
     else if (this.mode === 'title') sh.q.multiply(qYP(dt * 0.004, 0, 0, Q1));
     this.updateShip(dt);
     const ctx = this.u.update(sh.pos, this.t, dt);
+    if (this.mode !== 'title') this.gravity(ctx, dt);
     this.collide(ctx, dt);
     this.updateZones(dt);
     this.updateCombat(dt);
@@ -903,6 +915,70 @@ export class Game {
       }
     }
     sh.vel.set(0, 0, 0);
+  }
+
+  // Arcade gravity. reach is a multiple of the body's own radius where the
+  // pull starts; accel is the acceleration in u/s squared at the surface, and
+  // it falls off as one over the square of the distance to the surface, so it
+  // is always finite and scales with the body. event is black holes only:
+  // inside that many radii nothing escapes.
+  gravity(ctx, dt) {
+    const sh = this.ship;
+    let worst = null;
+    for (const b of ctx.bodies) {
+      const kind = b.kind === 'moon' ? 'moon'
+        : b.kind === 'planet' || b.kind === 'dwarf planet' ? 'planet'
+        : b.kind === 'star' ? 'star'
+        : b.kind === 'sight' && b.sight && b.sight.kind === 'blackhole' ? 'blackhole' : null;
+      if (!kind) continue;
+      const g = GRAVITY[kind];
+      const r = b.r > 0 ? b.r : (b.sight && b.sight.R) || 0;
+      if (!(r > 0)) continue;
+      const dx = b.pos.x - sh.pos.x, dy = b.pos.y - sh.pos.y, dz = b.pos.z - sh.pos.z;
+      const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      const d = dist - r;
+      if (!(dist > 1e-6) || d > g.reach * r) continue;
+      const depth = 1 - Math.max(0, d) / (g.reach * r);
+      if (!worst || depth > worst.depth) worst = { b, kind, depth, d, r, g };
+      // Falling in: from here no throttle helps, so the ship is taken over.
+      if (g.event && d < r * g.event && !sh.spaghetti) {
+        sh.spaghetti = { t: 0, hole: b };
+        this.ui.big('EVENT HORIZON', 'Nothing gets out of here. Not even ink.');
+        audio.sfx('hit');
+      }
+      const dd = Math.max(d, r * 0.05);
+      const a = Math.min(g.accel * (r / dd) * (r / dd), g.accel * 400);
+      const k = (a * dt) / dist;
+      sh.vel.x += dx * k; sh.vel.y += dy * k; sh.vel.z += dz * k;
+      // Cruise cannot hold a course through a gravity well.
+      // Deep in the well only: an orbit that merely passes through the outer
+      // reaches must still be crossable at cruise.
+      if (sh.cruise && d < g.reach * r * 0.25) {
+        sh.cruise = false; sh.cs = 0;
+        this.ui.toast(`${b.name} pulled you out of cruise.`);
+      }
+    }
+    this.grav = worst ? { name: worst.b.name, kind: worst.kind, depth: worst.depth } : null;
+    if (sh.spaghetti) this.spaghettify(dt);
+  }
+
+  // The infall: input is ignored, the ship is dragged in nose first and
+  // stretched along the way, and then it is over.
+  spaghettify(dt) {
+    const sh = this.ship, sp = sh.spaghetti, b = sp.hole;
+    sp.t += dt;
+    const dx = b.pos.x - sh.pos.x, dy = b.pos.y - sh.pos.y, dz = b.pos.z - sh.pos.z;
+    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
+    const want = Math.min(8000, 2000 + sp.t * 1500);
+    sh.vel.set((dx / dist) * want, (dy / dist) * want, (dz / dist) * want);
+    sh.throttle = 0; sh.cruise = false; sh.warp = null; sh.auto = null;
+    if (this.shipRoot) this.shipRoot.scale.set(1, 1, 1 + Math.min(3, sp.t * 1.4));
+    const r = b.r > 0 ? b.r : (b.sight && b.sight.R) || 1;
+    if (sp.t > 2.2 || dist - r < r * 0.15) {
+      sh.spaghetti = null;
+      if (this.shipRoot) this.shipRoot.scale.set(1, 1, 1);
+      this.die('blackhole');
+    }
   }
 
   collide(ctx, dt) {
@@ -1700,7 +1776,9 @@ export class Game {
       tg ? `${fmtU(vdist(tg.pos(this.t), sh.pos))} away` : '',
       `hull ${Math.round(sh.hull)} · shield ${Math.round(sh.shield)}`,
       `fuel ${sh.fuel.toFixed(0)}/${this.stat('tank')} ${this.def.fuel}`,
-      this.zone ? `ENEMY ZONE · ${left} left` : 'sector quiet',
+      this.grav && this.grav.depth > 0.25
+        ? `${this.grav.kind === 'blackhole' ? 'EVENT HORIZON' : 'GRAVITY'} · ${this.grav.name}`
+        : this.zone ? `ENEMY ZONE · ${left} left` : 'sector quiet',
     ];
     lines.forEach((l, i) => { g.fillStyle = i === 6 && this.zone ? '#ff3b5c' : '#4deeff'; g.fillText(l.slice(0, 30), 264, 56 + i * 30); });
     this.navTex.needsUpdate = true;
