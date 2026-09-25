@@ -6,11 +6,13 @@ import { Renderer, squash } from './render.js';
 import { Universe, FUELS } from './universe.js';
 import { SHIPS, buildInterior, buildExterior } from './ships.js';
 import { buildImp, buildCapital, buildDrone, buildDecoy, Squadrons } from './actors.js';
-import { Boarding } from './board.js';
 import { Bosses } from './bosses.js';
+import { Boarding } from './board.js';
 import { audio } from './audio.js';
 import { Media } from './media.js';
 import { UI } from './ui.js';
+import { Pad } from './pad.js';
+import { Tutorial, installAnnex, installTutorialUi } from './tutorial.js';
 import { glow, ink, screen, PAL } from './mats.js';
 import { clamp, damp, smooth, vdist, fmtU, fmtTime, TAU } from './util.js';
 
@@ -125,7 +127,7 @@ const store = {
 export function defaultSettings() {
   return {
     sens: 1, invert: false, music: true, musicVol: 0.45, sfxVol: 0.7, drone: true, boil: true, quality: 1, hints: true,
-    trackpad: false, fov: 72, shake: true, showFps: false, pauseOnBlur: true, wheelThrottle: true,
+    trackpad: false, fov: 72, shake: true, showFps: false, pauseOnBlur: true, wheelThrottle: true, rumble: true,
   };
 }
 function freshSave() {
@@ -137,14 +139,22 @@ function freshSave() {
     // story: unlocked codex ids, defeated boss ids, and 0-3 act progress.
     // bossesDefeated and actProgress are written by the boss encounters.
     codex: [], bossesDefeated: [], actProgress: 0,
+    // mission one. Only a save that came out of freshSave() is ever false here.
+    tutorialDone: false,
   };
 }
 // Older saves get any fields added since.
 function upgradeSave(s) {
   const f = freshSave();
+  // Read before the blind backfill below, which would otherwise hand an old
+  // save freshSave()'s tutorialDone: false. Deliberately the other way round: a
+  // save that predates the tutorial belongs to a returning player, and arming
+  // mission one for them is the one thing this must never do.
+  const knewTutorial = s.tutorialDone !== undefined;
   for (const k of Object.keys(f)) if (s[k] === undefined) s[k] = f[k];
   for (const k of Object.keys(f.equip)) if (s.equip[k] === undefined) s.equip[k] = 0;
   for (const k of Object.keys(f.stats)) if (s.stats[k] === undefined) s.stats[k] = 0;
+  if (!knewTutorial) s.tutorialDone = true;
   return s;
 }
 
@@ -171,6 +181,8 @@ export class Game {
     this.bombs = [];
     this.decoys = [];
     this.zone = null;
+    this.tutorial = null;          // mission one, when it is running (js/tutorial.js)
+    this.lastInput = 'keyboard';    // 'keyboard' | 'pad': which glyphs the prompts show
     this.sessionSeed = (Math.random() * 2 ** 32) >>> 0;
     this.sessionStart = new Date();
     this.msgCooldown = 0;
@@ -183,6 +195,7 @@ export class Game {
   async boot(onProgress = () => {}) {
     onProgress('loading the catalogues');
     await this.u.load();
+    installAnnex(this.u);          // the tutorial's wrong pump: one more permanent depot
     onProgress('loading the tapes');
     try { await this.media.init(); } catch (e) { console.warn('[media] init failed', e); }
     this.ui = new UI(this);
@@ -195,6 +208,8 @@ export class Game {
     this.placeAtStart();
     this.applySettings();
     this.bindInput();
+    this.pad = new Pad(this);
+    installTutorialUi(this);
     this.ready = true;
     this.ui.showTitle();
     requestAnimationFrame((n) => this.loop(n));
@@ -321,6 +336,7 @@ export class Game {
     this.freshStart = true;         // NEW VOYAGE re-arms the crawl, even mid-session
     this.state = freshSave();
     this.clearCombat();
+    if (this.tutorial) this.tutorial.end();   // a wiped save re-arms mission one from scratch
     this.u.rollZones(this.sessionSeed, new Set());
     this.ship = null;
     this.buildShip('scout');
@@ -335,12 +351,24 @@ export class Game {
     this.setMode('helm');
     this.lock();
     this.unlockCodex('inkglows');   // every launch is a launch; the guard makes it once
-    const helm = () => this.ui.big('YOU ARE AT THE HELM', 'W/S throttle, C cruise, M map. E stands you up.');
+    // A new game's first mission is the tutorial, straight after the crawl. A
+    // save that has already done it (or skipped it) gets the plain banner.
+    const helm = () => {
+      if (!this.state.tutorialDone) { this.startTutorial(); return; }
+      this.ui.big('YOU ARE AT THE HELM', 'W/S throttle, C cruise, M map. E stands you up.');
+    };
     if (!this.freshStart) { helm(); return; }
     this.freshStart = false;
     this.unlockCodex('district');
     this.ui.playCrawl(() => { helm(); if (this.playing() && !this.ui.anyOpen() && !this.paused) this.lock(); });
   }
+  // Mission one. js/tutorial.js owns every step, its own HUD banner and its own
+  // two pause buttons; this is the whole of the game's side of it.
+  startTutorial(replay = false) {
+    if (this.tutorial) this.tutorial.end();
+    this.tutorial = new Tutorial(this, replay);
+  }
+  skipTutorial() { if (this.tutorial) this.tutorial.skip(); }
   // The only way into the codex. Idempotent, so "first X" call sites need no
   // flag of their own, and it persists the moment it fires.
   unlockCodex(id) {
@@ -920,6 +948,11 @@ export class Game {
     this.fps = this.fps * 0.95 + (1 / Math.max(dt, 0.001)) * 0.05;
     dt = Math.min(dt, 0.05);
     try {
+      // Controllers are polled here, not in update(), for two reasons: a pad
+      // has to be able to work the pause menu (update does not run while
+      // paused), and poll() feeds the same mouse accumulator update() drains,
+      // so it has to run first.
+      if (this.pad) this.pad.poll(dt);
       // tests fast-forward by running several simulation steps per frame
       const steps = this.steps || 1;
       if (!this.paused) for (let i = 0; i < steps; i++) this.update(dt);
@@ -956,6 +989,7 @@ export class Game {
     this.updateAir(dt);
     this.updateCarry(dt);
     this.board.update(dt);
+    if (this.tutorial) this.tutorial.update(dt);   // after combat, so a cleared wing is seen the same frame
     if (this.interior.animate) this.interior.animate(dt, this.t);
     this.visit(ctx);
     this.autosave = (this.autosave || 0) + dt;
@@ -1728,6 +1762,10 @@ export class Game {
     // enemies
     for (const e of this.enemies) {
       if (e.dead) continue;
+      // A scripted, harmless target: it never steers and never fires. The
+      // tutorial's practice scout is the only thing that sets this, and it is
+      // still a real enemies entry, so aim assist and the lasers see it.
+      if (e.passive) continue;
       // A flare it took counts as the ship for as long as the lock lasts.
       if (e.decoyT > 0) { e.decoyT -= dt; if (!e.decoyLock || e.decoyLock.life <= 0) { e.decoyT = 0; e.decoyLock = null; } }
       const at = e.decoyT > 0 && e.decoyLock ? e.decoyLock.pos : tp;

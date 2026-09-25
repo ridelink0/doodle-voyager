@@ -1200,7 +1200,10 @@ export class Universe {
     const zones = [];
     const add = (sys, tier) => {
       const id = `${sys.galaxy.id}|${sys.id}`;
-      if (liberated.has(id) || sys === this.sol || zones.some((z) => z.id === id)) return;
+      // noZone: a system that must never be interdicted. Sol is one by name; the
+      // SBG Annex depot the tutorial uses is one by flag, because a zone's
+      // 2.5 Mu radius there would swallow Sol Pumps along with it.
+      if (liberated.has(id) || sys === this.sol || sys.noZone || zones.some((z) => z.id === id)) return;
       zones.push({ id, name: `${sys.name} sector`, sys, galaxy: sys.galaxy, pos: { ...sys.pos }, radius: 2.5e6 + sys.star.r * 4, tier, state: 'hostile' });
     };
     const mwSys = this.systemsOf(this.mw).filter((s) => s !== this.sol).map((s) => ({ s, d: Math.hypot(s.pos.x, s.pos.y, s.pos.z) })).sort((a, b) => a.d - b.d);

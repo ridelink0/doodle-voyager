@@ -159,6 +159,7 @@ export class Bosses {
     this.cool = 0;         // seconds before another lair may take you
     this.tick = 0;
     this.won = null;       // the last boss beaten, for the act-3 curtain
+    this.forState = null;  // the save these lair flags belong to
   }
 
   // Called by Game.clearCombat, so fleeing, dying and the test harness all
@@ -229,6 +230,12 @@ export class Bosses {
     if (this.sweep > 0) { this.sweep -= dt; if (this.sweep <= 0) this.finish(); }
     if (this.cool > 0) this.cool = Math.max(0, this.cool - dt);
     if (!this.lairs && !this.build()) return;
+    // A new voyage is a new save object, and the Red Margin holds all eight
+    // lairs again: every one of them re-arms, and its hint is unsaid again.
+    if (this.forState !== g.state) {
+      this.forState = g.state;
+      for (const l of this.lairs) { l.armed = true; l.hinted = false; }
+    }
     if (this.active) { this.watch(dt); return; }
     const sh = g.ship;
     if (g.zone || !sh || sh.warp || g.mode === 'title' || g.mode === 'dead') return;
@@ -331,7 +338,12 @@ export class Bosses {
   finish() {
     const g = this.g, won = this.won;
     this.won = null;
+    // Say why the board empties: what a boss drew goes when the boss goes, and
+    // a player still shooting at it deserves the line rather than the puzzle.
+    let left = 0;
+    for (const e of g.enemies) if (!e.dead) left++;
     g.clearCombat();                                    // calls clear() back on the way through
+    if (won && left) g.ui.toast('What it drew comes apart with it.');
     audio.mood('cruise');
     // The sky keeps going, but the notebook closes on the Inkblot.
     if (won === 'inkblot') { g.unlock(); g.ui.open('credits'); }

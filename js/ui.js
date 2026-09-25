@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { SHIPS } from './ships.js';
 import { EQUIP, ITEMS, PAINT_NAMES, ABILITIES, CODEX } from './game.js';
 import { audio } from './audio.js';
+import { kbd, padOn } from './pad.js';
 import { squash } from './render.js';
 import { fmtU, fmtTime, fmtReal, fmtInt, vdist, clamp } from './util.js';
 
@@ -254,7 +255,7 @@ export class UI {
       else if (sh.abilityCd > 0) state = `${sh.abilityCd.toFixed(1)} s`;
       else if (!g.abilityReady()) state = 'no fuel';
       else state = 'ready';
-      abTxt = `<kbd>R</kbd> ${esc(ab.name)} · <span class="${state === 'ready' || state === 'running' || state === 'holding' || state === 'scooping' ? 'hi' : ''}">${state}</span>`;
+      abTxt = `${kbd(g, 'R', 'helm')} ${esc(ab.name)} · <span class="${state === 'ready' || state === 'running' || state === 'holding' || state === 'scooping' ? 'hi' : ''}">${state}</span>`;
     }
     this.set('h-ability', abTxt, 'innerHTML');
     const tg = sh.warp ? sh.warp.target : sh.auto ? sh.auto.target : g.navTarget;
@@ -273,17 +274,17 @@ export class UI {
     let pr = '';
     if (g.mode === 'foot') {
       const it = g.nearestInteract();
-      if (it) pr = `E · ${it.label || it.id}`;
+      if (it) pr = `${kbd(g, 'E', 'foot')} ${esc(it.label || it.id)}`;
     } else if (g.mode === 'helm') {
       const b = g.dockable();
-      if (b) pr = `F · dock at ${b.name}`;
+      if (b) pr = `${kbd(g, 'F', 'helm')} dock at ${esc(b.name)}`;
     } else if (g.mode === 'eva') {
       // boarding and the remote recall first (js/board.js), the hole after
       const bp = g.board.prompt();
       if (bp) pr = esc(bp);
-      else if (g.evaNearHole()) pr = 'E · climb back in';
+      else if (g.evaNearHole()) pr = `${kbd(g, 'E', 'eva')} climb back in`;
     }
-    this.set('h-prompt', pr);
+    this.set('h-prompt', pr, 'innerHTML');
     this.bossBar();
     // kill feed stays short
   }
@@ -303,11 +304,16 @@ export class UI {
   }
   keysFor(m) {
     const g = this.g, sh = g.ship;
-    const k = (s) => `<kbd>${s}</kbd>`;
+    // One helper, and the whole hint line switches to controller glyphs the
+    // moment a pad is the thing in the player's hands (js/pad.js).
+    const k = (s) => kbd(g, s, m);
+    const pad = padOn(g);
     if (m === 'foot') return `${k('WASD')} walk · ${k('E')} use · click ${g.carried ? 'throws' : 'shoots'} · ${k('V')} tapes · ${k('M')} map · ${k('I')} storage${g.settings.drone ? ` · ${k('G')} drone` : ''} · ${k('P')} pause`;
     if (m === 'helm') {
       const ab = ABILITIES[g.def.ability];
-      return `mouse or arrows steer · ${k('W')}/${k('S')} throttle · ${g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire'} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock or eject${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
+      const steer = pad ? `${k('mouse')} steer` : 'mouse or arrows steer';
+      const fire = pad ? `${k('Space')} fire · hold ${k('Q')} look` : g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire';
+      return `${steer} · ${k('W')}/${k('S')} throttle · ${fire} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock or eject${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
     }
     if (m === 'eva') return `${k('WASD')} ${k('Space')} ${k('Ctrl')} jetpack · click shoots · ${k('E')} boards or climbs in · ${k('F')} calls a hull you own · air ${Math.max(0, Math.round(g.eva ? g.eva.o2 : 0))} s · suit ${Math.round(g.board.you.hp)}`;
     if (m === 'drone') return `${k('WASD')} fly · ${k('Space')}/${k('Ctrl')} up/down · click or ${k('B')} bomb (${sh.bombs}) · ${k('G')} recall · battery ${Math.round(g.drone ? g.drone.battery : 0)} s`;

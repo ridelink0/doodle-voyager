@@ -68,9 +68,14 @@ try {
   await b.shot(path.join(SHOTS, '02-crawl.png'));
   await b.key('k');                                 // any key skips it, and does nothing else
   await b.wait(200);
-  const skipped = await E(`return { active: g.ui.crawlActive, hidden: document.getElementById('crawl').hidden, mode: g.mode, shots: g.shots.length };`);
-  check('any key skips the crawl straight to the helm', !skipped.active && skipped.hidden && skipped.mode === 'helm', JSON.stringify(skipped));
+  const skipped = await E(`return { active: g.ui.crawlActive, hidden: document.getElementById('crawl').hidden, mode: g.mode, tut: !!g.tutorial, shots: g.shots.length };`);
+  // A new game's first mission is the tutorial, so the crawl now hands over to
+  // it, on foot beside the pilot's seat, rather than straight to the helm.
+  check('any key skips the crawl straight into mission one', !skipped.active && skipped.hidden && skipped.mode === 'foot' && skipped.tut, JSON.stringify(skipped));
   await b.wait(1500);
+  // The rest of this suite is a veteran's session; the tutorial gets its own
+  // end-to-end run further down.
+  await E(`g.skipTutorial(); g.setMode('helm'); return 1;`);
   check('launch puts you at the helm', (await E('return g.mode;')) === 'helm');
   await b.shot(path.join(SHOTS, '02-helm.png'));
 
@@ -1419,7 +1424,8 @@ try {
     const at = { defeated: g.state.bossesDefeated.slice(), act: g.state.actProgress, paid: g.state.credits - c0, sweep: g.bosses.sweep > 0, left: g.enemies.filter((x) => !x.dead).length };
     for (let i = 0; i < 200; i++) g.update(1 / 60);
     g.ui.hud();
-    const after = { enemies: g.enemies.filter((x) => !x.dead).length, active: !!g.bosses.active, bar: document.getElementById('boss-hp').hidden };
+    const after = { enemies: g.enemies.filter((x) => !x.dead).length, active: !!g.bosses.active, bar: document.getElementById('boss-hp').hidden,
+      said: [...document.querySelectorAll('#h-toasts li')].some((x) => /comes apart with it/.test(x.textContent)) };
     // and again, to flee it
     g.bosses.cool = 0; l.armed = true;
     g.ship.pos.x = l.pos.x; g.ship.pos.y = l.pos.y; g.ship.pos.z = l.pos.z;
@@ -1443,12 +1449,27 @@ try {
     return { at, after, fled };`);
   check('beating a boss writes the act into the save, pays, and sweeps what it drew off the board',
     !kill.skip && kill.at.defeated.join() === 'doodler' && kill.at.act === 1 && kill.at.paid >= 9000
-    && kill.at.sweep && kill.at.left > 0 && kill.after.enemies === 0 && !kill.after.active && kill.after.bar === true,
+    && kill.at.sweep && kill.at.left > 0 && kill.after.enemies === 0 && !kill.after.active && kill.after.bar === true
+    && kill.after.said === true,
     JSON.stringify(kill).slice(0, 300));
   check('fleeing a boss ends the fight and leaves it undefeated, and its lair only re-arms once you are out of it',
     !kill.skip && kill.fled && kill.fled.active === false && kill.fled.enemies === 0 && kill.fled.done === 0
     && kill.fled.armed === false && kill.fled.rearmed === true && kill.fled.caughtAgain === false,
     JSON.stringify(kill.fled));
+  // A new voyage hands the game a new save object; every lair has to come back
+  // armed, with its hint unsaid, or a second playthrough is a silent one.
+  const fresh = await E(`
+    const keep = g.state;
+    const l = g.bosses.lair('doodler');
+    l.armed = false; l.hinted = true;
+    g.state = JSON.parse(JSON.stringify(keep));          // what newVoyage() hands over: a different object
+    g.update(1 / 60);
+    const after = { armed: l.armed, hinted: l.hinted, all: g.bosses.lairs.every((x) => x.armed && !x.hinted) };
+    g.state = keep;
+    g.update(1 / 60);
+    return after;`);
+  check('a new voyage re-arms every lair and gives its hints back', fresh.armed === true && fresh.hinted === false && fresh.all === true, JSON.stringify(fresh));
+
   const put = await E(`
     g.state.actProgress = 0; g.state.bossesDefeated = [];
     g.clearCombat(); g.bosses.cool = 0;
@@ -1612,6 +1633,331 @@ try {
     noPod.bh === 'dead' && noPod.podded === 'eva' && noPod.killed === 'dead'
     && noPod.mode === 'helm' && noPod.hull === noPod.max && !noPod.hijack, JSON.stringify(noPod));
 
+  // ---- mission one: the tutorial at Sol Pumps, end to end ----
+  const tut0 = await E(`
+    g.ui.closeAll(); g.paused = false; g.clearCombat(); g.zone = null;
+    if (g.board) g.board.reset();
+    g.setMode('helm');
+    g.state.tutorialDone = false; g.state.credits = 6000;
+    g.ship.hull = g.stat('hull'); g.ship.shield = g.stat('shield'); g.ship.fuel = g.stat('tank');
+    g.parkNear(g.u.sol.station.pos, 5000);
+    g.startTutorial();
+    return { armed: !!g.tutorial, step: g.tutorial.i, steps: g.tutorial.steps, mode: g.mode,
+      banner: !document.getElementById('h-tut').hidden,
+      obj: document.getElementById('h-tut-obj').textContent,
+      fine: document.getElementById('h-tut-fine').textContent,
+      fuel: +g.ship.fuel.toFixed(1), tank: g.stat('tank'),
+      skip: !document.getElementById('p-skip-tut').hidden, replay: !document.getElementById('p-replay-tut').hidden };`);
+  check('a new voyage arms mission one on foot, with its own objective banner',
+    tut0.armed && tut0.mode === 'foot' && tut0.step === 0 && tut0.banner && /pilot's seat/.test(tut0.obj) && tut0.steps === 13,
+    JSON.stringify(tut0).slice(0, 220));
+  check('mission one leaves room in the tank to refuel with, and offers skip rather than replay',
+    tut0.fuel <= tut0.tank * 0.51 && tut0.skip && !tut0.replay && /skippable/.test(tut0.fine), JSON.stringify({ fuel: tut0.fuel, tank: tut0.tank, skip: tut0.skip, replay: tut0.replay }));
+
+  await b.shot(path.join(SHOTS, '21-tutorial.png'));
+
+  const tutAnnex = await E(`
+    const a = g.u.systemsOf(g.u.mw).find(s => s.id === 'sol-annex');
+    if (!a) return { found: false };
+    const d = (p, q) => Math.hypot(p.x - q.x, p.y - q.y, p.z - q.z);
+    const sol = g.u.sol;
+    const seeds = [1, 2, 3, 7, 99];
+    let rolled = false;
+    for (const sd of seeds) { g.u.rollZones(sd, new Set()); if (g.u.zones.some(z => z.sys === a)) rolled = true; }
+    g.u.rollZones(g.sessionSeed, new Set(g.state.liberated));
+    g.clearCombat(); g.zone = null;
+    return { found: true, sys: a.name, st: a.station.name, fuels: a.station.fuelTypes,
+      ion: a.station.fuelTypes.includes('ION'), hop: d(a.station.pos, sol.station.pos),
+      fromSun: d(a.pos, sol.pos), starR: a.star.r, planets: g.u.planetsOf(a).length,
+      noZone: !!a.noZone, rolled,
+      listed: g.u.stationsNear(sol.station.pos, null, 8).some(x => x.st.name === a.station.name),
+      notForIon: !g.u.stationsNear(sol.station.pos, 'ION', 8).some(x => x.st.name === a.station.name && x.ok) };`);
+  check('SBG Annex Pumps is a real charted depot that sells two fuels and never ION',
+    tutAnnex.found && tutAnnex.fuels.length === 2 && !tutAnnex.ion && tutAnnex.listed && tutAnnex.notForIon, JSON.stringify(tutAnnex.fuels) + ' listed=' + tutAnnex.listed);
+  check('the Annex hop is long enough for the cruise drive and clear of the Sun and its planets',
+    tutAnnex.hop > 40000 && tutAnnex.hop < 200000 && tutAnnex.fromSun > 80000 && tutAnnex.planets === 0 && tutAnnex.starR < 1000,
+    `${Math.round(tutAnnex.hop)} u hop, ${Math.round(tutAnnex.fromSun)} u from the Sun, beacon r ${tutAnnex.starR}`);
+  check('no enemy zone can ever be rolled onto the Annex, which would swallow Sol Pumps with it',
+    tutAnnex.noZone && !tutAnnex.rolled, JSON.stringify({ noZone: tutAnnex.noZone, rolled: tutAnnex.rolled }));
+
+  const tutA = await E(`
+    const log = [];
+    g.player.x = g.interior.spawn.x; g.player.z = g.interior.spawn.z; g.player.yaw = g.interior.spawnYaw || 0;
+    g.update(1/60); g.interact(); g.update(1/60);
+    log.push(['seat', g.tutorial.i, g.mode]);
+    g.keys.add('KeyQ'); for (let i = 0; i < 8; i++) { g.mouse.dx = 200; g.update(1/60); } g.keys.delete('KeyQ'); g.mouse.dx = 0;
+    log.push(['look', g.tutorial.i]);
+    g.keys.add('KeyW'); for (let i = 0; i < 60; i++) g.update(1/60); g.keys.delete('KeyW');
+    log.push(['throttle', g.tutorial.i, +g.ship.throttle.toFixed(2)]);
+    g.keys.add('KeyA'); g.keys.add('ShiftLeft'); for (let i = 0; i < 8; i++) g.update(1/60);
+    g.keys.delete('KeyA'); g.keys.delete('ShiftLeft');
+    log.push(['roll', g.tutorial.i, g.tutorial.rolled, g.tutorial.boosted]);
+    return log;`);
+  check('sitting down, looking, the throttle and roll-with-boost each advance off real state',
+    tutA[0][1] === 1 && tutA[0][2] === 'helm' && tutA[1][1] === 2 && tutA[2][1] === 3 && tutA[2][2] >= 0.5 && tutA[3][1] === 4,
+    JSON.stringify(tutA));
+
+  const tutB = await E(`
+    const sc = g.tutorial.scout;
+    const info = { scout: !!sc, hp: sc && sc.hp, passive: !!(sc && sc.passive) };
+    for (let i = 0; i < 120; i++) g.update(1/60);        // two seconds with nothing pressed
+    info.enemyShots = g.shots.filter(s => s.from === 'enemy').length;
+    info.alive = !!(g.tutorial.scout && !g.tutorial.scout.dead);
+    info.d = sc ? Math.hypot(sc.pos.x - g.ship.pos.x, sc.pos.y - g.ship.pos.y, sc.pos.z - g.ship.pos.z) : -1;
+    g.keys.add('Space'); for (let i = 0; i < 90; i++) g.update(1/60); g.keys.delete('Space');
+    info.step = g.tutorial.i; info.assisted = g.tutorial.assisted;
+    info.left = g.enemies.filter(e => !e.dead).length;
+    info.nav = g.navTarget && g.navTarget.name;
+    return info;`);
+  check('the practice scout is a real enemy entry that never shoots back',
+    tutB.scout && tutB.passive && tutB.enemyShots === 0 && tutB.alive && tutB.hp === 140, JSON.stringify(tutB).slice(0, 180));
+  check('it drifts to stay in front of you, so the gunnery step cannot be lost off the back',
+    tutB.d > 200 && tutB.d < 2600, `${Math.round(tutB.d)} u ahead`);
+  check('firing, and the ship\'s own aim assist, clear both gunnery steps and leave nothing behind',
+    tutB.step === 6 && tutB.assisted && tutB.left === 0, JSON.stringify({ step: tutB.step, assisted: tutB.assisted, left: tutB.left }));
+  check('the Annex is marked on the instruments for the course step', tutB.nav === 'SBG Annex Pumps', String(tutB.nav));
+
+  const tutC = await E(`
+    g.onKey({ code: 'KeyT' });
+    // The tutorial advances from inside update(), where the course step asks
+    // whether the autopilot has the Annex. Sampling the step with no frame in
+    // between reads the number from before the keypress every time, which is a
+    // flaw in the check and not in the tutorial: one frame is what a player
+    // waits, so one frame is what this waits.
+    g.update(1 / 60);
+    const a = g.u.systemsOf(g.u.mw).find(s => s.id === 'sol-annex');
+    const at = () => Math.hypot(g.ship.pos.x - a.station.pos.x, g.ship.pos.y - a.station.pos.y, g.ship.pos.z - a.station.pos.z);
+    const info = { step: g.tutorial.i, auto: !!g.ship.auto, target: g.ship.auto && g.ship.auto.target.name, d0: at() };
+    for (let i = 0; i < 150; i++) g.update(0.05);
+    info.d1 = at(); info.cruise = g.ship.cruise; info.sp = g.ship.vel.length();
+    return info;`);
+  check('setting the course hands the leg to the autopilot',
+    tutC.step === 7 && tutC.auto && tutC.target === 'SBG Annex Pumps', JSON.stringify({ step: tutC.step, target: tutC.target }));
+  check('the autopilot flies it, under cruise, and closes on the Annex',
+    tutC.d1 < tutC.d0 - 1000 && tutC.cruise, `${Math.round(tutC.d0)} -> ${Math.round(tutC.d1)} u at ${Math.round(tutC.sp)} u/s`);
+
+  const tutD = await E(`
+    const a = g.u.systemsOf(g.u.mw).find(s => s.id === 'sol-annex');
+    g.ship.auto = null; g.ship.cruise = false; g.ship.throttle = 0; g.ship.vel.set(0, 0, 0); g.ship.cs = 0;
+    g.ship.pos.x = a.station.pos.x + 300; g.ship.pos.y = a.station.pos.y + 100; g.ship.pos.z = a.station.pos.z;
+    for (let i = 0; i < 4; i++) g.update(1/60);
+    const info = { arrived: g.tutorial.i, what: g.dockable() && g.dockable().name };
+    g.tryDock(); g.update(1/60);
+    info.docked = g.tutorial.i;
+    info.panel = g.ui.stationData && g.ui.stationData.name;
+    info.msg = document.getElementById('st-msg').textContent;
+    info.wrong = /Wrong fuel/.test(document.getElementById('st-body').innerHTML);
+    info.codex = g.state.codex.includes('fuelracket');
+    const btn = document.querySelector('#st-body [data-go]');
+    info.hasCourseBack = !!btn;
+    if (btn) btn.click();
+    g.update(1/60);
+    info.back = g.tutorial.i; info.target = g.ship.auto && g.ship.auto.target.name;
+    return info;`);
+  check('arriving at the Annex and docking there advance two more steps',
+    tutD.arrived === 8 && tutD.what === 'SBG Annex Pumps' && tutD.docked === 9 && tutD.panel === 'SBG Annex Pumps',
+    JSON.stringify({ arrived: tutD.arrived, what: tutD.what, docked: tutD.docked }));
+  check('the wrong pump refuses your fuel, in the announcer\'s own recorded words',
+    tutD.wrong && /does not serve your fuel type/.test(tutD.msg) && tutD.codex, tutD.msg.slice(0, 96));
+  check('the Annex points you back at Sol Pumps and that button really sets the course',
+    tutD.hasCourseBack && tutD.back === 10 && /Sol Pumps/.test(String(tutD.target)), JSON.stringify({ back: tutD.back, target: tutD.target }));
+
+  const tutE = await E(`
+    const st = g.u.sol.station;
+    g.ship.auto = null; g.ship.cruise = false; g.ship.throttle = 0; g.ship.vel.set(0, 0, 0); g.ship.cs = 0;
+    g.ship.pos.x = st.pos.x + 300; g.ship.pos.y = st.pos.y + 100; g.ship.pos.z = st.pos.z;
+    for (let i = 0; i < 4; i++) g.update(1/60);
+    const info = { home: g.tutorial.i };
+    g.tryDock(); g.update(1/60);
+    info.fuel0 = +g.ship.fuel.toFixed(2);
+    info.msg = g.refuel(g.ui.stationData.body);
+    g.update(1/60);
+    info.fuel1 = +g.ship.fuel.toFixed(2); info.refuelled = g.tutorial.i;
+    info.pending = !!g.tutorial.pending; info.wing0 = g.tutorial.wing.length;
+    g.ui.close('station'); g.update(1/60);
+    info.wing = g.tutorial.wing.length;
+    info.anyPassive = g.tutorial.wing.some(e => e.passive);
+    info.aheadOf = g.tutorial.wing.length ? Math.hypot(g.tutorial.wing[0].pos.x - g.ship.pos.x, g.tutorial.wing[0].pos.y - g.ship.pos.y, g.tutorial.wing[0].pos.z - g.ship.pos.z) : -1;
+    const cr = g.state.credits;
+    for (const e of g.tutorial.wing) g.hurt(e, 1e6, { ...e.pos });
+    g.update(1/60);
+    info.tut = !!g.tutorial; info.done = g.state.tutorialDone; info.paid = g.state.credits - cr;
+    info.hidden = document.getElementById('h-tut').hidden;
+    info.replay = !document.getElementById('p-replay-tut').hidden;
+    info.skip = !document.getElementById('p-skip-tut').hidden;
+    info.margin = g.state.codex.includes('margin');
+    info.left = g.enemies.filter(e => !e.dead).length;
+    return info;`);
+  check('the right pump takes your fuel, and the mission only counts that one',
+    tutE.home === 11 && /Pumped/.test(tutE.msg) && tutE.fuel1 > tutE.fuel0 && tutE.refuelled === 12,
+    JSON.stringify({ home: tutE.home, msg: tutE.msg, step: tutE.refuelled }));
+  check('the first wing waits for the shop to shut, then flies in three strong and armed',
+    tutE.pending && tutE.wing0 === 0 && tutE.wing === 3 && !tutE.anyPassive && tutE.aheadOf > 1500, JSON.stringify({ pending: tutE.pending, wing: tutE.wing, ahead: Math.round(tutE.aheadOf) }));
+  check('clearing the wing finishes mission one, pays it, and flips the save flag for good',
+    !tutE.tut && tutE.done && tutE.paid >= 150 && tutE.hidden && tutE.replay && !tutE.skip && tutE.margin && tutE.left === 0,
+    JSON.stringify({ tut: tutE.tut, done: tutE.done, paid: tutE.paid, replay: tutE.replay, margin: tutE.margin }));
+
+  const tutF = await E(`
+    g.state.tutorialDone = false;
+    g.startTutorial();
+    const armed = !!g.tutorial, step = g.tutorial.i;
+    const hull = g.ship.hull, cr = g.state.credits, fuel = g.ship.fuel, pos = { ...g.ship.pos }, ship = g.ship.type;
+    g.tutorial.spawnWing();                       // give skip something to tidy away
+    const spawned = g.enemies.filter(e => !e.dead).length;
+    g.skipTutorial();
+    return { armed, step, cleared: g.tutorial === null, done: g.state.tutorialDone, spawned,
+      left: g.enemies.filter(e => !e.dead).length, hidden: document.getElementById('h-tut').hidden,
+      hull: g.ship.hull === hull, cr: g.state.credits === cr, fuel: g.ship.fuel === fuel, ship: g.ship.type === ship,
+      moved: Math.hypot(g.ship.pos.x - pos.x, g.ship.pos.y - pos.y, g.ship.pos.z - pos.z) };`);
+  check('the tutorial is replayable, and skip clears it and its actors at no cost to the player',
+    tutF.armed && tutF.step === 0 && tutF.cleared && tutF.done && tutF.spawned === 3 && tutF.left === 0
+    && tutF.hidden && tutF.hull && tutF.cr && tutF.fuel && tutF.ship && tutF.moved < 1, JSON.stringify(tutF));
+
+  // ---- controllers: a synthetic standard-mapping pad ----
+  const MOCKPAD = `{ id: 'Xbox Wireless Controller (STANDARD GAMEPAD Vendor: 045e Product: 0b13)', index: 0,
+    connected: true, mapping: 'standard', timestamp: performance.now(), axes: [0, 0, 0, 0],
+    buttons: Array.from({ length: 17 }, () => ({ pressed: false, touched: false, value: 0 })),
+    hapticActuators: [], vibrationActuator: { playEffect: async () => 'complete', reset: async () => {} } }`;
+  const gp1 = await E(`
+    g.ui.closeAll(); g.paused = false; g.setMode('helm'); g.clearCombat(); g.zone = null;
+    g.ship.hull = g.stat('hull'); g.ship.shield = g.stat('shield'); g.ship.fuel = g.stat('tank');
+    window.__pads = [${MOCKPAD}];
+    // poll() reads navigator.getGamepads() fresh on every call, which is the only
+    // reason a monkey-patch installed long after boot is ever seen.
+    navigator.getGamepads = () => window.__pads;
+    g.pad.poll(1/60);
+    return { active: g.pad.active, family: g.pad.family, index: g.pad.index, last: g.lastInput };`);
+  check('a synthetic Xbox pad is discovered mid-session and classified from its id',
+    gp1.active && gp1.family === 'xbox' && gp1.index === 0, JSON.stringify(gp1));
+
+  const gp2 = await E(`
+    g.ship.auto = null; g.ship.warp = null;
+    const q0 = g.ship.q.clone();
+    window.__pads[0].axes = [0, 0, 0.9, 0];
+    for (let i = 0; i < 20; i++) { g.pad.poll(1/60); g.update(1/60); }
+    window.__pads[0].axes = [0, 0, 0, 0];
+    const hints = g.ui.keysFor('helm');
+    return { last: g.lastInput, turned: q0.angleTo(g.ship.q), glyphs: (hints.match(/<svg/g) || []).length, kb: /<kbd>W<\\/kbd>/.test(hints) };`);
+  check('the right stick steers the hull down the same path the mouse uses', gp2.turned > 0.02, `${gp2.turned.toFixed(3)} rad`);
+  check('the HUD hints swap to drawn controller glyphs once a pad is the last thing touched',
+    gp2.last === 'pad' && gp2.glyphs >= 8 && !gp2.kb, JSON.stringify({ last: gp2.last, glyphs: gp2.glyphs, keyboardLeft: gp2.kb }));
+
+  const gp3 = await E(`
+    g.ship.throttle = 0; g.ship.auto = null; g.ship.warp = null;
+    window.__pads[0].buttons[7] = { pressed: true, touched: true, value: 0.8 };
+    for (let i = 0; i < 40; i++) { g.pad.poll(1/60); g.update(1/60); }
+    const held = +g.ship.throttle.toFixed(3);
+    window.__pads[0].buttons[7] = { pressed: false, touched: false, value: 0 };
+    for (let i = 0; i < 40; i++) { g.pad.poll(1/60); g.update(1/60); }
+    return { held, released: +g.ship.throttle.toFixed(3) };`);
+  check('the right trigger is a true analog throttle, not the keyboard tap-and-ramp',
+    gp3.held > 0.5 && gp3.held < 0.95 && gp3.released < 0.1, JSON.stringify(gp3));
+
+  const gp4 = await E(`
+    g.ship.heat = 0; g.ship.overheat = false; g.ship.fireCd = 0;
+    window.__pads[0].buttons[6] = { pressed: true, touched: true, value: 0.9 };
+    for (let i = 0; i < 20; i++) { g.pad.poll(1/60); g.update(1/60); }
+    const shots = g.shots.filter(s => s.from === 'player').length, held = g.keys.has('Space');
+    window.__pads[0].buttons[6] = { pressed: false, touched: false, value: 0 };
+    g.pad.poll(1/60);
+    return { shots, held, released: g.keys.has('Space') };`);
+  check('the left trigger fires, and letting go releases the synthetic key it held',
+    gp4.shots > 0 && gp4.held && !gp4.released, JSON.stringify(gp4));
+
+  const gp5 = await E(`
+    g.setMode('foot'); g.ui.closeAll();
+    window.__pads[0].axes = [0, -0.9, 0, 0];
+    g.pad.poll(1/60);
+    const walk = [...g.keys];
+    window.__pads[0].axes = [0, 0, 0, 0];
+    window.__pads[0].buttons[3] = { pressed: true, touched: true, value: 1 };   // Y: storage
+    g.pad.poll(1/60);
+    const open = [...g.ui.open_];
+    window.__pads[0].buttons[3] = { pressed: false, touched: false, value: 0 };
+    window.__pads[0].buttons[1] = { pressed: true, touched: true, value: 1 };   // B: back out
+    g.pad.poll(1/60);
+    window.__pads[0].buttons[1] = { pressed: false, touched: false, value: 0 };
+    g.pad.poll(1/60);
+    return { walk, open, after: [...g.ui.open_], keys: [...g.keys] };`);
+  check('on foot the left stick walks and the face buttons reach storage and back out again',
+    gp5.walk.includes('KeyW') && gp5.open.includes('storage') && gp5.after.length === 0 && gp5.keys.length === 0, JSON.stringify(gp5));
+
+  const gp6 = await E(`
+    g.setMode('helm'); g.pause(true);
+    g.pad.poll(1/60);
+    const first = document.querySelector('#pause .padfocus');
+    window.__pads[0].buttons[13] = { pressed: true, touched: true, value: 1 };  // d-pad down
+    g.pad.poll(1/60);
+    window.__pads[0].buttons[13] = { pressed: false, touched: false, value: 0 };
+    g.pad.poll(1/60);
+    const second = document.querySelector('#pause .padfocus');
+    window.__pads[0].buttons[9] = { pressed: true, touched: true, value: 1 };   // Start resumes
+    g.pad.poll(1/60);
+    window.__pads[0].buttons[9] = { pressed: false, touched: false, value: 0 };
+    g.pad.poll(1/60);
+    return { first: first && first.textContent.slice(0, 18), second: second && second.textContent.slice(0, 18),
+      moved: first !== second, paused: g.paused };`);
+  check('a pad drives the menus: a focus ring that moves down the pause stack, and Start resumes',
+    !!gp6.first && !!gp6.second && gp6.moved && gp6.paused === false, JSON.stringify(gp6));
+
+  const gp7 = await E(`
+    g.ui.closeAll(); g.paused = false; g.setMode('helm');
+    g.ship.hull = g.stat('hull'); g.ship.shield = 0;
+    let called = null;
+    window.__pads[0].vibrationActuator.playEffect = async (t, o) => { called = { t, o }; return 'complete'; };
+    g.pad.lastBuzz = 0; g.damage(18, 'shot'); g.pad.poll(1/60);
+    const hit = called;
+    called = null; g.settings.rumble = false; g.pad.lastBuzz = 0;
+    g.damage(18, 'shot'); g.pad.poll(1/60);
+    g.settings.rumble = true;
+    g.ship.hull = g.stat('hull'); g.ship.shield = g.stat('shield');
+    return { hit, off: called, box: !!document.getElementById('s2-rumble') };`);
+  check('taking a hit buzzes the pad with dual-rumble, and the settings box switches it off',
+    !!gp7.hit && gp7.hit.t === 'dual-rumble' && gp7.hit.o.duration > 0 && gp7.off === null && gp7.box, JSON.stringify(gp7));
+
+  const gp8 = await E(`
+    g.setMode('foot');
+    window.__pads[0].axes = [0, -0.9, 0, 0];
+    g.pad.poll(1/60);
+    const before = g.keys.has('KeyW');
+    window.__pads = [];
+    window.dispatchEvent(new Event('gamepaddisconnected'));
+    g.pad.poll(1/60);
+    return { before, active: g.pad.active, stuck: g.keys.has('KeyW'), hull: g.ship.hull > 0, mode: g.mode };`);
+  check('unplugging the pad drops it, leaves no key stuck down and touches nothing else',
+    gp8.before && !gp8.active && !gp8.stuck && gp8.hull && gp8.mode === 'foot', JSON.stringify(gp8));
+
+  const gpM = await E(`
+    const m = await import('/js/pad.js');
+    const inside = m.radialDeadzone(0.05, 0.05), full = m.radialDeadzone(1, 0), diag = m.radialDeadzone(0.7071, 0.7071);
+    return { inside: inside.mag, full: full.mag, diag: +diag.mag.toFixed(3), half: +m.curve(0.5).toFixed(4),
+      t0: m.triggerCurve(0), t1: m.triggerCurve(1),
+      ps: m.padFamily('DualSense Wireless Controller (STANDARD GAMEPAD Vendor: 054c Product: 0ce6)'),
+      xb: m.padFamily('Xbox 360 Controller (Vendor: 045e Product: 028e)'),
+      gen: m.padFamily('Generic USB Joystick'),
+      psCross: m.padGlyph('ps', 'A'), psCircle: m.padGlyph('ps', 'B'), xbA: m.padGlyph('xbox', 'A'), rt: m.padGlyph('ps', 'RT') };`);
+  check('the deadzone is radial and both response curves behave at their ends',
+    gpM.inside === 0 && gpM.full === 1 && gpM.diag > 0.99 && gpM.half < 0.5 && gpM.t0 === 0 && gpM.t1 === 1,
+    JSON.stringify({ inside: gpM.inside, full: gpM.full, diag: gpM.diag, half: gpM.half, t0: gpM.t0, t1: gpM.t1 }));
+  const gpGlyphs = gpM.psCross + gpM.psCircle + gpM.xbA + gpM.rt;
+  check('PlayStation, Xbox and unknown pads each get the right drawn glyph set, and not one emoji',
+    gpM.ps === 'ps' && gpM.xb === 'xbox' && gpM.gen === 'generic'
+    && /<path d="M7 7 L17 17/.test(gpM.psCross) && /<circle/.test(gpM.psCircle) && />A</.test(gpM.xbA) && />R2</.test(gpM.rt)
+    && /^[\t\n\x20-\x7E]*$/.test(gpGlyphs),
+    JSON.stringify({ ps: gpM.ps, xb: gpM.xb, gen: gpM.gen, ascii: /^[\t\n\x20-\x7E]*$/.test(gpGlyphs) }));
+  await b.shot(path.join(SHOTS, '21-tutorial.png'));
+
+  // hand the suite back a veteran at the helm with no pad attached
+  await E(`
+    window.__pads = []; g.pad.poll(1/60);
+    g.lastInput = 'keyboard';
+    g.ui.closeAll(); g.paused = false; g.clearCombat(); g.zone = null;
+    g.state.tutorialDone = true; g.tutorial = null;
+    document.getElementById('h-tut').hidden = true;
+    g.ship.hull = g.stat('hull'); g.ship.shield = g.stat('shield'); g.ship.fuel = g.stat('tank');
+    g.parkNear(g.u.sol.station.pos, 5000); g.setMode('helm');
+    return 1;`);
+
   // death and respawn, tow
   const dth = await E(`g.board.reset(); g.setMode('helm'); g.board.hurtYou(1e6, 'shot'); const m = g.mode; g.respawn(); return { m, after: g.mode, hull: g.ship.hull, max: g.stat('hull') };`);
   check('dying and respawning', dth.m === 'dead' && dth.after === 'helm' && dth.hull === dth.max, JSON.stringify(dth));
@@ -1619,7 +1965,11 @@ try {
   check('tow gets you to a pump with fuel', tw.fuel >= 15, tw.m);
 
   // save, reload, continue
-  const sv = await E(`g.state.credits = 12345; g.persist(); return g.state.credits;`);
+  const sv = await E(`g.state.credits = 12345; g.persist();
+    // Strip the tutorial flag out of the stored save, so the reload below is a
+    // genuine pre-tutorial save being upgraded.
+    const raw = JSON.parse(localStorage.getItem('dv-save-1')); delete raw.tutorialDone; localStorage.setItem('dv-save-1', JSON.stringify(raw));
+    return g.state.credits;`);
   await b.goto(URL_);
   let r2 = false;
   for (let i = 0; i < 120 && !r2; i++) { r2 = await b.eval('!!(window.__dv && window.__dv.ready)'); if (!r2) await b.wait(500); }
@@ -1634,6 +1984,8 @@ try {
     return { hasSave: !!g.save, fresh: g.freshStart, active, before };`);
   check('continuing an existing save plays no crawl', cont.hasSave && cont.fresh === false && cont.active !== true, JSON.stringify({ hasSave: cont.hasSave, fresh: cont.fresh, active: cont.active }));
   check('the codex survives a save and a reload', cont.before.includes('sbg') && cont.before.includes('fuelracket'), JSON.stringify(cont.before));
+  const tutOld = await E(`return { done: g.state.tutorialDone, tut: !!g.tutorial, mode: g.mode };`);
+  check('a save from before the tutorial existed is never armed into it', tutOld.done === true && !tutOld.tut, JSON.stringify(tutOld));
 
   // log off re-rolls zones
   const lo = await E(`const a = g.u.zones.map(z => z.id).join(); g.launch(); g.logOff(); const b2 = g.u.zones.map(z => z.id).join(); return { changed: a !== b2, mode: g.mode, lib: g.u.zones.some(z => g.state.liberated.includes(z.id)) };`);
