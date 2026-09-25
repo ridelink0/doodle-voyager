@@ -1221,7 +1221,7 @@ export class Squadrons {
     if (sq.kind === 'screen') {
       const cap = sq.cap;
       if (!cap || cap.dead) return;               // lost() has already turned it loose
-      const close = vd2(cap.pos, tp) < (sq.radius + 1700) * (sq.radius + 1700);
+      const close = vd2(cap.pos, tp) < (sq.radius + 700) * (sq.radius + 700);
       if (close && sq.state !== 'attack') {
         sq.state = 'attack'; sq.stateT = 0;
         if (!sq.peeled) { sq.peeled = true; this.say(`${RED[sq.type].plural} breaking off the ${cap.name.toLowerCase()} screen`); }
@@ -1328,10 +1328,14 @@ export class Squadrons {
     }
     const tp = this.tp || this.g.targetPoint();
     if (st === 'retreat') {
-      _sv1.set(e.pos.x - tp.x, e.pos.y - tp.y, e.pos.z - tp.z);
-      if (_sv1.lengthSq() < 1) _sv1.set(0, 1, 0);
-      _sv1.normalize().multiplyScalar(4000);
-      _sv1.x += e.pos.x; _sv1.y += e.pos.y; _sv1.z += e.pos.z;
+      if (vd2(e.pos, tp) > 6000 * 6000) {
+        _sv1.set(e.pos.x, e.pos.y, e.pos.z);      // far enough out: coast to a stop, still hittable
+      } else {
+        _sv1.set(e.pos.x - tp.x, e.pos.y - tp.y, e.pos.z - tp.z);
+        if (_sv1.lengthSq() < 1) _sv1.set(0, 1, 0);
+        _sv1.normalize().multiplyScalar(4000);
+        _sv1.x += e.pos.x; _sv1.y += e.pos.y; _sv1.z += e.pos.z;
+      }
     } else if (st === 'recover') {
       const cap = sq.home;
       if (!cap || cap.dead) { sq.state = 'attack'; sq.stateT = 0; return false; }
@@ -1450,10 +1454,7 @@ export class Squadrons {
       s.patrol = { x: e.pos.x, y: e.pos.y, z: e.pos.z, r: 1800, a: 0 };
       s.hold = { x: e.pos.x, y: e.pos.y, z: e.pos.z };
       this.reform(s);
-      if (s.state !== 'gone') {
-        s.state = 'retreat'; s.stateT = 0;
-        this.say(`${e.name} gone. Its ${RED[s.type].plural.toLowerCase()} scatter`);
-      }
+      if (s.state !== 'gone') this.say(`${e.name} gone. Its ${RED[s.type].plural.toLowerCase()} re-form without it`);
     }
     const sq = e.squad;
     if (!sq || sq.kind === 'screen' || sq.leader !== e) return;
