@@ -188,3 +188,16 @@ pre { white-space: pre-wrap; font-size: 13px; max-height: 200px; overflow: auto;
 }
 
 .bar.air .fill { background: repeating-linear-gradient(-45deg, #4deeff 0 2px, transparent 2px 6px); opacity: .7; }
+
+/* ---------- intro crawl ---------- */
+/* Full-bleed and opaque: the title screen is already hidden behind it, and a
+   solid ground stops the ship's own lights flickering under the text. */
+.crawl { background: var(--paper); place-items: center; padding: 6vh 8vw; text-align: center; }
+.crawltext { font-family: 'Caveat', cursive; font-size: clamp(26px, 3.4vw, 46px); line-height: 1.2; max-width: min(900px, 90vw); color: var(--ink); opacity: 0; transition: opacity 0.5s; text-shadow: 0 0 18px rgba(77, 238, 255, 0.35); }
+.crawl-skip { position: absolute; bottom: 5vh; left: 0; right: 0; text-align: center; opacity: 0.55; }
+
+/* ---------- codex and credits ---------- */
+.card.locked { opacity: 0.55; border-style: dashed; }
+.card .flavour { font-family: 'Caveat', cursive; font-size: 20px; color: var(--hi); margin: 2px 0 4px; }
+.credlist { align-items: stretch; gap: 10px; }
+.credlist p { margin: 0; font-size: 16.5px; }

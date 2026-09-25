@@ -2,7 +2,7 @@
 // stations and shops, storage, settings, the start screen.
 import * as THREE from 'three';
 import { SHIPS } from './ships.js';
-import { EQUIP, ITEMS, PAINT_NAMES, ABILITIES } from './game.js';
+import { EQUIP, ITEMS, PAINT_NAMES, ABILITIES, CODEX } from './game.js';
 import { audio } from './audio.js';
 import { squash } from './render.js';
 import { fmtU, fmtTime, fmtReal, fmtInt, vdist, clamp } from './util.js';
@@ -10,8 +10,17 @@ import { fmtU, fmtTime, fmtReal, fmtInt, vdist, clamp } from './util.js';
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const V = new THREE.Vector3();
-const OVERLAYS = ['pause', 'map', 'station', 'storage', 'settings', 'help', 'dead', 'crash'];
-const KIND_WORD = { galaxy: 'galaxy', system: 'star system', planet: 'planet', sight: 'view site', zone: 'enemy zone', station: 'fuel station', module: 'Bazaar shop', bazaar: 'shop cluster' };
+const OVERLAYS = ['pause', 'map', 'station', 'storage', 'settings', 'help', 'codex', 'credits', 'dead', 'crash'];
+const KIND_WORD = { region: 'galaxy cluster', galaxy: 'galaxy', system: 'star system', planet: 'planet', sight: 'view site', zone: 'enemy zone', station: 'fuel station', module: 'Bazaar shop', bazaar: 'shop cluster' };
+// The intro crawl: docs/STORY.md's 87 words, in five beats. hold is seconds on
+// screen before the fade; the fade itself is the 0.5 s CSS opacity transition.
+const CRAWL = [
+  { t: 'Doodle District held. Wave after wave the red guys crawled off the page, and wave after wave they got ERASED.', hold: 4.2 },
+  { t: 'So they stopped crawling. They climbed.', hold: 2.2 },
+  { t: 'Past the red margin there is no paper, only sky: every real star, every charted world, ten thousand galaxies. Out here, the ink glows.', hold: 5 },
+  { t: 'The Red Margin is drawing its zones across all of it. Spiral Bound Galactic is renting the planets out as billboards. The pumps never take your fuel.', hold: 5.2 },
+  { t: "Fold up the Pencil Case. You're going off the page.", hold: 3 },
+];
 
 export class UI {
   constructor(game) {
@@ -87,7 +96,14 @@ export class UI {
     $('s2-fov').addEventListener('input', () => { $('s2-fov-o').textContent = `${s.fov}°`; });
     // map
     $('m-search').addEventListener('input', () => { if ($('m-search').value && this.mapFilter !== 'near' && this.mapFilter !== 'galaxies' && this.mapFilter !== 'sights') this.setFilter('near'); this.renderList(); });
-    $('m-chips').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) this.setFilter(b.dataset.f); });
+    // The codex chip sits with the map filters but opens its own screen: lore
+    // entries have no position to plot.
+    $('m-chips').addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      if (b.dataset.f === 'codex') { this.open('codex'); audio.sfx('ui'); return; }
+      this.setFilter(b.dataset.f);
+    });
     $('m-zoom').value = this.mapZoom;
     $('m-zoom').addEventListener('input', () => { this.mapZoom = Number($('m-zoom').value); this.drawMap(); });
     $('m-canvas').addEventListener('click', (e) => this.mapClick(e));
@@ -107,6 +123,7 @@ export class UI {
     if (name === 'map') { this.renderList(); this.drawMap(); this.renderSel(); setTimeout(() => $('m-search').focus(), 30); }
     if (name === 'station') this.renderStation(data || this.stationData);
     if (name === 'storage') this.renderStorage();
+    if (name === 'codex') this.renderCodex();
     if (name === 'pause') this.renderPause();
     if (name === 'dead') $('d-why').textContent = `${data && data.why === 'beam' ? 'A capital ship beam' : data && data.why === 'crash' ? 'That landing' : 'Enemy fire'} tore the hull open. You lost ${fmtInt(data ? data.lost : 0)} cr. A tug drags what is left to the last pump you docked at.`;
   }
@@ -265,7 +282,7 @@ export class UI {
     if (m === 'foot') return `${k('WASD')} walk · ${k('E')} use · ${k('V')} tapes · ${k('M')} map · ${k('I')} storage${g.settings.drone ? ` · ${k('G')} drone` : ''} · ${k('P')} pause`;
     if (m === 'helm') {
       const ab = ABILITIES[g.def.ability];
-      return `mouse or arrows steer · ${k('W')}/${k('S')} throttle · ${g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire'} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
+      return `mouse or arrows steer · ${k('W')}/${k('S')} throttle · ${g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire'} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock or eject${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
     }
     if (m === 'eva') return `${k('WASD')} ${k('Space')} ${k('Ctrl')} jetpack · ${k('E')} at the hole · air ${Math.max(0, Math.round(g.eva ? g.eva.o2 : 0))} s`;
     if (m === 'drone') return `${k('WASD')} fly · ${k('Space')}/${k('Ctrl')} up/down · click or ${k('B')} bomb (${sh.bombs}) · ${k('G')} recall · battery ${Math.round(g.drone ? g.drone.battery : 0)} s`;
@@ -335,6 +352,73 @@ export class UI {
     this.msgT = 3.2;
   }
 
+  // ---------- intro crawl ----------
+  // Plays at the start of every new game, never on continue (game.js owns the
+  // freshStart flag). Any key, any click or any gamepad button ends it, and it
+  // is driven by a beat index and a timer rather than a keyframe animation so
+  // the skip can never leave it half-faded.
+  playCrawl(onDone) {
+    const el = $('crawl'), txt = $('crawl-text');
+    if (!el || !txt) { onDone(); return; }          // markup missing: never swallow the launch
+    this.skipCrawl();                                // never two crawls at once
+    el.hidden = false;
+    txt.textContent = '';
+    txt.style.opacity = 0;
+    this.g.unlock();
+    this.crawlActive = true;
+    let i = -1, timer = null, fade = null, raf = 0, base = null, done = false;
+    const finish = () => {
+      if (done) return;
+      done = true;
+      this.crawlActive = false;
+      this._crawlSkip = null;
+      clearTimeout(timer); clearTimeout(fade);
+      cancelAnimationFrame(raf);
+      el.hidden = true;
+      removeEventListener('keydown', finish);
+      removeEventListener('pointerdown', finish);
+      onDone();
+    };
+    const next = () => {
+      i++;
+      if (i >= CRAWL.length) { finish(); return; }
+      txt.textContent = CRAWL[i].t;
+      raf = requestAnimationFrame(() => { txt.style.opacity = 1; });
+      timer = setTimeout(() => { txt.style.opacity = 0; fade = setTimeout(next, 500); }, CRAWL[i].hold * 1000);
+    };
+    // Any gamepad button, edge-triggered off whatever was already held when
+    // the crawl opened, so a stuck trigger cannot skip it instantly.
+    const pads = () => {
+      if (done) return;
+      const gp = navigator.getGamepads ? navigator.getGamepads()[0] : null;
+      if (gp) {
+        const now = gp.buttons.map((b) => !!(b && b.pressed));
+        if (!base) base = now;
+        else if (now.some((p, n) => p && !base[n])) { finish(); return; }
+      }
+      requestAnimationFrame(pads);
+    };
+    // Bubble phase, and registered after game.js's own keydown listener, so the
+    // game sees the skip key first and ignores it (crawlActive is still true).
+    addEventListener('keydown', finish);
+    addEventListener('pointerdown', finish);
+    this._crawlSkip = finish;
+    requestAnimationFrame(pads);
+    next();
+  }
+  skipCrawl() { if (this._crawlSkip) this._crawlSkip(); }
+
+  // ---------- codex ----------
+  renderCodex() {
+    const st = this.g.state, body = $('cx-body'), n = $('cx-n');
+    if (!body) return;
+    if (n) n.textContent = String(st.codex.length);
+    body.innerHTML = Object.entries(CODEX).sort((a, b) => a[1].n - b[1].n).map(([id, e]) => {
+      const has = st.codex.includes(id);
+      return `<div class="card ${has ? 'on' : 'locked'}"><h4>${e.n}. ${has ? esc(e.title) : '???'}</h4><p>${has ? esc(e.text) : 'Not found yet.'}</p></div>`;
+    }).join('');
+  }
+
   // ---------- pause, storage ----------
   renderPause() {
     const g = this.g, u = g.u;
@@ -382,7 +466,7 @@ export class UI {
     if (kind === 'shipyard') {
       for (const s of Object.values(SHIPS)) {
         const owned = st.owned.includes(s.id), flying = sh.type === s.id;
-        cards.push(`<div class="card ${flying ? 'on' : ''}"><h4>${esc(s.name)} · ${s.cls}</h4><p>${esc(s.desc || '')}</p>
+        cards.push(`<div class="card ${flying ? 'on' : ''}"><h4>${esc(s.name)} · ${s.cls}</h4>${s.flavour ? `<p class="flavour">${esc(s.flavour)}</p>` : ''}<p>${esc(s.desc || '')}</p>
           <p>hull ${s.hull} · shield ${s.shield} · ${s.speed} u/s · tank ${s.tank} ${s.fuel} · ${s.guns} guns</p>
           ${s.ability ? `<p class="hi"><b>R</b> · ${esc(ABILITIES[s.ability].name)}: ${esc(ABILITIES[s.ability].desc)}</p>` : ''}
           <div class="row">${flying ? '<b>you are flying it</b>' : owned ? `<button class="buy" data-ship="${s.id}">switch to it</button>` : `<button class="buy" data-ship="${s.id}">buy · ${fmtInt(s.price)} cr</button>`}</div></div>`);
@@ -432,6 +516,7 @@ export class UI {
     this.mapFilter = f;
     for (const b of $('m-chips').children) b.classList.toggle('on', b.dataset.f === f);
     if (f === 'galaxies') this.mapZoom = Math.max(this.mapZoom, 9.6);
+    if (f === 'regions') this.mapZoom = Math.max(this.mapZoom, 9.8);
     if (f === 'stars' || f === 'zones' || f === 'stations') this.mapZoom = Math.min(Math.max(this.mapZoom, 7.2), 8.6);
     if (f === 'planets') this.mapZoom = 5.8;
     if (f === 'bazaar') this.mapZoom = Math.max(this.mapZoom, 7.6);
@@ -447,6 +532,7 @@ export class UI {
     let out = [];
     if (f === 'near') out = u.search(q, 120, from);
     else if (f === 'galaxies') out = u.galaxies.filter((x) => hit(x.name) || hit(x.alt)).map((x) => ({ kind: 'galaxy', ref: x, name: x.name, sub: [x.alt, x.type, x.con, x.real ? '' : 'uncharted'].filter(Boolean).join(' / '), d: vdist(x.pos, from) }));
+    else if (f === 'regions') out = u.regions.map((x) => ({ kind: 'region', ref: x, name: x.name, sub: `${x.kind} · ${x.blurb}`, d: vdist(x.pos, from) })).filter((x) => hit(x.name));
     else if (f === 'stars') out = u.systemsOf(u.ctx.galaxy || u.mw).filter((s) => hit(s.name)).map((s) => ({ kind: 'system', ref: s, name: s.name, sub: `${s.real ? 'charted' : 'uncharted'}${s.exo ? `, ${s.exo.length} known planet${s.exo.length > 1 ? 's' : ''}` : ''}${s.station ? `, pumps: ${s.station.fuelTypes.join('/')}` : ''}`, d: vdist(s.pos, from) }));
     else if (f === 'planets') {
       for (const v of u.views.values()) for (const b of v.bodies) if ((b.kind === 'planet' || b.kind === 'dwarf planet' || b.kind === 'moon') && hit(b.name)) {
@@ -505,7 +591,7 @@ export class UI {
     el.innerHTML = `<span class="nm">${esc(t.name)}</span><span>${KIND_WORD[t.kind] || t.kind}${note}</span>
       <span>${real}${fmtU(d)} in game · cruise about ${fmtTime(this.cruiseEta(d))}</span>
       <button class="buy" id="m-go">set course (T)</button>
-      ${t.kind !== 'zone' && t.kind !== 'bazaar' ? `<button class="buy" id="m-save">${g.isBookmarked(t) ? 'unsave' : 'save'}</button>` : ''}
+      ${t.kind !== 'zone' && t.kind !== 'bazaar' && t.kind !== 'region' ? `<button class="buy" id="m-save">${g.isBookmarked(t) ? 'unsave' : 'save'}</button>` : ''}
       <button class="buy" id="m-warp" ${canWarp ? '' : 'disabled'}>warp (J) · ${fmtTime(w.dur + 3)} · ${w.cost.toFixed(0)} ${g.def.fuel}</button>
       ${g.zone ? '<span class="red">warp jammed in this zone</span>' : g.ship.fuel < w.cost ? `<span class="red">need ${w.cost.toFixed(0)} fuel</span>` : ''}`;
     $('m-go').addEventListener('click', () => { g.setCourse(t); this.close('map'); });
@@ -528,6 +614,16 @@ export class UI {
     for (let y = 18; y < H; y += 24) { c.beginPath(); c.moveTo(0, y); c.lineTo(W, y); c.stroke(); }
     c.font = '14px "Patrick Hand", cursive';
     c.lineWidth = 1.5;
+    // named clusters and superclusters, under the galaxy dots
+    if (this.mapZoom > 8.6) for (const reg of u.regions) {
+      const [x, y] = P(reg.pos);
+      const r = Math.max(reg.R * k, 10);
+      if (!inView(x, y, r)) continue;
+      c.strokeStyle = 'rgba(77,238,255,0.30)'; c.setLineDash([10, 8]);
+      c.beginPath(); c.arc(x, y, r, 0, Math.PI * 2); c.stroke(); c.setLineDash([]);
+      c.fillStyle = 'rgba(77,238,255,0.65)'; c.fillText(reg.name, x - Math.min(r * 0.6, 70), y);
+      this.mapHits.push({ x, y, it: { kind: 'region', ref: reg, name: reg.name } });
+    }
     // galaxies
     for (const gx of u.galaxies) {
       const [x, y] = P(gx.pos);

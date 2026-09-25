@@ -108,8 +108,14 @@
     <div class="stats" id="t-stats"></div>
     <p class="fine" id="t-counts"></p>
     <p class="fine touch-note">Needs a keyboard and a mouse.</p>
-    <footer class="credits">made by Gev · after Doodle Shooter · three.js · NASA Exoplanet Archive · OpenNGC (CC BY-SA 4.0) · Wikipedia</footer>
+    <footer class="credits">Doodle Voyager · made by Gev with Claude Opus 5.5 (Anthropic) · after Doodle Shooter (doodleshooter.vercel.app) · three.js · NASA Exoplanet Archive · OpenNGC (CC BY-SA 4.0) · HYG · Wikipedia <button class="linkish" data-open="credits">full credits</button></footer>
   </div>
+</section>
+
+<!-- Intro crawl: every new game, skippable with anything -->
+<section class="overlay crawl" id="crawl" hidden aria-live="polite">
+  <div class="crawltext" id="crawl-text"></div>
+  <p class="fine crawl-skip">press anything to skip</p>
 </section>
 
 <!-- Pause -->
@@ -120,8 +126,10 @@
       <button data-act="resume">back to the ship</button>
       <button data-open="map">map</button>
       <button data-open="storage">storage</button>
+      <button data-open="codex">codex</button>
       <button data-open="settings">settings</button>
       <button data-open="help">controls</button>
+      <button data-open="credits">credits</button>
       <button data-act="tow">call a tow (<span id="p-tow"></span>)</button>
       <button data-act="logoff" class="warn">log off · re-rolls the enemy zones</button>
     </div>
@@ -138,6 +146,7 @@
       <div class="chips" id="m-chips" role="tablist">
         <button data-f="near" class="on">near me</button>
         <button data-f="galaxies">galaxies</button>
+        <button data-f="regions">clusters</button>
         <button data-f="stars">stars here</button>
         <button data-f="planets">planets here</button>
         <button data-f="exo">known planets</button>
@@ -146,6 +155,7 @@
         <button data-f="zones">enemy zones</button>
         <button data-f="stations">fuel</button>
         <button data-f="bazaar">bazaar</button>
+        <button data-f="codex">codex</button>
       </div>
       <button class="x" data-close aria-label="Close map">close</button>
     </div>
@@ -175,6 +185,28 @@
     <div class="maphead"><h3 id="sg-h">STORAGE</h3><button class="x" data-close>close</button></div>
     <div id="sg-body"></div>
     <p class="fine" id="sg-msg" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- Codex -->
+<section class="overlay" id="codex" hidden aria-labelledby="cx-h">
+  <div class="panel">
+    <div class="maphead"><h3 id="cx-h">CODEX</h3><span class="credits-chip"><span id="cx-n">0</span>/12</span><button class="x" data-close>close</button></div>
+    <div id="cx-body" class="stbody"></div>
+    <p class="fine">Entries unlock as you find the thing they are about. Y opens this from the helm.</p>
+  </div>
+</section>
+
+<!-- Credits -->
+<section class="overlay" id="credits" hidden aria-labelledby="cr-h">
+  <div class="panel small">
+    <div class="maphead"><h3 id="cr-h">CREDITS</h3><button class="x" data-close>close</button></div>
+    <div class="stack credlist">
+      <p><b>Doodle Voyager</b> · made by Gev with Claude Opus 5.5 (Anthropic).</p>
+      <p>After <b>Doodle Shooter</b> (doodleshooter.vercel.app): its world, its red guys, its three bosses and its words for losing are the canon this game is built on.</p>
+      <p>Built with three.js.</p>
+      <p>Universe data: the NASA Exoplanet Archive (Planetary Systems Composite Parameters), OpenNGC (CC BY-SA 4.0), the HYG database v4 (astronexus, CC BY-SA 4.0), SIMBAD/CDS, and Wikipedia.</p>
+    </div>
   </div>
 </section>
 

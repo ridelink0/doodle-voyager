@@ -43,8 +43,33 @@ try {
   check('catalogue counts', counts.galaxies > 1000 && counts.planets > 1000, JSON.stringify(counts));
   await b.shot(path.join(SHOTS, '01-title.png'));
 
-  // launch at the helm
-  await E('g.launch(); return g.mode;');
+  // launch at the helm. A fresh Chrome profile has no save, so this first
+  // launch is a NEW GAME and the intro crawl plays over it.
+  const crawl = await E(`g.launch(); return {
+    active: g.ui.crawlActive, fresh: g.freshStart, shown: !document.getElementById('crawl').hidden,
+    beat: document.getElementById('crawl-text').textContent,
+    district: g.state.codex.includes('district'), inkglows: g.state.codex.includes('inkglows') };`);
+  check('a new game opens with the intro crawl', crawl.active && crawl.shown && crawl.beat.startsWith('Doodle District held.'), JSON.stringify(crawl).slice(0, 220));
+  check('the crawl unlocks the first two codex entries', crawl.district && crawl.inkglows, JSON.stringify(crawl.district) + ' ' + JSON.stringify(crawl.inkglows));
+  // Flight input is swallowed while the crawl is up. Holding W ramps the
+  // throttle and the mouse turns the hull, both only through updateHelmInput,
+  // so with the guard in place the throttle stays 0 and the hull never turns.
+  const frozen = await E(`
+    const q0 = g.ship.q.clone();
+    const before = { throttle: g.ship.throttle, cs: g.ship.cs };
+    g.keys.add('KeyW');
+    for (let i = 0; i < 20; i++) { g.mouse.dx = 400; g.mouse.dy = 200; g.update(0.05); }
+    g.keys.delete('KeyW'); g.mouse.dx = 0; g.mouse.dy = 0;
+    return { before, throttle: g.ship.throttle, cs: g.ship.cs, turned: q0.angleTo(g.ship.q), active: g.ui.crawlActive };`);
+  // cs only tracks the speed the ship actually has (gravity still pulls), so the
+  // proof is the throttle never ramping and the hull never turning.
+  check('flight input does nothing while the crawl is on screen',
+    frozen.active === true && frozen.throttle === 0 && frozen.turned < 1e-6 && frozen.cs < 20, JSON.stringify(frozen));
+  await b.shot(path.join(SHOTS, '02-crawl.png'));
+  await b.key('k');                                 // any key skips it, and does nothing else
+  await b.wait(200);
+  const skipped = await E(`return { active: g.ui.crawlActive, hidden: document.getElementById('crawl').hidden, mode: g.mode, shots: g.shots.length };`);
+  check('any key skips the crawl straight to the helm', !skipped.active && skipped.hidden && skipped.mode === 'helm', JSON.stringify(skipped));
   await b.wait(1500);
   check('launch puts you at the helm', (await E('return g.mode;')) === 'helm');
   await b.shot(path.join(SHOTS, '02-helm.png'));
@@ -117,6 +142,144 @@ try {
   check('map lists every category', Object.values(mp.out).filter((n) => n > 0).length >= 6, JSON.stringify(mp.out));
   check('map selects a target', !!mp.t, mp.t);
 
+  // ---- universe density, named clusters, and the Billboard Worlds ads ----
+  const uvDens = await E(`
+    const u = g.u;
+    const sys = (n) => { const gx = u.findGalaxy(n); return gx ? u.systemsOf(gx) : []; };
+    const m31 = sys('M31'), m87 = sys('NGC 4486'), dw = sys('Andromeda I');
+    return {
+      m31: m31.length, m31pumps: m31.filter((s) => s.station).length,
+      m87: m87.length, dwarf: dw.length,
+      baseN: u.baseN, baseKpc: u.baseKpc,
+      regions: u.regions.map((r) => ({ name: r.name, d: Math.hypot(r.pos.x, r.pos.y, r.pos.z), R: r.R })),
+    };`);
+  check('every galaxy is as busy as the Milky Way (Andromeda)', uvDens.m31 >= 500, `${uvDens.m31} systems, was 18`);
+  check('Andromeda keeps the 42 per cent pump rule', uvDens.m31pumps > uvDens.m31 * 0.3 && uvDens.m31pumps < uvDens.m31 * 0.55, `${uvDens.m31pumps} pumps of ${uvDens.m31}`);
+  check('a Virgo elliptical is populated too, not just Andromeda', uvDens.m87 >= 300, `${uvDens.m87} systems`);
+  check('a Local Group dwarf is never literally empty', uvDens.dwarf >= 40, `${uvDens.dwarf} systems`);
+  const uvExpectM31 = Math.min(5000, Math.max(500, Math.round(uvDens.baseN * Math.pow(20.13 / uvDens.baseKpc, 3))));
+  check('the density formula is calibrated off the Milky Way itself', uvDens.baseN > 10000 && Math.abs(uvDens.m31 - uvExpectM31) / uvExpectM31 < 0.3,
+    `baseN ${uvDens.baseN}, kpc ${uvDens.baseKpc}, expected about ${uvExpectM31}, got ${uvDens.m31}`);
+  check('seven named clusters and superclusters, all placed', uvDens.regions.length === 7 && uvDens.regions.every((r) => r.d > 0 && r.R > 0), uvDens.regions.map((r) => r.name).join(' / '));
+  const uvHc = uvDens.regions.find((r) => r.name.includes('Hydra'));
+  check('Hydra-Centaurus sits just inside the uncharted boundary', !!uvHc && uvHc.d > 7e9 && uvHc.d < 9e9, uvHc ? `${uvHc.d.toExponential(2)} u from the Sun` : 'missing');
+
+  const uvZones = await E(`return { total: g.u.zones.length, galaxies: new Set(g.u.zones.filter((z) => z.galaxy !== g.u.mw).map((z) => z.galaxy.id)).size };`);
+  check('enemy zones spread across many galaxies, not twelve systems in twelve', uvZones.galaxies >= 20 && uvZones.total > 30, JSON.stringify(uvZones));
+
+  const uvLru = await E(`
+    const u = g.u, t0 = performance.now();
+    const gals = u.galaxies.filter((x) => x.real && x !== u.mw).slice(0, 40);
+    let n = 0;
+    for (const gx of gals) n += u.systemsOf(gx).length;
+    return { order: u.cacheOrder.length, size: u.systemCache.size, systems: n, ms: performance.now() - t0 };`);
+  check('the generated-system cache stays inside its memory budget', uvLru.order <= 24 && uvLru.size <= 32 && uvLru.systems > 20000,
+    `${uvLru.systems} systems across 40 galaxies in ${uvLru.ms.toFixed(0)} ms, ${uvLru.order} held`);
+  const uvGen = await E(`
+    const u = g.u, gx = u.findGalaxy('M31');
+    u.systemCache.delete(gx.id);
+    const t0 = performance.now();
+    const n = u.systemsOf(gx).length;
+    const one = performance.now() - t0;
+    const t1 = performance.now();
+    g.u.rollZones(4242, new Set());
+    return { n, one, roll: performance.now() - t1 };`);
+  check('generating the biggest galaxy, and one whole zone roll, stay quick',
+    uvGen.n === 5000 && uvGen.one < 400 && uvGen.roll < 4000,
+    `5,000 systems in ${uvGen.one.toFixed(0)} ms, a full zone roll in ${uvGen.roll.toFixed(0)} ms`);
+
+  const uvHub = await E(`
+    const u = g.u, gx = u.findGalaxy('M31');
+    u.detailFor(gx);
+    const mine = u.sights.filter((s) => s.galaxy === gx.name);
+    const f = gx.hub ? gx.hub.modules.filter((m) => m.kind === 'fuel') : [];
+    return {
+      hub: !!gx.hub, kinds: gx.hub ? gx.hub.modules.map((m) => m.kind) : [],
+      fuelOk: f.length > 0 && f.every((m) => m.fuelTypes.length >= 1 && m.fuelTypes.length <= 3),
+      sights: mine.length, core: mine.some((s) => s.kind === 'blackhole'),
+    };`);
+  check('a galaxy you reach gets its own depot and its own sights', uvHub.hub && uvHub.fuelOk && uvHub.sights >= 1 && uvHub.core, JSON.stringify(uvHub));
+
+  const uvRgn = await E(`
+    g.ui.open('map'); g.ui.setFilter('regions');
+    const n = g.ui.listItems.length;
+    g.ui.select(g.ui.listItems[0]);
+    const t = g.navTarget && g.navTarget.name;
+    g.ui.drawMap();
+    const hits = (g.ui.mapHits || []).filter((h) => h.it.kind === 'region').length;
+    g.ui.close('map'); g.ui.mapZoom = 7.3;
+    return { n, t, hits };`);
+  check('the map lists and draws the clusters', uvRgn.n === 7 && !!uvRgn.t && uvRgn.hits > 0, JSON.stringify(uvRgn));
+
+  const uvWarp = await E(`
+    const t = { pos: () => ({ x: g.ship.pos.x + 1e7, y: g.ship.pos.y, z: g.ship.pos.z }) };
+    const w = g.warpCost(t);
+    return { cost: w.cost, dur: w.dur, want: 8 + 10 * Math.log10(1 + 1e7 / 1e5) };`);
+  check('fuel stays exactly as annoying as it was', Math.abs(uvWarp.cost - uvWarp.want) < 1e-9, `${uvWarp.cost.toFixed(2)} fuel for 10 Mu, unchanged formula`);
+
+  // Park by Mars so the home system is certain to have a live view, then read
+  // the real materials off the real meshes.
+  const uvBack = await E('return { x: g.ship.pos.x, y: g.ship.pos.y, z: g.ship.pos.z };');
+  const uvAds = await E(`
+    const u = g.u, sol = u.sol;
+    const pl = u.planetsOf(sol);
+    const mars = pl.find((p) => p.name === 'Mars');
+    const p = u.planetPos(sol, mars, g.t, { x: 0, y: 0, z: 0 });
+    g.setMode('helm');
+    g.ship.pos.x = p.x + 2e5; g.ship.pos.y = p.y; g.ship.pos.z = p.z;
+    g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.throttle = 0;
+    u.nearSys = null; u.tick = 0;
+    g.steps = 3; await new Promise((r) => setTimeout(r, 500)); g.steps = 1;
+    const U = await import('./js/universe.js');
+    const { ink } = await import('./js/mats.js');
+    const v = [...u.views.values()].find((x) => x.sys.solar);
+    if (!v) return { why: 'the home system never got a view' };
+    const mb = v.bodies.find((b) => b.planet && b.planet.name === 'Mars');
+    const jb = v.bodies.find((b) => b.planet && b.planet.name === 'Jupiter');
+    if (!mb || !jb) return { why: 'no Mars or Jupiter body' };
+    const mm = mb.mesh.material, jm = jb.mesh.material;
+    // turn the planet by advancing sim time only, and separately move the ship
+    // a long way with time frozen: the sign must track the first and ignore the second
+    mb.mesh.updateMatrixWorld(true);
+    const w0 = mm.userData.decalDir.clone().transformDirection(mb.mesh.matrixWorld);
+    g.ship.pos.x += 4e4; g.ship.pos.y += 3e4;
+    v.update(g.ship.pos, g.t);
+    mb.mesh.updateMatrixWorld(true);
+    const wShip = mm.userData.decalDir.clone().transformDirection(mb.mesh.matrixWorld);
+    const dt = 40;
+    v.update(g.ship.pos, g.t + dt);
+    mb.mesh.updateMatrixWorld(true);
+    const wSpin = mm.userData.decalDir.clone().transformDirection(mb.mesh.matrixWorld);
+    // the planet spins 0.02 rad/s about its own Y, so a direction welded into
+    // its local frame must swing by exactly this much and no more
+    const dy = mm.userData.decalDir.y, th = 0.02 * dt;
+    const want = Math.acos(Math.min(1, Math.max(-1, dy * dy + (1 - dy * dy) * Math.cos(th))));
+    return {
+      copies: U.AD_COUNT,
+      marsTitle: U.AD_COPY[mars.ad] && U.AD_COPY[mars.ad].title,
+      jupTitle: U.AD_COPY[pl.find((x) => x.name === 'Jupiter').ad].title,
+      withAd: pl.filter((x) => x.ad != null).length, planets: pl.length,
+      shared: mm === jm,
+      cached: mm === ink(mb.planet.color) || jm === ink(jb.planet.color),
+      ownKey: mm.customProgramCacheKey() !== ink(mb.planet.color).customProgramCacheKey(),
+      hasDecal: !!(mm.userData.decalDir && jm.userData.decalDir),
+      texKept: v.textures.includes(mm.userData.adMap) || v.textures.includes(jm.userData.adMap),
+      frag: mm.userData.adFrag || '',
+      shipMove: w0.angleTo(wShip), spin: w0.angleTo(wSpin), want,
+    };`);
+  check('at least twelve ad copies, and Mars and Jupiter carry their own',
+    uvAds.copies >= 12 && uvAds.marsTitle === 'JOIN THE RED MARGIN' && uvAds.jupTitle === 'RIDELINK' && uvAds.withAd === 2,
+    `${uvAds.copies} copies, ${uvAds.withAd} of ${uvAds.planets} home planets rented`);
+  check('every ad planet owns its material, so a sign cannot leak onto others',
+    uvAds.hasDecal && !uvAds.shared && !uvAds.cached && uvAds.ownKey, JSON.stringify({ shared: uvAds.shared, cached: uvAds.cached, ownKey: uvAds.ownKey, hasDecal: uvAds.hasDecal }));
+  check('the ad art survives leaving and re-entering a system', uvAds.texKept === false, `in the view dispose list: ${uvAds.texKept}`);
+  check('the decal is object-space, so it can never follow the camera',
+    /vAdPos/.test(uvAds.frag || '') && !/cameraPosition|viewMatrix|vViewPosition|modelViewMatrix/.test(uvAds.frag || ''), (uvAds.frag || 'no shader').slice(0, 60).replace(/\s+/g, ' '));
+  await E(`g.ship.pos.x = ${uvBack.x}; g.ship.pos.y = ${uvBack.y}; g.ship.pos.z = ${uvBack.z}; g.ship.vel.set(0, 0, 0); return 1;`);
+  check('the ad turns with the planet and ignores the ship',
+    uvAds.shipMove < 1e-6 && uvAds.spin > 0.05 && Math.abs(uvAds.spin - uvAds.want) < 0.02,
+    `ship moved it ${Number(uvAds.shipMove).toExponential(1)} rad, the planet's own spin moved it ${Number(uvAds.spin).toFixed(3)} rad of a predicted ${Number(uvAds.want).toFixed(3)}`);
+
   // autopilot to Mars
   const ap = await E(`g.setMode('helm');
     const sol = g.u.sol; const mars = g.u.planetsOf(sol).find(p => p.name === 'Mars');
@@ -185,11 +348,34 @@ try {
   // clear the zone
   const cl = await E(`const c0 = g.state.credits; for (const e of g.enemies) if (!e.dead) g.hurt(e, 1e6, e.pos); g.updateZones(0.016); g.updateZones(0.016); return { lib: g.state.liberated.includes(${JSON.stringify(zn.id)}), dc: g.state.credits - c0, zone: !!g.zone };`);
   check('clearing a zone liberates the sector and pays', cl.lib && cl.dc > 0 && !cl.zone, JSON.stringify(cl));
+
   // --- squadrons: tiers, waves, formation slots, leader loss, arcs, carriers
-  const tz = await E(`
-    const tiers = [...new Set(g.u.zones.map(z => z.tier))].sort();
-    return { tiers, n4: g.u.zones.filter(z => z.tier === 4).length, n5: g.u.zones.filter(z => z.tier === 5).length };`);
-  check('the universe rolls enemy zones from tier 1 up to tier 5', tz.n5 > 0 && [1, 2, 3].every((t) => tz.tiers.includes(t)), JSON.stringify(tz));
+  // Every tier, driven through the real enterZone path. This asserts the ladder
+  // itself, not which tiers today's zone table happens to roll.
+  const ladder = await E(`
+    const z = g.u.zones.find(x => x.state === 'hostile');
+    const t0 = z.tier, out = [];
+    for (let t = 1; t <= 5; t++) {
+      g.clearCombat();
+      z.tier = t; z.state = 'hostile';
+      const dir = { x: 0.6, y: 0.2, z: 0.77 }, r = z.radius * 0.9;
+      g.ship.pos = { x: z.pos.x + dir.x * r, y: z.pos.y + dir.y * r, z: z.pos.z + dir.z * r };
+      g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.warp = null;
+      g.enterZone(z);
+      for (let i = 0; i < 300; i++) g.fleet.update(1 / 60, g.targetPoint());
+      out.push({
+        t,
+        caps: g.enemies.filter(e => e.kind === 'capital' && !e.dead).length,
+        imps: g.enemies.filter(e => e.kind === 'imp' && !e.dead).length,
+        wings: g.fleet.squads.filter(s => s.kind === 'wing' && s.members.some(m => !m.dead)).length,
+        screens: g.fleet.squads.filter(s => s.kind === 'screen' && s.members.some(m => !m.dead)).length,
+      });
+    }
+    z.tier = t0; z.state = 'hostile';
+    g.clearCombat();
+    return { out, shape: out.map(o => o.caps + '/' + o.imps).join(' '), rolled: [...new Set(g.u.zones.map(x => x.tier))].sort() };`);
+  check('every tier from 1 to 5 fields its own order of battle, each heavier than the last',
+    ladder.shape === '1/3 1/5 2/6 3/8 4/12' && ladder.out[4].screens === 4, JSON.stringify(ladder));
   const tt = await E(`return g.fleet.tiers.map(t => t.caps.length + '/' + (t.screen * t.caps.length + t.waves.reduce((a, w) => a + w[1], 0)));`);
   check('the tier ladder keeps the old red-guy totals and adds a fifth', tt.join(' ') === '1/3 1/5 2/6 3/8 4/12', tt.join(' '));
 
@@ -197,7 +383,8 @@ try {
   const t5 = await E(`
     const z = g.u.zones.find(z => z.state === 'hostile' && z.id !== ${JSON.stringify(zn.id)});
     if (!z) return { skip: true };
-    z.tier = 5;
+    g.clearCombat();            // the running loop may have re-entered a zone since the last check
+    z.tier = 5; z.state = 'hostile';
     const dir = { x: 0.6, y: 0.2, z: 0.77 }, r = z.radius * 0.9;
     g.ship.pos = { x: z.pos.x + dir.x * r, y: z.pos.y + dir.y * r, z: z.pos.z + dir.z * r };
     g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.warp = null; g.ship.hull = 1e6;
@@ -274,6 +461,54 @@ try {
   check('a capital only brings the guns that bear, the blind quarter holds fire',
     !arc.skip && arc.blind > 0 && arc.blindHeld === arc.blind && arc.fired > 0 && arc.inBow < arc.total, JSON.stringify(arc));
 
+  const scr = await E(`
+    const cap = g.enemies.find(e => e.kind === 'capital' && !e.dead && e.screenSquad && e.screenSquad.members.some(m => !m.dead));
+    if (!cap) return { skip: true };
+    const s = cap.screenSquad;
+    const far = { x: cap.pos.x + 3200, y: cap.pos.y, z: cap.pos.z };
+    g.ship.pos = { ...far }; g.ship.vel.set(0, 0, 0);
+    s.state = 'approach'; s.stateT = 0; s.peeled = false;
+    g.fleet.tp = g.targetPoint();
+    g.fleet.think(s, 1 / 60, g.fleet.tp);
+    const atRange = s.state;
+    for (let i = 0; i < 900; i++) for (const m of s.members) if (!m.dead) g.fleet.steer(m, 1 / 60);
+    const ring = s.members.filter(m => !m.dead).map(m => Math.hypot(m.pos.x - cap.pos.x, m.pos.y - cap.pos.y, m.pos.z - cap.pos.z));
+    g.ship.pos = { x: cap.pos.x + s.radius * 0.4, y: cap.pos.y, z: cap.pos.z };
+    g.fleet.think(s, 1 / 60, g.targetPoint());
+    const dived = s.state;
+    g.ship.pos = { ...far };
+    s.stateT = 5;
+    g.fleet.think(s, 1 / 60, g.targetPoint());
+    return { radius: Math.round(s.radius), atRange, dived, backOn: s.state, ringErr: Math.round(Math.max(...ring.map(d => Math.abs(d - s.radius)))) };`);
+  check('an escort screen rings the hull at range and peels off when you dive it',
+    !scr.skip && scr.atRange === 'approach' && scr.dived === 'attack' && scr.backOn === 'approach' && scr.ringErr < 60, JSON.stringify(scr));
+
+  const esc = await E(`
+    const cap = g.enemies.find(e => e.kind === 'capital' && e.sub !== 'carrier' && !e.dead && e.screenSquad && e.screenSquad.members.some(m => !m.dead));
+    if (!cap) return { skip: true };
+    const s = cap.screenSquad, n = s.members.filter(m => !m.dead).length;
+    g.hurt(cap, 1e6, cap.pos);
+    return { n, kind: s.kind, state: s.state, impLeader: !!s.leader && s.leader.kind === 'imp', left: s.members.length };`);
+  check('killing a capital leaves its escort as a wing that re-forms without it',
+    !esc.skip && esc.kind === 'wing' && esc.state === 'regroup' && esc.impLeader && esc.left === esc.n, JSON.stringify(esc));
+
+  const ret = await E(`
+    const w = g.fleet.squads.find(s => s.kind === 'wing' && s.members.some(m => !m.dead));
+    if (!w) return { skip: true };
+    const m = w.members.find(x => !x.dead);
+    w.state = 'retreat'; w.stateT = 0;
+    const tp = g.targetPoint();
+    g.fleet.tp = tp;
+    m.pos.x = tp.x + 400; m.pos.y = tp.y; m.pos.z = tp.z; m.vel.set(0, 0, 0);
+    const d0 = Math.hypot(m.pos.x - tp.x, m.pos.y - tp.y, m.pos.z - tp.z);
+    for (let i = 0; i < 3000; i++) g.fleet.steer(m, 1 / 60);
+    const d1 = Math.hypot(m.pos.x - tp.x, m.pos.y - tp.y, m.pos.z - tp.z);
+    for (let i = 0; i < 600; i++) g.fleet.steer(m, 1 / 60);
+    const d2 = Math.hypot(m.pos.x - tp.x, m.pos.y - tp.y, m.pos.z - tp.z);
+    return { d0: Math.round(d0), d1: Math.round(d1), d2: Math.round(d2), speed: +m.vel.length().toFixed(1) };`);
+  check('a broken wing runs, then stops running, so a slow hull can still catch it',
+    !ret.skip && ret.d1 > ret.d0 && ret.d1 > 5500 && ret.d2 < 7500 && ret.speed < 20, JSON.stringify(ret));
+
   const cv = await E(`
     const V3 = g.ship.vel.constructor;
     const cap = g.enemies.find(e => e.sub === 'carrier' && !e.dead);
@@ -325,14 +560,27 @@ try {
     g.setMode('helm'); g.ship.vel.set(0,0,0); g.ship.fuel = 10; g.state.credits = 5000;
     for (let i = 0; i < 12; i++) g.u.update(g.ship.pos, g.t, 0.016);
     const body = g.dockable(); if (!body) return { body: false };
+    g.state.codex = g.state.codex.filter((id) => id !== 'sbg' && id !== 'fuelracket');
+    const said = []; const orig = g.ui.toast.bind(g.ui); g.ui.toast = (t) => { said.push(t); orig(t); };
     g.tryDock(); const open = g.ui.anyOpen();
     const m1 = g.refuel(body); const f1 = g.ship.fuel;
     const m2 = g.refuel({ station: { fuelTypes: ['NONE'] } });
+    g.ui.toast = orig;
     g.ui.closeAll();
-    return { body: true, open, m1, f1, m2 };`);
+    return { body: true, open, m1, f1, m2, said,
+      sbg: g.state.codex.includes('sbg'), fuelracket: g.state.codex.includes('fuelracket') };`);
   check('docking opens the station', st.body && st.open, JSON.stringify(st).slice(0, 160));
   check('refuel fills the tank', st.f1 > 10, st.m1);
   check('a pump for another fuel type refuses', /does not serve/.test(st.m2 || ''), st.m2);
+  check('the refusal carries a quoted Spiral Bound Galactic announcer line', /"[^"]{20,}"$/.test(st.m2 || ''), st.m2);
+  check('a refused pump unlocks The Fuel Racket in the codex', st.fuelracket === true, JSON.stringify(st.fuelracket));
+  check('docking is welcomed by Spiral Bound Galactic and unlocks its codex entry',
+    st.sbg === true && (st.said || []).some((t) => /A cheerful voice: "/.test(t)), JSON.stringify(st.said || []).slice(0, 200));
+  // the announcer is a recorded loop: four lines, in order, then round again
+  const ann = await E(`
+    const out = []; for (let i = 0; i < 5; i++) out.push(g.refuel({ station: { fuelTypes: ['NONE'] } }));
+    return out.map((m) => (m.match(/"([^"]+)"/) || [])[1] || '');`);
+  check('the announcer cycles four lines in order', new Set(ann.slice(0, 4)).size === 4 && ann[4] === ann[0], JSON.stringify(ann).slice(0, 200));
 
   // shop: buy the cruiser and walk its rooms
   const sp = await E(`
@@ -874,6 +1122,101 @@ try {
   const eq = await E(`const m = g.buyEquip('laser'); return { m, lvl: g.state.equip.laser };`);
   check('outfitter upgrades apply', eq.lvl === 1, eq.m);
 
+  // --- the story on screen: codex, ship flavour, credits -------------------
+  // A black hole ate the ship two checks ago: put it back on its feet first,
+  // or the loop re-kills it and an open death panel makes it ignore every key.
+  const cx = await E(`
+    g.respawn(); g.ui.close('crash'); g.ui.closeAll();
+    const keep = g.state.codex.slice();          // put the real codex back afterwards
+    g.state.codex = ['district', 'sbg'];
+    g.ui.open('codex');
+    const cards = [...document.getElementById('cx-body').children];
+    const out = {
+      n: cards.length,
+      count: document.getElementById('cx-n').textContent,
+      locked: cards.filter((c) => c.classList.contains('locked')).length,
+      unlockedTitle: cards[0].querySelector('h4').textContent,
+      lockedTitle: cards[1].querySelector('h4').textContent,
+      lockedBody: cards[1].querySelector('p').textContent,
+      first: cards[0].querySelector('p').textContent.slice(0, 40),
+    };
+    g.ui.close('codex');
+    g.state.codex = keep;
+    return out;`);
+  check('the codex screen lists all twelve entries with the locked ones hidden',
+    cx.n === 12 && cx.locked === 10 && cx.count === '2' && cx.unlockedTitle === '1. Doodle District' && cx.lockedTitle === '2. ???' && cx.lockedBody === 'Not found yet.',
+    JSON.stringify(cx).slice(0, 260));
+  await b.shot(path.join(SHOTS, '20-codex.png'));
+  await E(`
+    // closeAll deliberately leaves the death and crash panels up, and an open
+    // overlay makes the game ignore every key: clear those two by hand.
+    g.respawn(); g.ui.close('crash'); g.ui.closeAll();
+    g.paused = false;
+    if (g.media.isOpen) g.media.close();          // the player swallows every key while it is up
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    return 1;`);
+  await b.key('y');
+  await b.wait(150);
+  const cy = await E(`
+    const o = { open: g.ui.open_.has('codex'), mode: g.mode, paused: g.paused, media: g.media.isOpen, anyOpen: [...g.ui.open_], focus: document.activeElement && document.activeElement.tagName };
+    g.ui.closeAll();
+    return o;`);
+  check('Y opens the codex at the helm', cy.open === true, JSON.stringify(cy));
+  const chip = await E(`
+    g.ui.open('map');
+    document.querySelector('#m-chips [data-f="codex"]').click();
+    const o = g.ui.open_.has('codex'), f = g.ui.mapFilter;
+    g.ui.closeAll();
+    return { o, f };`);
+  check('the map codex chip opens the codex instead of filtering the map', chip.o === true && chip.f !== 'codex', JSON.stringify(chip));
+
+  const shop = await E(`
+    const { SHIPS } = await import('./js/ships.js');
+    const ids = Object.keys(SHIPS);
+    const missing = ids.filter((id) => !SHIPS[id].flavour);
+    g.ui.renderStation({ kind: 'shipyard', name: 'Shipyard', body: {} });
+    const html = document.getElementById('st-body').textContent;
+    g.ui.stationData = null;
+    const unshown = ids.filter((id) => !html.includes(SHIPS[id].flavour));
+    return { n: ids.length, missing, unshown, witeout: SHIPS.witeout.name, witeoutId: SHIPS.witeout.id,
+      sample: SHIPS.stapler.flavour, wite: JSON.stringify(SHIPS).includes('Wite') };`);
+  check('all fifteen hulls carry their flavour line and the shop card shows it',
+    shop.n === 15 && shop.missing.length === 0 && shop.unshown.length === 0 && shop.sample === 'Rams first, asks for the invoice later.',
+    JSON.stringify({ missing: shop.missing, unshown: shop.unshown }));
+  check('Wite-Out is now Correction Fluid, with the save-critical id unchanged',
+    shop.witeout === 'Correction Fluid' && shop.witeoutId === 'witeout' && shop.wite === false, JSON.stringify(shop).slice(0, 160));
+
+  const creds = await E(`g.ui.open('credits'); const t = document.getElementById('credits').textContent; g.ui.close('credits'); return t;`);
+  check('the credits screen names Gev, Claude Opus 5.5, Doodle Shooter and the data sources',
+    /made by Gev with Claude Opus 5\.5 \(Anthropic\)/.test(creds) && /Doodle Shooter/.test(creds) && /doodleshooter\.vercel\.app/.test(creds)
+      && /three\.js/.test(creds) && /NASA Exoplanet Archive/.test(creds) && /OpenNGC \(CC BY-SA 4\.0\)/.test(creds) && /HYG/.test(creds) && /Wikipedia/.test(creds),
+    creds.replace(/\s+/g, ' ').slice(0, 200));
+  const foot = await E(`return document.querySelector('#title footer.credits').textContent;`);
+  check('the title footer carries the same credit', /made by Gev with Claude Opus 5\.5 \(Anthropic\)/.test(foot) && /after Doodle Shooter/.test(foot), foot.slice(0, 160));
+
+  // codex entries that unlock on where you are, driven by actually going there
+  const place = await E(`
+    const m31 = g.u.findGalaxy('Andromeda Galaxy');
+    const far = g.u.galaxies.find((x) => x.group === 'NGC' || x.group === 'M' || x.group === 'NEAR');
+    if (!m31 || !far) return { skipped: true };
+    const home = { ...g.ship.pos };
+    g.state.codex = g.state.codex.filter((id) => id !== 'coinflip' && id !== 'laniakea');
+    const go = (p) => {
+      g.setMode('helm'); g.zone = null; g.ship.warp = null; g.ship.auto = null; g.ship.cruise = false;
+      g.ship.vel.set(0, 0, 0); g.ship.throttle = 0;
+      g.ship.pos.x = p.x; g.ship.pos.y = p.y; g.ship.pos.z = p.z;
+      for (let i = 0; i < 10; i++) g.update(0.05);
+    };
+    go(m31.pos);
+    const coin = g.state.codex.includes('coinflip'), atM31 = g.u.ctx.galaxy && g.u.ctx.galaxy.name;
+    go(far.pos);
+    const lan = g.state.codex.includes('laniakea');
+    go(home);
+    g.clearCombat(); g.zone = null;
+    return { coin, lan, atM31, far: far.name, group: far.group };`);
+  check('reaching Andromeda and leaving the Local Group unlock their codex entries',
+    place.skipped ? true : (place.coin && place.lan), JSON.stringify(place).slice(0, 200));
+
   // death and respawn, tow
   const dth = await E(`g.setMode('helm'); g.damage(1e6, 'shot'); const m = g.mode; g.respawn(); return { m, after: g.mode, hull: g.ship.hull, max: g.stat('hull') };`);
   check('dying and respawning', dth.m === 'dead' && dth.after === 'helm' && dth.hull === dth.max, JSON.stringify(dth));
@@ -887,6 +1230,16 @@ try {
   for (let i = 0; i < 120 && !r2; i++) { r2 = await b.eval('!!(window.__dv && window.__dv.ready)'); if (!r2) await b.wait(500); }
   const ld = await E(`return { credits: g.state.credits, ship: g.state.ship };`);
   check('save survives a reload', ld.credits === sv, JSON.stringify(ld));
+  // continuing a save is not a new game: no crawl, and the codex came back
+  const cont = await E(`
+    const before = g.state.codex.slice();
+    g.launch();
+    const active = g.ui.crawlActive;
+    g.ui.skipCrawl();
+    return { hasSave: !!g.save, fresh: g.freshStart, active, before };`);
+  check('continuing an existing save plays no crawl', cont.hasSave && cont.fresh === false && cont.active !== true, JSON.stringify({ hasSave: cont.hasSave, fresh: cont.fresh, active: cont.active }));
+  check('the codex survives a save and a reload', cont.before.includes('sbg') && cont.before.includes('fuelracket'), JSON.stringify(cont.before));
+
   // log off re-rolls zones
   const lo = await E(`const a = g.u.zones.map(z => z.id).join(); g.launch(); g.logOff(); const b2 = g.u.zones.map(z => z.id).join(); return { changed: a !== b2, mode: g.mode, lib: g.u.zones.some(z => g.state.liberated.includes(z.id)) };`);
   check('log off re-rolls the enemy zones', lo.changed && lo.mode === 'title' && !lo.lib, JSON.stringify(lo));

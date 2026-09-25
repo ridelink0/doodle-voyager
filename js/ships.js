@@ -8,63 +8,78 @@ import { ink, glow, screen, paint, label, labelTexture, PAL, ID } from './mats.j
 export const SHIPS = {
   scout: {
     id: 'scout', name: 'Pencil Case', cls: 'small', fuel: 'ION', tank: 85, hull: 100, shield: 60, speed: 330, cruise: 2.5e5, turn: 1.7, guns: 2, dmg: 12, price: 0,
-    desc: 'A zip-top starter hull with a cockpit, a fold-down bunk and a storage bay that just fits the drone hatch between the crates. Still somehow loses your eraser.',
+    flavour: 'Zips shut, holds everything, and still somehow loses your eraser.',
+    desc: 'A zip-top starter hull with a cockpit, a fold-down bunk and a storage bay that just fits the drone hatch between the crates.',
   },
   eraser: {
     id: 'eraser', name: 'Eraser', cls: 'small', fuel: 'ION', tank: 60, hull: 70, shield: 40, speed: 480, cruise: 3.2e5, turn: 2.3, guns: 1, dmg: 9, price: 5000, ability: 'afterburner',
-    desc: 'A squat pink block in a paper sleeve with one fat nozzle. The only Eraser on our side: fast, light, and a little embarrassed about the name.',
+    flavour: 'The only Eraser on our side. Fast, light, and a little embarrassed about the name.',
+    desc: 'A squat pink block in a paper sleeve with one fat nozzle.',
   },
   racer: {
     id: 'racer', name: 'Highlighter', cls: 'small', fuel: 'ION', tank: 75, hull: 80, shield: 50, speed: 460, cruise: 4e5, turn: 2.1, guns: 2, dmg: 10, price: 7000,
-    desc: 'A chisel-tipped engine with a seat bolted on and one locker nook behind the cockpit. Marks the important parts of space in a colour nobody asked for, very quickly.',
+    flavour: 'Marks the important parts of space in a colour nobody asked for, very quickly.',
+    desc: 'A chisel-tipped engine with a seat bolted on and one locker nook behind the cockpit.',
   },
   tape: {
     id: 'tape', name: 'Correction Tape', cls: 'small', fuel: 'ION', tank: 55, hull: 65, shield: 45, speed: 500, cruise: 3.4e5, turn: 2.4, guns: 2, dmg: 9, price: 9000, ability: 'blink',
-    desc: 'The flattest hull in the yard: a tape reel on the back and a wide applicator nose. Leaves a faint white line where you used to be.',
+    flavour: 'Blinks forward like a mistake being covered up. Leaves a faint white line where you were.',
+    desc: 'The flattest hull in the yard: a tape reel on the back and a wide applicator nose.',
   },
   witeout: {
     id: 'witeout', name: 'Correction Fluid', cls: 'small', fuel: 'ION', tank: 65, hull: 75, shield: 55, speed: 440, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 11000, ability: 'cloak',
-    desc: 'A squat bottle with a narrow neck and a flip cap for a fin. Paints itself out of the picture; enemies lose track of you, and so, occasionally, do you.',
+    flavour: 'Paints itself out of the picture. Enemies lose track of you; so, occasionally, do you.',
+    desc: 'A squat bottle with a narrow neck and a flip cap for a fin.',
   },
   fighter: {
     id: 'fighter', name: 'Ballpoint', cls: 'medium', fuel: 'PLASMA', tank: 110, hull: 180, shield: 120, speed: 350, cruise: 3e5, turn: 1.8, guns: 4, dmg: 14, price: 12000,
-    desc: 'Four wing guns fed from a real gun room behind the cockpit, a click-button drive and a cargo hold at the back. The hull Doodle District survivors trust.',
+    flavour: "Click to deploy. The hull Doodle District's survivors trust, with four wing guns.",
+    desc: 'Four wing guns fed from a real gun room behind the cockpit, a click-button drive and a cargo hold at the back.',
   },
   paperclip: {
     id: 'paperclip', name: 'Paperclip', cls: 'medium', fuel: 'PLASMA', tank: 100, hull: 140, shield: 110, speed: 300, cruise: 2.8e5, turn: 1.6, guns: 2, dmg: 11, price: 14000, ability: 'tractor',
-    desc: 'Two steel tubes bent into a loop at the bow around a small crew body. Bends, holds, drags.',
+    flavour: 'Bends, holds, drags. The tractor beam works on crates, debris and small arguments.',
+    desc: 'Two steel tubes bent into a loop at the bow around a small crew body.',
   },
   hauler: {
     id: 'hauler', name: 'Ring Binder', cls: 'medium', fuel: 'PLASMA', tank: 190, hull: 260, shield: 100, speed: 230, cruise: 2.5e5, turn: 1.0, guns: 2, dmg: 12, price: 15000,
-    desc: 'Three steel rings hold a 16 m cargo bay of racks and pallets, with a bunk room for the long hauls. Zero sympathy for your fuel bill.',
+    flavour: 'Three steel rings, one cargo bay, zero sympathy for your fuel bill.',
+    desc: 'Three steel rings hold a 16 m cargo bay of racks and pallets, with a bunk room for the long hauls.',
   },
   gelpen: {
     id: 'gelpen', name: 'Gel Pen', cls: 'small', fuel: 'ION', tank: 50, hull: 55, shield: 30, speed: 620, cruise: 4.2e5, turn: 2.6, guns: 2, dmg: 18, price: 16000,
-    desc: 'A long see-through barrel with a needle nose and twin thin engines: the fastest ink in the yard and the thinnest hull. Writes beautifully. Smudges if touched.',
+    flavour: 'The fastest ink in the yard and the thinnest hull. Writes beautifully. Smudges if touched.',
+    desc: 'A long see-through barrel with a needle nose and twin thin engines.',
   },
   compass: {
     id: 'compass', name: 'Compass', cls: 'medium', fuel: 'PLASMA', tank: 115, hull: 170, shield: 130, speed: 310, cruise: 2.9e5, turn: 2.2, guns: 3, dmg: 12, price: 18000,
-    desc: 'Two legs splayed from a pivot hub, one a needle point, one a pencil foot. Turns tighter than anything with a hull and draws perfect circles around people who draw lines.',
+    flavour: 'Turns tighter than anything with a hull. Draws perfect circles around people who draw lines.',
+    desc: 'Two legs splayed from a pivot hub, one a needle point, one a pencil foot.',
   },
   stickynotes: {
     id: 'stickynotes', name: 'Sticky Notes', cls: 'small', fuel: 'ION', tank: 90, hull: 110, shield: 90, speed: 380, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 20000, ability: 'decoy',
-    desc: 'A fanned pad of square plates with a bright note stuck on top. The red guys keep attacking reminders.',
+    flavour: 'Leaves decoys everywhere. The red guys keep attacking reminders.',
+    desc: 'A fanned pad of square plates with a bright note stuck on top.',
   },
   stapler: {
     id: 'stapler', name: 'Stapler', cls: 'medium', fuel: 'PLASMA', tank: 120, hull: 240, shield: 150, speed: 260, cruise: 2.6e5, turn: 1.3, guns: 3, dmg: 16, price: 22000, ability: 'ram',
-    desc: 'A wedge: a tall spring housing at the stern, a low jaw at the bow and a hinge ridge down the spine. Rams first, asks for the invoice later.',
+    flavour: 'Rams first, asks for the invoice later.',
+    desc: 'A wedge: a tall spring housing at the stern, a low jaw at the bow and a hinge ridge down the spine.',
   },
   gluestick: {
     id: 'gluestick', name: 'Glue Stick', cls: 'medium', fuel: 'PLASMA', tank: 130, hull: 200, shield: 180, speed: 240, cruise: 2.6e5, turn: 1.2, guns: 2, dmg: 11, price: 24000, ability: 'repair',
-    desc: 'A fat screw-threaded barrel with a domed cap. Smells faintly of primary school.',
+    flavour: 'Repairs its own hull in flight. Smells faintly of primary school.',
+    desc: 'A fat screw-threaded barrel with a domed cap.',
   },
   cruiser: {
     id: 'cruiser', name: 'Lecture Hall', cls: 'large', fuel: 'DEUTERIUM', tank: 240, hull: 450, shield: 220, speed: 200, cruise: 3e5, turn: 0.7, guns: 6, dmg: 14, price: 40000,
-    desc: 'A 60 m liner with four dorm rooms, two bathrooms, a galley, a laundry, a lounge with a big screen and its own drone bay. Attendance is mandatory.',
+    flavour: 'A 60 m liner with dorms, a galley and a lounge screen. Attendance is mandatory.',
+    desc: 'A 60 m liner with four dorm rooms, two bathrooms, a galley, a laundry, a lounge with a big screen and its own drone bay.',
   },
   locker: {
     id: 'locker', name: 'Filing Cabinet', cls: 'large', fuel: 'DEUTERIUM', tank: 300, hull: 380, shield: 200, speed: 150, cruise: 2.5e5, turn: 0.6, guns: 4, dmg: 13, price: 45000, ability: 'scoop', scoop: true,
-    desc: 'The tall one: a tower of three stacked decks joined by one elevator, and one song on repeat. Scoops fuel straight out of a star, which Spiral Bound Galactic is lobbying to ban.',
+    flavour: 'The tall one. Stacked decks, one elevator, one song on repeat. Scoops fuel from stars, which Spiral Bound Galactic is lobbying to ban.',
+    desc: 'A tower of three stacked decks joined by one elevator.',
   },
 };
 

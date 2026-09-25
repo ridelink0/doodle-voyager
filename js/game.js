@@ -66,6 +66,43 @@ export const ABILITIES = {
   scoop: { name: 'Fuel scoop', cooldown: 0, cost: 0, passive: true, desc: 'Toggle the intake. Open, inside the corona of a star: fuel in, hull out.' },
 };
 export const PAINT_NAMES = { yellow: 'Yellow highlighter', blue: 'Blue highlighter', outline: 'Bare paper, blue outline' };
+// The codex: twelve entries, each unlocked by something you actually did.
+// Text is docs/STORY.md verbatim. Order is the n field, not key order.
+// unlockCodex(id) below is the only way in, and it is idempotent, so a call
+// site never needs a one-shot flag of its own.
+// Four entries have no call site yet and stay locked until the pass that owns
+// their event adds one: doodler/eraser/inkblot and attractor want
+// this.unlockCodex('<id>') at the moment each boss encounter starts (attractor
+// alongside inkblot, Act 3), and billboard is already wired in visit() and
+// fires the moment a planet carries a .planet.ad.
+export const CODEX = {
+  district: { n: 1, title: 'Doodle District', text: 'Streets, rooftops and fire escapes in blue ballpoint on lined paper. Survivors counted waves; the red guys counted erasures. Nobody counted what was past the margin.' },
+  margin: { n: 2, title: 'The Red Margin', text: 'Grunt, Rusher, Heavy, Sniper, Shieldbearer, Ink Bomb, Paper Wasp: the same seven, now flying in wings with a leader and a plan. Kill the leader and watch the plan fall apart.' },
+  doodler: { n: 3, title: 'The Doodler', text: 'Draws red guys. Now draws capital ships, which is worse. Fights by summoning and throwing.' },
+  eraser: { n: 4, title: 'The Eraser', text: 'Rubs things out - stations, pumps, a moon once. Charges when cornered.' },
+  inkblot: { n: 5, title: 'The Inkblot', text: 'Sprays. Leaks. Waits behind the dust where nobody looks.' },
+  sbg: { n: 6, title: 'Spiral Bound Galactic', text: 'Owner of the shipyards, the pumps, the Bazaar and the Billboard Worlds programme. Slogan: "We hold it all together. Terms and conditions bind."' },
+  fuelracket: { n: 7, title: 'The Fuel Racket', text: 'Three fuels, three nozzles, three patents. Converters are "not recommended by the manufacturer".' },
+  billboard: { n: 8, title: 'Billboard Worlds', text: 'Planet faces rented by the hemisphere. The ad turns with the planet; the planet was not consulted.' },
+  inkglows: { n: 9, title: 'Why the Ink Glows', text: 'On paper, ballpoint is blue and flat. In vacuum, it glows. Spiral Bound Galactic cannot explain this, so it sells it.' },
+  coinflip: { n: 10, title: 'The Coin Flip', text: 'The Milky Way and Andromeda were supposed to collide in 4 to 5 billion years. A 2025 study ran 100,000 simulations and found about a 50 per cent chance they merge within 10 billion years - and only about 2 per cent for the old head-on crash in 4 to 5. The Large Magellanic Cloud and Triangulum tip the odds. The Red Margin would like to tip them harder.' },
+  laniakea: { n: 11, title: 'Laniakea and the Clusters', text: 'Our home supercluster, named in 2014 - "immeasurable heaven" - about 500 million light-years across and about 100,000 galaxies. Nearby clusters: Virgo (about 54 million light-years, around 1,300 to 2,000 galaxies, M87 at its heart), Fornax (about 62 million), Coma (about 330 million, where "missing mass" first showed up - dark matter, NASA\'s "stuff in space that has gravity, but it is invisible"), Perseus-Pisces (about 250 million, just outside Laniakea).' },
+  attractor: { n: 12, title: 'The Great Attractor', text: 'Something heavy behind the Milky Way\'s own disk, in the Zone of Avoidance toward Norma, about 150 to 250 million light-years away. The Local Group drifts toward it. So does the Inkblot\'s leak.' },
+};
+// Spiral Bound Galactic's recorded station announcer. A loop repeats in order,
+// so this cycles rather than shuffling, and it is presentation only: never
+// saved, back to line one on every page load.
+const ANNOUNCER = [
+  'Welcome, valued customer. This pump does not serve your fuel type. Please enjoy the music.',
+  'Spiral Bound Fuels: not the closest pump. Not the cheapest pump. A pump.',
+  'Your call is important to us. Your ship is not.',
+  'Because this message is recorded, any praise of your piloting is a guess.',
+];
+let announcerI = 0;
+function announcerLine() { return ANNOUNCER[announcerI++ % ANNOUNCER.length]; }
+// galaxies.json's own group codes for the Milky Way and the Local Group.
+// Anything else - NEAR, M, NGC, IC, HZ, or a seeded galaxy - is past it.
+const LOCAL_GROUP = ['MW', 'LG', 'LG-MW', 'LG-M31', 'LG-M33'];
 const PAINT_PRICE = 300;
 const FUEL_PRICE = { ION: 6, PLASMA: 9, DEUTERIUM: 14 };
 const SAVE_KEY = 'dv-save-1';
@@ -95,6 +132,9 @@ function freshSave() {
     equip: Object.fromEntries(Object.keys(EQUIP).map((k) => [k, 0])), items: { snacks: 2 }, pos: null, quat: null,
     liberated: [], visited: [], stats: { kills: 0, capitals: 0, zones: 0, distance: 0, warps: 0, deaths: 0, docked: 0 },
     lastStation: null, bookmarks: [], created: Date.now(),
+    // story: unlocked codex ids, defeated boss ids, and 0-3 act progress.
+    // bossesDefeated and actProgress are written by the boss encounters.
+    codex: [], bossesDefeated: [], actProgress: 0,
   };
 }
 // Older saves get any fields added since.
@@ -143,6 +183,7 @@ export class Game {
     try { await this.media.init(); } catch (e) { console.warn('[media] init failed', e); }
     this.ui = new UI(this);
     const s = this.save ? upgradeSave(this.save) : freshSave();
+    this.freshStart = !this.save;   // no save at all is a new game: the crawl plays
     this.state = s;
     this.u.rollZones(this.sessionSeed, new Set(s.liberated));
     this.initWorld();
@@ -271,6 +312,7 @@ export class Game {
   newVoyage() {
     store.del(SAVE_KEY);
     this.save = null;
+    this.freshStart = true;         // NEW VOYAGE re-arms the crawl, even mid-session
     this.state = freshSave();
     this.clearCombat();
     this.u.rollZones(this.sessionSeed, new Set());
@@ -286,7 +328,22 @@ export class Game {
     this.ui.hideTitle();
     this.setMode('helm');
     this.lock();
-    this.ui.big('YOU ARE AT THE HELM', 'W/S throttle, C cruise, M map. E stands you up.');
+    this.unlockCodex('inkglows');   // every launch is a launch; the guard makes it once
+    const helm = () => this.ui.big('YOU ARE AT THE HELM', 'W/S throttle, C cruise, M map. E stands you up.');
+    if (!this.freshStart) { helm(); return; }
+    this.freshStart = false;
+    this.unlockCodex('district');
+    this.ui.playCrawl(() => { helm(); if (this.playing() && !this.ui.anyOpen() && !this.paused) this.lock(); });
+  }
+  // The only way into the codex. Idempotent, so "first X" call sites need no
+  // flag of their own, and it persists the moment it fires.
+  unlockCodex(id) {
+    const st = this.state;
+    if (!st || !CODEX[id] || st.codex.includes(id)) return;
+    st.codex.push(id);
+    this.ui.toast(`Codex updated: ${CODEX[id].title}`);
+    audio.sfx('ui');
+    this.persist();
   }
   logOff() {
     this.persist();
@@ -374,6 +431,7 @@ export class Game {
     else { this.ui.close('pause'); this.lock(); }
   }
   onKey(e) {
+    if (this.ui.crawlActive) return;    // the crawl owns the keyboard; its own listener skips it
     if (this.mode === 'title' || this.mode === 'dead') return;
     if (e.code === 'Escape') { if (this.ui.anyOpen()) this.ui.closeAll(); return; }
     if (e.code === 'KeyP') { this.pause(!this.paused); return; }
@@ -388,13 +446,15 @@ export class Game {
     }
     switch (e.code) {
       case 'KeyE': this.interact(); break;
-      case 'KeyF': if (this.mode === 'foot') this.takeCarried(); else if (this.mode === 'helm') this.eject(); break;
+      // One F at the helm: dock when there is something to dock with, eject
+      // otherwise. (A second `case 'KeyF'` below used to be dead code, which
+      // left docking unreachable from the keyboard.)
+      case 'KeyF': if (this.mode === 'foot') this.takeCarried(); else if (this.mode === 'helm') { if (this.dockable()) this.tryDock(); else this.eject(); } break;
       case 'KeyL': this.courseToPump(); break;
       // a tap moves the throttle a quarter; holding keeps ramping (updateHelmInput)
       case 'KeyW': if (this.mode === 'helm' && !e.repeat) this.ship.throttle = Math.min(1, this.ship.throttle + 0.25); break;
       case 'KeyS': if (this.mode === 'helm' && !e.repeat) this.ship.throttle = Math.max(0, this.ship.throttle - 0.25); break;
       case 'KeyB': if (this.mode === 'drone') this.dropBomb(); break;
-      case 'KeyF': this.tryDock(); break;
       case 'KeyV': this.unlock(); this.media.open(); break;
       case 'KeyG': if (this.mode === 'drone') this.recallDrone(); else this.launchDrone(); break;
       case 'KeyC': if (this.mode === 'helm') this.toggleCruise(); break;
@@ -405,6 +465,7 @@ export class Game {
       case 'KeyN': audio.next(); this.ui.toast(`Now playing: ${audio.current ? audio.current.name : 'nothing'}`); break;
       case 'KeyK': this.photo(); break;
       case 'KeyI': this.unlock(); this.ui.open('storage'); break;
+      case 'KeyY': this.unlock(); this.ui.open('codex'); break;
       case 'KeyH': this.unlock(); this.ui.open('help'); break;
       default: break;
     }
@@ -638,6 +699,9 @@ export class Game {
     this.ship.throttle = 0; this.ship.cruise = false; this.ship.auto = null;
     this.ship.vel.multiplyScalar(0.1);
     this.state.stats.docked++;
+    // The recorded loop plays whatever line is next, whether or not it fits.
+    this.ui.toast(`A cheerful voice: "${announcerLine()}"`);
+    this.unlockCodex('sbg');
     this.state.lastStation = b.station ? { pos: { ...b.pos } } : { pos: { ...b.pos } };
     audio.sfx('door');
     this.unlock();
@@ -646,13 +710,13 @@ export class Game {
   fuelTypesAt(body) { return body.station ? body.station.fuelTypes : body.module && body.module.fuelTypes ? body.module.fuelTypes : body.module && body.module.kind === 'hub' ? [...FUELS] : []; }
   refuel(body, amount) {
     const f = this.def.fuel, types = this.fuelTypesAt(body);
-    if (!types.includes(f)) { audio.sfx('deny'); return `This pump does not serve ${f}. Your ${this.def.name} burns ${f}.`; }
+    if (!types.includes(f)) { audio.sfx('deny'); this.unlockCodex('fuelracket'); return `This pump does not serve ${f}. Your ${this.def.name} burns ${f}. "${announcerLine()}"`; }
     const room = this.stat('tank') - this.ship.fuel;
     const want = Math.min(room, amount ?? room);
     if (want <= 0.05) return 'Tank is already full.';
     const price = FUEL_PRICE[f];
     const afford = Math.min(want, this.state.credits / price);
-    if (afford <= 0.05) { audio.sfx('deny'); return 'Not enough credits for fuel. Clear an enemy zone.'; }
+    if (afford <= 0.05) { audio.sfx('deny'); return `Not enough credits for fuel. Clear an enemy zone. "${announcerLine()}"`; }
     this.ship.fuel += afford;
     this.state.credits -= Math.ceil(afford * price);
     audio.sfx('fuel');
@@ -866,7 +930,7 @@ export class Game {
     else if (this.mode === 'title') sh.q.multiply(qYP(dt * 0.004, 0, 0, Q1));
     this.updateShip(dt);
     const ctx = this.u.update(sh.pos, this.t, dt);
-    if (this.mode !== 'title') this.gravity(ctx, dt);
+    if (this.mode !== 'title') { this.gravity(ctx, dt); this.storyPlace(ctx); }
     this.collide(ctx, dt);
     this.ramCheck(dt);
     this.updateZones(dt);
@@ -976,6 +1040,7 @@ export class Game {
   }
 
   updateHelmInput(dt, m) {
+    if (this.ui.crawlActive) return;    // nothing flies while the crawl is on screen
     const sh = this.ship, keys = this.keys, p = this.player;
     if (sh.warp && sh.warp.phase !== 'spool') { p.lookYaw = clamp(p.lookYaw - m.x, -2, 2); p.lookPitch = clamp(p.lookPitch - m.y, -1.2, 1.2); return; }
     const looking = this.mouse.right || keys.has('KeyQ');
@@ -1230,13 +1295,31 @@ export class Game {
     }
   }
 
+  // Where you are is a story event too: Andromeda unlocks the coin flip, and
+  // anything outside the Local Group unlocks Laniakea. One identity compare
+  // and one small includes per frame; findGalaxy is a linear scan, so it runs
+  // once and the answer (galaxy or null) is cached.
+  storyPlace(ctx) {
+    const g = ctx.galaxy;
+    if (!g) return;
+    if (this._m31 === undefined) this._m31 = this.u.findGalaxy('Andromeda Galaxy');
+    // M32 (NGC 221) sits right on top of Andromeda's core, so the smallest
+    // galaxy you are inside at M31's centre is one of its satellites. Anything
+    // in the M31 subgroup counts as having reached Andromeda.
+    if (g === this._m31 || g.group === 'LG-M31') this.unlockCodex('coinflip');
+    else if (!LOCAL_GROUP.includes(g.group)) this.unlockCodex('laniakea');
+  }
   visit(ctx) {
     if (this.tick2 = (this.tick2 || 0) + 1, this.tick2 % 20) return;
     const v = this.visitedSet || (this.visitedSet = new Set(this.state.visited));
     for (const b of ctx.bodies) {
       if (b.kind !== 'planet' && b.kind !== 'dwarf planet' && b.kind !== 'moon' && b.kind !== 'sight') continue;
       const reach = b.kind === 'sight' ? b.sight.R * 2.5 + 30000 : b.r * 5 + 3000;
-      if (vdist(b.pos, this.ship.pos) < reach && !v.has(b.name)) {
+      const d = vdist(b.pos, this.ship.pos);
+      // Seam for the planet-ads pass: a planet carries b.planet.ad once ads
+      // land, and getting close enough to read one unlocks Billboard Worlds.
+      if (d < reach && b.planet && b.planet.ad != null) this.unlockCodex('billboard');
+      if (d < reach && !v.has(b.name)) {
         v.add(b.name);
         this.state.visited.push(b.name);
         this.ui.toast(`First visit: ${b.name}${b.planet && b.planet.real ? ' (real)' : ''}`);
@@ -1782,6 +1865,8 @@ export class Game {
       this.boom(e.pos, 14);
       audio.sfx('explosion');
       this.ui.kill(`${e.name} popped. +40 cr`);
+      // The last red guy of the wing you are fighting: the wing is destroyed.
+      if (this.zone && !this.enemies.some((x) => x.kind === 'imp' && !x.dead)) this.unlockCodex('margin');
     }
   }
   spark(p) { this.boom(p, 8, false, 4); }
