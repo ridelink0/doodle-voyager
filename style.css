@@ -84,8 +84,11 @@ input[type=range] { min-height: 24px; }
 .mk .hp { display: block; height: 4px; background: currentColor; margin: 1px auto 0; }
 
 /* ---------- overlays and panels ---------- */
-.overlay { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; padding: 16px; overflow: auto; background: rgba(11, 15, 24, 0.25); }
+/* auto margins centre a panel that fits and let a taller one (the 14-ship
+   shipyard at 768 px) scroll from its top instead of losing it above the fold */
+.overlay { position: fixed; inset: 0; z-index: 20; display: grid; place-items: start center; padding: 16px; overflow: auto; background: rgba(11, 15, 24, 0.25); }
 #title { background: rgba(11, 15, 24, 0.2); align-items: start; }
+.overlay > .panel { margin-block: auto; }
 .panel { position: relative; width: min(760px, 100%); background: var(--paper); border: 2.5px solid var(--ink); border-radius: 12px 18px 10px 16px / 16px 10px 18px 12px; box-shadow: 6px 6px 0 rgba(77, 238, 255, 0.15); padding: 18px 22px 16px 56px; transform: rotate(-0.6deg); background-image: repeating-linear-gradient(to bottom, transparent 0 26px, var(--rule) 26px 27px); }
 .panel::before { content: ''; position: absolute; left: 40px; top: 0; bottom: 0; border-left: 1.5px solid rgba(208, 32, 48, 0.45); }
 .panel.small { width: min(460px, 100%); transform: rotate(0.5deg); }
@@ -136,7 +139,7 @@ footer.credits { font-size: 14px; margin-top: 10px; opacity: 0.75; }
 .mapbody { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(300px, 1.5fr); gap: 14px; }
 .results { list-style: none; margin: 0; padding: 0; max-height: 470px; overflow: auto; font-size: 16px; border-top: 1.5px solid var(--ink-soft); }
 .results li { padding: 4px 6px; border-bottom: 1.5px dashed var(--ink-soft); cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; }
-.results li:hover, .results li.sel { background: rgba(255, 216, 74, 0.45); }
+.results li:hover, .results li.sel { background: rgba(255, 194, 60, 0.22); }
 .results li small { grid-column: 1 / -1; opacity: 0.75; font-size: 14px; }
 .results li .d { font-size: 14px; opacity: 0.8; }
 .results li.red { color: var(--red); }
@@ -149,12 +152,12 @@ footer.credits { font-size: 14px; margin-top: 10px; opacity: 0.75; }
 .sel .nm { font-family: 'Caveat', cursive; font-size: 30px; }
 .sel .buy { font-size: 17px; }
 .stbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
-.card { border: 2px solid var(--ink); border-radius: 10px 14px 9px 13px / 13px 9px 14px 10px; padding: 8px 12px; background: rgba(255, 249, 232, 0.8); transform: rotate(-0.4deg); }
+.card { border: 2px solid var(--ink); border-radius: 10px 14px 9px 13px / 13px 9px 14px 10px; padding: 8px 12px; background: rgba(20, 26, 40, 0.88); transform: rotate(-0.4deg); }
 .card:nth-child(2n) { transform: rotate(0.5deg); }
 .card h4 { margin: 0 0 2px; }
 .card p { margin: 2px 0; font-size: 15.5px; }
 .card .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 6px; }
-.card.on { background: rgba(255, 216, 74, 0.5); }
+.card.on { background: rgba(255, 194, 60, 0.16); }
 .card.bad { border-color: var(--red); }
 .pips { letter-spacing: 3px; }
 .buy { font-size: 16px; padding: 2px 12px; }
