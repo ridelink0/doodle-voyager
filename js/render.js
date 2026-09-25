@@ -302,6 +302,9 @@ export class Renderer {
     this.preset = p.name;
     setHatchDirs(p.hatchDirs);
     this.bloomPass.enabled = p.bloom;
+    // Turning the blur back on after the low preset must not reproject from
+    // the camera it last saw, which may be a whole scene ago.
+    if (p.blur > 0 && !this.motionPass.enabled) this.hasPrev = false;
     this.motionPass.enabled = p.blur > 0;
     this.motion.uniforms.strength.value = p.blur;
     this.post.uniforms.glowBoost.value = p.glowBoost;
