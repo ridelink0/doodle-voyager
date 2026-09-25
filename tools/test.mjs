@@ -1993,6 +1993,81 @@ try {
   // audio
   const au = await E(`const { audio } = await import('./js/audio.js'); audio.init(); for (const s of ['laser','explosion','alarm','flush','coin','warpIn','breach','seal']) audio.sfx(s); audio.mood('combat'); audio.mood('cruise'); return { tracks: audio.tracks.length, current: audio.current && audio.current.name };`);
   check('audio: hold music tracks and effects', au.tracks >= 3, JSON.stringify(au));
+  // ---------- multiplayer ----------
+  // Two clients wired to each other through a fake bus, which is the same code
+  // path a real room takes: the transport is the only part that differs, and a
+  // test that needed the network would be a test that fails on a train.
+  const mpA = await E(`
+    g.launch();
+    const { Net, packShip } = await import('./js/net.js');
+    const subs = [];
+    const bus = () => ({
+      async join(h) { subs.push(h); },
+      send(m) { for (const h of subs) h.onState(m); },
+      bye(id) { for (const h of subs) h.onLeave(id); },
+      leave() {},
+    });
+    const a = new Net(g, { id: 'p-a', transport: bus() });
+    const b = new Net(g, { id: 'p-b', transport: bus() });
+    window.__mp = { a, b, packShip };
+    await a.join('alpha'); await b.join('beta');
+    g.ship.pos.x = 1000; g.ship.pos.y = 0; g.ship.pos.z = 0;
+    a.update(0.1);
+    const peer = [...b.peers.values()][0];
+    return {
+      joined: a.on && b.on,
+      peers: b.peers.size,
+      id: peer && peer.id, type: peer && peer.type, name: peer && peer.name,
+      at: peer && [Math.round(peer.want.x), Math.round(peer.want.y), Math.round(peer.want.z)],
+      meshed: !!(peer && peer.group && peer.group.parent),
+      mine: g.ship.type,
+      selfIgnored: b.take(packShip(g, 'p-b', 'beta')) === false,
+      junkIgnored: b.take({ id: 'p-z', type: 'scout', pos: [NaN, 0, 0], q: [0, 0, 0, 1] }) === false,
+      noType: b.take({ id: 'p-y', pos: [1, 2, 3], q: [0, 0, 0, 1] }) === false,
+      line: b.line(),
+    };`);
+  check('two clients in one room see each other, with the right hull where it said it was',
+    mpA.joined && mpA.peers === 1 && mpA.id === 'p-a' && mpA.type === mpA.mine && mpA.at[0] === 1000,
+    JSON.stringify({ peers: mpA.peers, id: mpA.id, type: mpA.type, at: mpA.at }));
+  check('a peer gets a real body in the world, not a marker',
+    mpA.meshed, `mesh parented: ${mpA.meshed}`);
+  check('your own report, and a malformed one, are both ignored',
+    mpA.selfIgnored && mpA.junkIgnored && mpA.noType,
+    JSON.stringify({ self: mpA.selfIgnored, junk: mpA.junkIgnored, noType: mpA.noType }));
+  check('the HUD line says how many are out there', /MULTIPLAYER ON - 1 in this system/.test(mpA.line), mpA.line);
+
+  const mpB = await E(`
+    const { a, b } = window.__mp;
+    const peer = [...b.peers.values()][0];
+    g.ship.pos.x = 5000;
+    a.update(0.1);
+    const d0 = peer.pos.distanceTo(peer.want);
+    for (let i = 0; i < 30; i++) b.update(1/60);
+    const d1 = peer.pos.distanceTo(peer.want);
+    const meshX = peer.group ? Math.round(peer.group.position.x) : null;
+    const ghostX = Math.round(peer.pos.x);
+    for (let i = 0; i < 8 * 60; i++) b.update(1/60);   // silence, past the forget window
+    return { d0: Math.round(d0), d1: Math.round(d1), meshX, ghostX, gone: b.peers.size };`);
+  check('a ghost chases its last report instead of teleporting to it',
+    mpB.d0 > 1000 && mpB.d1 < mpB.d0 / 2 && mpB.ghostX > 1000,
+    `${mpB.d0} u behind -> ${mpB.d1} u, ghost at x ${mpB.ghostX}`);
+  check('and the body it is drawn as follows the ghost', mpB.meshX === mpB.ghostX, `mesh ${mpB.meshX} vs ghost ${mpB.ghostX}`);
+  check('a peer that goes quiet is forgotten rather than left hanging in space',
+    mpB.gone === 0, `${mpB.gone} peers after eight seconds of silence`);
+
+  const mpC = await E(`
+    const { a, b } = window.__mp;
+    g.ship.pos.x = 1200; a.update(0.1);
+    const had = b.peers.size;
+    a.leave();
+    const after = b.peers.size;
+    const line = b.line();
+    b.leave();
+    return { had, after, off: !a.on, line, root: !!(b.root && b.root.parent) };`);
+  check('leaving says goodbye at once, without waiting out the timeout',
+    mpC.had === 1 && mpC.after === 0 && mpC.off, JSON.stringify(mpC));
+  check('and with nobody there the line says so', /nobody else out here yet/.test(mpC.line), mpC.line);
+
   const fps = await E('return g.fps;');
   check('frame rate sample (headless software GL)', fps > 3, `${fps.toFixed(1)} fps`);
 } catch (e) {

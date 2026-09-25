@@ -8,6 +8,7 @@ import { SHIPS, buildInterior, buildExterior } from './ships.js';
 import { buildImp, buildCapital, buildDrone, buildDecoy, Squadrons } from './actors.js';
 import { Bosses } from './bosses.js';
 import { Boarding } from './board.js';
+import { Net, renderNetLine } from './net.js';
 import { audio } from './audio.js';
 import { Media } from './media.js';
 import { UI } from './ui.js';
@@ -230,6 +231,9 @@ export class Game {
     w.add(this.extRoot);
     this.fxRoot = new THREE.Group();
     w.add(this.fxRoot);
+    // Other people, if the player ever asks for them: off until O is pressed,
+    // and the room is only reached for at that moment.
+    this.net = new Net(this);
     // shared projectile look
     this.boltGeo = new THREE.BoxGeometry(0.9, 0.9, 16);
     this.boltMat = glow(0xffc23c);
@@ -475,6 +479,8 @@ export class Game {
     if (e.code === 'KeyP') { this.pause(!this.paused); return; }
     if (this.paused) return;
     if (e.code === 'KeyM') { this.ui.toggle('map'); return; }
+    // O opens the shared sky. Joining can fail, and the HUD line says so.
+    if (e.code === 'KeyO') { this.net.toggle(); return; }
     if (this.ui.anyOpen()) return;
     // double-tap W to jog (trackpad mode; Shift still works for everyone)
     if (e.code === 'KeyW' && !e.repeat) {
@@ -973,6 +979,7 @@ export class Game {
     else if (this.mode === 'eva') this.updateEva(dt, input);
     else if (this.mode === 'drone') this.updateDrone(dt, input);
     else if (this.mode === 'title') sh.q.multiply(qYP(dt * 0.004, 0, 0, Q1));
+    if (this.net) { this.net.update(dt); renderNetLine(this.net); }
     this.updateShip(dt);
     const ctx = this.u.update(sh.pos, this.t, dt);
     if (this.mode !== 'title') { this.gravity(ctx, dt); this.storyPlace(ctx); }

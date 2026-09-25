@@ -1,0 +1,9 @@
+# The deploy output: built by tools/stage.mjs from the files beside it.
+dist/
+
+# Screenshot sets the suite writes for comparison. tools/.shots is kept in the
+# repo on purpose as the reference set; the rest are working copies.
+tools/.shots-*/
+
+node_modules/
+.DS_Store
