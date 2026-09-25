@@ -14,7 +14,7 @@ import { Media } from './media.js';
 import { UI } from './ui.js';
 import { Pad } from './pad.js';
 import { Tutorial, installAnnex, installTutorialUi } from './tutorial.js';
-import { glow, ink, screen, PAL } from './mats.js';
+import { glow, ink, plasmaGlow, screen, PAL } from './mats.js';
 import { clamp, damp, smooth, vdist, fmtU, fmtTime, TAU } from './util.js';
 
 
@@ -236,12 +236,24 @@ export class Game {
     this.net = new Net(this);
     // shared projectile look
     this.boltGeo = new THREE.BoxGeometry(0.9, 0.9, 16);
-    this.boltMat = glow(0xffc23c);
-    this.eBoltMat = glow(0xff3b5c);
+    // A bolt is a hot white core inside its own colour. The enemy's core is a
+    // red-white, not the player's neutral white, so the red/cyan hostile read
+    // the composite pass relies on survives the brighter middle.
+    this.boltMat = plasmaGlow(0xffc23c, { core: 5.5, flicker: 0.25, hot: 0xfff4e0 });
+    this.eBoltMat = plasmaGlow(0xff3b5c, { core: 5.5, flicker: 0.30, hot: 0xffb8a8 });
     this.beamGeo = new THREE.CylinderGeometry(1, 1, 1, 10, 1, true).rotateX(Math.PI / 2).translate(0, 0, -0.5);
     this.bombGeo = new THREE.IcosahedronGeometry(1.1, 0);
     this.debrisGeo = new THREE.TetrahedronGeometry(1, 0);
     this.ringGeo = new THREE.TorusGeometry(1, 0.08, 6, 40);
+    // Nothing plasma is ever on screen before the first shot - the engine
+    // nozzles sit behind the camera at the helm and are culled - so the
+    // program would compile on the frame the player first fires and drop it.
+    // Compile it here instead, at load, where a stall costs nothing. Same
+    // program for the nozzles, which share the plasma cache key.
+    const warm = new THREE.Scene();
+    warm.add(new THREE.Mesh(this.boltGeo, this.boltMat));
+    warm.add(new THREE.Mesh(this.boltGeo, this.eBoltMat));
+    this.r.gl.compile(warm, this.r.camera);
   }
 
   // ---------- ship ----------
@@ -1859,6 +1871,10 @@ export class Game {
     this.updateDecoys(dt);
     this.updateBombs(dt);
     this.r.fx.damage = Math.max(0, this.r.fx.damage - dt * 0.9);
+    // The overheat mechanic finally shows on the glass: nothing until the guns
+    // are 55% of the way to cooking, then the screen shimmers harder up to the
+    // cutout, and it settles as they cool.
+    this.r.fx.heat = smooth(clamp((sh.heat / this.stat('heat') - 0.55) / 0.45, 0, 1));
   }
   updateBeam(e, dt, tp, dist) {
     const b = e.beam, sh = this.ship;

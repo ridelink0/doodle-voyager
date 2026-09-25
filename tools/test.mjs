@@ -280,6 +280,66 @@ try {
   check('the ad art survives leaving and re-entering a system', uvAds.texKept === false, `in the view dispose list: ${uvAds.texKept}`);
   check('the decal is object-space, so it can never follow the camera',
     /vAdPos/.test(uvAds.frag || '') && !/cameraPosition|viewMatrix|vViewPosition|modelViewMatrix/.test(uvAds.frag || ''), (uvAds.frag || 'no shader').slice(0, 60).replace(/\s+/g, ' '));
+  // The star and planet shaders, read off the real meshes in the real view.
+  // onBeforeCompile is run again here against a stub shader so the uniforms it
+  // hands the GPU can be read back; the live sun uniform is put straight back
+  // afterwards, so the per-frame write keeps landing on the compiled one.
+  const uvSky = await E(`
+    const M = await import('./js/mats.js');
+    const u = g.u;
+    const v = [...u.views.values()].find((x) => x.sys.solar);
+    if (!v) return { why: 'the home system never got a view' };
+    const probe = (mat) => {
+      const s = { uniforms: {}, vertexShader: '#include <common>\\n#include <begin_vertex>', fragmentShader: '#include <common>\\n#include <opaque_fragment>' };
+      // If the material has already compiled, put its live uniform straight
+      // back so the per-frame write keeps landing on the one the GPU reads.
+      // If it has not, leave the stub's in place: SystemView.update() writes
+      // through userData either way, which is the thing being measured.
+      const keep = mat.userData.sunUniform;
+      mat.onBeforeCompile(s);
+      if (keep) mat.userData.sunUniform = keep;
+      return s;
+    };
+    const sm = v.bodies.find((b) => b.kind === 'star').mesh.material;
+    const sp = probe(sm);
+    // a rocky planet with no canvas texture and no rented face: the ink() path
+    const pb = v.bodies.find((b) => b.planet && b.kind !== 'moon' && !b.planet.tex && b.planet.ad == null);
+    const pm = pb.mesh.material;
+    const pp = probe(pm);
+    const su = pm.userData.sunUniform;
+    const before = su ? su.value.clone() : null;
+    v.update(g.ship.pos, g.t + 5000);
+    const after = su ? su.value.clone() : null;
+    const teq = pb.planet.teq ?? 300;
+    const Color = pm.color.constructor;
+    return {
+      starKey: sm.customProgramCacheKey(),
+      starFlat: sm === M.glow(sm.color.getHex()),
+      ld1: sp.uniforms.uLD1 ? sp.uniforms.uLD1.value : null,
+      ld2: sp.uniforms.uLD2 ? sp.uniforms.uLD2.value : null,
+      ldLaw: /uLD1 \\* \\(1\\.0 - mu\\) - uLD2/.test(sp.fragmentShader),
+      coronaShared: sp.uniforms.uCorona === M.SHARED.uStarCorona,
+      planet: pb.name, teq,
+      planetKey: pm.customProgramCacheKey(),
+      inkShared: pm === M.ink(pb.planet.color),
+      disposed: v.mats.includes(pm),
+      atmo: pp.uniforms.uAtmoColor ? pp.uniforms.uAtmoColor.value.getHex() : null,
+      want: new Color(M.atmoColorFor(teq)).getHex(),
+      dflt: new Color(M.PAL.cyan).getHex(),
+      cloudShared: pp.uniforms.uCloudAmt === M.SHARED.uCloudAmt,
+      sunLen: su ? after.length() : 0, sunTurned: su ? before.angleTo(after) : 0,
+    };`);
+  check("a star is drawn with the limb-darkening disc, and its uniforms carry the law's two coefficients",
+    uvSky.starKey === 'dv-neon-star-1' && !uvSky.starFlat && uvSky.ldLaw && uvSky.coronaShared
+    && uvSky.ld1 > 0.2 && uvSky.ld1 < 0.4 && uvSky.ld2 > 0.2 && uvSky.ld2 < 0.4,
+    `${uvSky.starKey}, u1 ${uvSky.ld1} u2 ${uvSky.ld2}, law in the shader: ${uvSky.ldLaw}, corona uniform shared: ${uvSky.coronaShared}`);
+  check("a planet's limb is tinted with the atmosphere its own temperature asks for",
+    uvSky.planetKey === 'dv-neon-planet-1' && !uvSky.inkShared && uvSky.disposed
+    && uvSky.atmo === uvSky.want && uvSky.atmo !== uvSky.dflt && uvSky.cloudShared,
+    `${uvSky.planet} at ${uvSky.teq} K wants #${Number(uvSky.want).toString(16)}, carries #${Number(uvSky.atmo).toString(16)}`);
+  check('every planet gets its own sun direction, in its own object space, every frame',
+    Math.abs(uvSky.sunLen - 1) < 1e-6 && uvSky.sunTurned > 0.05,
+    `unit length ${Number(uvSky.sunLen).toFixed(6)}, moved ${Number(uvSky.sunTurned).toFixed(3)} rad over 5000 s of orbit and spin`);
   await E(`g.ship.pos.x = ${uvBack.x}; g.ship.pos.y = ${uvBack.y}; g.ship.pos.z = ${uvBack.z}; g.ship.vel.set(0, 0, 0); return 1;`);
   check('the ad turns with the planet and ignores the ship',
     uvAds.shipMove < 1e-6 && uvAds.spin > 0.05 && Math.abs(uvAds.spin - uvAds.want) < 0.02,
@@ -1122,6 +1182,71 @@ try {
     g.setMode('foot');
     return { on, off, turned: a !== b, hadPrev, cutClears: !g.r.hasPrev };`);
   check('motion blur runs above low and follows the camera', mb.on && !mb.off && mb.turned && mb.hadPrev && mb.cutClears, JSON.stringify(mb));
+
+  // The new shader knobs. Every one is a shared uniform object, so a preset
+  // change has to be a number moving and never a second compiled program.
+  const shq = await E(`
+    const M = await import('./js/mats.js');
+    const R = await import('./js/render.js');
+    const S = M.SHARED;
+    const read = () => ({ corona: S.uStarCorona.value, cloud: S.uCloudAmt.value, flicker: S.uFlickerOn.value, bands: S.uToneBands.value });
+    const names = ['uTime', 'uStarCorona', 'uCloudAmt', 'uFlickerOn', 'uToneBands'];
+    const missing = names.filter((n) => !S[n] || typeof S[n].value !== 'number');
+    const q0 = g.r.quality;
+    g.r.setQuality(1); const full = read();
+    g.r.setQuality(0.8); const med = read();
+    g.r.setQuality(0.6); const low = read();
+    g.r.setQuality(q0);
+    S.uTime.value = -1;
+    g.r.render(12.5);
+    const clock = S.uTime.value;
+    const p = R.presetFor(0.6);
+    return { missing, full, med, low, clock, lowPreset: { corona: p.corona, cloudAmt: p.cloudAmt, flicker: p.flicker, toneBands: p.toneBands } };`);
+  check('the shared shader clock and the four new quality uniforms are all there, and a preset moves every one',
+    shq.missing.length === 0 && shq.clock === 12.5
+    && shq.full.corona === 1 && shq.full.flicker === 1 && shq.full.cloud > 0 && shq.full.bands === 5 && shq.med.bands === 4,
+    `missing ${JSON.stringify(shq.missing)}, clock ${shq.clock}, full ${JSON.stringify(shq.full)}, medium ${JSON.stringify(shq.med)}`);
+  check('the low preset really does switch the expensive branches off',
+    shq.low.corona === 0 && shq.low.cloud === 0 && shq.low.flicker === 0 && shq.low.bands === 3
+    && shq.lowPreset.corona === false && shq.lowPreset.cloudAmt === 0 && shq.lowPreset.flicker === false && shq.lowPreset.toneBands === 3,
+    `uniforms ${JSON.stringify(shq.low)} from preset ${JSON.stringify(shq.lowPreset)}`);
+
+  // Engines and bolts: a hot core down the shape's own axis, while every other
+  // glow() surface in the game keeps the flat fill it has today.
+  const plas = await E(`
+    const M = await import('./js/mats.js');
+    const key = (m) => (m.customProgramCacheKey ? m.customProgramCacheKey() : '');
+    const seen = new Set();
+    g.exterior.group.traverse((o) => { if (o.isMesh && o.material) seen.add(o.material); });
+    return {
+      hullMats: seen.size,
+      plasma: [...seen].filter((m) => key(m) === 'dv-neon-plasma-1').length,
+      bolt: key(g.boltMat), ebolt: key(g.eBoltMat),
+      boltFlat: g.boltMat === M.glow(0xffc23c) || g.eBoltMat === M.glow(0xff3b5c),
+      lampPlasma: key(M.glow(0xffd27a)) === 'dv-neon-plasma-1',
+    };`);
+  check('the engine nozzles and both laser bolts are plasma, and the lamps are still flat glow',
+    plas.plasma >= 2 && plas.bolt === 'dv-neon-plasma-1' && plas.ebolt === 'dv-neon-plasma-1'
+    && !plas.boltFlat && !plas.lampPlasma,
+    `${plas.plasma} of ${plas.hullMats} hull materials are plasma, bolts ${plas.bolt} / ${plas.ebolt}, lamp plasma: ${plas.lampPlasma}`);
+
+  // Weapon heat was a number on the HUD and nothing else. Now it bends the glass.
+  const heat = await E(`
+    g.setMode('helm');
+    const sh = g.ship; sh.warp = null; sh.overheat = false;
+    const max = g.stat('heat');
+    sh.heat = max * 0.9; g.update(1 / 60);
+    const hot = g.r.fx.heat;
+    g.r.render(3.0);
+    const pushed = g.r.post.uniforms.heat.value;
+    sh.heat = max * 0.3; g.update(1 / 60);
+    const cool = g.r.fx.heat;
+    sh.heat = 0; g.update(1 / 60);
+    const rest = g.r.fx.heat;
+    return { max, hot, pushed, cool, rest };`);
+  check('the guns cooking warps the glass, and it settles back as they cool',
+    heat.hot > 0.5 && heat.pushed === heat.hot && heat.cool === 0 && heat.rest === 0,
+    `heat ${heat.hot.toFixed(3)} at 90% of ${heat.max}, uniform ${heat.pushed}, ${heat.cool} at 30%, ${heat.rest} cold`);
 
   check('switching back to an owned ship works', sw.type === 'scout', sw.m);
   const eq = await E(`const m = g.buyEquip('laser'); return { m, lvl: g.state.equip.laser };`);

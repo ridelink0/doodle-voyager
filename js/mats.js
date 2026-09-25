@@ -27,14 +27,22 @@ export const SPACE_BG = 0x05070c, SPACE_HAZE = 0x0e1420;
 
 // Quality knobs every neon-ink material reads. They are the same uniform
 // objects in every material, so a preset change is a number change and never
-// a shader recompile.
-const SHARED = {
+// a shader recompile. Exported because applyPreset() in render.js is the one
+// place allowed to decide what a preset means.
+export const SHARED = {
   uHatchDirs: { value: 3 },      // 0 none, 1-3 stripe directions
   uHatchK: { value: 0.016 },     // stripe spacing per unit of distance (screen density)
   uLitRef: { value: 0.8 },       // irradiance that counts as fully lit
+  uTime: { value: 0 },           // seconds, the one clock every animated shader reads
+  uStarCorona: { value: 1 },     // 0 skips the star's corona branch (low preset)
+  uCloudAmt: { value: 0.28 },    // 0 skips a planet's cloud/band branch (low preset)
+  uFlickerOn: { value: 1 },      // 0 skips the plasma flicker branch (low preset)
+  uToneBands: { value: 4 },      // cel-shading bands the lit tone is quantised into
 };
 export function setHatchDirs(n) { SHARED.uHatchDirs.value = n; }
 export function hatchDirs() { return SHARED.uHatchDirs.value; }
+// One clock for every animated material: render(t) pushes it once a frame.
+export function setTime(t) { SHARED.uTime.value = t; }
 
 const VERT_PARS = /* glsl */ `
 varying vec3 vDvLocal;
@@ -61,6 +69,7 @@ uniform float uRimStrength;
 uniform float uHatchDirs;
 uniform float uHatchK;
 uniform float uLitRef;
+uniform float uToneBands;
 float dvHash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
 float dvNoise(vec2 p) {
   vec2 i = floor(p), f = fract(p);
@@ -92,6 +101,14 @@ float dvHatch(vec2 hp, vec2 dx, vec2 dy, float sp, float shade) {
 // outgoingLight is already declared by the Lambert shader at this point.
 const FRAG_MAIN = /* glsl */ `
 {
+  // Cel shading: quantise the lit tone into bands before the pen goes on. The
+  // smooth Lambert gradient showing between the strokes is what reads as
+  // plastic; a stepped one reads as drawn.
+  float dvLum = dot(outgoingLight, vec3(0.299, 0.587, 0.114));
+  if (uToneBands > 1.5 && dvLum > 1e-4) {
+    float band = floor(dvLum * uToneBands + 0.5) / uToneBands;
+    outgoingLight *= band / dvLum;
+  }
   // shade from the light that arrived, divided by the albedo, so a dark hull
   // and a pale one hatch at the same light level
   vec3 dvIrr = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse;
@@ -134,6 +151,7 @@ export function neonize(m, { rim = PAL.cyan, rimStrength = 0.55, hatch = null } 
     shader.uniforms.uHatchDirs = SHARED.uHatchDirs;
     shader.uniforms.uHatchK = SHARED.uHatchK;
     shader.uniforms.uLitRef = SHARED.uLitRef;
+    shader.uniforms.uToneBands = SHARED.uToneBands;
     shader.vertexShader = shader.vertexShader
       .replace('#include <common>', `#include <common>\n${VERT_PARS}`)
       .replace('#include <begin_vertex>', `#include <begin_vertex>\n${VERT_MAIN}`);
@@ -173,6 +191,228 @@ export function glow(color = PAL.amber) {
     color, blending: THREE.NoBlending, opacity: ID.GLOW,
   }));
 }
+// ---------------------------------------------------------------------------
+// A star's disc: limb darkening, and a noisy corona on the medium and full
+// presets. glow() is untouched, so lamps, screens and signage keep the flat
+// fill they have today; only a star opts into this.
+const STAR_FRAG_PARS = /* glsl */ `
+varying vec3 vStN;
+varying vec3 vStW;
+uniform float uLD1, uLD2;      // quadratic limb-darkening coefficients
+uniform float uCorona;         // 0 low preset (branch skipped), 1 medium/full
+uniform float uCoronaK;        // corona strength, 0..1
+uniform float uTime;
+float stHash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
+float stNoise(vec2 p) {
+  vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+  float a = stHash(i), b = stHash(i + vec2(1.0, 0.0)), c = stHash(i + vec2(0.0, 1.0)), d = stHash(i + vec2(1.0, 1.0));
+  return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+}`;
+const STAR_VERT_PARS = /* glsl */ `varying vec3 vStN; varying vec3 vStW;`;
+const STAR_VERT_MAIN = /* glsl */ `
+vStN = normalize(mat3(modelMatrix) * normal);
+vStW = (modelMatrix * vec4(transformed, 1.0)).xyz;`;
+const STAR_FRAG_MAIN = /* glsl */ `
+{
+  vec3 n = normalize(vStN);
+  vec3 v = normalize(cameraPosition - vStW);
+  float mu = clamp(dot(n, v), 0.0, 1.0);
+  // quadratic limb-darkening law, Wikipedia "Limb darkening"; coefficients
+  // chosen at the strong end of the real G-star range (u1 .28-.35, u2 .32-.35,
+  // MNRAS 457:3573) because the disc renders small on screen and the effect
+  // needs to read at a glance, not match a photometric curve.
+  float ld = 1.0 - uLD1 * (1.0 - mu) - uLD2 * (1.0 - mu) * (1.0 - mu);
+  // never fully dark at the limb: a black ring falls under the bloom
+  // threshold (0.85) and reads as a broken sphere, not a soft edge.
+  outgoingLight *= clamp(ld, 0.22, 1.0);
+  if (uCorona > 0.5) {
+    float edge = 1.0 - mu;
+    float n2 = stNoise(n.xy * 2.4 + uTime * 0.045) * 0.5 + stNoise(n.xy * 5.1 - uTime * 0.03) * 0.5;
+    float flare = smoothstep(0.62, 1.0, edge) * (0.55 + 0.45 * n2);
+    outgoingLight += outgoingLight * flare * uCoronaK * 1.6;
+  }
+}`;
+const STAR_KEY = 'dv-neon-star-1';
+export function starGlow(color) {
+  return cached('star' + color, () => {
+    const m = new THREE.MeshBasicMaterial({ color, blending: THREE.NoBlending, opacity: ID.GLOW });
+    m.onBeforeCompile = (shader) => {
+      shader.uniforms.uLD1 = { value: 0.35 };
+      shader.uniforms.uLD2 = { value: 0.30 };
+      shader.uniforms.uCorona = SHARED.uStarCorona;
+      shader.uniforms.uCoronaK = { value: 0.35 };
+      shader.uniforms.uTime = SHARED.uTime;
+      shader.vertexShader = shader.vertexShader
+        .replace('#include <common>', `#include <common>\n${STAR_VERT_PARS}`)
+        .replace('#include <begin_vertex>', `#include <begin_vertex>\n${STAR_VERT_MAIN}`);
+      shader.fragmentShader = shader.fragmentShader
+        .replace('#include <common>', `#include <common>\n${STAR_FRAG_PARS}`)
+        .replace('#include <opaque_fragment>', `${STAR_FRAG_MAIN}\n#include <opaque_fragment>`);
+    };
+    m.customProgramCacheKey = () => STAR_KEY;
+    return m;
+  });
+}
+
+// ---------------------------------------------------------------------------
+// A planet's disc: the neon-ink shader plus an atmosphere rim, a twilight arc
+// at the terminator and a procedural cloud (rocky) or band (giant) layer.
+// neonize() is untouched, so ships, stations, moons and rings keep the exact
+// shader they have today.
+const PLANET_FRAG_PARS = FRAG_PARS + /* glsl */ `
+uniform vec3 uAtmoColor;
+uniform float uAtmoStrength;
+uniform float uTwilightSharp;
+uniform float uTwilightStrength;
+uniform float uCloudAmt;       // 0 low, 0.28 medium/full - see presetFor()
+uniform float uCloudFreq;
+uniform float uCloudDrift;     // clouds only, not bands
+uniform float uGiant;          // 0 rocky (patchy clouds) / 1 giant (bands), from p.re>6
+uniform vec3 uSunDirObj;       // sun direction in the planet's OWN object space, per frame
+uniform float uTime;
+float plHash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
+float plNoise(vec2 p) {
+  vec2 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
+  float a = plHash(i), b = plHash(i + vec2(1.0, 0.0)), c = plHash(i + vec2(0.0, 1.0)), d = plHash(i + vec2(1.0, 1.0));
+  return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+}
+float plFbm(vec2 p) {
+  // Mark Fixermark's WebGL fire-shader FBM loop, 3 octaves not 4 (planets
+  // are usually 100-300px on screen, a 4th octave is invisible spend).
+  float v = 0.0, amp = 0.5;
+  for (int i = 0; i < 3; i++) { v += amp * plNoise(p); p *= 2.02; amp *= 0.5; }
+  return v;
+}`;
+const PLANET_FRAG_MAIN = /* glsl */ `
+{
+  // --- posterize the lit tone first, the same formula the ink shader uses ---
+  float dvLum = dot(outgoingLight, vec3(0.299, 0.587, 0.114));
+  if (uToneBands > 1.5 && dvLum > 1e-4) {
+    float band = floor(dvLum * uToneBands + 0.5) / uToneBands;
+    outgoingLight *= band / dvLum;
+  }
+  vec3 n = normalize(vDvLocalN);
+  float NdotL = dot(n, normalize(uSunDirObj));
+  // --- twilight arc: brightest where the terminator meets the silhouette,
+  // i.e. NdotL near 0 AND the fresnel term (grazing view) is high. Not a
+  // scattering integral, an exp() falloff around the terminator band. ---
+  float dvFresT = pow(1.0 - clamp(dot(normalize(normal), normalize(vViewPosition)), 0.0, 1.0), 4.0);
+  float twilight = exp(-abs(NdotL) * uTwilightSharp) * dvFresT;
+  outgoingLight += uAtmoColor * twilight * uTwilightStrength;
+  // --- atmosphere rim: the same fresnel the hatch ink rim uses below, tinted
+  // by the atmosphere colour, so a planet gets a physically-suggestive limb
+  // colour and not another flat cyan outline. ---
+  outgoingLight += uAtmoColor * dvFresT * uAtmoStrength;
+  // --- cloud / band layer: the hatch block's dominant-axis projection, run
+  // again here because this block comes before it in the final file ---
+  if (uCloudAmt > 0.001) {
+    vec3 dvAn = abs(n);
+    vec2 chp = dvAn.y > max(dvAn.x, dvAn.z) ? vDvLocal.xz : (dvAn.x > dvAn.z ? vDvLocal.zy : vDvLocal.xy);
+    chp *= vDvScale * uCloudFreq;
+    float cloud;
+    if (uGiant > 0.5) {
+      // bands: 1D stripes across the projected "latitude" axis, warped by fbm
+      float warp = plFbm(chp * 0.35) * 2.0;
+      cloud = smoothstep(0.15, 0.85, sin(chp.y * 1.6 + warp) * 0.5 + 0.5);
+    } else {
+      // patchy clouds: fbm threshold, slow independent drift on x only
+      cloud = smoothstep(0.55, 0.72, plFbm(chp + vec2(uTime * uCloudDrift, 0.0)));
+    }
+    // clouds are lit the way the surface is (multiplied into the already-shaded
+    // outgoingLight, not added on top) and fade out on the night side so they
+    // do not glow in the dark.
+    float dayGate = clamp(NdotL * 2.0 + 0.6, 0.0, 1.0);
+    outgoingLight = mix(outgoingLight, outgoingLight * 0.55 + vec3(0.92, 0.94, 0.98) * 0.5, cloud * uCloudAmt * dayGate);
+  }
+}`;
+const PLANET_KEY = 'dv-neon-planet-1';
+export function neonizePlanet(m, { atmo = PAL.cyan, atmoStrength = 0.5, giant = false } = {}) {
+  const atmoColor = new THREE.Color(atmo);
+  m.onBeforeCompile = (shader) => {
+    shader.uniforms.uAtmoColor = { value: atmoColor };
+    shader.uniforms.uAtmoStrength = { value: atmoStrength };
+    shader.uniforms.uTwilightSharp = { value: 6.0 };
+    shader.uniforms.uTwilightStrength = { value: 0.6 };
+    shader.uniforms.uCloudAmt = SHARED.uCloudAmt;
+    shader.uniforms.uCloudFreq = { value: 2.2 };
+    shader.uniforms.uCloudDrift = { value: 0.015 };
+    shader.uniforms.uGiant = { value: giant ? 1 : 0 };
+    shader.uniforms.uSunDirObj = { value: new THREE.Vector3(0, 0, 1) };
+    shader.uniforms.uToneBands = SHARED.uToneBands;
+    shader.uniforms.uTime = SHARED.uTime;
+    shader.uniforms.uHatchDirs = SHARED.uHatchDirs;
+    shader.uniforms.uHatchK = SHARED.uHatchK;
+    shader.uniforms.uLitRef = SHARED.uLitRef;
+    shader.uniforms.uRimColor = { value: new THREE.Color(0x8fb0ff) };
+    shader.uniforms.uHatchInk = { value: atmoColor.clone().multiplyScalar(0.12) };
+    shader.uniforms.uRimStrength = { value: 0.5 };
+    shader.vertexShader = shader.vertexShader
+      .replace('#include <common>', `#include <common>\n${VERT_PARS}`)
+      .replace('#include <begin_vertex>', `#include <begin_vertex>\n${VERT_MAIN}`);
+    shader.fragmentShader = shader.fragmentShader
+      .replace('#include <common>', `#include <common>\n${PLANET_FRAG_PARS}`)
+      .replace('#include <opaque_fragment>', `${PLANET_FRAG_MAIN}\n${FRAG_MAIN.replace('#include <opaque_fragment>', '')}\n#include <opaque_fragment>`);
+    m.userData.sunUniform = shader.uniforms.uSunDirObj;
+  };
+  m.customProgramCacheKey = () => PLANET_KEY;
+  return m;
+}
+// The temperature bands planetColor() already classifies by, tinted toward what
+// that temperature's atmosphere would scatter: hot = thin scorched orange-red,
+// warm = dusty sand, temperate = pale Rayleigh blue-white, cold = faint violet.
+export function atmoColorFor(teq) {
+  if (teq > 1200) return 0xff8a5c;
+  if (teq > 600) return 0xe8c090;
+  if (teq > 200) return 0xbcd8ff;
+  return 0x9fa8e8;
+}
+
+// ---------------------------------------------------------------------------
+// Engine plume and laser bolt: a hot core down the shape's own Z axis instead
+// of a flat fill, with an optional per-frame flicker. glow() is untouched.
+const PLASMA_PARS = /* glsl */ `
+varying vec2 vPlXY;
+varying float vPlZ;
+uniform float uTime;
+uniform float uCore;       // falloff sharpness, per call site
+uniform float uFlicker;    // 0..1, per call site
+uniform float uFlickerOn;  // 0 low preset (branch skipped)
+uniform vec3 uHotColor;
+float plgHash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }`;
+const PLASMA_VERT_PARS = /* glsl */ `varying vec2 vPlXY; varying float vPlZ;`;
+const PLASMA_VERT_MAIN = /* glsl */ `vPlXY = position.xy; vPlZ = position.z;`;
+const PLASMA_FRAG_MAIN = /* glsl */ `
+{
+  float r2 = dot(vPlXY, vPlXY);
+  float core = exp(-r2 * uCore);
+  float flick = 1.0;
+  if (uFlickerOn > 0.5) {
+    flick = 1.0 + uFlicker * (plgHash(vec2(floor(vPlZ * 0.7), floor(uTime * 9.0))) - 0.5);
+  }
+  outgoingLight = mix(outgoingLight, uHotColor, core * 0.85) * flick;
+}`;
+const PLASMA_KEY = 'dv-neon-plasma-1';
+export function plasmaGlow(color, { core = 3.0, flicker = 0.15, hot = 0xfff4e0 } = {}) {
+  return cached(`plasma${color}|${core}|${flicker}|${hot}`, () => {
+    const m = new THREE.MeshBasicMaterial({ color, blending: THREE.NoBlending, opacity: ID.GLOW });
+    m.onBeforeCompile = (shader) => {
+      shader.uniforms.uTime = SHARED.uTime;
+      shader.uniforms.uCore = { value: core };
+      shader.uniforms.uFlicker = { value: flicker };
+      shader.uniforms.uFlickerOn = SHARED.uFlickerOn;
+      shader.uniforms.uHotColor = { value: new THREE.Color(hot) };
+      shader.vertexShader = shader.vertexShader
+        .replace('#include <common>', `#include <common>\n${PLASMA_VERT_PARS}`)
+        .replace('#include <begin_vertex>', `#include <begin_vertex>\n${PLASMA_VERT_MAIN}`);
+      shader.fragmentShader = shader.fragmentShader
+        .replace('#include <common>', `#include <common>\n${PLASMA_PARS}`)
+        .replace('#include <opaque_fragment>', `${PLASMA_FRAG_MAIN}\n#include <opaque_fragment>`);
+    };
+    m.customProgramCacheKey = () => PLASMA_KEY;
+    return m;
+  });
+}
+
 // Unlit picture (video, nav display, signs). No ink drawn inside it.
 export function screen(map) {
   return new THREE.MeshBasicMaterial({ map, blending: THREE.NoBlending, opacity: ID.SCREEN });

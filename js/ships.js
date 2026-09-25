@@ -3,7 +3,7 @@
 // Static parts are merged into one mesh per material, so a furnished ship is
 // a few dozen draw calls however much furniture it carries (Chromebook GPUs).
 import * as THREE from 'three';
-import { ink, glow, screen, paint, label, labelTexture, PAL, ID } from './mats.js';
+import { ink, glow, plasmaGlow, screen, paint, label, labelTexture, PAL, ID } from './mats.js';
 
 export const SHIPS = {
   scout: {
@@ -97,9 +97,14 @@ const C = {
   yellow: ink(PAL.yellow), brass: ink(0x8a6a2a), net: ink(0x6f8f4e), terra: ink(0x7a3a22), board: ink(0x35503f),
   hole: ink(0x121218),
 };
+// The engine disc and the cone tip take the plasma shader: a hot core down the
+// shape's own Z axis instead of a flat fill that leaves all the work to bloom.
+// Everything else here is still plain glow().
 const G = {
-  lamp: glow(0xffd27a), yellow: glow(PAL.yellow), teal: glow(0x8ee6de), pink: glow(0xffb3cc), green: glow(0xaef08e),
-  orange: glow(PAL.orange), blue: glow(0xa8c2ff), red: glow(0xff6f5e), engine: glow(0xffb347),
+  lamp: glow(0xffd27a), yellow: plasmaGlow(PAL.yellow, { core: 2.6, flicker: 0.12, hot: 0xfff4e0 }),
+  teal: glow(0x8ee6de), pink: glow(0xffb3cc), green: glow(0xaef08e),
+  orange: glow(PAL.orange), blue: glow(0xa8c2ff), red: glow(0xff6f5e),
+  engine: plasmaGlow(0xffb347, { core: 2.2, flicker: 0.12, hot: 0xfff4e0 }),
   str1: glow(0xffe79a), str2: glow(0xffa8d0),   // string lights only (they twinkle)
 };
 

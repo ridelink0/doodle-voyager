@@ -7,7 +7,7 @@ import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { ID, setHatchDirs } from './mats.js';
+import { ID, setHatchDirs, setTime, SHARED } from './mats.js';
 
 // Scaled space: anything beyond S0 is pulled in on a log curve and shrunk by
 // the same factor, so it keeps its angular size and stays inside the far plane.
@@ -32,7 +32,7 @@ uniform sampler2D tColor;
 uniform sampler2D tDepth;
 uniform vec2 res;
 uniform float time, cnear, cfar, boil, lw, scale;
-uniform float flash, damage, warp, blackout, glowBoost;
+uniform float flash, damage, warp, blackout, glowBoost, heat;
 uniform vec3 inkCyan, inkRed, spaceBg, spaceHaze, edgeDim;
 varying vec2 vUv;
 
@@ -61,6 +61,23 @@ void main() {
   vec2 wob = vec2(noise(fc * 0.02 + frame * 1.7), noise(fc * 0.02 + 31.0 + frame * 1.3)) - 0.5;
   vec2 px = 1.0 / res;
   vec2 uv = vUv + wob * px * 2.2 * (0.35 + boil * 0.65);
+  // Cracked glass and heat shimmer are a UV offset taken before anything is
+  // sampled, so the edge detection below rides the same distorted uv and the
+  // pen lines bend with the colour instead of staying straight through it.
+  if (damage > 0.001) {
+    // fake refraction normal: the gradient of a noise field, not a texture.
+    vec2 cp = fc * 0.004;
+    float n0 = noise(cp), n1 = noise(cp + vec2(0.6, 0.0)), n2 = noise(cp + vec2(0.0, 0.6));
+    vec2 crackN = vec2(n1 - n0, n2 - n0) * 14.0;
+    uv += crackN * px * 9.0 * damage;
+  }
+  if (heat > 0.001) {
+    // low-frequency and scrolling upward: hot air distorts sideways far more
+    // than it lifts the whole image, so only uv.x moves.
+    vec2 hp = fc * 0.012 + vec2(0.0, -time * 9.0);
+    float h0 = noise(hp), h1 = noise(hp + vec2(0.4, 0.0));
+    uv.x += (h1 - h0) * 3.0 * px.x * 60.0 * heat;
+  }
   vec2 ox = vec2(px.x * lw, 0.0), oy = vec2(0.0, px.y * lw);
 
   vec4 c0 = texture2D(tColor, uv);
@@ -79,6 +96,18 @@ void main() {
     float z0 = lin(d0);
     float lap = abs(lin(dL) + lin(dR) + lin(dD) + lin(dU) - 4.0 * z0) / z0;
     eDepth = smoothstep(0.02, 0.07, lap);
+    // A hand inking a strong edge presses harder and the line comes out
+    // thicker: a second tap at 2.6x the radius only registers where the depth
+    // break is steep, so a glancing edge stays thin and a close silhouette
+    // doubles up. Four extra taps, and only inside this interior-near-an-edge
+    // guard, never across the whole frame.
+    vec2 ox2 = ox * 2.6, oy2 = oy * 2.6;
+    float zL2 = texture2D(tDepth, uv - ox2).x, zR2 = texture2D(tDepth, uv + ox2).x;
+    float zD2 = texture2D(tDepth, uv - oy2).x, zU2 = texture2D(tDepth, uv + oy2).x;
+    if (isBg(zL2) + isBg(zR2) + isBg(zD2) + isBg(zU2) < 3.5) {
+      float lap2 = abs(lin(zL2) + lin(zR2) + lin(zD2) + lin(zU2) - 4.0 * z0) / z0;
+      eDepth = max(eDepth, smoothstep(0.05, 0.16, lap2) * 0.55);
+    }
   }
   float id0 = c0.a;
   float eId = step(0.08, max(max(abs(cL.a - id0), abs(cR.a - id0)), max(abs(cU.a - id0), abs(cD.a - id0))));
@@ -110,13 +139,26 @@ void main() {
         float hit = 1.0 - isBg(texture2D(tDepth, uv + toC * f * 0.35 * warp).x);
         s = max(s, hit * (1.0 - f * 0.85));
       }
-      col = mix(col, inkCyan, clamp(s * 1.2, 0.0, 1.0));
+      // Cheap chromatic approximation, not a true per-channel sample split
+      // (that would triple sixteen texture reads): the streak reads cyan near
+      // the vanishing point and drifts to a warm white-violet at the rim,
+      // which is what real chromatic spreading looks like at a glance.
+      float rq = length(vUv - 0.5);
+      vec3 warpTint = mix(inkCyan, vec3(1.0, 0.87, 0.95), smoothstep(0.08, 0.5, rq));
+      col = mix(col, warpTint, clamp(s * 1.2, 0.0, 1.0));
     }
   } else {
     // already lit, hatched and rim-lit by the neon-ink materials
     col = toS(c0.rgb);
     // glowing surfaces are pushed past the bloom threshold
     if (isId(id0, 0.6)) col *= glowBoost;
+    // Foreground streaks too: a ship or an asteroid passing close during the
+    // spool used to sit perfectly sharp next to streaking stars.
+    if (warp > 0.001) {
+      vec2 toC = vec2(0.5) - vUv;
+      vec3 streak = col + texture2D(tColor, uv + toC * 0.012 * warp).rgb + texture2D(tColor, uv + toC * 0.024 * warp).rgb;
+      col = mix(col, toS(streak * 0.3333), warp * 0.6);
+    }
   }
   col = mix(col, edgeInk, clamp(edge, 0.0, 1.0) * edgeK);
 
@@ -231,10 +273,12 @@ export class Cloud {
 // The resolution setting (0.6 low / 0.8 medium / 1 full) also picks the look's
 // cost: hatch directions, bloom and how hard glowing surfaces are pushed. Every
 // knob is a uniform or a pass flag, so switching never recompiles a shader.
+// Fewer tone bands on low is more graphic-novel, not a compromise, the same way
+// low already draws one hatch direction instead of three.
 export function presetFor(q) {
-  if (q < 0.7) return { name: 'low', hatchDirs: 1, bloom: false, glowBoost: 1.0, blur: 0 };
-  if (q < 0.95) return { name: 'medium', hatchDirs: 2, bloom: true, glowBoost: 1.6, blur: 0.75 };
-  return { name: 'full', hatchDirs: 3, bloom: true, glowBoost: 2.0, blur: 1.0 };
+  if (q < 0.7) return { name: 'low', hatchDirs: 1, bloom: false, glowBoost: 1.0, blur: 0, corona: false, cloudAmt: 0, flicker: false, toneBands: 3 };
+  if (q < 0.95) return { name: 'medium', hatchDirs: 2, bloom: true, glowBoost: 1.6, blur: 0.75, corona: true, cloudAmt: 0.28, flicker: true, toneBands: 4 };
+  return { name: 'full', hatchDirs: 3, bloom: true, glowBoost: 2.0, blur: 1.0, corona: true, cloudAmt: 0.28, flicker: true, toneBands: 5 };
 }
 
 const _vp = /* @__PURE__ */ new THREE.Matrix4();
@@ -254,13 +298,14 @@ export class Renderer {
     this.camera = new THREE.PerspectiveCamera(72, 1, 0.05, FAR);
     this.quality = 1;
     this.boil = 1;
-    this.fx = { flash: 0, damage: 0, warp: 0, blackout: 0 };
+    this.fx = { flash: 0, damage: 0, warp: 0, blackout: 0, heat: 0 };
     this.pointMats = new Set();
     this.post = new THREE.ShaderMaterial({
       uniforms: {
         tColor: { value: null }, tDepth: { value: null }, res: { value: new THREE.Vector2(1, 1) },
         time: { value: 0 }, cnear: { value: 0.05 }, cfar: { value: FAR }, boil: { value: 1 }, lw: { value: 1 },
         scale: { value: 1 }, flash: { value: 0 }, damage: { value: 0 }, warp: { value: 0 }, blackout: { value: 0 },
+        heat: { value: 0 },
         glowBoost: { value: 2.0 },
         inkCyan: { value: hex3(0x4deeff) },
         inkRed: { value: hex3(0xff3b5c) },
@@ -301,6 +346,12 @@ export class Renderer {
     const p = presetFor(this.quality);
     this.preset = p.name;
     setHatchDirs(p.hatchDirs);
+    // The expensive branches in the materials are switched by number, never by
+    // a second compiled variant: low sets them to zero and the branch is skipped.
+    SHARED.uStarCorona.value = p.corona ? 1 : 0;
+    SHARED.uCloudAmt.value = p.cloudAmt;
+    SHARED.uFlickerOn.value = p.flicker ? 1 : 0;
+    SHARED.uToneBands.value = p.toneBands;
     this.bloomPass.enabled = p.bloom;
     // Turning the blur back on after the low preset must not reproject from
     // the camera it last saw, which may be a whole scene ago.
@@ -342,6 +393,7 @@ export class Renderer {
     const g = this.gl;
     const u = this.post.uniforms;
     u.time.value = t;
+    setTime(t);
     u.boil.value = this.boil;
     u.cnear.value = this.camera.near;
     u.cfar.value = this.camera.far;
@@ -349,6 +401,7 @@ export class Renderer {
     u.damage.value = this.fx.damage;
     u.warp.value = this.fx.warp;
     u.blackout.value = this.fx.blackout;
+    u.heat.value = this.fx.heat;
     g.setRenderTarget(this.rt);
     g.setClearColor(0x000000, 0);
     g.clear(true, true, true);

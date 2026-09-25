@@ -4,7 +4,7 @@
 // with the Sun at the origin and galactic axes (see util.js). Everything is
 // drawn relative to the player's ship through render.squash.
 import * as THREE from 'three';
-import { ink, glow, lineMat, ID, neonize, PAL } from './mats.js';
+import { ink, glow, lineMat, ID, neonize, PAL, starGlow, neonizePlanet, atmoColorFor } from './mats.js';
 import { Cloud, squash } from './render.js';
 import { buildStation } from './actors.js';
 import {
@@ -15,6 +15,10 @@ import {
 export const FUELS = ['ION', 'PLASMA', 'DEUTERIUM'];
 const col = (hex) => new THREE.Color(hex);
 const V = new THREE.Vector3();
+// Scratch for the per-planet sun direction written every frame: no new
+// Vector3/Quaternion inside a per-frame function.
+const _sunDir = new THREE.Vector3();
+const _sunQ = new THREE.Quaternion();
 const SPHERE = new THREE.IcosahedronGeometry(1, 3);
 const LOWSPHERE = new THREE.IcosahedronGeometry(1, 1);
 
@@ -407,8 +411,9 @@ class SystemView {
     this.bodies = [];
     this.textures = [];
     this.mats = [];
-    const star = new THREE.Mesh(SPHERE, glow(starColor(sys.star.teff)));
+    const star = new THREE.Mesh(SPHERE, starGlow(starColor(sys.star.teff)));
     this.group.add(star);
+    this.starMesh = star;
     this.bodies.push({ kind: 'star', name: sys.name, r: sys.star.r, mesh: star, pos: { ...sys.pos }, sys, planet: null });
     for (const p of u.planetsOf(sys)) {
       let mat;
@@ -417,7 +422,16 @@ class SystemView {
       // A rented face never shares a cached material: the decal is in its uniforms.
       if (p.ad != null) { mat = adPlanetMat(p, baseTex); this.mats.push(mat); }
       else if (baseTex) { mat = texMat(baseTex); this.mats.push(mat); }
-      else mat = ink(p.color);
+      else {
+        // A flat-colour planet gets the atmosphere/twilight/cloud shader, which
+        // needs its own uSunDirObj per mesh, so it can no longer come out of
+        // ink()'s cache keyed on colour alone. A system only ever has a handful
+        // of planets alive, and this.mats disposes them.
+        mat = neonizePlanet(new THREE.MeshLambertMaterial({
+          color: p.color, flatShading: true, blending: THREE.NoBlending, opacity: ID.INK,
+        }), { atmo: atmoColorFor(p.teq ?? 300), giant: p.re > 6 });
+        this.mats.push(mat);
+      }
       const m = new THREE.Mesh(SPHERE, mat);
       this.group.add(m);
       const body = { kind: p.dwarf ? 'dwarf planet' : 'planet', name: p.name, r: p.r, mesh: m, pos: { x: 0, y: 0, z: 0 }, sys, planet: p };
@@ -459,7 +473,22 @@ class SystemView {
       else if (b.kind === 'moon') this.u.moonPos(b.parent, b.planet, t, b.pos);
       const s = squash(b.pos.x - ship.x, b.pos.y - ship.y, b.pos.z - ship.z, b.mesh.position);
       b.mesh.scale.setScalar(b.fixedScale ? s : b.r * s);
-      if (b.planet && b.kind !== 'moon') b.mesh.rotation.y = t * 0.02;
+      if (b.planet && b.kind !== 'moon') {
+        b.mesh.rotation.y = t * 0.02;
+        // The twilight arc needs the sun direction in the planet's own object
+        // space, which three.js hands no shader: write it here, once per planet
+        // per frame. Everything in this view is squashed relative to the ship,
+        // so the star is not at the group's origin - the direction is the star
+        // mesh's own position minus this planet's. Rotating a direction only
+        // needs the inverse of the mesh's own spin; the translation drops out,
+        // and the quaternion is already current from the rotation.y above.
+        const sun = b.mesh.material.userData.sunUniform;
+        if (sun) {
+          _sunDir.copy(this.starMesh.position).sub(b.mesh.position).normalize();
+          _sunDir.applyQuaternion(_sunQ.copy(b.mesh.quaternion).invert());
+          sun.value.copy(_sunDir);
+        }
+      }
     }
     // orbits
     const P = this.orbitPos, N = this.orbitN, B = sys.basis;
