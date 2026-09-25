@@ -832,7 +832,9 @@ export class Game {
     let targetSpeed;
     if (sh.cruise) {
       const cmax = this.stat('cruise') * (sh.boost ? 3 : 1);
-      targetSpeed = Math.max(vmaxSub, Math.max(sh.throttle, 0.15) * Math.min(cmax, 0.1 * ctx.dnear));
+      // Cruise always outruns sublight (by a quarter at least), even where the
+      // distance cap near a body would otherwise hold it at sublight speed.
+      targetSpeed = Math.max(vmaxSub * 1.25, Math.max(sh.throttle, 0.15) * Math.min(cmax, 0.1 * ctx.dnear));
       targetSpeed = Math.min(targetSpeed, limit);
       sh.cs = sh.cs < targetSpeed ? damp(sh.cs, targetSpeed, 0.9, dt) : damp(sh.cs, targetSpeed, 4, dt);
       sh.vel.copy(fwd).multiplyScalar(sh.cs);

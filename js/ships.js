@@ -756,7 +756,114 @@ function cockpit(k, s, P) {
   k.pop();
   k.block(-0.36, F(1.22), 0.36, F(2.62));
   k.use('helm', 'sit at the helm', 0, 1.0, F(2.3), 1.4);
+  helmGear(k, s, P, F, sz);
   return { spawn: new THREE.Vector3(0, 0, F(3.55)), seat: { pos: new THREE.Vector3(0, 1.2, sz) } };
+}
+
+// ---- the flight deck: screen banks on the side walls (low and mid height,
+// never on the ceiling) and the gear a real cockpit has around the seat ----
+const PANEL_KINDS = ['radar', 'hull', 'log', 'wave', 'stars', 'cams', 'fuel', 'grid'];
+const panelCache = new Map();
+function panelTex(kind) {
+  if (panelCache.has(kind)) return panelCache.get(kind);
+  const W = 256, H = 160, c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const g = c.getContext('2d');
+  let seed = kind.length * 9301 + kind.charCodeAt(0) * 49297;
+  const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
+  g.fillStyle = '#070a12'; g.fillRect(0, 0, W, H);
+  g.strokeStyle = '#1b2a44'; g.lineWidth = 1;
+  for (let x = 0; x < W; x += 16) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
+  for (let y = 0; y < H; y += 16) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
+  g.font = '15px "Patrick Hand", cursive';
+  const cyan = '#4deeff', pink = '#ff4de1', amber = '#ffc23c', red = '#ff3b5c', green = '#5dff9a';
+  g.lineWidth = 2;
+  if (kind === 'radar') {
+    g.strokeStyle = cyan;
+    for (const r of [22, 44, 66]) { g.beginPath(); g.arc(90, 80, r, 0, Math.PI * 2); g.stroke(); }
+    g.beginPath(); g.moveTo(90, 80); g.lineTo(150, 40); g.stroke();
+    g.fillStyle = red; for (let i = 0; i < 5; i++) g.fillRect(40 + rnd() * 100, 25 + rnd() * 110, 5, 5);
+    g.fillStyle = cyan; g.fillText('CONTACTS 5', 170, 40); g.fillText('RANGE 12 ku', 170, 62);
+  } else if (kind === 'hull') {
+    g.strokeStyle = cyan; g.strokeRect(30, 50, 110, 60); g.beginPath(); g.moveTo(140, 50); g.lineTo(175, 80); g.lineTo(140, 110); g.stroke();
+    const bars = [['HULL', 0.92, green], ['SHIELD', 0.7, cyan], ['AIR', 1, cyan], ['HEAT', 0.3, amber]];
+    bars.forEach(([t, v, col], i) => { g.fillStyle = col; g.fillText(t, 186, 30 + i * 32); g.fillRect(186, 36 + i * 32, 60 * v, 6); });
+  } else if (kind === 'log') {
+    const lines = ['> pump 3: ION refused', '> SPIRAL BOUND GALACTIC', '  thanks you for waiting', '> red guys: 2 wings', '> hold music: track 4', '> nav: course plotted', '> air: nominal'];
+    lines.forEach((t, i) => { g.fillStyle = i === 1 ? pink : cyan; g.fillText(t, 12, 24 + i * 20); });
+  } else if (kind === 'wave') {
+    for (const [col, amp, f] of [[cyan, 30, 0.06], [pink, 18, 0.11]]) {
+      g.strokeStyle = col; g.beginPath();
+      for (let x = 0; x <= W; x += 4) { const y = 80 + Math.sin(x * f) * amp * (0.6 + 0.4 * Math.sin(x * 0.013)); if (x) g.lineTo(x, y); else g.moveTo(x, y); }
+      g.stroke();
+    }
+    g.fillStyle = amber; g.fillText('ENGINE HARMONICS', 12, 150);
+  } else if (kind === 'stars') {
+    for (let i = 0; i < 70; i++) { g.fillStyle = rnd() > 0.85 ? amber : '#cfe8ff'; g.fillRect(rnd() * W, rnd() * H, 2, 2); }
+    g.strokeStyle = pink; g.beginPath(); g.moveTo(30, 130); g.lineTo(120, 70); g.lineTo(210, 90); g.stroke();
+    g.fillStyle = pink; g.fillText('COURSE', 180, 150);
+  } else if (kind === 'cams') {
+    for (let i = 0; i < 4; i++) {
+      const x = 10 + (i % 2) * 124, y = 8 + Math.floor(i / 2) * 76;
+      for (let n = 0; n < 220; n++) { const v = Math.floor(rnd() * 90); g.fillStyle = `rgb(${v},${v},${v + 20})`; g.fillRect(x + rnd() * 116, y + rnd() * 68, 2, 2); }
+      g.strokeStyle = cyan; g.strokeRect(x, y, 116, 68); g.fillStyle = cyan; g.fillText('CAM ' + (i + 1), x + 6, y + 18);
+    }
+  } else if (kind === 'fuel') {
+    g.fillStyle = amber; g.fillText('FUEL MIX', 12, 24);
+    ['ION', 'PLASMA', 'DEUT'].forEach((t, i) => { g.strokeStyle = cyan; g.strokeRect(20 + i * 78, 40, 52, 100); g.fillStyle = [cyan, pink, amber][i]; const v = [0.8, 0.35, 0.1][i]; g.fillRect(22 + i * 78, 138 - 96 * v, 48, 96 * v); g.fillText(t, 22 + i * 78, 156); });
+  } else {
+    g.strokeStyle = green;
+    for (let i = 0; i < 12; i++) { g.beginPath(); g.moveTo(rnd() * W, rnd() * H); g.lineTo(rnd() * W, rnd() * H); g.stroke(); }
+    g.fillStyle = green; g.fillText('POWER GRID OK', 12, 150);
+  }
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  panelCache.set(kind, t);
+  return t;
+}
+function helmGear(k, s, P, F, sz) {
+  const wallX = s.W / 2 - T - 0.03;
+  // side-wall screen banks: a low row near the floor and a mid row, both sides
+  const cols = Math.max(2, Math.min(4, Math.floor((s.L * 0.34) / 0.78)));
+  let n = 0;
+  for (const side of [-1, 1]) {
+    for (let c = 0; c < cols; c++) {
+      const z = F(0.95 + c * 0.78);
+      for (const [y, w, h] of [[0.42, 0.66, 0.4], [1.12, 0.66, 0.4]]) {
+        const kind = PANEL_KINDS[(n++ * 3 + (side > 0 ? 1 : 0)) % PANEL_KINDS.length];
+        k.box(side * wallX - 0.02, y - h / 2 - 0.04, z - w / 2 - 0.04, side * wallX + 0.02, y + h / 2 + 0.04, z + w / 2 + 0.04, C.black);
+        const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), screen(panelTex(kind)));
+        k.add(m, side * (wallX - 0.03), y, z, -side * HP);
+      }
+    }
+  }
+  // throttle quadrant on the right of the seat, flight stick on the left
+  k.box(0.42, 0, sz - 0.3, 0.62, 0.58, sz + 0.05, C.dark);
+  for (const [x, knob] of [[0.47, G.orange], [0.57, G.teal]]) {
+    k.rod(x, 0.58, sz - 0.12, x, 0.8, sz - 0.2, 0.018, C.steel, 6);
+    k.box(x - 0.03, 0.78, sz - 0.23, x + 0.03, 0.84, sz - 0.17, knob);
+  }
+  k.box(-0.62, 0, sz - 0.3, -0.42, 0.58, sz + 0.05, C.dark);
+  k.rod(-0.52, 0.58, sz - 0.12, -0.52, 0.84, sz - 0.14, 0.024, C.steel, 6);
+  k.box(-0.56, 0.84, sz - 0.18, -0.48, 0.93, sz - 0.1, C.black);
+  k.box(-0.51, 0.93, sz - 0.15, -0.49, 0.95, sz - 0.13, G.red);
+  // toggle-switch rows on the dashboard's front face
+  for (let i = 0; i < 8; i++) {
+    const x = -0.49 + i * 0.14;
+    k.box(x - 0.02, 0.12, F(0.4), x + 0.02, 0.2, F(0.44), C.steel);
+    k.box(x - 0.012, 0.18, F(0.44), x + 0.012, 0.24, F(0.47), i % 3 ? C.black : G.green);
+  }
+  // keyboard shelf in front of the seat
+  k.box(-0.34, 0.66, F(0.52), 0.34, 0.69, F(0.78), C.dark);
+  for (let r = 0; r < 3; r++) for (let i = 0; i < 9; i++) k.box(-0.3 + i * 0.067, 0.69, F(0.56 + r * 0.07), -0.25 + i * 0.067, 0.705, F(0.61 + r * 0.07), C.black);
+  // fire extinguisher by the seat and grab handles on the walls
+  k.cyl(-0.8, sz + 0.2, 0.07, 0, 0.5, C.pink, 10);
+  k.box(-0.83, 0.5, sz + 0.17, -0.77, 0.56, sz + 0.23, C.dark);
+  for (const side of [-1, 1]) {
+    k.rod(side * (wallX - 0.08), 1.75, F(1.0), side * (wallX - 0.08), 1.75, F(1.6), 0.02, C.steel, 6);
+    // pipe runs along the upper walls (pipes, not screens: nothing is shown up top)
+    for (const dy of [0, 0.12]) k.rod(side * (wallX - 0.06), s.H - 0.25 - dy, F(0.2), side * (wallX - 0.06), s.H - 0.25 - dy, F(Math.min(s.L - 0.6, 4.4)), 0.035, dy ? C.steel : C.dark, 6);
+  }
 }
 
 // The breach panel fills a real opening in a side wall; the lever sits 1.5 m
@@ -1249,7 +1356,9 @@ export function buildInterior(type, paintName = 'yellow') {
   const ck = cockpit(k, s, P);
   const breach = breachPanel(k, s);
   s.rooms(k, s, P);
-  for (const [x, y, z, i, d] of s.lights) k.light(x, y, z, i, d);
+  // Small ships are dim and moody, big ones carry a lot of light (Gev).
+  const lightK = { small: 0.7, medium: 1.0, large: 2.4 }[SHIPS[type] && SHIPS[type].cls] || 1;
+  for (const [x, y, z, i, d] of s.lights) k.light(x, y, z, i * lightK, d);
   const merged = k.build();
   redrawSigns(k.signs);
   const hw = s.W / 2, hl = s.L / 2;
