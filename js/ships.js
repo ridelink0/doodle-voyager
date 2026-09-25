@@ -117,6 +117,8 @@ const _m = new THREE.Matrix4(), _n = new THREE.Matrix3(), _up = new THREE.Vector
 class Kit {
   constructor() {
     this.group = new THREE.Group();
+    this.doors = [];
+    this.props = [];
     this.parts = new Map();
     this.frame = new THREE.Matrix4();
     this.stack = [];
@@ -196,6 +198,21 @@ class Kit {
       if (alongZ) this.block(c - T / 2, a, c + T / 2, b); else this.block(a, c - T / 2, b, c + T / 2);
     };
     const hs = holes.map((o) => ({ y0: 0, y1: DOOR_H, ...o })).sort((p, q) => p.a - q.a);
+    // A doorway starts at the floor; a window does not. Only doorways get
+    // leaves, and they slide apart when somebody walks up to them.
+    for (const o of hs) {
+      if (o.y0 > 0.1) continue;
+      const w = (o.b - o.a) / 2, hh = o.y1 - o.y0;
+      for (const side of [-1, 1]) {
+        const leaf = new THREE.Mesh(BOX(), C.steel);
+        leaf.scale.set(alongZ ? T * 0.8 : w, hh, alongZ ? w : T * 0.8);
+        const mid = (o.a + o.b) / 2, off = side * w / 2;
+        if (alongZ) leaf.position.set(c, o.y0 + hh / 2, mid + off);
+        else leaf.position.set(mid + off, o.y0 + hh / 2, c);
+        this.group.add(leaf);
+        this.doors.push({ mesh: leaf, closed: leaf.position.clone(), open: side * w * 0.95, alongZ, t: 0 });
+      }
+    }
     let s = s0;
     for (const o of hs) { piece(s, o.a, 0, h); piece(o.a, o.b, 0, o.y0); piece(o.a, o.b, o.y1, h); s = o.b; }
     piece(s, s1, 0, h);
@@ -819,6 +836,13 @@ function cockpit(k, s, P) {
   k.pop();
   k.block(-0.36, F(1.22), 0.36, F(2.62));
   k.use('helm', 'sit at the helm', 0, 1.0, F(2.3), 1.4);
+  // Eject: a guarded red button on the seat arm, and the switch beside it that
+  // chooses which hatch you go out of.
+  k.box(0.34, 0.5, sz - 0.02, 0.46, 0.56, sz + 0.1, C.dark);
+  k.box(0.37, 0.56, sz + 0.01, 0.43, 0.6, sz + 0.07, G.red);
+  k.use('eject', 'eject through the hatch', 0.4, 0.9, sz + 0.04, 0.9);
+  k.box(0.34, 0.5, sz + 0.16, 0.46, 0.54, sz + 0.26, C.steel);
+  k.use('hatch', 'switch the hatch, top or bottom', 0.4, 0.9, sz + 0.21, 0.9);
   helmGear(k, s, P, F, sz);
   return { spawn: new THREE.Vector3(0, 0, F(3.55)), seat: { pos: new THREE.Vector3(0, 1.2, sz) } };
 }
@@ -1436,6 +1460,28 @@ export function buildInterior(type, paintName = 'yellow') {
   // Small ships are dim and moody, big ones carry a lot of light (Gev).
   const lightK = { small: 0.7, medium: 1.0, large: 2.4 }[SHIPS[type] && SHIPS[type].cls] || 1;
   for (const [x, y, z, i, d] of s.lights) k.light(x, y, z, i * lightK, d);
+  // Things to pick up. They are placed on clear floor, so no layout has to
+  // list them and every ship gets some.
+  {
+    const hw = s.W / 2 - 0.8, hl = s.L / 2 - 0.8;
+    const want = s.L > 40 ? 9 : s.L > 20 ? 6 : 4;
+    let seed = s.L * 131 + s.W * 17;
+    const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
+    const kinds = [
+      ['crate', 0.34, C.wood], ['crate', 0.28, C.steel], ['mug', 0.12, C.white],
+      ['tin', 0.16, C.teal], ['book', 0.2, C.pink],
+    ];
+    for (let i = 0, tries = 0; i < want && tries < 80; tries++) {
+      const x = (rnd() * 2 - 1) * hw, z = (rnd() * 2 - 1) * hl;
+      const [id, size, mat] = kinds[Math.floor(rnd() * kinds.length)];
+      const m = new THREE.Mesh(BOX(), mat);
+      m.scale.set(size, size * (id === 'mug' ? 1.1 : 0.8), size);
+      m.position.set(x, size * 0.4, z);
+      k.group.add(m);
+      k.props.push({ mesh: m, id, home: m.position.clone() });
+      i++;
+    }
+  }
   const merged = k.build();
   monotone(k.group, type);
   redrawSigns(k.signs);
@@ -1445,6 +1491,7 @@ export function buildInterior(type, paintName = 'yellow') {
   const bounds = new THREE.Box3(new THREE.Vector3(-hw - 0.25, 0, -hl - 0.25), new THREE.Vector3(hw + 0.25, s.H, hl + 0.25));
   const tw = merged.get(G.str2) || null, blink = k.blink, spin = k.spin;
   return {
+    doors: k.doors, props: k.props,
     group: k.group, colliders: k.colliders, interact: k.interact,
     spawn: ck.spawn, spawnYaw: 0, seat: ck.seat, screens: k.screens, breach, bounds, lights: k.lights,
     animate(dt, t) {

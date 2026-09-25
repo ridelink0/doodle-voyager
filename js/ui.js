@@ -186,6 +186,13 @@ export class UI {
     bar('h-fuel', sh.fuel, g.stat('tank'), `${sh.fuel.toFixed(0)} / ${g.stat('tank')}`);
     this.set('h-fuel-t', d.fuel);
     bar('h-heat', sh.heat, g.stat('heat'), sh.overheat ? 'HOT' : '');
+    // Air is only shown when it is a problem: a sealed hull never mentions it.
+    const airRow = document.getElementById('h-air-row');
+    if (airRow) {
+      const show = sh.air < 99.5;
+      airRow.hidden = !show;
+      if (show) bar('h-air', sh.air, 100, sh.air < 25 ? 'LOW' : '');
+    }
     this.set('h-cr', fmtInt(g.state.credits));
     const where = `${ctx.system && g.u.ctx.systemDist < 3e6 ? ctx.system.name + ' · ' : ''}${ctx.galaxy ? ctx.galaxy.name : 'between galaxies'}`;
     this.set('h-where', where + (ctx.nearest && ctx.nearest.kind !== 'galaxy' ? ` · near ${ctx.nearest.name}` : ''));

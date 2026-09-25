@@ -240,6 +240,70 @@ try {
     return bad;`);
   check('every new hull can be bought, flown and walked', roster.length === 0, roster.join(',') || 'all 9 ok');
 
+  // air, doors, carrying and the eject hatch
+  const air = await E(`
+    g.switchShip('scout'); g.setMode('foot');
+    const max = g.stat('hull');
+    g.ship.hull = max; g.ship.air = 90; g.breach = null;
+    for (let i = 0; i < 20; i++) g.update(0.1);
+    const sealed = g.ship.air;
+    g.ship.hull = max * 0.4; g.ship.air = 90;
+    for (let i = 0; i < 20; i++) g.update(0.1);
+    const holed = g.ship.air;
+    g.ship.hull = max; g.ship.air = 100;
+    return { sealed, holed };`);
+  check('air only drains when the hull is holed', air.sealed > 90 && air.holed < 90, JSON.stringify({ sealed: air.sealed.toFixed(1), holed: air.holed.toFixed(1) }));
+
+  const rate = await E(`
+    const out = {};
+    for (const id of ['gelpen', 'cruiser']) {
+      g.state.credits = 99999; g.buyShip(id); g.setMode('foot');
+      const max = g.stat('hull');
+      g.ship.hull = max * 0.4; g.ship.air = 100;
+      for (let i = 0; i < 20; i++) g.update(0.1);
+      out[id] = 100 - g.ship.air;
+      g.ship.hull = max; g.ship.air = 100;
+    }
+    g.switchShip('scout'); g.setMode('foot');
+    return out;`);
+  check('a small ship loses its air faster than a big one', rate.gelpen > rate.cruiser, JSON.stringify(rate));
+
+  const doors = await E(`
+    g.setMode('foot');
+    const d = (g.interior.doors || [])[0];
+    if (!d) return { none: true };
+    g.player.x = d.closed.x + 8; g.player.z = d.closed.z + 8;
+    for (let i = 0; i < 20; i++) g.update(0.1);
+    const shut = d.t;
+    g.player.x = d.closed.x; g.player.z = d.closed.z + 0.8;
+    for (let i = 0; i < 20; i++) g.update(0.1);
+    return { shut, open: d.t, moved: Math.abs(d.mesh.position.x - d.closed.x) + Math.abs(d.mesh.position.z - d.closed.z) };`);
+  check('doors open when you walk up and close behind you', doors.none ? true : (doors.shut < 0.1 && doors.open > 0.85 && doors.moved > 0.05), JSON.stringify(doors));
+
+  const carry = await E(`
+    g.setMode('foot');
+    const p = (g.interior.props || [])[0];
+    if (!p) return { none: true };
+    g.player.x = p.mesh.position.x; g.player.z = p.mesh.position.z + 0.6; g.player.y = 0;
+    const took = g.takeCarried();
+    for (let i = 0; i < 10; i++) g.update(0.05);
+    const held = g.carried === p && p.mesh.position.y > 0.8;
+    g.dropCarried();
+    return { took, held, dropped: g.carried === null };`);
+  check('you can pick a thing up, carry it and put it down', carry.none ? true : (carry.took && carry.held && carry.dropped), JSON.stringify(carry));
+
+  const ej = await E(`
+    g.switchShip('scout'); g.setMode('helm'); g.breach = null;
+    g.ship.hatch = 'top'; g.eject();
+    const outMode = g.mode, up = g.eva ? g.eva.rel.y : 0;
+    g.climbIn();
+    const back = g.mode;
+    g.setMode('helm'); g.ship.hatch = 'bottom'; g.eject();
+    const down = g.eva ? g.eva.rel.y : 0;
+    g.climbIn();
+    return { outMode, back, up, down };`);
+  check('the seat button ejects through the top or the bottom hatch', ej.outMode === 'eva' && ej.back === 'foot' && ej.up > 0 && ej.down < 0, JSON.stringify(ej));
+
   // gravity: a planet pulls a drifting ship, and a black hole keeps it
   const grav = await E(`
     g.setMode('helm'); g.ship.throttle = 0; g.ship.cruise = false; g.ship.auto = null;
@@ -253,8 +317,14 @@ try {
     for (let i = 0; i < 60; i++) g.update(0.05);
     const p1 = earth.pos(g.t);
     const d1 = Math.hypot(g.ship.pos.x - p1.x, g.ship.pos.y - p1.y, g.ship.pos.z - p1.z);
-    return { d0, d1, speed: g.ship.vel.length(), flag: g.grav && g.grav.kind };`);
-  check('gravity pulls a drifting ship toward a planet', grav.d1 < grav.d0 && grav.speed > 5, JSON.stringify({ ...grav, d0: Math.round(grav.d0), d1: Math.round(grav.d1), speed: Math.round(grav.speed) }));
+    // The planet orbits, so a raw distance can grow while gravity is working.
+    // What gravity does is give a ship at rest a velocity pointing at the body.
+    const to = { x: p1.x - g.ship.pos.x, y: p1.y - g.ship.pos.y, z: p1.z - g.ship.pos.z };
+    const tl = Math.hypot(to.x, to.y, to.z) || 1;
+    const v = g.ship.vel, vl = v.length() || 1e-9;
+    const aim = (v.x * to.x + v.y * to.y + v.z * to.z) / (vl * tl);
+    return { d0, d1, speed: vl, aim, flag: g.grav && g.grav.kind };`);
+  check('gravity pulls a drifting ship toward a planet', grav.speed > 5 && grav.aim > 0.9 && grav.flag === 'planet', JSON.stringify({ ...grav, d0: Math.round(grav.d0), d1: Math.round(grav.d1), speed: Math.round(grav.speed) }));
 
   const hole = await E(`
     const bh = g.u.ctx.bodies.find(b => b.kind === 'sight' && b.sight && b.sight.kind === 'blackhole')

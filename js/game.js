@@ -184,6 +184,7 @@ export class Game {
     this.ship = {
       type, pos: prev ? prev.pos : { x: 0, y: 0, z: 0 }, q: prev ? prev.q : new THREE.Quaternion(), vel: new THREE.Vector3(),
       throttle: 0, cs: 0, cruise: false, boost: false, auto: null, warp: null,
+      air: 100, hatch: 'top',
       hull: s.hull[type] ?? SHIPS[type].hull, shield: 0, fuel: s.fuel[type] ?? SHIPS[type].tank, heat: 0, overheat: false,
       gunIdx: 0, fireCd: 0, lastHit: 0, bombs: 4, bombTimer: 0,
     };
@@ -352,6 +353,7 @@ export class Game {
     }
     switch (e.code) {
       case 'KeyE': this.interact(); break;
+      case 'KeyF': if (this.mode === 'foot') this.takeCarried(); else if (this.mode === 'helm') this.eject(); break;
       case 'KeyL': this.courseToPump(); break;
       // a tap moves the throttle a quarter; holding keeps ramping (updateHelmInput)
       case 'KeyW': if (this.mode === 'helm' && !e.repeat) this.ship.throttle = Math.min(1, this.ship.throttle + 0.25); break;
@@ -404,15 +406,118 @@ export class Game {
     }
     return best;
   }
+  // Doors open for whoever walks up to them, and close behind. Nothing has to
+  // be pressed: the hull knows you are there.
+  updateDoors(dt) {
+    const doors = this.interior && this.interior.doors;
+    if (!doors || !doors.length) return;
+    const inside = this.mode === 'foot' || this.mode === 'helm';
+    const p = this.player;
+    for (const d of doors) {
+      const c = d.closed;
+      const near = inside && Math.hypot(p.x - c.x, p.z - c.z) < 2.4 && Math.abs(p.y - c.y) < 2.4;
+      const want = near ? 1 : 0;
+      // The speed differs opening and closing, so standing on the threshold
+      // does not make the leaves flutter.
+      d.t += (want - d.t) * Math.min(1, dt * (near ? 7 : 3.5));
+      if (d.alongZ) d.mesh.position.z = c.z + d.open * d.t;
+      else d.mesh.position.x = c.x + d.open * d.t;
+    }
+  }
+
+  // Air is only a problem for a ship that has been holed. A healthy hull holds
+  // its air; a damaged one leaks, and a small ship has less of it to lose.
+  updateAir(dt) {
+    const sh = this.ship, max = this.stat('hull');
+    if (this.mode === 'title' || this.mode === 'dead') return;
+    const holed = sh.hull < max - 0.5 || !!this.breach;
+    const cls = SHIPS[sh.type] ? SHIPS[sh.type].cls : 'medium';
+    if (holed) {
+      const rate = ({ small: 2.2, medium: 1.3, large: 0.7 }[cls] || 1.3) * (this.breach ? 2.5 : 1) * (1 - sh.hull / max);
+      sh.air = Math.max(0, sh.air - rate * dt);
+      if (sh.air < 25 && !this.airWarned) { this.airWarned = true; this.ui.toast('Air is going. Patch the hull or buy a canister.'); }
+      if (sh.air <= 0 && this.mode !== 'eva' && this.mode !== 'drone') { this.die('air'); return; }
+    } else if (sh.air < 100) {
+      sh.air = Math.min(100, sh.air + dt * 3);
+      if (sh.air > 40) this.airWarned = false;
+    }
+  }
+
+  // Carrying: the held thing floats where you are looking and can be dropped
+  // or thrown.
+  updateCarry(dt) {
+    const c = this.carried;
+    if (!c) return;
+    if (this.mode !== 'foot') { this.dropCarried(); return; }
+    const p = this.player;
+    const fx = -Math.sin(p.yaw), fz = -Math.cos(p.yaw);
+    const want = { x: p.x + fx * 1.05, y: p.y + 1.25 + Math.sin(p.pitch) * 0.9, z: p.z + fz * 1.05 };
+    const m = c.mesh;
+    m.position.x += (want.x - m.position.x) * Math.min(1, dt * 14);
+    m.position.y += (want.y - m.position.y) * Math.min(1, dt * 14);
+    m.position.z += (want.z - m.position.z) * Math.min(1, dt * 14);
+    m.rotation.y += dt * 1.2;
+  }
+
+  nearestProp() {
+    const props = (this.interior && this.interior.props) || [];
+    const p = this.player;
+    let best = null, bd = 1.9;
+    for (const it of props) {
+      if (it === this.carried) continue;
+      const d = Math.hypot(it.mesh.position.x - p.x, it.mesh.position.z - p.z);
+      if (d < bd && Math.abs(it.mesh.position.y - p.y) < 2.2) { bd = d; best = it; }
+    }
+    return best;
+  }
+  takeCarried() {
+    if (this.mode !== 'foot') return false;
+    if (this.carried) { this.dropCarried(); return true; }
+    const it = this.nearestProp();
+    if (!it) return false;
+    this.carried = it;
+    audio.sfx('ui');
+    this.ui.toast(`Picked up the ${it.id}. F drops it, click throws it.`);
+    return true;
+  }
+  dropCarried(throwIt = false) {
+    const c = this.carried;
+    if (!c) return;
+    this.carried = null;
+    const p = this.player;
+    if (throwIt) {
+      const fx = -Math.sin(p.yaw), fz = -Math.cos(p.yaw);
+      c.mesh.position.set(p.x + fx * 2.6, Math.max(0.2, p.y + 1.2), p.z + fz * 2.6);
+    } else {
+      c.mesh.position.y = 0.2;
+    }
+  }
+
+  // Ejecting: out through the hatch the switch is set to, with a shove.
+  eject() {
+    if (this.mode !== 'helm' && this.mode !== 'foot') return;
+    if (this.breach) { this.ui.toast('The hull is already open. Use the hole.'); return; }
+    const up = this.ship.hatch === 'top';
+    const rel = new THREE.Vector3(0, up ? 3.4 : -3.4, 0).applyQuaternion(this.ship.q);
+    const out = new THREE.Vector3(0, up ? 9 : -9, 0).applyQuaternion(this.ship.q);
+    this.eva = { rel, vel: out, yaw: 0, pitch: up ? -0.5 : 0.5, roll: 2.2, o2: 120 };
+    if (this.wind) { this.wind.stop(); this.wind = null; }
+    this.setMode('eva');
+    audio.sfx('door');
+    this.ui.big('EJECTED', `Out through the ${up ? 'top' : 'bottom'} hatch. Fly back to a hatch and press E.`);
+  }
+
   interact() {
     if (this.mode === 'helm') { this.standUp(); return; }
-    if (this.mode === 'eva') { if (this.evaNearHole()) this.reenter(); return; }
+    if (this.mode === 'eva') { if (this.evaNearHole()) this.reenter(); else if (this.evaNearHatch()) this.climbIn(); return; }
     if (this.mode !== 'foot') return;
     const it = this.nearestInteract();
     if (!it) return;
     const toast = (t) => this.ui.toast(t);
     switch (it.id) {
       case 'helm': this.setMode('helm'); audio.sfx('ui'); break;
+      case 'eject': this.eject(); break;
+      case 'hatch': this.ship.hatch = this.ship.hatch === 'top' ? 'bottom' : 'top'; audio.sfx('ui'); toast(`Hatch set to ${this.ship.hatch}.`); break;
       case 'media': case 'tv': this.unlock(); this.media.open(); break;
       case 'nav': this.ui.open('map'); break;
       case 'music': audio.next(); toast(`Now playing: ${audio.current ? audio.current.name : 'nothing'} (N skips)`); break;
@@ -716,6 +821,9 @@ export class Game {
     this.updateAlert(dt);
     this.updateFx(dt);
     this.media.update(dt);
+    this.updateDoors(dt);
+    this.updateAir(dt);
+    this.updateCarry(dt);
     if (this.interior.animate) this.interior.animate(dt, this.t);
     this.visit(ctx);
     this.autosave = (this.autosave || 0) + dt;
@@ -1591,6 +1699,13 @@ export class Game {
     this.setMode('eva');
     this.ui.big('OUTSIDE', 'WASD + Space/Ctrl to thrust. Fly back to the hole and press E. 120 s of air.');
   }
+  // A hatch counts as a way back in, the same as the hole does.
+  evaNearHatch() {
+    if (!this.eva) return false;
+    const up = this.ship.hatch === 'top';
+    const p = new THREE.Vector3(0, up ? 3.4 : -3.4, 0).applyQuaternion(this.ship.q);
+    return this.eva.rel.distanceTo(p) < 4.5;
+  }
   evaNearHole() {
     if (!this.eva || !this.exterior.hole) return false;
     const hp = this.exterior.hole.pos.clone().applyQuaternion(this.ship.q);
@@ -1619,6 +1734,16 @@ export class Game {
       this.reenter(true);
       this.ui.big('YOU BLACKED OUT', 'The emergency tether reeled you in. The hole is taped over.');
     }
+  }
+  // Back in through the hatch: no hole to seal, so this is the simple case.
+  climbIn() {
+    this.player.x = 0;
+    this.player.z = this.interior.spawn ? this.interior.spawn.z : 0;
+    this.player.y = 0;
+    this.eva = null;
+    this.setMode('foot');
+    audio.sfx('door');
+    this.ui.toast('Back inside. The hatch seals behind you.');
   }
   reenter(forced = false) {
     const b = this.interior.breach;
