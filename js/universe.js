@@ -8,7 +8,7 @@ import { ink, glow, lineMat, ID, neonize, PAL } from './mats.js';
 import { Cloud, squash } from './render.js';
 import { buildStation } from './actors.js';
 import {
-  rng, hash, radecDir, pcToU, mlyToPc, lateralScale, auToU, earthRToU, sunRToU,
+  rng, hash, radecDir, pcToU, mlyToPc, mlyToU, lateralScale, auToU, earthRToU, sunRToU,
   clamp, TAU, pick, vdist,
 } from './util.js';
 
@@ -65,6 +65,20 @@ function classify(type = '') {
   return 'spiral';
 }
 const DEFAULT_KPC = { dwarf: 0.8, lenticular: 10, barred: 14, elliptical: 16, irregular: 4, spiral: 13 };
+
+// How populated a galaxy is. The count is keyed to the galaxy's real physical
+// radius (rkpc) and its type, calibrated at load off the Milky Way's own real
+// system count, so every other galaxy carries the same density of stars,
+// stations, pumps and zones as home. The ceilings are purely the memory and
+// generation-time budget; the floors stop a dwarf ever being literally empty.
+const KIND_MULT = { spiral: 1.0, barred: 1.0, lenticular: 0.55, elliptical: 0.5, irregular: 0.3, dwarf: 0.12 };
+const N_MIN = { spiral: 500, barred: 500, lenticular: 300, elliptical: 300, irregular: 150, dwarf: 40 };
+const N_MAX = { spiral: 5000, barred: 5000, lenticular: 3000, elliptical: 3000, irregular: 1200, dwarf: 320 };
+const SYSTEM_CACHE_BUDGET = 24;  // galaxies held generated at once, the Milky Way aside
+const UNCHARTED_BUDGET = 4000;   // procedural galaxies past the catalogue (matches buildClouds)
+const PROC_SIGHT_BUDGET = 600;   // seeded sights across every galaxy ever visited
+const OTHER_ZONE_CAP = 220;      // enemy zones outside the Milky Way, per roll
+const ZONE_GALAXY_CAP = 48;      // galaxies generated for zones in one roll
 
 // Orbit plane basis from a normal.
 function basis(n) {
@@ -137,6 +151,183 @@ function texMat(tex) {
 }
 function ringMat(color) {
   return neonize(new THREE.MeshLambertMaterial({ color, side: THREE.DoubleSide, flatShading: true, blending: THREE.NoBlending, opacity: ID.INK }), { rim: PAL.amber, rimStrength: 0.5 });
+}
+
+// ---------------------------------------------------------------------------
+// Billboard Worlds: Spiral Bound Galactic rents out planet faces. A handful of
+// planets carry one of these, projected onto a circular cap of the sphere in
+// the planet's own local space, so it turns with the planet and is lit and
+// hatched by the same star as the rest of the surface.
+// House ads are Gev's own products; everything else is invented for this
+// universe. No real third-party brands, on purpose.
+const AD_COPY = [
+  { title: 'RIDELINK', sub: 'Find your pack. Motorcycles only, planets sold separately.', bg: PAL.paper, fg: PAL.cyan, edge: PAL.blue },
+  { title: 'FITCHECK', sub: 'Rate this fit: six out of ten, would suffocate in style.', bg: PAL.paper, fg: PAL.teal, edge: PAL.teal },
+  { title: 'GEV CLIENT', sub: 'See through blocks. Not through hull breaches.', bg: PAL.paper, fg: PAL.blue, edge: PAL.cyan },
+  { title: 'ION JUICE', sub: 'Now thirty per cent fewer explosions.', bg: PAL.dark, fg: PAL.yellow, edge: PAL.orange },
+  { title: 'PLASMA-MART', sub: 'Fill her up. Pilot optional.', bg: PAL.dark, fg: PAL.orange, edge: PAL.yellow },
+  { title: 'TANK FARM DEUTERIUM', sub: 'Premium fuel, budget prices, questionable maths.', bg: PAL.dark, fg: PAL.yellow, edge: PAL.orange },
+  { title: 'JOIN THE RED MARGIN', sub: 'Horns provided. Dental not.', bg: PAL.paper, fg: PAL.red, edge: PAL.red },
+  { title: 'BE EVIL, BE EMPLOYED', sub: 'Enquire at any dreadnought.', bg: PAL.paper, fg: PAL.red, edge: PAL.red },
+  { title: 'HULL-SURE', sub: 'We cover breach, blast and bad parking.', bg: PAL.dark, fg: PAL.yellow, edge: PAL.amber },
+  { title: 'SPIRAL BOUND MUTUAL', sub: 'Crash? What crash?', bg: PAL.dark, fg: PAL.amber, edge: PAL.yellow },
+  { title: 'TOW-4-U', sub: 'Out of fuel? We will drag you home. Slowly.', bg: PAL.dark, fg: PAL.orange, edge: PAL.yellow },
+  { title: 'UPGRADE YOUR HULL', sub: 'Your ex will be so mad.', bg: PAL.paper, fg: PAL.cyan, edge: PAL.blue },
+  { title: 'HOLD MUSIC UNLIMITED', sub: 'Ten thousand hours, zero skips. (Lies.)', bg: PAL.dark, fg: PAL.teal, edge: PAL.teal },
+  { title: 'SPACE SNACKS', sub: 'Now with forty per cent less vacuum.', bg: PAL.dark, fg: PAL.yellow, edge: PAL.orange },
+  { title: 'WARP IN SIXTY', sub: 'Or your money back. (No refunds.)', bg: PAL.dark, fg: PAL.orange, edge: PAL.amber },
+  { title: 'BILLBOARD WORLDS', sub: 'This hemisphere available. The planet was not consulted.', bg: PAL.paper, fg: PAL.amber, edge: PAL.amber },
+];
+export { AD_COPY };
+export const AD_COUNT = AD_COPY.length;
+const AD_RIDELINK = 0, AD_RED_MARGIN = 6;
+
+// Drawn once per copy and kept for the life of the page: the same sign shows up
+// on every planet that rolled it, and a SystemView must never dispose these
+// (fly away, fly back, and a disposed-but-bound texture renders black).
+const adTexCache = new Map();
+// Greedy word wrap, centred, drawn downward from `top`. Returns the y the next
+// block should start at, so a long headline pushes its punch line down instead
+// of printing over it.
+function wrapText(g, text, cx, top, maxW, lh) {
+  const words = String(text).split(/\s+/);
+  const lines = [];
+  let line = '';
+  for (const w of words) {
+    const t = line ? `${line} ${w}` : w;
+    if (line && g.measureText(t).width > maxW) { lines.push(line); line = w; }
+    else line = t;
+  }
+  if (line) lines.push(line);
+  lines.forEach((l, i) => g.fillText(l, cx, top + i * lh));
+  return top + lines.length * lh;
+}
+function adTexture(i) {
+  let t = adTexCache.get(i);
+  if (t) return t;
+  const a = AD_COPY[i];
+  const W = 256, H = 256;
+  const c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const g = c.getContext('2d');
+  const hex = (v) => `#${col(v).getHexString()}`;
+  g.fillStyle = hex(a.bg); g.fillRect(0, 0, W, H);
+  // soft neon edge: a blurred bright stroke under a thin sharp one
+  g.save();
+  g.filter = 'blur(6px)';
+  g.strokeStyle = hex(a.edge); g.lineWidth = 14;
+  g.strokeRect(12, 12, W - 24, H - 24);
+  g.restore();
+  g.strokeStyle = hex(a.edge); g.lineWidth = 3;
+  g.strokeRect(16, 16, W - 32, H - 32);
+  // The cap only shows the square's inscribed circle, so the copy stays inside
+  // a 180 px column and stacks downward from 72.
+  g.fillStyle = hex(a.fg);
+  g.textAlign = 'center'; g.textBaseline = 'top';
+  g.font = 'bold 30px "Patrick Hand", "Segoe Print", cursive';
+  const afterTitle = wrapText(g, a.title, W / 2, 72, 176, 32);
+  g.font = '17px "Patrick Hand", "Segoe Print", cursive';
+  wrapText(g, a.sub, W / 2, afterTitle + 10, 180, 20);
+  // printed-on wear, so it reads as painted rather than as a UI sticker
+  g.globalAlpha = 0.07;
+  g.fillStyle = '#000';
+  for (let y = 0; y < H; y += 4) g.fillRect(0, y, W, 1);
+  g.globalAlpha = 1;
+  t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.generateMipmaps = false;
+  t.minFilter = THREE.LinearFilter;
+  adTexCache.set(i, t);
+  return t;
+}
+// Which planets rent out a face. Deterministic from the system's own seed, so a
+// sign never moves or flickers between visits.
+function assignAds(sys, out) {
+  if (sys.solar) {
+    for (const p of out) {
+      if (p.name === 'Mars') p.ad = AD_RED_MARGIN;
+      if (p.name === 'Jupiter') p.ad = AD_RIDELINK;
+    }
+    return;
+  }
+  if (!sys.station || !out.length) return;
+  const r = rng(sys.seed ^ 0xad00);
+  if (r() > 0.35) return;
+  // the planet nearest the station's own orbit, so the sign reads as that
+  // station's billboard and not as a random world across the system
+  const st = sys.station.pos;
+  const stR = Math.hypot(st.x - sys.pos.x, st.y - sys.pos.y, st.z - sys.pos.z);
+  let best = out[0], bestD = Infinity;
+  for (const p of out) { const d = Math.abs(p.orbit - stR); if (d < bestD) { bestD = d; best = p; } }
+  best.ad = Math.floor(r() * AD_COPY.length) % AD_COPY.length;
+}
+// The decal itself. Object space only: vAdPos is the vertex position, which on
+// the unit sphere is also the outward normal, so nothing here knows where the
+// camera is. The sign can only move because the planet turned. It is mixed into
+// the albedo before the lighting chunks run, so the star lights it, the night
+// side swallows it and the terminator fades across it for free.
+const AD_DECAL_FS = `
+{
+  vec3 adP = normalize(vAdPos);
+  float adCos = dot(adP, uAdDir);
+  if (adCos > uAdCosOuter) {
+    float adR = sqrt(max(1e-4, 1.0 - uAdCos * uAdCos));
+    vec2 adUv = vec2(dot(adP, uAdU), dot(adP, uAdV)) / adR * 0.5 + 0.5;
+    vec4 adCol = texture2D(uAdMap, clamp(adUv, 0.0, 1.0));
+    diffuseColor.rgb = mix(diffuseColor.rgb, adCol.rgb, smoothstep(uAdCosOuter, uAdCos, adCos));
+  }
+}`;
+function tangentFrame(dir) {
+  const up = Math.abs(dir.y) < 0.99 ? new THREE.Vector3(0, 1, 0) : new THREE.Vector3(1, 0, 0);
+  const u = new THREE.Vector3().crossVectors(up, dir).normalize();
+  const v = new THREE.Vector3().crossVectors(dir, u).normalize();
+  return { u, v };
+}
+// A planet carrying an ad needs its own material instance: the decal lives in
+// the material's uniforms, and ink() hands out one shared material per colour,
+// so a cached one would paint this sign onto every planet of the same colour.
+function adPlanetMat(p, baseTex) {
+  const r = rng(hash(p.name, 'ad'));
+  const d = randUnit(r);
+  const dir = new THREE.Vector3(d.x, d.y, d.z).normalize();
+  const { u, v } = tangentFrame(dir);
+  const half = 22 * (Math.PI / 180);      // cap half angle, the sign's radius on the sphere
+  const feather = 4 * (Math.PI / 180);    // soft edge, so the circle is not a cutout
+  const mat = neonize(new THREE.MeshLambertMaterial({
+    color: p.color, map: baseTex || null, flatShading: true, blending: THREE.NoBlending, opacity: ID.INK,
+  }), { rim: 0x8fb0ff, rimStrength: 0.8 });
+  const decal = adTexture(p.ad);
+  mat.userData.decalDir = dir;
+  mat.userData.ad = p.ad;
+  mat.userData.adFrag = AD_DECAL_FS;
+  mat.userData.adMap = decal;   // shared and permanent: never goes in a view's dispose list
+  const base = mat.onBeforeCompile;
+  mat.onBeforeCompile = (sh) => {
+    base(sh);
+    sh.uniforms.uAdDir = { value: dir };
+    sh.uniforms.uAdU = { value: u };
+    sh.uniforms.uAdV = { value: v };
+    sh.uniforms.uAdCos = { value: Math.cos(half) };
+    sh.uniforms.uAdCosOuter = { value: Math.cos(half + feather) };
+    sh.uniforms.uAdMap = { value: decal };
+    sh.vertexShader = sh.vertexShader
+      .replace('#include <common>', '#include <common>\nvarying vec3 vAdPos;')
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvAdPos = transformed;');
+    sh.fragmentShader = sh.fragmentShader
+      .replace('#include <common>', `#include <common>
+varying vec3 vAdPos;
+uniform vec3 uAdDir, uAdU, uAdV;
+uniform float uAdCos, uAdCosOuter;
+uniform sampler2D uAdMap;`)
+      .replace('#include <map_fragment>', `#include <map_fragment>${AD_DECAL_FS}`);
+  };
+  // neonize pins one program cache key across every ink material; the decal
+  // changes the shader text, so it needs its own key or three.js hands back
+  // the plain program and the sign never appears.
+  const keyOf = mat.customProgramCacheKey;
+  const baseKey = typeof keyOf === 'function' ? keyOf.call(mat) : '';
+  mat.customProgramCacheKey = () => `${baseKey}|ad`;
+  return mat;
 }
 
 // A set of points held in float64 offsets around a centre, re-squashed every
@@ -221,7 +412,11 @@ class SystemView {
     this.bodies.push({ kind: 'star', name: sys.name, r: sys.star.r, mesh: star, pos: { ...sys.pos }, sys, planet: null });
     for (const p of u.planetsOf(sys)) {
       let mat;
-      if (p.tex) { const t = planetTexture(p.tex, hash(p.name), p.color); this.textures.push(t); mat = texMat(t); this.mats.push(mat); }
+      let baseTex = null;
+      if (p.tex) { baseTex = planetTexture(p.tex, hash(p.name), p.color); this.textures.push(baseTex); }
+      // A rented face never shares a cached material: the decal is in its uniforms.
+      if (p.ad != null) { mat = adPlanetMat(p, baseTex); this.mats.push(mat); }
+      else if (baseTex) { mat = texMat(baseTex); this.mats.push(mat); }
       else mat = ink(p.color);
       const m = new THREE.Mesh(SPHERE, mat);
       this.group.add(m);
@@ -362,6 +557,35 @@ const BAZAAR_MODULES = [
   ['fuel', 'Deuterium Only Depot', [1.1, -0.1, -0.7], ['DEUTERIUM']],
 ];
 
+// A galaxy's own little Bazaar. No 'hub' module: that shop screen is the
+// Bazaar's own directory. Fuel twice, so a depot usually sells something,
+// though never guaranteed to be your nozzle.
+const HUB_KINDS = ['fuel', 'shipyard', 'outfitter', 'general', 'fuel', 'media'];
+const HUB_WORD = { shipyard: 'Shipyard', outfitter: 'Outfitters', general: 'General Store', fuel: 'Pumps', media: 'Video Kiosk' };
+
+// The named clusters and superclusters, as regions on the map. Distances and
+// directions are the real ones where a real one exists; the two superclusters
+// and Laniakea are mass concentrations rather than single objects, so they are
+// placed by direction and distance instead of by a catalogue row.
+//   name, kind, anchor (null = Local Group midpoint | {galaxy} | {ra,dec,mly}),
+//   real radius in Mly, how much it thickens the procedural galaxy field, blurb
+const REGIONS = [
+  ['Local Group', 'group', null, 5, 0,
+    'Home. The Milky Way, Andromeda and about eighty much smaller galaxies, bound together by gravity.'],
+  ['Virgo Cluster', 'cluster', { galaxy: 'NGC 4486' }, 7.5, 4,
+    'About 1,300 galaxies around the giant elliptical M87, 54 million light-years out. The Scribbler holds it.'],
+  ['Fornax Cluster', 'cluster', { galaxy: 'NGC 1399' }, 4, 4,
+    'Small, tidy, about 62 million light-years away. The Hole Punch collects the dots.'],
+  ['Coma Cluster', 'cluster', { galaxy: 'NGC 4874' }, 10, 4,
+    'About 330 million light-years out, where the missing mass first showed up. The Smudge hides in it.'],
+  ['Hydra-Centaurus Supercluster', 'supercluster', { ra: 158.0, dec: -46.0, mly: 250 }, 100, 2,
+    'The Great Attractor, behind our own dust in the Zone of Avoidance. Everything drifts this way. So does the Inkblot.'],
+  ['Perseus-Pisces Supercluster', 'supercluster', { ra: 27.5, dec: 36.0, mly: 250 }, 100, 2,
+    'A chain of galaxies more than forty degrees across, just outside Laniakea. The Paper Cut works this wall.'],
+  ['Laniakea Supercluster', 'supercluster', { ra: 158.0, dec: -46.0, mly: 160 }, 250, 0,
+    'Immeasurable heaven: the whole basin that falls toward the Great Attractor. About 100,000 galaxies, and we are in it.'],
+];
+
 export class Universe {
   constructor(renderer) {
     this.renderer = renderer;
@@ -370,7 +594,11 @@ export class Universe {
     this.galaxies = [];
     this.byId = new Map();
     this.sights = [];
+    this.regions = [];
     this.systemCache = new Map();
+    this.cacheOrder = [];   // galaxy ids, least recently used first
+    this.catalogCount = 0;  // galaxies before anything procedural is added
+    this.procSights = 0;
     this.views = new Map();
     this.sightViews = new Map();
     this.details = new Map();
@@ -390,6 +618,7 @@ export class Universe {
     this.buildMilkyWay(exo, stars);
     this.buildGalaxies(gal);
     this.buildSights(sights);
+    this.buildRegions();
     this.buildBazaar();
     this.buildClouds();
   }
@@ -563,6 +792,7 @@ export class Universe {
         out.push(pl);
       }
     }
+    assignAds(sys, out);
     sys.planets = out;
     return out;
   }
@@ -583,6 +813,10 @@ export class Universe {
 
   buildGalaxies(data) {
     const rows = this.rowsOf(data);
+    // Calibrate density off the Milky Way we just built, not off a constant, so
+    // a catalogue refresh can never desync "as busy as home" from home.
+    this.baseN = (this.systemCache.get(this.mw.id) || []).length || 16000;
+    this.baseKpc = DEFAULT_KPC.barred;
     const seen = new Set(['milky way', 'milky way galaxy']);
     for (const row of rows) {
       const name = String(row.name || '').trim();
@@ -608,10 +842,142 @@ export class Universe {
       this.addGalaxy({
         id: 'g:' + key, name, alt: row.alt || '', type: row.type || '', kind, group: row.group || '', real: true,
         pc, mly: row.mly > 0 ? row.mly : (pc * 3.26156) / 1e6, dq: row.dq || 'est', con: row.con || '', mag: row.mag,
-        pos: { x: d.x * u, y: d.y * u, z: d.z * u }, R, seed, rot: q,
+        pos: { x: d.x * u, y: d.y * u, z: d.z * u }, R, rkpc, seed, rot: q,
       });
     }
     this.counts.galaxies = this.galaxies.length;
+    this.catalogCount = this.galaxies.length;
+  }
+
+  // How many star systems a galaxy carries. Pure: same answer every time, so a
+  // galaxy dropped from the cache regenerates bit for bit and saved zone ids
+  // and bookmarks still resolve.
+  systemCountOf(g) {
+    if (g === this.mw) return (this.systemCache.get(this.mw.id) || []).length;
+    const kpc = g.rkpc > 0 ? g.rkpc : DEFAULT_KPC[g.kind] || 10;
+    const raw = this.baseN * Math.pow(kpc / this.baseKpc, 3) * (KIND_MULT[g.kind] ?? 0.3);
+    return clamp(Math.round(raw), N_MIN[g.kind] ?? 150, N_MAX[g.kind] ?? 1200);
+  }
+
+  // Least-recently-used galaxies lose their generated systems. The Milky Way,
+  // the galaxy you are in and the ones being drawn are pinned.
+  touchCache(id) {
+    if (this.mw && id === this.mw.id) return;
+    const i = this.cacheOrder.indexOf(id);
+    if (i >= 0) this.cacheOrder.splice(i, 1);
+    this.cacheOrder.push(id);
+    if (this.cacheOrder.length <= SYSTEM_CACHE_BUDGET) return;
+    const pinned = new Set([this.ctx.galaxy && this.ctx.galaxy.id, ...(this.nearG || []).map((g) => g.id), ...this.details.keys()]);
+    for (let k = 0; k < this.cacheOrder.length && this.cacheOrder.length > SYSTEM_CACHE_BUDGET;) {
+      const cid = this.cacheOrder[k];
+      if (pinned.has(cid) || cid === id) { k++; continue; }
+      this.systemCache.delete(cid);
+      this.cacheOrder.splice(k, 1);
+    }
+  }
+
+  // The named clusters and superclusters, placed once at load.
+  buildRegions() {
+    this.regions = [];
+    for (const [name, kind, anchor, rMly, bias, blurb] of REGIONS) {
+      let pos = null, pc = null;
+      if (!anchor) {
+        const m31 = this.findGalaxy('M31') || this.findGalaxy('Andromeda Galaxy');
+        if (!m31) continue;
+        pos = { x: (this.mw.pos.x + m31.pos.x) / 2, y: (this.mw.pos.y + m31.pos.y) / 2, z: (this.mw.pos.z + m31.pos.z) / 2 };
+        pc = m31.pc / 2;
+      } else if (anchor.galaxy) {
+        const g = this.findGalaxy(anchor.galaxy);
+        if (!g) continue;
+        pos = { ...g.pos };
+        pc = g.pc;
+      } else {
+        const d = radecDir(anchor.ra, anchor.dec), u = mlyToU(anchor.mly);
+        pos = { x: d.x * u, y: d.y * u, z: d.z * u };
+        pc = mlyToPc(anchor.mly);
+      }
+      // Sideways size, not distance: the distance curve is compressed, so a
+      // radius has to be measured with the units-per-parsec scale out there.
+      const rPc = mlyToPc(rMly);
+      const R = rPc * lateralScale(Math.max(pc || rPc, rPc));
+      this.regions.push({ id: `r:${name}`, name, kind, pos, R, pc, mly: rMly, bias, blurb });
+    }
+    this.counts.regions = this.regions.length;
+  }
+
+  // Seeded sights for a galaxy the player has actually come near: a core black
+  // hole for anything big enough to have one, plus a few nebulae and clusters.
+  proceduralSightsFor(g) {
+    if (g.sighted || g === this.mw || this.procSights >= PROC_SIGHT_BUDGET) return;
+    g.sighted = true;
+    const r = rng(g.seed ^ 0x519f7);
+    const push = (s) => { this.sights.push(s); this.procSights++; };
+    const short = g.name.replace(/\s+(Galaxy|Dwarf.*)$/i, '');
+    if (g.kind !== 'dwarf' && g.kind !== 'irregular') {
+      push({ id: `s:${g.id}:bh`, name: `${short} Core`, kind: 'blackhole', note: 'a supermassive black hole, same as ours', pos: { ...g.pos }, R: 1.2e5, color: null, pc: g.pc || null, galaxy: g.name });
+    }
+    const n = clamp(Math.round(this.systemCountOf(g) / 900), 0, 5);
+    const kinds = ['nebula', 'nebula', 'cluster', 'remnant', 'pulsar'];
+    const word = { nebula: 'Nebula', cluster: 'Cluster', remnant: 'Remnant', pulsar: 'Pulsar' };
+    for (let i = 0; i < n && this.procSights < PROC_SIGHT_BUDGET; i++) {
+      const d = randUnit(r), k = g.R * 0.3;
+      const kind = pick(r, kinds);
+      push({
+        id: `s:${g.id}:${i}`, name: `${short} ${word[kind]} ${i + 1}`, kind, note: 'uncatalogued, found by seed',
+        pos: { x: g.pos.x + d.x * k, y: g.pos.y + d.y * k * 0.3, z: g.pos.z + d.z * k },
+        R: { nebula: 3e6, remnant: 2.2e6, cluster: 1.6e6, pulsar: 4e4 }[kind], color: null, pc: g.pc || null, galaxy: g.name,
+      });
+    }
+    this.counts.sights = this.sights.length;
+  }
+
+  // Every galaxy gets somewhere to dock, sized off how busy it is. Data only:
+  // the meshes are built when the player is close, like the Bazaar's.
+  buildGalaxyHub(g) {
+    if (g.hub || g === this.mw) return;
+    const r = rng(g.seed ^ 0x4b05);
+    const n = clamp(Math.round(this.systemCountOf(g) / 700), 1, HUB_KINDS.length);
+    const kinds = HUB_KINDS.slice(0, n);
+    const short = g.name.replace(/\s+(Galaxy|Dwarf.*)$/i, '');
+    const R = g.R * 0.06;
+    const spread = R * 0.5;
+    const off = randUnit(r);
+    const center = { x: g.pos.x + off.x * g.R * 0.4, y: g.pos.y + off.y * g.R * 0.15, z: g.pos.z + off.z * g.R * 0.4 };
+    g.hub = {
+      id: `hub:${g.id}`, name: `${short} Depot`, pos: center, R, galaxy: g,
+      modules: kinds.map((kind, i) => {
+        const d = randUnit(r);
+        // the same licensing rule every pump in the game follows: one, two or
+        // all three nozzles, and never a promise that yours is among them
+        const roll = r();
+        const types = roll < 0.4 ? [pick(r, FUELS)] : roll < 0.75 ? FUELS.filter((f) => f !== pick(r, FUELS)) : [...FUELS];
+        return {
+          id: `hub:${g.id}:${i}`, kind, name: `${short} ${HUB_WORD[kind]}`,
+          fuelTypes: kind === 'fuel' ? types : null,
+          pos: { x: center.x + d.x * spread, y: center.y + d.y * spread * 0.3, z: center.z + d.z * spread }, obj: null,
+        };
+      }),
+    };
+    g.hubBuilt = false;
+  }
+  buildGalaxyHubMeshes(g) {
+    g.hubGroup = new THREE.Group();
+    this.root.add(g.hubGroup);
+    for (const m of g.hub.modules) {
+      const st = buildStation(m.kind, m.fuelTypes ? { fuelTypes: m.fuelTypes } : {});
+      m.obj = st;
+      m.radius = st.radius;
+      g.hubGroup.add(st.group);
+    }
+    g.hubBuilt = true;
+  }
+  dropHub(g) {
+    if (!g || !g.hubGroup) return;
+    // the station groups are clones of shared templates: drop them, never dispose
+    this.root.remove(g.hubGroup);
+    g.hubGroup = null;
+    g.hubBuilt = false;
+    for (const m of g.hub.modules) { m.obj = null; }
   }
 
   buildSights(data) {
@@ -682,7 +1048,7 @@ export class Universe {
     const cap = this.galaxies.length + 4000;
     this.farInk = new Cloud(cap, ID.INK);
     this.farGlow = new Cloud(cap, ID.GLOW);
-    this.sightCloud = new Cloud(this.sights.length + 8, ID.GLOW);
+    this.sightCloud = new Cloud(this.sights.length + 8 + PROC_SIGHT_BUDGET, ID.GLOW);
     for (const c of [this.farInk, this.farGlow, this.sightCloud]) { this.renderer.track(c.mat); this.root.add(c.obj); }
     this.galColor = { ink: col(0x1c2c9a), glow: col(0xffd070), pink: col(0xf2a0b8), sight: col(0xf2a0b8), bazaar: col(0xffd84a) };
   }
@@ -700,9 +1066,9 @@ export class Universe {
 
   systemsOf(g) {
     let list = this.systemCache.get(g.id);
-    if (list) return list;
+    if (list) { this.touchCache(g.id); return list; }
     const r = rng(g.seed ^ 0xa11ce);
-    const n = clamp(Math.round(g.R / 4e6), 10, 120);
+    const n = this.systemCountOf(g);
     const pts = shapePoints(g.kind, g.R, r, n);
     rotateAll(pts, g.rot);
     const short = g.name.replace(/\s+(Galaxy|Dwarf.*)$/i, '');
@@ -714,6 +1080,7 @@ export class Universe {
       }));
     }
     this.systemCache.set(g.id, list);
+    this.touchCache(g.id);
     return list;
   }
 
@@ -723,6 +1090,8 @@ export class Universe {
     if (d) return d;
     const r = rng(g.seed ^ 0xde7a);
     const systems = this.systemsOf(g);
+    this.proceduralSightsFor(g);
+    this.buildGalaxyHub(g);
     const nDecor = g === this.mw ? 3600 : g.kind === 'dwarf' ? 500 : 2200;
     const ink = new Swarm(nDecor, ID.INK);
     const pts = shapePoints(g.kind, g.R, r, nDecor);
@@ -753,7 +1122,41 @@ export class Universe {
     const d = this.details.get(id);
     if (!d) return;
     for (const s of [d.ink, d.glow]) { this.root.remove(s.cloud.obj); this.renderer.pointMats.delete(s.cloud.mat); s.dispose(); }
+    this.dropHub(d.g);
     this.details.delete(id);
+  }
+
+  // The procedural field is capped: past the budget, the galaxy furthest behind
+  // the ship makes room for the one in front of it. Its cell stays marked done,
+  // so re-flying old space does not re-fill it.
+  evictUncharted(ship) {
+    let worst = -1, wd = -1;
+    for (let j = 0; j < this.galaxies.length; j++) {
+      const gg = this.galaxies[j];
+      if (gg.group !== 'UNCHARTED') continue;
+      const d = vdist(gg.pos, ship);
+      if (d > wd) { wd = d; worst = j; }
+    }
+    if (worst < 0) return false;
+    const gone = this.galaxies[worst];
+    this.galaxies.splice(worst, 1);
+    for (let j = worst; j < this.galaxies.length; j++) this.galaxies[j].index = j;
+    this.byId.delete(gone.id);
+    this.dropDetail(gone.id);
+    this.systemCache.delete(gone.id);
+    const k = this.cacheOrder.indexOf(gone.id);
+    if (k >= 0) this.cacheOrder.splice(k, 1);
+    if (gone.sighted) {
+      // its seeded sights go with it, or they hang in empty space forever
+      const before = this.sights.length;
+      this.sights = this.sights.filter((s) => s.galaxy !== gone.name);
+      this.procSights -= before - this.sights.length;
+      this.counts.sights = this.sights.length;
+      for (const s of [...this.sightViews.keys()]) if (!this.sights.some((x) => x.id === s)) { this.sightViews.get(s).dispose(); this.sightViews.delete(s); }
+    }
+    if (this.ctx.galaxy === gone) this.ctx.galaxy = null;
+    if (this.nearG) this.nearG = this.nearG.filter((g) => g !== gone);
+    return true;
   }
 
   // Seeded galaxies past the edge of the catalogues, generated a cell at a time.
@@ -767,16 +1170,26 @@ export class Universe {
       if (this.cellsDone.has(key)) continue;
       this.cellsDone.add(key);
       const r = rng(hash('cell', key));
-      const n = Math.floor(r() * 3.2);
+      // Galaxies really do clump: a cell inside a named cluster or supercluster
+      // rolls more of them than empty field does.
+      const cc = { x: (cx + dx + 0.5) * CELL, y: (cy + dy + 0.5) * CELL, z: (cz + dz + 0.5) * CELL };
+      let mult = 1;
+      for (const reg of this.regions) {
+        if (!reg.bias) continue;
+        if (vdist(cc, reg.pos) < reg.R * 1.2) mult = Math.max(mult, reg.bias);
+      }
+      const n = Math.floor(r() * 3.2 * mult);
       for (let i = 0; i < n; i++) {
         const pos = { x: (cx + dx + r()) * CELL, y: (cy + dy + r()) * CELL, z: (cz + dz + r()) * CELL };
         if (Math.hypot(pos.x, pos.y, pos.z) < 9e9) continue;
+        if (this.galaxies.length - this.catalogCount >= UNCHARTED_BUDGET && !this.evictUncharted(ship)) break;
         const kind = pick(r, ['spiral', 'spiral', 'barred', 'elliptical', 'irregular', 'lenticular', 'dwarf']);
         const id = `u:${key}:${i}`;
         const q = new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 1, 0), new THREE.Vector3(...Object.values(randUnit(r))).normalize());
         this.addGalaxy({
           id, name: `Uncharted ${cx + dx}.${cy + dy}.${cz + dz}-${i + 1}`, alt: 'procedural, not a catalogued galaxy', type: kind, kind,
-          group: 'UNCHARTED', real: false, pc: null, mly: null, dq: 'proc', con: '', pos, R: 5e7 + r() * 2.5e8, seed: hash(id), rot: q,
+          group: 'UNCHARTED', real: false, pc: null, mly: null, dq: 'proc', con: '', pos, R: 5e7 + r() * 2.5e8,
+          rkpc: DEFAULT_KPC[kind] * (0.6 + r() * 0.8), seed: hash(id), rot: q,
         });
       }
     }
@@ -795,11 +1208,20 @@ export class Universe {
     for (let i = 0; i < 2 && near.length; i++) add(pick(r, near).s, 1);
     for (let i = 0; i < 5 && mid.length; i++) add(pick(r, mid).s, 2);
     for (let i = 0; i < 3 && far.length; i++) add(pick(r, far).s, 3);
-    const gals = this.galaxies.filter((g) => g !== this.mw && g.real).map((g) => ({ g, d: Math.hypot(g.pos.x, g.pos.y, g.pos.z) })).sort((a, b) => a.d - b.d).slice(0, 60);
-    for (let i = 0; i < 12 && gals.length; i++) {
+    // Outside the Milky Way, the Red Margin holds ground at the same rate it
+    // does at home: ten zones per Milky Way's worth of systems, applied to each
+    // galaxy's own count, so a big galaxy is proportionally more dangerous.
+    const gals = this.galaxies.filter((g) => g !== this.mw && g.real).map((g) => ({ g, d: Math.hypot(g.pos.x, g.pos.y, g.pos.z) })).sort((a, b) => a.d - b.d).slice(0, 150);
+    const rate = 10 / Math.max(this.baseN || 1, 1);
+    const picked = new Set();
+    let other = 0;
+    for (let i = 0; i < gals.length * 2 && other < OTHER_ZONE_CAP && picked.size < ZONE_GALAXY_CAP && gals.length; i++) {
       const g = pick(r, gals).g;
+      if (picked.has(g.id)) continue;
+      picked.add(g.id);
+      const want = clamp(Math.round(this.systemCountOf(g) * rate), 1, 6);
       const list = this.systemsOf(g);
-      add(pick(r, list), g.pc < 2e6 ? 3 : g.pc < 1e7 ? 4 : 5);
+      for (let k = 0; k < want && other < OTHER_ZONE_CAP; k++) { add(pick(r, list), g.pc < 2e6 ? 3 : g.pc < 1e7 ? 4 : 5); other++; }
     }
     this.zones = zones;
     return zones;
@@ -822,6 +1244,7 @@ export class Universe {
       case 'sight': return { kind, name: ref.name, ref, pos: () => ref.pos, arrive: ref.R * 2.2 + 20000, real: ref.pc };
       case 'zone': return { kind, name: ref.name, ref, pos: () => ref.pos, arrive: ref.radius * 0.8, real: null };
       case 'bazaar': return { kind, name: 'The Bazaar', ref: this.bazaar, pos: () => this.bazaar.pos, arrive: 2e7, real: null };
+      case 'region': return { kind, name: ref.name, ref, pos: () => ref.pos, arrive: ref.R * 0.9, real: ref.pc || null };
       default: return null;
     }
   }
@@ -840,7 +1263,20 @@ export class Universe {
       return pl ? this.target('planet', { sys: s, planet: pl }) : null;
     }
     if (kind === 'sight') { const s = this.sights.find((x) => x.id === p.slice(1).join('|')); return s ? this.target('sight', s) : null; }
-    if (kind === 'module') { const m = this.bazaar.modules.find((x) => x.id === p[1]); return m ? this.target('module', m) : null; }
+    if (kind === 'region') { const rg = this.regions.find((x) => x.id === p.slice(1).join('|')); return rg ? this.target('region', rg) : null; }
+    if (kind === 'module') {
+      // Bazaar shops, and a galaxy depot's shops: "hub:<galaxy id>:<n>"
+      if (p[1].startsWith('hub:')) {
+        const gid = p[1].slice(4, p[1].lastIndexOf(':'));
+        const g = this.byId.get(gid);
+        if (!g) return null;
+        this.buildGalaxyHub(g);
+        const m = g.hub && g.hub.modules.find((x) => x.id === p[1]);
+        return m ? this.target('module', m) : null;
+      }
+      const m = this.bazaar.modules.find((x) => x.id === p[1]);
+      return m ? this.target('module', m) : null;
+    }
     if (kind === 'station' && b.pos) return this.target('station', { name: b.name, pos: b.pos, fuelTypes: b.fuelTypes || [] });
     return null;
   }
@@ -856,6 +1292,7 @@ export class Universe {
     const g = this.ctx.galaxy || this.mw;
     for (const s of this.systemsOf(g)) push(s.station, s);
     if (g !== this.mw) for (const s of this.systemsOf(this.mw).slice(0, 400)) push(s.station, s);
+    if (g.hub) for (const m of g.hub.modules) if (m.kind === 'fuel') push({ name: m.name, fuelTypes: m.fuelTypes, pos: m.pos, module: m }, g.hub);
     for (const m of this.bazaar.modules) if (m.kind === 'fuel') push({ name: m.name, fuelTypes: m.fuelTypes, pos: m.pos, module: m }, this.bazaar);
     out.sort((a, b) => a.d - b.d);
     return out.slice(0, n);
@@ -973,6 +1410,22 @@ export class Universe {
       }
     } else this.bazaarGroup.visible = false;
 
+    // The current galaxy's own depot, built the same two-stage way the Bazaar is.
+    for (const gid of this.details.keys()) {
+      const gx = this.byId.get(gid);
+      if (!gx || !gx.hub) continue;
+      const hd = vdist(gx.hub.pos, ship);
+      if (hd < gx.hub.R * 12) {
+        if (!gx.hubBuilt) this.buildGalaxyHubMeshes(gx);
+        gx.hubGroup.visible = true;
+        for (const m of gx.hub.modules) {
+          const s = squash(m.pos.x - ship.x, m.pos.y - ship.y, m.pos.z - ship.z, m.obj.group.position);
+          m.obj.group.scale.setScalar(s);
+          bodies.push({ kind: 'module', name: m.name, r: m.radius, pos: m.pos, module: m });
+        }
+      } else if (gx.hubGroup) gx.hubGroup.visible = false;
+    }
+
     // Nearest surface, for cruise speed, collisions and the HUD.
     let dnear = Infinity, nearest = null;
     for (const b of bodies) {
@@ -1009,10 +1462,12 @@ export class Universe {
     const hit = (s) => !q || s.toLowerCase().includes(q);
     for (const g of this.galaxies) if (hit(g.name) || (g.alt && hit(g.alt))) out.push({ kind: 'galaxy', ref: g, name: g.name, sub: [g.alt, g.type, g.con].filter(Boolean).join(' / '), d: vdist(g.pos, from) });
     for (const s of this.sights) if (hit(s.name)) out.push({ kind: 'sight', ref: s, name: s.name, sub: s.kind, d: vdist(s.pos, from) });
+    for (const rg of this.regions) if (hit(rg.name)) out.push({ kind: 'region', ref: rg, name: rg.name, sub: rg.kind, d: vdist(rg.pos, from) });
     const g = this.ctx.galaxy || this.mw;
     for (const s of this.systemsOf(g)) if (hit(s.name)) out.push({ kind: 'system', ref: s, name: s.name, sub: s.real ? 'charted star' : 'uncharted star', d: vdist(s.pos, from) });
     if (g !== this.mw && q) for (const s of this.systemsOf(this.mw)) if (s.real && hit(s.name)) out.push({ kind: 'system', ref: s, name: s.name, sub: 'charted star', d: vdist(s.pos, from) });
     for (const m of this.bazaar.modules) if (hit(m.name) || hit('bazaar')) out.push({ kind: 'module', ref: m, name: m.name, sub: `Bazaar ${m.kind}`, d: vdist(m.pos, from) });
+    if (g.hub) for (const m of g.hub.modules) if (hit(m.name) || hit('depot')) out.push({ kind: 'module', ref: m, name: m.name, sub: `${g.hub.name} ${m.kind}`, d: vdist(m.pos, from) });
     out.sort((a, b) => a.d - b.d);
     return out.slice(0, limit);
   }
