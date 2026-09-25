@@ -274,7 +274,22 @@ export class UI {
       if (b) pr = `F · dock at ${b.name}`;
     } else if (g.mode === 'eva' && g.evaNearHole()) pr = 'E · climb back in';
     this.set('h-prompt', pr);
+    this.bossBar();
     // kill feed stays short
+  }
+  // The boss bar. Only on screen while one of the Red Margin's own is alive,
+  // and it reads out whatever move that boss has just telegraphed (js/bosses.js).
+  bossBar() {
+    const el = $('boss-hp');
+    if (!el) return;
+    const b = this.g.bosses && this.g.bosses.current();
+    if (!b) { if (!el.hidden) el.hidden = true; return; }
+    if (el.hidden) el.hidden = false;
+    this.set('boss-name', b.name.toUpperCase());
+    this.set('boss-tell', b.tell ? `${b.name} ${b.tell}` : `phase ${b.phase + 1} of ${b.movesAll.length}`);
+    const f = $('boss-fill');
+    const w = `${(clamp(b.hp / Math.max(1, b.max), 0, 1) * 100).toFixed(1)}%`;
+    if (f && f.style.width !== w) f.style.width = w;
   }
   keysFor(m) {
     const g = this.g, sh = g.ship;
@@ -299,7 +314,7 @@ export class UI {
     const W = innerWidth, H = innerHeight;
     this.markerEls.forEach((el, i) => {
       const m = want[i];
-      if (!m || g.mode === 'foot' && !g.zone) { el.style.display = 'none'; return; }
+      if (!m || g.mode === 'foot' && !g.zone && !(g.bosses && g.bosses.active)) { el.style.display = 'none'; return; }
       squash(m.p.x - sh.pos.x, m.p.y - sh.pos.y, m.p.z - sh.pos.z, V);
       const camSpace = V.clone().applyMatrix4(cam.matrixWorldInverse);
       V.project(cam);

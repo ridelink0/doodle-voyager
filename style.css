@@ -201,3 +201,11 @@ pre { white-space: pre-wrap; font-size: 13px; max-height: 200px; overflow: auto;
 .card .flavour { font-family: 'Caveat', cursive; font-size: 20px; color: var(--hi); margin: 2px 0 4px; }
 .credlist { align-items: stretch; gap: 10px; }
 .credlist p { margin: 0; font-size: 16.5px; }
+
+/* Boss health bar: only on screen while one of the Red Margin's own is alive
+   (js/bosses.js). Top centre, above the big message, in the hostile ink. */
+.bosshp { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); width: min(560px, 82vw); text-align: center; mix-blend-mode: screen; }
+.bosshp .bossname { font-family: 'Caveat', cursive; font-size: clamp(24px, 3.4vw, 34px); line-height: 1; color: var(--red); }
+.bosshp .bar.boss { height: 15px; margin: 3px 0 0; transform: rotate(0.4deg); }
+.bosshp .bar.boss .fill { background: repeating-linear-gradient(-45deg, var(--red) 0 2px, transparent 2px 6px); opacity: 0.9; }
+.bosshp .bosstell { font-size: 15px; color: var(--red); min-height: 18px; }

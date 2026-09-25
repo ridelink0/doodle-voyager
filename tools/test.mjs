@@ -1217,6 +1217,248 @@ try {
   check('reaching Andromeda and leaving the Local Group unlock their codex entries',
     place.skipped ? true : (place.coin && place.lan), JSON.stringify(place).slice(0, 200));
 
+  // --- the bosses: eight lairs, telegraphed moves, a health bar, act flags ---
+  // Everything below drives the real module: the lair sweep in update(), the
+  // real capital spawn, the real move state machine, the real kill path.
+  // A rolled enemy zone sitting on a lair would interdict the ship before the
+  // boss could, so the zone table is held aside for these checks and put back
+  // at the end of them.
+  const zhold = await E(`g.__z = g.u.zones; g.u.zones = []; g.clearCombat(); g.bosses.cool = 0; return g.__z.length;`);
+  const lairs = await E(`
+    const { BOSSES, bossHp } = await import('./js/bosses.js');
+    g.bosses.lairs = null; g.bosses.build();
+    const L = g.bosses.lairs, sol = g.u.sol.station ? g.u.sol.station.pos : { x: 0, y: 0, z: 0 };
+    const d3 = (a, b2) => Math.hypot(a.x - b2.x, a.y - b2.y, a.z - b2.z);
+    // Two lairs may only share space where the story puts them together: the
+    // Staple Remover stands in front of the Inkblot in Hydra-Centaurus.
+    let overlap = [];
+    for (let i = 0; i < L.length; i++) for (let j = i + 1; j < L.length; j++) {
+      const pair = L[i].id + '+' + L[j].id;
+      if (d3(L[i].pos, L[j].pos) < L[i].r + L[j].r && pair !== 'stapleremover+inkblot') overlap.push(pair);
+    }
+    return {
+      ids: L.map((l) => l.id).join(','),
+      hp: Object.keys(BOSSES).map((id) => bossHp(id)),
+      widest: Math.max(...L.map((l) => l.r)),
+      safe: L.filter((l) => d3(l.pos, sol) < l.r * 3).map((l) => l.id),
+      overlap, acts: Object.values(BOSSES).filter((b2) => !b2.lieutenant).length,
+      lts: Object.values(BOSSES).filter((b2) => b2.lieutenant).length,
+    };`);
+  check('the three act bosses and the five cluster lieutenants each hold a lair, none of them at Sol',
+    lairs.ids === 'scribbler,smudge,holepunch,papercut,stapleremover,doodler,eraser,inkblot'
+    && lairs.acts === 3 && lairs.lts === 5 && lairs.safe.length === 0 && lairs.overlap.length === 0
+    && lairs.widest <= 1.2e8, JSON.stringify(lairs));
+
+  // Act gating, driven by flying into each lair in turn rather than by reading
+  // the table: Act 2 waits for Act 1, the lieutenants wait for Act 1, and in
+  // Hydra-Centaurus the lieutenant is met before the blot behind him.
+  const gate = await E(`
+    const keep = { act: g.state.actProgress, done: g.state.bossesDefeated.slice(), pos: { ...g.ship.pos } };
+    const go = (id, k) => {
+      const l = g.bosses.lair(id);
+      g.clearCombat(); g.bosses.cool = 0; g.setMode('helm');
+      for (const x of g.bosses.lairs) { x.armed = true; x.hinted = true; }
+      g.ship.pos.x = l.pos.x + l.r * k; g.ship.pos.y = l.pos.y; g.ship.pos.z = l.pos.z;
+      g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.warp = null; g.ship.auto = null; g.ship.hull = 1e6;
+      for (let i = 0; i < 24; i++) g.update(1 / 60);
+      const on = g.bosses.active && g.bosses.active.id;
+      g.clearCombat(); g.bosses.cool = 0;
+      return on || null;
+    };
+    g.state.actProgress = 0; g.state.bossesDefeated = [];
+    const early = { eraser: go('eraser', 0.4), scribbler: go('scribbler', 0.4), doodler: go('doodler', 0.4) };
+    g.state.actProgress = 1; g.state.bossesDefeated = ['doodler'];
+    const mid = { scribbler: go('scribbler', 0.4), eraser: go('eraser', 0.4) };
+    // Act 3, at the Great Attractor: the blot's own lair is inside the Staple
+    // Remover's, so while the jaws live they are what you meet there.
+    g.state.actProgress = 2; g.state.bossesDefeated = ['doodler', 'eraser'];
+    const hydra1 = go('inkblot', 0.4);
+    g.state.bossesDefeated = ['doodler', 'eraser', 'stapleremover'];
+    const hydra2 = go('inkblot', 0.4);
+    g.state.actProgress = keep.act; g.state.bossesDefeated = keep.done;
+    g.ship.pos.x = keep.pos.x; g.ship.pos.y = keep.pos.y; g.ship.pos.z = keep.pos.z;
+    return { early, mid, hydra1, hydra2 };`);
+  check('the acts run in order, the lieutenants wait for Act 1, and the Staple Remover stands in front of the Inkblot',
+    gate.early.eraser === null && gate.early.scribbler === null && gate.early.doodler === 'doodler'
+    && gate.mid.scribbler === 'scribbler' && gate.mid.eraser === 'eraser'
+    && gate.hydra1 === 'stapleremover' && gate.hydra2 === 'inkblot', JSON.stringify(gate));
+
+  // The Doodler, met by flying to the galactic centre.
+  const met = await E(`
+    const { bossHp } = await import('./js/bosses.js');
+    const keep = { act: g.state.actProgress, done: g.state.bossesDefeated.slice(), pos: { ...g.ship.pos } };
+    g.state.actProgress = 0; g.state.bossesDefeated = [];
+    g.state.codex = g.state.codex.filter((id) => id !== 'doodler');
+    const l = g.bosses.lair('doodler');
+    g.clearCombat(); g.bosses.cool = 0; g.setMode('helm'); l.armed = true; l.hinted = true;
+    g.ship.pos.x = l.pos.x; g.ship.pos.y = l.pos.y; g.ship.pos.z = l.pos.z + l.r * 0.5;
+    g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.warp = null; g.ship.hull = 1e6;
+    for (let i = 0; i < 24; i++) g.update(1 / 60);
+    const e = g.bosses.current();
+    g.ui.hud();
+    const norm = g.spawnCapital('dreadnought', { x: e.pos.x + 9000, y: e.pos.y, z: e.pos.z });
+    const mats = (grp, out) => { grp.traverse((o) => { if (o.isMesh && o.material) out.add(o.material); }); return out; };
+    const A = mats(e.obj.group, new Set()), C = mats(norm.obj.group, new Set());
+    let sharedHull = 0;
+    for (const m of A) if (C.has(m) && m.type === 'MeshLambertMaterial') sharedHull++;
+    return {
+      name: e && e.name, hp: e && e.hp, want: bossHp('doodler'), boss: !!(e && e.boss), scale: e && e.scale,
+      turrets: e && e.turrets.length, dist: Math.round(Math.hypot(e.pos.x - g.ship.pos.x, e.pos.y - g.ship.pos.y, e.pos.z - g.ship.pos.z)),
+      big: (e.box.max.z - e.box.min.z) / (norm.box.max.z - norm.box.min.z),
+      sharedHull, codex: g.state.codex.includes('doodler'), zone: !!g.zone,
+      bar: !document.getElementById('boss-hp').hidden, barName: document.getElementById('boss-name').textContent,
+      barW: parseFloat(document.getElementById('boss-fill').style.width),
+    };`);
+  check('flying to the galactic centre meets The Doodler: a capital hull at twice the size, its own colours, a health bar and a codex entry',
+    met.name === 'The Doodler' && met.boss && met.hp === met.want && met.hp === 3500 && met.turrets === 10
+    && Math.abs(met.big - 2) < 0.15 && met.sharedHull === 0 && met.codex
+    && met.bar && met.barName === 'THE DOODLER' && met.barW === 100, JSON.stringify(met).slice(0, 320));
+  await b.shot(path.join(SHOTS, '21-boss.png'));
+
+  // Every move in the vocabulary, run through the real state machine: what it
+  // does when it lands, and that it does nothing at all while it is telegraphing.
+  const moves = await E(`
+    const { MOVES } = await import('./js/bosses.js');
+    const e = g.bosses.current();
+    if (!e) return { skip: true };
+    g.ship.hull = 1e6; g.ship.shield = 0;
+    const out = {};
+    for (const name of Object.keys(MOVES)) {
+      g.bosses.end(e, 0); e.moves = [name]; e.phase = 2; e.drew = true; e.beam.state = 'idle'; e.beam.cd = 99;
+      const s0 = g.shots.length, i0 = g.enemies.filter((x) => x.kind === 'imp' && !x.dead).length;
+      const h0 = g.ship.hull, p0 = { ...e.pos };
+      g.bosses.begin(e, name);
+      const tell = e.tell;
+      // the telegraph window: the warning is up, and nothing has happened yet
+      const warn = MOVES[name].warn;
+      let t = 0;
+      while (e.mv && t < Math.max(warn - 1 / 30, 0)) { g.bosses.run(e, 1 / 60, g.targetPoint(), 3000); t += 1 / 60; }
+      const during = { shots: g.shots.length - s0, imps: g.enemies.filter((x) => x.kind === 'imp' && !x.dead).length - i0, hull: +(h0 - g.ship.hull).toFixed(2), moved: Math.round(Math.hypot(e.pos.x - p0.x, e.pos.y - p0.y, e.pos.z - p0.z)) };
+      let guard = 0;
+      while (e.mv && guard++ < 1500) {
+        g.bosses.run(e, 1 / 60, g.targetPoint(), 3000);
+        if (e.beam.state !== 'idle') g.updateBeam(e, 1 / 60, g.targetPoint(), 3000);
+        t += 1 / 60;
+      }
+      out[name] = {
+        tell, took: +t.toFixed(2), done: !e.mv, cd: e.moveCd, during,
+        shots: g.shots.length - s0, imps: g.enemies.filter((x) => x.kind === 'imp' && !x.dead).length - i0,
+        hull: +(h0 - g.ship.hull).toFixed(2), moved: Math.round(Math.hypot(e.pos.x - p0.x, e.pos.y - p0.y, e.pos.z - p0.z)),
+      };
+      g.bosses.end(e, 0);
+      for (const x of g.enemies) if (x.kind === 'imp' && !x.dead) g.hurt(x, 1e6, x.pos);
+    }
+    return out;`);
+  const mv = moves.skip ? {} : moves;
+  check('all six moves land: summon draws a wing, throw and spray put shots in the air, charge closes, rub burns, stomp hits',
+    !moves.skip && mv.summon.imps >= 2 && mv.throw.shots >= 1 && mv.spray.shots >= 8
+    && mv.charge.moved > 1500 && mv.rub.hull > 0 && mv.stomp.hull > 0
+    && Object.values(mv).every((m) => m.done && m.cd > 0),
+    Object.entries(mv).map(([k, v]) => `${k} ${v.took}s shots+${v.shots} imps+${v.imps} hull-${v.hull} moved${v.moved}`).join(' | '));
+  check('no heavy move lands inside its own telegraph window',
+    !moves.skip && Object.values(mv).every((m) => m.tell && m.during.shots === 0 && m.during.imps === 0 && m.during.hull === 0 && m.during.moved < 40),
+    Object.entries(mv).map(([k, v]) => `${k}:${JSON.stringify(v.during)}`).join(' '));
+
+  // Phases: an act boss opens with one move and earns the other two; a
+  // lieutenant has two and earns the second. Driven by real hull damage.
+  const phases = await E(`
+    const e = g.bosses.current();
+    if (!e) return { skip: true };
+    const read = (frac) => { e.hp = e.max * frac; g.bosses.move(e, 1 / 60, g.targetPoint(), 1e9); return e.moves.length; };
+    const act = [read(1), read(0.6), read(0.3)];
+    e.hp = e.max;
+    const lt = { lieutenant: true, movesAll: ['stomp', 'summon'], moves: ['stomp'], phase: 0, hp: 100, max: 100, name: 'x', moveCd: 99, mv: null };
+    const readLt = (frac) => { lt.hp = lt.max * frac; g.bosses.move(lt, 1 / 60, g.targetPoint(), 1e9); return lt.moves.length; };
+    const lieut = [readLt(1), readLt(0.4)];
+    e.hp = e.max; e.phase = 0; e.moves = [e.movesAll[0]];
+    return { act, lieut };`);
+  check('a boss earns its moves one phase at a time as its hull goes',
+    !phases.skip && phases.act.join() === '1,2,3' && phases.lieut.join() === '1,2', JSON.stringify(phases));
+
+  // Beatable: real damage from the real gun pipeline against a live boss, then
+  // the longest hull in the table measured against it.
+  const dps = await E(`
+    const { bossHp, BOSSES } = await import('./js/bosses.js');
+    g.clearCombat(); g.bosses.cool = 0;
+    const V = g.ship.vel.constructor;
+    g.ship.pos.x += 8e6;                                 // out of the galactic centre's gravity well
+    g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.throttle = 0;
+    const p = { ...g.ship.pos };
+    const e = g.bosses.spawn('papercut', { x: p.x, y: p.y, z: p.z - 1400 });
+    g.ship.hull = 1e6; g.ship.shield = 1e6; g.ship.heat = 0; g.ship.overheat = false; g.ship.fireCd = 0;
+    g.ship.q.setFromUnitVectors(new V(0, 0, -1), new V(e.pos.x - p.x, e.pos.y - p.y, e.pos.z - p.z).normalize());
+    const hp0 = e.hp;
+    let t = 0;
+    g.mouse.left = true;
+    for (let i = 0; i < 60 * 20; i++) { g.update(1 / 60); t += 1 / 60; }
+    g.mouse.left = false;
+    const dealt = hp0 - e.hp, turrets = e.turrets.filter((x) => x.dead).length;
+    const rate = dealt / t;
+    g.clearCombat(); g.bosses.cool = 0;
+    const worst = Math.max(...Object.keys(BOSSES).map((id) => bossHp(id)));
+    return { ship: g.def.name, dmg: g.stat('dmg'), dealt: Math.round(dealt), t: Math.round(t), rate: +rate.toFixed(1), turrets, worst, secs: Math.round(worst / Math.max(rate, 0.01)) };`);
+  check('a boss is beatable with the gun the ship actually has: the longest hull in the table falls inside four minutes of fire',
+    dps.rate > 8 && dps.secs > 20 && dps.secs < 240,
+    `${dps.ship} at ${dps.dmg} a bolt dealt ${dps.dealt} hull in ${dps.t} s (${dps.rate}/s, ${dps.turrets} turrets off); worst boss ${dps.worst} hull is ${dps.secs} s`);
+
+  // The kill: the act goes into the save, the pay lands, the board is swept and
+  // the bar goes away. Then fleeing the same lair leaves the boss whole.
+  const kill = await E(`
+    const keep = { act: g.state.actProgress, done: g.state.bossesDefeated.slice(), pos: { ...g.ship.pos } };
+    g.state.actProgress = 0; g.state.bossesDefeated = [];
+    const l = g.bosses.lair('doodler');
+    g.clearCombat(); g.bosses.cool = 0; g.setMode('helm'); l.armed = true; l.hinted = true;
+    g.ship.pos.x = l.pos.x; g.ship.pos.y = l.pos.y; g.ship.pos.z = l.pos.z;
+    g.ship.vel.set(0, 0, 0); g.ship.cruise = false; g.ship.hull = 1e6;
+    for (let i = 0; i < 24; i++) g.update(1 / 60);
+    const e = g.bosses.current();
+    if (!e) return { skip: true };
+    const c0 = g.state.credits;
+    g.bosses.summon(e, g.targetPoint());                 // leave drawings behind to be swept
+    g.hurt(e, 1e6, e.pos);
+    const at = { defeated: g.state.bossesDefeated.slice(), act: g.state.actProgress, paid: g.state.credits - c0, sweep: g.bosses.sweep > 0, left: g.enemies.filter((x) => !x.dead).length };
+    for (let i = 0; i < 200; i++) g.update(1 / 60);
+    g.ui.hud();
+    const after = { enemies: g.enemies.filter((x) => !x.dead).length, active: !!g.bosses.active, bar: document.getElementById('boss-hp').hidden };
+    // and again, to flee it
+    g.bosses.cool = 0; l.armed = true;
+    g.ship.pos.x = l.pos.x; g.ship.pos.y = l.pos.y; g.ship.pos.z = l.pos.z;
+    g.state.bossesDefeated = [];
+    for (let i = 0; i < 24; i++) g.update(1 / 60);
+    const e2 = g.bosses.current();
+    let fled = null;
+    if (e2) {
+      g.hurt(e2, e2.max * 0.5, e2.pos);
+      g.ship.pos.x = e2.pos.x + 60000;                   // past the leash, still inside the lair
+      for (let i = 0; i < 24; i++) g.update(1 / 60);
+      const out = { active: !!g.bosses.active, enemies: g.enemies.filter((x) => !x.dead).length, armed: l.armed, done: g.state.bossesDefeated.length };
+      g.ship.pos.x = l.pos.x + l.r * 1.8;                // out of the lair altogether
+      for (let i = 0; i < 24; i++) g.update(1 / 60);
+      const back = { armed: l.armed, active: !!g.bosses.active };
+      fled = { ...out, rearmed: back.armed, caughtAgain: back.active };
+    }
+    g.state.actProgress = keep.act; g.state.bossesDefeated = keep.done;
+    g.ship.pos.x = keep.pos.x; g.ship.pos.y = keep.pos.y; g.ship.pos.z = keep.pos.z;
+    g.clearCombat(); g.bosses.cool = 0;
+    return { at, after, fled };`);
+  check('beating a boss writes the act into the save, pays, and sweeps what it drew off the board',
+    !kill.skip && kill.at.defeated.join() === 'doodler' && kill.at.act === 1 && kill.at.paid >= 9000
+    && kill.at.sweep && kill.at.left > 0 && kill.after.enemies === 0 && !kill.after.active && kill.after.bar === true,
+    JSON.stringify(kill).slice(0, 300));
+  check('fleeing a boss ends the fight and leaves it undefeated, and its lair only re-arms once you are out of it',
+    !kill.skip && kill.fled && kill.fled.active === false && kill.fled.enemies === 0 && kill.fled.done === 0
+    && kill.fled.armed === false && kill.fled.rearmed === true && kill.fled.caughtAgain === false,
+    JSON.stringify(kill.fled));
+  const put = await E(`
+    g.state.actProgress = 0; g.state.bossesDefeated = [];
+    g.clearCombat(); g.bosses.cool = 0;
+    g.u.zones = g.__z || g.u.zones; delete g.__z;
+    g.mouse.left = false;
+    g.ship.hull = g.stat('hull'); g.ship.shield = g.stat('shield'); g.ship.heat = 0; g.ship.overheat = false;
+    g.persist();
+    return { zones: g.u.zones.length, hull: g.ship.hull, max: g.stat('hull'), act: g.state.actProgress };`);
+  check('the boss checks leave the game as they found it', put.zones === zhold && put.hull === put.max && put.act === 0, JSON.stringify(put));
+
   // death and respawn, tow
   const dth = await E(`g.setMode('helm'); g.damage(1e6, 'shot'); const m = g.mode; g.respawn(); return { m, after: g.mode, hull: g.ship.hull, max: g.stat('hull') };`);
   check('dying and respawning', dth.m === 'dead' && dth.after === 'helm' && dth.hull === dth.max, JSON.stringify(dth));

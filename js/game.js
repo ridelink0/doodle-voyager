@@ -6,6 +6,7 @@ import { Renderer, squash } from './render.js';
 import { Universe, FUELS } from './universe.js';
 import { SHIPS, buildInterior, buildExterior } from './ships.js';
 import { buildImp, buildCapital, buildDrone, buildDecoy, Squadrons } from './actors.js';
+import { Bosses } from './bosses.js';
 import { audio } from './audio.js';
 import { Media } from './media.js';
 import { UI } from './ui.js';
@@ -162,6 +163,7 @@ export class Game {
     this.last = performance.now();
     this.enemies = [];
     this.fleet = new Squadrons(this);   // the Red Margin's wings, screens and hangar cycle
+    this.bosses = new Bosses(this);     // the three act bosses and the five cluster lieutenants
     this.shots = [];
     this.fx = [];
     this.bombs = [];
@@ -934,6 +936,7 @@ export class Game {
     this.collide(ctx, dt);
     this.ramCheck(dt);
     this.updateZones(dt);
+    this.bosses.update(dt);
     this.updateCombat(dt);
     this.updateBreach(dt);
     this.updateAlert(dt);
@@ -1331,7 +1334,7 @@ export class Game {
   updateZones(dt) {
     const sh = this.ship;
     if (!this.zone) {
-      if (sh.warp) return; // warp lanes pass over zones without dropping out
+      if (sh.warp || this.bosses.active) return; // warp lanes pass over zones; a boss fight is already a fight
       if ((this.zoneTick = (this.zoneTick || 0) + 1) % 10) return;
       for (const z of this.u.zones) {
         if (z.state !== 'hostile') continue;
@@ -1412,6 +1415,7 @@ export class Game {
     for (const d of this.decoys) if (d.obj) this.fxRoot.remove(d.obj.group);
     this.enemies = []; this.shots = []; this.decoys = [];
     this.fleet.clear();
+    this.bosses.clear();
     this.zone = null;
     this.r.fx.damage = 0;
   }
@@ -1756,7 +1760,8 @@ export class Game {
           }
         }
         this.updateBeam(e, dt, at, dist);
-        if (e.sub === 'carrier') this.fleet.carrier(e, dt);
+        if (e.sub === 'carrier' && !e.boss) this.fleet.carrier(e, dt);
+        if (e.boss) this.bosses.move(e, dt, at, dist);
       }
     }
     // shots
@@ -1858,7 +1863,8 @@ export class Game {
       st.stats.capitals++;
       st.credits += 1200;
       this.boom(e.pos, e.radius * 0.6, true);
-      this.ui.big(`${e.name.toUpperCase()} DOWN`, '+1200 cr');
+      if (e.boss) this.bosses.killed(e);
+      else this.ui.big(`${e.name.toUpperCase()} DOWN`, '+1200 cr');
       audio.sfx('bigExplosion');
     } else {
       st.credits += 40;
@@ -2203,7 +2209,7 @@ export class Game {
       if (e.dead) continue;
       const g = e.obj.group;
       const s = squash(e.pos.x - sh.pos.x, e.pos.y - sh.pos.y, e.pos.z - sh.pos.z, g.position);
-      g.scale.setScalar(s);
+      g.scale.setScalar(s * (e.scale || 1));
       g.quaternion.copy(e.q);
       if (e.kind === 'capital') this.drawBeam(e);
     }
