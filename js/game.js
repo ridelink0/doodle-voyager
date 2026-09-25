@@ -63,7 +63,7 @@ export const ABILITIES = {
   ram: { name: 'Ram shield', cooldown: 12, cost: 15, desc: '3 s where hitting a red guy hurts it instead of you.' },
   decoy: { name: 'Decoy flares', cooldown: 10, cost: 5, desc: 'Three flares. Red guys nearby chase one of them instead of you.' },
   repair: { name: 'Nanites', cooldown: 25, cost: 20, desc: 'Instant +80 hull.' },
-  scoop: { name: 'Fuel scoop', cooldown: 0, cost: 0, passive: true, desc: 'Toggle the intake. Open, inside a star’s corona: fuel in, hull out.' },
+  scoop: { name: 'Fuel scoop', cooldown: 0, cost: 0, passive: true, desc: 'Toggle the intake. Open, inside the corona of a star: fuel in, hull out.' },
 };
 export const PAINT_NAMES = { yellow: 'Yellow highlighter', blue: 'Blue highlighter', outline: 'Bare paper, blue outline' };
 const PAINT_PRICE = 300;
@@ -898,11 +898,15 @@ export class Game {
     if (sh.elevator) return;
     if (this.breach) { audio.sfx('deny'); this.ui.toast('Not with the hull open.'); return; }
     const n = I.decks.length, to = (sh.deck + 1) % n, hops = Math.abs(to - sh.deck);
-    sh.auto = null; sh.cruise = false; sh.throttle = 0;
+    // The lift does not fly the ship. Walking around under way is already
+    // allowed, so taking the lift leaves the throttle, the cruise drive and
+    // the course exactly where standing up leaves them, and says so.
     sh.elevator = { from: sh.deck, to, t: 0, dur: 1.4 + 1.2 * hops };
     audio.sfx('door');
     audio.play('elevator');
-    this.ui.toast(`Going to ${I.deckNames[to] || 'deck ' + (to + 1)}. Floor Seven Million plays either way.`);
+    this.ui.toast(sh.auto
+      ? `Going to ${I.deckNames[to] || 'deck ' + (to + 1)}. Autopilot still has the ship.`
+      : `Going to ${I.deckNames[to] || 'deck ' + (to + 1)}. Floor Seven Million plays either way.`);
   }
   rideStep(dt, m) {
     const sh = this.ship, p = this.player, e = sh.elevator, I = this.interior;

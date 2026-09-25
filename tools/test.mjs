@@ -330,6 +330,25 @@ try {
     lift.onBridge === 'elevator' && lift.one.bed && lift.two.drone && lift.back.helm && lift.one.helm0 && !lift.one.helm1,
     JSON.stringify({ onBridge: lift.onBridge, bed: lift.one.bed, drone: lift.two.drone, helm: lift.back.helm }));
 
+  // Walking around under way is already allowed, so the lift must not quietly
+  // cut the engines or drop the course the way it used to.
+  const liftFlies = await E(`g.state.credits = 99999; g.buyShip('locker'); g.setMode('helm');
+    const sol = g.u.sol, mars = g.u.planetsOf(sol).find((p) => p.name === 'Mars');
+    g.setCourse(g.u.target('planet', { sys: sol, planet: mars }));
+    const had = !!g.ship.auto && g.ship.auto.target.name;
+    g.setMode('foot'); g.player.x = 0; g.player.z = 2.8; g.player.y = 0;
+    g.ship.throttle = 0.7; g.ship.cruise = false;
+    g.rideElevator();
+    const mid = { auto: !!g.ship.auto, throttle: g.ship.throttle };
+    for (let i = 0; i < 400 && g.ship.elevator; i++) g.update(0.02);
+    const after = { deck: g.ship.deck, auto: g.ship.auto ? g.ship.auto.target.name : null };
+    g.ship.auto = null; g.ship.throttle = 0; g.ship.vel.set(0, 0, 0); g.ship.cs = 0;
+    g.standUp();
+    return { had, mid, after };`);
+  check('taking the lift does not cut the engines or drop the course',
+    liftFlies.had === 'Mars' && liftFlies.mid.auto && liftFlies.mid.throttle === 0.7 && liftFlies.after.deck === 1
+    && liftFlies.after.auto === 'Mars', JSON.stringify(liftFlies));
+
   // ---------- abilities: one key, eight hulls, real effects ----------
   const ab = async (id, body) => E(`g.state.credits = 99999; g.buyShip('${id}'); g.setMode('helm');
     g.clearCombat(); g.ship.abilityCd = 0; g.ship.cloak = null; g.ship.tractor = null;
