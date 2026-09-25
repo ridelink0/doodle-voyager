@@ -147,6 +147,22 @@ export const GRAVITY = {
 };
 ```
 
+> **Corrected in the build, 2026-09-25.** The star row above was never
+> checked against where this universe actually puts planets, and it is
+> wrong: Sol is `r = 20000` and Earth orbits at `86000`, so Earth sits only
+> 3.3 stellar radii above the surface, well inside `reach: 10`. At that
+> distance `150 * (1/3.3)^2 = 13.8 u/s^2` against the 15 u/s^2 a planet
+> gives at a low orbit, so the Sun fought Earth for every orbit and flying
+> near Earth dragged you into the Sun. The shipped numbers are
+> `star: { reach: 3, accel: 22 }`: the well now ends 3 radii above the
+> surface, short of Earth entirely; at Mercury (1.84 radii) the Sun gives
+> `22/1.84^2 = 6.5` against the planet's 15, so the planet still wins; the
+> edge of the well is `22/9 = 2.4`, too small to feel like a wall; and close
+> in it is still lethal - 88 u/s^2 half a radius up, 550 at a fifth, 8800 at
+> the clamp, against about 1.3x a hull's top speed of thrust. Two checks in
+> `tools/test.mjs` hold this: "a star's pull stops short of its own planets'
+> orbits" and "a star close up beats full throttle".
+
 Per-frame acceleration toward a body of kind `k`, distance-to-surface
 `d = vdist(ship.pos, b.pos) - b.r` (already computed as part of `ctx.dnear`'s
 per-body loop, `universe.js:975-978` — reuse the pattern, don't recompute):
@@ -180,7 +196,7 @@ gravity well is always deep inside that range, never a surprise pop-in).
 |---|---|---|---|---|---|
 | moon | 5 | 26 | ~1,500-3,000 (Luna-ish, `earthRToU(0.27)~=890`; using ~1,500) | ~7,500 | ~10.7 s |
 | planet | 7 | 60 | ~1,500 (Earth, `earthRToU(1)=1,500`) | ~10,500 | ~7.1 s |
-| star | 10 | 150 | ~20,000 (Sun-like, `sunRToU(1)=20,000`) | ~200,000 | ~51.6 s |
+| star | ~~10~~ **3** | ~~150~~ **22** | ~20,000 (Sun-like, `sunRToU(1)=20,000`) | ~~200,000~~ **60,000** | ~~51.6 s~~ **~73.9 s** (see the correction above) |
 | black hole | 30 | 900 | `1.2e5` (`R` in `universe.js:636`, both real and procedural) | ~3.6e6 | ~89.4 s |
 
 Read the table as: a ship that flies dead straight at a body with the

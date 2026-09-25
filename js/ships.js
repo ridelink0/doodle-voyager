@@ -11,7 +11,7 @@ export const SHIPS = {
     desc: 'A zip-top starter hull with a cockpit, a fold-down bunk and a storage bay that just fits the drone hatch between the crates. Still somehow loses your eraser.',
   },
   eraser: {
-    id: 'eraser', name: 'Eraser', cls: 'small', fuel: 'ION', tank: 60, hull: 70, shield: 40, speed: 480, cruise: 3.2e5, turn: 2.3, guns: 1, dmg: 9, price: 5000,
+    id: 'eraser', name: 'Eraser', cls: 'small', fuel: 'ION', tank: 60, hull: 70, shield: 40, speed: 480, cruise: 3.2e5, turn: 2.3, guns: 1, dmg: 9, price: 5000, ability: 'afterburner',
     desc: 'A squat pink block in a paper sleeve with one fat nozzle. The only Eraser on our side: fast, light, and a little embarrassed about the name.',
   },
   racer: {
@@ -19,11 +19,11 @@ export const SHIPS = {
     desc: 'A chisel-tipped engine with a seat bolted on and one locker nook behind the cockpit. Marks the important parts of space in a colour nobody asked for, very quickly.',
   },
   tape: {
-    id: 'tape', name: 'Correction Tape', cls: 'small', fuel: 'ION', tank: 55, hull: 65, shield: 45, speed: 500, cruise: 3.4e5, turn: 2.4, guns: 2, dmg: 9, price: 9000,
+    id: 'tape', name: 'Correction Tape', cls: 'small', fuel: 'ION', tank: 55, hull: 65, shield: 45, speed: 500, cruise: 3.4e5, turn: 2.4, guns: 2, dmg: 9, price: 9000, ability: 'blink',
     desc: 'The flattest hull in the yard: a tape reel on the back and a wide applicator nose. Leaves a faint white line where you used to be.',
   },
   witeout: {
-    id: 'witeout', name: 'Correction Fluid', cls: 'small', fuel: 'ION', tank: 65, hull: 75, shield: 55, speed: 440, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 11000,
+    id: 'witeout', name: 'Correction Fluid', cls: 'small', fuel: 'ION', tank: 65, hull: 75, shield: 55, speed: 440, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 11000, ability: 'cloak',
     desc: 'A squat bottle with a narrow neck and a flip cap for a fin. Paints itself out of the picture; enemies lose track of you, and so, occasionally, do you.',
   },
   fighter: {
@@ -31,7 +31,7 @@ export const SHIPS = {
     desc: 'Four wing guns fed from a real gun room behind the cockpit, a click-button drive and a cargo hold at the back. The hull Doodle District survivors trust.',
   },
   paperclip: {
-    id: 'paperclip', name: 'Paperclip', cls: 'medium', fuel: 'PLASMA', tank: 100, hull: 140, shield: 110, speed: 300, cruise: 2.8e5, turn: 1.6, guns: 2, dmg: 11, price: 14000,
+    id: 'paperclip', name: 'Paperclip', cls: 'medium', fuel: 'PLASMA', tank: 100, hull: 140, shield: 110, speed: 300, cruise: 2.8e5, turn: 1.6, guns: 2, dmg: 11, price: 14000, ability: 'tractor',
     desc: 'Two steel tubes bent into a loop at the bow around a small crew body. Bends, holds, drags.',
   },
   hauler: {
@@ -47,20 +47,24 @@ export const SHIPS = {
     desc: 'Two legs splayed from a pivot hub, one a needle point, one a pencil foot. Turns tighter than anything with a hull and draws perfect circles around people who draw lines.',
   },
   stickynotes: {
-    id: 'stickynotes', name: 'Sticky Notes', cls: 'small', fuel: 'ION', tank: 90, hull: 110, shield: 90, speed: 380, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 20000,
+    id: 'stickynotes', name: 'Sticky Notes', cls: 'small', fuel: 'ION', tank: 90, hull: 110, shield: 90, speed: 380, cruise: 3.0e5, turn: 2.0, guns: 2, dmg: 10, price: 20000, ability: 'decoy',
     desc: 'A fanned pad of square plates with a bright note stuck on top. The red guys keep attacking reminders.',
   },
   stapler: {
-    id: 'stapler', name: 'Stapler', cls: 'medium', fuel: 'PLASMA', tank: 120, hull: 240, shield: 150, speed: 260, cruise: 2.6e5, turn: 1.3, guns: 3, dmg: 16, price: 22000,
+    id: 'stapler', name: 'Stapler', cls: 'medium', fuel: 'PLASMA', tank: 120, hull: 240, shield: 150, speed: 260, cruise: 2.6e5, turn: 1.3, guns: 3, dmg: 16, price: 22000, ability: 'ram',
     desc: 'A wedge: a tall spring housing at the stern, a low jaw at the bow and a hinge ridge down the spine. Rams first, asks for the invoice later.',
   },
   gluestick: {
-    id: 'gluestick', name: 'Glue Stick', cls: 'medium', fuel: 'PLASMA', tank: 130, hull: 200, shield: 180, speed: 240, cruise: 2.6e5, turn: 1.2, guns: 2, dmg: 11, price: 24000,
+    id: 'gluestick', name: 'Glue Stick', cls: 'medium', fuel: 'PLASMA', tank: 130, hull: 200, shield: 180, speed: 240, cruise: 2.6e5, turn: 1.2, guns: 2, dmg: 11, price: 24000, ability: 'repair',
     desc: 'A fat screw-threaded barrel with a domed cap. Smells faintly of primary school.',
   },
   cruiser: {
     id: 'cruiser', name: 'Lecture Hall', cls: 'large', fuel: 'DEUTERIUM', tank: 240, hull: 450, shield: 220, speed: 200, cruise: 3e5, turn: 0.7, guns: 6, dmg: 14, price: 40000,
     desc: 'A 60 m liner with four dorm rooms, two bathrooms, a galley, a laundry, a lounge with a big screen and its own drone bay. Attendance is mandatory.',
+  },
+  locker: {
+    id: 'locker', name: 'Filing Cabinet', cls: 'large', fuel: 'DEUTERIUM', tank: 300, hull: 380, shield: 200, speed: 150, cruise: 2.5e5, turn: 0.6, guns: 4, dmg: 13, price: 45000, ability: 'scoop', scoop: true,
+    desc: 'The tall one: a tower of three stacked decks joined by one elevator, and one song on repeat. Scoops fuel straight out of a star, which Spiral Bound Galactic is lobbying to ban.',
   },
 };
 
@@ -1416,6 +1420,97 @@ function cruiserRooms(k, s, P) {
   droneRoom(k, H, P);
 }
 
+// ---------- the Filing Cabinet: three stacked decks and one elevator ----------
+// Every deck is the same footprint with the same shaft in the same place, so
+// the landing lines up floor to floor and a rider always arrives standing on
+// solid floor. Deck 0 is the bridge and is built like every other ship.
+const EL = { x: 0, z: 2.8, front: 1.9, hw: 1.0 };
+const DECK_SIGNS = ['BRIDGE', 'BERTHS', 'HOLD'];
+
+// Floor, ceiling and four walls, no window and no breach hole: decks 1 and up
+// are sealed boxes stacked inside the tower.
+function deckShell(k, s) {
+  const hw = s.W / 2, hl = s.L / 2, H = s.H;
+  k.box(-hw, -T, -hl, hw, 0, hl, C.floor);
+  k.box(-hw, H, -hl, hw, H + T, hl, C.ceil);
+  k.wall(true, -hw + T / 2, -hl + T, hl - T, H, C.wall);
+  k.wall(true, hw - T / 2, -hl + T, hl - T, H, C.wall);
+  k.wall(false, -hl + T / 2, -hw, hw, H, C.wall);
+  k.wall(false, hl - T / 2, -hw, hw, H, C.wall);
+  hullStructure(k, s);
+}
+
+// The shaft: two side walls, a sliding door at the front, a call plate and a
+// three-lamp floor indicator. Returns the lamp meshes so setDeck() can light
+// the one matching the floor the ship is standing on.
+function elevatorShaft(k, s, P, deck) {
+  const H = s.H, back = s.L / 2 - T, w = EL.hw;
+  k.wall(true, -w + T / 2, EL.front, back, H, C.wall);
+  k.wall(true, w - T / 2, EL.front, back, H, C.wall);
+  k.wall(false, EL.front + T / 2, -w, w, H, C.wall, [{ a: -0.8, b: 0.8 }], P);
+  k.box(-0.8, 0, EL.front + T, 0.8, 0.014, back, C.steel);            // car floor plate
+  k.box(-0.26, H - 0.02, EL.z - 0.32, 0.26, H, EL.z + 0.32, G.lamp);
+  const bz = back - 0.01;
+  k.box(0.32, 0.95, bz - 0.05, 0.62, 1.5, bz, C.dark);                // call plate
+  k.box(0.39, 1.06, bz - 0.062, 0.55, 1.14, bz - 0.045, G.green);
+  const lamps = [];
+  for (let i = 0; i < 3; i++) {
+    k.box(-0.62, 0.92 + i * 0.4, bz - 0.05, -0.34, 1.2 + i * 0.4, bz, C.dark);
+    const m = new THREE.Mesh(BOX(), G.orange);
+    m.scale.set(0.18, 0.18, 0.02);
+    k.add(m, -0.48, 1.06 + i * 0.4, bz - 0.062);
+    m.visible = i === 0;
+    lamps.push(m);
+  }
+  k.sign(DECK_SIGNS[deck] || `DECK ${deck + 1}`, 0.8, 0, 2.3, EL.front - 0.01, PI);
+  k.use('elevator', 'ride the elevator', EL.x, 1.2, EL.z, 1.4);
+  return lamps;
+}
+
+// Deck 0: the bridge. The cockpit, the breach panel and the pick-ups come from
+// buildInterior exactly as they do for every other hull; this adds the aft
+// stores and the shaft.
+function lockerBridge(k, s, P) {
+  const H = s.H;
+  const lamps = elevatorShaft(k, s, P, 0);
+  k.box(-0.5, H - 0.03, 0.6, 0.5, H, 1.4, G.lamp);
+  k.push(-3.05, 0, 1.0, HP); lockers(k, 2, P); k.use('storage', 'open storage', 0, 1.2, 0.8, 1.3); k.pop();
+  k.push(-3.05, 0, 2.6, HP); miniFridge(k, P); k.use('fridge', 'raid the fridge', 0, 0.9, 0.7, 1.2); k.pop();
+  k.push(-0.84, 0, 0, HP); poster(k, -2.8, 1.6, 0.6, 0.8, C.cream, C.teal, 1); k.pop();
+  return lamps;
+}
+
+// Deck 1: berths. Two bunks, a desk and a poster, no window.
+function lockerBerths(k, s, P) {
+  const H = s.H;
+  const lamps = elevatorShaft(k, s, P, 1);
+  k.box(-0.5, H - 0.03, -1.6, 0.5, H, -0.6, G.lamp);
+  k.box(-0.5, H - 0.03, 0.5, 0.5, H, 1.3, G.lamp);
+  k.push(-3.05, 0, -1.1, HP); bunkBed(k, P, C.teal); k.use('bed', 'nap in the bunk', 0.2, 0.8, 1.15, 1.3); k.pop();
+  k.push(3.05, 0, -1.1, -HP); bunkBed(k, C.orange, P); k.pop();
+  k.push(0, 0, -3.34, 0); desk(k, 1.6, C.wood, 0.6, C.pink); k.pop();
+  k.use('desk', 'sit at the desk', 0, 1.0, -2.6, 1.3);
+  chair(k, 0.95, -2.5, PI, C.teal);
+  k.push(0, 0, -3.33, 0); poster(k, -2.2, 1.8, 0.7, 0.9, C.cream, C.blue, 1); k.pop();
+  k.sign('QUIET HOURS', 0.7, -2.2, 1.1, -3.325, 0, 0, { w: 256, h: 112, bg: '#efe3c2', fg: '#7a3a22', size: 34 });
+  return lamps;
+}
+
+// Deck 2: the hold. Racks, a workbench and the drone bay.
+function lockerHold(k, s, P) {
+  const H = s.H;
+  const lamps = elevatorShaft(k, s, P, 2);
+  k.box(-0.6, H - 0.03, -2.2, 0.6, H, -1.2, G.lamp);
+  k.box(-0.6, H - 0.03, 0.2, 0.6, H, 1.2, G.lamp);
+  k.push(-3.05, 0, -1.4, HP); rack(k, 2.4, 61); k.use('storage', 'open storage', 0, 1.2, 1.0, 1.3); k.pop();
+  k.push(3.05, 0, -1.4, -HP); rack(k, 2.4, 62); k.pop();
+  k.push(0, 0, -3.34, 0); workbench(k, 2.4); k.pop();
+  droneBay(k, 0, 0.6, 1.5, 1.5, 0.6);
+  k.sign('DRONE BAY', 0.9, 3.04, 1.7, 0.6, -HP);
+  crate(k, -2.5, 1.9, 0.8); crate(k, 2.5, 1.9, 0.9); crate(k, -2.45, 1.95, 0.55, 0.8, C.cream);
+  return lamps;
+}
+
 // W x L x H in metres; breach on a side wall (side +1 = right), lever offset
 // along the wall; drone hatch centre; point lights [x, y, z, intensity, range].
 const LAYOUT = {
@@ -1439,6 +1534,12 @@ const LAYOUT = {
     W: 14, L: 60, H: 3.0, win: 7.0, breach: { side: 1, z: -1.0, lever: 1.5 }, drone: { x: 0, z: 25.2 }, rooms: cruiserRooms,
     lights: [[0, 2.7, -25.5, 10, 16], [0, 2.7, -12.5, 12, 18], [-1.5, 2.7, 16.5, 12, 18]],
   },
+  // The only hull taller than it is wide: three decks of 2.9 m, one shaft.
+  locker: {
+    W: 6.4, L: 7.0, H: 2.6, win: 3.0, breach: { side: 1, z: 0.4, lever: 1.5 }, drone: { x: 0, z: 0.6 }, rooms: lockerBridge,
+    lights: [[0, 2.3, -2.0, 4, 9], [0, 2.3, 1.4, 4, 9]],
+    decks: [lockerBridge, lockerBerths, lockerHold], deckPitch: 2.9, deckNames: ['the bridge', 'the berths', 'the hold'],
+  },
 };
 // New hulls share an interior with a ship of the same class (the exterior is
 // their own and encloses that interior, so EVA and the hull hole line up).
@@ -1456,7 +1557,7 @@ export function buildInterior(type, paintName = 'yellow') {
   shell(k, s, P);
   const ck = cockpit(k, s, P);
   const breach = breachPanel(k, s);
-  s.rooms(k, s, P);
+  const lamps0 = s.rooms(k, s, P);
   // Small ships are dim and moody, big ones carry a lot of light (Gev).
   const lightK = { small: 0.7, medium: 1.0, large: 2.4 }[SHIPS[type] && SHIPS[type].cls] || 1;
   for (const [x, y, z, i, d] of s.lights) k.light(x, y, z, i * lightK, d);
@@ -1490,7 +1591,7 @@ export function buildInterior(type, paintName = 'yellow') {
   // blocking, and the breach pull must be able to cross the wall plane.
   const bounds = new THREE.Box3(new THREE.Vector3(-hw - 0.25, 0, -hl - 0.25), new THREE.Vector3(hw + 0.25, s.H, hl + 0.25));
   const tw = merged.get(G.str2) || null, blink = k.blink, spin = k.spin;
-  return {
+  const I = {
     doors: k.doors, props: k.props,
     group: k.group, colliders: k.colliders, interact: k.interact,
     spawn: ck.spawn, spawnYaw: 0, seat: ck.seat, screens: k.screens, breach, bounds, lights: k.lights,
@@ -1501,6 +1602,40 @@ export function buildInterior(type, paintName = 'yellow') {
       if (tw) tw.visible = Math.sin(t * 1.3) > -0.4;
     },
   };
+  if (s.decks) stackDecks(I, s, P, type, lightK, lamps0, blink, spin);
+  return I;
+}
+
+// A hull with stacked decks. Deck 0 is the object above - the bridge, with the
+// cockpit, the breach panel and the pick-ups, so every code path that knows
+// nothing about decks keeps working. Decks 1 and up are their own merged Kits
+// parked deckPitch metres higher inside the same group, each with its own
+// colliders, interactables and doors; the game swaps sets by ship.deck. The
+// footprint is identical on every deck, so one bounds box is right for all.
+function stackDecks(I, s, P, type, lightK, lamps0, blink, spin) {
+  const decks = [I], lampSets = [lamps0 || []];
+  I.deckPitch = s.deckPitch;
+  I.deckNames = s.deckNames || [];
+  for (let i = 1; i < s.decks.length; i++) {
+    const kk = new Kit();
+    deckShell(kk, s);
+    lampSets.push(s.decks[i](kk, s, P) || []);
+    for (const [x, y, z, inten, d] of s.lights) kk.light(x, y, z, inten * lightK, d);
+    kk.build();
+    monotone(kk.group, type);
+    redrawSigns(kk.signs);
+    kk.group.position.y = i * s.deckPitch;
+    I.group.add(kk.group);
+    for (const m of kk.blink) blink.push(m);
+    for (const m of kk.spin) spin.push(m);
+    decks.push({
+      colliders: kk.colliders, interact: kk.interact, doors: kk.doors, props: [],
+      spawn: new THREE.Vector3(EL.x, 0, EL.z), spawnYaw: 0, bounds: I.bounds, group: kk.group,
+    });
+  }
+  I.decks = decks;
+  I.setDeck = (n) => { for (const set of lampSets) for (let j = 0; j < set.length; j++) set[j].visible = j === n; };
+  I.setDeck(0);
 }
 
 // ---------- exteriors ----------
@@ -1793,10 +1928,44 @@ function extGluestick(k, P) {
   return { hullX: r, belly: cy - r, guns, engines };
 }
 
+// The tower. Everything else in the yard is long and low along -Z; this one is
+// 10.4 m tall over a 6.4 x 7.0 m footprint, with a drawer seam at every deck
+// boundary so it reads as stacked from outside before anyone walks in.
+function extLocker(k, P) {
+  const hx = 3.2, hz = 3.5, top = 10.4;
+  k.box(-hx, 0, -hz, hx, top, hz, P);
+  k.box(-hx - 0.1, -0.5, -hz - 0.1, hx + 0.1, 0.05, hz + 0.1, C.dark);              // plinth
+  k.box(-hx - 0.14, top, -hz - 0.14, hx + 0.14, top + 0.45, hz + 0.14, C.steel);    // roof cap
+  k.box(-1.2, top + 0.45, -1.2, 1.2, top + 0.75, 1.2, C.dark);
+  for (const y of [2.9, 5.8, 8.7]) k.box(-hx - 0.09, y - 0.12, -hz - 0.09, hx + 0.09, y + 0.12, hz + 0.09, C.steel);
+  // drawer fronts with pull handles on decks 1 and 2 (deck 0's bow is glazed)
+  for (const i of [1, 2]) {
+    const y0 = i * 2.9 + 0.35, y1 = y0 + 2.1, ym = (y0 + y1) / 2;
+    frameBox(k, -2.3, y0, 2.3, y1, -hz - 0.02, C.dark);
+    k.box(-0.75, ym - 0.1, -hz - 0.18, 0.75, ym + 0.1, -hz - 0.02, C.steel);
+    k.box(-2.0, y1 - 0.5, -hz - 0.1, -1.1, y1 - 0.22, -hz - 0.02, C.cream);         // label card
+  }
+  // the bridge windshield, at deck-0 height and matching the interior window
+  k.box(-1.6, 0.85, -hz - 0.09, 1.6, 2.35, -hz, C.glass);
+  frameBox(k, -1.6, 0.85, 1.6, 2.35, -hz - 0.02, P);
+  // stub landing legs, so a tower does not sit on a flat belly
+  for (const x of [-2.4, 2.4]) for (const z of [-2.6, 2.6]) {
+    k.cyl(x, z, 0.24, -1.6, -0.35, C.steel, 8);
+    k.box(x - 0.45, -1.75, z - 0.45, x + 0.45, -1.6, z + 0.45, C.dark);
+  }
+  const guns = [];
+  for (const y of [1.5, 4.4]) for (const x of [-2.5, 2.5]) guns.push(barrel(k, x, y, -hz - 0.7, 2.4, 0.17));
+  const engines = [];
+  for (const y of [1.3, 4.2]) for (const x of [-1.7, 1.7]) engines.push(nozzle(k, x, y, hz, 0.85, 1.0));
+  k.sign('FILING CABINET', 4.6, -hx - 0.02, 7.4, 0, -HP);
+  k.sign('FILING CABINET', 4.6, hx + 0.02, 7.4, 0, HP);
+  return { hullX: hx, belly: -1.75, guns, engines };
+}
+
 const EXTERIOR = {
   scout: extScout, racer: extRacer, fighter: extFighter, hauler: extHauler, cruiser: extCruiser,
   eraser: extEraser, tape: extTape, gelpen: extGelpen, witeout: extWiteout, stickynotes: extStickynotes,
-  paperclip: extPaperclip, compass: extCompass, stapler: extStapler, gluestick: extGluestick,
+  paperclip: extPaperclip, compass: extCompass, stapler: extStapler, gluestick: extGluestick, locker: extLocker,
 };
 
 // Jagged dark tear with a torn bare-metal rim, facing out along normal.

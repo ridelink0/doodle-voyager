@@ -58,6 +58,10 @@ input[type=range] { min-height: 24px; }
 .flags span { display: inline-block; margin-left: 6px; padding: 0 6px; border: 1.8px solid var(--ink); border-radius: 7px 10px 6px 9px / 10px 6px 9px 7px; font-size: 15px; transform: rotate(-2deg); }
 .flags span.red { border-color: var(--red); color: var(--red); }
 .flags span.hi { background: var(--hi); }
+.ability { font-size: 16px; margin-top: 3px; }
+.ability:empty { display: none; }
+.ability span { padding: 0 5px; border-radius: 6px 9px 5px 8px / 9px 5px 8px 6px; }
+.ability span.hi { background: var(--hi); }
 .target { font-size: 16.5px; margin-top: 4px; }
 .crosshair { position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; margin: -20px 0 0 -20px; color: var(--ink); }
 .crosshair.hot { color: var(--red); }

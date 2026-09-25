@@ -669,6 +669,24 @@ function droneTemplate() {
   return g;
 }
 
+// A decoy flare: a burning lump with a stub of trail behind it. Under 50
+// triangles, one clone per flare, same contract as buildDrone().
+function decoyTemplate() {
+  const g = new THREE.Group(), kit = new Kit();
+  const hot = glow(PAL.yellow), dark = ink(PAL.dark);
+  kit.add(hot, new THREE.OctahedronGeometry(2.4, 0));
+  kit.add(dark, G.box(0.8, 0.8, 5.5), [0, 0, 3.4]);
+  kit.add(hot, G.box(0.5, 0.5, 3.0), [0, 0, 7.4]);
+  kit.into(g);
+  g.userData.radius = 2.4;
+  return g;
+}
+
+export function buildDecoy() {
+  const t = once('decoy', decoyTemplate);
+  return { group: t.clone(), radius: t.userData.radius };
+}
+
 export function buildDrone() {
   const t = once('drone', droneTemplate);
   const group = t.clone();

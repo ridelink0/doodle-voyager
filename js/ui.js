@@ -2,7 +2,7 @@
 // stations and shops, storage, settings, the start screen.
 import * as THREE from 'three';
 import { SHIPS } from './ships.js';
-import { EQUIP, ITEMS, PAINT_NAMES } from './game.js';
+import { EQUIP, ITEMS, PAINT_NAMES, ABILITIES } from './game.js';
 import { audio } from './audio.js';
 import { squash } from './render.js';
 import { fmtU, fmtTime, fmtReal, fmtInt, vdist, clamp } from './util.js';
@@ -216,8 +216,27 @@ export class UI {
     if (sh.fuel <= 0) flags.push('<span class="red">LIMP</span>');
     if (sh.overheat) flags.push('<span class="red">OVERHEAT</span>');
     if (g.zone) flags.push('<span class="red">JAMMED</span>');
+    if (sh.burnT > 0) flags.push('<span class="hi">BURN</span>');
+    if (sh.ramT > 0) flags.push('<span class="hi">RAM</span>');
+    if (sh.tractor) flags.push('<span class="hi">TRACTOR</span>');
+    if (sh.cloak && sh.cloak.active) flags.push('<span class="hi">CLOAKED</span>');
+    if (g.scooping) flags.push('<span class="hi">SCOOPING</span>');
     if (g.settings.showFps) flags.push(`<span>${Math.round(g.fps)} fps</span>`);
     this.set('h-flags', flags.join(''), 'innerHTML');
+    // What R does on this hull, and whether it will do it right now.
+    const ab = ABILITIES[d.ability];
+    let abTxt = '';
+    if (ab && (g.mode === 'helm' || g.mode === 'foot')) {
+      let state;
+      if (ab.passive) state = sh.scoopOn ? (g.scooping ? 'scooping' : 'intake open') : 'intake shut';
+      else if (d.ability === 'cloak' && sh.cloak && sh.cloak.active) state = 'running';
+      else if (d.ability === 'tractor' && sh.tractor) state = 'holding';
+      else if (sh.abilityCd > 0) state = `${sh.abilityCd.toFixed(1)} s`;
+      else if (!g.abilityReady()) state = 'no fuel';
+      else state = 'ready';
+      abTxt = `<kbd>R</kbd> ${esc(ab.name)} · <span class="${state === 'ready' || state === 'running' || state === 'holding' || state === 'scooping' ? 'hi' : ''}">${state}</span>`;
+    }
+    this.set('h-ability', abTxt, 'innerHTML');
     const tg = sh.warp ? sh.warp.target : sh.auto ? sh.auto.target : g.navTarget;
     let ttxt = '';
     if (tg) {
@@ -244,7 +263,10 @@ export class UI {
     const g = this.g, sh = g.ship;
     const k = (s) => `<kbd>${s}</kbd>`;
     if (m === 'foot') return `${k('WASD')} walk · ${k('E')} use · ${k('V')} tapes · ${k('M')} map · ${k('I')} storage${g.settings.drone ? ` · ${k('G')} drone` : ''} · ${k('P')} pause`;
-    if (m === 'helm') return `mouse or arrows steer · ${k('W')}/${k('S')} throttle · ${g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire'} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock · ${k('E')} stand up`;
+    if (m === 'helm') {
+      const ab = ABILITIES[g.def.ability];
+      return `mouse or arrows steer · ${k('W')}/${k('S')} throttle · ${g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire'} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
+    }
     if (m === 'eva') return `${k('WASD')} ${k('Space')} ${k('Ctrl')} jetpack · ${k('E')} at the hole · air ${Math.max(0, Math.round(g.eva ? g.eva.o2 : 0))} s`;
     if (m === 'drone') return `${k('WASD')} fly · ${k('Space')}/${k('Ctrl')} up/down · click or ${k('B')} bomb (${sh.bombs}) · ${k('G')} recall · battery ${Math.round(g.drone ? g.drone.battery : 0)} s`;
     return '';
@@ -362,6 +384,7 @@ export class UI {
         const owned = st.owned.includes(s.id), flying = sh.type === s.id;
         cards.push(`<div class="card ${flying ? 'on' : ''}"><h4>${esc(s.name)} · ${s.cls}</h4><p>${esc(s.desc || '')}</p>
           <p>hull ${s.hull} · shield ${s.shield} · ${s.speed} u/s · tank ${s.tank} ${s.fuel} · ${s.guns} guns</p>
+          ${s.ability ? `<p class="hi"><b>R</b> · ${esc(ABILITIES[s.ability].name)}: ${esc(ABILITIES[s.ability].desc)}</p>` : ''}
           <div class="row">${flying ? '<b>you are flying it</b>' : owned ? `<button class="buy" data-ship="${s.id}">switch to it</button>` : `<button class="buy" data-ship="${s.id}">buy · ${fmtInt(s.price)} cr</button>`}</div></div>`);
       }
       cards.push(`<div class="card"><h4>Paint shop</h4><p>Repaint the ${esc(d.name)} for 300 cr.</p><div class="row">${Object.entries(PAINT_NAMES).map(([k, n]) => `<button class="buy" data-paint="${k}" ${st.paint[sh.type] === k ? 'disabled' : ''}>${esc(n)}</button>`).join('')}</div></div>`);

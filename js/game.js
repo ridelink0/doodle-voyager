@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import { Renderer, squash } from './render.js';
 import { Universe, FUELS } from './universe.js';
 import { SHIPS, buildInterior, buildExterior } from './ships.js';
-import { buildImp, buildCapital, buildDrone } from './actors.js';
+import { buildImp, buildCapital, buildDrone, buildDecoy } from './actors.js';
 import { audio } from './audio.js';
 import { Media } from './media.js';
 import { UI } from './ui.js';
@@ -16,10 +16,22 @@ import { clamp, damp, smooth, vdist, fmtU, fmtTime, TAU } from './util.js';
 // reach: multiples of the body's radius where the pull begins. accel: u/s^2 at
 // the surface. event: black holes only, the radius inside which nothing gets
 // out. Deliberately arcade - felt in flight, not physically correct.
+// The star numbers are set so a star cannot steal its own planets' orbits.
+// A planet pulls 60 * (r/d)^2, so at two of its own radii above the surface -
+// a low orbit - it pulls 15 u/s^2, whatever its size. In this universe Sol has
+// r 20000 and Earth orbits at 86000, which is 3.3 stellar radii above the
+// surface, and the innermost Sol planet, Mercury, is 1.84 radii out. Star
+// reach 3 therefore ends the Sun's well short of Earth entirely, and at
+// Mercury the Sun pulls 22/1.84^2 = 6.5 u/s^2 against the planet's 15, so the
+// planet still wins. The edge of the well is only 22/9 = 2.4 u/s^2, so there
+// is no wall to hit. Close in it still bites: 88 u/s^2 half a radius above the
+// surface, 550 at a fifth, 8800 at the clamp - sublight thrust is about 1.3x a
+// hull's top speed, 195 u/s^2 for the Filing Cabinet, so nothing holds station
+// inside about a third of a radius.
 export const GRAVITY = {
   moon: { reach: 5, accel: 26 },
   planet: { reach: 7, accel: 60 },
-  star: { reach: 10, accel: 150 },
+  star: { reach: 3, accel: 22 },
   blackhole: { reach: 30, accel: 900, event: 2.2 },
 };
 
@@ -38,6 +50,20 @@ export const ITEMS = {
   repair: { name: 'Hull patch kit', desc: 'Patches 60 hull, anywhere.', price: 450 },
   snacks: { name: 'Box of snacks', desc: 'Goes in the fridge. Eating one tops the shield up by 15.', price: 60 },
   poster: { name: 'Band poster', desc: 'For the dorm wall. Does nothing. Looks great.', price: 120 },
+};
+// One key (R) at the helm, one ability per hull. cost is fuel: upfront for the
+// one-shots, per second for the two that are held or toggled. Every one of
+// these changes the flight model or the fight; none of them prints a message
+// and stops there.
+export const ABILITIES = {
+  afterburner: { name: 'Afterburner', cooldown: 9, cost: 8, desc: 'A 2.2 s burn at 2.3x top speed. Heavier on the stick while it lasts.' },
+  blink: { name: 'Blink', cooldown: 6, cost: 10, desc: 'An instant hop forward, up to 1,400 u. Half a second of grace from enemy fire.' },
+  cloak: { name: 'Cloak', cooldown: 20, cost: 1.2, rate: true, desc: 'Toggle. Enemies past 900 u shoot at where you were. Firing drops it.' },
+  tractor: { name: 'Tractor beam', cooldown: 4, cost: 3, rate: true, hold: true, desc: 'Hold R to reel in the red guy under the crosshair.' },
+  ram: { name: 'Ram shield', cooldown: 12, cost: 15, desc: '3 s where hitting a red guy hurts it instead of you.' },
+  decoy: { name: 'Decoy flares', cooldown: 10, cost: 5, desc: 'Three flares. Red guys nearby chase one of them instead of you.' },
+  repair: { name: 'Nanites', cooldown: 25, cost: 20, desc: 'Instant +80 hull.' },
+  scoop: { name: 'Fuel scoop', cooldown: 0, cost: 0, passive: true, desc: 'Toggle the intake. Open, inside a star’s corona: fuel in, hull out.' },
 };
 export const PAINT_NAMES = { yellow: 'Yellow highlighter', blue: 'Blue highlighter', outline: 'Bare paper, blue outline' };
 const PAINT_PRICE = 300;
@@ -98,6 +124,7 @@ export class Game {
     this.shots = [];
     this.fx = [];
     this.bombs = [];
+    this.decoys = [];
     this.zone = null;
     this.sessionSeed = (Math.random() * 2 ** 32) >>> 0;
     this.sessionStart = new Date();
@@ -181,12 +208,19 @@ export class Game {
     this.shipRoot.add(this.interior.group);
     this.extRoot.add(this.exterior.group);
     const prev = this.ship;
+    // the new hull starts with the ability state blank, so the old hull's
+    // afterburner loop has to be stopped here or it plays for ever
+    if (this.burnLoop) { this.burnLoop.stop(); this.burnLoop = null; }
     this.ship = {
       type, pos: prev ? prev.pos : { x: 0, y: 0, z: 0 }, q: prev ? prev.q : new THREE.Quaternion(), vel: new THREE.Vector3(),
       throttle: 0, cs: 0, cruise: false, boost: false, auto: null, warp: null,
       air: 100, hatch: 'top',
       hull: s.hull[type] ?? SHIPS[type].hull, shield: 0, fuel: s.fuel[type] ?? SHIPS[type].tank, heat: 0, overheat: false,
       gunIdx: 0, fireCd: 0, lastHit: 0, bombs: 4, bombTimer: 0,
+      // which deck you are standing on and the camera baseline for it
+      deck: 0, deckY: 0, elevator: null,
+      // the R ability: one shared cooldown plus whatever state it needs
+      abilityCd: 0, burnT: 0, ramT: 0, blinkIframe: 0, cloak: null, tractor: null, scoopOn: true,
     };
     this.ship.shield = this.stat('shield');
     this.ship.bombs = this.stat('bombs');
@@ -364,6 +398,7 @@ export class Game {
       case 'KeyG': if (this.mode === 'drone') this.recallDrone(); else this.launchDrone(); break;
       case 'KeyC': if (this.mode === 'helm') this.toggleCruise(); break;
       case 'KeyX': if (this.mode === 'helm') { this.ship.throttle = 0; this.ship.cruise = false; this.ship.auto = null; } break;
+      case 'KeyR': if (this.mode === 'helm') this.useAbility(); break;
       case 'KeyT': if (this.navTarget && this.mode !== 'eva') this.setCourse(this.navTarget); break;
       case 'KeyJ': if (this.navTarget) this.warpTo(this.navTarget); break;
       case 'KeyN': audio.next(); this.ui.toast(`Now playing: ${audio.current ? audio.current.name : 'nothing'}`); break;
@@ -391,10 +426,16 @@ export class Game {
   }
 
   // ---------- interaction ----------
+  // The deck you are standing on. Single-deck ships have no `decks` array and
+  // get the interior itself, exactly as before.
+  curDeck() {
+    const I = this.interior;
+    return (I && I.decks && I.decks[this.ship.deck]) || I;
+  }
   nearestInteract() {
     const p = this.player;
     let best = null, bd = Infinity;
-    for (const it of this.interior.interact || []) {
+    for (const it of this.curDeck().interact || []) {
       if (it.id === 'drone' && !this.settings.drone) continue;
       const dx = it.pos.x - p.x, dz = it.pos.z - p.z, dy = it.pos.y - (p.y + 1.2);
       const d = Math.hypot(dx, dz);
@@ -409,7 +450,7 @@ export class Game {
   // Doors open for whoever walks up to them, and close behind. Nothing has to
   // be pressed: the hull knows you are there.
   updateDoors(dt) {
-    const doors = this.interior && this.interior.doors;
+    const doors = this.interior && this.curDeck().doors;
     if (!doors || !doors.length) return;
     const inside = this.mode === 'foot' || this.mode === 'helm';
     const p = this.player;
@@ -451,7 +492,7 @@ export class Game {
     if (this.mode !== 'foot') { this.dropCarried(); return; }
     const p = this.player;
     const fx = -Math.sin(p.yaw), fz = -Math.cos(p.yaw);
-    const want = { x: p.x + fx * 1.05, y: p.y + 1.25 + Math.sin(p.pitch) * 0.9, z: p.z + fz * 1.05 };
+    const want = { x: p.x + fx * 1.05, y: this.ship.deckY + p.y + 1.25 + Math.sin(p.pitch) * 0.9, z: p.z + fz * 1.05 };
     const m = c.mesh;
     m.position.x += (want.x - m.position.x) * Math.min(1, dt * 14);
     m.position.y += (want.y - m.position.y) * Math.min(1, dt * 14);
@@ -462,11 +503,16 @@ export class Game {
   nearestProp() {
     const props = (this.interior && this.interior.props) || [];
     const p = this.player;
+    // Props carry an absolute y, so on a stacked hull the reach has to be
+    // under half a deck pitch or you could take a mug off the bridge floor
+    // while standing on the deck above it.
+    const pitch = (this.interior && this.interior.deckPitch) || 0;
+    const up = pitch ? Math.min(2.2, pitch / 2) : 2.2;
     let best = null, bd = 1.9;
     for (const it of props) {
       if (it === this.carried) continue;
       const d = Math.hypot(it.mesh.position.x - p.x, it.mesh.position.z - p.z);
-      if (d < bd && Math.abs(it.mesh.position.y - p.y) < 2.2) { bd = d; best = it; }
+      if (d < bd && Math.abs(it.mesh.position.y - p.y - this.ship.deckY) < up) { bd = d; best = it; }
     }
     return best;
   }
@@ -484,12 +530,13 @@ export class Game {
     const c = this.carried;
     if (!c) return;
     this.carried = null;
-    const p = this.player;
+    const p = this.player, floor = this.ship.deckY;
+    // onto the deck you are standing on, not always the bridge floor
     if (throwIt) {
       const fx = -Math.sin(p.yaw), fz = -Math.cos(p.yaw);
-      c.mesh.position.set(p.x + fx * 2.6, Math.max(0.2, p.y + 1.2), p.z + fz * 2.6);
+      c.mesh.position.set(p.x + fx * 2.6, floor + Math.max(0.2, p.y + 1.2), p.z + fz * 2.6);
     } else {
-      c.mesh.position.y = 0.2;
+      c.mesh.position.y = floor + 0.2;
     }
   }
 
@@ -522,6 +569,7 @@ export class Game {
       case 'nav': this.ui.open('map'); break;
       case 'music': audio.next(); toast(`Now playing: ${audio.current ? audio.current.name : 'nothing'} (N skips)`); break;
       case 'breach': this.pullBreach(); break;
+      case 'elevator': this.rideElevator(); break;
       case 'drone': this.launchDrone(); break;
       case 'storage': this.unlock(); this.ui.open('storage'); break;
       case 'toilet': audio.sfx('flush'); toast('Flushed. Where it goes out here is a question for the engineers.'); break;
@@ -564,6 +612,10 @@ export class Game {
   standUp() {
     this.setMode('foot');
     const sp = this.interior.spawn;
+    // leaving the seat lets go of the tractor beam: nothing holds it from here,
+    // and the HUD must not keep claiming a beam you cannot steer
+    if (this.ship.tractor) { this.ship.tractor = null; this.ship.abilityCd = ABILITIES.tractor.cooldown; }
+    this.ship.deck = 0; this.ship.deckY = 0; this.ship.elevator = null;
     this.player.x = sp.x; this.player.z = sp.z; this.player.y = 0; this.player.vy = 0;
     this.player.yaw = this.interior.spawnYaw || 0; this.player.pitch = 0;
     if (this.ship.auto) this.ui.toast('Autopilot has the ship. Walk around, the ship will stop when it arrives.');
@@ -815,6 +867,7 @@ export class Game {
     const ctx = this.u.update(sh.pos, this.t, dt);
     if (this.mode !== 'title') this.gravity(ctx, dt);
     this.collide(ctx, dt);
+    this.ramCheck(dt);
     this.updateZones(dt);
     this.updateCombat(dt);
     this.updateBreach(dt);
@@ -837,8 +890,42 @@ export class Game {
     return out;
   }
 
+  // The elevator. No key of its own: E on the call plate, like every other
+  // prop. Movement is locked for the ride, looking around is not.
+  rideElevator() {
+    const sh = this.ship, I = this.interior;
+    if (!I.decks) { this.ui.toast('This hull has one deck.'); return; }
+    if (sh.elevator) return;
+    if (this.breach) { audio.sfx('deny'); this.ui.toast('Not with the hull open.'); return; }
+    const n = I.decks.length, to = (sh.deck + 1) % n, hops = Math.abs(to - sh.deck);
+    sh.auto = null; sh.cruise = false; sh.throttle = 0;
+    sh.elevator = { from: sh.deck, to, t: 0, dur: 1.4 + 1.2 * hops };
+    audio.sfx('door');
+    audio.play('elevator');
+    this.ui.toast(`Going to ${I.deckNames[to] || 'deck ' + (to + 1)}. Floor Seven Million plays either way.`);
+  }
+  rideStep(dt, m) {
+    const sh = this.ship, p = this.player, e = sh.elevator, I = this.interior;
+    p.yaw -= m.x;
+    p.pitch = clamp(p.pitch - m.y, -1.45, 1.45);
+    p.y = 0; p.vy = 0;
+    const pitchY = I.deckPitch || 2.9;
+    e.t += dt;
+    const k = clamp(e.t / e.dur, 0, 1);
+    sh.deckY = (e.from + (e.to - e.from) * smooth(k)) * pitchY;
+    if (k < 1) return;
+    sh.deck = e.to;
+    sh.deckY = e.to * pitchY;
+    sh.elevator = null;
+    if (I.setDeck) I.setDeck(e.to);
+    audio.sfx('door');
+    audio.mood(this.zone ? 'combat' : 'cruise');
+    this.ui.toast(`${(I.deckNames[e.to] || 'Deck ' + (e.to + 1)).replace(/^the /, '').toUpperCase()}. Mind the gap.`);
+    this.collideFoot();
+  }
   updateFoot(dt, m) {
     const p = this.player, keys = this.keys;
+    if (this.ship.elevator) { this.rideStep(dt, m); return; }
     p.yaw -= m.x;
     p.pitch = clamp(p.pitch - m.y, -1.45, 1.45);
     const run = keys.has('ShiftLeft') || keys.has('ShiftRight') || this.sprintLatch;
@@ -865,7 +952,7 @@ export class Game {
   collideFoot() {
     const p = this.player, R = 0.3;
     for (let pass = 0; pass < 3; pass++) {
-      for (const b of this.interior.colliders || []) {
+      for (const b of this.curDeck().colliders || []) {
         const cx = clamp(p.x, b.x0, b.x1), cz = clamp(p.z, b.z0, b.z1);
         const dx = p.x - cx, dz = p.z - cz;
         const d2 = dx * dx + dz * dz;
@@ -892,7 +979,8 @@ export class Game {
       p.lookPitch = clamp(p.lookPitch - m.y, -1.2, 1.2);
     } else {
       p.lookYaw = damp(p.lookYaw, 0, 6, dt); p.lookPitch = damp(p.lookPitch, 0, 6, dt);
-      const turn = this.def.turn;
+      // an afterburner burn is committed: more speed, less stick
+      const turn = this.def.turn * (sh.burnT > 0 ? 0.6 : 1);
       // arrow keys steer too, for trackpads and for anyone who prefers keys
       const ky = (keys.has('ArrowLeft') ? 1 : 0) - (keys.has('ArrowRight') ? 1 : 0);
       const kp = (keys.has('ArrowUp') ? 1 : 0) - (keys.has('ArrowDown') ? 1 : 0);
@@ -915,12 +1003,22 @@ export class Game {
     if (keys.has('KeyW')) { sh.throttle = Math.min(1, sh.throttle + dt * 1.2); if (sh.auto) { sh.auto = null; this.ui.toast('Autopilot off.'); } }
     if (keys.has('KeyS')) { sh.throttle = Math.max(0, sh.throttle - dt * 0.8); if (sh.auto) { sh.auto = null; this.ui.toast('Autopilot off.'); } }
     sh.boost = keys.has('ShiftLeft') || keys.has('ShiftRight');
+    if (this.def.ability === 'tractor') this.tractorPull(dt, keys.has('KeyR'));
     if ((this.mouse.left && !looking) || keys.has('Space')) this.fire(dt);
   }
 
   updateShip(dt) {
     const sh = this.ship, ctx = this.u.ctx;
     sh.fireCd -= dt;
+    // the R ability: one cooldown and the timers the active ones run on
+    if (sh.abilityCd > 0) sh.abilityCd = Math.max(0, sh.abilityCd - dt);
+    if (sh.blinkIframe > 0) sh.blinkIframe = Math.max(0, sh.blinkIframe - dt);
+    if (sh.ramT > 0) sh.ramT = Math.max(0, sh.ramT - dt);
+    if (sh.burnT > 0) {
+      sh.burnT = Math.max(0, sh.burnT - dt);
+      if (this.burnLoop) this.burnLoop.set(0.4 + 0.6 * Math.min(1, sh.burnT));
+      if (!sh.burnT && this.burnLoop) { this.burnLoop.stop(); this.burnLoop = null; }
+    }
     sh.heat = Math.max(0, sh.heat - dt * 26);
     if (sh.overheat && sh.heat < this.stat('heat') * 0.4) sh.overheat = false;
     if (performance.now() - sh.lastHit > 4000) sh.shield = Math.min(this.stat('shield'), sh.shield + this.stat('regen') * dt);
@@ -953,7 +1051,8 @@ export class Game {
     }
     const limp = sh.fuel <= 0;
     if (limp) { sh.cruise = false; }
-    const vmaxSub = this.stat('speed') * (sh.boost ? 1.7 : 1) * (limp ? 0.25 : 1);
+    // the afterburner overrides Shift-boost rather than stacking with it
+    const vmaxSub = this.stat('speed') * (sh.burnT > 0 ? 2.3 : sh.boost ? 1.7 : 1) * (limp ? 0.25 : 1);
     let targetSpeed;
     if (sh.cruise) {
       const cmax = this.stat('cruise') * (sh.boost ? 3 : 1);
@@ -971,6 +1070,22 @@ export class Game {
       else sh.cs = sh.vel.length();
       sh.vel.lerp(V1, 1 - Math.exp(-1.3 * dt));
       sh.fuel -= dt * 0.012 * sh.throttle * (sh.boost ? 2.5 : 1);
+    }
+    if (sh.cloak && sh.cloak.active) {
+      sh.fuel -= dt * ABILITIES.cloak.cost;
+      if (sh.fuel <= 0) this.cloakOff('The cloak collapsed: no fuel left to run it.');
+    }
+    // The Filing Cabinet's scoop: inside half a radius of a star's surface,
+    // fuel trickles in and the hull cooks off. Expensive, risky, and one hull
+    // only. The corona has to reach out this far to be flyable at all: at half
+    // a radius up the star pulls 88 u/s squared and the Cabinet's own thrust is
+    // about 195, so holding the intake open is a fight, not a coin flip.
+    const near = ctx.nearest;
+    this.scooping = false;
+    if (this.def.scoop && sh.scoopOn && near && near.kind === 'star' && near.r > 0 && vdist(near.pos, sh.pos) < near.r * 1.5) {
+      sh.fuel = Math.min(this.stat('tank'), sh.fuel + dt * 2);
+      sh.hull = Math.max(1, sh.hull - dt);
+      this.scooping = true;
     }
     if (sh.fuel < 0) {
       sh.fuel = 0;
@@ -1213,14 +1328,189 @@ export class Game {
   clearCombat() {
     for (const e of this.enemies) { this.fxRoot.remove(e.obj.group); if (e.beamMesh) this.fxRoot.remove(e.beamMesh); if (e.aimMesh) this.fxRoot.remove(e.aimMesh); }
     for (const s of this.shots) this.fxRoot.remove(s.mesh);
-    this.enemies = []; this.shots = [];
+    for (const d of this.decoys) if (d.obj) this.fxRoot.remove(d.obj.group);
+    this.enemies = []; this.shots = []; this.decoys = [];
     this.zone = null;
     this.r.fx.damage = 0;
+  }
+
+  // ---------- abilities (R at the helm) ----------
+  ability() { return ABILITIES[this.def.ability] || null; }
+  // Can R do anything right now? The HUD readout asks this too.
+  abilityReady() {
+    const sh = this.ship, a = this.ability();
+    if (!a) return false;
+    if (a.passive) return true;
+    if (sh.abilityCd > 0) return false;
+    return sh.fuel > (a.rate ? a.cost : a.cost - 1e-6);
+  }
+  useAbility() {
+    const sh = this.ship, id = this.def.ability, a = ABILITIES[id];
+    if (!a || this.mode !== 'helm') return;
+    const deny = (m) => { audio.sfx('deny'); this.ui.toast(m); };
+    if (sh.warp) { deny('Not while the warp field is up.'); return; }
+    if (id === 'tractor') return;                       // held, not tapped: tractorPull
+    if (id === 'scoop') {
+      sh.scoopOn = !sh.scoopOn;
+      audio.sfx('ui');
+      this.ui.toast(sh.scoopOn ? 'Scoop intake open. Inside a corona it fills, slowly, while the hull cooks.' : 'Scoop intake shut.');
+      return;
+    }
+    if (id === 'cloak' && sh.cloak && sh.cloak.active) { this.cloakOff('Decloaked.'); return; }
+    if (sh.abilityCd > 0) { deny(a.name + ' is recharging: ' + sh.abilityCd.toFixed(1) + ' s.'); return; }
+    if (sh.fuel <= (a.rate ? a.cost : a.cost - 1e-6)) { deny(a.name + ' needs ' + a.cost + ' ' + this.def.fuel + (a.rate ? ' a second.' : '.')); return; }
+    switch (id) {
+      case 'afterburner':
+        sh.fuel -= a.cost;
+        sh.burnT = 2.2;
+        sh.abilityCd = a.cooldown;
+        if (!this.burnLoop) this.burnLoop = audio.loop('thruster');
+        if (this.burnLoop) this.burnLoop.set(1);
+        audio.sfx('fuel');
+        this.ui.big('AFTERBURNER', '2.2 s at 2.3x. The stick gets heavy.');
+        break;
+      case 'blink': {
+        // clamped to half the distance to the nearest surface, so a blink can
+        // never put the ship inside a planet
+        const dist = Math.min(1400, Math.max(120, (this.u.ctx.dnear ?? 1e9) * 0.5));
+        const fwd = V1.copy(FWD).applyQuaternion(sh.q);
+        sh.pos.x += fwd.x * dist; sh.pos.y += fwd.y * dist; sh.pos.z += fwd.z * dist;
+        sh.fuel -= a.cost;
+        sh.abilityCd = a.cooldown;
+        sh.blinkIframe = 0.5;
+        sh.auto = null;
+        this.state.stats.distance += dist;
+        audio.sfx('warpIn');
+        this.ui.toast('Blinked ' + Math.round(dist) + ' u.');
+        break;
+      }
+      case 'cloak':
+        sh.cloak = { active: true, lastKnown: { x: sh.pos.x, y: sh.pos.y, z: sh.pos.z } };
+        audio.sfx('seal');
+        this.ui.toast('Cloaked. ' + a.cost + ' ' + this.def.fuel + ' a second, and firing drops it.');
+        break;
+      case 'ram':
+        sh.fuel -= a.cost;
+        sh.ramT = 3;
+        sh.abilityCd = a.cooldown;
+        audio.sfx('alarm');
+        this.ui.big('RAM SHIELD', '3 s. Nose first.');
+        break;
+      case 'decoy':
+        sh.fuel -= a.cost;
+        sh.abilityCd = a.cooldown;
+        this.dropFlares();
+        break;
+      case 'repair': {
+        const max = this.stat('hull');
+        if (sh.hull >= max - 0.5) { deny('The hull is already whole.'); return; }
+        sh.fuel -= a.cost;
+        sh.abilityCd = a.cooldown;
+        sh.hull = Math.min(max, sh.hull + 80);
+        audio.sfx('seal');
+        this.ui.toast('Nanites out. Hull +80.');
+        break;
+      }
+      default: break;
+    }
+  }
+  cloakOff(why) {
+    const sh = this.ship;
+    if (!sh.cloak || !sh.cloak.active) return;
+    sh.cloak.active = false;
+    sh.abilityCd = ABILITIES.cloak.cooldown;
+    if (why) this.ui.toast(why);
+  }
+  // Three flares off the wing. Every red guy close enough takes one of them for
+  // the ship for a few seconds; updateCombat swaps its aim point to the flare.
+  dropFlares() {
+    const sh = this.ship, made = [];
+    for (let i = 0; i < 3; i++) {
+      const o = buildDecoy();
+      this.fxRoot.add(o.group);
+      const d = {
+        pos: { x: sh.pos.x + (Math.random() - 0.5) * 300, y: sh.pos.y + (Math.random() - 0.5) * 300, z: sh.pos.z + (Math.random() - 0.5) * 300 },
+        life: 6, obj: o,
+      };
+      this.decoys.push(d);
+      made.push(d);
+    }
+    let took = 0;
+    for (const e of this.enemies) {
+      if (e.dead || e.kind !== 'imp') continue;
+      if (vdist(e.pos, sh.pos) > 3500) continue;
+      e.decoyLock = made[Math.floor(Math.random() * made.length)];
+      e.decoyT = 3 + Math.random() * 2;
+      took++;
+    }
+    audio.sfx('bomb');
+    this.ui.toast(took ? 'Three flares away. ' + took + ' went for one instead of you.' : 'Three flares away. Nobody was looking.');
+  }
+  updateDecoys(dt) {
+    if (!this.decoys.length) return;
+    const keep = [];
+    for (const d of this.decoys) {
+      d.life -= dt;
+      if (d.life > 0) keep.push(d);
+      else if (d.obj) this.fxRoot.remove(d.obj.group);
+    }
+    this.decoys = keep;
+  }
+  // The red guy nearest the crosshair, for the tractor beam. Imps only: a
+  // capital's position logic is not written to be shoved around.
+  lockImp(aim) {
+    const sh = this.ship, minCos = Math.cos((12 * Math.PI) / 180);
+    let best = null, bestCos = minCos;
+    for (const e of this.enemies) {
+      if (e.dead || e.kind !== 'imp') continue;
+      const dx = e.pos.x - sh.pos.x, dy = e.pos.y - sh.pos.y, dz = e.pos.z - sh.pos.z;
+      const d = Math.hypot(dx, dy, dz);
+      if (d > 4000 || d < 1) continue;
+      const c = (dx * aim.x + dy * aim.y + dz * aim.z) / d;
+      if (c > bestCos) { bestCos = c; best = e; }
+    }
+    return best;
+  }
+  tractorPull(dt, held) {
+    const sh = this.ship, a = ABILITIES.tractor;
+    const release = () => { if (sh.tractor) { sh.tractor = null; sh.abilityCd = a.cooldown; } };
+    if (!held || sh.warp || sh.abilityCd > 0 || sh.fuel <= 0) { release(); return; }
+    const aim = V2.copy(FWD).applyQuaternion(sh.q);
+    let e = sh.tractor;
+    if (!e || e.dead || !this.enemies.includes(e)) e = this.lockImp(aim);
+    if (!e) { release(); return; }
+    sh.tractor = e;
+    sh.fuel = Math.max(0, sh.fuel - dt * a.cost);
+    const toShip = V3.set(sh.pos.x - e.pos.x, sh.pos.y - e.pos.y, sh.pos.z - e.pos.z);
+    const d = toShip.length() || 1;
+    toShip.multiplyScalar(900 / d);
+    e.vel.lerp(toShip, 1 - Math.exp(-2 * dt));
+    e.tractorT = 0.2;                  // updateCombat leaves its velocity alone while this lasts
+  }
+  // Ship-against-enemy contact exists for one hull only: the Stapler. Gated on
+  // the ability, so the other fourteen fly exactly as they did.
+  ramCheck(dt) {
+    if (this.def.ability !== 'ram' || this.mode === 'dead' || this.mode === 'title') return;
+    const sh = this.ship, rad = (this.exterior && this.exterior.radius) || 20;
+    for (const e of this.enemies) {
+      if (e.dead || e.kind !== 'imp') continue;
+      if (vdist(e.pos, sh.pos) >= e.radius + rad + 12) continue;
+      if (sh.ramT > 0) {
+        this.hurt(e, clamp(sh.vel.length() * 0.08, 40, 400), { x: e.pos.x, y: e.pos.y, z: e.pos.z });
+        this.shake = Math.max(this.shake || 0, 0.14);
+        audio.sfx('hit');
+      } else {
+        this.damage(15, 'crash');
+        this.ui.toast('You rammed a red guy with the shield down.');
+      }
+      sh.vel.multiplyScalar(-0.3);
+    }
   }
 
   fire(dt) {
     const sh = this.ship;
     if (sh.fireCd > 0 || sh.overheat || sh.warp) return;
+    this.cloakOff('Decloaked to fire.');
     const guns = (this.exterior && this.exterior.guns && this.exterior.guns.length) ? this.exterior.guns : [new THREE.Vector3(0, 0, -4)];
     sh.fireCd = 0.12;
     const g = guns[sh.gunIdx++ % guns.length];
@@ -1270,6 +1560,7 @@ export class Game {
   damage(n, why) {
     const sh = this.ship;
     if (this.mode === 'dead' || sh.warp) return;
+    if (sh.blinkIframe > 0) return;          // the half second after a blink
     sh.lastHit = performance.now();
     const s = Math.min(sh.shield, n);
     sh.shield -= s;
@@ -1301,6 +1592,7 @@ export class Game {
     this.restorePanel();
     const home = this.state.lastStation && this.state.lastStation.pos ? this.state.lastStation.pos : this.u.sol.station.pos;
     this.parkNear(home, 2500);
+    this.ship.deck = 0; this.ship.deckY = 0; this.ship.elevator = null;
     this.ship.hull = this.stat('hull');
     this.ship.shield = this.stat('shield');
     this.ship.fuel = Math.max(this.ship.fuel, this.stat('tank') * 0.5);
@@ -1313,8 +1605,15 @@ export class Game {
   }
 
   targetPoint() {
-    // what enemies shoot at: the drone if it is closer, else the ship
+    // What enemies shoot at. Cloaked, they only get a fresh fix inside 900 u;
+    // past that they keep aiming at the last place they saw you.
     const sh = this.ship;
+    if (sh.cloak && sh.cloak.active) {
+      if (this.enemies.some((e) => !e.dead && vdist(e.pos, sh.pos) < 900)) {
+        sh.cloak.lastKnown = { x: sh.pos.x, y: sh.pos.y, z: sh.pos.z };
+      }
+      return sh.cloak.lastKnown;
+    }
     return { x: sh.pos.x, y: sh.pos.y, z: sh.pos.z };
   }
 
@@ -1325,23 +1624,31 @@ export class Game {
     // enemies
     for (const e of this.enemies) {
       if (e.dead) continue;
-      const to = V1.set(tp.x - e.pos.x, tp.y - e.pos.y, tp.z - e.pos.z);
+      // A flare it took counts as the ship for as long as the lock lasts.
+      if (e.decoyT > 0) { e.decoyT -= dt; if (!e.decoyLock || e.decoyLock.life <= 0) { e.decoyT = 0; e.decoyLock = null; } }
+      const at = e.decoyT > 0 && e.decoyLock ? e.decoyLock.pos : tp;
+      const to = V1.set(at.x - e.pos.x, at.y - e.pos.y, at.z - e.pos.z);
       const dist = to.length();
       to.normalize();
       if (e.kind === 'imp') {
         e.phase += dt * 0.8;
-        const orbit = V2.set(Math.cos(e.phase), Math.sin(e.phase * 0.7) * 0.5, Math.sin(e.phase)).multiplyScalar(620);
-        const goal = V3.set(tp.x + orbit.x - e.pos.x, tp.y + orbit.y - e.pos.y, tp.z + orbit.z - e.pos.z);
-        const gl = goal.length();
-        goal.normalize().multiplyScalar(Math.min(240, gl * 0.8)).add(V2.copy(shipVel).multiplyScalar(0.9));
-        e.vel.lerp(goal, 1 - Math.exp(-1.5 * dt));
+        if (e.tractorT > 0) {
+          // the Paperclip's beam owns this one's velocity while it holds
+          e.tractorT -= dt;
+        } else {
+          const orbit = V2.set(Math.cos(e.phase), Math.sin(e.phase * 0.7) * 0.5, Math.sin(e.phase)).multiplyScalar(620);
+          const goal = V3.set(at.x + orbit.x - e.pos.x, at.y + orbit.y - e.pos.y, at.z + orbit.z - e.pos.z);
+          const gl = goal.length();
+          goal.normalize().multiplyScalar(Math.min(240, gl * 0.8)).add(V2.copy(shipVel).multiplyScalar(0.9));
+          e.vel.lerp(goal, 1 - Math.exp(-1.5 * dt));
+        }
         e.pos.x += e.vel.x * dt; e.pos.y += e.vel.y * dt; e.pos.z += e.vel.z * dt;
         Q2.setFromUnitVectors(FWD, to);
         e.q.slerp(Q2, 1 - Math.exp(-4 * dt));
         e.cd -= dt;
         if (e.cd <= 0 && dist < 2600) {
           e.cd = 2.4 + Math.random() * 2.2;
-          const lead = V2.set(tp.x + shipVel.x * dist / 1100 - e.pos.x, tp.y + shipVel.y * dist / 1100 - e.pos.y, tp.z + shipVel.z * dist / 1100 - e.pos.z).normalize();
+          const lead = V2.set(at.x + shipVel.x * dist / 1100 - e.pos.x, at.y + shipVel.y * dist / 1100 - e.pos.y, at.z + shipVel.z * dist / 1100 - e.pos.z).normalize();
           lead.x += (Math.random() - 0.5) * 0.06; lead.y += (Math.random() - 0.5) * 0.06; lead.z += (Math.random() - 0.5) * 0.06;
           this.addShot({ ...e.pos }, lead.normalize().multiplyScalar(1100), 2, 'enemy');
           audio.sfx('laserEnemy', { vol: clamp(1 - dist / 3000, 0.1, 0.6) });
@@ -1359,12 +1666,12 @@ export class Game {
             t.cd = 3 + Math.random() * 2.5;
             const wp = V2.copy(t.local).applyQuaternion(e.q);
             const from = { x: e.pos.x + wp.x, y: e.pos.y + wp.y, z: e.pos.z + wp.z };
-            const aim = V3.set(tp.x + shipVel.x * dist / 900 - from.x, tp.y + shipVel.y * dist / 900 - from.y, tp.z + shipVel.z * dist / 900 - from.z).normalize();
+            const aim = V3.set(at.x + shipVel.x * dist / 900 - from.x, at.y + shipVel.y * dist / 900 - from.y, at.z + shipVel.z * dist / 900 - from.z).normalize();
             aim.x += (Math.random() - 0.5) * 0.08; aim.y += (Math.random() - 0.5) * 0.08; aim.z += (Math.random() - 0.5) * 0.08;
             this.addShot(from, aim.normalize().multiplyScalar(900), 3, 'enemy');
           }
         }
-        this.updateBeam(e, dt, tp, dist);
+        this.updateBeam(e, dt, at, dist);
         if (e.sub === 'carrier') {
           e.spawnCd -= dt;
           if (e.spawnCd <= 0 && this.enemies.filter((x) => x.kind === 'imp' && !x.dead).length < 6) {
@@ -1399,6 +1706,7 @@ export class Game {
     const keep = [];
     for (const s of this.shots) { if (s.dead) this.fxRoot.remove(s.mesh); else keep.push(s); }
     this.shots = keep;
+    this.updateDecoys(dt);
     this.updateBombs(dt);
     this.r.fx.damage = Math.max(0, this.r.fx.damage - dt * 0.9);
   }
@@ -1740,6 +2048,7 @@ export class Game {
     this.player.x = 0;
     this.player.z = this.interior.spawn ? this.interior.spawn.z : 0;
     this.player.y = 0;
+    this.ship.deck = 0; this.ship.deckY = 0; this.ship.elevator = null;
     this.eva = null;
     this.setMode('foot');
     audio.sfx('door');
@@ -1752,6 +2061,7 @@ export class Game {
     this.restorePanel();
     if (this.exterior.hole && this.exterior.hole.mesh) this.exterior.hole.mesh.visible = false;
     const inside = b.pos.clone().addScaledVector(b.normal, -1.3);
+    this.ship.deck = 0; this.ship.deckY = 0; this.ship.elevator = null;
     this.player.x = inside.x; this.player.z = inside.z; this.player.y = 0; this.player.vy = 0;
     this.player.yaw = Math.atan2(b.normal.x, b.normal.z);
     this.player.pitch = 0;
@@ -1780,7 +2090,7 @@ export class Game {
     this.shake = Math.max(0, shake - dt * 0.5);
     if (this.mode === 'foot' || this.mode === 'title' || this.mode === 'dead') {
       const bob = this.mode === 'foot' ? Math.sin(p.bob) * 0.035 : 0;
-      if (this.mode === 'foot') V1.set(p.x, p.y + 1.65 + bob, p.z);
+      if (this.mode === 'foot') V1.set(p.x, this.ship.deckY + p.y + 1.65 + bob, p.z);
       else V1.copy(this.interior.seat.pos);
       cam.position.copy(V1.applyQuaternion(sh.q));
       if (this.mode === 'foot') cam.quaternion.copy(sh.q).multiply(qYP(p.yaw, p.pitch, 0, Q1));
@@ -1822,6 +2132,12 @@ export class Game {
       s.mesh.quaternion.setFromUnitVectors(FWD, V1);
     }
     for (const b of this.bombs) squash(b.pos.x - sh.pos.x, b.pos.y - sh.pos.y, b.pos.z - sh.pos.z, b.mesh.position);
+    for (const d of this.decoys) {
+      if (!d.obj) continue;
+      const g = d.obj.group;
+      g.scale.setScalar(squash(d.pos.x - sh.pos.x, d.pos.y - sh.pos.y, d.pos.z - sh.pos.z, g.position));
+      g.rotation.y += dt * 3.2;
+    }
     for (const f of this.fx) squash(f.pos.x - sh.pos.x, f.pos.y - sh.pos.y, f.pos.z - sh.pos.z, f.g.position);
     this.r.fx.flash = Math.max(0, this.r.fx.flash - dt * 2);
     if (this.r.fx.blackout > 0 && this.mode !== 'eva') this.r.fx.blackout = Math.max(0, this.r.fx.blackout - dt);

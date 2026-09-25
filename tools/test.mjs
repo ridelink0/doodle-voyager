@@ -230,7 +230,7 @@ try {
   const sw = await E(`const m = g.switchShip('scout'); return { m, type: g.ship.type };`);
   // every hull in the roster builds, flies and can be walked
   const roster = await E(`
-    const ids = ['eraser', 'tape', 'witeout', 'paperclip', 'gelpen', 'compass', 'stickynotes', 'stapler', 'gluestick'];
+    const ids = ['eraser', 'tape', 'witeout', 'paperclip', 'gelpen', 'compass', 'stickynotes', 'stapler', 'gluestick', 'locker'];
     const bad = [];
     for (const id of ids) {
       g.state.credits = 99999; g.buyShip(id); g.setMode('foot');
@@ -238,7 +238,283 @@ try {
     }
     g.switchShip('scout'); g.setMode('foot');
     return bad;`);
-  check('every new hull can be bought, flown and walked', roster.length === 0, roster.join(',') || 'all 9 ok');
+  check('every new hull can be bought, flown and walked', roster.length === 0, roster.join(',') || 'all 10 ok');
+
+  // ---------- the roster: order, spread, and every deck of every hull ----------
+  const ORDER = ['scout', 'eraser', 'racer', 'tape', 'witeout', 'fighter', 'paperclip', 'hauler', 'gelpen',
+    'compass', 'stickynotes', 'stapler', 'gluestick', 'cruiser', 'locker'];
+  const shopOrder = await E(`const S = await import('./js/ships.js'); return Object.keys(S.SHIPS);`);
+  check('the shipyard lists fifteen hulls in the roster order',
+    shopOrder.length === 15 && ORDER.every((id, i) => shopOrder[i] === id), shopOrder.join(','));
+
+  const spread = await E(`const S = await import('./js/ships.js');
+    const sp = Object.values(S.SHIPS).map(x => x.speed);
+    return { max: Math.max(...sp), min: Math.min(...sp), fast: sp.filter(v => v > 420).length };`);
+  check('the roster has a real speed spread and several interceptors',
+    spread.max / spread.min > 3.5 && spread.fast >= 3,
+    `${spread.min}-${spread.max} (${(spread.max / spread.min).toFixed(1)}x), ${spread.fast} over 420`);
+
+  // buildInterior/buildExterior/walkCheck for every hull, every deck
+  const walk = await E(`const S = await import('./js/ships.js');
+    const bad = [];
+    for (const id of Object.keys(S.SHIPS)) {
+      try {
+        const I = S.buildInterior(id), X = S.buildExterior(id);
+        if (!(X.radius > 0) || !X.guns.length || !X.engines.length) bad.push(id + ': exterior');
+        for (const [i, d] of (I.decks || [I]).entries()) {
+          const w = S.walkCheck(d);
+          if (!w.ok) bad.push(id + ' deck ' + i + ': ' + w.problems.join('; '));
+        }
+      } catch (e) { bad.push(id + ' threw: ' + e.message); }
+    }
+    return bad;`);
+  check('every hull builds and every deck of it is walkable', walk.length === 0, walk.slice(0, 3).join(' | ') || '15 hulls ok');
+
+  // ---------- the Filing Cabinet: three decks, one shaft, one elevator ----------
+  const tall = await E(`const S = await import('./js/ships.js');
+    const L = S.SHIPS.locker, I = S.buildInterior('locker'), X = S.buildExterior('locker');
+    const box = new (g.ship.vel.constructor.prototype.constructor === undefined ? Object : Object)();
+    // the exterior really is taller than it is wide or long
+    let hi = 0, wide = 0, long = 0;
+    X.group.updateMatrixWorld(true);
+    X.group.traverse((o) => {
+      if (!o.isMesh || !o.geometry.attributes) return;
+      const p = o.geometry.attributes.position;
+      for (let i = 0; i < p.count; i++) {
+        hi = Math.max(hi, p.getY(i)); wide = Math.max(wide, Math.abs(p.getX(i))); long = Math.max(long, Math.abs(p.getZ(i)));
+      }
+    });
+    // the elevator landing must be clear of every collider on every deck
+    const R = 0.3, land = { x: 0, z: 2.8 };
+    const clear = I.decks.map((d) => {
+      let best = Infinity;
+      for (const c of d.colliders) {
+        const dx = land.x - Math.min(Math.max(land.x, c.x0), c.x1), dz = land.z - Math.min(Math.max(land.z, c.z0), c.z1);
+        best = Math.min(best, Math.hypot(dx, dz));
+      }
+      return +best.toFixed(3);
+    });
+    return {
+      price: L.price, tank: L.tank, decks: I.decks.length, pitch: I.deckPitch,
+      h: +hi.toFixed(1), w: +(wide * 2).toFixed(1), l: +(long * 2).toFixed(1),
+      clear, minClear: Math.min(...clear),
+      lifts: I.decks.map((d) => d.interact.filter((i) => i.id === 'elevator').length),
+    };`);
+  check('the Filing Cabinet is taller than it is wide or long',
+    tall.h > tall.w && tall.h > tall.l && tall.h > 10, `${tall.w} wide x ${tall.l} long x ${tall.h} tall`);
+  check('it has three decks 2.9 m apart, each with a call plate',
+    tall.decks === 3 && tall.pitch === 2.9 && tall.lifts.every((n) => n === 1), JSON.stringify({ decks: tall.decks, pitch: tall.pitch, lifts: tall.lifts }));
+  check('the elevator landing is clear of colliders at the same spot on all three decks',
+    tall.minClear > 0.3, `clearance ${tall.clear.join(' / ')} m (player radius 0.3)`);
+
+  const lift = await E(`g.state.credits = 99999; g.buyShip('locker'); g.setMode('foot');
+    g.player.x = 0; g.player.z = 2.8; g.player.y = 0;
+    const onBridge = g.nearestInteract() && g.nearestInteract().id;
+    const hasHelm = (d) => g.interior.decks[d].interact.some(i => i.id === 'helm');
+    g.rideElevator();
+    const riding = !!g.ship.elevator;
+    const mid = [];
+    for (let i = 0; i < 400 && g.ship.elevator; i++) { g.update(0.02); if (i === 30) mid.push(+g.ship.deckY.toFixed(2)); }
+    const one = { deck: g.ship.deck, y: +g.ship.deckY.toFixed(2), bed: g.curDeck().interact.some(i => i.id === 'bed'), helm0: hasHelm(0), helm1: hasHelm(1) };
+    g.rideElevator(); for (let i = 0; i < 400 && g.ship.elevator; i++) g.update(0.02);
+    const two = { deck: g.ship.deck, y: +g.ship.deckY.toFixed(2), drone: g.curDeck().interact.some(i => i.id === 'drone') };
+    g.rideElevator(); for (let i = 0; i < 600 && g.ship.elevator; i++) g.update(0.02);
+    const back = { deck: g.ship.deck, y: +g.ship.deckY.toFixed(2), helm: g.curDeck().interact.some(i => i.id === 'helm') };
+    g.standUp();
+    return { onBridge, riding, mid, one, two, back, afterStandUp: g.ship.deck };`);
+  check('the elevator carries you between the three decks',
+    lift.riding && lift.mid[0] > 0 && lift.mid[0] < 2.9 && lift.one.deck === 1 && lift.one.y === 2.9
+    && lift.two.deck === 2 && lift.two.y === 5.8 && lift.back.deck === 0 && lift.back.y === 0 && lift.afterStandUp === 0,
+    JSON.stringify(lift));
+  check('each deck has its own interactables and the camera rides with it',
+    lift.onBridge === 'elevator' && lift.one.bed && lift.two.drone && lift.back.helm && lift.one.helm0 && !lift.one.helm1,
+    JSON.stringify({ onBridge: lift.onBridge, bed: lift.one.bed, drone: lift.two.drone, helm: lift.back.helm }));
+
+  // ---------- abilities: one key, eight hulls, real effects ----------
+  const ab = async (id, body) => E(`g.state.credits = 99999; g.buyShip('${id}'); g.setMode('helm');
+    g.clearCombat(); g.ship.abilityCd = 0; g.ship.cloak = null; g.ship.tractor = null;
+    g.ship.burnT = 0; g.ship.ramT = 0; g.ship.blinkIframe = 0; g.ship.warp = null;
+    ${body}`);
+
+  const burn = await ab('eraser', `g.ship.fuel = 50; g.ship.throttle = 1; g.ship.vel.set(0,0,0); g.ship.cs = 0;
+    for (let i = 0; i < 120; i++) g.update(0.05);
+    const base = g.ship.vel.length();
+    const f0 = g.ship.fuel; g.useAbility();
+    const r = { burnT: +g.ship.burnT.toFixed(1), spent: +(f0 - g.ship.fuel).toFixed(1), cd: g.ship.abilityCd };
+    g.useAbility(); r.blocked = g.ship.fuel === f0 - 8;
+    for (let i = 0; i < 40; i++) g.update(0.05);
+    r.base = Math.round(base); r.fast = Math.round(g.ship.vel.length());
+    g.ship.burnT = 0; g.ship.throttle = 0; g.ship.abilityCd = 0; return r;`);
+  check('afterburner: costs fuel, holds a cooldown and really goes faster',
+    burn.burnT === 2.2 && burn.spent === 8 && burn.cd === 9 && burn.blocked && burn.fast > burn.base * 1.8,
+    JSON.stringify(burn));
+
+  const blink = await ab('tape', `g.ship.fuel = 50; g.ship.vel.set(0,0,0); g.ship.throttle = 0;
+    const V = g.ship.vel.constructor, p0 = { ...g.ship.pos }, f = new V(0,0,-1).applyQuaternion(g.ship.q);
+    const f0 = g.ship.fuel; g.useAbility();
+    const dx = g.ship.pos.x - p0.x, dy = g.ship.pos.y - p0.y, dz = g.ship.pos.z - p0.z;
+    const d = Math.hypot(dx, dy, dz);
+    const r = { d: Math.round(d), along: +((dx*f.x + dy*f.y + dz*f.z) / (d || 1)).toFixed(3),
+      spent: +(f0 - g.ship.fuel).toFixed(1), dnear: Math.round(g.u.ctx.dnear), iframe: g.ship.blinkIframe };
+    // the shield has to be down for this to say anything about the iframe:
+    // with it up the shield eats the 40 either way and the hull never moves
+    g.ship.shield = 0;
+    const h0 = g.ship.hull; g.damage(40, 'shot'); r.graced = g.ship.hull === h0;
+    for (let i = 0; i < 20; i++) g.update(0.05);
+    g.ship.shield = 0; g.ship.lastHit = performance.now();
+    const h1 = g.ship.hull; g.damage(40, 'shot'); r.graceEnds = g.ship.hull < h1;
+    r.tookFull = +(h1 - g.ship.hull).toFixed(1);
+    g.ship.hull = g.stat('hull'); g.ship.abilityCd = 0; return r;`);
+  check('blink: a real hop along the nose, clamped short of anything solid, with a moment of grace',
+    blink.along > 0.99 && blink.d > 100 && blink.d <= Math.min(1400, Math.round(blink.dnear * 0.5)) + 1
+    && blink.spent === 10 && blink.graced && blink.graceEnds && blink.tookFull === 40, JSON.stringify(blink));
+
+  const cloak = await ab('witeout', `g.ship.fuel = 60; g.ship.vel.set(0,0,0);
+    const far = g.spawnImp({ x: g.ship.pos.x + 1500, y: g.ship.pos.y, z: g.ship.pos.z });
+    g.useAbility();
+    const seen = { ...g.targetPoint() };
+    g.ship.pos.x += 600;
+    const stale = g.targetPoint();
+    const r = { on: !!(g.ship.cloak && g.ship.cloak.active), frozen: Math.abs(stale.x - seen.x) < 1e-6 };
+    const f0 = g.ship.fuel; for (let i = 0; i < 20; i++) g.update(0.05); r.drain = +(f0 - g.ship.fuel).toFixed(2);
+    far.pos = { x: g.ship.pos.x + 400, y: g.ship.pos.y, z: g.ship.pos.z };
+    r.tracksNear = Math.abs(g.targetPoint().x - g.ship.pos.x) < 1e-6;
+    g.fire(0.016); r.firingDrops = !g.ship.cloak.active; r.cd = g.ship.abilityCd;
+    g.clearCombat(); g.ship.cloak = null; g.ship.abilityCd = 0; return r;`);
+  check('cloak: enemies past 900 u keep shooting at where you were, and firing drops it',
+    cloak.on && cloak.frozen && cloak.tracksNear && cloak.firingDrops && cloak.drain > 1.0 && cloak.drain < 1.4 && cloak.cd === 20,
+    JSON.stringify(cloak));
+
+  const trac = await ab('paperclip', `g.ship.fuel = 80; g.ship.vel.set(0,0,0); g.ship.throttle = 0;
+    const V = g.ship.vel.constructor, f = new V(0,0,-1).applyQuaternion(g.ship.q);
+    const imp = g.spawnImp({ x: g.ship.pos.x + f.x*1500, y: g.ship.pos.y + f.y*1500, z: g.ship.pos.z + f.z*1500 });
+    const D = () => Math.hypot(imp.pos.x-g.ship.pos.x, imp.pos.y-g.ship.pos.y, imp.pos.z-g.ship.pos.z);
+    const d0 = D(); g.keys.add('KeyR'); const f0 = g.ship.fuel;
+    let mono = true, prev = d0;
+    for (let i = 0; i < 90; i++) { g.update(0.016); if (i % 10 === 9) { if (D() > prev) mono = false; prev = D(); } }
+    const r = { d0: Math.round(d0), d1: Math.round(D()), closing: mono, locked: g.ship.tractor === imp,
+      rate: +((f0 - g.ship.fuel) / (90 * 0.016)).toFixed(1) };
+    g.keys.delete('KeyR'); g.update(0.016);
+    // the release arms the full 4 s cooldown; the same frame's cooldown tick
+    // then takes one dt back off it, so it lands just under 4, never above
+    r.cd = +g.ship.abilityCd.toFixed(3);
+    r.released = g.ship.tractor === null && r.cd > 4 - 0.02 && r.cd <= 4;
+    g.clearCombat(); g.ship.abilityCd = 0; return r;`);
+  check('tractor beam: holding R reels a red guy in and burns fuel while it holds',
+    trac.locked && trac.closing && trac.d1 < trac.d0 * 0.7 && trac.rate > 2.5 && trac.rate < 3.5 && trac.released,
+    JSON.stringify(trac));
+
+  const ram = await ab('stapler', `g.ship.fuel = 80; g.ship.hull = g.stat('hull'); g.ship.vel.set(0, 0, -400);
+    g.ship.shield = 0; g.ship.lastHit = performance.now();
+    const imp = g.spawnImp({ x: g.ship.pos.x + 6, y: g.ship.pos.y, z: g.ship.pos.z });
+    const hp0 = imp.hp, h0 = g.ship.hull;
+    g.useAbility(); g.ramCheck(0.016);
+    const r = { hurt: +(hp0 - imp.hp).toFixed(0), hullHeld: g.ship.hull === h0, ramT: +g.ship.ramT.toFixed(1), spent: 80 - g.ship.fuel };
+    g.clearCombat(); g.ship.ramT = 0; g.ship.abilityCd = 0;
+    // the same contact with the ram shield down costs the Stapler hull. The
+    // ship's own shield has to be down too or it eats the 15 and the hull
+    // never moves, which would prove nothing either way.
+    const i2 = g.spawnImp({ x: g.ship.pos.x + 6, y: g.ship.pos.y, z: g.ship.pos.z });
+    g.ship.hull = g.stat('hull'); g.ship.shield = 0; g.ship.lastHit = performance.now();
+    g.ship.vel.set(0, 0, -400);
+    g.ramCheck(0.016);
+    r.bareHull = +(g.stat('hull') - g.ship.hull).toFixed(0);
+    r.bareHurts = g.ship.hull < g.stat('hull');
+    g.clearCombat();
+    // and no other hull tests enemy contact at all
+    const bad = [];
+    for (const id of ['scout', 'fighter', 'cruiser', 'locker', 'gelpen']) {
+      g.state.credits = 99999; g.buyShip(id); g.setMode('helm'); g.clearCombat();
+      const e = g.spawnImp({ x: g.ship.pos.x + 6, y: g.ship.pos.y, z: g.ship.pos.z });
+      const hp = e.hp; g.ship.hull = g.stat('hull'); g.ship.vel.set(0, 0, -400);
+      g.ship.shield = 0; g.ship.lastHit = performance.now();
+      g.ramCheck(0.016);
+      if (e.hp !== hp || g.ship.hull !== g.stat('hull')) bad.push(id);
+      g.clearCombat();
+    }
+    r.othersUntouched = bad;
+    return r;`);
+  check('ram shield: the Stapler hurts what it hits instead of itself',
+    ram.hurt > 0 && ram.hullHeld && ram.ramT === 3 && ram.spent === 15 && ram.bareHurts && ram.bareHull === 15,
+    JSON.stringify(ram));
+  check('ship-against-enemy contact runs for the Stapler and for nothing else',
+    ram.othersUntouched.length === 0, ram.othersUntouched.join(',') || 'scout, fighter, cruiser, locker, gelpen all unchanged');
+
+  const dec = await ab('stickynotes', `g.ship.fuel = 60; g.ship.vel.set(0,0,0);
+    const a = g.spawnImp({ x: g.ship.pos.x + 900, y: g.ship.pos.y, z: g.ship.pos.z });
+    const b2 = g.spawnImp({ x: g.ship.pos.x - 900, y: g.ship.pos.y, z: g.ship.pos.z });
+    const f0 = g.ship.fuel; g.useAbility();
+    const r = { flares: g.decoys.length, spent: +(f0 - g.ship.fuel).toFixed(1), cd: g.ship.abilityCd, locked: [!!a.decoyLock, !!b2.decoyLock] };
+    // while it holds a flare, the imp steers at the flare, not at the ship
+    const lock = a.decoyLock;
+    const at = { x: lock.pos.x - a.pos.x, y: lock.pos.y - a.pos.y, z: lock.pos.z - a.pos.z };
+    const al = Math.hypot(at.x, at.y, at.z) || 1;
+    g.update(0.05);
+    const v = a.vel, vl = v.length() || 1e-9;
+    r.chasingFlare = +((v.x*at.x + v.y*at.y + v.z*at.z) / (vl * al)).toFixed(2);
+    for (let i = 0; i < 160; i++) g.update(0.05);
+    r.expired = g.decoys.length === 0 && !(a.decoyT > 0) ;
+    g.clearCombat(); g.ship.abilityCd = 0; return r;`);
+  check('decoy flares: three go out, red guys chase one, and they burn out',
+    dec.flares === 3 && dec.spent === 5 && dec.cd === 10 && dec.locked[0] && dec.locked[1] && dec.chasingFlare > 0.3 && dec.expired,
+    JSON.stringify(dec));
+
+  const nan = await ab('gluestick', `g.ship.fuel = 60; const max = g.stat('hull');
+    g.ship.hull = max * 0.5; const h0 = g.ship.hull, f0 = g.ship.fuel;
+    g.useAbility();
+    const r = { gain: +(g.ship.hull - h0).toFixed(1), spent: +(f0 - g.ship.fuel).toFixed(1), cd: g.ship.abilityCd };
+    const h1 = g.ship.hull, f1 = g.ship.fuel; g.useAbility();
+    r.blocked = g.ship.hull === h1 && g.ship.fuel === f1;
+    g.ship.hull = max; g.ship.abilityCd = 0; return r;`);
+  check('repair nanites: +80 hull for 20 fuel, then a 25 s wait',
+    nan.gain === 80 && nan.spent === 20 && nan.cd === 25 && nan.blocked, JSON.stringify(nan));
+
+  const scoop = await ab('locker', `const star = g.u.ctx.bodies.find(x => x.kind === 'star');
+    if (!star) return { skipped: 'no star in range' };
+    g.ship.q.identity(); g.ship.throttle = 0; g.ship.cruise = false; g.ship.auto = null;
+    const park = (k) => { g.ship.pos = { x: star.pos.x + star.r * k, y: star.pos.y, z: star.pos.z }; g.ship.vel.set(0,0,0); };
+    // A real Cabinet holds this station on its thrusters; the check pins it so
+    // the only thing moving fuel and hull is the scoop, not the star's pull
+    // slamming the ship into the surface.
+    const hold = (k, n) => { for (let i = 0; i < n; i++) { g.update(0.05); park(k); } };
+    park(1.3); g.ship.fuel = 100; g.ship.hull = g.stat('hull');
+    const f0 = g.ship.fuel, h0 = g.ship.hull;
+    hold(1.3, 20);
+    const r = { on: g.scooping, fuelUp: +(g.ship.fuel - f0).toFixed(2), hullDown: +(h0 - g.ship.hull).toFixed(2) };
+    // shut the intake with R and nothing comes in
+    g.useAbility(); r.shut = g.ship.scoopOn === false;
+    const f1 = g.ship.fuel, h1 = g.ship.hull;
+    hold(1.3, 20);
+    r.shutStops = Math.abs(g.ship.fuel - f1) < 0.05 && Math.abs(g.ship.hull - h1) < 0.05;
+    g.useAbility();
+    // and out past the corona it stops too
+    park(3); g.ship.fuel = 100; g.ship.hull = g.stat('hull');
+    const f2 = g.ship.fuel, h2 = g.ship.hull;
+    hold(3, 20);
+    r.farStops = !g.scooping && g.ship.fuel <= f2 + 0.01 && g.ship.hull >= h2 - 0.01;
+    g.ship.hull = g.stat('hull'); return r;`);
+  check('fuel scoop: inside a corona the tank fills and the hull cooks, and R shuts the intake',
+    scoop.skipped ? true : (scoop.on && scoop.fuelUp > 1.5 && scoop.hullDown > 0.7 && scoop.shut && scoop.shutStops && scoop.farStops),
+    JSON.stringify(scoop));
+
+  const readout = await E(`const out = {};
+    for (const id of ['eraser', 'witeout', 'locker', 'scout']) {
+      g.state.credits = 99999; g.buyShip(id); g.setMode('helm');
+      g.ship.fuel = g.stat('tank'); g.ship.abilityCd = 0; g.ship.cloak = null;
+      g.ui.prev = {}; g.ui.hud();
+      out[id] = (document.getElementById('h-ability') || {}).textContent || '';
+    }
+    g.state.credits = 99999; g.buyShip('eraser'); g.setMode('helm'); g.ship.fuel = 2;
+    g.ui.prev = {}; g.ui.hud();
+    out.dry = document.getElementById('h-ability').textContent;
+    g.switchShip('scout'); g.setMode('helm');
+    return out;`);
+  check('the HUD says which ability R fires and whether it is ready',
+    /Afterburner/.test(readout.eraser) && /ready/.test(readout.eraser) && /Cloak/.test(readout.witeout)
+    && /scoop/i.test(readout.locker) && readout.scout === '' && /no fuel/.test(readout.dry),
+    JSON.stringify(readout));
+
+  await E(`g.switchShip('scout'); g.setMode('foot'); g.ship.abilityCd = 0; return 1;`);
 
   // air, doors, carrying and the eject hatch
   const air = await E(`
@@ -292,6 +568,43 @@ try {
     return { took, held, dropped: g.carried === null };`);
   check('you can pick a thing up, carry it and put it down', carry.none ? true : (carry.took && carry.held && carry.dropped), JSON.stringify(carry));
 
+  // A stacked hull moves the floor under you, so a carried thing has to land on
+  // the deck you are standing on, and a thing on the bridge floor must not be
+  // reachable from the deck above it.
+  const carryDeck = await E(`
+    g.state.credits = 99999; g.buyShip('locker'); g.setMode('foot');
+    const p = (g.interior.props || [])[0];
+    if (!p) return { none: true };
+    g.player.x = p.mesh.position.x; g.player.z = p.mesh.position.z + 0.6; g.player.y = 0;
+    const took = g.takeCarried();
+    g.player.x = 0; g.player.z = 2.8;
+    g.rideElevator();
+    for (let i = 0; i < 400 && g.ship.elevator; i++) g.update(0.02);
+    const onDeck = g.ship.deck, floor = g.ship.deckY;
+    g.dropCarried();
+    const landed = +p.mesh.position.y.toFixed(2);
+    // now stand right over another bridge prop and try to take it through the floor
+    // now put a bridge prop at table height directly under the player. At
+    // 0.95 it is 1.95 m below this deck's floor, which the old flat 2.2 m
+    // reach would have handed you straight through the ceiling.
+    const q = (g.interior.props || []).find((x) => x !== p);
+    let reachedThrough = false, foundY = null;
+    if (q) {
+      g.player.x = -2.0; g.player.z = -1.0; g.player.y = 0;
+      q.mesh.position.set(-2.0, 0.95, -1.0);
+      const n = g.nearestProp();
+      foundY = n ? +n.mesh.position.y.toFixed(2) : null;
+      // whatever is in reach has to be standing on this deck, not the one below
+      reachedThrough = !!n && Math.abs(n.mesh.position.y - g.ship.deckY - g.player.y) > 1.45;
+    }
+    g.dropCarried();
+    g.standUp(); g.switchShip('scout'); g.setMode('helm');
+    return { took, onDeck, floor: +floor.toFixed(1), landed, reachedThrough, foundY, tried: !!q };`);
+  check('a thing carried up the Filing Cabinet lands on that deck, and the deck below is out of reach',
+    carryDeck.none ? true : (carryDeck.took && carryDeck.onDeck === 1 && carryDeck.landed > carryDeck.floor
+      && carryDeck.landed < carryDeck.floor + 1 && carryDeck.tried && carryDeck.reachedThrough === false),
+    JSON.stringify(carryDeck));
+
   const ej = await E(`
     g.switchShip('scout'); g.setMode('helm'); g.breach = null;
     g.ship.hatch = 'top'; g.eject();
@@ -323,8 +636,72 @@ try {
     const tl = Math.hypot(to.x, to.y, to.z) || 1;
     const v = g.ship.vel, vl = v.length() || 1e-9;
     const aim = (v.x * to.x + v.y * to.y + v.z * to.z) / (vl * tl);
-    return { d0, d1, speed: vl, aim, flag: g.grav && g.grav.kind };`);
-  check('gravity pulls a drifting ship toward a planet', grav.speed > 5 && grav.aim > 0.9 && grav.flag === 'planet', JSON.stringify({ ...grav, d0: Math.round(grav.d0), d1: Math.round(grav.d1), speed: Math.round(grav.speed) }));
+    return { d0, d1, speed: vl, aim, flag: g.grav && g.grav.kind, named: g.grav && g.grav.name };`);
+  // aim is the cosine between the velocity gravity built up and the line to the
+  // planet: above 0.995 nothing else in the system - the Sun above all - is
+  // contributing more than a tenth of the planet's own pull here.
+  check('gravity pulls a drifting ship toward a planet, and the planet is what wins there',
+    grav.speed > 5 && grav.aim > 0.995 && grav.flag === 'planet' && grav.named === 'Earth',
+    JSON.stringify({ ...grav, d0: Math.round(grav.d0), d1: Math.round(grav.d1), speed: Math.round(grav.speed), aim: +grav.aim.toFixed(4) }));
+
+  // The other half of the same tuning: the Sun's well has to stop short of its
+  // own planets, or no orbit anywhere in Sol is possible. Sol is r 20000 and
+  // Earth orbits at 86000, so Earth sits 3.3 stellar radii above the surface -
+  // outside GRAVITY.star.reach. Park a drifting ship out there, clear of every
+  // body, and it must stay still.
+  const starReach = await E(`
+    g.setMode('helm'); g.clearCombat();
+    g.ship.throttle = 0; g.ship.cruise = false; g.ship.auto = null;
+    const sol = g.u.sol, c = sol.pos;
+    const planet = g.u.planetsOf(sol).find(p => p.name === 'Earth');
+    const orbit = (() => { const q = g.u.target('planet', { sys: sol, planet }).pos(g.t);
+      return Math.hypot(q.x - c.x, q.y - c.y, q.z - c.z); })();
+    // pick whichever direction at Earth's orbital radius is furthest from
+    // everything, so this measures the star and nothing else
+    const dirs = [[0,1,0],[0,-1,0],[1,0,0],[-1,0,0],[0,0,1],[0,0,-1],[0.577,0.577,0.577]];
+    let best = null;
+    for (const [x, y, z] of dirs) {
+      const p = { x: c.x + x * orbit, y: c.y + y * orbit, z: c.z + z * orbit };
+      let clear = Infinity;
+      for (const b of g.u.ctx.bodies) {
+        if (b.kind === 'star' || b.kind === 'sight') continue;
+        const rr = b.r > 0 ? b.r : 0;
+        clear = Math.min(clear, Math.hypot(b.pos.x - p.x, b.pos.y - p.y, b.pos.z - p.z) - rr);
+      }
+      if (!best || clear > best.clear) best = { p, clear };
+    }
+    g.ship.pos.x = best.p.x; g.ship.pos.y = best.p.y; g.ship.pos.z = best.p.z;
+    g.ship.vel.set(0, 0, 0);
+    for (let i = 0; i < 60; i++) g.update(0.05);
+    return { radii: +((orbit - sol.star.r) / sol.star.r).toFixed(2), clear: Math.round(best.clear),
+      speed: +g.ship.vel.length().toFixed(3), flag: g.grav && g.grav.kind };`);
+  check("a star's pull stops short of its own planets' orbits",
+    starReach.radii > 3 && starReach.clear > 20000 && starReach.speed < 0.01 && starReach.flag == null,
+    JSON.stringify(starReach));
+
+  // ... and it is still murder close in. A fifth of a radius above the surface
+  // the star pulls 22/0.2^2 = 550 u/s squared; a boosted Filing Cabinet tops
+  // out at 255 u/s, so its thrust is about 330, and it loses ground nose-out
+  // with the throttle wide open.
+  const starClose = await E(`
+    g.state.credits = 99999; g.buyShip('locker'); g.setMode('helm'); g.clearCombat();
+    const V = g.ship.vel.constructor, sol = g.u.sol, c = sol.pos, R = sol.star.r;
+    g.ship.pos.x = c.x + R * 1.2; g.ship.pos.y = c.y; g.ship.pos.z = c.z;
+    g.ship.vel.set(0, 0, 0); g.ship.cs = 0; g.ship.cruise = false; g.ship.auto = null;
+    g.ship.scoopOn = false;                 // the scoop is not what is on trial
+    // nose straight out along +x, which is straight away from the star
+    g.ship.q.setFromUnitVectors(new V(0, 0, -1), new V(1, 0, 0));
+    g.ship.throttle = 1; g.ship.boost = true; g.ship.fuel = g.stat('tank');
+    const d0 = Math.hypot(g.ship.pos.x - c.x, g.ship.pos.y - c.y, g.ship.pos.z - c.z);
+    for (let i = 0; i < 40; i++) g.update(0.05);
+    const d1 = Math.hypot(g.ship.pos.x - c.x, g.ship.pos.y - c.y, g.ship.pos.z - c.z);
+    const out = new V(1, 0, 0).dot(g.ship.vel);
+    g.ship.throttle = 0; g.ship.boost = false; g.ship.scoopOn = true;
+    g.switchShip('scout'); g.setMode('helm'); g.ship.vel.set(0, 0, 0);
+    return { r: R, d0: Math.round(d0), d1: Math.round(d1), outward: Math.round(out), flag: g.grav && g.grav.kind };`);
+  check('a star close up beats full throttle: the Filing Cabinet loses ground climbing out',
+    starClose.d1 < starClose.d0 - 100 && starClose.outward < 0 && starClose.flag === 'star',
+    JSON.stringify(starClose));
 
   const hole = await E(`
     const bh = g.u.ctx.bodies.find(b => b.kind === 'sight' && b.sight && b.sight.kind === 'blackhole')
