@@ -123,11 +123,21 @@ try {
     const t = g.u.target('planet', { sys: sol, planet: mars });
     const d0 = Math.hypot(t.pos(g.t).x - g.ship.pos.x, t.pos(g.t).y - g.ship.pos.y, t.pos(g.t).z - g.ship.pos.z);
     g.setCourse(t); return d0;`);
-  await step(4000, 4);
+  // The ship has to finish turning before its heading means anything, and
+  // how far it must turn depends on where Mars is in its orbit that run. Give
+  // it up to five stretches, and stop as soon as it is pointed at the target
+  // or has started closing.
+  let apHead = -1, apNow = null;
+  for (let i = 0; i < 5; i++) {
+    await step(4000, 4);
+    apNow = await E(`const t = g.ship.auto ? g.ship.auto.target : g.navTarget; const p = t.pos(g.t); return { d: Math.hypot(p.x - g.ship.pos.x, p.y - g.ship.pos.y, p.z - g.ship.pos.z), auto: !!g.ship.auto };`);
+    apHead = await E(`const t = g.ship.auto ? g.ship.auto.target : g.navTarget; const p = t.pos(g.t); const V = g.ship.vel.constructor;
+      const to = new V(p.x - g.ship.pos.x, p.y - g.ship.pos.y, p.z - g.ship.pos.z).normalize(); const f = new V(0,0,-1).applyQuaternion(g.ship.q); return f.dot(to);`);
+    if (!apNow.auto || apNow.d < ap || apHead > 0.9) break;
+  }
   const ap1 = await E(`const t = g.ship.auto ? g.ship.auto.target : g.navTarget; const p = t.pos(g.t); return { d: Math.hypot(p.x - g.ship.pos.x, p.y - g.ship.pos.y, p.z - g.ship.pos.z), auto: !!g.ship.auto, paused: g.paused, mode: g.mode, t: g.t, fuel: g.ship.fuel, open: [...g.ui.open_], media: g.media.isOpen, hidden: document.hidden };`);
   // planets orbit, so judge the autopilot by where the ship is heading, not by one distance sample
-  const head = await E(`const t = g.ship.auto ? g.ship.auto.target : g.navTarget; const p = t.pos(g.t); const V = g.ship.vel.constructor;
-    const to = new V(p.x - g.ship.pos.x, p.y - g.ship.pos.y, p.z - g.ship.pos.z).normalize(); const f = new V(0,0,-1).applyQuaternion(g.ship.q); return f.dot(to);`);
+  const head = apHead;
   check('autopilot closes on Mars', ap1.d < ap || (ap1.auto && head > 0.9), `${ap.toFixed(0)} -> ${ap1.d.toFixed(0)} ${JSON.stringify({ ...ap1, d: undefined })}`);
   await b.shot(path.join(SHOTS, '05-autopilot.png'));
   await E('g.ship.auto = null; g.ship.cruise = false; g.ship.throttle = 0; return 1;');
