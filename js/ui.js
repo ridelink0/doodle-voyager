@@ -238,6 +238,9 @@ export class UI {
     if (sh.tractor) flags.push('<span class="hi">TRACTOR</span>');
     if (sh.cloak && sh.cloak.active) flags.push('<span class="hi">CLOAKED</span>');
     if (g.scooping) flags.push('<span class="hi">SCOOPING</span>');
+    // You, as opposed to the hull: only on screen once something has hit you.
+    const you = g.board.you;
+    if (you.hp < you.max) flags.push(`<span class="${you.hp < 40 ? 'red' : ''}">SUIT ${Math.round(you.hp)}</span>`);
     if (g.settings.showFps) flags.push(`<span>${Math.round(g.fps)} fps</span>`);
     this.set('h-flags', flags.join(''), 'innerHTML');
     // What R does on this hull, and whether it will do it right now.
@@ -262,7 +265,9 @@ export class UI {
       ttxt = `${tg.name} · ${fmtU(dist)} · ${sh.warp ? `${fmtTime(eta)} left` : `about ${fmtTime(this.cruiseEta(dist))} by cruise`}`;
     }
     this.set('h-target', ttxt);
-    $('h-cross').hidden = !(g.mode === 'helm' || g.mode === 'drone');
+    // The sidearm is in your hands on foot and in the suit too (js/board.js),
+    // so the crosshair is up wherever you can shoot something.
+    $('h-cross').hidden = !(g.mode === 'helm' || g.mode === 'drone' || g.mode === 'foot' || g.mode === 'eva');
     $('h-cross').classList.toggle('hot', !!g.zone);
     // prompt
     let pr = '';
@@ -272,7 +277,12 @@ export class UI {
     } else if (g.mode === 'helm') {
       const b = g.dockable();
       if (b) pr = `F · dock at ${b.name}`;
-    } else if (g.mode === 'eva' && g.evaNearHole()) pr = 'E · climb back in';
+    } else if (g.mode === 'eva') {
+      // boarding and the remote recall first (js/board.js), the hole after
+      const bp = g.board.prompt();
+      if (bp) pr = esc(bp);
+      else if (g.evaNearHole()) pr = 'E · climb back in';
+    }
     this.set('h-prompt', pr);
     this.bossBar();
     // kill feed stays short
@@ -294,12 +304,12 @@ export class UI {
   keysFor(m) {
     const g = this.g, sh = g.ship;
     const k = (s) => `<kbd>${s}</kbd>`;
-    if (m === 'foot') return `${k('WASD')} walk · ${k('E')} use · ${k('V')} tapes · ${k('M')} map · ${k('I')} storage${g.settings.drone ? ` · ${k('G')} drone` : ''} · ${k('P')} pause`;
+    if (m === 'foot') return `${k('WASD')} walk · ${k('E')} use · click ${g.carried ? 'throws' : 'shoots'} · ${k('V')} tapes · ${k('M')} map · ${k('I')} storage${g.settings.drone ? ` · ${k('G')} drone` : ''} · ${k('P')} pause`;
     if (m === 'helm') {
       const ab = ABILITIES[g.def.ability];
       return `mouse or arrows steer · ${k('W')}/${k('S')} throttle · ${g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire'} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock or eject${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
     }
-    if (m === 'eva') return `${k('WASD')} ${k('Space')} ${k('Ctrl')} jetpack · ${k('E')} at the hole · air ${Math.max(0, Math.round(g.eva ? g.eva.o2 : 0))} s`;
+    if (m === 'eva') return `${k('WASD')} ${k('Space')} ${k('Ctrl')} jetpack · click shoots · ${k('E')} boards or climbs in · ${k('F')} calls a hull you own · air ${Math.max(0, Math.round(g.eva ? g.eva.o2 : 0))} s · suit ${Math.round(g.board.you.hp)}`;
     if (m === 'drone') return `${k('WASD')} fly · ${k('Space')}/${k('Ctrl')} up/down · click or ${k('B')} bomb (${sh.bombs}) · ${k('G')} recall · battery ${Math.round(g.drone ? g.drone.battery : 0)} s`;
     return '';
   }

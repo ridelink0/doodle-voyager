@@ -6,6 +6,7 @@ import { Renderer, squash } from './render.js';
 import { Universe, FUELS } from './universe.js';
 import { SHIPS, buildInterior, buildExterior } from './ships.js';
 import { buildImp, buildCapital, buildDrone, buildDecoy, Squadrons } from './actors.js';
+import { Boarding } from './board.js';
 import { Bosses } from './bosses.js';
 import { audio } from './audio.js';
 import { Media } from './media.js';
@@ -163,6 +164,7 @@ export class Game {
     this.last = performance.now();
     this.enemies = [];
     this.fleet = new Squadrons(this);   // the Red Margin's wings, screens and hangar cycle
+    this.board = new Boarding(this);    // escape pods, boarding parties, stolen hulls
     this.bosses = new Bosses(this);     // the three act bosses and the five cluster lieutenants
     this.shots = [];
     this.fx = [];
@@ -224,7 +226,9 @@ export class Game {
   }
 
   // ---------- ship ----------
-  get def() { return SHIPS[this.ship.type]; }
+  // A hull you stole reports itself: the name, the class and every stat come
+  // from board.js, so the HUD says whose ship you are in with no second path.
+  get def() { return (this.board && this.board.def()) || SHIPS[this.ship.type]; }
   stat(k) {
     const d = this.def, e = this.state.equip;
     switch (k) {
@@ -348,6 +352,7 @@ export class Game {
     this.persist();
   }
   logOff() {
+    this.board.reset();      // never log off sitting in somebody else's hull
     this.persist();
     this.clearCombat();
     this.sessionSeed = (Math.random() * 2 ** 32) >>> 0;
@@ -361,9 +366,12 @@ export class Game {
   persist() {
     const s = this.state, sh = this.ship;
     if (!s || !sh) return;
-    s.ship = sh.type;
-    s.hull[sh.type] = Math.round(sh.hull);
-    s.fuel[sh.type] = Math.round(sh.fuel * 10) / 10;
+    // A stolen hull is never written into the save: the hull of record is still
+    // the one you own, so a reload can never hand you a Red Margin ship.
+    const of = this.board.ownHull() || { type: sh.type, hull: sh.hull, fuel: sh.fuel };
+    s.ship = of.type;
+    s.hull[of.type] = Math.round(of.hull);
+    s.fuel[of.type] = Math.round(of.fuel * 10) / 10;
     s.pos = sh.warp ? { ...sh.warp.to } : { ...sh.pos };
     s.quat = [sh.q.x, sh.q.y, sh.q.z, sh.q.w];
     this.save = s;
@@ -451,7 +459,7 @@ export class Game {
       // One F at the helm: dock when there is something to dock with, eject
       // otherwise. (A second `case 'KeyF'` below used to be dead code, which
       // left docking unreachable from the keyboard.)
-      case 'KeyF': if (this.mode === 'foot') this.takeCarried(); else if (this.mode === 'helm') { if (this.dockable()) this.tryDock(); else this.eject(); } break;
+      case 'KeyF': if (this.mode === 'foot') this.takeCarried(); else if (this.mode === 'helm') { if (this.dockable()) this.tryDock(); else this.eject(); } else if (this.mode === 'eva') this.board.callShip(); break;
       case 'KeyL': this.courseToPump(); break;
       // a tap moves the throttle a quarter; holding keeps ramping (updateHelmInput)
       case 'KeyW': if (this.mode === 'helm' && !e.repeat) this.ship.throttle = Math.min(1, this.ship.throttle + 0.25); break;
@@ -607,6 +615,7 @@ export class Game {
   // Ejecting: out through the hatch the switch is set to, with a shove.
   eject() {
     if (this.mode !== 'helm' && this.mode !== 'foot') return;
+    if (this.board.leave()) return;      // a stolen hull can be 500 u across
     if (this.breach) { this.ui.toast('The hull is already open. Use the hole.'); return; }
     const up = this.ship.hatch === 'top';
     const rel = new THREE.Vector3(0, up ? 3.4 : -3.4, 0).applyQuaternion(this.ship.q);
@@ -620,13 +629,13 @@ export class Game {
 
   interact() {
     if (this.mode === 'helm') { this.standUp(); return; }
-    if (this.mode === 'eva') { if (this.evaNearHole()) this.reenter(); else if (this.evaNearHatch()) this.climbIn(); return; }
+    if (this.mode === 'eva') { if (this.board.enter()) return; if (this.evaNearHole()) this.reenter(); else if (this.evaNearHatch()) this.climbIn(); return; }
     if (this.mode !== 'foot') return;
     const it = this.nearestInteract();
     if (!it) return;
     const toast = (t) => this.ui.toast(t);
     switch (it.id) {
-      case 'helm': this.setMode('helm'); audio.sfx('ui'); break;
+      case 'helm': if (this.board.helmLocked()) break; this.setMode('helm'); audio.sfx('ui'); break;
       case 'eject': this.eject(); break;
       case 'hatch': this.ship.hatch = this.ship.hatch === 'top' ? 'bottom' : 'top'; audio.sfx('ui'); toast(`Hatch set to ${this.ship.hatch}.`); break;
       case 'media': case 'tv': this.unlock(); this.media.open(); break;
@@ -705,6 +714,7 @@ export class Game {
     this.ui.toast(`A cheerful voice: "${announcerLine()}"`);
     this.unlockCodex('sbg');
     this.state.lastStation = b.station ? { pos: { ...b.pos } } : { pos: { ...b.pos } };
+    this.board.onDock();      // a stolen hull is impounded here and yours comes back
     audio.sfx('door');
     this.unlock();
     this.ui.open('station', b.station ? { kind: 'fuel', name: b.name, station: b.station, body: b } : { kind: b.module.kind, name: b.name, module: b.module, body: b });
@@ -945,6 +955,7 @@ export class Game {
     this.updateDoors(dt);
     this.updateAir(dt);
     this.updateCarry(dt);
+    this.board.update(dt);
     if (this.interior.animate) this.interior.animate(dt, this.t);
     this.visit(ctx);
     this.autosave = (this.autosave || 0) + dt;
@@ -1657,6 +1668,9 @@ export class Game {
     if (sh.hull <= 0) this.die(why);
   }
   die(why) {
+    // Losing the hull is not losing you: board.js takes the death over and puts
+    // you outside in a suit whenever there is anything left to reach.
+    if (this.board.pod(why)) return;
     const st = this.state;
     st.stats.deaths++;
     const lost = Math.floor(st.credits * 0.1);
@@ -1669,6 +1683,7 @@ export class Game {
     this.ui.open('dead', { why, lost });
   }
   respawn() {
+    this.board.reset();      // out of any stolen hull and back into your own
     this.clearCombat();
     if (this.breach) for (const bit of this.breach.bits) this.shipRoot.remove(bit.m);
     this.breach = null;
@@ -1694,6 +1709,8 @@ export class Game {
     // What enemies shoot at. Cloaked, they only get a fresh fix inside 900 u;
     // past that they keep aiming at the last place they saw you.
     const sh = this.ship;
+    const suit = this.board.suitPos();
+    if (suit) return suit;                   // outside the hull, you are the target
     if (sh.cloak && sh.cloak.active) {
       if (this.enemies.some((e) => !e.dead && vdist(e.pos, sh.pos) < 900)) {
         sh.cloak.lastKnown = { x: sh.pos.x, y: sh.pos.y, z: sh.pos.z };
@@ -1718,6 +1735,7 @@ export class Game {
       const dist = to.length();
       to.normalize();
       if (e.kind === 'imp') {
+        if (this.board.drift(e, dt)) continue;              // shot to bits and boardable
         if (e.squad && this.fleet.steer(e, dt)) continue;   // the squad has this one
         e.phase += dt * 0.8;
         if (e.tractorT > 0) {
@@ -1743,7 +1761,9 @@ export class Game {
         }
       } else {
         // capital: hold 2400 u, turn slowly to face the ship
-        const want = dist > 2600 ? 60 : dist < 1800 ? -30 : 0;
+        // It neither chases nor backs away from one man in a suit, so the swim
+        // across is possible; the turrets go on firing the whole way.
+        const want = this.board.holdStation() ? 0 : dist > 2600 ? 60 : dist < 1800 ? -30 : 0;
         e.pos.x += to.x * want * dt; e.pos.y += to.y * want * dt; e.pos.z += to.z * want * dt;
         Q2.setFromUnitVectors(this.capFwd(e), to);
         e.q.rotateTowards(Q2, 0.12 * dt);
@@ -1778,8 +1798,10 @@ export class Game {
           if (hit) { s.dead = true; break; }
         }
       } else {
-        const r = (this.exterior && this.exterior.radius) || 20;
-        if (segSphere(ox, oy, oz, s.pos, tp, r + 4)) { s.dead = true; this.damage(s.dmg, 'shot'); }
+        // In a suit the thing that can be hit is you, and a suit is not a hull.
+        const suit = this.board.suitPos();
+        const r = suit ? 3 : (this.exterior && this.exterior.radius) || 20;
+        if (segSphere(ox, oy, oz, s.pos, tp, r + 4)) { s.dead = true; if (suit) this.board.hurtYou(s.dmg * 4, 'shot out there in the suit'); else this.damage(s.dmg, 'shot'); }
         else if (this.mode === 'drone' && this.drone) {
           const dp = this.dronePos();
           if (segSphere(ox, oy, oz, s.pos, dp, 3)) { s.dead = true; this.drone.hp -= s.dmg; if (this.drone.hp <= 0) { this.boom(dp, 12); this.recallDrone('the drone was shot down'); } }
@@ -2027,6 +2049,7 @@ export class Game {
 
   // ---------- hull breach and EVA ----------
   pullBreach() {
+    if (this.board.noBreach()) return;      // not a hull of yours, or not a hull any more
     if (this.ship.warp) { this.ui.toast('Not while the warp field is up.'); return; }
     if (!this.interior.breach || !this.interior.breach.panel) { this.ui.toast('This ship has no breach panel.'); return; }
     const now = performance.now();
@@ -2119,12 +2142,14 @@ export class Game {
     if (keys.has('KeyD')) want.x += 1;
     if (keys.has('Space')) want.y += 1;
     if (keys.has('ControlLeft') || keys.has('KeyC')) want.y -= 1;
-    if (want.lengthSq()) { want.normalize().applyQuaternion(q); e.vel.addScaledVector(want, 14 * dt); }
-    if (e.vel.length() > 25) e.vel.setLength(25);
+    if (want.lengthSq()) { want.normalize().applyQuaternion(q); e.vel.addScaledVector(want, (e.vmax ? 26 : 14) * dt); }
+    // A pod suit carries its own thrust pack: the breach-hole EVA keeps the old 25.
+    if (e.vel.length() > (e.vmax || 25)) e.vel.setLength(e.vmax || 25);
     e.rel.addScaledVector(e.vel, dt);
     e.o2 -= dt;
     if (e.o2 < 30 && !e.warned) { e.warned = true; this.ui.big('LOW AIR', '30 seconds. Get back to the hole.'); audio.sfx('alarm'); }
     if (e.o2 <= 0) {
+      if (this.board.suitAirOut()) return;   // a dead hull has no tether to reel you in
       this.r.fx.blackout = 1;
       this.reenter(true);
       this.ui.big('YOU BLACKED OUT', 'The emergency tether reeled you in. The hole is taped over.');

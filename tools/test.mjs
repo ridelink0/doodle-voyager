@@ -1459,8 +1459,161 @@ try {
     return { zones: g.u.zones.length, hull: g.ship.hull, max: g.stat('hull'), act: g.state.actProgress };`);
   check('the boss checks leave the game as they found it', put.zones === zhold && put.hull === put.max && put.act === 0, JSON.stringify(put));
 
+  // ---------- escape pods, boarding and hijacking (js/board.js) ----------
+  // The whole ladder in order: lose the hull, live in the suit, shoot a saucer
+  // until it drifts, take it, clear its crew, fly it, trade up to a capital,
+  // hand it in at a station, and prove the save never sees any of it.
+  const yard = await E(`return g.state.owned.slice();`);
+  const pod = await E(`
+    g.board.reset(); g.clearCombat(); g.ui.close('dead');
+    if (!g.state.owned.includes('fighter')) { g.state.owned.push('fighter'); g.state.hull.fighter = 180; g.state.fuel.fighter = 110; }
+    g.switchShip('fighter');
+    g.setMode('helm'); g.ship.throttle = 1; g.ship.cruise = true;
+    const deaths = g.state.stats.deaths, cr = g.state.credits;
+    g.damage(1e6, 'shot');
+    return { mode: g.mode, wreck: !!g.ship.wreck, hull: g.ship.hull, air: g.eva ? Math.round(g.eva.o2) : -1,
+      vmax: g.eva ? g.eva.vmax : 0, suit: g.board.you.hp, own: g.board.own && g.board.own.type,
+      deaths: g.state.stats.deaths - deaths, credits: g.state.credits - cr,
+      deadScreen: g.ui.open_.has('dead'), throttle: g.ship.throttle, cruise: g.ship.cruise,
+      clear: g.eva ? Math.round(g.eva.rel.length()) : 0, r: Math.round(g.exterior.radius) };`);
+  check('a lost hull puts you out in a pod instead of on the death screen',
+    pod.mode === 'eva' && pod.wreck && pod.hull === 0 && pod.air === 150 && pod.vmax === 60
+    && pod.deaths === 0 && pod.credits === 0 && !pod.deadScreen && pod.throttle === 0 && !pod.cruise
+    && pod.own === 'fighter' && pod.clear > pod.r, JSON.stringify(pod));
+  // In the suit you are the target and the one who can shoot, and what hits you
+  // comes off you, not off the hull you left behind.
+  const suit = await E(`
+    const before = g.shots.filter(s => s.from === 'player').length;
+    g.mouse.left = true; g.board.fireCd = 0; g.board.update(0.02); g.board.update(0.02); g.mouse.left = false;
+    const mine = g.shots.filter(s => s.from === 'player').length - before;
+    const p = g.board.suitPos(), tp = g.targetPoint();
+    const hull0 = g.ship.hull, you0 = g.board.you.hp;
+    g.addShot({ x: p.x, y: p.y, z: p.z - 30 }, { x: 0, y: 0, z: 900 }, 3, 'enemy');
+    for (let i = 0; i < 3; i++) g.updateCombat(0.05);
+    return { mine, aimedAtMe: Math.hypot(tp.x - p.x, tp.y - p.y, tp.z - p.z) < 0.001,
+      hull0, hull: g.ship.hull, you0, you: g.board.you.hp };`);
+  check('the suit shoots, and it is the suit that takes the hits',
+    suit.mine === 1 && suit.aimedAtMe && suit.you0 - suit.you === 12 && suit.hull === suit.hull0, JSON.stringify(suit));
+  // A saucer shot past its limit stops fighting and drifts, and drifting it can
+  // be taken. Its cockpit is a real ship interior with a red guy still in it.
+  const take = await E(`
+    g.board.you.hp = g.board.you.max;
+    const p = g.board.suitPos();
+    const fresh = g.spawnImp({ x: p.x + 500, y: p.y, z: p.z });
+    const fighting = g.board.drift(fresh, 0.016) === false;   // full hp: it is still fighting
+    fresh.dead = true; g.fxRoot.remove(fresh.obj.group);
+    const imp = g.spawnImp({ x: p.x + 14, y: p.y, z: p.z });
+    imp.hp = 6;
+    g.board.drift(imp, 0.016);
+    const can = g.board.boardable() === imp;
+    g.interact();
+    return { fighting, can, derelict: !!imp.derelict, gone: !!imp.dead, mode: g.mode,
+      name: g.def.name, cls: g.def.cls, type: g.ship.type, hijack: !!g.ship.hijack,
+      crew: g.board.crew.length, shield: g.stat('shield'), hull: g.ship.hull, max: g.stat('hull'),
+      tank: g.stat('tank'), ownTank: g.def.fuel, extR: Math.round(g.exterior.radius) };`);
+  check('a drifting saucer can be boarded, and the HUD names whose hull it is',
+    take.fighting && take.can && take.derelict && take.gone && take.mode === 'foot' && take.hijack
+    && take.name === 'Red Margin saucer' && take.cls === 'stolen' && take.type === 'racer'
+    && take.crew === 1 && take.shield === 0 && take.hull === take.max, JSON.stringify(take));
+  const svh = await E(`g.persist(); return { ship: g.state.ship, flying: g.ship.type, hull: g.state.hull.racer, own: g.board.own.type };`);
+  check('a stolen hull is never written into the save', svh.ship === 'fighter' && svh.flying === 'racer', JSON.stringify(svh));
+  // The helm stays theirs until the last of them is down, through the real seat.
+  const crew = await E(`
+    const h = g.curDeck().interact.find(i => i.id === 'helm');
+    const at = () => { g.player.x = h.pos.x; g.player.z = h.pos.z + 0.45; g.player.y = 0; g.player.yaw = 0; g.player.pitch = 0; };
+    const sit = () => { at(); g.interact(); };
+    at();
+    const reach = g.nearestInteract() && g.nearestInteract().id;
+    sit();
+    const blocked = g.mode === 'foot';
+    const c = g.board.crew[0];
+    c.x = g.player.x; c.z = g.player.z - 3;
+    c.g.position.set(c.x, g.board.deckBase(c.deck) + 0.9, c.z);
+    let shots = 0;
+    for (let i = 0; i < 10 && c.hp > 0; i++) { g.board.fireCd = 0; g.board.shootIn(); shots++; }
+    const down = c.hp <= 0;
+    sit();
+    const took = g.mode === 'helm';
+    g.ship.throttle = 1;
+    for (let i = 0; i < 50; i++) g.update(0.05);
+    return { reach, blocked, shots, down, took, speed: Math.round(g.ship.vel.length()), max: g.stat('speed'), name: g.def.name };`);
+  check('the crew holds the helm until they are down, then the stolen hull flies',
+    crew.reach === 'helm' && crew.blocked && crew.down && crew.shots <= 3 && crew.took && crew.speed > 20, JSON.stringify(crew));
+  // A capital is the same door: buildInterior gives it decks, a lift and guards
+  // on every one of them, and the outside is the capital's own hull.
+  const capt = await E(`
+    const { walkCheck } = await import('./js/ships.js');
+    g.setMode('helm'); g.board.leave();
+    const outside = g.mode === 'eva';
+    const p = g.board.suitPos();
+    const cap = g.spawnCapital('carrier', { x: p.x + 60, y: p.y, z: p.z });
+    cap.hp = cap.max * 0.9;
+    const tooFresh = g.board.boardable() !== cap;
+    cap.hp = cap.max * 0.4;
+    const worn = g.board.boardable() === cap;
+    g.interact();
+    const decks = [...new Set(g.board.crew.map(c => c.deck))].sort();
+    const walk = walkCheck(g.interior);
+    return { outside, tooFresh, worn, mode: g.mode, name: g.def.name, type: g.ship.type,
+      crew: g.board.crew.length, decks, nDecks: (g.interior.decks || [0]).length,
+      lift: !!(g.interior.decks && g.interior.decks.length > 1), walkOk: walk.ok, probs: walk.problems.slice(0, 3),
+      extR: Math.round(g.exterior.radius), gone: !!cap.dead };`);
+  check('a worn-down capital can be boarded and walked, guards on every deck',
+    capt.outside && capt.tooFresh && capt.worn && capt.mode === 'foot' && capt.gone
+    && capt.name === 'Red Margin carrier' && capt.type === 'locker' && capt.nDecks === 3
+    && capt.decks.join() === '0,1,2' && capt.crew >= 6 && capt.walkOk && capt.extR > 300,
+    JSON.stringify(capt));
+  // The guards shoot back, and what they hit is you.
+  const fight = await E(`
+    const c = g.board.crew.find(x => x.hp > 0 && x.deck === g.ship.deck);
+    g.setMode('foot');
+    g.player.x = c.x; g.player.z = c.z + 2.4; g.player.y = 0;
+    g.board.you.hp = g.board.you.max;         // full, so the self-seal cannot mask a hit
+    const you0 = g.board.you.hp, hull0 = g.ship.hull;
+    c.cd = 0;
+    for (let i = 0; i < 200 && g.board.you.hp === you0; i++) g.board.update(0.05);
+    return { you0, you: g.board.you.hp, hull0, hull: g.ship.hull, bolts: g.board.bolts.length };`);
+  check('the red guys aboard shoot back, and it comes off you not the hull',
+    fight.you < fight.you0 && fight.hull === fight.hull0, JSON.stringify(fight));
+  // Docking a stolen hull: the yard takes it and brings yours round.
+  const hand = await E(`
+    g.state.credits = 5000;
+    const cr = g.state.credits;
+    const ok = g.board.onDock();
+    return { ok, type: g.ship.type, hijack: !!g.ship.hijack, wreck: !!g.ship.wreck,
+      hull: g.ship.hull, max: g.stat('hull'), name: g.def.name, crew: g.board.crew.length,
+      spent: cr - g.state.credits };`);
+  check('docking a stolen hull hands it in and brings your own back',
+    hand.ok && hand.type === 'fighter' && !hand.hijack && !hand.wreck && hand.hull === hand.max
+    && hand.name === 'Ballpoint' && hand.crew === 0 && hand.spent > 0, JSON.stringify(hand));
+  // The other way home: call a hull you own and it comes to the pod.
+  const recall = await E(`
+    g.board.reset(); g.clearCombat();
+    g.state.owned = ['fighter', 'scout']; g.state.hull.scout = 100; g.state.fuel.scout = 85;
+    g.switchShip('fighter');
+    g.setMode('helm'); g.damage(1e6, 'shot');
+    g.board.callShip();
+    const id = g.board.inbound && g.board.inbound.id;
+    const waited = Math.round(g.board.inbound.t);
+    for (let i = 0; i < 40 && g.board.inbound; i++) g.board.callTick(1);
+    return { id, waited, mode: g.mode, type: g.ship.type, owned: g.state.owned.slice(),
+      hijack: !!g.ship.hijack, wreck: !!g.ship.wreck, hull: g.ship.hull };`);
+  check('a pod can call a hull you own, and the wreck is written off',
+    recall.id === 'scout' && recall.waited === 30 && recall.mode === 'foot' && recall.type === 'scout'
+    && !recall.owned.includes('fighter') && !recall.wreck && recall.hull > 0, JSON.stringify(recall));
+  const noPod = await E(`
+    g.state.owned = ${JSON.stringify(yard)};
+    g.board.reset(); g.setMode('helm');
+    g.die('blackhole'); const bh = g.mode; g.respawn();
+    g.setMode('helm'); g.damage(1e6, 'shot'); const podded = g.mode;
+    g.board.hurtYou(1e6, 'test'); const killed = g.mode; g.respawn();
+    return { bh, podded, killed, mode: g.mode, type: g.ship.type, hull: g.ship.hull, max: g.stat('hull'), hijack: !!g.ship.hijack };`);
+  check('no pod out of a black hole, and killed in the suit is a real death',
+    noPod.bh === 'dead' && noPod.podded === 'eva' && noPod.killed === 'dead'
+    && noPod.mode === 'helm' && noPod.hull === noPod.max && !noPod.hijack, JSON.stringify(noPod));
+
   // death and respawn, tow
-  const dth = await E(`g.setMode('helm'); g.damage(1e6, 'shot'); const m = g.mode; g.respawn(); return { m, after: g.mode, hull: g.ship.hull, max: g.stat('hull') };`);
+  const dth = await E(`g.board.reset(); g.setMode('helm'); g.board.hurtYou(1e6, 'shot'); const m = g.mode; g.respawn(); return { m, after: g.mode, hull: g.ship.hull, max: g.stat('hull') };`);
   check('dying and respawning', dth.m === 'dead' && dth.after === 'helm' && dth.hull === dth.max, JSON.stringify(dth));
   const tw = await E(`g.ship.fuel = 0; g.state.credits = 1000; const m = g.tow(); return { m, fuel: g.ship.fuel };`);
   check('tow gets you to a pump with fuel', tw.fuel >= 15, tw.m);
