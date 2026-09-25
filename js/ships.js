@@ -3,7 +3,7 @@
 // Static parts are merged into one mesh per material, so a furnished ship is
 // a few dozen draw calls however much furniture it carries (Chromebook GPUs).
 import * as THREE from 'three';
-import { ink, glow, screen, paint, label, labelTexture, PAL } from './mats.js';
+import { ink, glow, screen, paint, label, labelTexture, PAL, ID } from './mats.js';
 
 export const SHIPS = {
   scout: {
@@ -664,6 +664,69 @@ function shell(k, s, P) {
   k.box(-w - 0.08, wy1, zf, w + 0.08, wy1 + 0.06, zf + 0.06, P);
   k.box(-w - 0.08, 0.9, zf, -w, wy1, zf + 0.06, P);
   k.box(w, 0.9, zf, w + 0.08, wy1, zf + 0.06, P);
+  hullStructure(k, s);
+}
+
+// What makes a room read as the inside of a hull instead of a box: chamfered
+// panels along the four long edges and structural rib frames down the length.
+// Visual only - the walk colliders are the walls themselves.
+function hullStructure(k, s) {
+  const hw = s.W / 2 - T, hl = s.L / 2 - T, H = s.H, b = s.breach, c = Math.min(0.42, s.W * 0.07);
+  const plank = c * Math.SQRT2, cz = (z0, z1, x, y, rz, mat) => {
+    if (z1 - z0 > 0.2) k.put(BOX(), mat, x, y, (z0 + z1) / 2, plank, 0.07, z1 - z0, 0, 0, rz);
+  };
+  for (const side of [-1, 1]) {
+    const xw = side * (hw - c / 2);
+    // floor chamfer, split around the breach panel on its wall
+    if (b.side === side) { cz(-hl, b.z - 0.7, xw, c / 2, side * PI / 4, C.dark); cz(b.z + 0.7, hl, xw, c / 2, side * PI / 4, C.dark); }
+    else cz(-hl, hl, xw, c / 2, side * PI / 4, C.dark);
+    cz(-hl, hl, xw, H - c / 2, -side * PI / 4, C.dark);              // ceiling chamfer
+  }
+  // rib frames every ~2.2 m, clear of the cockpit window and the rear wall
+  const n = Math.max(1, Math.floor((2 * hl - 3.0) / 2.2));
+  for (let i = 1; i <= n; i++) {
+    const z = -hl + 1.6 + i * ((2 * hl - 3.2) / (n + 1));
+    if (Math.abs(z - b.z) < 0.8) continue;                            // keep the breach panel clear
+    for (const side of [-1, 1]) {
+      const x = side * (hw - 0.07);
+      k.box(x - 0.07, c, z - 0.09, x + 0.07, H - c, z + 0.09, C.steel);
+    }
+    k.box(-hw + c, H - 0.12, z - 0.09, hw - c, H, z + 0.09, C.steel);
+  }
+}
+
+// One ship, one colour (Gev): every interior surface is re-toned to a shade of
+// the ship's own hue by how light it was - dark walls, mid trims, light
+// accents - and the lamps glow in the same hue. Screens and signs keep their
+// pictures. The exterior is not touched.
+const SHIP_HUE = {
+  scout: 215, eraser: 335, racer: 58, tape: 190, witeout: 225, fighter: 232, paperclip: 205,
+  hauler: 28, gelpen: 280, compass: 165, stickynotes: 48, stapler: 12, gluestick: 128, cruiser: 38, locker: 20,
+};
+const toneCache = new Map();
+function toned(m, hue) {
+  if (!m || m.map) return m;                                          // screens, signs, labels
+  const key = m.uuid + '|' + hue;
+  if (toneCache.has(key)) return toneCache.get(key);
+  const c = m.color, lum = Math.sqrt(Math.max(0, 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b));
+  const h = hue / 360, out = new THREE.Color();
+  let t = m;
+  if (m.isMeshLambertMaterial) {
+    out.setHSL(h, 0.5, 0.05 + 0.4 * lum);
+    t = ink(out.getHex(), { rim: new THREE.Color().setHSL(h, 0.8, 0.55).getHex(), rimStrength: 0.25 });
+  } else if (m.isMeshBasicMaterial && Math.abs(m.opacity - ID.GLOW) < 0.05) {
+    out.setHSL(h, 0.9, 0.42 + 0.3 * lum);
+    t = glow(out.getHex());
+  }
+  toneCache.set(key, t);
+  return t;
+}
+function monotone(group, type) {
+  const hue = SHIP_HUE[type] ?? 215;
+  group.traverse((o) => {
+    if (o.isMesh) o.material = Array.isArray(o.material) ? o.material.map((m) => toned(m, hue)) : toned(o.material, hue);
+    else if (o.isPointLight) o.color.setHSL(hue / 360, 0.55, 0.72);
+  });
 }
 
 // Gev's sketch: nav screen hanging above a wide window, yoke with a cross of
@@ -823,18 +886,32 @@ function panelTex(kind) {
 }
 function helmGear(k, s, P, F, sz) {
   const wallX = s.W / 2 - T - 0.03;
-  // side-wall screen banks: a low row near the floor and a mid row, both sides
-  const cols = Math.max(2, Math.min(4, Math.floor((s.L * 0.34) / 0.78)));
+  // Screen stations on a raised deck down each side of the flight deck (Gev:
+  // on an elevated floor, not on the walls, as big as they need to be): a deck
+  // step with a neon lip, then two console desks per side, each carrying a
+  // large screen tilted back toward the pilot. The deck stays inside the
+  // cockpit zone so it never runs into the rooms behind it.
+  const deckH = 0.24, deckD = Math.min(0.95, s.W * 0.16), z0 = 1.0, zEnd = 3.35;
+  const cols = 2, pitch = (zEnd - z0) / cols;
+  const scrW = pitch - 0.12, scrH = scrW * 0.58;
   let n = 0;
   for (const side of [-1, 1]) {
+    const xo = side * wallX, xi = side * (wallX - deckD);
+    const za = F(z0), zb = F(zEnd);
+    k.solid(Math.min(xo, xi), 0, za, Math.max(xo, xi), deckH, zb, C.dark);
+    k.box(Math.min(xi, xi + side * 0.04), deckH - 0.035, za, Math.max(xi, xi + side * 0.04), deckH + 0.005, zb, G.teal);
     for (let c = 0; c < cols; c++) {
-      const z = F(0.95 + c * 0.78);
-      for (const [y, w, h] of [[0.42, 0.66, 0.4], [1.12, 0.66, 0.4]]) {
-        const kind = PANEL_KINDS[(n++ * 3 + (side > 0 ? 1 : 0)) % PANEL_KINDS.length];
-        k.box(side * wallX - 0.02, y - h / 2 - 0.04, z - w / 2 - 0.04, side * wallX + 0.02, y + h / 2 + 0.04, z + w / 2 + 0.04, C.black);
-        const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), screen(panelTex(kind)));
-        k.add(m, side * (wallX - 0.03), y, z, -side * HP);
-      }
+      const z = F(z0 + (c + 0.5) * pitch);
+      const kind = PANEL_KINDS[(n++ * 3 + (side > 0 ? 1 : 0)) % PANEL_KINDS.length];
+      // desk body standing on the deck, with a painted top edge
+      const dx0 = side * (wallX - 0.05), dx1 = side * (wallX - deckD + 0.14);
+      k.solid(Math.min(dx0, dx1), deckH, z - scrW / 2, Math.max(dx0, dx1), deckH + 0.6, z + scrW / 2, C.black);
+      k.box(Math.min(dx0, dx1), deckH + 0.6, z - scrW / 2, Math.max(dx0, dx1), deckH + 0.64, z + scrW / 2, P);
+      // the screen, facing the middle of the room and leaning back a little
+      k.push(side * (wallX - deckD * 0.5), deckH + 0.68 + scrH / 2, z, -side * HP, -0.22);
+      k.box(-scrW / 2 - 0.04, -scrH / 2 - 0.04, -0.07, scrW / 2 + 0.04, scrH / 2 + 0.04, -0.012, C.black);
+      k.add(new THREE.Mesh(new THREE.PlaneGeometry(scrW, scrH), screen(panelTex(kind))), 0, 0, 0);
+      k.pop();
     }
   }
   // throttle quadrant on the right of the seat, flight stick on the left
@@ -1360,6 +1437,7 @@ export function buildInterior(type, paintName = 'yellow') {
   const lightK = { small: 0.7, medium: 1.0, large: 2.4 }[SHIPS[type] && SHIPS[type].cls] || 1;
   for (const [x, y, z, i, d] of s.lights) k.light(x, y, z, i * lightK, d);
   const merged = k.build();
+  monotone(k.group, type);
   redrawSigns(k.signs);
   const hw = s.W / 2, hl = s.L / 2;
   // The bounds reach 0.25 m past the hull walls: the walls do the real

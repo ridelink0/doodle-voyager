@@ -113,7 +113,7 @@ const FRAG_MAIN = /* glsl */ `
   }
   // Hatching lives in the mid-tones: deep shadow stays solid dark (a neon
   // city is black between its lights, not a mesh of pen strokes).
-  outgoingLight = mix(outgoingLight, uHatchInk, dvH * 0.7 * (1.0 - smoothstep(0.82, 0.97, dvShade)));
+  outgoingLight = mix(outgoingLight, uHatchInk, dvH * 0.45 * (1.0 - smoothstep(0.82, 0.97, dvShade)));
   float dvFres = pow(1.0 - clamp(dot(normalize(normal), normalize(vViewPosition)), 0.0, 1.0), 4.0);
   outgoingLight += uRimColor * dvFres * uRimStrength;
 }
