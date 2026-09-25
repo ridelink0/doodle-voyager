@@ -12,8 +12,13 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const SHIP = ['index.html', 'style.css', 'js', 'data', 'assets'];
 
-fs.rmSync(DIST, { recursive: true, force: true });
+// Everything but dist/.vercel goes: that folder is the link to the Vercel
+// project, and wiping it made the next deploy create a stray project named
+// "dist" instead of updating doodle-voyager (it happened twice).
 fs.mkdirSync(DIST, { recursive: true });
+for (const f of fs.readdirSync(DIST)) {
+  if (f !== '.vercel') fs.rmSync(path.join(DIST, f), { recursive: true, force: true });
+}
 const files = {};
 function copy(rel) {
   const src = path.join(ROOT, rel);
