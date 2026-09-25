@@ -138,6 +138,42 @@ void main() {
   gl_FragColor = vec4(col, 1.0);
 }`;
 
+
+// Camera motion blur. Every pixel's depth is unprojected to a world point and
+// projected again through the previous frame's camera, which gives the exact
+// distance that point travelled on screen; the colour is then smeared along
+// that line. Turning, looking and the seat swinging with the hull all blur,
+// and a still camera blurs nothing at all.
+const MOTION_FS = /* glsl */ `
+precision highp float;
+#define TAPS 9
+uniform sampler2D tDiffuse;
+uniform sampler2D tDepth;
+uniform mat4 invVP;
+uniform mat4 prevVP;
+uniform float strength;
+uniform float maxVel;
+varying vec2 vUv;
+float dither(vec2 p) { return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453); }
+void main() {
+  float d = min(texture2D(tDepth, vUv).x, 0.9999);
+  vec4 w = invVP * vec4(vUv * 2.0 - 1.0, d * 2.0 - 1.0, 1.0);
+  w /= w.w;
+  vec4 p = prevVP * w;
+  vec2 vel = (vUv - (p.xy / p.w * 0.5 + 0.5)) * strength;
+  float len = length(vel);
+  if (len < 0.0004) { gl_FragColor = texture2D(tDiffuse, vUv); return; }
+  if (len > maxVel) vel *= maxVel / len;
+  // A half-pixel dither breaks the banding a fixed tap spacing would leave.
+  float j = dither(gl_FragCoord.xy) - 0.5;
+  vec4 sum = vec4(0.0);
+  for (int i = 0; i < TAPS; i++) {
+    float f = (float(i) + j) / float(TAPS - 1) - 0.5;
+    sum += texture2D(tDiffuse, clamp(vUv - vel * f, 0.0, 1.0));
+  }
+  gl_FragColor = sum / float(TAPS);
+}`;
+
 // Point sprites with per-vertex size and colour; alpha carries the ID.
 export function pointsMaterial(id = ID.INK) {
   return new THREE.ShaderMaterial({
@@ -196,11 +232,12 @@ export class Cloud {
 // cost: hatch directions, bloom and how hard glowing surfaces are pushed. Every
 // knob is a uniform or a pass flag, so switching never recompiles a shader.
 export function presetFor(q) {
-  if (q < 0.7) return { name: 'low', hatchDirs: 1, bloom: false, glowBoost: 1.0 };
-  if (q < 0.95) return { name: 'medium', hatchDirs: 2, bloom: true, glowBoost: 1.6 };
-  return { name: 'full', hatchDirs: 3, bloom: true, glowBoost: 2.0 };
+  if (q < 0.7) return { name: 'low', hatchDirs: 1, bloom: false, glowBoost: 1.0, blur: 0 };
+  if (q < 0.95) return { name: 'medium', hatchDirs: 2, bloom: true, glowBoost: 1.6, blur: 0.75 };
+  return { name: 'full', hatchDirs: 3, bloom: true, glowBoost: 2.0, blur: 1.0 };
 }
 
+const _vp = /* @__PURE__ */ new THREE.Matrix4();
 const hex3 = (h) => { const c = new THREE.Color(h); return new THREE.Vector3(c.r, c.g, c.b); };
 
 export class Renderer {
@@ -238,8 +275,20 @@ export class Renderer {
     // disabling bloom on the low preset needs no other bookkeeping.
     this.composer = new EffectComposer(this.gl);
     this.composePass = new ShaderPass(this.post);
+    this.motion = new THREE.ShaderMaterial({
+      uniforms: {
+        tDiffuse: { value: null }, tDepth: { value: null },
+        invVP: { value: new THREE.Matrix4() }, prevVP: { value: new THREE.Matrix4() },
+        strength: { value: 1 }, maxVel: { value: 0.045 },
+      },
+      vertexShader: POST_VS, fragmentShader: MOTION_FS, depthTest: false, depthWrite: false,
+    });
+    this.motionPass = new ShaderPass(this.motion);
+    this.prevVP = new THREE.Matrix4();
+    this.hasPrev = false;
     this.bloomPass = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.85, 0.45, 0.85);
     this.composer.addPass(this.composePass);
+    this.composer.addPass(this.motionPass);
     this.composer.addPass(this.bloomPass);
     this.rt = null;
     this.snapWanted = null;
@@ -253,6 +302,8 @@ export class Renderer {
     this.preset = p.name;
     setHatchDirs(p.hatchDirs);
     this.bloomPass.enabled = p.bloom;
+    this.motionPass.enabled = p.blur > 0;
+    this.motion.uniforms.strength.value = p.blur;
     this.post.uniforms.glowBoost.value = p.glowBoost;
   }
   setQuality(q) { this.quality = q; this.applyPreset(); this.resize(); }
@@ -272,6 +323,7 @@ export class Renderer {
     const u = this.post.uniforms;
     u.tColor.value = this.rt.texture;
     u.tDepth.value = depth;
+    this.motion.uniforms.tDepth.value = depth;
     u.res.value.set(W, H);
     const sc = Math.max(0.75, H / 800);
     u.scale.value = sc;
@@ -299,6 +351,17 @@ export class Renderer {
     g.clear(true, true, true);
     g.render(this.world, this.camera);
     g.render(this.shipScene, this.camera);
+    if (this.motionPass.enabled) {
+      const m = this.motion.uniforms;
+      this.camera.updateMatrixWorld();
+      _vp.multiplyMatrices(this.camera.projectionMatrix, this.camera.matrixWorldInverse);
+      m.invVP.value.copy(_vp).invert();
+      // The first frame, and the frame after a cut, have no honest previous
+      // camera: blur nothing rather than smear the whole screen.
+      m.prevVP.value.copy(this.hasPrev ? this.prevVP : _vp);
+      this.prevVP.copy(_vp);
+      this.hasPrev = true;
+    }
     g.setRenderTarget(null);
     this.composer.render();
     if (this.snapWanted) {
@@ -307,6 +370,8 @@ export class Renderer {
       this.canvas.toBlob((b) => cb(b), 'image/png');
     }
   }
+  // A hard cut: the next frame has no previous camera to blur from.
+  cut() { this.hasPrev = false; }
   // Photo mode: resolves with a PNG blob of the next frame.
   snapshot() { return new Promise((res) => { this.snapWanted = res; }); }
 }

@@ -218,6 +218,33 @@ try {
     await b.shot(path.join(SHOTS, `11-cruiser-${room}.png`));
   }
   const sw = await E(`const m = g.switchShip('scout'); return { m, type: g.ship.type };`);
+  // every hull in the roster builds, flies and can be walked
+  const roster = await E(`
+    const ids = ['eraser', 'tape', 'witeout', 'paperclip', 'gelpen', 'compass', 'stickynotes', 'stapler', 'gluestick'];
+    const bad = [];
+    for (const id of ids) {
+      g.state.credits = 99999; g.buyShip(id); g.setMode('foot');
+      if (g.ship.type !== id || !g.interior.interact.some(i => i.id === 'helm')) bad.push(id);
+    }
+    g.switchShip('scout'); g.setMode('foot');
+    return bad;`);
+  check('every new hull can be bought, flown and walked', roster.length === 0, roster.join(',') || 'all 9 ok');
+
+  // motion blur: on from medium up, off on low, and it really reprojects
+  const mb = await E(`
+    g.setMode('helm');
+    g.r.setQuality(1); const on = g.r.motionPass.enabled;
+    g.r.setQuality(0.6); const off = g.r.motionPass.enabled;
+    g.r.setQuality(1);
+    g.r.render(1.0); const a = g.r.prevVP.elements.join(',');
+    g.ship.q.set(0, 0.25, 0, 0.97).normalize();
+    g.r.camera.quaternion.copy(g.ship.q); g.r.camera.updateMatrixWorld(true);
+    g.r.render(1.02); const b = g.r.prevVP.elements.join(',');
+    const hadPrev = g.r.hasPrev;
+    g.setMode('foot');
+    return { on, off, turned: a !== b, hadPrev, cutClears: !g.r.hasPrev };`);
+  check('motion blur runs above low and follows the camera', mb.on && !mb.off && mb.turned && mb.hadPrev && mb.cutClears, JSON.stringify(mb));
+
   check('switching back to an owned ship works', sw.type === 'scout', sw.m);
   const eq = await E(`const m = g.buyEquip('laser'); return { m, lvl: g.state.equip.laser };`);
   check('outfitter upgrades apply', eq.lvl === 1, eq.m);

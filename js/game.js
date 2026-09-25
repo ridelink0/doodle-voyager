@@ -364,6 +364,9 @@ export class Game {
   setMode(m) {
     const prev = this.mode;
     this.mode = m;
+    // A mode change moves the camera somewhere else entirely, so the motion
+    // blur must not smear across the cut.
+    if (prev !== m) this.r.cut();
     const inside = m === 'foot' || m === 'helm' || m === 'title' || m === 'dead';
     this.interior.group.visible = inside;
     this.exterior.group.visible = !inside;
@@ -784,7 +787,9 @@ export class Game {
       if (keys.has('KeyD')) roll -= 1;
       if (Math.abs(ay) + Math.abs(ap) > 0.0008 * turn || roll) {
         if (sh.auto && (Math.abs(m.x) + Math.abs(m.y) > 0.02)) { sh.auto = null; this.ui.toast('Autopilot off, you have the stick.'); }
-        sh.q.multiply(qYP(ay, ap, roll * turn * 0.8 * dt, Q1)).normalize();
+        // A and D roll at the look sensitivity too, so one setting governs how
+        // fast the ship answers (Gev).
+        sh.q.multiply(qYP(ay, ap, roll * turn * 0.8 * dt * this.settings.sens, Q1)).normalize();
       }
     }
     if (keys.has('KeyW')) { sh.throttle = Math.min(1, sh.throttle + dt * 1.2); if (sh.auto) { sh.auto = null; this.ui.toast('Autopilot off.'); } }
