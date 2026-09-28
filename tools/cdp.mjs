@@ -3,6 +3,10 @@
 // profile and closes it through CDP when done.
 //   const b = await launch(); await b.goto(url); await b.eval('1+1');
 //   await b.shot('x.png'); console.log(b.errors); await b.close();
+// THREE_DIR=<an unpacked three@0.170.0 npm package> serves the import map's
+// jsDelivr URLs from disk instead, for a machine that cannot reach the CDN.
+// CHROME_FLAGS adds switches to the launch line (a container running as root
+// needs --no-sandbox, which is not something to turn on anywhere else).
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -53,6 +57,26 @@ function connect(url) {
   };
 }
 
+// Answers every request for three off jsDelivr with the same path out of dir.
+// Only that one prefix is paused, so nothing else the page loads is touched.
+const THREE_CDN = 'https://cdn.jsdelivr.net/npm/three@0.170.0/';
+const MIME = { '.js': 'text/javascript', '.mjs': 'text/javascript', '.json': 'application/json', '.wasm': 'application/wasm' };
+async function serveThreeFrom(page, dir) {
+  const root = path.resolve(dir);
+  page.on('Fetch.requestPaused', async ({ requestId, request }) => {
+    const rel = decodeURIComponent(new URL(request.url).pathname.slice(new URL(THREE_CDN).pathname.length));
+    const file = path.resolve(root, rel);
+    let body = null;
+    if (file.startsWith(root + path.sep)) { try { body = fs.readFileSync(file); } catch { /* answered 404 below */ } }
+    const headers = [{ name: 'Access-Control-Allow-Origin', value: '*' },
+      { name: 'Content-Type', value: MIME[path.extname(file)] || 'application/octet-stream' }];
+    await page.send('Fetch.fulfillRequest', body
+      ? { requestId, responseCode: 200, responseHeaders: headers, body: body.toString('base64') }
+      : { requestId, responseCode: 404, responseHeaders: headers, body: '' }).catch(() => {});
+  });
+  await page.send('Fetch.enable', { patterns: [{ urlPattern: THREE_CDN + '*', requestStage: 'Request' }] });
+}
+
 export async function launch({ width = 1280, height = 720, headless = true } = {}) {
   const exe = findChrome();
   if (!exe) throw new Error('No Chrome or Edge found; set CHROME_PATH');
@@ -61,7 +85,8 @@ export async function launch({ width = 1280, height = 720, headless = true } = {
     headless ? '--headless=new' : '', '--remote-debugging-port=0', `--user-data-dir=${udd}`,
     `--window-size=${width},${height}`, '--no-first-run', '--no-default-browser-check',
     '--autoplay-policy=no-user-gesture-required', '--enable-unsafe-swiftshader', '--use-angle=swiftshader',
-    '--ignore-gpu-blocklist', '--enable-webgl', '--mute-audio', 'about:blank',
+    '--ignore-gpu-blocklist', '--enable-webgl', '--mute-audio',
+    ...(process.env.CHROME_FLAGS || '').split(/\s+/), 'about:blank',
   ].filter(Boolean), { stdio: ['ignore', 'ignore', 'pipe'] });
   const browserWs = await new Promise((res, rej) => {
     let buf = '';
@@ -98,6 +123,7 @@ export async function launch({ width = 1280, height = 720, headless = true } = {
   await page.send('Log.enable');
   await page.send('Page.enable');
   await page.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false });
+  if (process.env.THREE_DIR) await serveThreeFrom(page, process.env.THREE_DIR);
 
   const api = {
     errors, logs, send: page.send,
