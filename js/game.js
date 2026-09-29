@@ -137,6 +137,7 @@ export function defaultSettings() {
   return {
     sens: 1, invert: false, music: true, musicVol: 0.45, sfxVol: 0.7, drone: true, boil: true, quality: 1, hints: true,
     trackpad: false, fov: 72, shake: true, showFps: false, pauseOnBlur: true, wheelThrottle: true, rumble: true,
+    pvp: false,
   };
 }
 function freshSave() {
@@ -430,6 +431,14 @@ export class Game {
     store.set(SAVE_KEY, s);
   }
   saveSettings() { store.set('dv-settings', this.settings); this.applySettings(); }
+  togglePvp() {
+    this.settings.pvp = !this.settings.pvp;
+    this.saveSettings();
+    const box = document.getElementById('s2-pvp');
+    if (box) box.checked = this.settings.pvp;
+    if (this.net) this.net.acc = 1;          // tell the room now, not in a tenth of a second
+    this.ui.toast(this.settings.pvp ? 'PvP on: other players who turned it on can shoot you, and you them.' : 'PvP off: nobody can shoot you, and your bolts pass through people.');
+  }
   applySettings() {
     const st = this.settings;
     this.r.boil = st.boil ? 1 : 0;
@@ -500,7 +509,8 @@ export class Game {
     if (this.paused) return;
     if (e.code === 'KeyM') { this.ui.toggle('map'); return; }
     // O opens the shared sky. Joining can fail, and the HUD line says so.
-    if (e.code === 'KeyO') { this.net.toggle(); return; }
+    // Shift O is the PvP opt-in, off until you turn it on.
+    if (e.code === 'KeyO') { if (e.shiftKey) this.togglePvp(); else this.net.toggle(); return; }
     if (this.ui.anyOpen()) return;
     // double-tap W to jog (trackpad mode; Shift still works for everyone)
     if (e.code === 'KeyW' && !e.repeat) {
@@ -1915,6 +1925,10 @@ export class Game {
           const hit = this.hitEnemy(e, ox, oy, oz, s.pos, s.dmg);
           if (hit) { s.dead = true; break; }
         }
+        // Another player who opted in. The bolt stops and the room is told;
+        // their hull is theirs to take off, so nothing is subtracted here.
+        const peer = !s.dead && this.net && this.net.on ? this.net.struck(ox, oy, oz, s.pos) : null;
+        if (peer) { s.dead = true; this.net.reportHit(peer, s.dmg); }
       } else {
         // In a suit the thing that can be hit is you, and a suit is not a hull.
         const suit = this.board.suitPos();
@@ -2360,6 +2374,7 @@ export class Game {
       g.quaternion.copy(e.q);
       if (e.kind === 'capital') this.drawBeam(e);
     }
+    if (this.net && this.net.on) this.net.placeAll();
     for (const s of this.shots) {
       squash(s.pos.x - sh.pos.x, s.pos.y - sh.pos.y, s.pos.z - sh.pos.z, s.mesh.position);
       V1.copy(s.vel).normalize();

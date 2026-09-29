@@ -5,6 +5,7 @@ import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { launch } from './cdp.mjs';
+import { pvpChecks } from './pvp-checks.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
@@ -26,6 +27,9 @@ const check = (name, ok, detail = '') => {
   if (!ok) failed++;
   console.log(results[results.length - 1]);
 };
+
+// the PvP hit rules are plain data and need no browser
+pvpChecks(check);
 
 const b = await launch({ width: 1280, height: 720 });
 try {
@@ -2255,20 +2259,30 @@ try {
 
   const mpB = await E(`
     const { a, b } = window.__mp;
+    const { squash } = await import('./js/render.js');
     const peer = [...b.peers.values()][0];
     g.ship.pos.x = 5000;
     a.update(0.1);
+    // Both clients share this one game, so the viewer is moved away from the
+    // report: a ghost drawn at its absolute position would then be 3000 u out.
+    g.ship.pos.x = 2000;
     const d0 = peer.pos.distanceTo(peer.want);
     for (let i = 0; i < 30; i++) b.update(1/60);
     const d1 = peer.pos.distanceTo(peer.want);
     const meshX = peer.group ? Math.round(peer.group.position.x) : null;
     const ghostX = Math.round(peer.pos.x);
+    const want = new peer.pos.constructor();
+    squash(peer.pos.x - g.ship.pos.x, peer.pos.y - g.ship.pos.y, peer.pos.z - g.ship.pos.z, want);
+    const relX = Math.round(want.x);
     for (let i = 0; i < 8 * 60; i++) b.update(1/60);   // silence, past the forget window
-    return { d0: Math.round(d0), d1: Math.round(d1), meshX, ghostX, gone: b.peers.size };`);
+    return { d0: Math.round(d0), d1: Math.round(d1), meshX, ghostX, relX, gone: b.peers.size };`);
   check('a ghost chases its last report instead of teleporting to it',
     mpB.d0 > 1000 && mpB.d1 < mpB.d0 / 2 && mpB.ghostX > 1000,
     `${mpB.d0} u behind -> ${mpB.d1} u, ghost at x ${mpB.ghostX}`);
-  check('and the body it is drawn as follows the ghost', mpB.meshX === mpB.ghostX, `mesh ${mpB.meshX} vs ghost ${mpB.ghostX}`);
+  // The world is drawn around your own ship, so the body goes where the ghost
+  // is relative to you, as the enemies do.
+  check('and the body it is drawn as follows the ghost, placed relative to you', mpB.meshX === mpB.relX && mpB.relX !== mpB.ghostX,
+    `mesh ${mpB.meshX} vs ghost ${mpB.ghostX} - you at 2000 = ${mpB.relX}`);
   check('a peer that goes quiet is forgotten rather than left hanging in space',
     mpB.gone === 0, `${mpB.gone} peers after eight seconds of silence`);
 
@@ -2284,6 +2298,194 @@ try {
   check('leaving says goodbye at once, without waiting out the timeout',
     mpC.had === 1 && mpC.after === 0 && mpC.off, JSON.stringify(mpC));
   check('and with nobody there the line says so', /nobody else out here yet/.test(mpC.line), mpC.line);
+
+  // ---------- multiplayer: shots between players, names, rooms ----------
+  // A bus that knows rooms and can hold what is sent, so what the shooter does
+  // before the victim answers can be looked at. The game's own Net is the
+  // shooter, so the bolt is a real one out of fire(); the victim is a second
+  // Net on a stand-in game that only has a ship and a damage() to call.
+  await E(`
+    const THREE = await import('three');
+    const net = await import('./js/net.js');
+    const pvp = await import('./js/pvp.js');
+    const { SHIPS } = await import('./js/ships.js');
+    const { EQUIP } = await import('./js/game.js');
+    const rooms = new Map(), held = [];
+    const bus = { hold: false, joins: 0 };
+    bus.make = () => {
+      let me = null, at = '';
+      const out = (fn) => { const r = at, run = () => { for (const h of [...(rooms.get(r) || [])]) if (h !== me) fn(h); }; if (bus.hold) held.push(run); else run(); };
+      return {
+        async join(h, room) { me = h; at = room; bus.joins++; if (!rooms.has(room)) rooms.set(room, new Set()); rooms.get(room).add(h); },
+        send(m) { out((h) => h.onState(m)); },
+        bye(id) { out((h) => h.onLeave(id)); },
+        cast(ev, m) { out((h) => (ev === 'hit' ? h.onHit(m) : h.onHurt(m))); },
+        leave() { if (rooms.has(at)) rooms.get(at).delete(me); me = null; at = ''; },
+      };
+    };
+    bus.flush = () => { while (held.length) held.shift()(); };
+    bus.in = (room) => (rooms.get(room) || new Set()).size;
+    const stand = (u, pvpOn) => ({
+      ship: { type: 'scout', hull: 100, shield: 0, pos: new THREE.Vector3().copy(g.ship.pos), q: new THREE.Quaternion().copy(g.ship.q), vel: new THREE.Vector3() },
+      state: { paint: {} }, settings: { pvp: pvpOn }, zone: null, u, mode: 'helm', hits: [],
+      damage(n) { this.hits.push(n); this.ship.hull -= n; },
+    });
+    window.__pvp = { THREE, net, pvp, bus, stand, SHIPS, EQUIP, oldPvp: !!g.settings.pvp };
+    return 1;`);
+  const mpD = await E(`
+    const { THREE, net, pvp, bus, stand } = window.__pvp;
+    g.setMode('helm');
+    if (g.net.on) g.net.leave();
+    g.net.transport = bus.make();
+    g.settings.pvp = true;
+    await g.net.join('alpha');
+    const bg = stand(g.u, true);                       // same system as you
+    const b = new net.Net(bg, { id: 'p-b', transport: bus.make() });
+    await b.join('beta');
+    window.__pvp.b = b; window.__pvp.bg = bg;
+    const sh = g.ship;
+    // The checks above leave the ship inside the Sun, where a few frames of
+    // update() fling it thousands of units. Ten solar radii above it is still
+    // Sol (much further and the nearest system is another star, and the room
+    // follows), and nothing there moves the ship between the shot and the check.
+    sh.pos.x = 0; sh.pos.y = g.u.sol.star.r * 10; sh.pos.z = 0;
+    sh.vel.set(0, 0, 0); sh.throttle = 0; sh.cruise = false; sh.auto = null;
+    const fwd = new THREE.Vector3(0, 0, -1).applyQuaternion(sh.q);
+    bg.ship.pos.copy(sh.pos).addScaledVector(fwd, 800);
+    b.update(0.1);
+    g.net.update(0.2);                                 // report, and snap the ghost
+    const peer = g.net.peers.get('p-b');
+    const tag = peer && peer.label;
+    const up = new THREE.Vector3(0, 1, 0).applyQuaternion(g.r.camera.quaternion);
+    const near = { text: tag && tag.userData.text, parent: !!(tag && tag.parent === g.net.root), a: tag && tag.material.opacity, vis: tag && tag.visible,
+      above: tag ? tag.position.clone().sub(peer.group.position).dot(up) : 0, drawnAt: peer && peer.group ? Math.round(peer.group.position.length()) : null };
+    const at = (d) => { bg.ship.pos.copy(sh.pos).addScaledVector(fwd, d); b.update(0.1); g.net.update(0.2); return { a: +tag.material.opacity.toFixed(2), vis: tag.visible }; };
+    const mid = at(9000), far = at(30000);
+    at(800);
+    // one real bolt at a ghost that opted in, with the room held
+    bus.hold = true;
+    const hull0 = peer.hull, sent0 = g.net.sent;
+    sh.fireCd = 0; sh.overheat = false; sh.heat = 0;
+    const shots0 = g.shots.filter((s) => s.from === 'player').length;
+    g.fire(0);
+    for (let i = 0; i < 10 && g.net.sent === sent0; i++) g.update(0.05);
+    const shot = { sent: g.net.sent - sent0, hullHere: peer.hull, victimHits: bg.hits.length, live: g.shots.filter((s) => s.from === 'player').length - shots0 };
+    bus.hold = false;
+    bus.flush();
+    const dmg = g.stat('dmg');
+    const after = { victimHits: bg.hits.slice(), victimHull: bg.ship.hull, taken: b.taken, seenHull: peer.hull, landed: g.net.landed };
+    return { v: b.verdict, near, mid, far, hull0, shot, dmg, after, room: g.net.room, broom: b.room };`);
+  check('a peer has its name drawn above it, on a label that fades with distance',
+    mpD.near.text === 'beta' && mpD.near.parent && mpD.near.a === 1 && mpD.near.vis && mpD.near.above > 0
+      && mpD.mid.a > 0.2 && mpD.mid.a < 0.8 && mpD.mid.vis && mpD.far.a === 0 && !mpD.far.vis,
+    JSON.stringify({ near: mpD.near, mid: mpD.mid, far: mpD.far }));
+  check('a ghost 800 u ahead is drawn 800 u ahead of you, not at its place in the galaxy',
+    Math.abs(mpD.near.drawnAt - 800) < 5, `drawn ${mpD.near.drawnAt} u from you`);
+  check('a real bolt through an opted-in ghost sends one hit report, and takes no hull off it here',
+    mpD.shot.sent === 1 && mpD.shot.hullHere === mpD.hull0 && mpD.shot.victimHits === 0,
+    JSON.stringify({ ...mpD.shot, hull0: mpD.hull0 }));
+  check('the victim checks it and hurts itself, and the room hears its new hull from it',
+    mpD.after.taken === 1 && mpD.after.victimHits.length === 1 && Math.abs(mpD.after.victimHits[0] - mpD.dmg) < 0.06
+      && mpD.after.seenHull === Math.round(mpD.after.victimHull) && mpD.after.victimHull < mpD.hull0 && mpD.after.landed === 1,
+    JSON.stringify({ ...mpD.after, dmg: mpD.dmg, verdict: mpD.v }));
+
+  const mpF = await E(`
+    const { THREE, bus, b, bg, pvp, SHIPS, EQUIP } = window.__pvp;
+    const sh = g.ship, peer = g.net.peers.get('p-b');
+    const fire = () => {
+      const sent0 = g.net.sent;
+      sh.fireCd = 0; sh.overheat = false; sh.heat = 0; sh.vel.set(0, 0, 0);
+      g.fire(0);
+      for (let i = 0; i < 10; i++) g.update(0.05);
+      return g.net.sent - sent0;
+    };
+    const keep = () => { const fwd = new THREE.Vector3(0, 0, -1).applyQuaternion(sh.q); bg.ship.pos.copy(sh.pos).addScaledVector(fwd, 800); b.update(0.1); g.net.update(0.2); };
+    // you off: your bolts pass through people
+    keep(); g.settings.pvp = false;
+    const youOff = fire();
+    // them off: the same
+    g.settings.pvp = true; bg.settings.pvp = false; keep();
+    const themOff = fire();
+    // a hit sent anyway, straight at somebody who is off, is refused by them
+    const r0 = b.refused, h0 = bg.hits.length;
+    g.net.reportHit(peer, 12);
+    const forced = { refused: b.refused - r0, why: b.verdict && b.verdict.why, hits: bg.hits.length - h0 };
+    bg.settings.pvp = true; keep();
+    // the other way round: the game you are playing is the victim
+    const mine = b.peers.get(g.net.id);
+    g.update(0.05); b.update(0.1);                     // fresh reports both ways
+    const hp0 = sh.hull + sh.shield, t0 = g.net.taken;
+    b.reportHit(mine, 12);
+    const one = { v: g.net.verdict, lost: +(hp0 - sh.hull - sh.shield).toFixed(1), taken: g.net.taken - t0, told: mine.hull === Math.round(sh.hull) };
+    const t1 = g.net.taken;
+    for (let i = 0; i < 30; i++) b.reportHit(mine, 12);
+    const spray = g.net.taken - t1;
+    g.settings.pvp = false;
+    const t2 = g.net.taken, r2 = g.net.refused;
+    b.update(0.1); b.reportHit(mine, 12);
+    const off = { taken: g.net.taken - t2, refused: g.net.refused - r2, why: g.net.verdict && g.net.verdict.why };
+    g.settings.pvp = true;
+    sh.hull = g.stat('hull'); sh.shield = g.stat('shield');
+    const hardest = Math.max(...Object.values(SHIPS).map((s) => s.dmg)) * (1 + 0.35 * EQUIP.laser.prices.length);
+    return { youOff, themOff, forced, one, spray, off, hardest: +hardest.toFixed(1), cap: pvp.MAX_DMG, burst: pvp.BURST };`);
+  check('with PvP off on either side, a bolt passes through and nothing is reported',
+    mpF.youOff === 0 && mpF.themOff === 0, JSON.stringify({ youOff: mpF.youOff, themOff: mpF.themOff }));
+  check('a hit sent anyway to somebody with PvP off is refused by their own client',
+    mpF.forced.refused === 1 && mpF.forced.hits === 0 && mpF.forced.why === 'you are not in pvp', JSON.stringify(mpF.forced));
+  check('a hit on the game you are playing takes hull and shield off it, and the shooter hears the new hull',
+    mpF.one.taken === 1 && mpF.one.lost === 12 && mpF.one.told, JSON.stringify(mpF.one));
+  check(`thirty hit reports at once land at most ${mpF.burst}, and none with your PvP off`,
+    mpF.spray >= 1 && mpF.spray <= mpF.burst && mpF.off.taken === 0 && mpF.off.refused === 1 && mpF.off.why === 'you are not in pvp',
+    JSON.stringify({ spray: mpF.spray, off: mpF.off }));
+  check('no hull in the game hits harder than the cap a hit report is held to',
+    mpF.hardest <= mpF.cap, `hardest bolt ${mpF.hardest}, cap ${mpF.cap}`);
+
+  // Rooms. Stand-in games only, each with its own idea of where it is, so the
+  // frame loop cannot move anybody between systems mid-check.
+  const mpE = await E(`
+    const { net, bus, stand, b } = window.__pvp;
+    b.leave(); g.net.leave(); g.net.transport = null; g.settings.pvp = window.__pvp.oldPvp;
+    const gal = { id: 'mw' };
+    const X = { id: 'sys-x', galaxy: gal }, Y = { id: 'sys-y', galaxy: gal };
+    const ctx = (system) => ({ ctx: { system, galaxy: gal } });
+    const ga = stand(ctx(X), false), gb = stand(ctx(X), false), gc = stand(ctx(Y), false);
+    const a = new net.Net(ga, { id: 'r-a', transport: bus.make() });
+    const bb = new net.Net(gb, { id: 'r-b', transport: bus.make() });
+    const c = new net.Net(gc, { id: 'r-c', transport: bus.make() });
+    await a.join('a'); await bb.join('b'); await c.join('c');
+    const tick = (dt = 0.1) => { a.update(dt); bb.update(dt); c.update(dt); };
+    tick();
+    const split = { a: [...a.peers.keys()], b: [...bb.peers.keys()], c: [...c.peers.keys()], roomX: a.room, roomY: c.room };
+    // a crosses into Y: not at once, then after the settle
+    ga.u = ctx(Y);
+    tick();
+    const early = { room: a.room === split.roomX, bSeesA: bb.peers.has('r-a') };
+    for (let i = 0; i < 12 && !a.moving && a.room === split.roomX; i++) tick();
+    if (a.moving) await a.moving;
+    const leftX = { room: a.room, inX: bus.in(split.roomX), inY: bus.in(split.roomY), bSeesA: bb.peers.has('r-a'), aKeepsB: a.peers.has('r-b') };
+    tick(); tick();
+    const moved = { a: [...a.peers.keys()], b: [...bb.peers.keys()], c: [...c.peers.keys()] };
+    // skimming the edge: in and out of X every 0.3 s for 3 s never moves the room
+    const j0 = bus.joins, room0 = a.room;
+    for (let i = 0; i < 30; i++) { if (i % 3 === 0) ga.u = ctx(i % 6 === 0 ? X : Y); tick(); if (a.moving) await a.moving; }
+    const flap = { joins: bus.joins - j0, same: a.room === room0 };
+    // a report from another room that got here anyway is not drawn
+    const stray = net.packShip(gb, 'r-b', 'b');
+    const strayTaken = a.take(stray);
+    const deep = net.roomFor({ u: { ctx: { system: null, galaxy: gal } } });
+    a.leave(); bb.leave(); c.leave();
+    return { split, early, leftX, moved, flap, strayTaken, deep, left: bus.in(split.roomX) + bus.in(split.roomY) };`);
+  check('two systems are two rooms: you hear who is in yours and nobody from the other',
+    mpE.split.roomX !== mpE.split.roomY && /sys-x/.test(mpE.split.roomX) && mpE.split.a.join() === 'r-b' && mpE.split.b.join() === 'r-a' && mpE.split.c.length === 0,
+    JSON.stringify(mpE.split));
+  check('crossing into another system leaves the old room and joins the new one, after a settle',
+    mpE.early.room && mpE.early.bSeesA && mpE.leftX.room === mpE.split.roomY && mpE.leftX.inX === 1 && mpE.leftX.inY === 2
+      && !mpE.leftX.bSeesA && !mpE.leftX.aKeepsB && mpE.moved.a.join() === 'r-c' && mpE.moved.c.join() === 'r-a' && mpE.moved.b.length === 0,
+    JSON.stringify({ early: mpE.early, leftX: mpE.leftX, moved: mpE.moved }));
+  check('skimming the edge between two systems does not churn the room',
+    mpE.flap.joins === 0 && mpE.flap.same, JSON.stringify(mpE.flap));
+  check('a report from another room is not drawn even if it arrives, and deep space has a room per galaxy',
+    mpE.strayTaken === false && /:mw:deep$/.test(mpE.deep) && mpE.left === 0, JSON.stringify({ stray: mpE.strayTaken, deep: mpE.deep, left: mpE.left }));
 
   const fps = await E('return g.fps;');
   check('frame rate sample (headless software GL)', fps > 3, `${fps.toFixed(1)} fps`);

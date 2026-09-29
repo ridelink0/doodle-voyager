@@ -92,6 +92,7 @@ export class UI {
     bind(['s2-shake'], 'shake', 'check');
     bind(['s2-fps'], 'showFps', 'check');
     bind(['s2-blur'], 'pauseOnBlur', 'check');
+    bind(['s2-pvp'], 'pvp', 'check');
     $('s-sens-o').textContent = `${Math.round(s.sens * 100)}%`;
     $('s2-fov-o').textContent = `${s.fov}°`;
     $('s2-fov').addEventListener('input', () => { $('s2-fov-o').textContent = `${s.fov}°`; });

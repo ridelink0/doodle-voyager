@@ -12,6 +12,14 @@ from the player-request research are marked (research) and sourced in
       so nobody can fake a kill, snapshots at 15-20 Hz. Rooms are per galaxy so
       the universe scales by sharding. PvP opt-in flag per player (research: the
       single most common complaint about forced PvP is griefing).
+      Partly done 2026-09-29, without a server: players in the Supabase room
+      can now shoot each other if both turned PvP on (Shift O, or the settings
+      panel; off by default). The victim's own client checks each hit report
+      against its own position and the shooter's last report (live, same
+      room, in range, rate of fire, damage cap) before it takes damage, and
+      rooms are per star system rather than per galaxy. What a server would
+      still add: ids nobody can borrow, and a referee that does not trust
+      the shooter's position either.
 - [ ] (Gev) **Clan wars and space battles across galaxies.** Clans own
       liberated sectors; a clan war is a timed contest over a set of sectors in
       one galaxy; capital ships become clan assets; the map shows clan colours.
