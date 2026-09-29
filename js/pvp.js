@@ -9,10 +9,11 @@
 //
 // What this cannot do is prove who sent a message. A broadcast room has no
 // signatures, so a client that lies about where it is, or borrows another
-// peer's id, gets past these checks as long as its lie is consistent. What it
-// cannot do is hurt somebody who never opted in, from the other side of the
-// system, from a room they are not in, faster than a gun fires, or harder than
-// the hardest bolt in the game.
+// peer's id, gets past these checks as long as its lie is consistent, and one
+// that makes up a fresh id every few shots gets a fresh rate gate with each.
+// What it cannot do is hurt somebody who never opted in, from the other side
+// of the system, from a room they are not in, faster than a gun fires under
+// any one id, or harder than the hardest bolt in the game.
 //
 // Plain data only, so it runs in node without three or a page.
 
@@ -21,10 +22,11 @@ export const BOLT_LIFE = 2.2;      // and a player bolt lives 2.2 s
 export const RANGE = BOLT_SPEED * BOLT_LIFE;
 export const REACH_PAD = 600;      // your own hull, and slack for the gap between reports
 export const LAG = 0.5;            // seconds of travel allowed for a report and a hit in flight
-export const SPEED_CAP = 5e5;      // above the fastest cruise; a claim of more buys no more range
+export const SPEED_CAP = 5e5;      // a claim of more buys no more range; cruise in open space can go
+                                   // faster than this, and a hit between two ships doing so may be refused
 export const LIVE = 1.5;           // a shooter quiet for longer than this is not shooting anybody
 // Gel Pen 18 x (1 + 0.35 x 3 levels of sharper nibs) = 36.9, the hardest one
-// bolt hits. A check in tools/test.mjs keeps this above every hull in SHIPS.
+// bolt hits. A check in tools/test.mjs keeps this above every hull's bolt in SHIPS.
 export const MAX_DMG = 40;
 export const ROF = 1 / 0.12;       // fire(): one bolt every 0.12 s, whatever the hull
 export const BURST = 4;            // hits the network can deliver bunched together
@@ -47,7 +49,6 @@ export class RateGate {
     s.n -= 1;
     return true;
   }
-  forget(id) { this.b.delete(id); }
 }
 
 const fin3 = (p) => !!p && Number.isFinite(p.x) && Number.isFinite(p.y) && Number.isFinite(p.z);

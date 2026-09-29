@@ -2420,6 +2420,11 @@ try {
     const t1 = g.net.taken;
     for (let i = 0; i < 30; i++) b.reportHit(mine, 12);
     const spray = g.net.taken - t1;
+    // a goodbye, which anybody can send in anybody's name, does not refill it
+    b.transport.bye(b.id); b.update(0.1);
+    const t3 = g.net.taken, back = g.net.peers.has(b.id);
+    for (let i = 0; i < 30; i++) b.reportHit(mine, 12);
+    const rejoin = { back, taken: g.net.taken - t3 };
     g.settings.pvp = false;
     const t2 = g.net.taken, r2 = g.net.refused;
     b.update(0.1); b.reportHit(mine, 12);
@@ -2427,7 +2432,7 @@ try {
     g.settings.pvp = true;
     sh.hull = g.stat('hull'); sh.shield = g.stat('shield');
     const hardest = Math.max(...Object.values(SHIPS).map((s) => s.dmg)) * (1 + 0.35 * EQUIP.laser.prices.length);
-    return { youOff, themOff, forced, one, spray, off, hardest: +hardest.toFixed(1), cap: pvp.MAX_DMG, burst: pvp.BURST };`);
+    return { youOff, themOff, forced, one, spray, rejoin, off, hardest: +hardest.toFixed(1), cap: pvp.MAX_DMG, burst: pvp.BURST };`);
   check('with PvP off on either side, a bolt passes through and nothing is reported',
     mpF.youOff === 0 && mpF.themOff === 0, JSON.stringify({ youOff: mpF.youOff, themOff: mpF.themOff }));
   check('a hit sent anyway to somebody with PvP off is refused by their own client',
@@ -2437,6 +2442,8 @@ try {
   check(`thirty hit reports at once land at most ${mpF.burst}, and none with your PvP off`,
     mpF.spray >= 1 && mpF.spray <= mpF.burst && mpF.off.taken === 0 && mpF.off.refused === 1 && mpF.off.why === 'you are not in pvp',
     JSON.stringify({ spray: mpF.spray, off: mpF.off }));
+  check('saying goodbye and coming straight back does not buy the shooter a fresh burst',
+    mpF.rejoin.back && mpF.rejoin.taken === 0, JSON.stringify(mpF.rejoin));
   check('no hull in the game hits harder than the cap a hit report is held to',
     mpF.hardest <= mpF.cap, `hardest bolt ${mpF.hardest}, cap ${mpF.cap}`);
 

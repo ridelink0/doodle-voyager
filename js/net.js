@@ -304,9 +304,10 @@ export class Net {
     return true;
   }
 
+  // The rate gate keeps its count for a dropped id: a goodbye is one broadcast
+  // anybody can send, and forgetting on it would hand the shooter a fresh burst.
   drop(id) {
     const p = this.peers.get(id);
-    this.gate.forget(id);
     if (!p) return false;
     this.unmesh(p);
     this.peers.delete(id);

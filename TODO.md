@@ -74,8 +74,10 @@ A running list, kept honest: something only moves to **Built** when a check in
   malformed - and only then hurts itself and tells the room its new hull.
   The rules are plain data in `js/pvp.js` and are checked in node by
   `tools/pvp-checks.mjs`; each check was run with its rule taken out and
-  failed. What this cannot stop is a client that lies about where it is or
-  borrows another peer's id: the room has no signatures.
+  failed. What this cannot stop is a client that lies about where it is,
+  borrows another peer's id, or makes up a new id every few shots to get a
+  new rate gate: the room has no signatures. A goodbye does not reset the
+  gate, since anybody can send one in anybody's name.
 - Names above the ghosts, on a sprite that stays one size on screen and fades
   out between 2000 and 16000 u. Ghosts are now drawn relative to your own ship
   with the same far-field squash as the enemies; before this they were placed
@@ -86,9 +88,9 @@ A running list, kept honest: something only moves to **Built** when a check in
   churn. A report from another room that arrives anyway is not drawn. The zone
   a report carried is the enemy zone, empty almost everywhere, so the room is
   keyed on the system instead.
-- The three above added 30 checks (17 rule checks in node, 13 in the browser
+- The three above added 31 checks (17 rule checks in node, 14 in the browser
   driving the game's own Net and a second peer through a fake room); the
-  suite is 224 checks.
+  suite is 225 checks.
 
 ## Next, in order
 
@@ -101,7 +103,7 @@ A running list, kept honest: something only moves to **Built** when a check in
 3. **AdMob on mobile.** The planet ads are in-world art. A real ad unit is a
    mobile-shell decision and needs an account step that cannot be scripted from
    here.
-4. **A pass on the 224 checks for vacuity.** One check was found this week that
+4. **A pass on the 225 checks for vacuity.** One check was found this week that
    measured a shield absorbing the damage it thought it was measuring on the
    hull, and another that sampled a tutorial step before any frame had run.
    Both were the check's fault, not the game's. There are probably more: the

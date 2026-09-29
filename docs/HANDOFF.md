@@ -11,8 +11,8 @@ Read docs/PLAN.md first (architecture and module contracts), then docs/TODO.md.
   js/ships.js, js/actors.js, js/audio.js, js/media.js, js/mats.js, js/util.js.
 - Data: data/*.json built by tools/build-data.mjs (NASA exoplanets, OpenNGC,
   HYG stars, Wikipedia Local Group). Rebuild with: node tools/build-data.mjs
-- Tests: node tools/test.mjs (headless Chrome over CDP, 194 checks as of
-  2026-09-28). Behind a proxy that blocks jsDelivr, set THREE_DIR to an
+- Tests: node tools/test.mjs (headless Chrome over CDP, 225 checks as of
+  2026-09-29). Behind a proxy that blocks jsDelivr, set THREE_DIR to an
   unpacked three@0.170.0 package; as root in a container, CHROME_FLAGS=--no-sandbox.
 - Local deploy: http://127.0.0.1:5178/ serving dist/ (node tools/stage.mjs
   rebuilds dist). Started at logon by the Startup-folder launcher
