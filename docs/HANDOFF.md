@@ -11,8 +11,9 @@ Read docs/PLAN.md first (architecture and module contracts), then docs/TODO.md.
   js/ships.js, js/actors.js, js/audio.js, js/media.js, js/mats.js, js/util.js.
 - Data: data/*.json built by tools/build-data.mjs (NASA exoplanets, OpenNGC,
   HYG stars, Wikipedia Local Group). Rebuild with: node tools/build-data.mjs
-- Tests: node tools/test.mjs (headless Chrome over CDP, 41 checks). Last run
-  2026-09-23: 40/41. The one failure is "autopilot closes on Mars" (see TODO).
+- Tests: node tools/test.mjs (headless Chrome over CDP, 194 checks as of
+  2026-09-28). Behind a proxy that blocks jsDelivr, set THREE_DIR to an
+  unpacked three@0.170.0 package; as root in a container, CHROME_FLAGS=--no-sandbox.
 - Local deploy: http://127.0.0.1:5178/ serving dist/ (node tools/stage.mjs
   rebuilds dist). Started at logon by the Startup-folder launcher
   DoodleVoyager-Server.vbs. Daily monitor: scheduled task "DoodleVoyager
@@ -43,8 +44,9 @@ npx vercel link --yes --project doodle-voyager and npx vercel deploy --prod --ye
 
 ## Open items, in order
 
-1. Setting a destination / autopilot engagement (TODO, Gameplay).
-2. HUD hint "tap or hold" for W/S.
+1. Done 2026-09-28: setting a destination, and the autopilot flying whole
+   legs to moving targets (see docs/TODO.md, Gameplay).
+2. Done 2026-09-28: HUD hint "tap or hold" for W/S.
 4. RESEARCH-features.md was never finished (its agent hit a session limit).
 5. ~50 ultra-faint Local Group dwarfs without coordinates (CATALOG-galaxies.md).
 6. The rest of docs/TODO.md: multiplayer, clan wars, Chromebook performance,

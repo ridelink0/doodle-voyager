@@ -260,12 +260,18 @@ export class UI {
     this.set('h-ability', abTxt, 'innerHTML');
     const tg = sh.warp ? sh.warp.target : sh.auto ? sh.auto.target : g.navTarget;
     let ttxt = '';
+    const aboard = g.mode === 'helm' || g.mode === 'foot';
     if (tg) {
       const dist = vdist(tg.pos(g.t), sh.pos);
       const eta = sh.warp ? sh.warp.dur - sh.warp.t : sp > 1 ? dist / sp : Infinity;
-      ttxt = `${tg.name} · ${fmtU(dist)} · ${sh.warp ? `${fmtTime(eta)} left` : `about ${fmtTime(this.cruiseEta(dist))} by cruise`}`;
+      ttxt = `${esc(tg.name)} · ${fmtU(dist)} · ${sh.warp ? `${fmtTime(eta)} left` : `about ${fmtTime(this.cruiseEta(dist))} by cruise`}`;
+      // picked on the map but nobody is flying there yet
+      if (!sh.auto && !sh.warp && aboard) ttxt += ` · ${kbd(g, 'T', g.mode)} fly there`;
+    } else if (aboard) {
+      // Gev: a new player never found out how to set a destination at all
+      ttxt = `no destination · ${kbd(g, 'M', g.mode)} map, pick a place, set course`;
     }
-    this.set('h-target', ttxt);
+    this.set('h-target', ttxt, 'innerHTML');
     // The sidearm is in your hands on foot and in the suit too (js/board.js),
     // so the crosshair is up wherever you can shoot something.
     $('h-cross').hidden = !(g.mode === 'helm' || g.mode === 'drone' || g.mode === 'foot' || g.mode === 'eva');
@@ -313,7 +319,7 @@ export class UI {
       const ab = ABILITIES[g.def.ability];
       const steer = pad ? `${k('mouse')} steer` : 'mouse or arrows steer';
       const fire = pad ? `${k('Space')} fire · hold ${k('Q')} look` : g.settings.trackpad ? `${k('Space')} fire · hold ${k('Q')} look` : 'click fire';
-      return `${steer} · ${k('W')}/${k('S')} throttle · ${fire} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock or eject${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
+      return `${steer} · ${k('W')}/${k('S')} throttle${pad ? '' : ', tap or hold'} · ${fire} · ${k('C')} cruise · ${k('T')} autopilot · ${k('J')} warp · ${k('L')} nearest pump · ${k('F')} dock or eject${ab ? ` · ${ab.hold ? 'hold ' : ''}${k('R')} ${ab.name.toLowerCase()}` : ''} · ${k('E')} stand up`;
     }
     if (m === 'eva') return `${k('WASD')} ${k('Space')} ${k('Ctrl')} jetpack · click shoots · ${k('E')} boards or climbs in · ${k('F')} calls a hull you own · air ${Math.max(0, Math.round(g.eva ? g.eva.o2 : 0))} s · suit ${Math.round(g.board.you.hp)}`;
     if (m === 'drone') return `${k('WASD')} fly · ${k('Space')}/${k('Ctrl')} up/down · click or ${k('B')} bomb (${sh.bombs}) · ${k('G')} recall · battery ${Math.round(g.drone ? g.drone.battery : 0)} s`;

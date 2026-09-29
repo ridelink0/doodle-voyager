@@ -345,6 +345,32 @@ try {
     uvAds.shipMove < 1e-6 && uvAds.spin > 0.05 && Math.abs(uvAds.spin - uvAds.want) < 0.02,
     `ship moved it ${Number(uvAds.shipMove).toExponential(1)} rad, the planet's own spin moved it ${Number(uvAds.spin).toFixed(3)} rad of a predicted ${Number(uvAds.want).toFixed(3)}`);
 
+  // Gev 2026-09-23: setting a destination was not obvious. With nothing picked
+  // the HUD says how, and from the map it is a click on the marker and a click
+  // on set course - real mouse events on the real canvas and button here.
+  const noDest = await E(`g.setMode('helm'); g.ui.closeAll(); g.navTarget = null; g.ship.auto = null; g.ui.hud();
+    return { txt: document.getElementById('h-target').textContent, keys: g.ui.keysFor('helm') };`);
+  check('with no destination the HUD says to press M, and W/S says tap or hold',
+    /no destination/.test(noDest.txt) && /\bM\b/.test(noDest.txt) && /throttle, tap or hold/.test(noDest.keys), `${noDest.txt} | ${noDest.keys.slice(0, 120)}`);
+  await b.key('m');
+  await b.wait(300);
+  const mapPick = await E(`g.ui.mapZoom = 5.3; g.ui.drawMap();
+    const h = (g.ui.mapHits || []).find(x => x.it.name === 'Mars'), cv = document.getElementById('m-canvas'), r = cv.getBoundingClientRect();
+    return { open: g.ui.open_.has('map'), at: h ? { x: r.left + h.x * r.width / cv.width, y: r.top + h.y * r.height / cv.height } : null };`);
+  if (mapPick.at) await b.click(mapPick.at.x, mapPick.at.y);
+  await b.wait(200);
+  const goAt = await E(`const el = document.getElementById('m-go'); if (!el) return null; const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2, picked: g.navTarget && g.navTarget.name, auto: !!g.ship.auto,
+      hint: (g.ui.hud(), document.getElementById('h-target').textContent) };`);
+  if (goAt) await b.click(goAt.x, goAt.y);
+  await b.wait(200);
+  const mapGo = await E(`return { auto: g.ship.auto && g.ship.auto.target.name, open: g.ui.open_.has('map'), hint: (g.ui.hud(), document.getElementById('h-target').textContent) };`);
+  check('click Mars on the map, click set course, and the autopilot has it',
+    mapPick.open && goAt && goAt.picked === 'Mars' && !goAt.auto && /fly there/.test(goAt.hint)
+    && mapGo.auto === 'Mars' && !mapGo.open && !/no destination|fly there/.test(mapGo.hint),
+    JSON.stringify({ open: mapPick.open, marker: !!mapPick.at, ...goAt, after: mapGo }));
+  await E(`g.ship.auto = null; g.ship.throttle = 0; g.ship.cruise = false; return 1;`);
+
   // autopilot to Mars
   const ap = await E(`g.setMode('helm');
     const sol = g.u.sol; const mars = g.u.planetsOf(sol).find(p => p.name === 'Mars');
@@ -369,6 +395,72 @@ try {
   check('autopilot closes on Mars', ap1.d < ap || (ap1.auto && head > 0.9), `${ap.toFixed(0)} -> ${ap1.d.toFixed(0)} ${JSON.stringify({ ...ap1, d: undefined })}`);
   await b.shot(path.join(SHOTS, '05-autopilot.png'));
   await E('g.ship.auto = null; g.ship.cruise = false; g.ship.throttle = 0; return 1;');
+
+  // Gev 2026-09-23: "confirm the autopilot actually turns and flies there".
+  // The loop above only shows it engaged and pointing the right way; these fly
+  // the whole leg. They drive update() directly with the frame loop paused, so
+  // a slow software-GL frame rate cannot run the clock out, and every leg is to
+  // a target that moves while the ship flies. Mars is wherever the wall clock
+  // put it; the other two are set up so the old straight-at-it steering fails:
+  // Mercury with the Sun on the line between, and a planet that orbits faster
+  // than the slowest hull can fly.
+  const legs = await E(`g.paused = true;
+    const said = [], big = g.ui.big, toast = g.ui.toast;
+    g.ui.big = function (a, b) { said.push(a); return big.call(this, a, b); };
+    g.ui.toast = function (a) { said.push(a); return toast.apply(this, arguments); };
+    const fly = (t, max, star) => {
+      said.length = 0;
+      const a = t.pos(g.t), p0 = { x: a.x, y: a.y, z: a.z }, hull0 = g.ship.hull, t0 = g.t;
+      let dive = Infinity;
+      g.setCourse(t);
+      while (g.ship.auto && g.t - t0 < max) {
+        g.update(0.05);
+        if (star) dive = Math.min(dive, Math.hypot(g.ship.pos.x - star.pos.x, g.ship.pos.y - star.pos.y, g.ship.pos.z - star.pos.z) / star.r);
+      }
+      const p = t.pos(g.t), d = Math.hypot(p.x - g.ship.pos.x, p.y - g.ship.pos.y, p.z - g.ship.pos.z);
+      const out = { name: t.name, arrived: said.includes('ARRIVED') && d < t.arrive * 1.05, secs: Math.round(g.t - t0),
+        moved: Math.round(Math.hypot(p.x - p0.x, p.y - p0.y, p.z - p0.z)), d: Math.round(d), arrive: Math.round(t.arrive),
+        hullLost: +(hull0 - g.ship.hull).toFixed(1), pulledOut: said.filter(x => /out of cruise/.test(x)).length,
+        dive: star ? +dive.toFixed(2) : undefined, hullType: g.ship.type };
+      g.ship.auto = null; g.ship.cruise = false; g.ship.throttle = 0; g.ship.vel.set(0, 0, 0); g.ship.cs = 0;
+      return out;
+    };
+    const sol = g.u.sol, byName = (n) => g.u.planetsOf(sol).find(p => p.name === n);
+    const res = {};
+    res.mars = fly(g.u.target('planet', { sys: sol, planet: byName('Mars') }), 600);
+    const home = { ...g.ship.pos }, was = g.ship.type, owned = g.state.owned.slice();
+    // Mercury, from half as far again as its orbit on the far side of the Sun,
+    // so the straight line to it runs through the middle of the star
+    const sun = g.u.ctx.bodies.find(x => x.kind === 'star' && x.sys === sol);
+    const merc = g.u.target('planet', { sys: sol, planet: byName('Mercury') });
+    const m = merc.pos(g.t);
+    g.ship.pos.x = sun.pos.x + (sun.pos.x - m.x) * 1.5; g.ship.pos.y = sun.pos.y + (sun.pos.y - m.y) * 1.5; g.ship.pos.z = sun.pos.z + (sun.pos.z - m.z) * 1.5;
+    g.ship.fuel = g.stat('tank'); g.update(0.05);
+    res.mercury = fly(merc, 600, sun);
+    // the Filing Cabinet does 150 u/s; find a home-galaxy planet that does more
+    if (!g.state.owned.includes('locker')) g.state.owned.push('locker');
+    g.switchShip('locker'); g.paused = true;
+    let fast = null;
+    for (const s of g.u.systemsOf(g.u.mw)) {
+      for (const p of g.u.planetsOf(s)) { const v = 2 * Math.PI * p.orbit / p.T; if (v > 190 && v < 300 && p.orbit > s.star.r * 1.6) { fast = { sys: s, planet: p, v }; break; } }
+      if (fast) break;
+    }
+    const ft = g.u.target('planet', fast), fp = ft.pos(g.t), c = fast.sys.pos;
+    const fx = c.x - fp.x, fy = c.y - fp.y, fz = c.z - fp.z, FL = Math.hypot(fx, fy, fz), R = FL + 30000;
+    g.ship.pos.x = c.x + fx / FL * R; g.ship.pos.y = c.y + fy / FL * R; g.ship.pos.z = c.z + fz / FL * R;
+    g.ship.vel.set(0, 0, 0); g.ship.fuel = g.stat('tank'); g.update(0.05);
+    res.fast = { ...fly(ft, 600), orbitSpeed: Math.round(fast.v), shipSpeed: g.stat('speed') };
+    g.switchShip(was); g.state.owned = owned; g.persist();
+    g.ship.pos.x = home.x; g.ship.pos.y = home.y; g.ship.pos.z = home.z; g.update(0.05);
+    g.ui.big = big; g.ui.toast = toast; g.paused = false;
+    return res;`);
+  check('the autopilot flies the whole leg and arrives at Mars while Mars moves',
+    legs.mars.arrived && legs.mars.moved > 2000 && legs.mars.hullLost <= 0, JSON.stringify(legs.mars));
+  check('with the Sun on the line to Mercury, the autopilot goes round it and arrives',
+    legs.mercury.arrived && legs.mercury.dive > 2 && legs.mercury.hullLost <= 0 && legs.mercury.pulledOut === 0, JSON.stringify(legs.mercury));
+  check('a hull slower than the planet still meets it by leading it round the orbit',
+    legs.fast.arrived && legs.fast.hullType === 'locker' && legs.fast.orbitSpeed > legs.fast.shipSpeed && legs.fast.moved > 5000 && legs.fast.hullLost <= 0,
+    JSON.stringify(legs.fast));
 
   // warp to Proxima Centauri (or the nearest charted star)
   const wp = await E(`

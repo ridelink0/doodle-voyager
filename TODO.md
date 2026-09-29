@@ -23,6 +23,14 @@ A running list, kept honest: something only moves to **Built** when a check in
   planet's pull wins near its own orbit, which is what makes orbiting possible.
 - Autopilot legs, cruise, warp, fuel that stays annoying, and a tow from the
   pause menu when you strand yourself.
+- A destination in two clicks: the marker on the map, then set course. With
+  nothing picked the HUD says "no destination, M map"; with something picked
+  and nobody flying, it says T flies there.
+- The autopilot flies whole legs to things that move. It aims where the
+  target will be rather than where it is, so a hull slower than a planet meets
+  it head on further round the orbit; it goes round a star, planet or moon on
+  the line instead of through its well; and it slows down relative to the
+  target, not to the star. The W/S hint says tap or hold.
 - Air that only drains once the hull is damaged, and lasts longer on a big ship.
 
 **On foot and off it**
@@ -75,10 +83,15 @@ A running list, kept honest: something only moves to **Built** when a check in
 6. **AdMob on mobile.** The planet ads are in-world art. A real ad unit is a
    mobile-shell decision and needs an account step that cannot be scripted from
    here.
-7. **A pass on the 173 checks for vacuity.** One check was found this week that
+7. **A pass on the 194 checks for vacuity.** One check was found this week that
    measured a shield absorbing the damage it thought it was measuring on the
    hull, and another that sampled a tutorial step before any frame had run.
-   Both were the check's fault, not the game's. There are probably more.
+   Both were the check's fault, not the game's. There are probably more: the
+   old "autopilot closes on Mars" passed on any one-unit drop in distance, and
+   passed on runs where the ship never got there. It now flies the whole leg.
+   "walking moves you inside the ship" is the next suspect: it walks for 900 ms
+   of wall clock, which under software GL can be one frame or two, and one
+   frame is not enough to pass.
 
 ## How to run it
 
@@ -87,6 +100,10 @@ node tools/serve.mjs          # or any static server on the repo root
 node tools/test.mjs           # the whole suite, headless
 node tools/test.mjs --shots   # and write comparison screenshots
 ```
+
+Where cdn.jsdelivr.net is blocked, `THREE_DIR=<an unpacked three@0.170.0 npm
+package>` makes the suite serve three from disk; `CHROME_FLAGS` adds browser
+switches (`--no-sandbox` when running as root in a container).
 
 There is no build step and no bundler. `three` comes in through an import map,
 so a file you edit is the file the browser runs.

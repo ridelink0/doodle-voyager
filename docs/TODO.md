@@ -23,8 +23,19 @@ from the player-request research are marked (research) and sourced in
 
 ## Gameplay
 
-- [ ] (Gev, 2026-09-23) **Setting a destination does not really work.** You have to set one, and it is not obvious how: make it one click from the map (click a marker, then Set course), show a "no destination, press M" hint on the HUD, and confirm the autopilot actually turns and flies there. The end-to-end check "autopilot closes on Mars" still fails in headless runs (the ship is still turning while Mars orbits away), so treat autopilot engagement as unverified.
-- [ ] HUD hint for W/S should say "tap or hold" (a tap now moves the throttle a quarter).
+- [x] (Gev, 2026-09-23) **Setting a destination does not really work.**
+      Done 2026-09-28: the map already had click a marker, then set course;
+      the HUD now says "no destination, M map, pick a place, set course" when
+      nothing is picked, and "T fly there" when something is picked and not
+      flown. The autopilot itself was the real problem: it pointed straight at
+      where the target was, so it flew through the Sun's well (and was pulled
+      out of cruise thousands of times), and a planet faster than the approach
+      cap or the hull was never caught. It now aims at the intercept point off
+      the orbit itself, goes round bodies on the line, and caps the approach
+      relative to the target. Checks fly whole legs: Mars, Mercury with the Sun
+      in between, and a 216 u/s planet in the 150 u/s Filing Cabinet; all three
+      failed on the old autopilot.
+- [x] HUD hint for W/S should say "tap or hold" (a tap now moves the throttle a quarter).
 
 - [x] (Gev) Gas stations everywhere, some serving only certain ship types.
       Done: about 42% of star systems have pumps, each selling one to three of
