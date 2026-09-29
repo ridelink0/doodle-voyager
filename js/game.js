@@ -39,6 +39,13 @@ export const GRAVITY = {
   star: { reach: 3, accel: 22 },
   blackhole: { reach: 30, accel: 900, event: 2.2 },
 };
+// Which GRAVITY entry a body in the view pulls with, or null for none.
+function wellOf(b) {
+  return b.kind === 'moon' ? 'moon'
+    : b.kind === 'planet' || b.kind === 'dwarf planet' ? 'planet'
+    : b.kind === 'star' ? 'star'
+    : b.kind === 'sight' && b.sight && b.sight.kind === 'blackhole' ? 'blackhole' : null;
+}
 
 export const EQUIP = {
   laser: { name: 'Sharper nibs', desc: 'Laser damage +35% a level', prices: [1500, 3400, 6800] },
@@ -114,6 +121,7 @@ const SAVE_KEY = 'dv-save-1';
 const TOW_PRICE = 400;
 
 const V1 = new THREE.Vector3(), V2 = new THREE.Vector3(), V3 = new THREE.Vector3();
+const AIM = new THREE.Vector3(), SEG = new THREE.Vector3(), OFF = new THREE.Vector3();
 const Q1 = new THREE.Quaternion(), Q2 = new THREE.Quaternion();
 const E1 = new THREE.Euler(0, 0, 0, 'YXZ');
 const FWD = new THREE.Vector3(0, 0, -1);
@@ -129,6 +137,7 @@ export function defaultSettings() {
   return {
     sens: 1, invert: false, music: true, musicVol: 0.45, sfxVol: 0.7, drone: true, boil: true, quality: 1, hints: true,
     trackpad: false, fov: 72, shake: true, showFps: false, pauseOnBlur: true, wheelThrottle: true, rumble: true,
+    pvp: false,
   };
 }
 function freshSave() {
@@ -422,6 +431,14 @@ export class Game {
     store.set(SAVE_KEY, s);
   }
   saveSettings() { store.set('dv-settings', this.settings); this.applySettings(); }
+  togglePvp() {
+    this.settings.pvp = !this.settings.pvp;
+    this.saveSettings();
+    const box = document.getElementById('s2-pvp');
+    if (box) box.checked = this.settings.pvp;
+    if (this.net) this.net.acc = 1;          // tell the room now, not in a tenth of a second
+    this.ui.toast(this.settings.pvp ? 'PvP on: other players who turned it on can shoot you, and you them.' : 'PvP off: nobody can shoot you, and your bolts pass through people.');
+  }
   applySettings() {
     const st = this.settings;
     this.r.boil = st.boil ? 1 : 0;
@@ -492,7 +509,8 @@ export class Game {
     if (this.paused) return;
     if (e.code === 'KeyM') { this.ui.toggle('map'); return; }
     // O opens the shared sky. Joining can fail, and the HUD line says so.
-    if (e.code === 'KeyO') { this.net.toggle(); return; }
+    // Shift O is the PvP opt-in, off until you turn it on.
+    if (e.code === 'KeyO') { if (e.shiftKey) this.togglePvp(); else this.net.toggle(); return; }
     if (this.ui.anyOpen()) return;
     // double-tap W to jog (trackpad mode; Shift still works for everyone)
     if (e.code === 'KeyW' && !e.repeat) {
@@ -1169,21 +1187,29 @@ export class Game {
     // autopilot steering
     let limit = Infinity;
     if (sh.auto) {
-      const tp = sh.auto.target.pos(this.t);
-      const to = V3.set(tp.x - sh.pos.x, tp.y - sh.pos.y, tp.z - sh.pos.z);
-      const dist = to.length();
-      if (dist < sh.auto.target.arrive * 1.05) {
-        this.ui.big('ARRIVED', sh.auto.target.name);
+      const tg = sh.auto.target;
+      const tp = tg.pos(this.t);
+      const dist = Math.hypot(tp.x - sh.pos.x, tp.y - sh.pos.y, tp.z - sh.pos.z);
+      if (dist < tg.arrive * 1.05) {
+        this.ui.big('ARRIVED', tg.name);
         audio.sfx('coin');
         sh.auto = null; sh.cruise = false; sh.throttle = 0;
       } else {
-        to.normalize();
+        const aim = this.autoAim(tg, Math.max(sh.vel.length(), this.stat('speed')));
+        const to = V3.set(aim.x - sh.pos.x, aim.y - sh.pos.y, aim.z - sh.pos.z).normalize();
         Q2.setFromUnitVectors(FWD, to);
         sh.q.rotateTowards(Q2, this.def.turn * 1.1 * dt);
         const align = fwd.dot(to);
         sh.throttle = align > 0.6 ? 1 : 0.2;
-        sh.cruise = !this.zone && dist > 40000 && align > 0.9 && sh.fuel > 0;
-        limit = Math.max(120, 0.35 * (dist - sh.auto.target.arrive));
+        // Not into a well deep enough to pull the ship straight back out of
+        // cruise: it would drop to a standstill and re-engage every frame.
+        const deep = this.grav && this.grav.depth > 0.7;
+        sh.cruise = !this.zone && dist > 40000 && align > 0.9 && sh.fuel > 0 && !deep;
+        // The approach slows down relative to the target, not to the star: a
+        // planet runs at 40 to 450 u/s, and a ship capped at 120 behind one
+        // doing 200 would follow it round the orbit for ever.
+        const p0 = tg.pos(this.t), x0 = p0.x, y0 = p0.y, z0 = p0.z, p1 = tg.pos(this.t + 1);
+        limit = Math.hypot(p1.x - x0, p1.y - y0, p1.z - z0) + Math.max(120, 0.35 * (dist - tg.arrive));
       }
     }
     const limp = sh.fuel <= 0;
@@ -1237,6 +1263,54 @@ export class Game {
     if (this.thruster) this.thruster.set(clamp(sh.vel.length() / Math.max(vmaxSub, 1), 0, 1));
   }
 
+  // Where the autopilot points the nose. Not at the target, which has moved
+  // on by the time the ship gets there, but at the soonest point where the
+  // ship at speed s reaches the arrival sphere: pos(t) is exact at any time,
+  // so this reads the orbit itself rather than guessing a straight line off
+  // the current velocity, and a hull slower than the planet meets it head on
+  // further round the orbit instead of chasing its tail. Then, if a star, a
+  // planet or a moon sits on that line, the ship goes round it rather than
+  // through its well.
+  autoAim(tg, s) {
+    const sh = this.ship, t = this.t, reach = tg.arrive;
+    const gap = (tau) => { const p = tg.pos(t + tau); return Math.hypot(p.x - sh.pos.x, p.y - sh.pos.y, p.z - sh.pos.z) - reach - s * tau; };
+    const d0 = gap(0) + reach, horizon = 4 * d0 / s;
+    let lo = 0, hi = -1;
+    for (let k = 1; k <= 48 && hi < 0; k++) { const tk = (horizon * k) / 48; if (gap(tk) <= 0) hi = tk; else lo = tk; }
+    let tau = d0 / s;
+    if (hi > 0) {
+      for (let i = 0; i < 12; i++) { const mid = (lo + hi) / 2; if (gap(mid) <= 0) hi = mid; else lo = mid; }
+      tau = hi;
+    }
+    const p = tg.pos(t + tau);
+    AIM.set(p.x, p.y, p.z);
+    // the nearest obstruction along the line, if any
+    SEG.set(AIM.x - sh.pos.x, AIM.y - sh.pos.y, AIM.z - sh.pos.z);
+    const len2 = SEG.lengthSq();
+    const now = tg.pos(t), nx = now.x, ny = now.y, nz = now.z;
+    let best = null, bestK = 1, bestClear = 0;
+    for (const b of this.u.ctx.bodies) {
+      const kind = wellOf(b);
+      const r = b.r > 0 ? b.r : (b.sight && b.sight.R) || 0;
+      if (!kind || !(r > 0) || !(len2 > 0)) continue;
+      // the target itself, and its own moons, are what the ship is going to
+      if (Math.hypot(b.pos.x - nx, b.pos.y - ny, b.pos.z - nz) < reach) continue;
+      const clear = r * (1 + 0.4 * GRAVITY[kind].reach);
+      const k = ((b.pos.x - sh.pos.x) * SEG.x + (b.pos.y - sh.pos.y) * SEG.y + (b.pos.z - sh.pos.z) * SEG.z) / len2;
+      if (!(k > 0) || k >= bestK) continue;
+      const qx = sh.pos.x + SEG.x * k - b.pos.x, qy = sh.pos.y + SEG.y * k - b.pos.y, qz = sh.pos.z + SEG.z * k - b.pos.z;
+      if (Math.hypot(qx, qy, qz) >= clear) continue;
+      best = b; bestK = k; bestClear = clear;
+    }
+    if (!best) return AIM;
+    // aim past its edge, on whichever side the line already runs
+    OFF.set(sh.pos.x + SEG.x * bestK - best.pos.x, sh.pos.y + SEG.y * bestK - best.pos.y, sh.pos.z + SEG.z * bestK - best.pos.z);
+    if (OFF.lengthSq() < 1e-6) OFF.copy(UP).applyQuaternion(sh.q).cross(SEG);
+    if (OFF.lengthSq() < 1e-6) OFF.set(SEG.y, -SEG.x, 0);
+    OFF.normalize().multiplyScalar(bestClear * 1.5);
+    return AIM.set(best.pos.x + OFF.x, best.pos.y + OFF.y, best.pos.z + OFF.z);
+  }
+
   updateWarp(dt) {
     const sh = this.ship, w = sh.warp;
     w.t += dt;
@@ -1286,10 +1360,7 @@ export class Game {
     const sh = this.ship;
     let worst = null;
     for (const b of ctx.bodies) {
-      const kind = b.kind === 'moon' ? 'moon'
-        : b.kind === 'planet' || b.kind === 'dwarf planet' ? 'planet'
-        : b.kind === 'star' ? 'star'
-        : b.kind === 'sight' && b.sight && b.sight.kind === 'blackhole' ? 'blackhole' : null;
+      const kind = wellOf(b);
       if (!kind) continue;
       const g = GRAVITY[kind];
       const r = b.r > 0 ? b.r : (b.sight && b.sight.R) || 0;
@@ -1854,6 +1925,10 @@ export class Game {
           const hit = this.hitEnemy(e, ox, oy, oz, s.pos, s.dmg);
           if (hit) { s.dead = true; break; }
         }
+        // Another player who opted in. The bolt stops and the room is told;
+        // their hull is theirs to take off, so nothing is subtracted here.
+        const peer = !s.dead && this.net && this.net.on ? this.net.struck(ox, oy, oz, s.pos) : null;
+        if (peer) { s.dead = true; this.net.reportHit(peer, s.dmg); }
       } else {
         // In a suit the thing that can be hit is you, and a suit is not a hull.
         const suit = this.board.suitPos();
@@ -2299,6 +2374,7 @@ export class Game {
       g.quaternion.copy(e.q);
       if (e.kind === 'capital') this.drawBeam(e);
     }
+    if (this.net && this.net.on) this.net.placeAll();
     for (const s of this.shots) {
       squash(s.pos.x - sh.pos.x, s.pos.y - sh.pos.y, s.pos.z - sh.pos.z, s.mesh.position);
       V1.copy(s.vel).normalize();

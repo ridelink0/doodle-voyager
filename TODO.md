@@ -23,6 +23,14 @@ A running list, kept honest: something only moves to **Built** when a check in
   planet's pull wins near its own orbit, which is what makes orbiting possible.
 - Autopilot legs, cruise, warp, fuel that stays annoying, and a tow from the
   pause menu when you strand yourself.
+- A destination in two clicks: the marker on the map, then set course. With
+  nothing picked the HUD says "no destination, M map"; with something picked
+  and nobody flying, it says T flies there.
+- The autopilot flies whole legs to things that move. It aims where the
+  target will be rather than where it is, so a hull slower than a planet meets
+  it head on further round the orbit; it goes round a star, planet or moon on
+  the line instead of through its well; and it slows down relative to the
+  target, not to the star. The W/S hint says tap or hold.
 - Air that only drains once the hull is damaged, and lasts longer on a big ship.
 
 **On foot and off it**
@@ -55,38 +63,71 @@ A running list, kept honest: something only moves to **Built** when a check in
   authoritative over; a peer is a ghost drawn from its last report, chased
   rather than snapped, forgotten after six seconds of silence, and dropped at
   once when it says goodbye. Malformed reports and your own are ignored.
+- Shots between players, owner-authoritative. PvP is off until you turn it on
+  (Shift O, or the settings panel), and only two people who both turned it on
+  can hurt each other; for everybody else a bolt passes through. The shooter
+  sends a hit report and takes nothing off anybody (the crosshair flashes);
+  the victim's own client checks the report - shooter live in the last 1.5 s,
+  same room, within a bolt's reach (9240 u plus the distance either ship could
+  have moved) of where the shooter last said it was, no faster than a gun
+  fires, no harder than the hardest bolt in the game, not your own, not
+  malformed - and only then hurts itself and tells the room its new hull.
+  The rules are plain data in `js/pvp.js` and are checked in node by
+  `tools/pvp-checks.mjs`; each check was run with its rule taken out and
+  failed. What this cannot stop is a client that lies about where it is,
+  borrows another peer's id, or makes up a new id every few shots to get a
+  new rate gate: the room has no signatures. A goodbye does not reset the
+  gate, since anybody can send one in anybody's name.
+- Names above the ghosts, on a sprite that stays one size on screen and fades
+  out between 2000 and 16000 u. Ghosts are now drawn relative to your own ship
+  with the same far-field squash as the enemies; before this they were placed
+  at their galaxy coordinates in a scene centred on you.
+- Rooms per star system (per galaxy between systems). Crossing into another
+  system leaves the old room, forgets everybody in it and joins the new one,
+  once you have been there a second, so skimming the edge between two does not
+  churn. A report from another room that arrives anyway is not drawn. The zone
+  a report carried is the enemy zone, empty almost everywhere, so the room is
+  keyed on the system instead.
+- The three above added 31 checks (17 rule checks in node, 14 in the browser
+  driving the game's own Net and a second peer through a fake room); the
+  suite is 225 checks.
 
 ## Next, in order
 
-1. **Shots between players.** Right now peers can see each other and cannot
-   hurt each other. Doing it properly means an owner-authoritative hit report
-   plus a damage message, not trusting a peer's claim to have hit you.
-2. **Names above the ghosts.** The peer's name is carried in every report and is
-   not drawn yet; it wants a sprite label that fades with distance.
-3. **Rooms per system.** One room holds everybody in the universe today. The
-   report already carries the zone, so splitting the channel by system is small
-   and cuts the traffic to what you can see.
-4. **`docs/specs/shaders-2.md`.** The second shader pass is specified and not
+1. **`docs/specs/shaders-2.md`.** The second shader pass is specified and not
    implemented: the ink-bleed edge, the cel-banded starlight and the interior
    bounce.
-5. **PBR textures and Blender assets.** Blender 5.2 is installed; the reference
+2. **PBR textures and Blender assets.** Blender 5.2 is installed; the reference
    corpus is in `docs/refs/`. The hulls are procedural and would take a baked
    normal and roughness pass well.
-6. **AdMob on mobile.** The planet ads are in-world art. A real ad unit is a
+3. **AdMob on mobile.** The planet ads are in-world art. A real ad unit is a
    mobile-shell decision and needs an account step that cannot be scripted from
    here.
-7. **A pass on the 173 checks for vacuity.** One check was found this week that
+4. **A pass on the 225 checks for vacuity.** One check was found this week that
    measured a shield absorbing the damage it thought it was measuring on the
    hull, and another that sampled a tutorial step before any frame had run.
-   Both were the check's fault, not the game's. There are probably more.
+   Both were the check's fault, not the game's. There are probably more: the
+   old "autopilot closes on Mars" passed on any one-unit drop in distance, and
+   passed on runs where the ship never got there. It now flies the whole leg.
+   "and the body it is drawn as follows the ghost" passed while every ghost
+   was drawn at its galaxy coordinates in a scene centred on you, because it
+   compared the mesh with the same wrong number; it now checks the position
+   relative to you. "walking moves you inside the ship" is the next suspect:
+   it walks for 900 ms of wall clock, which under software GL can be one frame
+   or two, and one frame is not enough to pass.
 
 ## How to run it
 
 ```
 node tools/serve.mjs          # or any static server on the repo root
 node tools/test.mjs           # the whole suite, headless
+node tools/pvp-checks.mjs     # just the PvP hit rules, in node, no browser
 node tools/test.mjs --shots   # and write comparison screenshots
 ```
+
+Where cdn.jsdelivr.net is blocked, `THREE_DIR=<an unpacked three@0.170.0 npm
+package>` makes the suite serve three from disk; `CHROME_FLAGS` adds browser
+switches (`--no-sandbox` when running as root in a container).
 
 There is no build step and no bundler. `three` comes in through an import map,
 so a file you edit is the file the browser runs.

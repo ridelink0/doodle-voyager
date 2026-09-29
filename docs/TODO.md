@@ -12,6 +12,14 @@ from the player-request research are marked (research) and sourced in
       so nobody can fake a kill, snapshots at 15-20 Hz. Rooms are per galaxy so
       the universe scales by sharding. PvP opt-in flag per player (research: the
       single most common complaint about forced PvP is griefing).
+      Partly done 2026-09-29, without a server: players in the Supabase room
+      can now shoot each other if both turned PvP on (Shift O, or the settings
+      panel; off by default). The victim's own client checks each hit report
+      against its own position and the shooter's last report (live, same
+      room, in range, rate of fire, damage cap) before it takes damage, and
+      rooms are per star system rather than per galaxy. What a server would
+      still add: ids nobody can borrow, and a referee that does not trust
+      the shooter's position either.
 - [ ] (Gev) **Clan wars and space battles across galaxies.** Clans own
       liberated sectors; a clan war is a timed contest over a set of sectors in
       one galaxy; capital ships become clan assets; the map shows clan colours.
@@ -23,8 +31,19 @@ from the player-request research are marked (research) and sourced in
 
 ## Gameplay
 
-- [ ] (Gev, 2026-09-23) **Setting a destination does not really work.** You have to set one, and it is not obvious how: make it one click from the map (click a marker, then Set course), show a "no destination, press M" hint on the HUD, and confirm the autopilot actually turns and flies there. The end-to-end check "autopilot closes on Mars" still fails in headless runs (the ship is still turning while Mars orbits away), so treat autopilot engagement as unverified.
-- [ ] HUD hint for W/S should say "tap or hold" (a tap now moves the throttle a quarter).
+- [x] (Gev, 2026-09-23) **Setting a destination does not really work.**
+      Done 2026-09-28: the map already had click a marker, then set course;
+      the HUD now says "no destination, M map, pick a place, set course" when
+      nothing is picked, and "T fly there" when something is picked and not
+      flown. The autopilot itself was the real problem: it pointed straight at
+      where the target was, so it flew through the Sun's well (and was pulled
+      out of cruise thousands of times), and a planet faster than the approach
+      cap or the hull was never caught. It now aims at the intercept point off
+      the orbit itself, goes round bodies on the line, and caps the approach
+      relative to the target. Checks fly whole legs: Mars, Mercury with the Sun
+      in between, and a 216 u/s planet in the 150 u/s Filing Cabinet; all three
+      failed on the old autopilot.
+- [x] HUD hint for W/S should say "tap or hold" (a tap now moves the throttle a quarter).
 
 - [x] (Gev) Gas stations everywhere, some serving only certain ship types.
       Done: about 42% of star systems have pumps, each selling one to three of

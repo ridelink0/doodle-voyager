@@ -30,8 +30,9 @@ happens when you die.
   you can see in the belly and take them back.
 - **Eight bosses**, a codex, an announcer whose recordings are always slightly
   wrong about you, and an intro crawl at the start of every new game.
-- **Multiplayer** on `O`: a Supabase Realtime room where the other ships really
-  are other people.
+- **Multiplayer** on `O`: a Supabase Realtime room per star system where the
+  other ships really are other people, with their names over them. Two players
+  who both turned PvP on (`Shift O`) can shoot each other.
 - **A tutorial** that advances off real state - a real seat, a real throttle, a
   real course on the autopilot - and a pad layout for PS5 and Xbox.
 
